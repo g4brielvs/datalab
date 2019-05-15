@@ -5,30 +5,16 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  Data Lab Upgrade Prototype
 </h1>
-
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
-
-    Use the Gatsby CLI to create a new site, specifying the default starter.
-
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
 1.  **Start developing.**
 
-    Navigate into your new site’s directory and start it up.
-
     ```sh
-    cd my-default-starter/
+    git clone git@github.com:fedspendingtransparency/datalab-prototype.git
+    cd datalab-prototype/
     gatsby develop
     ```
 
@@ -90,8 +76,13 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 - **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-## 💫 Deploy
+## Additional Key References
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+Here are some resources:
+** Gatsby docs - https://www.gatsbyjs.org/docs/
+** Gatsby tutorial - https://www.gatsbyjs.org/tutorial/
+** Gatsby plugins - https://www.gatsbyjs.org/plugins/
+** Gatsby examples - https://github.com/gatsbyjs/gatsby/tree/master/examples
+** React approaches - https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
 
 <!-- AUTO-GENERATED-CONTENT:END -->
