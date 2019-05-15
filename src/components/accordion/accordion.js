@@ -13,7 +13,9 @@ class Accordion extends Component {
         this.toggle = this.toggle.bind(this);
     }
 
-    toggle() {
+    toggle(e) {
+        e.stopPropagation();
+        
         this.setState(state => ({
             open: !state.open
           }));
@@ -22,7 +24,7 @@ class Accordion extends Component {
     render() {
         return (
             <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
-                <h1 className="accordion__heading">
+                <h1 onClick={this.toggle} className="accordion__heading">
                     {this.props.title}
                     <button onClick={this.toggle} className="accordion__toggle">
                         <FontAwesomeIcon icon={faPlus} className="accordion__plus" />
