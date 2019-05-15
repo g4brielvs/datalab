@@ -7,21 +7,30 @@ class Accordion extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: true,
-            me: 'brett'
+            open: false
         };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState(state => ({
+            open: !state.open
+          }));
+
+        console.log('toggle', this.state.open)
     }
 
     render() {
-        console.log(this.state.me)
         return (
-            <section className="accordion" >
+            <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
                 <h1 className="accordion__heading">
                     {this.props.title}
-                    <button className="accordion__toggle">
+                    <button onClick={this.toggle} className="accordion__toggle">
                         <i className="fas fa-plus accordion__plus"></i>
                         <i className="fas fa-minus accordion__minus"></i>
                         <span className="sr-only">toggle contents</span>
+                        +
                     </button>
                 </h1>
                 <div className="accordion__content">
