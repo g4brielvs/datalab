@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './accordion.scss';
-
-console.log(styles)
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 class Accordion extends Component {
     constructor(props) {
@@ -17,8 +17,6 @@ class Accordion extends Component {
         this.setState(state => ({
             open: !state.open
           }));
-
-        console.log('toggle', this.state.open)
     }
 
     render() {
@@ -27,10 +25,9 @@ class Accordion extends Component {
                 <h1 className="accordion__heading">
                     {this.props.title}
                     <button onClick={this.toggle} className="accordion__toggle">
-                        <i className="fas fa-plus accordion__plus"></i>
-                        <i className="fas fa-minus accordion__minus"></i>
+                        <FontAwesomeIcon icon={faPlus} className="accordion__plus" />
+                        <FontAwesomeIcon icon={faMinus} className="accordion__minus" />
                         <span className="sr-only">toggle contents</span>
-                        +
                     </button>
                 </h1>
                 <div className="accordion__content">
