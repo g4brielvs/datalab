@@ -78,10 +78,10 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## Additional Key References
 
 Here are some resources:
-- **Gatsby docs - https://www.gatsbyjs.org/docs/
-- **Gatsby tutorial - https://www.gatsbyjs.org/tutorial/
-- **Gatsby plugins - https://www.gatsbyjs.org/plugins/
-- **Gatsby examples - https://github.com/gatsbyjs/gatsby/tree/master/examples
-- **React approaches - https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
+- Gatsby docs - https://www.gatsbyjs.org/docs/
+- Gatsby tutorial - https://www.gatsbyjs.org/tutorial/
+- Gatsby plugins - https://www.gatsbyjs.org/plugins/
+- Gatsby examples - https://github.com/gatsbyjs/gatsby/tree/master/examples
+- React approaches - https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
 
 <!-- AUTO-GENERATED-CONTENT:END -->
