@@ -14,7 +14,7 @@
 
     ```sh
     git clone git@github.com:fedspendingtransparency/datalab-prototype.git
-    cd datalab-prototype/
+    cd datalab-prototype
     gatsby develop
     ```
 
@@ -24,7 +24,6 @@
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
 ## 🧐 What's inside?
 
@@ -79,10 +78,10 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 ## Additional Key References
 
 Here are some resources:
-** Gatsby docs - https://www.gatsbyjs.org/docs/
-** Gatsby tutorial - https://www.gatsbyjs.org/tutorial/
-** Gatsby plugins - https://www.gatsbyjs.org/plugins/
-** Gatsby examples - https://github.com/gatsbyjs/gatsby/tree/master/examples
-** React approaches - https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
+- **Gatsby docs - https://www.gatsbyjs.org/docs/
+- **Gatsby tutorial - https://www.gatsbyjs.org/tutorial/
+- **Gatsby plugins - https://www.gatsbyjs.org/plugins/
+- **Gatsby examples - https://github.com/gatsbyjs/gatsby/tree/master/examples
+- **React approaches - https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
 
 <!-- AUTO-GENERATED-CONTENT:END -->
