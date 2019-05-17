@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './accordion.scss';
+import './accordion.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
