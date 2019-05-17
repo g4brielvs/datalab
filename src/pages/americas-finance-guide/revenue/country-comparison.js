@@ -1,8 +1,9 @@
 import React from "react"
-import Layout from "../../../components/layout"
+//import Layout from "../../../components/layout"
 import DataSource from '../../../components/dataSource/dataSource'
-import afg from '../../../components/afgSharedCss/cg.css';
-import countryCommon from '../../../components/afgSharedCss/countryCommon.css';
+import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
+import '../../../components/afgSharedCss/cg.css';
+import '../../../components/afgSharedCss/countryCommon.css';
 
 const fy = 2017;
 
@@ -36,7 +37,7 @@ const Countries = () => (
 
     <div className="clearfix"></div>
 
-    <section className="hwcta">
+    <SourcesMethodology>
         <p>The visualization was created using the <DataSource dataKey="countryComparisonMts" /> as the data source for federal government revenue of the United States. Gross domestic product (GDP) figures for the United States come from the <DataSource dataKey="beaGdp" />. GDP data for countries other than the United States comes from the <DataSource dataKey="imfGdp" />.</p>
         <p>In researching potential data sources for information on the revenue of other governments for the country comparison module, we chose the <DataSource dataKey="ciaWorldFactBook" /> because it provides the best comparison for the following reasons:</p>
         <ul>
@@ -52,7 +53,7 @@ const Countries = () => (
                 <li><a href="../../../assets/ffg/data/revenue_country_comparison.csv" download>revenue_country_comparison.csv</a></li>
             </ul>
         </div>
-    </section>
+    </SourcesMethodology>
 </div>
 
 <script src="/assets/ffg/revenue/countryComparison.js"></script>
