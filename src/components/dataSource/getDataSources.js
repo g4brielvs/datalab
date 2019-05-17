@@ -18,14 +18,6 @@ const sources = {
     template: {
         href: '',
         linkText: ''
-    },
-    template: {
-        href: '',
-        linkText: ''
-    },
-    template: {
-        href: '',
-        linkText: ''
     }
 }
 
