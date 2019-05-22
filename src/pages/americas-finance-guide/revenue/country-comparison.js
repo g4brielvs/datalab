@@ -1,21 +1,18 @@
 import React from "react"
-//import Layout from "../../../components/layout"
+import AfgLayout from "../../../components/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
-import '../../../components/afgSharedCss/cg.css';
-import '../../../components/afgSharedCss/countryCommon.css';
 import Helmet from 'react-helmet'
+import '../../../components/afgSharedCss/countryCommon.css';
 
 const fy = 2017;
 
 const Countries = () => (
-    <>
+<AfgLayout>
+    <Helmet>
+        <script defer src={'/afg/revenue/countryComparison.js'}></script>
+    </Helmet>
 
-<Helmet>
-    <script defer src={'/afg/revenue/countryComparison.js'}></script>
-</Helmet>
-
-<div className="ffg-wrapper">
     <h1>Compare Federal Revenue of the United States to other Countries</h1>
 
     <div className="country-copy">
@@ -59,9 +56,7 @@ const Countries = () => (
             </ul>
         </div>
     </SourcesMethodology>
-</div>
-
-    </>
+</AfgLayout>
 )
                                 
 export default Countries
