@@ -8,7 +8,7 @@ import '../../../components/afgSharedCss/countryCommon.css';
 const fy = 2017;
 
 const Countries = () => (
-<AfgLayout>
+<AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/countryComparison.js'}></script>
     </Helmet>

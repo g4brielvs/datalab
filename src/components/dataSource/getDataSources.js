@@ -15,6 +15,18 @@ const sources = {
         href: 'https://www.cia.gov/library/publications/resources/the-world-factbook/index.html',
         linkText: 'CIA World Factbook'
     },
+    currentMts: {
+        href: 'https://www.fiscal.treasury.gov/files/reports-statements/mts/mts0918.pdf',
+        linkText: 'Monthly Treasury Statement (MTS)'
+    },
+    blsCpiu: {
+        href: 'https://data.bls.gov/cgi-bin/surveymost?bls',
+        linkText: 'The Bureau of Labor Statistics (BLS) Consumer Price Index for All Urban Consumers (CPI-U)'
+    },
+    mtsHomepage: {
+        href: 'https://fiscal.treasury.gov/reports-statements/mts/',
+        linkText: 'Monthly Treasury Statement (MTS)'
+    },
     template: {
         href: '',
         linkText: ''
