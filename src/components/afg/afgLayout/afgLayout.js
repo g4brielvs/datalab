@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import SiteLayout from '../siteLayout/siteLayout'
+import SiteLayout from '../../siteLayout/siteLayout'
 import './normalize.css'
 import './cg.css'
 

@@ -1,9 +1,9 @@
 import React from "react"
-import AfgLayout from "../../../components/afgLayout/afgLayout"
+import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-import '../../../components/afgSharedCss/countryCommon.css';
+import '../../../components/afg/afgSharedCss/countryCommon.css';
 
 const Index = () => (
 <AfgLayout chapter="revenue">
