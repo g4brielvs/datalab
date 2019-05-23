@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import SiteLayout from '../../siteLayout/siteLayout'
+import ChapterNav from "../chapterNav/chapterNav";
 import './normalize.css'
 import './cg.css'
-import ChapterNav from "../chapterNav/chapterNav";
 
 class AfgLayout extends Component {
     render() {

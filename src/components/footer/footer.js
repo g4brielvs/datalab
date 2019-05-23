@@ -67,7 +67,7 @@ class SiteFooter extends Component {
                 <a href="https://www.usaspending.gov/#/about/privacy">Privacy Policy</a> |&nbsp;
                 <a href="https://www.usaspending.gov/#/about/foia">Freedom of Information Act</a>
             </div>
-                <div class="footer-important-info">
+                <div className="footer-important-info">
                 <b>NOTE:</b> <a href="https://beta.usaspending.gov/#/db_info">You must click here for very important D&amp;B information.</a>
             </div>
             </footer>

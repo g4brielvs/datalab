@@ -3,9 +3,9 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-import '../../../components/afg/afgSharedCss/chapterIntroCommon.css';
+//import '../../../components/afg/afgSharedCss/chapterIntroCommon.css';
 
-const Index = () => (
+const Gdp = () => (
 <AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/intro.js'}></script>
@@ -106,4 +106,4 @@ const Index = () => (
 </AfgLayout>
 )
                                 
-export default Index
+export default Gdp

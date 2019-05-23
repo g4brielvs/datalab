@@ -15,10 +15,10 @@ class ChapterNav extends Component {
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="./">Revenue and GDP</a></li>
-                        <li><a href="./categories.html">Revenue Categories</a></li>
-                        <li><a href="./trends.html">Federal Revenue Trends</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/revenue/">Revenue and GDP</a></li>
+                        <li><a href="/americas-finance-guide/revenue/categories/">Revenue Categories</a></li>
+                        <li><a href="/americas-finance-guide/revenue/trends/">Federal Revenue Trends</a></li>
+                        <li><a href="/americas-finance-guide/revenue/country-comparison/">Country Comparison</a></li>
                     </ul>
                     { button }
                 </nav>
