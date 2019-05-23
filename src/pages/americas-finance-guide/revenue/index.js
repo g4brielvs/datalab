@@ -3,7 +3,7 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-import '../../../components/afg/afgSharedCss/countryCommon.css';
+import '../../../components/afg/afgSharedCss/chapterIntroCommon.css';
 
 const Index = () => (
 <AfgLayout chapter="revenue">
