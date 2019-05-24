@@ -4,16 +4,35 @@ import './header.scss';
 import './universal-banner.scss';
 import './subnav.scss';
 
+const headerOffset = 29;
+
 class SiteHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: null
+      active: null,
+      scroll: headerOffset
     };
 
     this.debounce = null;
 
     this.toggle = this.toggle.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const scroll = (window.scrollY >= headerOffset) ? 0 : headerOffset - window.scrollY;
+
+    this.setState(state => ({
+      scroll: scroll
+    }));
   }
 
   toggle(target) {
@@ -50,7 +69,7 @@ class SiteHeader extends Component {
           </div>
         </header>
 
-        <header id="header">
+        <header id="header" style={{top: this.state.scroll + 'px'}}>
           <div className="header__main">
             <a className="header-logo header-logo--init" href="/">
               <div className="header-logo__wrapper">
