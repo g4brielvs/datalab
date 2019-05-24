@@ -104,15 +104,17 @@ class SiteHeader extends Component {
               <li className="secondaryNavli"><a href="/federal-employees.html">Federal Employees</a></li>
               <li className="secondaryNavli"><a href="/competition-in-contracting.html">Competition in Contracting</a></li>
             </ul>
-            <ul className={this.state.active === 'resources' ? 'dropdown-ul-section active' : 'dropdown-ul-section'} id="subnav-resources">
+            <ul className={this.state.active === 'resources' ? 'dropdown-ul-section active' : 'dropdown-ul-section'} id="subnav-resources"
+              onMouseEnter={this.toggle.bind(this, 'resources')}
+              onMouseLeave={this.toggle.bind(this, 'clear')}>
               <li className="secondaryNavli"><a href="/assets/analyst-guide-1-2.pdf">Analyst Guide</a></li>
               <li className="secondaryNavli"><a href="http://api.usaspending.gov/">API Guide</a></li>
               <li className="secondaryNavli"><a href="https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html">Data Model</a></li>
               <li className="secondaryNavli"><a href="/student-innovators-toolbox.html">Student Innovator's Toolbox</a></li>
             </ul>
             <ul className={this.state.active === 'afg' ? 'dropdown-ul-section active' : 'dropdown-ul-section'} id="subnav-ffg"
-            onMouseEnter={this.toggle.bind(this, 'afg')}
-            onMouseLeave={this.toggle.bind(this, 'clear')}>
+              onMouseEnter={this.toggle.bind(this, 'afg')}
+              onMouseLeave={this.toggle.bind(this, 'clear')}>
               <li className="secondaryNavli"><a href="/americas-finance-guide/">Overview</a></li>
               <li className="secondaryNavli"><a href="/americas-finance-guide/revenue">Revenue</a></li>
               <li className="secondaryNavli"><a href="/americas-finance-guide/spending">Spending</a></li>
