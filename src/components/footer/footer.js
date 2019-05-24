@@ -29,7 +29,7 @@ class SiteFooter extends Component {
                     </p>
                     <div className="dl-footer__group-title">Join the Conversation</div>
                     <p>
-                        Visit our  <a onclick="leaveSiteLink('https://usaspending-help.zendesk.com/hc/en-us/community/topics'); trackLinkClick('Send Feedback'); return false;" href="https://usaspending-help.zendesk.com/hc/en-us/community/topics" className="community-page-link">Community Page today.</a>
+                        Visit our  <a href="https://usaspending-help.zendesk.com/hc/en-us/community/topics" className="community-page-link">Community Page today.</a>
                     </p>
 
                 </div>
@@ -38,23 +38,23 @@ class SiteFooter extends Component {
                 <div className="dl-footer__social">
                     <div className="dl-footer__group-title">Connect With Us</div>
                     <div className="dl-footer__social-items">
-                        <a onclick="trackLinkClick('GitHub')" target="_blank" rel="noopener noreferrer" aria-labelledby="Github-icon-title" href="https://github.com/fedspendingtransparency/datalab">
+                        <a target="_blank" rel="noopener noreferrer" aria-labelledby="Github-icon-title" href="https://github.com/fedspendingtransparency/datalab">
                             <img src="/footer/github-footer.svg"></img>
                         </a>
 
-                        <a onclick="trackLinkClick('Data World')" target="_blank" rel="noopener noreferrer" aria-labelledby="DataWorld-icon-title" href="https://data.world/usaspending">
+                        <a target="_blank" rel="noopener noreferrer" aria-labelledby="DataWorld-icon-title" href="https://data.world/usaspending">
                             <img src="/footer/data-world.svg"></img>
                         </a>
 
-                        <a onclick="trackLinkClick('Twitter')" target="_blank" rel="noopener noreferrer" aria-labelledby="Twitter-icon-title" href="https://twitter.com/fiscalservice">
+                        <a target="_blank" rel="noopener noreferrer" aria-labelledby="Twitter-icon-title" href="https://twitter.com/fiscalservice">
                             <img src="/footer/twitter-footer.svg"></img>
                         </a>
 
-                        <a onclick="trackLinkClick('Facebook')" target="_blank" rel="noopener noreferrer" aria-labelledby="Facebook-icon-title" href="https://www.facebook.com/pg/fiscalservice">
+                        <a target="_blank" rel="noopener noreferrer" aria-labelledby="Facebook-icon-title" href="https://www.facebook.com/pg/fiscalservice">
                             <img src="/footer/facebook-footer.svg"></img>
                         </a>
 
-                        <a onclick="trackLinkClick('Linkedin')" target="_blank" rel="noopener noreferrer" aria-labelledby="LinkediIn-icon-title" href="https://www.linkedin.com/company/united-states-department-of-the-treasury-bureau-of-public-debt">
+                        <a target="_blank" rel="noopener noreferrer" aria-labelledby="LinkediIn-icon-title" href="https://www.linkedin.com/company/united-states-department-of-the-treasury-bureau-of-public-debt">
                             <img src="/footer/linkedin-footer.svg"></img>
                         </a>
                     </div>
