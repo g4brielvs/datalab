@@ -114,7 +114,7 @@ class SiteHeader extends Component {
             <ul className={this.state.active === 'analyses' ? 'dropdown-ul-section active' : 'dropdown-ul-section'} id="subnav-analyses"
               onMouseEnter={this.toggle.bind(this, 'analyses')}
               onMouseLeave={this.toggle.bind(this, 'clear')}>
-              <li className="secondaryNavli"><a href="/dts.html">DTS Tracker</a></li>
+              <li className="secondaryNavli"><a href="/dts/">DTS Tracker</a></li>
               <li className="secondaryNavli"><a href="/contracts-over-time.html">Contract Spending Analysis</a></li>
               <li className="secondaryNavli"><a href="/federal-account-explorer.html">Federal Account Explorer</a></li>
               <li className="secondaryNavli"><a href="/contract-explorer.html">Contract Explorer</a></li>
