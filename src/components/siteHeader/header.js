@@ -73,10 +73,10 @@ class SiteHeader extends Component {
           <div className="header__main">
             <a className="header-logo header-logo--init" href="/">
               <div className="header-logo__wrapper">
-                <img src="/header-svg/data-lab-logo.svg" className="header-logo__img" id="master-logo" alt="DataLab logo" />
-                <img src="/header-svg/two-line.png" className="header-logo__two-line header-logo__tagline active" id="two-line-tag" alt="Visualizations to help you understand government finance" />
+                <img src="/header/data-lab-logo.svg" className="header-logo__img" id="master-logo" alt="DataLab logo" />
+                <img src="/header/two-line.png" className="header-logo__two-line header-logo__tagline active" id="two-line-tag" alt="Visualizations to help you understand government finance" />
               </div>
-              <img src="/header-svg/one-line.png" className="header-logo__tagline" id="one-line-tag" alt="Visualizations to help you understand government finance" />
+              <img src="/header/one-line.png" className="header-logo__tagline" id="one-line-tag" alt="Visualizations to help you understand government finance" />
             </a>
 
             <nav className="header-nav">

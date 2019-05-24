@@ -3,12 +3,12 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-//import '../../../components/afg/afgSharedCss/chapterIntroCommon.css';
 
 const Gdp = () => (
 <AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/intro.js'}></script>
+        <link rel="stylesheet" href="/afgSharedCss/chapterIntroCommon.css" />
     </Helmet>
 
     <div className="ffg-wrapper revenue-intro">

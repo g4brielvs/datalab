@@ -3,7 +3,6 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-import '../../../components/afg/afgSharedCss/countryCommon.css';
 
 const fy = 2017;
 
@@ -11,6 +10,7 @@ const Countries = () => (
 <AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/countryComparison.js'}></script>
+        <link rel="stylesheet" href="/afgSharedCss/countryCommon.css" />
     </Helmet>
 
     <h1>Compare Federal Revenue of the United States to other Countries</h1>

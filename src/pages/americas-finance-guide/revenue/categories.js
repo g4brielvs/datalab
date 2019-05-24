@@ -3,12 +3,12 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-// import '../../../components/afg/afgSharedCss/revenue-categories.css';
 
 const Categories = () => (
 <AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/categories.js'}></script>
+        <link rel="stylesheet" href="/afgSharedCss/revenue-categories.css" />
     </Helmet>
 
     <h1>Sources of Revenue for the Federal Government </h1>

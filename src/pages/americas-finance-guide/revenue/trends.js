@@ -3,12 +3,12 @@ import AfgLayout from "../../../components/afg/afgLayout/afgLayout"
 import DataSource from '../../../components/dataSource/dataSource'
 import SourcesMethodology from '../../../components/sourcesMethodology/sourcesMethodology'
 import Helmet from 'react-helmet'
-import '../../../components/afg/afgSharedCss/trendsCommon.css';
 
 const Countries = () => (
 <AfgLayout chapter="revenue">
     <Helmet>
         <script defer src={'/afg/revenue/trends.js'}></script>
+        <link rel="stylesheet" href="/afgSharedCss/trendsCommon.css" />
     </Helmet>
 
     <h1>Federal Revenue Trends Over Time</h1>

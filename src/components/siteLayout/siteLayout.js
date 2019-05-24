@@ -6,7 +6,9 @@ import SiteHeader from "../siteHeader/header";
 export default ({ children }) => (
     <>
         <SiteHeader />
+        <article id="main">
         {children}
+        </article>
         <SiteFooter />
     </>
 )
