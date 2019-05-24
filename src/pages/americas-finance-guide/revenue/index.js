@@ -15,7 +15,7 @@ const Gdp = () => (
 
     <h1>In 2018, the government collected $3.3 trillion in revenue.
         <button className="info-box-trigger" data-box-id="per-individual">
-            <img src="/assets/ffg/icons/anecdote.svg" alt="anecdote icon" />
+            <img src="/afg/revenue/anecdote.svg" alt="anecdote icon" />
         </button>
     </h1>
 
@@ -29,7 +29,7 @@ const Gdp = () => (
         <div id="copy" className="intro-hidden">
             <p>Where does the money come from? If you lived or worked in the United States in 2018, most likely your contributions are part of the $3.3 trillion. Federal revenue consists mostly of individual, corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.
                 <button className="info-box-trigger" data-box-id="fiscal-year">
-                    <img src="/assets/ffg/icons/anecdote.svg" alt="anecdote icon" />
+                    <img src="/afg/revenue/anecdote.svg" alt="anecdote icon" />
                 </button>
             </p>
         </div>
@@ -72,12 +72,12 @@ const Gdp = () => (
     </div>
 
     <div className="info-box" id="per-individual">
-        <img src="/assets/ffg/icons/anecdote.svg" alt="anecdote icon" />
+        <img src="/afg/revenue/anecdote.svg" alt="anecdote icon" />
         <p>How much is $3.3 trillion? If you take $3.3 trillion divided by the U.S. population estimate in 2018, of 327.7 million (<a href="https://www.census.gov/popclock/" target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a>) that would equate to a little more than $10,000 in revenue for every individual in the U.S.</p>
     </div>
 
     <div className="info-box" id="fiscal-year">
-        <img src="/assets/ffg/icons/anecdote.svg" alt="anecdote icon" />
+        <img src="/afg/revenue/anecdote.svg" alt="anecdote icon" />
         <p>Fiscal Year refers to the period of time used by the government for accounting and budget purposes. For the federal government, the fiscal year runs from October 1 through September 30.</p>
     </div>
 
@@ -87,7 +87,7 @@ const Gdp = () => (
     </div>
 
     <div className="info-box" id="billion-dollars">
-        <img src="/assets/ffg/icons/anecdote.svg" alt="anecdote icon" />
+        <img src="/afg/revenue/anecdote.svg" alt="anecdote icon" />
         <p>In this visualization, one dot represents $1 billion of federal revenue.</p>
     </div>
 </div>
