@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import * as d3 from "d3"
-import Layout from "../components/layout"
+import Layout from "../layouts/default/layout"
 import SEO from "../components/seo"
 
 class Sankey extends Component {
