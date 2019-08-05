@@ -222,7 +222,7 @@ ul.icons.major li {
   text-align: center;
 }
 
-/* Resources Header */
+/* Resources Navbar */
 header.major h2 {
   text-transform: uppercase;
   font-size: 20px;
@@ -399,7 +399,7 @@ header.major h2 {
 
 #glossary-text {
   padding-right: 10px;
-  margin-top: 2em; // offset the p default that was made
+  margin-top: 2em; // offset the p home that was made
 }
 
 .links {
@@ -528,7 +528,7 @@ header.major h2 {
   margin-bottom: 50px;
 }
 
-/* Call this when header becomes sticky */
+/* Call this when navbar becomes sticky */
 .usaspending-logo {
   width: 197px;
   height: 42px;
@@ -929,7 +929,7 @@ article > header {
 //@import 'website/buttons';
 //@import 'website/modal';
 //@import 'website/mobile';
-//@import 'website/header';
+//@import 'website/navbar';
 //@import 'website/subnav'; // subnav!
 //@import 'website/footer-navigation';
 //@import 'website/footer';

@@ -4,9 +4,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Source Sans Pro";
+  margin-top: 10rem; // move all content down enough
+  max-width: 100%;
+  overflow: hidden;
 }
 article,
 aside,
@@ -1048,7 +1049,7 @@ ul.icons.major li {
   text-align: center;
 }
 
-/* Resources Header */
+/* Resources Navbar */
 header.major h2 {
   text-transform: uppercase;
   font-size: 20px;
@@ -1225,7 +1226,7 @@ header.major h2 {
 
 #glossary-text {
   padding-right: 10px;
-  margin-top: 2em; // offset the p default that was made
+  margin-top: 2em; // offset the p home that was made
 }
 
 .links {
@@ -1354,7 +1355,7 @@ header.major h2 {
   margin-bottom: 50px;
 }
 
-/* Call this when header becomes sticky */
+/* Call this when navbar becomes sticky */
 .usaspending-logo {
   width: 197px;
   height: 42px;

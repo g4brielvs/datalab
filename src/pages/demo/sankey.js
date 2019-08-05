@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import * as d3 from "d3"
-import Layout from "../../layouts/default/layout"
+import Home from "../../layouts/home/home"
 import SEO from "../../components/seo"
 
 class Sankey extends Component {
@@ -644,7 +644,7 @@ class Sankey extends Component {
   }
 
   render(){
-    return  <Layout>
+    return  <Home>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div>
         <div className="viz-container">
@@ -704,7 +704,7 @@ class Sankey extends Component {
           </div>
         </div>
       </div>
-    </Layout>
+    </Home>
 
   }
 }

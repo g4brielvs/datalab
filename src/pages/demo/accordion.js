@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../../layouts/default/layout"
-import Accordion from '../../components/demo/accordion/accordion'
+import Home from "../../layouts/home/home"
+import Accordion from '../../components/accordion/accordion'
 
 const AccordionPage = () => (
-    <Layout>
+    <Home>
         <h1>Accordion Example</h1>
         <Accordion
             title="Accordion Title">
@@ -11,7 +11,7 @@ const AccordionPage = () => (
             <p>I have several paragraphs...</p>
             <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
         </Accordion>
-    </Layout>
+    </Home>
 )
 
 export default AccordionPage

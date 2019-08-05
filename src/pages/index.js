@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../layouts/default/layout"
-import Image from "../components/demo/image"
+import Home from "../layouts/home/home"
+import Image from "../components/zdemo/image"
 import SEO from "../components/seo"
 import "../styles/index.scss"
 import "../styles/landing.scss"
@@ -13,7 +13,7 @@ import featured from "../images/index/c-o-t.png"
 
 
 const IndexPage = () => (
-  <Layout>
+  <Home>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <article id="main">
       <div className="dl-landing">
@@ -333,7 +333,7 @@ const IndexPage = () => (
     {/*<Link to="/chart/">Bar Chart Example</Link>*/}
 
 
-  </Layout>
+  </Home>
 )
 
 export default IndexPage

@@ -1,17 +1,17 @@
 import React from "react"
-import Layout from "../../layouts/default/layout"
+import Home from "../../layouts/home/home"
 import SEO from "../../components/seo"
 
-import Test from "../../components/demo/test"
+import Test from "../../components/zdemo/test"
 
 
 const TestPage = () => (
-  <Layout>
+  <Home>
     <SEO title="D3 Test Page" keywords={[`gatsby`, `application`, `react`]} />
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Test />
     </div>
-  </Layout>
+  </Home>
 )
 
 export default TestPage
