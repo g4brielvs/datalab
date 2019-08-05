@@ -338,23 +338,23 @@ class Header extends Component {
   repositionHeaderItems(shouldMoveLogo) {
 
     window.addEventListener('scroll', function() {
-      let y = window.pageYOffset;
-      let width = window.innerWidth;
-      this.fixNav(y);
-      this.fixMobileNav(y, width);
-      this.fixSuperMobileNav(y, width);
-      if (shouldMoveLogo) {
-        this.moveLogo(y, width);
-      }
-      if (y > 200 && width >= this.desktopMin) {
-        this.headerContainers.header.addClass('tight');
-        this.headerContainers.header__main.addClass('tight');
-        this.headerContainers.body.addClass('tight-nav');
-      } else {
-        this.headerContainers.header.removeClass('tight');
-        this.headerContainers.header__main.removeClass('tight');
-        this.headerContainers.body.removeClass('tight-nav');
-      }
+      // let y = window.pageYOffset;
+      // let width = window.innerWidth;
+      // this.fixNav(y);
+      // this.fixMobileNav(y, width);
+      // this.fixSuperMobileNav(y, width);
+      // if (shouldMoveLogo) {
+      //   this.moveLogo(y, width);
+      // }
+      // if (y > 200 && width >= this.desktopMin) {
+      //   this.headerContainers.header.addClass('tight');
+      //   this.headerContainers.header__main.addClass('tight');
+      //   this.headerContainers.body.addClass('tight-nav');
+      // } else {
+      //   this.headerContainers.header.removeClass('tight');
+      //   this.headerContainers.header__main.removeClass('tight');
+      //   this.headerContainers.body.removeClass('tight-nav');
+      // }
     });
 
     if (shouldMoveLogo) {
