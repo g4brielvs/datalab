@@ -1,0 +1,18 @@
+$cuRed: #881E3D;
+$darkGrey: #666666;
+$mdGrey: #555555;
+
+.header__blurb {
+  color: $mdGrey;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.header_subblurb {
+  color: $darkGrey;
+}
+
+.header--red {
+  color: $cuRed;
+}

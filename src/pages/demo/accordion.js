@@ -1,6 +1,6 @@
 import React from "react"
 import Home from "../../layouts/home/home"
-import Accordion from '../../components/accordion/accordion'
+import Accordion from '../../components/page-parts/accordion/accordion'
 
 const AccordionPage = () => (
     <Home>

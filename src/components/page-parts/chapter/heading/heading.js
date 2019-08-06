@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import "./header.scss"
+import "./heading.scss"
+import "flexboxgrid"
 
-class Header extends Component {
+class Heading extends Component {
 
   render() {
     return (
       <div className="container">
-        <div className="row center-lg">
+        <div className="row center-xs">
           <div className="col-lg-10">
             <section className="header--hero">
               <div id="header__banner">
                 <p className="header__subtext">
-                  Federal Investment in Higher Education
+                  {this.props.subtext}
                 </p>
                 <h3 className="header__subblurb">
-                  Explore the Federal Investment
-                  in your <span>Alma Mater</span>
+                  {this.props.subblurb}
                 </h3>
                 <p className="header__blurb">
-                  Did you know the federal government invested over $149 billion in colleges and universities in fiscal
+                  {this.props.blurb}
                 </p>
               </div>
             </section>
@@ -29,4 +29,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default Heading;

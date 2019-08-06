@@ -23,19 +23,25 @@ class Accordion extends Component {
 
     render() {
         return (
-            <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
-                <h1 onClick={this.toggle} className="accordion__heading">
+          <div className="container">
+            <div className="row center-xs">
+              <div className="col-lg-10">
+                <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
+                  <h1 onClick={this.toggle} className="accordion__heading">
                     {this.props.title}
                     <button onClick={this.toggle} className="accordion__toggle">
-                        <FontAwesomeIcon icon={faPlus} className="accordion__plus" />
-                        <FontAwesomeIcon icon={faMinus} className="accordion__minus" />
-                        <span className="sr-only">toggle contents</span>
+                      <FontAwesomeIcon icon={faPlus} className="accordion__plus" />
+                      <FontAwesomeIcon icon={faMinus} className="accordion__minus" />
+                      <span className="sr-only">toggle contents</span>
                     </button>
-                </h1>
-                <div className="accordion__content">
+                  </h1>
+                  <div className="accordion__content">
                     {this.props.children}
-                </div>
-            </section>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
         )
     }
 }

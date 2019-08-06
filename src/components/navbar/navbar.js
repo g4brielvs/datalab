@@ -403,7 +403,7 @@ class Navbar extends Component {
     if (window.location.pathname.indexOf('americas-finance-guide') != -1) {
       $('[data-target="ffg"]').addClass('active');
     } else if (analyses.indexOf(window.location.pathname) != -1) {
-      $('[data-target="analyses"]').addClass('active');
+      $('[data-target="page-parts"]').addClass('active');
     } else if (resources.indexOf(window.location.pathname) != -1) {
       $('[data-target="resources"]').addClass('active');
     }
