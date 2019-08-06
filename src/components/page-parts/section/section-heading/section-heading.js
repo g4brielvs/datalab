@@ -8,7 +8,7 @@ class SectionHeading extends Component {
     return (
       <div className="container">
         <div className="row center-xs">
-          <div className="col-lg-10">
+          <div className="col-xs-10">
             <div className="heading">
               <div className="heading__number">
                 <span>{this.props.number}</span>

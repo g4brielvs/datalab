@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/chapter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/chapter.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/controls/controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/section/controls/controls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/downloads/downloads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/heading/heading.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/chapter/heading/heading.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colleges-and-universities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colleges-and-universities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-parts/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,14 +75,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1479" />
-          <entry key="scss" value="218" />
+          <entry key="js" value="1518" />
+          <entry key="scss" value="257" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="1479" />
-          <entry key="SCSS" value="218" />
+          <entry key="JavaScript" value="1518" />
+          <entry key="SCSS" value="257" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -115,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page-parts/header/header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="31" selection-end-column="22" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -141,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -162,8 +157,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            <state relative-caret-position="180">
+              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -173,7 +168,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="14" selection-start-line="15" selection-end-line="16" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -188,8 +187,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="50" selection-start-line="32" selection-end-line="33" />
+            <state relative-caret-position="405">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -276,9 +275,7 @@
         <option value="$PROJECT_DIR$/src/components/analyses/header/header.js" />
         <option value="$PROJECT_DIR$/src/styles/index.scss" />
         <option value="$PROJECT_DIR$/src/components/analyses/header/header.scss" />
-        <option value="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js" />
         <option value="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.scss" />
-        <option value="$PROJECT_DIR$/src/components/page-parts/header/header.js" />
         <option value="$PROJECT_DIR$/src/components/page-parts/header/header.scss" />
         <option value="$PROJECT_DIR$/src/components/page-parts/chapter/chapter.js" />
         <option value="$PROJECT_DIR$/src/components/page-parts/chapter/heading/heading.scss" />
@@ -286,6 +283,10 @@
         <option value="$PROJECT_DIR$/src/components/page-parts/chapter/section-heading/section-heading.js" />
         <option value="$PROJECT_DIR$/src/components/page-parts/chapter/section-heading/section-heading.scss" />
         <option value="$PROJECT_DIR$/src/pages/colleges-and-universities.js" />
+        <option value="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js" />
+        <option value="$PROJECT_DIR$/src/components/page-parts/header/header.js" />
+        <option value="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js" />
+        <option value="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss" />
         <option value="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js" />
       </list>
     </option>
@@ -379,6 +380,15 @@
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
               <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page-parts" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
+              <item name="section-heading" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -445,12 +455,12 @@
       <option name="presentableId" value="Default" />
       <updated>1557770434881</updated>
       <workItem from="1557770437776" duration="1309000" />
-      <workItem from="1564105309000" duration="23594000" />
+      <workItem from="1564105309000" duration="24000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24903000" />
+    <option name="totallyTimeSpent" value="25309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1680" y="0" width="1680" height="1050" extended-state="6" />
@@ -735,9 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/controls/controls.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page-parts/header/header.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -745,30 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/page-parts/header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,8 +779,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="50" selection-start-line="32" selection-end-line="33" />
+        <state relative-caret-position="405">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-parts/header/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/controls/controls.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -801,12 +811,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="14" selection-start-line="15" selection-end-line="16" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state relative-caret-position="180">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>

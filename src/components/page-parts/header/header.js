@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <div className="container">
         <div className="row center-xs">
-          <div className="col-lg-10">
+          <div className="col-xs-10">
             <section className="header--hero">
               <div id="header__banner">
                 <p className="header__subtext">

@@ -9,17 +9,15 @@ class Downloads extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row center-xs">
-          <div className="col-lg-10">
-            <div className="chart-footer">
-              <div>
-                <span className='faded'>Updated as of {this.props.date} / </span>
-                <a className="download__data"
-                   href={this.props.href}>
-                  <FontAwesomeIcon icon={faDownload} />
-                  &nbsp;Download
-                </a>
-              </div>
+        <div className="row">
+          <div className="col-xs-offset-1 col-xs-10 end-xs">
+            <div className="download">
+              <span className='download--faded'>Updated as of {this.props.date} / </span>
+              <a className="download__data"
+                 href={this.props.href}>
+                <FontAwesomeIcon icon={faDownload} />
+                &nbsp;Download
+              </a>
             </div>
           </div>
         </div>
