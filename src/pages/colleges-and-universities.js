@@ -10,6 +10,7 @@ import Header from "../components/page-parts/header/header"
 import Accordion from "../components/page-parts/accordion/accordion"
 import SectionHeading from "../components/page-parts/section/section-heading/section-heading"
 import Downloads from "../components/page-parts/section/downloads/downloads"
+import HWCTALink from "../components/page-parts/hwcta-link/hwcta-link"
 
 const CollegesAndUniversitiesPage = () => (
   <AnalysesLayout>
@@ -21,7 +22,7 @@ const CollegesAndUniversitiesPage = () => (
         'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']}
       />
 
-
+    {/* Section #1 */}
     <SectionHeading
       number={'01'}
       title={'Investment Overview'}
@@ -39,11 +40,16 @@ const CollegesAndUniversitiesPage = () => (
       <p>I have several paragraphs...</p>
       <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
     </Accordion>
-    {/* is this the only way to add a comment? */}
-    {/* add a section and then a viz, start with the investment overview i guess */}
+
     <Downloads
       href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
-      date={'March 2019'}/>
+      date={'March 2019'}
+    />
+
+    <HWCTALink
+      href={"somepage"}
+    />
+
   </AnalysesLayout>
 )
 
