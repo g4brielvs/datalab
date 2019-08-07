@@ -10,6 +10,7 @@ import HWCTALink from "../components/hwcta-link/hwcta-link"
 import Overview from "../sections/colleges-and-universites/overview"
 import Agencies from "../sections/colleges-and-universites/agencies"
 import MoreAnalyses from "../components/more-analyses/more-analyses"
+import Footnotes from "../components/footnotes/footnotes"
 
 const CollegesAndUniversitiesPage = () => (
   <AnalysesLayout>
@@ -24,6 +25,8 @@ const CollegesAndUniversitiesPage = () => (
     <Overview/>
 
     <Agencies/>
+
+    <Footnotes/>
 
     <HWCTALink
       href={"somepage"}

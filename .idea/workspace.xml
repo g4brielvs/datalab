@@ -3,30 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/footnotes/footnotes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/hwcta-link/hwcta-link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/hwcta-link/hwcta-link.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/more-analyses/hwcta-link.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/controls/controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/controls/controls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/downloads/downloads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/downloads/downloads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/downloads/downloads.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/heading/heading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/section/section-heading/section-heading.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section/heading/heading.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/toc/toc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toc/toc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-parts/toc/toc.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toc/toc.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/zdemo/barChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/.demo/barChart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/zdemo/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/.demo/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/zdemo/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/.demo/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/colleges-and-universities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colleges-and-universities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/d3test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/d3test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/sankey.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/sankey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -78,7 +56,7 @@
           <entry key="css" value="1" />
           <entry key="csv" value="2" />
           <entry key="html" value="1" />
-          <entry key="js" value="82" />
+          <entry key="js" value="83" />
           <entry key="json" value="1" />
           <entry key="more-analyses" value="1" />
           <entry key="png" value="1" />
@@ -92,19 +70,19 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="83" />
+          <entry key="JavaScript" value="84" />
           <entry key="SCSS" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1841" />
+          <entry key="js" value="1879" />
           <entry key="scss" value="257" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="1841" />
+          <entry key="JavaScript" value="1879" />
           <entry key="SCSS" value="257" />
         </counts>
       </usages-collector>
@@ -120,12 +98,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/colleges-and-universities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+            <state relative-caret-position="435">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#169#217#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="24" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -188,19 +175,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sections/colleges-and-universites/categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <element signature="e#77#148#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -215,8 +189,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+            <state>
+              <caret selection-end-line="21" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -320,6 +294,7 @@
         <option value="$PROJECT_DIR$/src/pages/cu/overview.js" />
         <option value="$PROJECT_DIR$/src/sections/colleges-and-universites/overview.js" />
         <option value="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" />
+        <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.js" />
         <option value="$PROJECT_DIR$/src/pages/colleges-and-universities.js" />
       </list>
     </option>
@@ -375,7 +350,7 @@
               <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="hwcta-link" type="462c0819:PsiDirectoryNode" />
+              <item name="footnotes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
@@ -388,22 +363,7 @@
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
               <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-              <item name="heading" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
@@ -468,12 +428,12 @@
       <option name="presentableId" value="Default" />
       <updated>1557770434881</updated>
       <workItem from="1557770437776" duration="1309000" />
-      <workItem from="1564105309000" duration="30623000" />
+      <workItem from="1564105309000" duration="31351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31932000" />
+    <option name="totallyTimeSpent" value="32660000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="977" extended-state="6" />
@@ -674,9 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/.demo/accordion.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -856,15 +813,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        <state>
+          <caret selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/colleges-and-universities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        <state relative-caret-position="435">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#169#217#0" expanded="true" />
