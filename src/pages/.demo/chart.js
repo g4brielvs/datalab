@@ -1,17 +1,16 @@
 import React from "react"
 import Home from "../../layouts/home/home"
 import SEO from "../../components/seo"
+import Chart from "../../components/.demo/barChart"
 
-import Test from "../../components/zdemo/test"
 
-
-const TestPage = () => (
+const ChartPage = () => (
   <Home>
-    <SEO title="D3 Test Page" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Bar Chart Test" keywords={[`gatsby`, `application`, `react`]} />
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Test />
+      <Chart />
     </div>
   </Home>
 )
 
-export default TestPage
+export default ChartPage

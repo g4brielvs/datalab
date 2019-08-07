@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import "./section-heading.scss"
+import "./heading.scss"
 import "flexboxgrid"
 
-class SectionHeading extends Component {
+class Heading extends Component {
 
   render() {
     return (
@@ -30,4 +30,4 @@ class SectionHeading extends Component {
   }
 }
 
-export default SectionHeading;
+export default Heading;
