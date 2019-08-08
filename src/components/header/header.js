@@ -18,7 +18,7 @@ class Header extends Component {
                   {this.props.subblurb}
                 </h3>
                 <p className="header__blurb">
-                  {this.props.blurb}
+                  {this.props.blurb.map(item => item)}
                 </p>
               </div>
             </section>

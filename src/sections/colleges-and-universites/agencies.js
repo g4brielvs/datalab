@@ -3,12 +3,12 @@ import "../../styles/index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
-import Heading from "../../components/section/heading/heading"
+import StoryHeading from "../../components/section/story-heading/story-heading"
 import Downloads from "../../components/section/downloads/downloads"
 
 const Agencies = () => (
   <>
-    <Heading
+    <StoryHeading
       number={'02'}
       title={'xxxx'}
       teaser={['xxxxx'] }
