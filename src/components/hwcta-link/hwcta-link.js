@@ -12,8 +12,8 @@ class HWCTALink extends Component {
         <div className="row center-xs">
           <div className="col-xs-10">
             <div className="hwcta-entry">
-              <a className="hwcta-entry__link" href="#">
-                <span className="hwcta-entry__image"><img src="#"/></span>
+              <a className="hwcta-entry__link" href={this.props.url}>
+                <span className="hwcta-entry__image"><img src=""/></span>
                 <span className="hwcta-entry__link-text">Data Sources and Methodologies</span>
                 <FontAwesomeIcon icon={faChevronRight} />
               </a>
