@@ -1,8 +1,9 @@
 import React from 'react';
+import './footnotes.scss';
 
 const Footnotes = (props) => {
   return (
-    <div id="footer" className="container">
+    <div id="footnotes" className="container">
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
         Footnotes
@@ -13,7 +14,7 @@ const Footnotes = (props) => {
         <div className="col-xs-10 col-xs-offset-1">
           {props.footnotes.map(function (footnote, index) {
             return<>
-              <p><sup>{index + 1}</sup><span>{footnote}</span></p>
+              <p><sup className="footnote__number">{index + 1}</sup><span className="footnote__text">{footnote}</span></p>
             </>
           })}
         </div>
