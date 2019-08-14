@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "./header.scss"
-import "flexboxgrid"
+
 
 const Header = (props) => (
   <div className="container">
@@ -11,9 +11,9 @@ const Header = (props) => (
             <p className="header__subtext">
               {props.subtext}
             </p>
-            <h3 className="header__subblurb">
+            <p className="header__subblurb">
               {props.subblurb}
-            </h3>
+            </p>
             <p className="header__blurb">
               {props.blurb.map(item => item)}
             </p>
