@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/header.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -83,14 +80,14 @@
         <counts>
           <entry key="js" value="5962" />
           <entry key="json" value="3" />
-          <entry key="scss" value="1013" />
+          <entry key="scss" value="1018" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
           <entry key="JavaScript" value="5962" />
-          <entry key="SCSS" value="1013" />
+          <entry key="SCSS" value="1018" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -182,7 +179,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -203,11 +200,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/header/header.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" selection-start-line="35" selection-end-line="37" selection-end-column="1" />
+            <state relative-caret-position="540">
+              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -313,7 +310,6 @@
         <option value="$PROJECT_DIR$/src/components/section/downloads/downloads.js" />
         <option value="$PROJECT_DIR$/src/layouts/analyses/analyses.scss" />
         <option value="$PROJECT_DIR$/src/components/header/header.js" />
-        <option value="$PROJECT_DIR$/src/components/header/header.scss" />
         <option value="$PROJECT_DIR$/src/components/toc/toc.js" />
         <option value="$PROJECT_DIR$/src/components/toc/toc.scss" />
         <option value="$PROJECT_DIR$/src/components/section/downloads/downloads.scss" />
@@ -327,6 +323,7 @@
         <option value="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" />
         <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" />
         <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.js" />
+        <option value="$PROJECT_DIR$/src/components/header/header.scss" />
       </list>
     </option>
   </component>
@@ -510,12 +507,12 @@
       <workItem from="1564105309000" duration="48907000" />
       <workItem from="1565308696354" duration="4463000" />
       <workItem from="1565378974638" duration="533000" />
-      <workItem from="1565467997788" duration="23564000" />
+      <workItem from="1565467997788" duration="23949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78776000" />
+    <option name="totallyTimeSpent" value="79161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="423" y="23" width="1177" height="967" extended-state="0" />
@@ -818,22 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/header.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" selection-start-line="35" selection-end-line="37" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/colleges-and-universities/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -894,6 +875,22 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/header/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/header/header.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
         </state>
       </provider>
     </entry>
