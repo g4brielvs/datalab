@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "./downloads.scss"
-import "flexboxgrid"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 
