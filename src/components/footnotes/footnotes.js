@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import "flexboxgrid"
 
-const Footnotes = () => (
-  <div className="container">
-    <div className="row center-xs">
-      <div className="col-xs-10">
-        <div className="footnotes">
-          More analyses here
-        </div>
-      </div>
-    </div>
+const Footnotes = (props) => {
+  return (
+  <div id="footer">
+    Footnotes
+    <hr />
+      {props.footnotes.map(function (footnote, index) {
+        return<>
+          <p><sup>{index + 1}</sup><span>{footnote}</span></p>
+        </>
+      })}
   </div>
-)
+  )
+}
 
 
 export default Footnotes
+
+
