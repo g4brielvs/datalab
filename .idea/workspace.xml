@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -61,11 +61,11 @@
           <entry key="css" value="1" />
           <entry key="csv" value="5" />
           <entry key="html" value="1" />
-          <entry key="js" value="166" />
+          <entry key="js" value="167" />
           <entry key="json" value="6" />
           <entry key="more-analyses" value="1" />
           <entry key="png" value="1" />
-          <entry key="scss" value="42" />
+          <entry key="scss" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -75,22 +75,22 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="167" />
-          <entry key="SCSS" value="42" />
+          <entry key="JavaScript" value="168" />
+          <entry key="SCSS" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="5737" />
+          <entry key="js" value="5962" />
           <entry key="json" value="3" />
-          <entry key="scss" value="839" />
+          <entry key="scss" value="1013" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="5737" />
-          <entry key="SCSS" value="839" />
+          <entry key="JavaScript" value="5962" />
+          <entry key="SCSS" value="1013" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -140,11 +140,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="101" selection-start-line="13" selection-start-column="101" selection-end-line="13" selection-end-column="101" />
+            <state relative-caret-position="120">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="41" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -153,31 +153,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss">
+        <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sections/colleges-and-universites/categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="11" selection-start-line="11" selection-end-line="14" />
+            <state relative-caret-position="339">
+              <caret line="34" selection-start-line="34" selection-end-line="36" selection-end-column="15" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
+        <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+              <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -188,8 +197,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="180">
+              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -199,15 +208,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
               <caret line="35" selection-start-line="35" selection-end-line="37" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sections/colleges-and-universites/overview.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -276,7 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/styles/index.scss" />
         <option value="$PROJECT_DIR$/src/components/analyses/header/header.scss" />
         <option value="$PROJECT_DIR$/src/components/page-parts/accordion/accordion.scss" />
         <option value="$PROJECT_DIR$/src/components/page-parts/header/header.scss" />
@@ -312,7 +311,6 @@
         <option value="$PROJECT_DIR$/gatsby-browser.js" />
         <option value="$PROJECT_DIR$/src/components/section/story-heading/story-heading.js" />
         <option value="$PROJECT_DIR$/src/components/section/downloads/downloads.js" />
-        <option value="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" />
         <option value="$PROJECT_DIR$/src/layouts/analyses/analyses.scss" />
         <option value="$PROJECT_DIR$/src/components/header/header.js" />
         <option value="$PROJECT_DIR$/src/components/header/header.scss" />
@@ -323,10 +321,12 @@
         <option value="$PROJECT_DIR$/src/sections/colleges-and-universites/overview.js" />
         <option value="$PROJECT_DIR$/src/sections/colleges-and-universites/institutions.js" />
         <option value="$PROJECT_DIR$/src/sections/colleges-and-universites/agencies.js" />
-        <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.js" />
-        <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" />
-        <option value="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" />
         <option value="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js" />
+        <option value="$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss" />
+        <option value="$PROJECT_DIR$/src/components/more-analyses/more-analyses.scss" />
+        <option value="$PROJECT_DIR$/src/components/more-analyses/more-analyses.js" />
+        <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.scss" />
+        <option value="$PROJECT_DIR$/src/components/footnotes/footnotes.js" />
       </list>
     </option>
   </component>
@@ -347,7 +347,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="201" />
+    <option name="x" value="423" />
     <option name="y" value="23" />
     <option name="width" value="1177" />
     <option name="height" value="967" />
@@ -510,15 +510,15 @@
       <workItem from="1564105309000" duration="48907000" />
       <workItem from="1565308696354" duration="4463000" />
       <workItem from="1565378974638" duration="533000" />
-      <workItem from="1565467997788" duration="21639000" />
+      <workItem from="1565467997788" duration="23564000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76851000" />
+    <option name="totallyTimeSpent" value="78776000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="201" y="23" width="1177" height="967" extended-state="0" />
+    <frame x="423" y="23" width="1177" height="967" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3382353" />
@@ -560,7 +560,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/page-parts/section/chapter.js" />
     <entry file="file://$PROJECT_DIR$/src/components/more-analyses/hwcta-link.js" />
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -784,13 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-line="27" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sections/colleges-and-universites/institutions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -842,23 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/colleges-and-universities/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -871,17 +846,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss">
+    <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        <state relative-caret-position="120">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.js">
+    <entry file="file://$PROJECT_DIR$/src/components/hwcta-link/hwcta-link.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="101" selection-start-line="13" selection-start-column="101" selection-end-line="13" selection-end-column="101" />
+        <state relative-caret-position="75">
+          <caret line="5" column="2" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/more-analyses/more-analyses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="34" selection-start-line="34" selection-end-line="36" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/footnotes/footnotes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

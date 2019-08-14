@@ -4,9 +4,9 @@ import './footnotes.scss';
 const Footnotes = (props) => {
   return (
     <div id="footnotes" className="container">
-      <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-        Footnotes
+      <div className="row">
+        <div className="col-xs-10 col-xs-offset-1">
+          <div className="footnotes__header">Footnotes</div>
           <hr />
         </div>
       </div>

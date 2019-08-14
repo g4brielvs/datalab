@@ -1,4 +1,5 @@
 import React from 'react';
+import './more-analyses.scss';
 import federal from "../../images/more-analyses/federal.jpg"
 import workers from "../../images/more-analyses/workers.jpg"
 import budget from "../../images/more-analyses/budget.jpg"
@@ -29,30 +30,36 @@ const MoreAnalyses = () => {
   ]
   return (
     <div className="more-analyses container">
-      <div className="row">
-        <h1 className="more-analyses-heading">
-          More Analyses
-        </h1>
+      <div className="row center-xs">
+        <div className="col-xs-10">
+          <h1 className="more-analyses__heading">
+            More Analyses
+          </h1>
+        </div>
       </div>
       <div className="more-analyses__tiles">
-        <div className="row">
-          {analyses.map((item) =>
-            <div className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">
-              <a href="federal-account-explorer.html">
-                <div className="more-analyses__tile-text">
-                  <h2>
-                    {item.title}
-                  </h2>
-                  <p className="more-analyses__tile-title">
-                    {item.subtitle}
-                  </p>
+        <div className="row center-xs">
+          <div className="col-xs-10">
+            <div class="row">
+              {analyses.map((item) =>
+                <div className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">
+                  <a href="federal-account-explorer.html">
+                    <div className="more-analyses__tile-text">
+                      <h2>
+                        {item.title}
+                      </h2>
+                      <p className="more-analyses__tile-title">
+                        {item.subtitle}
+                      </p>
+                    </div>
+                    <div className="more-analyses__image-container">
+                      <img src={item.imageSrc} className="more-analyses__image"/>
+                    </div>
+                  </a>
                 </div>
-                <div className="more-analyses__image-container">
-                  <img src={item.imageSrc} className="more-analyses__image"/>
-                </div>
-              </a>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>
