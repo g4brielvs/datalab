@@ -3,7 +3,7 @@ import "./header.scss"
 
 
 const Header = (props) => (
-  <div className="container">
+  <div className="header container">
     <div className="row center-xs">
       <div className="col-xs-10">
         <section className="header--hero">

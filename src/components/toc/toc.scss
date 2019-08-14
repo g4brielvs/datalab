@@ -3,7 +3,7 @@ $darkGrey: #666666;
 $mdGrey: #555555;
 $greyBlack: #979797;
 
-body {
+body, h1, h2, h3, h4, p, li {
   font-family: 'Source Sans Pro';
 }
 
@@ -51,4 +51,8 @@ body {
   font-weight: 300;
   font-weight: 300;
   line-height: 16px;
+}
+
+.TOC.container {
+  margin-bottom: 5rem;
 }
