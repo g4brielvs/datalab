@@ -93,7 +93,7 @@ Requirements
 **gatsby
 **eslint
 
-ES lint init
+ESlint init
 Run: ./node_modules/.bin/eslint --init
 
 Answer as follows:
