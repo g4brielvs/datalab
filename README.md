@@ -88,10 +88,10 @@ Here are some resources:
 
 DEV SETUP
 Requirements
-**node
-**npm
-**gatsby
-**eslint
+- node
+- npm
+- gatsby
+- eslint
 
 ESlint init
 Run: ./node_modules/.bin/eslint --init
