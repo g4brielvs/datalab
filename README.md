@@ -94,7 +94,7 @@ Requirements
 - eslint
 
 ESlint init
-Run: ./node_modules/.bin/eslint --init
+Run: `./node_modules/.bin/eslint --init`
 
 Answer as follows:
 ? How would you like to use ESLint? To check syntax, find problems, and enforce code style
@@ -108,5 +108,6 @@ Checking peerDependencies of eslint-config-airbnb@latest
 Local ESLint installation not found.
 The config that you've selected requires the following dependencies:
 
-eslint-plugin-react@^7.14.3 eslint-config-airbnb@latest eslint@^5.16.0 || ^6.1.0 eslint-plugin-import@^2.18.2 eslint-plugin-jsx-a11y@^6.2.3 eslint-plugin-react-hooks@^1.7.0
+eslint-plugin-react@^7.14.3 eslint-config-airbnb@latest eslint@^5.16.0 || ^6.1.0
+eslint-plugin-import@^2.18.2 eslint-plugin-jsx-a11y@^6.2.3 eslint-plugin-react-hooks@^1.7.0
 ? Would you like to install them now with npm? Yes
