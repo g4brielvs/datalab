@@ -25,7 +25,7 @@ const Logo = props => {
           points="0 38.6928571 281.606439 38.6928571 281.606439 0 0 0"
         ></polygon>
       </defs>
-      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(0.000000, 11.000000)">
           <mask id="logo-mask-2" fill="white">
             <use xlinkHref="#logo-path-2"></use>

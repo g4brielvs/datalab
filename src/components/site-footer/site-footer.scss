@@ -1,0 +1,54 @@
+$col-padding: 15px;
+
+.site-footer {
+  display: flex;
+  justify-content: space-around;
+
+  .flex-item {
+    padding: 0 $col-padding;
+  }
+
+  .flex-item + .flex-item {
+    border-left: 1px solid #ccc;
+  }
+
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.24;
+    margin-bottom: 1em;
+    letter-spacing: normal;
+  }
+
+  .social-logos {
+    white-space: nowrap;
+    text-align: right;
+
+    a {
+      padding-right: 0.25rem;
+    }
+
+    .float-bottom {
+      height: 100%;
+
+display: flex;
+
+align-items: flex-end;    }
+  }
+
+  p {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.33;
+    letter-spacing: .2px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .title,a {
+    color: #2272CE;
+  }
+}
