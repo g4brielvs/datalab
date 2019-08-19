@@ -21,7 +21,7 @@ import Logo from '../../components/logo/logo';
 const SiteFooter = (props) => (
   // <img src={logo} alt='Logo' />
   // <object type="image/svg+xml" data={logo} className="logo-footer">Datalab logo</object>
-  <Logo fillColor="red"/>
+  <Logo fillColor="#666"/>
 
 //   <div class="dl-footer__section dl-footer__divider">
 
