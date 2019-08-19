@@ -1,30 +1,37 @@
 import React from 'react';
 import './featured.scss';
+import { Link } from "gatsby"
 
 const Featured = (props) => {
   return (
     <>
-      <div className="featured">
-        <h1 className="featured__heading--mobile">
-          {props.heading}
-        </h1>
+      <Link to="colleges-and-universities"
+            className="primary__link"
+            ga-on="click" ga-event-category="Data Lab Home Page"
+            ga-event-action="Clicked ${props.heading}">
 
-        <img className="featured__image" src={props.imgSrc} alt={props.imgAlt} />
+          <div className="featured">
+            <h1 className="featured__heading--mobile">
+              {props.heading}
+            </h1>
 
-        <div className="featured__content">
-          <h2 className="featured__heading">
-            {props.heading}
-          </h2>
+            <img className="featured__image" src={props.imgSrc} alt={props.imgAlt} />
 
-          <p className="featured__text">
-            {props.body}
-          </p>
+            <div className="featured__content">
+              <h2 className="featured__heading">
+                {props.heading}
+              </h2>
 
-          <p className="featured__text featured__text--mobile">
-            {props.mobileBody}
-          </p>
-        </div>
-      </div>
+              <p className="featured__text">
+                {props.body}
+              </p>
+
+              <p className="featured__text featured__text--mobile">
+                {props.mobileBody}
+              </p>
+            </div>
+          </div>
+      </Link>
     </>
   )
 }

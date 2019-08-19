@@ -10,7 +10,11 @@ import "../components/layouts/home/landing.scss"
 import "../components/layouts/home/landing-dts.scss"
 import "../components/layouts/home/landing-row.scss"
 import main from "../images/home/collegehomepage.svg"
+import contractExplorer from "../images/home/contract-explorer.svg"
+import cg from "../images/home/cg-gif.gif"
+import contractSpending from "../images/home/c-o-t.png"
 import Highlight from "../components/highlight-landing/highlight"
+import "./index.scss"
 
 
 const IndexPage = () => (
@@ -20,11 +24,6 @@ const IndexPage = () => (
       <div className="container">
         <div className="row center-xs">
           <div class="col-xs-6">
-            <Link to="colleges-and-universities"
-               className="primary__link"
-               ga-on="click" ga-event-category="Data Lab Home Page"
-               ga-event-action="Clicked 'Federal Investment in Higher Education'">
-
               <Featured
                 imgSrc={main}
                 imgAlt={'Answer all your questions about federal government finance'}
@@ -39,112 +38,67 @@ const IndexPage = () => (
                   and universities. Dive in and search by individual schools, federal agencies, or investment
                   categories!`
                 } />
-            </Link>
         </div>
 
-          <div className="col-xs-4">
-
+        <div className="col-xs-4">
             <section className="secondary">
               <section className="landing-chart">
-            <a href="dts.html"
-               className="landing-chart__link"
-               ga-on="click" ga-event-category="Data Lab Home Page"
-               ga-event-action="Clicked 'Visualizing the Daily Treasury Statement'"
-            >
-              <h1>
-                Visualizing the Daily Treasury Statement
-              </h1>
-              <h2>
-                How much does the federal government spend each day?
-              </h2>
-              {/*{% include landing-dts.html %}*/}
-            </a>
-          </section>
+                <a href="dts.html"
+                   className="landing-chart__link"
+                   ga-on="click" ga-event-category="Data Lab Home Page"
+                   ga-event-action="Clicked 'Visualizing the Daily Treasury Statement'">
+                  <h1>
+                    Visualizing the Daily Treasury Statement
+                  </h1>
+                  <h2>
+                    How much does the federal government spend each day?
+                  </h2>
+                  {/*{% include landing-dts.html %}*/}
+                </a>
+              </section>
 
-          <Highlight
-            heading={'Contract Spending Analysis'}
-            subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
-            href={'contract-explorer.html'}
-            imgSrc={'../images/home/contract-explorer.svg'}
-            imgAlt={' '}
-            body={`We explore 10 years of contract data, and provide an analysis of the
-            impact of short-term continuing resolutions on contract spending.`}
-          />
+              <Highlight
+                heading={'Contract Spending Analysis'}
+                subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
+                href={'contract-explorer.html'}
+                imgSrc={contractSpending}
+                imgAlt={' '}
+                body={`We explore 10 years of contract data, and provide an analysis of the
+                impact of short-term continuing resolutions on contract spending.`}
+              />
 
-          <Highlight
-            heading={'Contract Explorer'}
-            subheading={'Who receives federal contracts?'}
-            href={'contract-explorer.html'}
-            imgSrc={'../images/home/contract-explorer.svg'}
-            imgAlt={' '}
-            body={`The federal government spends about $500 billion each year on contracts. Learn more
-                about contract recipients and what agencies receive from these contracts.`}
-          />
-          {/*<section className="landing-feature">*/}
-            {/*<a href="contract-explorer.html"*/}
-               {/*className="landing-feature__link"*/}
-               {/*ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Contract Explorer'"*/}
-            {/*>*/}
-              {/*<div className="landing-feature__headings">*/}
-                {/*<h1>*/}
-                  {/*Contract Explorer*/}
-                {/*</h1>*/}
-                {/*<h2>*/}
-                  {/*Who receives federal contracts?*/}
-                {/*</h2>*/}
-              {/*</div>*/}
-              {/*<div className="landing-feature__image">*/}
-                {/*<img className="" src="../images/home/contract-explorer.svg"/>*/}
-              {/*</div>*/}
-              {/*<p className="landing-feature__text">*/}
-                {/*The federal government spends about $500 billion each year on contracts. Learn more*/}
-                {/*about contract recipients and what agencies receive from these contracts.*/}
-              {/*</p>*/}
-            {/*</a>*/}
-          {/*</section>*/}
-        </section>
-          </div>
-          </div>
+              <Highlight
+                heading={'Contract Explorer'}
+                subheading={['Who receives federal',<br/>,' contracts?']}
+                href={'contract-explorer.html'}
+                imgSrc={contractExplorer}
+                imgAlt={' '}
+                body={`The federal government spends about $500 billion each year on contracts. Learn more
+                    about contract recipients and what agencies receive from these contracts.`}
+              />
+            </section>
         </div>
+      </div>
+
       <section className="landing-row landing-row--analyses">
         <h1 className="landing-row__heading">
           More Analyses
         </h1>
         <div className="landing-row__featured">
-          <a href="/americas-finance-guide/"
-             className="landing-row__featured__link"
-             ga-on="click" ga-event-category="Data Lab Home Page"
-             ga-event-action="Clicked 'Your Guide to Americas Finances'"
-          >
-            <h2 className="landing-row__featured__mobile-heading">
-              Your Guide to America's Finances
-            </h2>
-            <img className="landing-row__featured__image" src="../images/home/cg-gif.gif"
-                 alt="Answer all your questions about federal government finance"/>
-            <div className="landing-row__featured__content">
-
-              <h2 className="landing-row__featured__heading">
-                Your Guide to America's Finances
-              </h2>
-
-              <p className="landing-row__featured__text landing-row__featured__text--desktop">
-                Your Guide to America's Finances is an overview of federal government finances in 2018, providing
+            <Featured
+              imgSrc={cg}
+              imgAlt={'Answer all your questions about federal government finance'}
+              heading={"Your Guide to America's Finances"}
+              body={`Your Guide to America's Finances is an overview of federal government finances in 2018, providing
                 information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data
                 Lab,
                 presents a series of interactive visualizations to allow you to explore these categories and how they
                 have
                 changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
-                dollars collected and spent by the federal government each year.
-              </p>
-
-              <div className="landing-row__featured__text_container">
-                <p className="landing-row__featured__text">
-                  The Guide presents straightforward information about the federal government's spending and revenue, as
-                  well as the deficit and debt in 2018.
-                </p>
-              </div>
-            </div>
-          </a>
+                dollars collected and spent by the federal government each year.`}
+              mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
+                  well as the deficit and debt in 2018.`
+              } />
         </div>
         <div className="landing-row__tiles">
           <div className="landing_row__tile-row">
@@ -311,14 +265,9 @@ const IndexPage = () => (
 
       </section>
 
-
+      </div>
     </article>
     <div className="clearfix"></div>
-
-      {/*<Link to="/sankey/">Budget Sankey</Link>&nbsp;|&nbsp;*/}
-    {/*<Link to="/d3test/">D3 Example</Link>&nbsp;|&nbsp;*/}
-    {/*<Link to="/chart/">Bar Chart Example</Link>*/}
-
 
   </Home>
 )

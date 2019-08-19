@@ -2,59 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/layouts/home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/.demo/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/.demo/image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/controls/controls.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section-elements/controls/controls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/downloads/downloads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section-elements/downloads/downloads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/downloads/downloads.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section-elements/downloads/downloads.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/story-heading/story-heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section-elements/story-heading/story-heading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/section/story-heading/story-heading.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/section-elements/story-heading/story-heading.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/visualizations/bubble-chart/bubble-chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/visualizations/bubble-chart/bubble-chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/404background.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/404background.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/Landscape.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/Landscape.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/budget.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/budget.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/c-o-t.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/c-o-t.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/cg-gif.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/cg-gif.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/cg-giffy.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/cg-giffy.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/cg-revenue.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/cg-revenue.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/collegehomepage.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/collegehomepage.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/competition.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/competition.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contract-explorer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contract-explorer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contract-explorer.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contract-explorer.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contractexp.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contractexp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contracts-over-time-new.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contracts-over-time-new.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contracts-over-time.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contracts-over-time.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/contracts.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/contracts.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/dts-temp.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/dts-temp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/federal.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/federal.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/homelessness.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/homelessness.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/intro.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/intro.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/resources-api-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/resources-api-2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/resources-playbook-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/resources-playbook-2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/resources-user-guide-2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/resources-user-guide-2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/us_flag_small.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/us_flag_small.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/index/workers.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/home/workers.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/analyses/analyses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/story/story.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/analyses/analyses.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/story/story.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/home/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/home/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/.demo/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/.demo/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/.demo/d3test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/d3test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/.demo/sankey.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/.demo/sankey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/404.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colleges-and-universities/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colleges-and-universities/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/featured-landing/featured.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/featured-landing/featured.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/featured-landing/featured.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/featured-landing/featured.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/highlight-landing/highlight.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/highlight-landing/highlight.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/colleges-and-universites/agencies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/agencies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/colleges-and-universites/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/colleges-and-universites/institutions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/institutions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/colleges-and-universites/overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/overview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/landing-dts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/landing-dts.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/landing-row.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/landing-row.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/landing.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/landing.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -112,11 +63,11 @@
           <entry key="csv" value="5" />
           <entry key="gitignore" value="1" />
           <entry key="html" value="1" />
-          <entry key="js" value="194" />
+          <entry key="js" value="195" />
           <entry key="json" value="6" />
           <entry key="more-analyses" value="1" />
           <entry key="png" value="1" />
-          <entry key="scss" value="55" />
+          <entry key="scss" value="57" />
           <entry key="svg" value="1" />
         </counts>
       </usages-collector>
@@ -127,26 +78,26 @@
           <entry key="HTML" value="1" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="195" />
+          <entry key="JavaScript" value="196" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SCSS" value="55" />
+          <entry key="SCSS" value="57" />
           <entry key="SVG" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="22" />
-          <entry key="js" value="7249" />
+          <entry key="js" value="7569" />
           <entry key="json" value="3" />
-          <entry key="scss" value="1214" />
+          <entry key="scss" value="1306" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="7249" />
+          <entry key="JavaScript" value="7569" />
           <entry key="PLAIN_TEXT" value="22" />
-          <entry key="SCSS" value="1214" />
+          <entry key="SCSS" value="1306" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -159,44 +110,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/page-sections/colleges-and-universites/agencies.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="509">
+              <caret line="90" column="45" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
               <folding>
-                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/index.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/index.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" selection-start-line="19" selection-end-line="42" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-                <element signature="e#2858#3330#0" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state relative-caret-position="150">
+              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -214,22 +161,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/colleges-and-universities/index.js">
+        <entry file="file://$PROJECT_DIR$/src/components/highlight-landing/highlight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="180">
+              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gatsby-config.js">
+        <entry file="file://$PROJECT_DIR$/src/components/highlight-landing/highlight.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+            <state relative-caret-position="469">
+              <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -254,8 +201,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/layouts/home/landing.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="636">
+              <caret line="189" column="1" selection-start-line="107" selection-end-line="189" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -324,9 +271,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/pages/all-pokemon.js" />
-        <option value="$PROJECT_DIR$/src/layouts/analyses/analyses.js" />
-        <option value="$PROJECT_DIR$/src/data/data.json" />
         <option value="$PROJECT_DIR$/src/pages/page-template.js" />
         <option value="$PROJECT_DIR$/src/pages/template.js" />
         <option value="$PROJECT_DIR$/gatsby-node.js" />
@@ -372,9 +316,12 @@
         <option value="$PROJECT_DIR$/src/styles/index.scss" />
         <option value="$PROJECT_DIR$/src/components/layouts/home/home.scss" />
         <option value="$PROJECT_DIR$/src/components/layouts/home/landing.scss" />
+        <option value="$PROJECT_DIR$/src/pages/index.scss" />
+        <option value="$PROJECT_DIR$/src/components/highlight-landing/highlight.scss" />
         <option value="$PROJECT_DIR$/src/pages/index.js" />
-        <option value="$PROJECT_DIR$/src/components/featured-landing/featured.js" />
         <option value="$PROJECT_DIR$/src/components/featured-landing/featured.scss" />
+        <option value="$PROJECT_DIR$/src/components/highlight-landing/highlight.js" />
+        <option value="$PROJECT_DIR$/src/components/featured-landing/featured.js" />
       </list>
     </option>
   </component>
@@ -429,6 +376,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="featured-landing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="highlight-landing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
@@ -540,12 +494,12 @@
       <workItem from="1565308696354" duration="4463000" />
       <workItem from="1565378974638" duration="533000" />
       <workItem from="1565467997788" duration="23949000" />
-      <workItem from="1566224158806" duration="7195000" />
+      <workItem from="1566224158806" duration="9378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96685000" />
+    <option name="totallyTimeSpent" value="98868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1106" extended-state="6" />
@@ -589,12 +543,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/html.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/r-04-07-conditional-rendering/src/app.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/univ_bubble_chart.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state>
@@ -808,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/highlight-landing/highlight.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/accordion/accordion.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -908,41 +849,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" selection-start-line="19" selection-end-line="42" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#2858#3330#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/layouts/home/home.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/layouts/home/landing.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="636">
+          <caret line="189" column="1" selection-start-line="107" selection-end-line="189" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/index.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        <state relative-caret-position="15">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/highlight-landing/highlight.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="90" column="45" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="150">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/highlight-landing/highlight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/featured-landing/featured.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

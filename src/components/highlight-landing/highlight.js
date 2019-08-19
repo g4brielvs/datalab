@@ -1,13 +1,14 @@
 import React from 'react';
+import './highlight.scss';
 
 const Highlight = (props) => {
   return (
     <>
-      <div id="highlight">
+      <div className="highlight">
           <a href={props.href}
              className="highlight__link"
              ga-on="click" ga-event-category="Data Lab Home Page"
-             ga-event-action="Clicked 'Contract Spending Analysis'">
+             ga-event-action="Clicked ${props.heading}">
             <div className="highlight__headings">
               <h1>
                 {props.heading}
@@ -17,8 +18,9 @@ const Highlight = (props) => {
               </h2>
             </div>
             <div className="highlight__image">
-              <img className="" src={'#'} />
+              <img className="" src={props.imgSrc} />
             </div>
+            <br/>
             <p className="highlight__text">
               {props.body}
             </p>
