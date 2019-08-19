@@ -1,5 +1,5 @@
 import React from "react"
-import "./site-footer.scss"
+import "./page.scss"
 
 import Logo from "../logos/logo"
 import Github from "../logos/github"
@@ -23,8 +23,8 @@ import LinkedIn from "../logos/linkedin"
   }
 </script> */
 
-const SiteFooter = props => (
-  <div className="site-footer">
+const PageFooter = props => (
+  <div className="page-footer">
     <div className="flex-item logo">
       <Logo fillColor="#666" />
     </div>
@@ -59,8 +59,7 @@ const SiteFooter = props => (
             {/* <a onclick="trackLinkClick('GitHub')" target="_blank" rel="noopener noreferrer" aria-labelledby="Github-icon-title" href="https://github.com/fedspendingtransparency/datalab"> */}
             <a><Github /></a>
             {/* <a onclick="trackLinkClick('Data World')" target="_blank" rel="noopener noreferrer" aria-labelledby="DataWorld-icon-title" href="https://data.world/usaspending"> */}
-            <a><Dataworld />
-            </a>
+            <a><Dataworld /></a>
             {/* <a onclick="trackLinkClick('Twitter')" target="_blank" rel="noopener noreferrer" aria-labelledby="Twitter-icon-title" href="https://twitter.com/fiscalservice"> */}
             <a><Twitter /></a>
             {/* <a onclick="trackLinkClick('Facebook')" target="_blank" rel="noopener noreferrer" aria-labelledby="Facebook-icon-title" href="https://www.facebook.com/pg/fiscalservice"> */}
@@ -72,18 +71,6 @@ const SiteFooter = props => (
       </div>
     </div>
   </div>
-
-  // <footer id="footer">
-  //     <div>
-  //       &copy; 2018 USAspending.gov |&nbsp;
-  //       <a href="https://www.usaspending.gov/#/about/accessibility">Accessibility</a> |&nbsp;
-  //       <a href="https://www.usaspending.gov/#/about/privacy">Privacy Policy</a> |&nbsp;
-  //       <a href="https://www.usaspending.gov/#/about/foia">Freedom of Information Act</a>
-  //   </div>
-  //     <div class="footer-important-info">
-  //       <b>NOTE:</b> <a href="https://beta.usaspending.gov/#/db_info">You must click here for very important D&B information.</a>
-  //   </div>
-  // </footer>
 )
 
-export default SiteFooter
+export default PageFooter;

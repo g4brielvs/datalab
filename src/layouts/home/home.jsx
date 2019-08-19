@@ -6,7 +6,8 @@
  */
 
 import React from "react"
-import SiteFooter from "../../components/site-footer/site-footer"
+import PageFooter from "../../components/footers/page"
+import SiteFooter from "../../components/footers/site"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -35,8 +36,9 @@ const Home = ({ children }) => (
         >
           <main>{children}</main>
 
-          <SiteFooter />
         </div>
+        <PageFooter />
+        <SiteFooter />
       </>
     )}
   />
