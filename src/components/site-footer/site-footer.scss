@@ -30,10 +30,9 @@ $col-padding: 15px;
 
     .float-bottom {
       height: 100%;
-
-display: flex;
-
-align-items: flex-end;    }
+      display: flex;
+      align-items: flex-end;
+    }
   }
 
   p {
@@ -41,14 +40,15 @@ align-items: flex-end;    }
     font-style: normal;
     font-weight: 300;
     line-height: 1.33;
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
   }
 
   a {
     text-decoration: none;
   }
 
-  .title,a {
-    color: #2272CE;
+  .title,
+  a {
+    color: #2272ce;
   }
 }
