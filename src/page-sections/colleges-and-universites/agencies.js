@@ -3,8 +3,8 @@ import "../../styles/index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section/story-heading/story-heading"
-import Downloads from "../../components/section/downloads/downloads"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Downloads from "../../components/section-elements/downloads/downloads"
 import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
 import defaultImage from "../../images/default-image.jpg"
 

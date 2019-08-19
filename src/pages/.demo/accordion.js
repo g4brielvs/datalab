@@ -1,5 +1,5 @@
 import React from "react"
-import Home from "../../layouts/home/home"
+import Home from "../../components/layouts/home/home"
 import Accordion from '../../components/accordion/accordion'
 
 const AccordionPage = () => (

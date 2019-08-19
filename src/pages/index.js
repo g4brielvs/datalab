@@ -1,62 +1,51 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, Img, graphql, useStaticQuery } from "gatsby"
 
-import Home from "../layouts/home/home"
+import Home from "../components/layouts/home/home"
 import Image from "../components/.demo/image"
 import SEO from "../components/seo"
+import Featured from "../components/featured-landing/featured"
 import "../styles/index.scss"
-import "../styles/landing.scss"
-import "../styles/landing-dts.scss"
-import "../styles/landing-row.scss"
-import main from "../images/index/collegehomepage.svg"
-import featured from "../images/index/c-o-t.png"
+import "../components/layouts/home/landing.scss"
+import "../components/layouts/home/landing-dts.scss"
+import "../components/layouts/home/landing-row.scss"
+import main from "../images/home/collegehomepage.svg"
+import Highlight from "../components/highlight-landing/highlight"
 
 
 const IndexPage = () => (
   <Home>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <article id="main">
-      <div className="dl-landing">
-        <section className="primary">
-          <a href="/colleges-and-universities.html"
-             className="primary__link"
-             ga-on="click" ga-event-category="Data Lab Home Page"
-             ga-event-action="Clicked 'Federal Investment in Higher Education'"
-          >
-            <h1 className="primary__mobile-heading">
-              Federal Investment in Higher Education
-            </h1>
+      <div className="container">
+        <div className="row center-xs">
+          <div class="col-xs-6">
+            <Link to="colleges-and-universities"
+               className="primary__link"
+               ga-on="click" ga-event-category="Data Lab Home Page"
+               ga-event-action="Clicked 'Federal Investment in Higher Education'">
 
-            <img className="primary__image" src={main} alt="Answer all your questions about federal government finance"/>
-            <div className="primary__content">
-
-              <h2 className="primary__heading">
-                Federal Investment in Higher Education
-              </h2>
-
-              <p className="primary__text primary__text--desktop">
-                The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and
-                universities through grants, contracts, and student aid. This interactive analysis gives you an
-                opportunity to search schools and discover how much the government has invested in that institution. In
-                the visualizations you can also break down the investment by federal agency and view data by investment
-                category. This analysis gives the public an interactive lens into the government’s investment in higher
-                education.
-              </p>
-
-              <div className="primary__text_container">
-                <p className="primary__text primary__text--mobile">
-                  The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges
+              <Featured
+                imgSrc={main}
+                imgAlt={'Answer all your questions about federal government finance'}
+                heading={'Federal Investment in Higher Education'}
+                body={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and
+                  universities through grants, contracts, and student aid. This interactive analysis gives you an
+                  opportunity to search schools and discover how much the government has invested in that institution. In
+                  the visualizations you can also break down the investment by federal agency and view data by investment
+                  category. This analysis gives the public an interactive lens into the government’s investment in higher
+                  education.`}
+                mobileBody={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges
                   and universities. Dive in and search by individual schools, federal agencies, or investment
-                  categories!
-                </p>
-              </div>
+                  categories!`
+                } />
+            </Link>
+        </div>
 
-            </div>
+          <div className="col-xs-4">
 
-          </a>
-        </section>
-        <section className="secondary">
-          <section className="landing-chart">
+            <section className="secondary">
+              <section className="landing-chart">
             <a href="dts.html"
                className="landing-chart__link"
                ga-on="click" ga-event-category="Data Lab Home Page"
@@ -71,54 +60,52 @@ const IndexPage = () => (
               {/*{% include landing-dts.html %}*/}
             </a>
           </section>
-          <section className="landing-feature">
-            <a href="contracts-over-time.html"
-               className="landing-feature__link"
-               ga-on="click" ga-event-category="Data Lab Home Page"
-               ga-event-action="Clicked 'Contract Spending Analysis'"
-            >
-              <div className="landing-feature__headings">
-                <h1>
-                  Contract Spending Analysis
-                </h1>
-                <h2>
-                  How has federal<br/> contract spending<br/> changed over time?
-                </h2>
-              </div>
-              <div className="landing-feature__image">
-                <img className="" src={featured} />
-              </div>
-              <p className="landing-feature__text">
-                We explore 10 years of contract data, and provide an analysis of the
-                impact of short-term continuing resolutions on contract spending.
-              </p>
 
-            </a>
-          </section>
-          <section className="landing-feature">
-            <a href="contract-explorer.html"
-               className="landing-feature__link"
-               ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Contract Explorer'"
-            >
-              <div className="landing-feature__headings">
-                <h1>
-                  Contract Explorer
-                </h1>
-                <h2>
-                  Who receives federal contracts?
-                </h2>
-              </div>
-              <div className="landing-feature__image">
-                <img className="" src="../images/index/contract-explorer.svg"/>
-              </div>
-              <p className="landing-feature__text">
-                The federal government spends about $500 billion each year on contracts. Learn more
-                about contract recipients and what agencies receive from these contracts.
-              </p>
-            </a>
-          </section>
+          <Highlight
+            heading={'Contract Spending Analysis'}
+            subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
+            href={'contract-explorer.html'}
+            imgSrc={'../images/home/contract-explorer.svg'}
+            imgAlt={' '}
+            body={`We explore 10 years of contract data, and provide an analysis of the
+            impact of short-term continuing resolutions on contract spending.`}
+          />
+
+          <Highlight
+            heading={'Contract Explorer'}
+            subheading={'Who receives federal contracts?'}
+            href={'contract-explorer.html'}
+            imgSrc={'../images/home/contract-explorer.svg'}
+            imgAlt={' '}
+            body={`The federal government spends about $500 billion each year on contracts. Learn more
+                about contract recipients and what agencies receive from these contracts.`}
+          />
+          {/*<section className="landing-feature">*/}
+            {/*<a href="contract-explorer.html"*/}
+               {/*className="landing-feature__link"*/}
+               {/*ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Contract Explorer'"*/}
+            {/*>*/}
+              {/*<div className="landing-feature__headings">*/}
+                {/*<h1>*/}
+                  {/*Contract Explorer*/}
+                {/*</h1>*/}
+                {/*<h2>*/}
+                  {/*Who receives federal contracts?*/}
+                {/*</h2>*/}
+              {/*</div>*/}
+              {/*<div className="landing-feature__image">*/}
+                {/*<img className="" src="../images/home/contract-explorer.svg"/>*/}
+              {/*</div>*/}
+              {/*<p className="landing-feature__text">*/}
+                {/*The federal government spends about $500 billion each year on contracts. Learn more*/}
+                {/*about contract recipients and what agencies receive from these contracts.*/}
+              {/*</p>*/}
+            {/*</a>*/}
+          {/*</section>*/}
         </section>
-      </div>
+          </div>
+          </div>
+        </div>
       <section className="landing-row landing-row--analyses">
         <h1 className="landing-row__heading">
           More Analyses
@@ -132,7 +119,7 @@ const IndexPage = () => (
             <h2 className="landing-row__featured__mobile-heading">
               Your Guide to America's Finances
             </h2>
-            <img className="landing-row__featured__image" src="../images/index/cg-gif.gif"
+            <img className="landing-row__featured__image" src="../images/home/cg-gif.gif"
                  alt="Answer all your questions about federal government finance"/>
             <div className="landing-row__featured__content">
 
@@ -174,7 +161,7 @@ const IndexPage = () => (
                 </p>
               </div>
               <div>
-                <img src="../images/index/federal.jpg" className="landing-row__image"/>
+                <img src="../images/home/federal.jpg" className="landing-row__image"/>
               </div>
             </a>
             <a href="federal-employees.html"
@@ -190,7 +177,7 @@ const IndexPage = () => (
                 </p>
               </div>
               <div>
-                <img src="../images/index/workers.jpg" className="landing-row__image"/>
+                <img src="../images/home/workers.jpg" className="landing-row__image"/>
               </div>
             </a>
           </div>
@@ -209,7 +196,7 @@ const IndexPage = () => (
                 </p>
               </div>
               <div>
-                <img src="../images/index/budget.jpg" className="landing-row__image"/>
+                <img src="../images/home/budget.jpg" className="landing-row__image"/>
               </div>
             </a>
 
@@ -227,7 +214,7 @@ const IndexPage = () => (
                 </p>
               </div>
               <div>
-                <img src="../images/index/competition.jpg" className="landing-row__image"/>
+                <img src="../images/home/competition.jpg" className="landing-row__image"/>
               </div>
             </a>
           </div>
@@ -257,7 +244,7 @@ const IndexPage = () => (
               </p>
             </div>
             <div className="feature-row__image">
-              <img src="../images/index/homelessness.png"/>
+              <img src="../images/home/homelessness.png"/>
             </div>
           </div>
         </a>
@@ -283,7 +270,7 @@ const IndexPage = () => (
           </div>
 
           <a className="landing-row__tile" href="http://api.usaspending.gov/">
-            <img src="../images/index/resources-api-2.svg" className="svgImg"/>
+            <img src="../images/home/resources-api-2.svg" className="svgImg"/>
             <div className="landing-row__text">
               <h1 className="landing-row__title landing-row__title-mod">
                 API Guide
@@ -295,7 +282,7 @@ const IndexPage = () => (
           </a>
 
           <a className="landing-row__tile" href="/assets/analyst-guide-1-2.pdf">
-            <img src="../images/index/resources-user-guide-2.svg" className="svgImg"/>
+            <img src="../images/home/resources-user-guide-2.svg" className="svgImg"/>
             <div className="landing-row__text">
               <h1 className="landing-row__title landing-row__title-mod">
                 Analyst Guide
@@ -307,7 +294,7 @@ const IndexPage = () => (
           </a>
 
           <a className="landing-row__tile landing-row__tile--last" href="/student-innovators-toolbox.html">
-            <img src="../images/index/resources-playbook-2.svg" className="svgImg"/>
+            <img src="../images/home/resources-playbook-2.svg" className="svgImg"/>
             <div className="landing-row__text">
               <h1 className="landing-row__title landing-row__title-mod">
                 Student Innovators Toolbox
@@ -337,3 +324,5 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+

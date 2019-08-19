@@ -104,7 +104,7 @@ class BubbleChart extends Component {
 //   bChartBtn = $('#bubble-chart-trigger');
 //   tooltipClose = $('.bubble-detail__close');
 //
-//   detailContainer = d3.select('#bubble-detail section.bubble-detail');
+//   detailContainer = d3.select('#bubble-detail section-elements.bubble-detail');
 //   detailContainerActiveClass = 'bubble-detail--active';
 //   margin = 20;
 //

@@ -2,22 +2,24 @@ import React, {Component} from "react"
 import SEO from "../../components/seo"
 import { graphql } from "gatsby"
 
-import AnalysesLayout from "../../layouts/analyses/analyses"
+import Story from "../../components/layouts/story/story"
 import "../../styles/index.scss"
 
 /* components */
 import Header from "../../components/header/header"
 import HWCTALink from "../../components/hwcta-link/hwcta-link"
-import Overview from "../../sections/colleges-and-universites/overview"
-import Agencies from "../../sections/colleges-and-universites/agencies"
+import Overview from "../../page-sections/colleges-and-universites/overview"
+import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 import Toc from "../../components/toc/toc"
 
 class CollegesAndUniversitiesPage extends Component {
 
+
+
   render() {
-    return <AnalysesLayout>
+    return <Story>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
       <Header
         subtext={'Federal Investment in Higher Education'}
@@ -75,14 +77,14 @@ class CollegesAndUniversitiesPage extends Component {
 
       <MoreAnalyses/>
 
-    </AnalysesLayout>
+    </Story>
   }
 }
 
 export default CollegesAndUniversitiesPage
 
 
-export const IndexQuery = graphql`
+export const CollegesAndUniversitiesQuery = graphql`
 query {
   allUnivBubbleChartCsv {
     nodes {

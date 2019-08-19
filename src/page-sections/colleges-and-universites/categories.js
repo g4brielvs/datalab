@@ -3,8 +3,8 @@ import "../../styles/index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section/story-heading/story-heading"
-import Downloads from "../../components/section/downloads/downloads"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 
 const Overview = () => {
@@ -33,7 +33,7 @@ const Overview = () => {
         <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
       </Accordion>
 
-      <div className="container" style={this.defaultImageStyle}>
+      <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
           <img className="col-xs-6" src={defaultImage} />
         </div>

@@ -3,12 +3,11 @@ import "../../styles/index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section/story-heading/story-heading"
-import Downloads from "../../components/section/downloads/downloads"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 
 const Overview = () => {
-
   const defaultImageStyle = {
     margin: "1rem 0"
   }
@@ -18,7 +17,7 @@ const Overview = () => {
       <StoryHeading
         number={'01'}
         title={'Investment Overview'}
-        teaser={['How much was ', <span className="heading--red">invested in colleges and universities?</span>] }
+        teaser={['How much was ', <span key='teaser-callout' className='heading--red'>invested in colleges and universities?</span>] }
         blurb={`In 2018, higher education institutions received a total of $1.068 trillion in revenue from federal and
                 non-federal funding sources. Investments from the federal government were $149 billion of the total,
                 representing 3.6% of federal spending. This money flowed into colleges and universities through three
