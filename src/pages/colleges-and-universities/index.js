@@ -66,7 +66,7 @@ class CollegesAndUniversitiesPage extends Component {
 
       <Overview/>
 
-      <Agencies items={this.props.data.allUnivBubbleChartCsv.nodes} />
+      <Agencies />
 
       <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
@@ -84,13 +84,13 @@ class CollegesAndUniversitiesPage extends Component {
 export default CollegesAndUniversitiesPage
 
 
-export const CollegesAndUniversitiesQuery = graphql`
-query {
-  allUnivBubbleChartCsv {
-    nodes {
-      agency
-      subagency
-      obligation
-    }
-  },
-}`
+// export const CollegesAndUniversitiesQuery = graphql`
+// query {
+//   allUnivBubbleChartCsv {
+//     nodes {
+//       agency
+//       subagency
+//       obligation
+//     }
+//   },
+// }`
