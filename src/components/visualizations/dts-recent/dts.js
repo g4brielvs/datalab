@@ -21,7 +21,6 @@ function Dts(props) {
   useEffect(() => {
     // Update the document title using the browser API
     data = _data.allRecent30Csv.nodes;
-    console.log(data);
     redraw();
   });
 
@@ -56,7 +55,7 @@ function Dts(props) {
     y = d3.scaleLinear().range([height, 0]);
 
     valueline = d3.line().x(function (d) {
-      return x(d.date);
+      return x(new Date(d.date));
     }).y(function (d) {
       return y(d.Totals);
     });
@@ -76,8 +75,7 @@ function Dts(props) {
   }
 
   function type(d) {
-    console.log('type funtion');
-    console.log(d);
+
     d.date = parseTime(d.date);
     d.Totals = +d.Totals * 1000000; // is this wrong? should it be fytd, mtd, and today instead? also multiply?
     return d;
@@ -87,11 +85,11 @@ function Dts(props) {
     setDimensions();
     setSvg();
 
-    x.domain(d3.extent(data, function (d) { return d.date; }));
+    x.domain(d3.extent(data, function (d) { return new Date(d.date); }));
     y.domain([0, d3.max(data, function (d) { return d.Totals; })]);
 
     let lastEntry = data[data.length - 1];
-    let lastDate = lastEntry.date;
+    let lastDate = new Date(lastEntry.date);
     let lastValue = lastEntry.Totals;
 
     svg.append("g")
@@ -131,7 +129,7 @@ function Dts(props) {
       .attr("transform", "translate(" + (x(lastDate)) + "," + (y(lastValue)) + ")");
 
     d3.select(".dtsm-dollars").text(dollarFormatter(lastValue));
-    d3.select(".side-dts__date").text("Updated " + dateFormatter(new Date(lastDate)));
+    d3.select(".side-dts__date").text("Updated " + dateFormatter(lastDate));
   }
 
   window.addEventListener('resize', function () {
@@ -180,9 +178,7 @@ function Dts(props) {
               </div>
           </div>
 
-            <div class="side-dts__date">
-
-            </div>
+          <div class="side-dts__date"></div>
         </section>
       </Link>
     </>

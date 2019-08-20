@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/home/landing-dts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/landing-dts.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -87,7 +84,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="22" />
-          <entry key="js" value="8171" />
+          <entry key="js" value="8377" />
           <entry key="json" value="4" />
           <entry key="scss" value="1366" />
         </counts>
@@ -95,7 +92,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="4" />
-          <entry key="JavaScript" value="8171" />
+          <entry key="JavaScript" value="8377" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="SCSS" value="1366" />
         </counts>
@@ -117,8 +114,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="133" column="86" selection-start-line="133" selection-start-column="86" selection-end-line="133" selection-end-column="86" />
+            <state relative-caret-position="213">
+              <caret line="132" selection-start-line="132" selection-end-line="132" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -202,12 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>headerContainers</find>
-      <find>headerHeight</find>
-      <find>setTagVisibility</find>
-      <find>class</find>
-      <find>official-banner__site-link</find>
-      <find>$phone</find>
       <find>$desktop-xl</find>
       <find>$tablet</find>
       <find>scroll</find>
@@ -228,10 +219,16 @@
       <find>link</find>
       <find>flex</find>
       <find>function type</find>
-      <find>type</find>
       <find>redraw</find>
       <find>side-dts__date</find>
       <find>dateFormatter</find>
+      <find>type</find>
+      <find>new Date</find>
+      <find>lastDate</find>
+      <find>new</find>
+      <find>path</find>
+      <find>drawYAxisGridlines</find>
+      <find>console.l</find>
     </findStrings>
     <replaceStrings>
       <replace>this.mobileContainers</replace>
@@ -446,12 +443,12 @@
       <workItem from="1565308696354" duration="4463000" />
       <workItem from="1565378974638" duration="533000" />
       <workItem from="1565467997788" duration="23949000" />
-      <workItem from="1566224158806" duration="18192000" />
+      <workItem from="1566224158806" duration="19395000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107682000" />
+    <option name="totallyTimeSpent" value="108885000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="976" extended-state="6" />
@@ -863,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="133" column="86" selection-start-line="133" selection-start-column="86" selection-end-line="133" selection-end-column="86" />
+        <state relative-caret-position="213">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
