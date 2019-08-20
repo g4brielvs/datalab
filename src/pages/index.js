@@ -15,6 +15,8 @@ import cg from "../images/home/cg-gif.gif"
 import contractSpending from "../images/home/c-o-t.png"
 import Highlight from "../components/highlight-landing/highlight"
 import "./index.scss"
+import MoreAnalyses from "../components/more-analyses/more-analyses"
+import Dts from "../components/visualizations/dts/dts"
 
 
 const IndexPage = () => (
@@ -41,21 +43,7 @@ const IndexPage = () => (
         </div>
 
         <div className="col-xs-4">
-            <section className="secondary">
-              <section className="landing-chart">
-                <a href="dts.html"
-                   className="landing-chart__link"
-                   ga-on="click" ga-event-category="Data Lab Home Page"
-                   ga-event-action="Clicked 'Visualizing the Daily Treasury Statement'">
-                  <h1>
-                    Visualizing the Daily Treasury Statement
-                  </h1>
-                  <h2>
-                    How much does the federal government spend each day?
-                  </h2>
-                  {/*{% include landing-dts.html %}*/}
-                </a>
-              </section>
+              <Dts/>
 
               <Highlight
                 heading={'Contract Spending Analysis'}
@@ -76,7 +64,6 @@ const IndexPage = () => (
                 body={`The federal government spends about $500 billion each year on contracts. Learn more
                     about contract recipients and what agencies receive from these contracts.`}
               />
-            </section>
         </div>
       </div>
 
@@ -84,7 +71,9 @@ const IndexPage = () => (
         <h1 className="landing-row__heading">
           More Analyses
         </h1>
+        <MoreAnalyses/>
         <div className="landing-row__featured">
+
             <Featured
               imgSrc={cg}
               imgAlt={'Answer all your questions about federal government finance'}
@@ -100,80 +89,7 @@ const IndexPage = () => (
                   well as the deficit and debt in 2018.`
               } />
         </div>
-        <div className="landing-row__tiles">
-          <div className="landing_row__tile-row">
-            <a href="federal-account-explorer.html"
-               className="landing-row__tile"
-               ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Federal Account Explorer'"
-            >
-              <div className="landing-row__text">
-                <h2>
-                  Federal Account Explorer
-                </h2>
-                <p className="landing-row__title">
-                  Discover the federal government's spending accounts
-                </p>
-              </div>
-              <div>
-                <img src="../images/home/federal.jpg" className="landing-row__image"/>
-              </div>
-            </a>
-            <a href="federal-employees.html"
-               className="landing-row__tile"
-               ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Federal Employees'"
-            >
-              <div className="landing-row__text">
-                <h2>
-                  Federal Employees
-                </h2>
-                <p className="landing-row__title">
-                  Who works in government?
-                </p>
-              </div>
-              <div>
-                <img src="../images/home/workers.jpg" className="landing-row__image"/>
-              </div>
-            </a>
-          </div>
 
-          <div className="landing_row__tile-row">
-            <a href="budget-function.html"
-               className="landing-row__tile"
-               ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action="Clicked 'Budget Function'"
-            >
-              <div className="landing-row__text">
-                <h2>
-                  Budget Function
-                </h2>
-                <p className="landing-row__title">
-                  Check out how federal spending is categorized
-                </p>
-              </div>
-              <div>
-                <img src="../images/home/budget.jpg" className="landing-row__image"/>
-              </div>
-            </a>
-
-            <a href="competition-in-contracting.html"
-               className="landing-row__tile"
-               ga-on="click" ga-event-category="Data Lab Home Page"
-               ga-event-action="Clicked 'Competition in Contracting'"
-            >
-              <div className="landing-row__text">
-                <h2>
-                  Competition in Contracting
-                </h2>
-                <p className="landing-row__title">
-                  How often do federal agencies compete for contracts?
-                </p>
-              </div>
-              <div>
-                <img src="../images/home/competition.jpg" className="landing-row__image"/>
-              </div>
-            </a>
-          </div>
-
-        </div>
       </section>
 
       <section className="feature-row">
