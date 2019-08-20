@@ -16,7 +16,7 @@ import contractSpending from "../images/home/c-o-t.png"
 import Highlight from "../components/highlight-landing/highlight"
 import "./index.scss"
 import MoreAnalyses from "../components/more-analyses/more-analyses"
-import Dts from "../components/visualizations/dts/dts"
+import Dts from "../components/visualizations/dts-recent/dts"
 
 
 const IndexPage = () => (

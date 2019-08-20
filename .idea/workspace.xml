@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3af075d1-3d15-4617-a7c3-d0fa966b3867" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/visualizations/bubble-chart/bubble-chart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/agencies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page-sections/colleges-and-universites/agencies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/home/landing-dts.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/home/landing-dts.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -89,7 +87,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="22" />
-          <entry key="js" value="8016" />
+          <entry key="js" value="8171" />
           <entry key="json" value="4" />
           <entry key="scss" value="1366" />
         </counts>
@@ -97,7 +95,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="4" />
-          <entry key="JavaScript" value="8016" />
+          <entry key="JavaScript" value="8171" />
           <entry key="PLAIN_TEXT" value="22" />
           <entry key="SCSS" value="1366" />
         </counts>
@@ -117,10 +115,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts/dts.js">
+        <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="10" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
+            <state relative-caret-position="439">
+              <caret line="133" column="86" selection-start-line="133" selection-start-column="86" selection-end-line="133" selection-end-column="86" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -192,7 +190,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts/dts.scss">
+        <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
@@ -204,8 +202,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ffgText</find>
-      <find>function</find>
       <find>headerContainers</find>
       <find>headerHeight</find>
       <find>setTagVisibility</find>
@@ -234,6 +230,8 @@
       <find>function type</find>
       <find>type</find>
       <find>redraw</find>
+      <find>side-dts__date</find>
+      <find>dateFormatter</find>
     </findStrings>
     <replaceStrings>
       <replace>this.mobileContainers</replace>
@@ -264,7 +262,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/visualizations/bubble-chart/bubble-chart.js" />
         <option value="$PROJECT_DIR$/src/components/section/story-heading/story-heading.js" />
         <option value="$PROJECT_DIR$/src/components/section/downloads/downloads.js" />
         <option value="$PROJECT_DIR$/src/layouts/analyses/analyses.scss" />
@@ -315,6 +312,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/dts/dts-module.js" />
         <option value="$PROJECT_DIR$/src/components/dts/dts.js" />
+        <option value="$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js" />
       </list>
     </option>
   </component>
@@ -335,10 +333,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="49" />
     <option name="y" value="23" />
-    <option name="width" value="1601" />
-    <option name="height" value="958" />
+    <option name="width" value="1680" />
+    <option name="height" value="976" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -370,6 +367,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="visualizations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datalab-prototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizations" type="462c0819:PsiDirectoryNode" />
+              <item name="dts-recent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="datalab-prototype" type="b2602c69:ProjectViewProjectNode" />
@@ -441,22 +446,23 @@
       <workItem from="1565308696354" duration="4463000" />
       <workItem from="1565378974638" duration="533000" />
       <workItem from="1565467997788" duration="23949000" />
-      <workItem from="1566224158806" duration="16386000" />
+      <workItem from="1566224158806" duration="18192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105876000" />
+    <option name="totallyTimeSpent" value="107682000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="958" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="976" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21639542" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4978903" weight="0.32517484" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4972875" weight="0.32502964" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -464,7 +470,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5021097" side_tool="true" visible="true" weight="0.17319098" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5027125" side_tool="true" visible="true" weight="0.16957027" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996986" weight="0.12089202" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -848,17 +854,17 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts/dts.scss">
+    <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts/dts.js">
+    <entry file="file://$PROJECT_DIR$/src/components/visualizations/dts-recent/dts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="10" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="10" />
+        <state relative-caret-position="439">
+          <caret line="133" column="86" selection-start-line="133" selection-start-column="86" selection-end-line="133" selection-end-column="86" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
