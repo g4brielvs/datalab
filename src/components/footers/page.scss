@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 $col-padding: 15px;
 
@@ -14,6 +14,7 @@ $col-padding: 15px;
   .flex-item {
     padding-left: $col-padding;
     padding-right: $col-padding;
+    flex: min-content;
   }
 
   .title {
@@ -66,6 +67,8 @@ $col-padding: 15px;
 
 @media (max-width: $desktop - 1) {
   .page-footer {
+    max-width: 500px;
+    margin: 0 auto;
     flex-direction: column;
     text-align: center;
 
