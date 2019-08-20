@@ -9,12 +9,12 @@ export default props => (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(0.000000, -0.000000)">
         <rect x="0" y="0" width="31.8801538" height="32.9714533"></rect>
         <ellipse
           stroke="#808080"
-          stroke-width="2"
+          strokeWidth="2"
           cx="15.9400769"
           cy="16.4857266"
           rx="14.9400769"

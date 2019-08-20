@@ -11,9 +11,9 @@ export default props => (
   >
     <g
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
         <g transform="translate(0.000000, -0.000000)">
           <rect
@@ -24,7 +24,7 @@ export default props => (
           ></rect>
           <ellipse
             stroke="#808080"
-            stroke-width="2"
+            strokeWidth="2"
             cx="15.9400769"
             cy="16.4857266"
             rx="14.9400769"

@@ -9,7 +9,7 @@ export default props => (
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <rect
           id="Rectangle"
           x="0"
@@ -20,7 +20,7 @@ export default props => (
         <ellipse
           id="Oval"
           stroke="#808080"
-          stroke-width="2"
+          strokeWidth="2"
           cx="15.9400769"
           cy="16.4857266"
           rx="14.9400769"

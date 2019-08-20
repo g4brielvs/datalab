@@ -1,16 +1,19 @@
+@import '../../styles/global.scss';
+
 $col-padding: 15px;
 
 .page-footer {
-  padding: 3rem 4rem 4rem;
+  padding: 1rem 4rem 4rem;
   display: flex;
   justify-content: space-around;
 
-  .flex-item {
-    padding: 0 $col-padding;
+  .logo {
+    padding-bottom: 3rem;
   }
 
-  .flex-item + .flex-item {
-    border-left: 1px solid #ccc;
+  .flex-item {
+    padding-left: $col-padding;
+    padding-right: $col-padding;
   }
 
   .title {
@@ -51,5 +54,24 @@ $col-padding: 15px;
   .title,
   a {
     color: #2272ce;
+  }
+}
+
+// put vertical borders between items in desktop mode
+@media (min-width: $desktop) {
+  .flex-item + .flex-item {
+    border-left: 1px solid #ccc;
+  }
+}
+
+@media (max-width: $desktop - 1) {
+  .page-footer {
+    flex-direction: column;
+    text-align: center;
+
+    .float-bottom div {
+      width: 100%;
+      text-align: center;
+    }
   }
 }
