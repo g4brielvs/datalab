@@ -1,5 +1,5 @@
 import React from "react"
-import Home from "../../layouts/home/home"
+import Home from "../../components/layouts/home/home"
 import SEO from "../../components/seo"
 
 import Test from "../../components/.demo/test"

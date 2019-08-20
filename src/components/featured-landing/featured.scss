@@ -1,0 +1,29 @@
+.featured {
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  height: 95%;
+}
+
+.featured__heading {
+  font-size: 24px;
+  text-align: center;
+  text-align: center;
+}
+
+.featured__image {
+  width: 100%;
+}
+
+.featured__text {
+  padding: 0 2.188rem;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.featured__heading--mobile, .featured__text--mobile {
+  display: none;
+}

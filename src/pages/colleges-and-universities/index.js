@@ -2,22 +2,24 @@ import React, {Component} from "react"
 import SEO from "../../components/seo"
 import { graphql } from "gatsby"
 
-import AnalysesLayout from "../../layouts/analyses/analyses"
+import Story from "../../components/layouts/story/story"
 import "../../styles/index.scss"
 
 /* components */
 import Header from "../../components/header/header"
 import HWCTALink from "../../components/hwcta-link/hwcta-link"
-import Overview from "../../sections/colleges-and-universites/overview"
-import Agencies from "../../sections/colleges-and-universites/agencies"
+import Overview from "../../page-sections/colleges-and-universites/overview"
+import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 import Toc from "../../components/toc/toc"
 
 class CollegesAndUniversitiesPage extends Component {
 
+
+
   render() {
-    return <AnalysesLayout>
+    return <Story>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
       <Header
         subtext={'Federal Investment in Higher Education'}
@@ -64,7 +66,7 @@ class CollegesAndUniversitiesPage extends Component {
 
       <Overview/>
 
-      <Agencies items={this.props.data.allUnivBubbleChartCsv.nodes} />
+      <Agencies />
 
       <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
@@ -75,20 +77,20 @@ class CollegesAndUniversitiesPage extends Component {
 
       <MoreAnalyses/>
 
-    </AnalysesLayout>
+    </Story>
   }
 }
 
 export default CollegesAndUniversitiesPage
 
 
-export const IndexQuery = graphql`
-query {
-  allUnivBubbleChartCsv {
-    nodes {
-      agency
-      subagency
-      obligation
-    }
-  },
-}`
+// export const CollegesAndUniversitiesQuery = graphql`
+// query {
+//   allUnivBubbleChartCsv {
+//     nodes {
+//       agency
+//       subagency
+//       obligation
+//     }
+//   },
+// }`

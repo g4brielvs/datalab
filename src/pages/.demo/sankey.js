@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import * as d3 from "d3"
-import Home from "../../layouts/home/home"
+import Home from "../../components/layouts/home/home"
 import SEO from "../../components/seo"
 
 class Sankey extends Component {
@@ -445,7 +445,7 @@ class Sankey extends Component {
       .map(graph.nodes));
     graph.nodes.sort((x, y) => d3.ascending(x.value, y.value));
 
-    // loop through each link replacing the text with its index from node
+    // loop through each link replacing the text with its home from node
     graph.links.forEach((d, i) => {
       graph.links[i].source = graph.nodes.indexOf(graph.links[i].source);
       graph.links[i].target = graph.nodes.indexOf(graph.links[i].target);

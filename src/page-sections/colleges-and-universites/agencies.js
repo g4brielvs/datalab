@@ -1,12 +1,12 @@
-import React, { Component } from "react"
+import React from "react"
 import "../../styles/index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section/story-heading/story-heading"
-import Downloads from "../../components/section/downloads/downloads"
-import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
+// import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
 
   const Agencies = (props) => {
 
@@ -30,8 +30,7 @@ import defaultImage from "../../images/default-image.jpg"
           <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
         </Accordion>
 
-        {/*<BubbleChart items={this.props.items} />*/}
-
+        {/*<BubbleChart/>*/}
         <div className="container" style={defaultImageStyle}>
           <div className="row center-xs">
           <img className="col-xs-6" src={defaultImage} />

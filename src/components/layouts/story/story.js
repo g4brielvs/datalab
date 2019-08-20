@@ -7,16 +7,16 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import "./analyses.scss"
+import "./story.scss"
 
-const AnalysesLayout = ({ children }) => (
+const Story = ({ children }) => (
   <>
     <main>{children}</main>
   </>
 )
 
-AnalysesLayout.propTypes = {
+Story.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default AnalysesLayout
+export default Story
