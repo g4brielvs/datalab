@@ -2,7 +2,7 @@ import React from "react"
 import "./page.scss"
 
 import Logo from "../logos/logo"
-import { ReactComponent as Github } from "../logos/github.svg"
+import Github from "../logos/github"
 import Dataworld from "../logos/dataworld"
 import Twitter from "../logos/twitter"
 import Facebook from "../logos/facebook"
