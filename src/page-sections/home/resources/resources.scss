@@ -1,0 +1,50 @@
+.landing-row__tile {
+
+  .svgImg {
+    height: 62px;
+    margin: 0 auto 1rem auto;
+    display: block;
+    width: 50%;
+  }
+
+  .landing-row__text {
+    text-align: center;
+    width: auto;
+  }
+
+  .landing-row__title {
+    font-size: 28px;
+    height: 40px;
+  }
+
+  p.landing-row__title {
+    font-size: 32px;
+    height: auto;
+  }
+
+  .landing-row__p {
+    font-size: 18px;
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+  }
+
+  &.landing-row__tile--primary {
+    .landing-row__text {
+      text-align: left;
+
+      .landing-row__title {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.col-xs-3 {
+  padding: 0;
+}
+
