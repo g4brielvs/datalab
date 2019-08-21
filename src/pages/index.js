@@ -16,13 +16,14 @@ import Highlight from "../components/landing-elements/highlight/highlight"
 import "../styles/index.scss"
 import "./index.scss"
 import Dts from "../components/landing-elements/dts-recent/dts"
+import LandingMoreAnalyses from "../components/landing-elements/landing-more-analyses/landing-more-analyses"
 
 
 const IndexPage = () => (
   <Home>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <article id="main">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row center-xs">
           <div class="col-xs-8">
               <Featured
@@ -66,29 +67,7 @@ const IndexPage = () => (
         </div>
       </div>
 
-      <section className="landing-row landing-row--analyses">
-        <h1 className="landing-row__heading">
-          More Analyses
-        </h1>
-        <div className="landing-row__featured">
-
-            <Featured
-              imgSrc={cg}
-              imgAlt={'Answer all your questions about federal government finance'}
-              heading={"Your Guide to America's Finances"}
-              body={`Your Guide to America's Finances is an overview of federal government finances in 2018, providing
-                information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data
-                Lab,
-                presents a series of interactive visualizations to allow you to explore these categories and how they
-                have
-                changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
-                dollars collected and spent by the federal government each year.`}
-              mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
-                  well as the deficit and debt in 2018.`
-              } />
-        </div>
-
-      </section>
+      <LandingMoreAnalyses/>
 
       <section className="feature-row">
         <a href="/homelessness-analysis.html"
