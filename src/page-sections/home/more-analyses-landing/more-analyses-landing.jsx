@@ -3,10 +3,10 @@ import federal from "../../../images/more-analyses/federal.jpg"
 import workers from "../../../images/more-analyses/workers.jpg"
 import budget from "../../../images/more-analyses/budget.jpg"
 import competition from "../../../images/more-analyses/competition.jpg"
-import Featured from "../featured/featured"
+import PrimaryAnalyses from "../primary-analyses/primary-analyses"
 import cg from "../../../images/home/cg-gif.gif"
 
-const LandingMoreAnalyses = () => {
+const MoreAnalysesLanding = () => {
   const analyses = [{
     fileName: '#',
     imageSrc: federal,
@@ -30,7 +30,7 @@ const LandingMoreAnalyses = () => {
   },
   ]
   return (
-    <div className="more-analyses container-fluid">
+    <div className="more-analyses">
       <div className="row center-xs">
         <div className="col-xs-12">
           <h1 className="more-analyses__heading">
@@ -42,7 +42,7 @@ const LandingMoreAnalyses = () => {
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6 last-lg">
-              <Featured
+              <PrimaryAnalyses
                 imgSrc={cg}
                 imgAlt={'Answer all your questions about federal government finance'}
                 heading={"Your Guide to America's Finances"}
@@ -88,5 +88,5 @@ const LandingMoreAnalyses = () => {
 }
 
 
-export default LandingMoreAnalyses;
+export default MoreAnalysesLanding;
 

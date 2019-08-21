@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "gatsby"
-import "./dts.scss"
+import "./dts-landing.scss"
 import * as d3 from "d3";
 import { graphql, useStaticQuery } from "gatsby"
 
-function Dts(props) {
+function DtsLanding(props) {
   let svg,
     data,
     debounce,
@@ -186,4 +186,4 @@ function Dts(props) {
 }
 
 
-export default Dts
+export default DtsLanding

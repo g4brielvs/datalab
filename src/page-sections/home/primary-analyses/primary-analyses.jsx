@@ -1,8 +1,8 @@
 import React from 'react';
-import './featured.scss';
+import './primary-analyses.scss';
 import { Link } from "gatsby"
 
-const Featured = (props) => {
+const PrimaryAnalyses = (props) => {
   return (
     <>
       <Link to="colleges-and-universities"
@@ -37,4 +37,4 @@ const Featured = (props) => {
 }
 
 
-export default Featured
+export default PrimaryAnalyses

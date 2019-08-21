@@ -1,8 +1,44 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
 @import url('https://cdn.jsdelivr.net/npm/flexboxgrid@6.3.1/dist/flexboxgrid.min.css');
 
-.col-xs-6, .col-xs-7, .col-xs-8 {
+// Changing gutter for xs
+.col-xs-1:not(:last-child), .col-xs-2:not(:last-child), .col-xs-3:not(:last-child),
+.col-xs-4:not(:last-child), .col-xs-5:not(:last-child), .col-xs-6:not(:last-child),
+.col-xs-7:not(:last-child), .col-xs-8:not(:last-child), .col-xs-9:not(:last-child),
+.col-xs-10:not(:last-child), .col-xs-11:not(:last-child), .col-xs-12:not(:last-child) {
   padding-right: 30px !important;
+}
+
+.col-md-1:not(:last-child):not(:last-child), .col-md-2:not(:last-child), .col-md-3:not(:last-child),
+.col-md-4:not(:last-child), .col-md-5:not(:last-child), .col-md-6:not(:last-child),
+.col-md-7:not(:last-child), .col-md-8:not(:last-child), .col-md-9:not(:last-child),
+.col-md-10:not(:last-child), .col-md-11:not(:last-child), .col-md-12:not(:last-child) {
+  padding-right: 30px !important;
+}
+
+.col-xs-1.last-xs, .col-xs-2.last-xs, .col-xs-3.last-xs,
+.col-xs-4.last-xs, .col-xs-5.last-xs, .col-xs-6.last-xs,
+.col-xs-7.last-xs, .col-xs-8.last-xs, .col-xs-9.last-xs,
+.col-xs-10.last-xs, .col-xs-11.last-xs, .col-xs-12.last-xs {
+  padding-right: 0 !important;
+}
+
+.col-md-1.last-md, .col-md-2.last-md, .col-md-3.last-md,
+.col-md-4.last-md, .col-md-5.last-md, .col-md-6.last-md,
+.col-md-7.last-md, .col-md-8.last-md, .col-md-9.last-md,
+.col-md-10.last-md, .col-md-11.last-md, .col-md-12.last-md {
+  padding-right: 30px !important;
+}
+
+.col-lg-1.last-lg, .col-lg-2.last-lg, .col-lg-3.last-lg,
+.col-lg-4.last-lg, .col-lg-5.last-lg, .col-lg-6.last-lg,
+.col-lg-7.last-lg, .col-lg-8.last-lg, .col-lg-9.last-lg,
+.col-lg-10.last-lg, .col-lg-11.last-lg, .col-lg-12.last-lg {
+  padding-right: 0 !important;
+}
+
+.last-md, .last-lg {
+  padding-right: 0 !important;
 }
 
 // device screen min widths
