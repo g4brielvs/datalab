@@ -9,6 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
+import PageFooter from "../../../components/footers/page"
+import SiteFooter from "../../../components/footers/site"
+
 import "./home.scss"
 import "./landing.scss"
 import "./landing-dts.scss"
@@ -20,6 +23,8 @@ const Home = ({ children }) => (
       <main>{children}</main>
 
     </div>
+    <PageFooter />
+    <SiteFooter />
   </>
 )
 
