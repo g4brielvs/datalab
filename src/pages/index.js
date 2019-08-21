@@ -2,9 +2,8 @@ import React from "react"
 import { Link, Img, graphql, useStaticQuery } from "gatsby"
 
 import Home from "../components/layouts/home/home"
-import Image from "../components/.demo/image"
 import SEO from "../components/seo"
-import Featured from "../components/featured-landing/featured"
+import Featured from "../components/landing-elements/featured/featured"
 import "../styles/index.scss"
 import "../components/layouts/home/landing.scss"
 import "../components/layouts/home/landing-dts.scss"
@@ -13,10 +12,10 @@ import main from "../images/home/collegehomepage.svg"
 import contractExplorer from "../images/home/contract-explorer.svg"
 import cg from "../images/home/cg-gif.gif"
 import contractSpending from "../images/home/c-o-t.png"
-import Highlight from "../components/highlight-landing/highlight"
+import Highlight from "../components/landing-elements/highlight/highlight"
+import "../styles/index.scss"
 import "./index.scss"
-import MoreAnalyses from "../components/more-analyses/more-analyses"
-import Dts from "../components/visualizations/dts-recent/dts"
+import Dts from "../components/landing-elements/dts-recent/dts"
 
 
 const IndexPage = () => (
@@ -25,7 +24,7 @@ const IndexPage = () => (
     <article id="main">
       <div className="container">
         <div className="row center-xs">
-          <div class="col-xs-6">
+          <div class="col-xs-8">
               <Featured
                 imgSrc={main}
                 imgAlt={'Answer all your questions about federal government finance'}
@@ -71,7 +70,6 @@ const IndexPage = () => (
         <h1 className="landing-row__heading">
           More Analyses
         </h1>
-        <MoreAnalyses/>
         <div className="landing-row__featured">
 
             <Featured

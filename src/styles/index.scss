@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
+@import url('https://cdn.jsdelivr.net/npm/flexboxgrid@6.3.1/dist/flexboxgrid.min.css');
+
+.col-xs-6, .col-xs-7, .col-xs-8 {
+  padding-right: 30px !important;
+}
 
 // device screen min widths
 $desktop-xl: 1200px;

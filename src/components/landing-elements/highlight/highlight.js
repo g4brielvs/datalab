@@ -20,7 +20,6 @@ const Highlight = (props) => {
             <div className="highlight__image">
               <img className="" src={props.imgSrc} />
             </div>
-            <br/>
             <p className="highlight__text">
               {props.body}
             </p>
