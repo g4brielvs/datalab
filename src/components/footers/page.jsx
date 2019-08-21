@@ -1,7 +1,7 @@
 import React from "react"
 import "./page.scss"
 
-import Logo from "../logos/logo"
+import DataLab from "../logos/datalab"
 import Github from "../logos/github"
 import Dataworld from "../logos/dataworld"
 import Twitter from "../logos/twitter"
@@ -26,7 +26,7 @@ import LinkedIn from "../logos/linkedin"
 const PageFooter = props => (
   <div className="page-footer">
     <div className="flex-item logo">
-      <Logo fillColor="#666" />
+      <DataLab fillColor="#666" />
     </div>
     <div className="flex-item">
       <div className="title">Contact Us</div>
