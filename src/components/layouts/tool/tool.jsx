@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import './tool.scss'
 
 import ShareMenu from '../../share-menu/share-menu'
+import HWCTALink from '../../hwcta-link/hwcta-link'
 import MoreAnalyses from '../../more-analyses/more-analyses'
 import PageFooter from '../../footers/page'
 import SiteFooter from '../../footers/site'
@@ -35,6 +36,7 @@ const ToolLayout = props => (
         </section>
       </article>
     </main>
+    <HWCTALink url={'#'}/>
     <MoreAnalyses />
     <PageFooter />
     <SiteFooter />
