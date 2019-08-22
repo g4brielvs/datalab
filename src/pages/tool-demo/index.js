@@ -3,12 +3,8 @@ import React, {Component} from 'react'
 /* components */
 import SEO from '../../components/seo'
 import ToolLayout from '../../components/layouts/tool/tool'
-import Accordion from "../../components/accordion/accordion"
-// import HWCTALink from '../../components/hwcta-link/hwcta-link'
-// import Overview from '../../page-sections/colleges-and-universites/overview'
-// import Agencies from '../../page-sections/colleges-and-universites/agencies'
-// import MoreAnalyses from '../../components/more-analyses/more-analyses'
-// import Footnotes from '../../components/footnotes/footnotes'
+import Accordion from '../../components/accordion/accordion'
+import defaultImage from '../../images/default-image.jpg'
 
 class ToolDemoPage extends Component {
   render() {
@@ -23,26 +19,12 @@ class ToolDemoPage extends Component {
             </p>Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit, euismod libero facilisi aptent elementum felis blandit cursus gravida sociis erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia conubia mauris tempor, etiam ultricies proin quisque lectus sociis id tristique, integer phasellus taciti pretium adipiscing tortor sagittis ligula.</p>'
       >
         <Accordion
-          title="Accordion Title">
+          title='Accordion Title'>
           <p>I am an accordion with lots to say.</p>
           <p>I have several paragraphs...</p>
-          <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
+          <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
         </Accordion>
-        chart here
-{/* 
-      <Overview/>
-
-      <Agencies />
-
-      <Footnotes
-        footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
-      'Due to the way military academies are funded, they have not been included in this analysis.']} />
-
-      <HWCTALink
-        url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
-
-      <MoreAnalyses/> */}
-
+        <img src={defaultImage} />
       </ToolLayout>
     </>
   }
