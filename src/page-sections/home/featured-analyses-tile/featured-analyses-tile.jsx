@@ -1,6 +1,7 @@
 import React from 'react';
-import './featured-analyses-tile.scss';
 import { Link } from "gatsby"
+
+import './featured-analyses-tile.scss';
 
 const FeaturedAnalysesTile = (props) => {
   return (
@@ -8,7 +9,7 @@ const FeaturedAnalysesTile = (props) => {
       <Link to="colleges-and-universities"
             className="primary__link"
             ga-on="click" ga-event-category="Data Lab Home Page"
-            ga-event-action="Clicked ${props.heading}">
+            ga-event-action={"Clicked " + props.heading}>
 
           <div className="featured">
             <h1 className="featured__heading--mobile">

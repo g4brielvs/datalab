@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from "gatsby"
 import apiImg from '../../../images/home/resources-api-2.svg'
 import userGuideImg from '../../../images/home/resources-user-guide-2.svg'
 import playbookImg from '../../../images/home/resources-playbook-2.svg'
 import './resources.scss'
 
-const Resources = (props) => {
+const Resources = () => {
 
   const resourcesItems = [{
     href: 'http://api.usaspending.gov/',

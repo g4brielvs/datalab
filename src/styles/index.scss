@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
 @import url('https://cdn.jsdelivr.net/npm/flexboxgrid@6.3.1/dist/flexboxgrid.min.css');
 
+$margin: 30px;
+
 // Changing gutter for xs
 .col-xs-1:not(:last-child), .col-xs-2:not(:last-child), .col-xs-3:not(:last-child),
 .col-xs-4:not(:last-child), .col-xs-5:not(:last-child), .col-xs-6:not(:last-child),
 .col-xs-7:not(:last-child), .col-xs-8:not(:last-child), .col-xs-9:not(:last-child),
 .col-xs-10:not(:last-child), .col-xs-11:not(:last-child), .col-xs-12:not(:last-child) {
-  padding-right: 30px !important;
+  padding-right: $margin !important;
 }
 
 .col-md-1:not(:last-child):not(:last-child), .col-md-2:not(:last-child), .col-md-3:not(:last-child),
 .col-md-4:not(:last-child), .col-md-5:not(:last-child), .col-md-6:not(:last-child),
 .col-md-7:not(:last-child), .col-md-8:not(:last-child), .col-md-9:not(:last-child),
 .col-md-10:not(:last-child), .col-md-11:not(:last-child), .col-md-12:not(:last-child) {
-  padding-right: 30px !important;
+  padding-right: $margin !important;
 }
 
 .col-xs-1.last-xs, .col-xs-2.last-xs, .col-xs-3.last-xs,
@@ -27,7 +29,7 @@
 .col-md-4.last-md, .col-md-5.last-md, .col-md-6.last-md,
 .col-md-7.last-md, .col-md-8.last-md, .col-md-9.last-md,
 .col-md-10.last-md, .col-md-11.last-md, .col-md-12.last-md {
-  padding-right: 30px !important;
+  padding-right: $margin !important;
 }
 
 .col-lg-1.last-lg, .col-lg-2.last-lg, .col-lg-3.last-lg,
@@ -39,6 +41,10 @@
 
 .last-md, .last-lg {
   padding-right: 0 !important;
+}
+
+.margin-bottom {
+  margin-bottom: $margin;
 }
 
 // device screen min widths

@@ -8,7 +8,7 @@ const SecondaryAnalysesTile = (props) => {
           <a href={props.href}
              className="highlight__link"
              ga-on="click" ga-event-category="Data Lab Home Page"
-             ga-event-action="Clicked ${props.heading}">
+             ga-event-action={"Clicked " + props.heading}>
             <div className="highlight__headings">
               <h1>
                 {props.heading}
@@ -18,7 +18,7 @@ const SecondaryAnalysesTile = (props) => {
               </h2>
             </div>
             <div className="highlight__image">
-              <img className="" src={props.imgSrc} />
+              <img className="" src={props.imgSrc} alt=""/>
             </div>
             <p className="highlight__text">
               {props.body}
