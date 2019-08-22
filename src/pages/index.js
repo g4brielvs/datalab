@@ -3,21 +3,21 @@ import { Link, Img, graphql, useStaticQuery } from "gatsby"
 
 import Home from "../components/layouts/home/home"
 import SEO from "../components/seo"
-import PrimaryAnalyses from "../page-sections/home/primary-analyses/primary-analyses"
+import FeaturedAnalysesTile from "../page-sections/home/featured-analyses-tile/featured-analyses-tile"
 import "../styles/index.scss"
 import "../components/layouts/home/landing.scss"
 import "../components/layouts/home/landing-dts.scss"
-import "../page-sections/home/tertiary-analyses/tertiary-analyses.scss"
+import "../page-sections/home/featured-analyses-row/featured-analyses-row.scss"
 import main from "../images/home/collegehomepage.svg"
 import contractExplorer from "../images/home/contract-explorer.svg"
 import cg from "../images/home/cg-gif.gif"
 import contractSpending from "../images/home/c-o-t.png"
-import SecondaryAnalyses from "../page-sections/home/secondary-analyses/secondary-analyses"
+import SecondaryAnalysesTile from "../page-sections/home/secondary-analyses-tile/secondary-analyses-tile"
 import "../styles/index.scss"
 import "./index.scss"
-import DtsLanding from "../page-sections/home/dts-landing/dts-landing"
+import DtsLanding from "../page-sections/home/dts-tile/dts-landing"
 import MoreAnalysesLanding from "../page-sections/home/more-analyses-landing/more-analyses-landing"
-import TertiaryAnalyses from "../page-sections/home/tertiary-analyses/tertiary-analyses"
+import FeaturedAnalysesRow from "../page-sections/home/featured-analyses-row/featured-analyses-row"
 import Resources from "../page-sections/home/resources/resources"
 
 
@@ -27,7 +27,7 @@ const IndexPage = () => (
     <div className="container-fluid">
         <div className="row center-xs">
           <div class="col-xs-8">
-              <PrimaryAnalyses
+              <FeaturedAnalysesTile
                 imgSrc={main}
                 imgAlt={'Answer all your questions about federal government finance'}
                 heading={'Federal Investment in Higher Education'}
@@ -46,7 +46,7 @@ const IndexPage = () => (
         <div className="col-xs-4">
               <DtsLanding/>
 
-              <SecondaryAnalyses
+              <SecondaryAnalysesTile
                 heading={'Contract Spending Analysis'}
                 subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
                 href={'contract-explorer.html'}
@@ -56,7 +56,7 @@ const IndexPage = () => (
                 impact of short-term continuing resolutions on contract spending.`}
               />
 
-              <SecondaryAnalyses
+              <SecondaryAnalysesTile
                 heading={'Contract Explorer'}
                 subheading={['Who receives federal',<br/>,' contracts?']}
                 href={'contract-explorer.html'}
@@ -69,7 +69,7 @@ const IndexPage = () => (
       </div>
 
       <MoreAnalysesLanding/>
-      <TertiaryAnalyses/>
+      <FeaturedAnalysesRow/>
       <Resources/>
 
       </div>

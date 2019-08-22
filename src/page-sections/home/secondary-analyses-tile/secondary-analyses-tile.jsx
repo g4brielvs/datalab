@@ -1,7 +1,7 @@
 import React from 'react';
-import './secondary-analyses.scss';
+import './secondary-analyses-tile.scss';
 
-const SecondaryAnalyses = (props) => {
+const SecondaryAnalysesTile = (props) => {
   return (
     <>
       <div className="highlight">
@@ -31,4 +31,4 @@ const SecondaryAnalyses = (props) => {
 }
 
 
-export default SecondaryAnalyses
+export default SecondaryAnalysesTile

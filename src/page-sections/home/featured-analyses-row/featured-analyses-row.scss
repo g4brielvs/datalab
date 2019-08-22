@@ -1,29 +1,52 @@
-// tertiary-analyses.scss
+// featured-analyses-tile-row.scss
 $landing-title-color: #4a4a4a;
 
+@mixin landing-header {
+  font-size: 17px;
+  color: #2272CE;
+  font-weight: bold;
+}
+
+@mixin landing-subtext {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
 .tertiary__border {
-  .tertiary__image {
-    img {
-      width: 100%;
-    }
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+.tertiary__image {
+
+  img {
+    width: 100%;
   }
 }
 
 .tertiary__heading {
-  //@include landing-header;
+  @include landing-header;
 
   margin-top: 0;
 }
 
 .tertiary__title {
-  //@include landing-subtext;
+  @include landing-subtext;
   color: $landing-title-color;
   margin-bottom: 2.188rem;
   margin-top: 1rem;
 }
 
 .tertiary__blurb {
-  //display: none;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: 0.4px;
+  color: black;
+  font-stretch: normal;
+  margin-top: 0;
 }
 
 .tertiary {
@@ -39,6 +62,54 @@ $landing-title-color: #4a4a4a;
     }
   }
 }
+
+//.feature-row {
+//  clear: both;
+//  max-width: 1200px;
+//  padding: 0 1rem;
+//
+//  .feature-row__border {
+//
+//    .feature-row__image {
+//      img {
+//        width: 100%;
+//      }
+//    }
+//
+//    .feature-row__text {
+//      float: left;
+//
+//      .feature-row__heading {
+//        @include landing-header;
+//
+//        margin-top: 0;
+//      }
+//
+//      .feature-row__title {
+//        @include landing-subtext;
+//        color: $landing-title-color;
+//        margin-bottom: 2.188rem;
+//        margin-top: 1rem;
+//      }
+//
+//      .feature-row__blurb {
+//        display: none;
+//      }
+//    }
+//  }
+//
+//  &:hover {
+//    .feature-row__text {
+//      .feature-row__heading {
+//        text-decoration: underline;
+//      }
+//
+//      .feature-row__title {
+//        text-decoration: underline;
+//      }
+//    }
+//  }
+//}
 
 //@media only screen and (min-width: 950px) {
 //  .tertiary__border {

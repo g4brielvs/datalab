@@ -3,7 +3,7 @@ import federal from "../../../images/more-analyses/federal.jpg"
 import workers from "../../../images/more-analyses/workers.jpg"
 import budget from "../../../images/more-analyses/budget.jpg"
 import competition from "../../../images/more-analyses/competition.jpg"
-import PrimaryAnalyses from "../primary-analyses/primary-analyses"
+import FeaturedAnalysesTile from "../featured-analyses-tile/featured-analyses-tile"
 import cg from "../../../images/home/cg-gif.gif"
 
 const MoreAnalysesLanding = () => {
@@ -42,7 +42,7 @@ const MoreAnalysesLanding = () => {
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6 last-lg">
-              <PrimaryAnalyses
+              <FeaturedAnalysesTile
                 imgSrc={cg}
                 imgAlt={'Answer all your questions about federal government finance'}
                 heading={"Your Guide to America's Finances"}

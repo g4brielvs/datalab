@@ -1,8 +1,8 @@
 import React from 'react';
-import './primary-analyses.scss';
+import './featured-analyses-tile.scss';
 import { Link } from "gatsby"
 
-const PrimaryAnalyses = (props) => {
+const FeaturedAnalysesTile = (props) => {
   return (
     <>
       <Link to="colleges-and-universities"
@@ -37,4 +37,4 @@ const PrimaryAnalyses = (props) => {
 }
 
 
-export default PrimaryAnalyses
+export default FeaturedAnalysesTile

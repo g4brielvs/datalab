@@ -7,7 +7,7 @@ import './resources.scss'
 
 const Resources = (props) => {
 
-  const resources = [{
+  const resourcesItems = [{
     href: 'http://api.usaspending.gov/',
     imageSrc: apiImg,
     title: 'API Guide',
@@ -47,7 +47,7 @@ const Resources = (props) => {
           </div>
           {/*// add conditional here */}
           {/*//if last add class*/}
-          {resources.map((resource) =>
+          {resourcesItems.map((resource) =>
             <a className="landing-row__tile col-xs-3 center-xs"
               href={resource.href}>
               <img src={resource.imageSrc} className="svgImg"/>
