@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'gatsby';
+
 import apiImg from '../../../images/home/resources-api-2.svg'
 import userGuideImg from '../../../images/home/resources-user-guide-2.svg'
 import playbookImg from '../../../images/home/resources-playbook-2.svg'
-import './resources.scss'
 
-const Resources = () => {
+import './resources-row.scss'
+
+const ResourcesRow = () => {
 
   const resourcesItems = [{
     href: 'http://api.usaspending.gov/',
@@ -17,7 +20,7 @@ const Resources = () => {
       title: 'Analyst Guide',
       description: 'Methods to easily navigate data from our sister site, USAspending.gov'
     }, {
-      href: '#',
+      href: '/student-innovators-toolbox/',
       imageSrc: playbookImg,
       title: 'Student Innovators Toolbox',
       description: 'Ways for professors and students to get involved.'
@@ -26,7 +29,7 @@ const Resources = () => {
 
   return (
     <>
-      <div className="landing-row--resources">
+      <section className="landing-row--resources">
         <div className="row">
           <div class="col-xs-12">
             <h1 className="landing-row__heading">
@@ -47,8 +50,8 @@ const Resources = () => {
           {/*// add conditional here */}
           {/*//if last add class*/}
           {resourcesItems.map((resource) =>
-            <a className="landing-row__tile col-xs-3 center-xs"
-              href={resource.href}>
+            <Link className="landing-row__tile col-xs-3 center-xs"
+              to={resource.href}>
               <img src={resource.imageSrc} className="svgImg"/>
               <h1 className="landing-row__title">
                 {resource.title}
@@ -56,15 +59,15 @@ const Resources = () => {
               <p className="landing-row__p">
                 {resource.description}
               </p>
-            </a>
+            </Link>
           )}
         </div>
-      </div>
+      </section>
     </>
   )
 }
 
 
-export default Resources
+export default ResourcesRow
 
 

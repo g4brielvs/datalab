@@ -9,10 +9,10 @@ import workers from "../../../images/more-analyses/workers.jpg"
 import budget from "../../../images/more-analyses/budget.jpg"
 import competition from "../../../images/more-analyses/competition.jpg"
 
-import "./more-analyses-landing.scss"
+import "./more-analyses-row.scss"
 
 
-const MoreAnalysesLanding = () => {
+const MoreAnalysesRow = () => {
   const analyses = [{
     href: 'federal-account-explorer',
     imageSrc: federal,
@@ -37,7 +37,7 @@ const MoreAnalysesLanding = () => {
   ]
 
   return (
-    <div className="more-analyses">
+    <section className="more-analyses">
       <div className="row">
         <h1 className="more-analyses__heading col-xs-12">
           More Analyses
@@ -87,10 +87,10 @@ const MoreAnalysesLanding = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
 
-export default MoreAnalysesLanding;
+export default MoreAnalysesRow;
 

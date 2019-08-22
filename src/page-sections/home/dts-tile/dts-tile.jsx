@@ -144,35 +144,35 @@ function DtsTile(props) {
 
   return (
     <>
-        <Link to=""
+        <Link to="dts"
            className="landing-chart__link"
            ga-on="click" ga-event-category="Data Lab Home Page"
            ga-event-action={"Clicked " + props.heading}>
 
-        <section className="dts">
-          <h1>
-            {props.heading}
-          </h1>
+          <section className="dts">
+            <h1>
+              {props.heading}
+            </h1>
 
-          <h2>
-            {props.title}
-          </h2>
+            <h2>
+              {props.title}
+            </h2>
 
-          <div className="dts-container">
-            <div className="dts-module">
-              <div className="dtsm-img"></div>
-              <div className="dtsm-right-column">
-                <div className="dtsm-tas-container">
-                  <div className="dtsm-tas-header">All categories</div>
+            <div className="dts-container">
+              <div className="dts-module">
+                <div className="dtsm-img"></div>
+                <div className="dtsm-right-column">
+                  <div className="dtsm-tas-container">
+                    <div className="dtsm-tas-header">All categories</div>
+                  </div>
+                  <div className="dtsm-dollars">$</div>
                 </div>
-                <div className="dtsm-dollars">$</div>
               </div>
             </div>
-          </div>
 
-          <div class="side-dts__date"></div>
+            <div class="side-dts__date"></div>
 
-        </section>
+          </section>
 
       </Link>
     </>

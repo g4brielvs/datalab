@@ -11,7 +11,7 @@ const FeaturedAnalysesTile = (props) => {
             ga-on="click" ga-event-category="Data Lab Home Page"
             ga-event-action={"Clicked " + props.heading}>
 
-          <div className="featured">
+          <section className="featured">
             <h1 className="featured__heading--mobile">
               {props.heading}
             </h1>
@@ -31,7 +31,7 @@ const FeaturedAnalysesTile = (props) => {
                 {props.mobileBody}
               </p>
             </div>
-          </div>
+          </section>
       </Link>
     </>
   )

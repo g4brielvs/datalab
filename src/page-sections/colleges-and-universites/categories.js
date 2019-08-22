@@ -1,5 +1,5 @@
 import React from "react"
-import "../../styles/index.scss"
+import "../../index.scss"
 
 /* components */
 import Accordion from "../../components/accordion/accordion"

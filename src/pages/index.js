@@ -5,15 +5,15 @@ import SEO from "../components/seo"
 import FeaturedAnalysesTile from "../page-sections/home/featured-analyses-tile/featured-analyses-tile"
 import SecondaryAnalysesTile from "../page-sections/home/secondary-analyses-tile/secondary-analyses-tile"
 import DtsTile from "../page-sections/home/dts-tile/dts-tile"
-import MoreAnalysesLanding from "../page-sections/home/more-analyses-landing/more-analyses-landing"
+import MoreAnalysesRow from "../page-sections/home/more-analyses-row/more-analyses-row"
 import FeaturedAnalysesRow from "../page-sections/home/featured-analyses-row/featured-analyses-row"
-import Resources from "../page-sections/home/resources/resources"
+import ResourcesRow from "../page-sections/home/resources-row/resources-row"
 
 import main from "../images/home/collegehomepage.svg"
 import contractExplorer from "../images/home/contract-explorer.svg"
 import contractSpending from "../images/home/c-o-t.png"
 
-import "../styles/index.scss"
+import "../index.scss"
 import "./index.scss"
 
 const IndexPage = () => (
@@ -72,7 +72,7 @@ const IndexPage = () => (
 
       <div className="row margin-bottom">
         <div className="col-xs-12">
-          <MoreAnalysesLanding/>
+          <MoreAnalysesRow/>
         </div>
       </div>
 
@@ -94,7 +94,7 @@ const IndexPage = () => (
 
       <div className="row margin-bottom">
         <div className="col-xs-12">
-          <Resources/>
+          <ResourcesRow/>
         </div>
       </div>
 

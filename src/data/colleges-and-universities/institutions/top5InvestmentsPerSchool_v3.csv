@@ -504,7 +504,7 @@
 "California University of Pennsylvania","Childcare and Welfare",194733
 "Calvin College","Education",1173277
 "Calvin College","Medical R&D",281080
-"Calvin College","Water Resources",210000
+"Calvin College","Water ResourcesRow",210000
 "Cambridge College","Education",449395
 "Camden County College","LEASE & RENTAL OF BUILDINGS",5900
 "Cameron University","Education",1151899.45
@@ -1896,7 +1896,7 @@
 "Lake Region State College","Education",272488
 "Lake Superior College","Education",672874
 "Lake Superior College","EDUCATION & TRAINING SERVICES",80060
-"Lake Superior State University","Water Resources",67509
+"Lake Superior State University","Water ResourcesRow",67509
 "Lake Superior State University","Environmental R&D",36918
 "Lake Tahoe Community College","Education",515663
 "Lake Washington Institute of Technology","Education",496252
@@ -2612,7 +2612,7 @@
 "Northern Virginia Community College","EDUCATION & TRAINING SERVICES",33585
 "Northern Virginia Community College","PROFESSIONAL SERVICES",7266.37
 "Northland College","Science, Engineering, and Mathematics",167431.79
-"Northland College","Water Resources",68046.26
+"Northland College","Water ResourcesRow",68046.26
 "Northland Pioneer College","Education",518015
 "Northshore Technical Community College","Occupational Safety",111267.56
 "NorthShore University HealthSystem School of Nurse Anesthesia","Medical R&D",5915026
@@ -3076,7 +3076,7 @@
 "Saint Cloud State University","Employment Programs",399202
 "Saint Cloud State University","Education",282955
 "Saint Cloud State University","Childcare and Welfare",156898
-"Saint Cloud State University","Water Resources",153586
+"Saint Cloud State University","Water ResourcesRow",153586
 "Saint Cloud State University","TECHNICAL REPRESENTATIVE SERVICES",5805
 "Saint Edward's University","Education",1499950
 "Saint Edward's University","Refugee and Entrant Assistance",425000
@@ -3586,7 +3586,7 @@
 "SUNY College of Environmental Science and Forestry","Science, Engineering, and Mathematics",1148852.35
 "SUNY College of Environmental Science and Forestry","Research Support Programs",500000
 "SUNY College of Environmental Science and Forestry","Medical R&D",391930
-"SUNY College of Environmental Science and Forestry","Water Resources",206580.34
+"SUNY College of Environmental Science and Forestry","Water ResourcesRow",206580.34
 "SUNY College of Environmental Science and Forestry","Environment",138499.21
 "SUNY College of Optometry","Medical R&D",1718974
 "SUNY College of Optometry","Business",179026.13
@@ -4710,7 +4710,7 @@
 "University of Tulsa","Energy Programs",1052417.35
 "University of Tulsa","Defense R&D",234668
 "University of Tulsa","IT & TELECOMMUNICATIONS",150000
-"University of Tulsa","Water Resources",144396
+"University of Tulsa","Water ResourcesRow",144396
 "University of Utah","Medical R&D",168893749
 "University of Utah","Science, Engineering, and Mathematics",47747953.7
 "University of Utah","Energy Programs",19419565.05
@@ -4744,7 +4744,7 @@
 "University of Wisconsin-Eau Claire","Research Support Programs",254736
 "University of Wisconsin-Eau Claire","Childcare and Welfare",152314
 "University of Wisconsin-Green Bay","Education",773294
-"University of Wisconsin-Green Bay","Water Resources",75000
+"University of Wisconsin-Green Bay","Water ResourcesRow",75000
 "University of Wisconsin-La Crosse","Education",2322567
 "University of Wisconsin-La Crosse","Research Support Programs",489958
 "University of Wisconsin-La Crosse","Historic Sites",393894

@@ -30,11 +30,11 @@
 "Administration of Justice","Advisory, R&D, Medical, and Other Contracts",4590341112.37
 "International Affairs","Grants, Subsidies, and Contributions",4158471103.52
 "Regional Development, Commerce, and Housing","Advisory, R&D, Medical, and Other Contracts",3517707379.27
-"Natural Resources and Environment","Personnel Compensation and Benefits",3413264944.28
+"Natural ResourcesRow and Environment","Personnel Compensation and Benefits",3413264944.28
 "Transportation","Other",3352216971.2
 "Veterans Benefits and Services","Printing and Supplies",3334254613.84
 "Regional Development, Commerce, and Housing","Personnel Compensation and Benefits",3033330582.73
-"Natural Resources and Environment","Advisory, R&D, Medical, and Other Contracts",2451509054.82
+"Natural ResourcesRow and Environment","Advisory, R&D, Medical, and Other Contracts",2451509054.82
 "National Defense","Personnel Compensation and Benefits",2440054807.61
 "National Defense","Grants, Subsidies, and Contributions",2330840631.1
 "Agriculture","Insurance Claims and Indemnities",2264342797.82
@@ -60,7 +60,7 @@
 "Agriculture","Personnel Compensation and Benefits",881399061.76
 "General Government","Acquisition of Assets",772965352.16
 "Transportation","Printing and Supplies",753995536.6
-"Natural Resources and Environment","Grants, Subsidies, and Contributions",705941422.28
+"Natural ResourcesRow and Environment","Grants, Subsidies, and Contributions",705941422.28
 "Education, Training, Employment, and Social Services","Advisory, R&D, Medical, and Other Contracts",672988616.02
 "Net Interest","Grants, Subsidies, and Contributions",662323300.93
 "General Government","Printing and Supplies",594575749.78
@@ -84,7 +84,7 @@
 "National Defense","Insurance Claims and Indemnities",343725446.28
 "Regional Development, Commerce, and Housing","Rent, Communications, and Utilities",318477509.2
 "Transportation","Rent, Communications, and Utilities",313229816.45
-"Natural Resources and Environment","Rent, Communications, and Utilities",305377969.46
+"Natural ResourcesRow and Environment","Rent, Communications, and Utilities",305377969.46
 "International Affairs","Travel and Transportation",277590367.05
 "Administration of Justice","Travel and Transportation",273017484.23
 "Social Security","Rent, Communications, and Utilities",261615183.07
@@ -94,12 +94,12 @@
 "Transportation","Travel and Transportation",179689735.09
 "Health","Rent, Communications, and Utilities",161198166
 "International Affairs","Printing and Supplies",147817035.62
-"Natural Resources and Environment","Acquisition of Assets",134304670.55
+"Natural ResourcesRow and Environment","Acquisition of Assets",134304670.55
 "Administration of Justice","Other",126012961.87
 "Agriculture","Rent, Communications, and Utilities",125150346.66
 "Administration of Justice","Acquisition of Assets",124969443.04
-"Natural Resources and Environment","Printing and Supplies",123003114.14
-"Natural Resources and Environment","Travel and Transportation",118886182.61
+"Natural ResourcesRow and Environment","Printing and Supplies",123003114.14
+"Natural ResourcesRow and Environment","Travel and Transportation",118886182.61
 "National Defense","Printing and Supplies",118373546.96
 "International Affairs","Other",117329557.19
 "Regional Development, Commerce, and Housing","Printing and Supplies",114142900.92
@@ -115,7 +115,7 @@
 "Income Security","Interest and Dividends",42627126.65
 "Income Security","Acquisition of Assets",39077113.52
 "Agriculture","Travel and Transportation",36352171.63
-"Natural Resources and Environment","Other",34767431.42
+"Natural ResourcesRow and Environment","Other",34767431.42
 "Social Security","Acquisition of Assets",29394219.88
 "Social Security","Printing and Supplies",28059120.1
 "Medicare","Personnel Compensation and Benefits",25461373.26
@@ -127,7 +127,7 @@
 "Social Security","Travel and Transportation",10929744.13
 "General Government","Other",10432756.39
 "Education, Training, Employment, and Social Services","Travel and Transportation",10009894.86
-"Natural Resources and Environment","Insurance Claims and Indemnities",6141954.82
+"Natural ResourcesRow and Environment","Insurance Claims and Indemnities",6141954.82
 "Income Security","Travel and Transportation",6095882.02
 "Transportation","Refunds",5423502.03
 "Transportation","Insurance Claims and Indemnities",3260143.44
@@ -136,7 +136,7 @@
 "Regional Development, Commerce, and Housing","Refunds",1491091.18
 "Education, Training, Employment, and Social Services","Insurance Claims and Indemnities",1470048.76
 "International Affairs","Insurance Claims and Indemnities",1157385.86
-"Natural Resources and Environment","Interest and Dividends",1074227.84
+"Natural ResourcesRow and Environment","Interest and Dividends",1074227.84
 "Energy, Science, Space, and Technology","Insurance Claims and Indemnities",723471.49
 "Health","Refunds",663366.35
 "Education, Training, Employment, and Social Services","Other",324889.34
@@ -157,7 +157,7 @@
 "Veterans Benefits and Services","Interest and Dividends",133.14
 "Agriculture","Refunds",-1201.17
 "National Defense","Other",-33618.63
-"Natural Resources and Environment","Refunds",-921341.23
+"Natural ResourcesRow and Environment","Refunds",-921341.23
 "Education, Training, Employment, and Social Services","Acquisition of Assets",-1885167.87
 "Agriculture","Other",-4291775
 "Veterans Benefits and Services","Other",-83145759.67

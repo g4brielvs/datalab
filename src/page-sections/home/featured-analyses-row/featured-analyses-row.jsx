@@ -6,7 +6,7 @@ import homelessImg from "../../../images/home/homelessness.png"
 const FeaturedAnalysesRow = (props) => {
   return (
     <>
-      <div className="feature-row">
+      <section className="feature-row">
         <Link to={props.href}
            ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action= {"Clicked " + props.heading} >
             <div className="row feature-row__border">
@@ -26,7 +26,7 @@ const FeaturedAnalysesRow = (props) => {
               </div>
           </div>
         </Link>
-      </div>
+      </section>
     </>
   )
 }

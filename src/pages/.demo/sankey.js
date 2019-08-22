@@ -59,7 +59,7 @@ class Sankey extends Component {
     name: "Regional Development, Commerce, and Housing",
     color: "#00b5db"
   }, {
-    name: "Natural Resources and Environment",
+    name: "Natural ResourcesRow and Environment",
     color: "#aae1f4"
   }, {
     name: "Administration of Justice",

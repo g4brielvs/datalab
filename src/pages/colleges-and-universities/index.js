@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import SEO from "../../components/seo"
 
 import Story from "../../components/layouts/story/story"
-import "../../styles/index.scss"
+import "../../index.scss"
 
 /* components */
 import Header from "../../components/header/header"

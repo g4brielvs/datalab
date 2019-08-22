@@ -103,7 +103,7 @@
 "OTHER R&D","R&D-OTHER R & D-B RES","Department of Defense","Department of the Army","University of California-Santa Barbara",7711261.36
 "PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Department of Health and Human Services","Substance Abuse and Mental Health Services Administration","University of Maryland, Baltimore",7675625
 "MEDICAL R&D","R&D- MEDICAL: OTHER (ADVANCED DEVELOPMENT)","Department of Defense","Defense Health Agency","University of Central Florida",7657866
-"MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- HEMATOLOGY","Department of Health and Human Services","Health Resources and Services Administration","The University of Texas MD Anderson Cancer Center",7653828
+"MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- HEMATOLOGY","Department of Health and Human Services","Health ResourcesRow and Services Administration","The University of Texas MD Anderson Cancer Center",7653828
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","Northwestern University",7639240.75
 "SPACE VEHICLES","SPACE VEHICLE COMPONENTS","National Aeronautics and Space Administration","National Aeronautics and Space Administration","University of California-Berkeley",7490797
 "DEFENSE SYSTEMS R&D","DEFENSE SHIPS (BASIC)","Department of Defense","Department of the Navy","University of California-San Diego",7405166
@@ -172,7 +172,7 @@
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","University of Southern California",4658274.08
 "DEFENSE (OTHER) R&D","OTHER DEFENSE (BASIC)","Department of Defense","Defense Advanced Research Projects Agency","Massachusetts Institute of Technology",4599609
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","University of Notre Dame",4572834
-"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- DATA (OTHER THAN SCIENTIFIC)","Department of Health and Human Services","Health Resources and Services Administration","Medical College of Wisconsin",4393230
+"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- DATA (OTHER THAN SCIENTIFIC)","Department of Health and Human Services","Health ResourcesRow and Services Administration","Medical College of Wisconsin",4393230
 "GEN. SCIENCE & TECHNOLOGY R&D","R&D- GENERAL SCIENCE/TECHNOLOGY: OTHER (MANAGEMENT/SUPPORT)","Agency for International Development","Agency for International Development","University of Chicago",4379697.25
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Defense","Defense Threat Reduction Agency","University of Alaska Fairbanks",4370868
 "EDUCATION & TRAINING SERVICES","TRAINING/CURRICULUM DEVELOPMENT","Social Security Administration","Social Security Administration","Virginia Commonwealth University",4327583
@@ -231,7 +231,7 @@
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","Vanderbilt University",3350720.96
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ORGANIZATION/ADMINISTRATIVE/PERSONNEL","Department of Homeland Security","National Protection and Programs Directorate","Pardee RAND Graduate School",3335595.49
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- SURGERY","Department of Veterans Affairs","Department of Veterans Affairs","University of Washington",3329248.4
-"MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- HEMATOLOGY","Department of Health and Human Services","Health Resources and Services Administration","Duke University",3307700
+"MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- HEMATOLOGY","Department of Health and Human Services","Health ResourcesRow and Services Administration","Duke University",3307700
 "DEFENSE SYSTEMS R&D","R&D- DEFENSE SYSTEM: MISSILE/SPACE SYSTEMS (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","Department of the Air Force","University of New Mexico-Main Campus",3284300
 "GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Centers for Disease Control and Prevention","Elmezzi Graduate School of Molecular Medicine",3276357
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- THORACIC","Department of Veterans Affairs","Department of Veterans Affairs","University of Minnesota-Twin Cities",3229605.5
@@ -240,7 +240,7 @@
 "GEN. SCIENCE & TECHNOLOGY R&D","R&D-PHYSICAL SCIENCE-A RES/EXPL DEV","Department of Defense","Department of the Navy","Utah State University",3211900
 "MEDICAL R&D","HEALTH SERVICES (BASIC)","Department of Health and Human Services","Food and Drug Administration","University of North Carolina at Chapel Hill",3205422
 "MEDICAL R&D","AIDS RESEARCH (BASIC)","Department of Health and Human Services","National Institutes of Health","Rush University",3203019.02
-"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- DATA (OTHER THAN SCIENTIFIC)","Department of Health and Human Services","Health Resources and Services Administration","University of Chicago",3195648.85
+"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- DATA (OTHER THAN SCIENTIFIC)","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Chicago",3195648.85
 "DEFENSE (OTHER) R&D","R&D- DEFENSE OTHER: OTHER (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","Defense Advanced Research Projects Agency","Wake Forest University",3152915
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (BASIC RESEARCH)","Department of Health and Human Services","National Institutes of Health","University of Maryland, Baltimore",3146928
 "SPACE R&D","R&D-SPACE SCIENCE & APPL-B RES","National Aeronautics and Space Administration","National Aeronautics and Space Administration","Hampton University",3139600
@@ -357,7 +357,7 @@
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","Massachusetts Institute of Technology",2048118
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","University of Illinois at Chicago",2046379
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","Edward Via College of Osteopathic Medicine",2039201
-"PROFESSIONAL SERVICES","PERSONAL CARE SERVICES","Department of Health and Human Services","Health Resources and Services Administration","University of Chicago",2021004
+"PROFESSIONAL SERVICES","PERSONAL CARE SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Chicago",2021004
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","Louisiana State University",2019895
 "ADMINISTRATIVE SUPPORT SERVICES","OTHER ADMINISTRATIVE SUPPORT SVCS","Department of Health and Human Services","Office of the Assistant Secretary for Administration","University of Chicago",2019662.38
 "MEDICAL R&D","R&D- MEDICAL: AIDS RESEARCH (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","University of California-San Francisco",2018293
@@ -420,7 +420,7 @@
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (BASIC RESEARCH)","Department of Health and Human Services","National Institutes of Health","Oregon Health & Science University",1668139
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Department of Defense","Department of the Navy","Tidewater Community College",1667025.5
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ORGANIZATION/ADMINISTRATIVE/PERSONNEL","Department of Homeland Security","U.S. Coast Guard","Pardee RAND Graduate School",1657536.08
-"PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Department of Health and Human Services","Health Resources and Services Administration","Georgia State University",1652569.6
+"PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","Georgia State University",1652569.6
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Defense","Department of the Air Force","University of Dayton",1647469.15
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM MANAGEMENT/SUPPORT","Department of Health and Human Services","Centers for Disease Control and Prevention","University of Chicago",1641957
 "GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Centers for Disease Control and Prevention","Emory University-Oxford College",1638829.36
@@ -499,7 +499,7 @@
 "SPACE R&D","R&D- SPACE: AERONAUTICS/SPACE TECHNOLOGY (BASIC RESEARCH)","National Aeronautics and Space Administration","National Aeronautics and Space Administration","University of Iowa",1379973
 "EDUCATION & TRAINING SERVICES","LECTURES FOR TRAINING","Department of the Interior","Bureau of Indian Affairs and Bureau of Indian Education","University of New Mexico-Main Campus",1379210.28
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","Centers for Disease Control and Prevention","Case Western Reserve University",1375615
-"SPECIAL STUDIES - NOT R&D","MEDICAL AND HEALTH STUDIES","Department of Health and Human Services","Health Resources and Services Administration","Duke University",1368513.4
+"SPECIAL STUDIES - NOT R&D","MEDICAL AND HEALTH STUDIES","Department of Health and Human Services","Health ResourcesRow and Services Administration","Duke University",1368513.4
 "DEFENSE (OTHER) R&D","R&D- DEFENSE OTHER: OTHER (ADVANCED DEVELOPMENT)","Department of Defense","Department of the Navy","Pennsylvania State University",1356310
 "DEFENSE (OTHER) R&D","R&D- DEFENSE OTHER: OTHER (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","Department of the Navy","Georgia Institute of Technology-Main Campus",1351680
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (BASIC RESEARCH)","Department of Health and Human Services","National Institutes of Health","Vanderbilt University",1349999.99
@@ -1094,7 +1094,7 @@
 "TRANSPORTATION (MODAL) R&D","R&D- MODAL TRANSPORTATION: SURFACE MOTOR VEHICLES (BASIC RESEARCH)","Department of Transportation","National Highway Traffic Safety Administration","George Mason University",371976
 "ECONOMIC GROWTH & PRODUCTIVITY R&D","R&D-MANUFACTURING TECH-COMERCLIZ","Department of Defense","Department of the Navy","Pennsylvania State University",371051
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: VETERINARY/ANIMAL CARE","Department of Agriculture","Animal and Plant Health Inspection Service","Washington State University",371012.5
-"PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM EVALUATION/REVIEW/DEVELOPMENT","Department of Health and Human Services","Health Resources and Services Administration","University of California-Los Angeles",369105.46
+"PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM EVALUATION/REVIEW/DEVELOPMENT","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of California-Los Angeles",369105.46
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (BASIC RESEARCH)","Department of Health and Human Services","Centers for Disease Control and Prevention","University of Michigan-Ann Arbor",368548
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Department of Veterans Affairs","Department of Veterans Affairs","University of Central Florida",368311
 "PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Nuclear Regulatory Commission","Nuclear Regulatory Commission","University of Michigan-Ann Arbor",367437.6
@@ -1697,7 +1697,7 @@
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Department of Defense","Defense Contract Audit Agency","University of Virginia",140744.39
 "ARCHITECTURAL & ENGINEERING SERVICES - CONSTRUCTION","ARCHITECT AND ENGINEERING- CONSTRUCTION: PARKING FACILITIES","Department of Transportation","Federal Highway Administration","Montana State University",140715.02
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- PODIATRY","Department of Veterans Affairs","Department of Veterans Affairs","University of Connecticut",140707.81
-"PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM EVALUATION/REVIEW/DEVELOPMENT","Department of Health and Human Services","Health Resources and Services Administration","University of Chicago",140516
+"PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM EVALUATION/REVIEW/DEVELOPMENT","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Chicago",140516
 "OTHER R&D","R&D-OTHER R & D-MGMT SUP","Department of Health and Human Services","Centers for Disease Control and Prevention","University of Michigan-Ann Arbor",140230
 "EDUCATION & TRAINING SERVICES","OTHER ED & TRNG SVCS","Department of Veterans Affairs","Department of Veterans Affairs","Case Western Reserve University",140177
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Department of Homeland Security","U.S. Secret Service","George Washington University",140016.8
@@ -1800,7 +1800,7 @@
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Nuclear Regulatory Commission","Nuclear Regulatory Commission","Cornell University",123000
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF PARKING FACILITIES","Department of Justice","Offices, Boards and Divisions","University of California-Hastings College of Law",122990.4
 "EDUCATION R & D","R&D- EDUCATION: EDUCATIONAL (BASIC RESEARCH)","National Aeronautics and Space Administration","National Aeronautics and Space Administration","University of Florida",122736
-"SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Health and Human Services","Health Resources and Services Administration","Louisiana State University",122478
+"SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Health and Human Services","Health ResourcesRow and Services Administration","Louisiana State University",122478
 "IT & TELECOMMUNICATIONS","IT AND TELECOM- INTEGRATED HARDWARE/SOFTWARE/SERVICES SOLUTIONS, PREDOMINANTLY SERVICES","Department of Commerce","National Oceanic and Atmospheric Administration","University of Hawaii at Manoa",122094.72
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","University of Central Florida",122088.72
 "OTHER R&D","R&D- OTHER RESEARCH AND DEVELOPMENT (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","Department of the Army","Southern Methodist University",121735
@@ -1839,7 +1839,7 @@
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","University of Cincinnati",112976.31
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Veterans Affairs","Department of Veterans Affairs","Indiana University-Bloomington",112876
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","National Institutes of Health","University of Vermont",112607
-"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health Resources and Services Administration","University of Illinois at Chicago",112527.61
+"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Illinois at Chicago",112527.61
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- SCIENTIFIC DATA","Environmental Protection Agency","Environmental Protection Agency","University of Wisconsin-Madison",112002
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","Western Michigan University",112000
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Defense","Department of the Navy","University of California-San Diego",112000
@@ -2157,7 +2157,7 @@
 "TRAVEL, LODGING, & RECRUITMENT SERVICES","TRANSPORTATION/TRAVEL/RELOCATION- TRAVEL/LODGING/RECRUITMENT: LODGING, HOTEL/MOTEL","Department of Defense","Department of the Army","Wake Forest University",72262.6
 "MEDICAL R&D","R&D-HEALTH SVCS-A RES/EXPL DEV","Department of Veterans Affairs","Department of Veterans Affairs","University of Cincinnati",72000
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- OPHTHALMOLOGY","Department of Health and Human Services","Indian Health Service","University of Oklahoma-Health Sciences Center",72000
-"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health Resources and Services Administration","Emory University-Oxford College",71932.08
+"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","Emory University-Oxford College",71932.08
 "GEN. SCIENCE & TECHNOLOGY R&D","R&D- GENERAL SCIENCE/TECHNOLOGY: LIFE SCIENCES (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Veterans Affairs","Department of Veterans Affairs","Washington University in St Louis",71736
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM MANAGEMENT/SUPPORT","Department of Transportation","Immediate Office of the Secretary of Transportation","Massachusetts Institute of Technology",71715.28
 "IT & TELECOMMUNICATIONS","AUTO NEWS, DATA & OTHER SVCS","Securities and Exchange Commission","Securities and Exchange Commission","University of Pennsylvania",71635
@@ -2208,7 +2208,7 @@
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- RADIOLOGY","Department of Health and Human Services","Indian Health Service","Oklahoma State University",66157.75
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- RADIOLOGY","Department of Veterans Affairs","Department of Veterans Affairs","University of Florida",65936.5
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of Agriculture","Agricultural Research Service","University of Delaware",65860
-"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health Resources and Services Administration","University of Puerto Rico-Medical Sciences",65850.01
+"GENERAL HEALTH CARE SERVICES","GENERAL HEALTH CARE SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Puerto Rico-Medical Sciences",65850.01
 "MEDICAL, DENTAL, VETERINARY EQUIPMENT","MEDICAL AND SURGICAL INSTRUMENTS, EQUIPMENT, AND SUPPLIES","Department of Veterans Affairs","Department of Veterans Affairs","Lester E Cox Medical Center-School of Medical Technology",65822.49
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Veterans Affairs","Department of Veterans Affairs","University of Wisconsin-Madison",65817.96
 "MEDICAL R&D","R&D- MEDICAL: SPECIALIZED MEDICAL SERVICES (BASIC RESEARCH)","Department of Veterans Affairs","Department of Veterans Affairs","Oregon Health & Science University",65763
@@ -2665,7 +2665,7 @@
 "EDUCATION & TRAINING SERVICES","OTHER ED & TRNG SVCS","Department of Justice","Federal Bureau of Investigation","George Washington University",34300
 "LABORATORY TESTING SERVICES","MEDICAL- LABORATORY TESTING","Department of Health and Human Services","National Institutes of Health","University of Nebraska-Lincoln",34208
 "PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Department of Defense","U.S. Army Corps of Engineers - Civil Program Financing Only","University of Rhode Island",34154.75
-"EDUCATION & TRAINING SERVICES","INFORMATION TRAINING","Department of Agriculture","Natural Resources Conservation Service","University of Nebraska-Lincoln",34080
+"EDUCATION & TRAINING SERVICES","INFORMATION TRAINING","Department of Agriculture","Natural ResourcesRow Conservation Service","University of Nebraska-Lincoln",34080
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: VETERINARY/ANIMAL CARE","Department of Veterans Affairs","Department of Veterans Affairs","University of Louisville",34062.64
 "OTHER R&D","R&D-OTHER R & D-B RES","Department of Veterans Affairs","Department of Veterans Affairs","Medical College of Wisconsin",34016.05
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Health and Human Services","National Institutes of Health","Brown University",34000
@@ -2858,9 +2858,9 @@
 "MAINTENANCE & REPAIR OF EQUIPMENT","MAINT-REP OF SHIP & MARINE EQ","Department of Transportation","Maritime Administration","SUNY Maritime College",25000
 "MATERIALS HANDLING EQUIPMENT","MAT HANDLING EQ - NONSELF-PROPELLED","Department of Defense","Department of the Army","Worcester Polytechnic Institute",25000
 "MEDICAL, DENTAL, VETERINARY EQUIPMENT","DRUGS AND BIOLOGICALS","Department of Health and Human Services","National Institutes of Health","Baylor College of Medicine",25000
-"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural Resources Conservation Service","The University of Montana",25000
+"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural ResourcesRow Conservation Service","The University of Montana",25000
 "ORES, MINERALS, & PRIMARY PRODUCTS","ADDITIVE METAL MATERIALS","Department of Defense","Department of the Army","Worcester Polytechnic Institute",25000
-"PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING","AERIAL PHOTOGRAPHIC SERVICES","Department of Agriculture","Natural Resources Conservation Service","University of Alaska Fairbanks",25000
+"PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING","AERIAL PHOTOGRAPHIC SERVICES","Department of Agriculture","Natural ResourcesRow Conservation Service","University of Alaska Fairbanks",25000
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Agriculture","Forest Service","University of Georgia",25000
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Veterans Affairs","Department of Veterans Affairs","University of Colorado Denver/Anschutz Medical Campus",25000
 "SHIP & MARINE EQUIPMENT","MISC SHIP & MARINE EQ","Department of Transportation","Maritime Administration","Maine Maritime Academy",25000
@@ -3029,13 +3029,13 @@
 "HOUSEKEEPING SERVICES","WAREHOUSING AND STORAGE SERVICES","Department of Defense","Department of the Army","University of Georgia",20300
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Health and Human Services","National Institutes of Health","University of Massachusetts-Lowell",20281
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- SECURITY","Department of Veterans Affairs","Department of Veterans Affairs","St Petersburg College",20278.89
-"LIVE ANIMALS","LIVE ANIMALS, NOT RAISED FOR FOOD","Department of Health and Human Services","Health Resources and Services Administration","University of the Ozarks",20260
+"LIVE ANIMALS","LIVE ANIMALS, NOT RAISED FOR FOOD","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of the Ozarks",20260
 "OTHER R&D","R&D- OTHER RESEARCH AND DEVELOPMENT (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","Department of the Army","University of Puerto Rico-Mayaguez",20250.01
 "IT & TELECOMMUNICATIONS","IT AND TELECOM- INTEGRATED HARDWARE/SOFTWARE/SERVICES SOLUTIONS, PREDOMINANTLY SERVICES","Department of Commerce","National Institute of Standards and Technology","The University of Tennessee-Knoxville",20248
 "MEDICAL R&D","R&D- MEDICAL: MENTAL HEALTH (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Veterans Affairs","Department of Veterans Affairs","University of California-Los Angeles",20154
 "OTHER R&D","R&D- OTHER RESEARCH AND DEVELOPMENT (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Defense","U.S. Army Corps of Engineers - Civil Program Financing Only","Alcorn State University",20149.05
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- SCIENTIFIC DATA","Department of Agriculture","Agricultural Research Service","University of Florida",20144.38
-"EDUCATION & TRAINING SERVICES","TRAINING/CURRICULUM DEVELOPMENT","Department of Agriculture","Natural Resources Conservation Service","Elizabethtown College",20104
+"EDUCATION & TRAINING SERVICES","TRAINING/CURRICULUM DEVELOPMENT","Department of Agriculture","Natural ResourcesRow Conservation Service","Elizabethtown College",20104
 "BOOKS, MAPS, & OTHER PUBLICATIONS","BOOKS AND PAMPHLETS","Department of Health and Human Services","Indian Health Service","University of Arizona",20085
 "ENVIRONMENTAL PROTECTION R&D","R&D-WATER POLLUTION-A RES/EXPL DEV","Department of Defense","Department of the Army","San Diego State University",20080.75
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ENDANGERED SPECIES: PLANT/ANIMAL","Department of the Interior","Bureau of Land Management","Humboldt State University",20024
@@ -3140,7 +3140,7 @@
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF OTHER NON-BUILDING FACILITIES","Department of Justice","Drug Enforcement Administration","Florida Gulf Coast University",17892
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Department of Veterans Affairs","Department of Veterans Affairs","University of Colorado Denver/Anschutz Medical Campus",17696
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- GENERAL","Peace Corps","Peace Corps","Portland State University",17684.91
-"IT & TELECOMMUNICATIONS","OTHER ADP & TELECOMMUNICATIONS SVCS","Department of Health and Human Services","Health Resources and Services Administration","Louisiana State University",17676
+"IT & TELECOMMUNICATIONS","OTHER ADP & TELECOMMUNICATIONS SVCS","Department of Health and Human Services","Health ResourcesRow and Services Administration","Louisiana State University",17676
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF CONFERENCE SPACE AND FACILITIES","Department of Defense","Department of the Navy","George Mason University",17576
 "MEDICAL R&D","R&D- MEDICAL: HEALTH SERVICES (MANAGEMENT/SUPPORT)","Department of Veterans Affairs","Department of Veterans Affairs","University of Washington",17511.2
 "PROFESSIONAL SERVICES","PROF SVCS/TECH SHARING-UTIL","National Aeronautics and Space Administration","National Aeronautics and Space Administration","Cleveland Clinic Health System-School of Diagnostic Imaging",17500
@@ -3519,12 +3519,12 @@
 "ARCHITECTURAL & ENGINEERING SERVICES - GENERAL","ARCHITECT AND ENGINEERING- GENERAL: LANDSCAPING, INTERIOR LAYOUT, AND DESIGNING","Department of Defense","Department of the Air Force","University of Colorado Colorado Springs",9500
 "PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING","AERIAL PHOTOGRAPHIC SERVICES","Department of the Interior","National Park Service","University of Virginia",9500
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Health and Human Services","National Institutes of Health","Howard University",9500
-"SPECIAL STUDIES - NOT R&D","STUDY/CHEMICAL-BIOLOGICAL","Department of Health and Human Services","Health Resources and Services Administration","Louisiana State University",9500
+"SPECIAL STUDIES - NOT R&D","STUDY/CHEMICAL-BIOLOGICAL","Department of Health and Human Services","Health ResourcesRow and Services Administration","Louisiana State University",9500
 "INSTRUMENTS & LABORATORY EQUIPMENT","OPTICAL INSTRUMENTS","Department of Defense","Department of the Navy","Yale University",9490
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- SCIENTIFIC DATA","Department of Agriculture","Forest Service","University of Illinois at Urbana-Champaign",9476
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- CERTIFICATIONS/ACCREDITATIONS FOR EDUCATIONAL INSTITUTIONS","Department of Education","Department of Education","University of Virginia",9450
 "ENVIRONMENTAL SYSTEMS PROTECTION","ENVIRONMENTAL SYSTEMS PROTECTION- WATER QUALITY SUPPORT","Department of the Interior","U.S. Geological Survey","University of Arkansas at Monticello",9406
-"BOOKS, MAPS, & OTHER PUBLICATIONS","BOOKS AND PAMPHLETS","Department of Agriculture","Natural Resources Conservation Service","Purdue University-Main Campus",9386.2
+"BOOKS, MAPS, & OTHER PUBLICATIONS","BOOKS AND PAMPHLETS","Department of Agriculture","Natural ResourcesRow Conservation Service","Purdue University-Main Campus",9386.2
 "LEASE & RENTAL EQUIPMENT","LEASE OR RENTAL OF EQUIPMENT- COMMUNICATION, DETECTION, AND COHERENT RADIATION EQUIPMENT","Department of Homeland Security","U.S. Secret Service","American University",9379.08
 "OTHER R&D","R&D- OTHER RESEARCH AND DEVELOPMENT (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Veterans Affairs","Department of Veterans Affairs","Brown University",9373
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Health and Human Services","National Institutes of Health","University of Illinois at Chicago",9328
@@ -3731,7 +3731,7 @@
 "LABORATORY TESTING SERVICES","MEDICAL- LABORATORY TESTING","Department of Veterans Affairs","Department of Veterans Affairs","University of Texas Health Science Center at Tyler",6000
 "MAINTENANCE, REPAIRS, & ALTERATIONS OF BUILDINGS","MAINTENANCE OF OFFICE BUILDINGS","Department of Agriculture","Forest Service","Montana State University",6000
 "MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (BASIC RESEARCH)","Department of Veterans Affairs","Department of Veterans Affairs","University of Oklahoma-Health Sciences Center",6000
-"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ENDANGERED SPECIES: PLANT/ANIMAL","Department of Agriculture","Natural Resources Conservation Service","Portland State University",6000
+"SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ENDANGERED SPECIES: PLANT/ANIMAL","Department of Agriculture","Natural ResourcesRow Conservation Service","Portland State University",6000
 "EDUCATION & TRAINING SERVICES","TRAINING/CURRICULUM DEVELOPMENT","Department of the Treasury","Departmental Offices","Georgetown University",5985
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF OTHER EDUCATIONAL BUILDINGS","Department of Defense","Department of the Army","Northern Virginia Community College",5952
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF CONFERENCE SPACE AND FACILITIES","Department of Defense","Department of the Navy","Camden County College",5900
@@ -3780,7 +3780,7 @@
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of the Interior","U.S. Fish and Wildlife Service","SUNY College at Brockport",5076
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- SCIENTIFIC DATA","Department of the Interior","U.S. Geological Survey","University of California-Santa Cruz",5056
 "ENVIRONMENTAL SYSTEMS PROTECTION","ENVIRONMENTAL SYSTEMS PROTECTION- WATER QUALITY SUPPORT","Department of the Interior","U.S. Geological Survey","Louisiana State University",5040
-"LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF MISCELLANEOUS BUILDINGS","Department of Agriculture","Natural Resources Conservation Service","Oklahoma State University",5000.04
+"LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF MISCELLANEOUS BUILDINGS","Department of Agriculture","Natural ResourcesRow Conservation Service","Oklahoma State University",5000.04
 "ADMINISTRATIVE SUPPORT SERVICES","OTHER ADMINISTRATIVE SUPPORT SVCS","Department of Transportation","National Highway Traffic Safety Administration","Ohio State University",5000
 "COMMUNCTATIONS AND RADAR EQUIPMENT","MISC COMMUNICATION EQ","Department of Health and Human Services","National Institutes of Health","Rockefeller University",5000
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- CERTIFICATIONS/ACCREDITATIONS FOR EDUCATIONAL INSTITUTIONS","Department of Homeland Security","Federal Emergency Management Agency","University of Alabama at Birmingham",5000
@@ -3803,7 +3803,7 @@
 "OTHER R&D","R&D-OTHER R & D-ENG DEV","Department of Agriculture","Agricultural Research Service","Arizona State University-Tempe",5000
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Justice","Federal Bureau of Investigation","Arizona State University-Tempe",5000
 "SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Agriculture","Agricultural Research Service","University of Massachusetts-Amherst",5000
-"SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Agriculture","Natural Resources Conservation Service","California State University-Stanislaus",5000
+"SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Stanislaus",5000
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of Agriculture","Forest Service","Western New Mexico University",5000
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of Commerce","National Oceanic and Atmospheric Administration","Cornell University",5000
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of the Interior","U.S. Geological Survey","University of California-Davis",5000
@@ -3981,7 +3981,7 @@
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF OTHER WAREHOUSE BUILDINGS","Department of Commerce","National Oceanic and Atmospheric Administration","University of Southern California",2525.46
 "LEASE & RENTAL OF BUILDINGS","LEASE/RENTAL OF CONFERENCE SPACE AND FACILITIES","Department of Defense","Department of the Navy","Pennsylvania State University",2510
 "HOUSEKEEPING SERVICES","HOUSEKEEPING- LANDSCAPING/GROUNDSKEEPING","Department of Agriculture","Forest Service","University of Minnesota-Twin Cities",2500
-"IT & TELECOMMUNICATIONS","AUTO NEWS, DATA & OTHER SVCS","Department of Agriculture","Natural Resources Conservation Service","University of Iowa",2500
+"IT & TELECOMMUNICATIONS","AUTO NEWS, DATA & OTHER SVCS","Department of Agriculture","Natural ResourcesRow Conservation Service","University of Iowa",2500
 "IT & TELECOMMUNICATIONS","IT AND TELECOM- INTEGRATED HARDWARE/SOFTWARE/SERVICES SOLUTIONS, PREDOMINANTLY SERVICES","Department of Homeland Security","Federal Emergency Management Agency","University of Iowa",2500
 "LABORATORY TESTING SERVICES","MEDICAL- LABORATORY TESTING","Department of Agriculture","Agricultural Research Service","Louisiana State University",2500
 "OTHER QUALITY, TEST, & INSPECTION SERVICES","OTHER QC/TEST/INSPECT- MISCELLANEOUS","Department of Defense","Department of the Navy","Alfred University",2500
@@ -4156,7 +4156,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "ENVIRONMENTAL PROTECTION R&D","R&D- ENVIRONMENTAL PROTECTION: OTHER (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Environmental Protection Agency","Environmental Protection Agency","University of California-Davis",-172
 "OTHER R&D","R&D-OTHER R & D-B RES","Access Board","Access Board","Massachusetts Institute of Technology",-176.83
 "SPECIAL STUDIES - NOT R&D","SPECIAL STUDIES/ANALYSIS- ANIMAL/FISHERIES","Department of Commerce","National Oceanic and Atmospheric Administration","University of California-Santa Barbara",-198.6
-"MEDICAL R&D","R&D- MEDICAL: DRUG DEPENDENCY (BASIC RESEARCH)","Department of Health and Human Services","Health Resources and Services Administration","Louisiana State University",-205.84
+"MEDICAL R&D","R&D- MEDICAL: DRUG DEPENDENCY (BASIC RESEARCH)","Department of Health and Human Services","Health ResourcesRow and Services Administration","Louisiana State University",-205.84
 "TRANSPORTATION (OTHER) R&D","R&D- OTHER TRANSPORTATION: HIGHWAYS, ROADS, AND BRIDGES (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Transportation","Federal Highway Administration","Oklahoma State University",-223.24
 "LEASE & RENTAL EQUIPMENT","LEASE-RENT OF INSTRUMENTS & LAB EQ","Department of Energy","Department of Energy","West Virginia University",-232
 "NON-NUCLEAR SHIP REPAIR","NON-NUCLEAR SHIP REPAIR (EAST)","Department of Defense","Department of the Navy","The University of Texas at Austin",-234.63
@@ -4222,7 +4222,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "TRANSPORTATION (OTHER) R&D","R&D-OTHER GENERAL TRANS-ENG DEV","Department of Transportation","Federal Highway Administration","Michigan State University",-914.41
 "MEDICAL, DENTAL, & SURGICAL SERVICES","PATHOLOGY SERVICES","Department of Veterans Affairs","Department of Veterans Affairs","Louisiana State University",-918
 "OTHER R&D","R&D-OTHER R & D-B RES","Department of Defense","Defense Advanced Research Projects Agency","University of California-Davis",-929.72
-"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural Resources Conservation Service","California State University-Sacramento",-973.95
+"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Sacramento",-973.95
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of the Treasury","Bureau of the Fiscal Service","University of Maryland-University College",-988.5
 "SPECIAL STUDIES - NOT R&D","WATER QUALITY STUDIES","Department of Agriculture","Forest Service","Oregon State University",-994
 "COMMUNITY SERVICE R&D","R&D- COMMUNITY SERVICE/DEVELOPMENT: OTHER (BASIC RESEARCH)","National Aeronautics and Space Administration","National Aeronautics and Space Administration","Texas A & M University-College Station",-1000
@@ -4237,7 +4237,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "MEDICAL R&D","MENTAL HEALTH (BASIC)","Department of Veterans Affairs","Department of Veterans Affairs","University of Connecticut",-1117.81
 "SPECIAL STUDIES - NOT R&D","OTHER SPECIAL STUDIES AND ANALYSES","Department of Defense","Department of the Army","Oregon State University",-1159.19
 "EDUCATION & TRAINING SERVICES","OTHER ED & TRNG SVCS","Department of Veterans Affairs","Department of Veterans Affairs","Sinclair Community College",-1166.49
-"MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","Health Resources and Services Administration","Louisiana State University",-1175.02
+"MEDICAL R&D","R&D- MEDICAL: BIOMEDICAL (APPLIED RESEARCH/EXPLORATORY DEVELOPMENT)","Department of Health and Human Services","Health ResourcesRow and Services Administration","Louisiana State University",-1175.02
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM EVALUATION/REVIEW/DEVELOPMENT","Department of Transportation","Maritime Administration","SUNY Maritime College",-1179.32
 "LABORATORY TESTING SERVICES","MEDICAL- LABORATORY TESTING","Department of Agriculture","Animal and Plant Health Inspection Service","Michigan State University",-1184
 "SPECIAL STUDIES - NOT R&D","WATER QUALITY STUDIES","Environmental Protection Agency","Environmental Protection Agency","University of Georgia",-1208.89
@@ -4339,7 +4339,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "MANAGEMENT SUPPORT SERVICES","SUPPORT- MANAGEMENT: PUBLIC RELATIONS","Department of the Interior","Bureau of Land Management","California State University-Sacramento",-3571.1
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Defense","Department of the Army","Boston University",-3629.15
 "TRANSPORTATION (OTHER) R&D","R&D-TRANS-ROADS-BRIDGES-B RES","Department of Transportation","Federal Highway Administration","University of North Carolina at Chapel Hill",-3637.37
-"SPECIAL STUDIES - NOT R&D","STUDY/ARCHEOLOGICAL-PALEONTOLOGICAL","Department of Agriculture","Natural Resources Conservation Service","California State University-Chico",-3686.99
+"SPECIAL STUDIES - NOT R&D","STUDY/ARCHEOLOGICAL-PALEONTOLOGICAL","Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Chico",-3686.99
 "EQUIPMENT & MATERIALS TESTING","EQUIPMENT AND MATERIALS TESTING- INSTRUMENTS AND LABORATORY EQUIPMENT","Department of Defense","Department of the Army","University of Virginia",-3750
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Health and Human Services","Centers for Disease Control and Prevention","Potomac State College of West Virginia University",-3750
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Health and Human Services","Centers for Disease Control and Prevention","West Virginia University Institute of Technology",-3750
@@ -4388,7 +4388,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "NATURAL RESOURCE CONSERVERVAT ION SERVICES","OTHER NAT RES MGMT & CONSERV","Department of Agriculture","Forest Service","University of Minnesota-Twin Cities",-6091
 "LABORATORY TESTING SERVICES","MEDICAL- LABORATORY TESTING","Department of Veterans Affairs","Department of Veterans Affairs","University of Rochester",-6102.68
 "MANAGEMENT SUPPORT SERVICES","OTHER MANAGEMENT SUPPORT SERVICES","Department of Education","Department of Education","Howard University",-6200
-"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural Resources Conservation Service","Dakota College at Bottineau",-6291.1
+"NATURAL RESOURCES - OTHER SERVICES","OTHER ENVIRONMENTAL SERVICES","Department of Agriculture","Natural ResourcesRow Conservation Service","Dakota College at Bottineau",-6291.1
 "TRANSPORTATION (OTHER) R&D","R&D-OTHER GENERAL TRANS-B RES","Department of Transportation","Federal Highway Administration","Virginia Polytechnic Institute and State University",-6367.32
 "DEFENSE (OTHER) R&D","SERVICES (BASIC)","Department of Defense","Department of the Army","Georgia Institute of Technology-Main Campus",-6607.91
 "DEFENSE SYSTEMS R&D","R&D-MISSILE & SPACE SYS-B RES","Department of Defense","Missile Defense Agency","The University of Tennessee-Knoxville",-6634.73
@@ -4523,7 +4523,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "COMMUNITY SERVICE R&D","R&D- COMMUNITY SERVICE/DEVELOPMENT: OTHER (BASIC RESEARCH)","Department of Veterans Affairs","Department of Veterans Affairs","Case Western Reserve University",-21402
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- VOCATIONAL/TECHNICAL","Department of Justice","Federal Prison System / Bureau of Prisons","Lamar State College-Port Arthur",-21408
 "OPERATE GOVERNMENT OWNED BUILDINGS","OPER OF GOVT R&D GOCO FACILITIES","National Aeronautics and Space Administration","National Aeronautics and Space Administration","Princeton University",-21409.81
-"MANAGEMENT SUPPORT SERVICES","DATA COLLECTION SERVICES","Department of Health and Human Services","Health Resources and Services Administration","Dartmouth College",-21943.49
+"MANAGEMENT SUPPORT SERVICES","DATA COLLECTION SERVICES","Department of Health and Human Services","Health ResourcesRow and Services Administration","Dartmouth College",-21943.49
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Peace Corps","Peace Corps","George Washington University",-22096.84
 "EDUCATION & TRAINING SERVICES","EDUCATION/TRAINING- TUITION/REGISTRATION/MEMBERSHIP FEES","Department of Defense","Department of the Navy","University of California-Riverside",-22686
 "MEDICAL, DENTAL, & SURGICAL SERVICES","MEDICAL- RADIOLOGY","Department of Defense","Department of the Army","University of Missouri-Columbia",-22953.12
@@ -4577,7 +4577,7 @@ NA,NA,"Department of Commerce","National Oceanic and Atmospheric Administration"
 "PROFESSIONAL SERVICES","OTHER PROFESSIONAL SERVICES","Department of Defense","Department of the Army","Kansas State University",-35000
 "PROFESSIONAL SERVICES","SUPPORT- PROFESSIONAL: PROGRAM MANAGEMENT/SUPPORT","Department of Transportation","Federal Aviation Administration","Stevens Institute of Technology",-36166.7
 "EDUCATION & TRAINING SERVICES","OTHER ED & TRNG SVCS","Department of Agriculture","Forest Service","Boise State University",-36318.35
-"PROFESSIONAL SERVICES","TECHNICAL ASSISTANCE","Department of Health and Human Services","Health Resources and Services Administration","University of Chicago",-37024.11
+"PROFESSIONAL SERVICES","TECHNICAL ASSISTANCE","Department of Health and Human Services","Health ResourcesRow and Services Administration","University of Chicago",-37024.11
 "DEFENSE SYSTEMS R&D","R&D-MISSILE & SPACE SYS-B RES","Department of Defense","Missile Defense Agency","Utah State University",-37350.37
 "PROFESSIONAL SERVICES","ENGINEERING AND TECHNICAL SERVICES","Department of Transportation","Federal Highway Administration","Auburn University",-37899.07
 "GEN. SCIENCE & TECHNOLOGY R&D","ENGINEERING (ADVANCED)","Department of Defense","Department of Defense","Stevens Institute of Technology",-37934.41

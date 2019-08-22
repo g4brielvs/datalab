@@ -284,11 +284,11 @@ Assistance to Firefighters Grant,Duke University,1419658,grant
 Assistance to Firefighters Grant,Skidmore College,1311489,grant
 Assistance to Small and Disadvantaged Businesses,Miami Dade College,184271.49,grant
 Assistance to Small and Disadvantaged Businesses,SUNY College of Optometry,179026.13,grant
-Assistance to State Water Resources Research Institutes,University of Illinois at Urbana-Champaign,1448494.71,grant
-Assistance to State Water Resources Research Institutes,University of Hawaii at Manoa,325668.3,grant
-Assistance to State Water Resources Research Institutes,University of New Hampshire-Main Campus,291364,grant
-Assistance to State Water Resources Research Institutes,University of Guam,277005,grant
-Assistance to State Water Resources Research Institutes,University of Wisconsin-Madison,264138.38,grant
+Assistance to State Water ResourcesRow Research Institutes,University of Illinois at Urbana-Champaign,1448494.71,grant
+Assistance to State Water ResourcesRow Research Institutes,University of Hawaii at Manoa,325668.3,grant
+Assistance to State Water ResourcesRow Research Institutes,University of New Hampshire-Main Campus,291364,grant
+Assistance to State Water ResourcesRow Research Institutes,University of Guam,277005,grant
+Assistance to State Water ResourcesRow Research Institutes,University of Wisconsin-Madison,264138.38,grant
 Assistance to Tribally Controlled Community Colleges and Universities,Dine College,13598810,grant
 Assistance to Tribally Controlled Community Colleges and Universities,Oglala Lakota College,8091287,grant
 Assistance to Tribally Controlled Community Colleges and Universities,Turtle Mountain Community College,4936426,grant
@@ -374,11 +374,11 @@ Block Grants for Prevention and Treatment of Substance Abuse,University of Alaba
 Block Grants for Prevention and Treatment of Substance Abuse,University of Utah,700000,grant
 Block Grants for Prevention and Treatment of Substance Abuse,University of Washington,699854,grant
 Block Grants for Prevention and Treatment of Substance Abuse,Montana State University,698832,grant
-Blood Diseases and Resources Research,University of Pennsylvania,15969879,research
-Blood Diseases and Resources Research,University of Michigan-Ann Arbor,14848978,research
-Blood Diseases and Resources Research,Medical College of Wisconsin,12582790,research
-Blood Diseases and Resources Research,Emory University-Oxford College,11167861,research
-Blood Diseases and Resources Research,Washington University in St Louis,9934600,research
+Blood Diseases and ResourcesRow Research,University of Pennsylvania,15969879,research
+Blood Diseases and ResourcesRow Research,University of Michigan-Ann Arbor,14848978,research
+Blood Diseases and ResourcesRow Research,Medical College of Wisconsin,12582790,research
+Blood Diseases and ResourcesRow Research,Emory University-Oxford College,11167861,research
+Blood Diseases and ResourcesRow Research,Washington University in St Louis,9934600,research
 Body Worn Camera Policy and Implementation,Lock Haven University,16500,grant
 Body Worn Camera Policy and Implementation,Northern Kentucky University,14045,grant
 BOOKS AND PAMPHLETS,Georgetown University,115360,contract
@@ -705,11 +705,11 @@ Cooperative Forestry Assistance,Colorado State University-Fort Collins,3202563.6
 Cooperative Forestry Assistance,Kansas State University,2327679,grant
 Cooperative Forestry Assistance,University of Nebraska-Lincoln,1972906,grant
 Cooperative Forestry Assistance,North Dakota State University-Main Campus,1572911.07,grant
-Cooperative Research and Training Programs Resources of the National Park System,Colorado State University-Fort Collins,6174214.16,grant
-Cooperative Research and Training Programs Resources of the National Park System,Florida International University,2258222.22,grant
-Cooperative Research and Training Programs Resources of the National Park System,University of Arizona,1853649.56,grant
-Cooperative Research and Training Programs Resources of the National Park System,University of California-Davis,1589400.41,grant
-Cooperative Research and Training Programs Resources of the National Park System,University of New Mexico-Main Campus,1225885.17,grant
+Cooperative Research and Training Programs ResourcesRow of the National Park System,Colorado State University-Fort Collins,6174214.16,grant
+Cooperative Research and Training Programs ResourcesRow of the National Park System,Florida International University,2258222.22,grant
+Cooperative Research and Training Programs ResourcesRow of the National Park System,University of Arizona,1853649.56,grant
+Cooperative Research and Training Programs ResourcesRow of the National Park System,University of California-Davis,1589400.41,grant
+Cooperative Research and Training Programs ResourcesRow of the National Park System,University of New Mexico-Main Campus,1225885.17,grant
 Cooperative Research Units ,Oregon State University,2752675.84,grant
 Cooperative Research Units ,University of Alaska Fairbanks,2043423.18,grant
 Cooperative Research Units ,North Carolina State University at Raleigh,858841.07,grant
@@ -749,16 +749,16 @@ Cross Agency Support,University of Maryland-College Park,2266425.1,research
 Cross Agency Support,University of Michigan-Ann Arbor,1649865,research
 Cross Agency Support,University of Florida,841865.34,research
 Cross Agency Support,The University of Texas Medical Branch,462186.42,research
-Cultural and Paleontological Resources Management,University of Alaska Anchorage,1142369.86,grant
-Cultural and Paleontological Resources Management,Truckee Meadows Community College,249667,grant
-Cultural and Paleontological Resources Management,Montana State University,168275.8,grant
-Cultural and Paleontological Resources Management,Arizona State University-Tempe,56300,grant
-Cultural and Paleontological Resources Management,Southern Utah University,51695.39,grant
-Cultural Resources Management,University of Alaska Fairbanks,181297,grant
-Cultural Resources Management,Brown University,91446,grant
-Cultural Resources Management,University of Utah,61000,grant
-Cultural Resources Management,Arizona State University-Tempe,50000,grant
-Cultural Resources Management,Portland State University,50000,research
+Cultural and Paleontological ResourcesRow Management,University of Alaska Anchorage,1142369.86,grant
+Cultural and Paleontological ResourcesRow Management,Truckee Meadows Community College,249667,grant
+Cultural and Paleontological ResourcesRow Management,Montana State University,168275.8,grant
+Cultural and Paleontological ResourcesRow Management,Arizona State University-Tempe,56300,grant
+Cultural and Paleontological ResourcesRow Management,Southern Utah University,51695.39,grant
+Cultural ResourcesRow Management,University of Alaska Fairbanks,181297,grant
+Cultural ResourcesRow Management,Brown University,91446,grant
+Cultural ResourcesRow Management,University of Utah,61000,grant
+Cultural ResourcesRow Management,Arizona State University-Tempe,50000,grant
+Cultural ResourcesRow Management,Portland State University,50000,research
 DATA COLLECTION SERVICES,Ohio State University,11942226.82,contract
 DATA COLLECTION SERVICES,University of Chicago,2611573.51,contract
 DATA COLLECTION SERVICES,"University of Maryland, Baltimore",188490,contract
@@ -880,11 +880,11 @@ Education,Hampton University,1927497,research
 Education,University of Nebraska at Omaha,1884631.85,research
 EDUCATION (MANAGEMENT/SUPPORT),University of Pittsburgh-Pittsburgh Campus,40000,contract
 EDUCATION (OPERATIONAL),University of North Texas Health Science Center,2146702.6,contract
-Education and Human Resources,University of California-Berkeley,29287532,research
-Education and Human Resources,University of Michigan-Ann Arbor,22275041,research
-Education and Human Resources,Cornell University,17246302,research
-Education and Human Resources,University of Washington,17014388,research
-Education and Human Resources,Arizona State University-Tempe,15643164,research
+Education and Human ResourcesRow,University of California-Berkeley,29287532,research
+Education and Human ResourcesRow,University of Michigan-Ann Arbor,22275041,research
+Education and Human ResourcesRow,Cornell University,17246302,research
+Education and Human ResourcesRow,University of Washington,17014388,research
+Education and Human ResourcesRow,Arizona State University-Tempe,15643164,research
 Education and Outreach Initiatives,The John Marshall Law School,125000,grant
 "Education and Prevention Grants to Reduce Sexual Abuse of Runaway, Homeless and Street Youth",Brighton Center's Center for Employment Training,142405,grant
 Education Enhancements ,University of New Mexico-Main Campus,397015,grant
@@ -1146,8 +1146,8 @@ Fish and Wildlife Management Assistance,Iowa State University,99992.13,grant
 "Fish, Wildlife and Plant Conservation Resource Management",University of Nevada-Reno,284085.14,grant
 "Fish, Wildlife and Plant Conservation Resource Management",University of Wyoming,233721.75,grant
 "Fish, Wildlife and Plant Conservation Resource Management",Oregon State University,167000,grant
-Fisheries and Aquatic Resources Management,Utah State University,45000,grant
-Fisheries and Aquatic Resources Management,Portland State University,21129.7,grant
+Fisheries and Aquatic ResourcesRow Management,Utah State University,45000,grant
+Fisheries and Aquatic ResourcesRow Management,Portland State University,21129.7,grant
 Fisheries Development and Utilization Research and Development Grants and Cooperative Agreements Program,College of William and Mary,543960,grant
 Fisheries Development and Utilization Research and Development Grants and Cooperative Agreements Program,University of Maine,488154,grant
 Fisheries Development and Utilization Research and Development Grants and Cooperative Agreements Program,University of Alaska Fairbanks,401138,grant
@@ -2686,11 +2686,11 @@ Promotion of the Humanities Research,University of Nebraska-Lincoln,494106,grant
 Promotion of the Humanities Research,University of Wisconsin-Madison,355000,grant
 Promotion of the Humanities Research,The University of Tennessee-Knoxville,325000,grant
 Promotion of the Humanities Research,University of Maryland-College Park,325000,grant
-Promotion of the Humanities Teaching and Learning Resources and Curriculum Development,University of Illinois at Chicago,182167,grant
-Promotion of the Humanities Teaching and Learning Resources and Curriculum Development,Blackfeet Community College,101200,grant
-Promotion of the Humanities Teaching and Learning Resources and Curriculum Development,Bergen Community College,100000,grant
-Promotion of the Humanities Teaching and Learning Resources and Curriculum Development,Governors State University,100000,grant
-Promotion of the Humanities Teaching and Learning Resources and Curriculum Development,Le Moyne College,100000,grant
+Promotion of the Humanities Teaching and Learning ResourcesRow and Curriculum Development,University of Illinois at Chicago,182167,grant
+Promotion of the Humanities Teaching and Learning ResourcesRow and Curriculum Development,Blackfeet Community College,101200,grant
+Promotion of the Humanities Teaching and Learning ResourcesRow and Curriculum Development,Bergen Community College,100000,grant
+Promotion of the Humanities Teaching and Learning ResourcesRow and Curriculum Development,Governors State University,100000,grant
+Promotion of the Humanities Teaching and Learning ResourcesRow and Curriculum Development,Le Moyne College,100000,grant
 "Protecting and Improving Health Globally: Building and Strengthening Public Health Impact, Systems, Capacity and Security","University of Maryland, Baltimore",5389515,grant
 "Protecting and Improving Health Globally: Building and Strengthening Public Health Impact, Systems, Capacity and Security",Ohio State University,828840,grant
 "Protecting and Improving Health Globally: Building and Strengthening Public Health Impact, Systems, Capacity and Security",University of Virginia,180000,grant
@@ -3979,7 +3979,7 @@ WATER QUALITY STUDIES,University of South Carolina-Beaufort,43100,contract
 WATER QUALITY STUDIES,University of Maryland Center for Environmental Science,28019.4,contract
 WATER QUALITY STUDIES,Oregon State University,27460,contract
 WATER QUALITY STUDIES,Michigan State University,13340.58,contract
-Water Resources on Indian Lands,California Polytechnic State University-San Luis Obispo,400000,grant
+Water ResourcesRow on Indian Lands,California Polytechnic State University-San Luis Obispo,400000,grant
 WEAPONS (BASIC),Georgia Institute of Technology-Main Campus,3634862,contract
 WEAPONS (BASIC),University of Dayton,965260.98,contract
 Weapons Removal and Abatement,James Madison University,733517,grant
