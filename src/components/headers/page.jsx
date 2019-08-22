@@ -1,9 +1,12 @@
 import React from "react"
 import "./page.scss"
 
+import DataLab from "../logos/datalab"
+
 const PageHeader = props => (
   <div className="page-header">
-    Page Header Menu
+    <DataLab beta="true" />
+    <div>Menu here</div>
   </div>
 )
 
