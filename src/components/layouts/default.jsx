@@ -22,11 +22,14 @@ const Default = ({ children }) => (
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <title>Data Lab - U.S. Treasury</title>
 
-        <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=TRE" id="_fed_an_ua_tag"></script>
+        <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=TRE" id="_fed_an_ua_tag" />
 
     </Helmet>
+
+    {/* add nav bar here */}
 
     <main style = {defaultStyle} >{children}</main>
 
