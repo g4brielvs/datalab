@@ -7,18 +7,15 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-
-import PageFooter from "../../footers/page"
-import SiteFooter from "../../footers/site"
+import Default from "../default"
 
 import "./home.scss"
 
 const Home = ({ children }) => (
       <>
-        <main>{children}</main>
-
-        <PageFooter />
-        <SiteFooter />
+        <Default>
+                <main>{children}</main>
+        </Default>
       </>
 )
 
