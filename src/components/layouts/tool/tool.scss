@@ -21,10 +21,35 @@ header {
 
 p {
   margin-top: 25px;
+  margin-bottom: 0;
 }
 
 .intro {
   font-size: 42px;
   font-weight: 300;
   line-height: 50px;
+}
+
+.follow-up {
+  margin-top: 100px;
+}
+
+@media (min-width: $desktop) {
+  main {
+    margin-top: 45px;
+  }
+}
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  main {
+    margin-top: 30px;
+  }
+}
+@media (max-width: $tablet - 1) {
+  .page {
+    margin-top: 20px;
+  }
+
+  main {
+    margin-top: 25px;
+  }
 }

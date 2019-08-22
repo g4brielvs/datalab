@@ -1,21 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './tool.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './tool.scss'
 
-import ShareMenu from '../../share-menu/share-menu';
+import ShareMenu from '../../share-menu/share-menu'
+import PageFooter from '../../footers/page'
+import SiteFooter from '../../footers/site'
 
 const ToolLayout = props => (
   <div className='page'>
     <header>
       <span className='title'>{props.title}</span>
-      <span><ShareMenu /></span>
+      <span>
+        <ShareMenu />
+      </span>
     </header>
     <section>
       <p className='intro'>{props.introSentence}</p>
       <p>{props.contextStatement}</p>
     </section>
 
-    <main>{props.children}</main>
+    <main>
+      <article>
+        <section className='chart'>
+          {props.children}
+        </section>
+        <section className='follow-up container'>
+          <div className='row justify-content-center'>
+            <div className='intro col-xs-4'>
+              {props.sectionTitle}
+            </div>
+            <div className='col-xs-6'>
+              {props.sectionText}
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+    <PageFooter />
+    <SiteFooter />
   </div>
 )
 
@@ -24,6 +46,8 @@ ToolLayout.propTypes = {
   title: PropTypes.string.isRequired,
   introSentence: PropTypes.string.isRequired,
   contextStatement: PropTypes.string.isRequired,
+  sectionTitle: PropTypes.string.isRequired,
+  sectionText: PropTypes.string.isRequired,
 }
 
 export default ToolLayout
