@@ -21,5 +21,9 @@
         "react"
     ],
     "rules": {
+        "no-tabs": 0,
+        "no-mixed-spaces-and-tabs": 0,
+        "indent": ["error", "tab"],
+        "react/jsx-indent": [2, "tab"]
     }
 }
