@@ -40,10 +40,10 @@ $reset: 0;
 }
 
 // device screen min widths
-$desktop-xl: 1200px;
-$desktop: 992px;
-$tablet: 768px;
-$phone: 576px;
+$desktop-xl: 1200px; // 1136px flexboxgrid l
+$desktop: 992px;  // 976px / 1024 px? md
+$tablet: 768px; // 736 px / 768 px? sm
+$phone: 576px;  // 480 px ? xs
 
 body, p, h1, h2, h3, h4, h5, input, select, textarea {
   color: #666666;

@@ -38,7 +38,7 @@ const ResourcesRow = () => {
           </div>
         </div>
         <div className="row">
-          <div className="landing-row__tile col-xs-3">
+          <div className="landing-row__tile col-lg-3 col-md-12 center-xs">
             <p className="landing-row__title">
               Do you want
               <strong> to conduct your own analysis?</strong>
@@ -50,7 +50,7 @@ const ResourcesRow = () => {
           {/*// add conditional here */}
           {/*//if last add class*/}
           {resourcesItems.map((resource) =>
-            <Link className="landing-row__tile col-xs-3 center-xs"
+            <Link className="landing-row__tile col-lg-3 col-md-4 center-xs"
               to={resource.href}>
               <img src={resource.imageSrc} className="svgImg"/>
               <h1 className="landing-row__title">

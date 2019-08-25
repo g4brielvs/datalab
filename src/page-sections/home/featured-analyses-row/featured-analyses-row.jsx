@@ -10,7 +10,7 @@ const FeaturedAnalysesRow = (props) => {
         <Link to={props.href}
            ga-on="click" ga-event-category="Data Lab Home Page" ga-event-action= {"Clicked " + props.heading} >
             <div className="row feature-row__border">
-              <div className="col-xs-6 feature-row__text">
+              <div className="col-sm-12 col-md-6 feature-row__text">
                 <h1 className="feature-row__heading">
                   {props.heading}
                 </h1>
@@ -21,7 +21,7 @@ const FeaturedAnalysesRow = (props) => {
                   {props.blurb}
                 </p>
               </div>
-              <div className="feature-row__image col-xs-6 reset-right">
+              <div className="feature-row__image col-sm-12 col-md-6 reset-right">
                 <img src={homelessImg} className="reset-right" />
               </div>
           </div>

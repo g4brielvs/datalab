@@ -22,7 +22,7 @@ const IndexPage = () => (
 
     <div className="container-fluid">
         <div className="row center-xs margin-bottom">
-          <div class="col-xs-8">
+          <div class="col-lg-8 col-md-12">
               <FeaturedAnalysesTile
                 href={'colleges-and-universities'}
                 imgSrc={main}
@@ -41,31 +41,37 @@ const IndexPage = () => (
 
         </div>
 
-        <div className="col-xs-4">
+        <div className="col-lg-4 col-md-12">
         <DtsTile
           href={'dts'}
           heading={'Visualizing the Daily Treasury Statement'}
           title={'How much does the federal government spend each day?'} />
 
-        <SecondaryAnalysesTile
-          heading={'Contract Spending Analysis'}
-          subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
-          href={'contract-explorer.html'}
-          imgSrc={contractSpending}
-          imgAlt={' '}
-          body={`We explore 10 years of contract data, and provide an analysis of the
-          impact of short-term continuing resolutions on contract spending.`}
-        />
+          <div className="row">
+            <div className="col-lg-12 col-md-6 col-sm-12">
+              <SecondaryAnalysesTile
+                heading={'Contract Spending Analysis'}
+                subheading={['How has federal', <br/>, 'contract spending',<br/>,' changed over time?']}
+                href={'contract-explorer.html'}
+                imgSrc={contractSpending}
+                imgAlt={' '}
+                body={`We explore 10 years of contract data, and provide an analysis of the
+                impact of short-term continuing resolutions on contract spending.`}
+              />
+            </div>
 
-        <SecondaryAnalysesTile
-          heading={'Contract Explorer'}
-          subheading={['Who receives federal',<br/>,' contracts?']}
-          href={'contract-explorer.html'}
-          imgSrc={contractExplorer}
-          imgAlt={' '}
-          body={`The federal government spends about $500 billion each year on contracts. Learn more
-              about contract recipients and what agencies receive from these contracts.`}
-        />
+            <div className="col-lg-12 col-md-6 col-sm-12">
+              <SecondaryAnalysesTile
+                heading={'Contract Explorer'}
+                subheading={['Who receives federal',<br/>,' contracts?']}
+                href={'contract-explorer.html'}
+                imgSrc={contractExplorer}
+                imgAlt={' '}
+                body={`The federal government spends about $500 billion each year on contracts. Learn more
+                    about contract recipients and what agencies receive from these contracts.`}
+              />
+            </div>
+          </div>
 
         </div>
       </div>
