@@ -1,3 +1,7 @@
+@import '../../../variables.scss';
+
+
+
 .reset {
   padding: 0;
   margin: 0;
@@ -8,6 +12,19 @@
   margin-right: 0;
 }
 
+.more-analyses__tile {
+  padding-bottom: $margin * 3;
+  padding-right: $margin * 2 !important;
+}
+
 .col-md-12, .col-lg-6 {
   //padding-right: 30px !important;
+}
+
+.more-analyses__tile-title {
+  padding-bottom: $margin * 8;
+}
+
+.more-analyses__tile-text {
+  padding-bottom: $margin * 4;
 }

@@ -1,1 +1,26 @@
+@import '../variables.scss';
 
+.featured-row {
+  padding-bottom: $margin * 2;
+}
+
+@media screen and (min-width: $desktop-xl) {
+  .featured-tile {
+    padding-right: $margin !important;
+  }
+
+  .featured-tile-row {
+    padding-bottom: $margin * 2;
+  }
+}
+
+@media screen and (max-width: $desktop-xl) {
+  .highlight__text {
+    display: none;
+  }
+
+  .featured-tile {
+    padding-bottom: $margin * 2 !important;
+  }
+
+}

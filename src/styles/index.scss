@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
+@import '../variables.scss';
 
 $margin: 2%;
 $reset: 0;
@@ -26,7 +27,7 @@ $reset: 0;
 .col-md-4.last-md, .col-md-5.last-md, .col-md-6.last-md,
 .col-md-7.last-md, .col-md-8.last-md, .col-md-9.last-md,
 .col-md-10.last-md, .col-md-11.last-md, .col-md-12.last-md {
-  padding-right: $margin;
+  //padding-right: $margin;
 }
 
 .last-sm, .last-xs, .last-md, .last-lg {
@@ -35,9 +36,6 @@ $reset: 0;
 
 // Flexboxgrid Overrides END
 
-.margin-bottom {
-  margin-bottom: $margin;
-}
 
 // device screen min widths
 $desktop-xl: 1200px; // 1136px flexboxgrid l

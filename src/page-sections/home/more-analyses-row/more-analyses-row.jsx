@@ -64,11 +64,11 @@ const MoreAnalysesRow = () => {
 
         </div>
 
-        <div className="col-md-12 col-lg-6 first-lg">
+        <div className="more-analyses__tiles col-md-12 col-lg-6 first-lg">
           <div class="row">
             {analyses.map((item, index) =>
             <div
-              className={index === 0 ? "margin-bottom more-analyses__tile col-md-12 col-lg-6" : "more-analyses__tile col-md-12 col-lg-6"}>
+              className={index === 0 ? "more-analyses__tile col-md-12 col-lg-6" : "more-analyses__tile col-md-12 col-lg-6"}>
               <Link to={item.href}>
                 <div className="more-analyses__tile-text">
                   <h2>
@@ -79,7 +79,7 @@ const MoreAnalysesRow = () => {
                   </p>
                 </div>
                 <div className="more-analyses__image-container">
-                  <img src={item.imageSrc} className="more-analyses__image reset-right"/>
+                  <img src={item.imageSrc} className="more-analyses__image"/>
                 </div>
               </Link>
             </div>

@@ -1,8 +1,16 @@
+@import '../../../variables.scss';
+
+// device screen min widths
+$desktop-xl: 1200px; // 1136px flexboxgrid l
+$desktop: 992px;  // 976px / 1024 px? md
+$tablet: 768px; // 736 px / 768 px? sm
+$phone: 576px;  // 480 px ? xs
+
 .featured {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   overflow: hidden;
-  height: 100%;
+  min-height: 92%;
 }
 
 .featured__heading {
@@ -22,6 +30,7 @@
   letter-spacing: 0.4px;
   font-size: 16px;
   font-weight: 300;
+  text-align: center;
 }
 
 .featured__heading--mobile, .featured__text--mobile {

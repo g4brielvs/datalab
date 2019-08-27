@@ -10,10 +10,10 @@ import FeaturedAnalysesRow from "../page-sections/home/featured-analyses-row/fea
 import ResourcesRow from "../page-sections/home/resources-row/resources-row"
 
 import main from "../images/home/collegehomepage.svg"
-import contractExplorer from "../images/home/contract-explorer.svg"
+import contractExplorer from "../images/home/contract-explorer.png"
 import contractSpending from "../images/home/c-o-t.png"
 
-import "../index.scss"
+import "../styles/index.scss"
 import "./index.scss"
 
 const IndexPage = () => (
@@ -21,8 +21,8 @@ const IndexPage = () => (
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
     <div className="container-fluid">
-        <div className="row center-xs margin-bottom">
-          <div class="col-lg-8 col-md-12">
+        <div className="featured-tile-row row center-xs">
+          <div className="col-lg-8 col-md-12 featured-tile">
               <FeaturedAnalysesTile
                 href={'colleges-and-universities'}
                 imgSrc={main}
@@ -76,13 +76,13 @@ const IndexPage = () => (
         </div>
       </div>
 
-      <div className="row margin-bottom">
+      <div className="more-analyses-row row">
         <div className="col-xs-12">
           <MoreAnalysesRow/>
         </div>
       </div>
 
-      <div className="row margin-bottom">
+      <div className="featured-row row">
         <div className="col-xs-12">
           <FeaturedAnalysesRow
             href={'homelessness-analysis'}

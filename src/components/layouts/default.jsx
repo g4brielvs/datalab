@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet'
 
 import PageFooter from "../footers/page"
 import SiteFooter from "../footers/site"
+import '../../styles/index.scss'
 
 const defaultStyle = {
   margin: '1% 9%'
