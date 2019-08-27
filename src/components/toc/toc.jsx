@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './toc.scss';
 
-const {sections} = this.props;
+// const {sections} = this.props;
 
 const Toc = (props) => (
 	<div className="TOC container">
@@ -11,7 +11,7 @@ const Toc = (props) => (
 				<section id="TOC">
 					<div className="row">
 						{
-							sections.map((item, key) => {
+							props.sections.map((item, key) => {
 								<div key={key} className="col-lg-3 col-md-6 col-xs-12 toc__tile">
 									<a href={`#section-${item.section}`}>
 										<div className="toc__number">
@@ -41,8 +41,6 @@ const Toc = (props) => (
 	</div>
 );
 
-Toc.propTypes = {
-	sections: PropTypes.arrayOf(PropTypes.object)
-}
+// Toc.propTypes = PropTypes.arrayOf(PropTypes.object);
 
 export default Toc;
