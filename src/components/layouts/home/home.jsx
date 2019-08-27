@@ -10,12 +10,11 @@ import PropTypes from "prop-types"
 import Default from "../default"
 
 import "./home.scss"
-import { Helmet } from "react-helmet"
 
 const Home = ({ children }) => (
       <>
         <Default>
-          <main>{children}</main>
+          <main className='home'>{children}</main>
         </Default>
       </>
 )
