@@ -54,7 +54,21 @@
   }
 }
 
-.col-xs-3 {
-  padding: 0;
-}
 
+@media screen and (max-width: $desktop) {
+  .landing-row__p {
+    display: none;
+  }
+
+  .landing-row__title {
+    text-align: center;
+  }
+
+  .landing-row__tile {
+  }
+
+  .landing-row__tile-row {
+    border-top: 1px solid grey;
+  }
+
+}

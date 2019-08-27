@@ -4,45 +4,6 @@
 $margin: 2%;
 $reset: 0;
 
-// Using flexboxgrid for grid system
-
-// Flexboxgrid Overrides
-.col-xs-1:not(:last-child), .col-xs-2:not(:last-child), .col-xs-3:not(:last-child),
-.col-xs-4:not(:last-child), .col-xs-5:not(:last-child), .col-xs-6:not(:last-child),
-.col-xs-7:not(:last-child), .col-xs-8:not(:last-child), .col-xs-9:not(:last-child),
-.col-xs-10:not(:last-child), .col-xs-11:not(:last-child), .col-xs-12:not(:last-child),
-.col-md-1:not(:last-child):not(:last-child), .col-md-2:not(:last-child), .col-md-3:not(:last-child),
-.col-md-4:not(:last-child), .col-md-5:not(:last-child), .col-md-6:not(:last-child),
-.col-md-7:not(:last-child), .col-md-8:not(:last-child), .col-md-9:not(:last-child),
-.col-md-10:not(:last-child), .col-md-11:not(:last-child), .col-md-12:not(:last-child),
-.col-md-1:not(:last-child):not(:last-child), .col-md-2:not(:last-child), .col-md-3:not(:last-child),
-.col-md-4:not(:last-child), .col-md-5:not(:last-child), .col-md-6:not(:last-child),
-.col-md-7:not(:last-child), .col-md-8:not(:last-child), .col-md-9:not(:last-child),
-.col-md-10:not(:last-child), .col-md-11:not(:last-child), .col-md-12:not(:last-child),
-.col-xs-1.last-xs, .col-xs-2.last-xs, .col-xs-3.last-xs,
-.col-xs-4.last-xs, .col-xs-5.last-xs, .col-xs-6.last-xs,
-.col-xs-7.last-xs, .col-xs-8.last-xs, .col-xs-9.last-xs,
-.col-xs-10.last-xs, .col-xs-11.last-xs, .col-xs-12.last-xs,
-.col-md-1.last-md, .col-md-2.last-md, .col-md-3.last-md,
-.col-md-4.last-md, .col-md-5.last-md, .col-md-6.last-md,
-.col-md-7.last-md, .col-md-8.last-md, .col-md-9.last-md,
-.col-md-10.last-md, .col-md-11.last-md, .col-md-12.last-md {
-  //padding-right: $margin;
-}
-
-.last-sm, .last-xs, .last-md, .last-lg {
-  padding-right: $reset !important;
-}
-
-// Flexboxgrid Overrides END
-
-
-// device screen min widths
-$desktop-xl: 1200px; // 1136px flexboxgrid l
-$desktop: 992px;  // 976px / 1024 px? md
-$tablet: 768px; // 736 px / 768 px? sm
-$phone: 576px;  // 480 px ? xs
-
 body, p, h1, h2, h3, h4, h5, input, select, textarea {
   color: #666666;
   font-family: 'Source Sans Pro';

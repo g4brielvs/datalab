@@ -47,18 +47,19 @@ const ResourcesRow = () => {
               Access Treasury data and create your own charts and visualizations!
             </p>
           </div>
-          {/*// add conditional here */}
-          {/*//if last add class*/}
           {resourcesItems.map((resource) =>
-            <Link className="landing-row__tile col-lg-3 col-md-4 center-xs"
+            <Link className="landing-row__tile col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md"
               to={resource.href}>
-              <img src={resource.imageSrc} className="svgImg"/>
-              <h1 className="landing-row__title">
-                {resource.title}
-              </h1>
-              <p className="landing-row__p">
-                {resource.description}
-              </p>
+              <div className="row landing-row__tile-row">
+                <img src={resource.imageSrc}
+                     className="svgImg first-sm col-xs-6 col-sm-6 col-md-12"/>
+                <h1 className="landing-row__title col-xs-6 col-sm-6 col-md-12">
+                  {resource.title}
+                </h1>
+                <p className="landing-row__p">
+                  {resource.description}
+                </p>
+              </div>
             </Link>
           )}
         </div>
