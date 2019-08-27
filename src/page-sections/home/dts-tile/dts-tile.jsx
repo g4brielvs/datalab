@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from "gatsby"
 import "./dts-tile.scss"
 import "./landing-dts.scss"
-import * as d3 from "d3";
 import { graphql, useStaticQuery } from "gatsby"
+import { Helmet } from "react-helmet"
 
 function DtsTile(props) {
   let svg,
@@ -144,6 +144,11 @@ function DtsTile(props) {
 
   return (
     <>
+      <Helmet>
+        <title>Data Lab - U.S. Treasury</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+      </Helmet>
+
         <Link to="dts"
            className="landing-chart__link"
            ga-on="click" ga-event-category="Data Lab Home Page"
