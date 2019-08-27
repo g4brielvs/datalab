@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import Default from "../default"
+import Default from "../default/default"
 
 import "./home.scss"
 
