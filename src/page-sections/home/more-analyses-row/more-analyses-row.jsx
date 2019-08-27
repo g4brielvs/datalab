@@ -45,7 +45,7 @@ const MoreAnalysesRow = () => {
       </div>
 
       <div className="row">
-        <div className="col-md-12 col-lg-6 last-lg">
+        <div className="more-analyses__featured-tile col-md-12 col-lg-6 last-lg">
           <FeaturedAnalysesTile
             href={'americas-finance-guide'}
             imgSrc={cg}
@@ -68,7 +68,7 @@ const MoreAnalysesRow = () => {
           <div class="row">
             {analyses.map((item, index) =>
             <div
-              className={index === 0 ? "more-analyses__tile col-md-12 col-lg-6" : "more-analyses__tile col-md-12 col-lg-6"}>
+              className={index === 0 ? "more-analyses__tile col-sm-12 col-md-6 col-lg-6" : "more-analyses__tile col-sm-12 col-md-6 col-lg-6"}>
               <Link to={item.href}>
                 <div className="more-analyses__tile-text">
                   <h2>

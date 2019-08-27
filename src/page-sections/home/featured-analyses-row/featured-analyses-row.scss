@@ -88,19 +88,23 @@ $landing-title-color: #4a4a4a;
     font-size: 18px;
   }
 
-  feature-row__image {
-    img {
-      border-radius: 0;
-    }
-  }
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $desktop-xl) {
 
 
   .feature-row__border {
     border: none;
   }
 
+  .feature-row__image {
+    padding-left: $margin !important;
+    img {
+      border-radius: 0;
+      height: unset;
+    }
+  }
 }
+
+
 
