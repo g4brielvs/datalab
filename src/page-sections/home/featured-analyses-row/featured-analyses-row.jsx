@@ -21,8 +21,8 @@ const FeaturedAnalysesRow = (props) => {
                   {props.blurb}
                 </p>
               </div>
-              <div className="feature-row__image col-xs-12 col-sm-6 col-md-6 reset-right">
-                <img src={homelessImg} className="reset-right" />
+              <div className="feature-row__image col-xs-12 col-sm-6 col-md-6">
+                <img src={homelessImg} />
               </div>
           </div>
         </Link>

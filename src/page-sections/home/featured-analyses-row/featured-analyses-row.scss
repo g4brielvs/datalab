@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import '../../../styles/variables';
 
 // featured-analyses-tile-row.scss
 $landing-title-color: #4a4a4a;
@@ -25,6 +25,7 @@ $landing-title-color: #4a4a4a;
 }
 
 .feature-row__image {
+  padding-right: $reset-override;
 
   img {
     width: 100%;
