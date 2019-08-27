@@ -37,10 +37,10 @@
 
 @media screen and (max-width: $desktop) {
   .feature-row__text {
-    padding-right: $margin !important;
+    padding-right: $margin-override;
   }
 
   .feature-row__image {
-    padding-left: $margin !important;
+    padding-left: $margin-override;
   }
 }

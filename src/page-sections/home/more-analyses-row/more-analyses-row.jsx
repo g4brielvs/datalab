@@ -65,9 +65,10 @@ const MoreAnalysesRow = () => {
         </div>
 
         <div className="more-analyses__tiles col-md-12 col-lg-6 first-lg">
-          <div class="row">
+          <div className="row">
             {analyses.map((item, index) =>
             <div
+              key={'more-analyses__tile_' + index}
               className={index === 0 ? "more-analyses__tile col-sm-12 col-md-6 col-lg-6" : "more-analyses__tile col-sm-12 col-md-6 col-lg-6"}>
               <Link to={item.href}>
                 <div className="row">

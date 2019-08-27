@@ -10,7 +10,7 @@
 
 @media screen and (min-width: $desktop-xl) {
   .featured-tile {
-    padding-right: $margin !important;
+    padding-right: $margin-override;
   }
 
   .featured-tile-row {

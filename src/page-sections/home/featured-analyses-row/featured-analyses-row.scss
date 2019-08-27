@@ -14,16 +14,9 @@ $landing-title-color: #4a4a4a;
   font-weight: bold;
 }
 
-.reset-right {
-  padding-right: 0 !important;
-  margin-right: 0 !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
 .feature-row__text {
   margin-top: 1rem;
-  padding-right: 30px !important;
+  padding-right: $margin-override;
 }
 
 .feature-row__border {
@@ -98,7 +91,7 @@ $landing-title-color: #4a4a4a;
   }
 
   .feature-row__image {
-    padding-left: $margin !important;
+    padding-left: $margin-override;
     img {
       border-radius: 0;
       height: unset;

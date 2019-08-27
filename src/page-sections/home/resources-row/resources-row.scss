@@ -23,7 +23,7 @@
   }
 
   .landing-row__title {
-    font-size: 28px;
+    font-size: 24px;
     height: 1.5em;
   }
 
@@ -68,7 +68,8 @@
   }
 
   .landing-row__tile-row {
-    border-top: 1px solid grey;
+    padding-top: $margin;
+    border-top: 1px solid #dddddd;
   }
 
 }

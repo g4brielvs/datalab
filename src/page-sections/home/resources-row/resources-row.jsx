@@ -31,7 +31,7 @@ const ResourcesRow = () => {
     <>
       <section className="landing-row--resources">
         <div className="row">
-          <div class="col-xs-12">
+          <div className="col-xs-12">
             <h1 className="landing-row__heading">
               Resources
             </h1>
@@ -47,8 +47,10 @@ const ResourcesRow = () => {
               Access Treasury data and create your own charts and visualizations!
             </p>
           </div>
-          {resourcesItems.map((resource) =>
-            <Link className="landing-row__tile col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md"
+          {resourcesItems.map((resource, index) =>
+            <Link
+              key={'landing-row__tile_' + index}
+              className="landing-row__tile col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md"
               to={resource.href}>
               <div className="row landing-row__tile-row">
                 <img src={resource.imageSrc}
