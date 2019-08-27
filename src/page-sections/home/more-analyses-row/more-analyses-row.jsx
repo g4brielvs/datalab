@@ -70,16 +70,18 @@ const MoreAnalysesRow = () => {
             <div
               className={index === 0 ? "more-analyses__tile col-sm-12 col-md-6 col-lg-6" : "more-analyses__tile col-sm-12 col-md-6 col-lg-6"}>
               <Link to={item.href}>
-                <div className="more-analyses__tile-text">
-                  <h2>
-                  {item.title}
-                  </h2>
-                  <p className="more-analyses__tile-title">
-                  {item.subtitle}
-                  </p>
-                </div>
-                <div className="more-analyses__image-container">
-                  <img src={item.imageSrc} className="more-analyses__image"/>
+                <div className="row">
+                  <div className="col-md-12 col-sm-6 col-xs-6 more-analyses__tile-text">
+                    <h2>
+                    {item.title}
+                    </h2>
+                    <p className="more-analyses__tile-title">
+                    {item.subtitle}
+                    </p>
+                  </div>
+                  <div className="col-md-12 col-sm-6 col-xs-6 first-sm first-xs more-analyses__image-container">
+                    <img src={item.imageSrc} className="more-analyses__image"/>
+                  </div>
                 </div>
               </Link>
             </div>

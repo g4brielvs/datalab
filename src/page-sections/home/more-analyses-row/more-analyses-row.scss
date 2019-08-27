@@ -14,16 +14,21 @@
 }
 
 @media screen and (max-width: $desktop-xl) {
-  .more-analyses__tile:nth-child(even) {
-    padding-left: $margin !important;
-    padding-right: 0 !important;
-    padding-bottom: 0;
-  }
+  //.more-analyses__tile:nth-child(even) {
+  //  padding-left: $margin !important;
+  //  padding-right: 0 !important;
+  //  padding-bottom: 0;
+  //}
+  //
+  //.more-analyses__tile:nth-child(odd) {
+  //  padding-left: 0 !important;
+  //  padding-right: $margin !important;
+  //  padding-bottom: 0;
+  //}
 
-  .more-analyses__tile:nth-child(odd) {
-    padding-left: 0 !important;
-    padding-right: $margin !important;
-    padding-bottom: 0;
+  .more-analyses__tile {
+    padding-bottom: 0 !important;
+    border-bottom: 1px solid grey;
   }
 
   .more-analyses__tile-title {
@@ -37,4 +42,15 @@
   .more-analyses__featured-tile {
     padding-bottom: $margin * 2;
   }
+
+  .more-analyses__image-container {
+    padding: 0 !important;
+  }
 }
+
+@media screen and (min-width: $desktop-xl) {
+  .more-analyses__featured-tile {
+    padding-right: 0 !important;
+  }
+}
+
