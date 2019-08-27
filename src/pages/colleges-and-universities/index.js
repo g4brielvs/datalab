@@ -13,13 +13,15 @@ import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 import Toc from "../../components/toc/toc"
+import PageFooter from "../../components/footers/page"
+import SiteFooter from "../../components/footers/site"
 
 class CollegesAndUniversitiesPage extends Component {
 
 
 
   render() {
-    return <Story>
+    return <><Story>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
       <Header
         subtext={'Federal Investment in Higher Education'}
@@ -78,6 +80,9 @@ class CollegesAndUniversitiesPage extends Component {
       <MoreAnalyses/>
 
     </Story>
+    <PageFooter />
+    <SiteFooter />
+    </>
   }
 }
 

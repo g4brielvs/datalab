@@ -1,0 +1,81 @@
+@import "../../styles/index.scss";
+
+$col-padding: 15px;
+
+.page-footer {
+  padding: 3rem 4rem 4rem;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+
+  .logo {
+    padding-bottom: 3rem;
+  }
+
+  .flex-item {
+    padding-left: $col-padding;
+    padding-right: $col-padding;
+    flex: min-content;
+  }
+
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.24;
+    margin-bottom: 1em;
+    letter-spacing: normal;
+  }
+
+  .social-logos {
+    white-space: nowrap;
+    text-align: right;
+
+    a {
+      padding-right: 0.25rem;
+    }
+
+    .float-bottom {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  p {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.33;
+    letter-spacing: 0.2px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .title,
+  a {
+    color: #2272ce;
+  }
+}
+
+// put vertical borders between items in desktop mode
+@media (min-width: $desktop) {
+  .flex-item + .flex-item {
+    border-left: 1px solid #ccc;
+  }
+}
+
+@media (max-width: $desktop - 1) {
+  .page-footer {
+    max-width: 500px;
+    margin: 0 auto;
+    flex-direction: column;
+    text-align: center;
+
+    .float-bottom div {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
