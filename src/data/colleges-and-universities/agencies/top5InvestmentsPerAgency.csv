@@ -40,7 +40,7 @@
 "Bureau of Ocean Energy Management","Exploration and Development of Energy Sources",4095196.67
 "Bureau of Ocean Energy Management","Disaster Response and Assistance",650000
 "Bureau of Reclamation","Wildlife",13883776.59
-"Bureau of Reclamation","Water ResourcesRow",3004754.47
+"Bureau of Reclamation","Water Resources",3004754.47
 "Bureau of Reclamation","Environmental R&D",2260026.55
 "Bureau of Reclamation","Clean Water Programs",210912
 "Bureau of Reclamation","Environment",170000
@@ -131,11 +131,11 @@
 "Forest Service","Environmental R&D",1604016.13
 "Forest Service","Hazmat and Fire Safety",643560
 "Forest Service","Fire Suppression Assistance Programs",524581.69
-"Health ResourcesRow and Services Administration","Nursing and Health Professionals",419004267
-"Health ResourcesRow and Services Administration","HIV Programs",122192350
-"Health ResourcesRow and Services Administration","Healthcare Services",119829938
-"Health ResourcesRow and Services Administration","Early Childhood Programs",84807230
-"Health ResourcesRow and Services Administration","Addiction and Recovery",17687519
+"Health Resources and Services Administration","Nursing and Health Professionals",419004267
+"Health Resources and Services Administration","HIV Programs",122192350
+"Health Resources and Services Administration","Healthcare Services",119829938
+"Health Resources and Services Administration","Early Childhood Programs",84807230
+"Health Resources and Services Administration","Addiction and Recovery",17687519
 "Immediate Office of the Secretary of Transportation","Transportation",59947461.05
 "Immediate Office of the Secretary of Transportation","Infrastructure",486921
 "Immediate Office of the Secretary of Transportation","Business",363297.62
@@ -219,7 +219,7 @@
 "Rural Housing Service","Housing and Development",606325
 "Rural Utilities Service","Education",11947588
 "Rural Utilities Service","Regional Development",1240521
-"Rural Utilities Service","Water ResourcesRow",649688
+"Rural Utilities Service","Water Resources",649688
 "Rural Utilities Service","Hazardous Materials",335810
 "Securities and Exchange Commission","Science, Engineering, and Mathematics",42538
 "Small Business Administration","Business",112371760.75
@@ -235,7 +235,7 @@
 "U.S. Fish and Wildlife Service","Wildlife",6588186.88
 "U.S. Fish and Wildlife Service","Science, Engineering, and Mathematics",5842151.14
 "U.S. Fish and Wildlife Service","Disaster Response and Assistance",2638728.77
-"U.S. Fish and Wildlife Service","Water ResourcesRow",2109684.48
+"U.S. Fish and Wildlife Service","Water Resources",2109684.48
 "U.S. Fish and Wildlife Service","Wildlife Conservation",1522824.65
 "U.S. Geological Survey","Environmental R&D",55357277.58
 "U.S. Geological Survey","Wildlife",14357437.22
