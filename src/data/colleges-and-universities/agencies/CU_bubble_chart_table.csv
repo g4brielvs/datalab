@@ -1420,18 +1420,18 @@
 "Department of Agriculture","National Institute of Food and Agriculture","White Earth Tribal and Community College","Agriculture and Farming R&D","grant",311794
 "Department of Agriculture","National Institute of Food and Agriculture","White Earth Tribal and Community College","Education","grant",101147
 "Department of Agriculture","National Institute of Food and Agriculture","Yale University","Agriculture and Farming R&D","grant",-94666.5
-"Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Chico","SPECIAL STUDIES - NOT R&D","contract",-3686.99
-"Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Sacramento","NATURAL RESOURCES - OTHER SERVICES","contract",-973.95
-"Department of Agriculture","Natural ResourcesRow Conservation Service","California State University-Stanislaus","SPECIAL STUDIES - NOT R&D","contract",5000
-"Department of Agriculture","Natural ResourcesRow Conservation Service","Dakota College at Bottineau","NATURAL RESOURCES - OTHER SERVICES","contract",-6291.1
-"Department of Agriculture","Natural ResourcesRow Conservation Service","Elizabethtown College","EDUCATION & TRAINING SERVICES","contract",20104
-"Department of Agriculture","Natural ResourcesRow Conservation Service","Oklahoma State University","LEASE & RENTAL OF BUILDINGS","contract",5000.04
-"Department of Agriculture","Natural ResourcesRow Conservation Service","Portland State University","SPECIAL STUDIES - NOT R&D","contract",6000
-"Department of Agriculture","Natural ResourcesRow Conservation Service","Purdue University-Main Campus","BOOKS, MAPS, & OTHER PUBLICATIONS","contract",9386.2
-"Department of Agriculture","Natural ResourcesRow Conservation Service","The University of Montana","NATURAL RESOURCES - OTHER SERVICES","contract",25000
-"Department of Agriculture","Natural ResourcesRow Conservation Service","University of Alaska Fairbanks","PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING","contract",25000
-"Department of Agriculture","Natural ResourcesRow Conservation Service","University of Iowa","IT & TELECOMMUNICATIONS","contract",2500
-"Department of Agriculture","Natural ResourcesRow Conservation Service","University of Nebraska-Lincoln","EDUCATION & TRAINING SERVICES","contract",34080
+"Department of Agriculture","Natural Resources Conservation Service","California State University-Chico","SPECIAL STUDIES - NOT R&D","contract",-3686.99
+"Department of Agriculture","Natural Resources Conservation Service","California State University-Sacramento","NATURAL RESOURCES - OTHER SERVICES","contract",-973.95
+"Department of Agriculture","Natural Resources Conservation Service","California State University-Stanislaus","SPECIAL STUDIES - NOT R&D","contract",5000
+"Department of Agriculture","Natural Resources Conservation Service","Dakota College at Bottineau","NATURAL RESOURCES - OTHER SERVICES","contract",-6291.1
+"Department of Agriculture","Natural Resources Conservation Service","Elizabethtown College","EDUCATION & TRAINING SERVICES","contract",20104
+"Department of Agriculture","Natural Resources Conservation Service","Oklahoma State University","LEASE & RENTAL OF BUILDINGS","contract",5000.04
+"Department of Agriculture","Natural Resources Conservation Service","Portland State University","SPECIAL STUDIES - NOT R&D","contract",6000
+"Department of Agriculture","Natural Resources Conservation Service","Purdue University-Main Campus","BOOKS, MAPS, & OTHER PUBLICATIONS","contract",9386.2
+"Department of Agriculture","Natural Resources Conservation Service","The University of Montana","NATURAL RESOURCES - OTHER SERVICES","contract",25000
+"Department of Agriculture","Natural Resources Conservation Service","University of Alaska Fairbanks","PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING","contract",25000
+"Department of Agriculture","Natural Resources Conservation Service","University of Iowa","IT & TELECOMMUNICATIONS","contract",2500
+"Department of Agriculture","Natural Resources Conservation Service","University of Nebraska-Lincoln","EDUCATION & TRAINING SERVICES","contract",34080
 "Department of Agriculture","Office of the Chief Economist","Colorado State University-Fort Collins","BOOKS, MAPS, & OTHER PUBLICATIONS","contract",8200
 "Department of Agriculture","Office of the Chief Economist","University of Florida","EDUCATION & TRAINING SERVICES","contract",35000
 "Department of Agriculture","Office of the Chief Economist","University of Maryland Eastern Shore","PROFESSIONAL SERVICES","contract",6500
@@ -1572,7 +1572,7 @@
 "Department of Agriculture","Rural Utilities Service","St Lukes Hospital School of Nursing","Education","grant",401679
 "Department of Agriculture","Rural Utilities Service","St. John's College","Education","grant",429008
 "Department of Agriculture","Rural Utilities Service","Syracuse University","Hazardous Materials","grant",244360
-"Department of Agriculture","Rural Utilities Service","Syracuse University","Water ResourcesRow","grant",183210
+"Department of Agriculture","Rural Utilities Service","Syracuse University","Water Resources","grant",183210
 "Department of Agriculture","Rural Utilities Service","Texas Tech University Health Sciences Center","Education","grant",499227
 "Department of Agriculture","Rural Utilities Service","United Tribes Technical College","Regional Development","grant",846000
 "Department of Agriculture","Rural Utilities Service","University of New Hampshire-Main Campus","Education","grant",147355
@@ -1581,7 +1581,7 @@
 "Department of Agriculture","Rural Utilities Service","Utah State University","Education","grant",496523
 "Department of Agriculture","Rural Utilities Service","Volunteer State Community College","Education","grant",102000
 "Department of Agriculture","Rural Utilities Service","Washburn University","Education","grant",349213
-"Department of Agriculture","Rural Utilities Service","West Virginia University","Water ResourcesRow","grant",466478
+"Department of Agriculture","Rural Utilities Service","West Virginia University","Water Resources","grant",466478
 "Department of Agriculture","Rural Utilities Service","Wiregrass Georgia Technical College","Education","grant",500000
 "Department of Commerce","Bureau of Industry and Security","University of Virginia","EDUCATION & TRAINING SERVICES","contract",-68.82
 "Department of Commerce","Economic Development Administration","Arkansas State University-Main Campus","Regional Development","grant",112850
@@ -8800,25 +8800,25 @@
 "Department of Health and Human Services","Food and Drug Administration","Washington State University","Medical R&D","grant",242824
 "Department of Health and Human Services","Food and Drug Administration","Yale University","Medical R&D","grant",1276238
 "Department of Health and Human Services","Food and Drug Administration","Yeshiva University","Medical R&D","grant",892648
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","A T Still University of Health Sciences","Individuals with Disabilities","grant",399987
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","A T Still University of Health Sciences","Nursing and Health Professionals","grant",1486794
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Adelphi University","Nursing and Health Professionals","grant",377903
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Adler University","Nursing and Health Professionals","grant",283692
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Adventist University of Health Sciences","Nursing and Health Professionals","grant",61732
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Alabama A & M University","Nursing and Health Professionals","grant",480000
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Alabama State University","Addiction and Recovery","grant",-138066
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Alabama State University","Early Childhood Programs","grant",137126
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Albany Medical College","Healthcare Services","grant",656465
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Albany Medical College","HIV Programs","grant",1005043
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Albany Medical College","Nursing and Health Professionals","grant",175321
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Albany State University","Nursing and Health Professionals","grant",26244
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Alvernia University","Nursing and Health Professionals","grant",550000
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Antioch University-New England","Nursing and Health Professionals","grant",333336
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Appalachian State University","Addiction and Recovery","grant",-2049
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Appalachian State University","Nursing and Health Professionals","grant",433381
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Arizona State University-Tempe","Early Childhood Programs","grant",-1
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Arizona State University-Tempe","Healthcare Services","grant",224971
-"Department of Health and Human Services","Health ResourcesRow and Services Administration","Arizona State University-Tempe","Nursing and Health Professionals","grant",180000
+"Department of Health and Human Services","Health Resources and Services Administration","A T Still University of Health Sciences","Individuals with Disabilities","grant",399987
+"Department of Health and Human Services","Health Resources and Services Administration","A T Still University of Health Sciences","Nursing and Health Professionals","grant",1486794
+"Department of Health and Human Services","Health Resources and Services Administration","Adelphi University","Nursing and Health Professionals","grant",377903
+"Department of Health and Human Services","Health Resources and Services Administration","Adler University","Nursing and Health Professionals","grant",283692
+"Department of Health and Human Services","Health Resources and Services Administration","Adventist University of Health Sciences","Nursing and Health Professionals","grant",61732
+"Department of Health and Human Services","Health Resources and Services Administration","Alabama A & M University","Nursing and Health Professionals","grant",480000
+"Department of Health and Human Services","Health Resources and Services Administration","Alabama State University","Addiction and Recovery","grant",-138066
+"Department of Health and Human Services","Health Resources and Services Administration","Alabama State University","Early Childhood Programs","grant",137126
+"Department of Health and Human Services","Health Resources and Services Administration","Albany Medical College","Healthcare Services","grant",656465
+"Department of Health and Human Services","Health Resources and Services Administration","Albany Medical College","HIV Programs","grant",1005043
+"Department of Health and Human Services","Health Resources and Services Administration","Albany Medical College","Nursing and Health Professionals","grant",175321
+"Department of Health and Human Services","Health Resources and Services Administration","Albany State University","Nursing and Health Professionals","grant",26244
+"Department of Health and Human Services","Health Resources and Services Administration","Alvernia University","Nursing and Health Professionals","grant",550000
+"Department of Health and Human Services","Health Resources and Services Administration","Antioch University-New England","Nursing and Health Professionals","grant",333336
+"Department of Health and Human Services","Health Resources and Services Administration","Appalachian State University","Addiction and Recovery","grant",-2049
+"Department of Health and Human Services","Health Resources and Services Administration","Appalachian State University","Nursing and Health Professionals","grant",433381
+"Department of Health and Human Services","Health Resources and Services Administration","Arizona State University-Tempe","Early Childhood Programs","grant",-1
+"Department of Health and Human Services","Health Resources and Services Administration","Arizona State University-Tempe","Healthcare Services","grant",224971
+"Department of Health and Human Services","Health Resources and Services Administration","Arizona State University-Tempe","Nursing and Health Professionals","grant",180000
 "Department of Health and Human Services","Health ResourcesRow and Services Administration","Armstrong State University","Nursing and Health Professionals","grant",-337597
 "Department of Health and Human Services","Health ResourcesRow and Services Administration","Ashland University","Nursing and Health Professionals","grant",279313
 "Department of Health and Human Services","Health ResourcesRow and Services Administration","Auburn University","Nursing and Health Professionals","grant",835498

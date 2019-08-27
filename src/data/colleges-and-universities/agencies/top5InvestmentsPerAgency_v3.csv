@@ -62,7 +62,7 @@
 "Bureau of Ocean Energy Management","SPECIAL STUDIES - NOT R&D",68986.3
 "Bureau of Ocean Energy Management","IT & TELECOMMUNICATIONS",45000
 "Bureau of Reclamation","Wildlife",13883776.59
-"Bureau of Reclamation","Water ResourcesRow",3004754.47
+"Bureau of Reclamation","Water Resources",3004754.47
 "Bureau of Reclamation","Environmental R&D",2260026.55
 "Bureau of Reclamation","PROFESSIONAL SERVICES",1251804
 "Bureau of Reclamation","IT & TELECOMMUNICATIONS",580095.64
@@ -259,11 +259,11 @@
 "Forest Service","SPACE R&D",615824
 "Forest Service","Fire Suppression Assistance Programs",524581.69
 "General Services Administration","SPECIAL STUDIES - NOT R&D",95000
-"Health ResourcesRow and Services Administration","Nursing and Health Professionals",419004267
-"Health ResourcesRow and Services Administration","HIV Programs",122192350
-"Health ResourcesRow and Services Administration","Healthcare Services",119829938
-"Health ResourcesRow and Services Administration","Early Childhood Programs",84807230
-"Health ResourcesRow and Services Administration","Addiction and Recovery",17687519
+"Health Resources and Services Administration","Nursing and Health Professionals",419004267
+"Health Resources and Services Administration","HIV Programs",122192350
+"Health Resources and Services Administration","Healthcare Services",119829938
+"Health Resources and Services Administration","Early Childhood Programs",84807230
+"Health Resources and Services Administration","Addiction and Recovery",17687519
 "Immediate Office of the Secretary of Transportation","Transportation",59947461.05
 "Immediate Office of the Secretary of Transportation","TRANSPORTATION (MODAL) R&D",2098250
 "Immediate Office of the Secretary of Transportation","Infrastructure",486921
@@ -356,11 +356,11 @@
 "National Science Foundation","MANAGEMENT SUPPORT SERVICES",1153471.51
 "National Transportation Safety Board","EDUCATION & TRAINING SERVICES",73425
 "National Transportation Safety Board","IT EQUIPMENT, SOFTWARE, SUPPLIES, & SUPPORT",24885.58
-"Natural ResourcesRow Conservation Service","EDUCATION & TRAINING SERVICES",54184
-"Natural ResourcesRow Conservation Service","PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING",25000
-"Natural ResourcesRow Conservation Service","NATURAL RESOURCES - OTHER SERVICES",17734.95
-"Natural ResourcesRow Conservation Service","BOOKS, MAPS, & OTHER PUBLICATIONS",9386.2
-"Natural ResourcesRow Conservation Service","SPECIAL STUDIES - NOT R&D",7313.01
+"Natural Resources Conservation Service","EDUCATION & TRAINING SERVICES",54184
+"Natural Resources Conservation Service","PHOTOGRAPHY, MAPPING, PRINTING, PUBLISHING",25000
+"Natural Resources Conservation Service","NATURAL RESOURCES - OTHER SERVICES",17734.95
+"Natural Resources Conservation Service","BOOKS, MAPS, & OTHER PUBLICATIONS",9386.2
+"Natural Resources Conservation Service","SPECIAL STUDIES - NOT R&D",7313.01
 "Nuclear Regulatory Commission","Research Support Programs",15727862.99
 "Nuclear Regulatory Commission","PROFESSIONAL SERVICES",921458.81
 "Nuclear Regulatory Commission","OTHER R&D",624472.05
@@ -449,7 +449,7 @@
 "Rural Housing Service","EDUCATION R & D",34500
 "Rural Utilities Service","Education",11947588
 "Rural Utilities Service","Regional Development",1240521
-"Rural Utilities Service","Water ResourcesRow",649688
+"Rural Utilities Service","Water Resources",649688
 "Rural Utilities Service","Hazardous Materials",335810
 "Securities and Exchange Commission","PROFESSIONAL SERVICES",1076685
 "Securities and Exchange Commission","EDUCATION & TRAINING SERVICES",181275
@@ -501,7 +501,7 @@
 "U.S. Fish and Wildlife Service","Wildlife",6588186.88
 "U.S. Fish and Wildlife Service","Science, Engineering, and Mathematics",5842151.14
 "U.S. Fish and Wildlife Service","Disaster Response and Assistance",2638728.77
-"U.S. Fish and Wildlife Service","Water ResourcesRow",2109684.48
+"U.S. Fish and Wildlife Service","Water Resources",2109684.48
 "U.S. Fish and Wildlife Service","Wildlife Conservation",1522824.65
 "U.S. Geological Survey","Environmental R&D",55357277.58
 "U.S. Geological Survey","Wildlife",14357437.22
