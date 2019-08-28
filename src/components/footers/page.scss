@@ -29,7 +29,7 @@ $col-padding: 15px;
     white-space: nowrap;
     text-align: right;
 
-    a {
+    a:not(:last-of-type) {
       padding-right: 0.25rem;
     }
 
