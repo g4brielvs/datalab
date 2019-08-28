@@ -1,8 +1,10 @@
+@import '../../../styles/variables';
+
 .featured {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   overflow: hidden;
-  height: 95%;
+  min-height: 100%;
 }
 
 .featured__heading {
@@ -22,8 +24,23 @@
   letter-spacing: 0.4px;
   font-size: 16px;
   font-weight: 300;
+  text-align: center;
 }
 
 .featured__heading--mobile, .featured__text--mobile {
   display: none;
+}
+
+.feature-row__image {
+  padding-left: 0;
+}
+
+@media screen and (max-width: $desktop) {
+  .feature-row__text {
+    padding-right: $margin-override;
+  }
+
+  .feature-row__image {
+    padding-left: $margin-override;
+  }
 }
