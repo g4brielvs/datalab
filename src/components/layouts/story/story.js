@@ -8,10 +8,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "./story.scss"
+import Default from "../default/default"
 
 const Story = ({ children }) => (
   <>
-    <main>{children}</main>
+    <Default>
+      <main>{children}</main>
+    </Default>
   </>
 )
 

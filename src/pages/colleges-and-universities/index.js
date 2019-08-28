@@ -79,8 +79,6 @@ class CollegesAndUniversitiesPage extends Component {
       <MoreAnalyses/>
 
     </Story>
-    <PageFooter />
-    <SiteFooter />
     </>
   }
 }
