@@ -9,6 +9,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from 'react-helmet'
 
+import SiteHeader from '../../headers/site'
+import PageHeader from '../../headers/page'
 import PageFooter from "../../footers/page"
 import SiteFooter from "../../footers/site"
 import '../../../styles/index.scss'
@@ -24,8 +26,8 @@ const Default = ({ children }) => (
         <title>Data Lab - U.S. Treasury</title>
     </Helmet>
 
-    {/* add nav bar here */}
-
+    <SiteHeader />
+    <PageHeader />
     <main
       className='default'
       style = {defaultStyle} >{children}</main>
