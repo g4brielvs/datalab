@@ -2,7 +2,7 @@ import React from 'react';
 import "./hwcta-link.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import sourceImage from "../../images/sources.svg";
+// import sourceImage from "../../images/sources.svg";
 
 const HWCTALink = (props) => {
   return (

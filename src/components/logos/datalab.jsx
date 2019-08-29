@@ -151,7 +151,7 @@ const Logo = props => {
 
 Logo.propTypes = {
 	fillColor: PropTypes.string,
-	beta: PropTypes.bool
+	beta: PropTypes.string
 }
 
 export default Logo

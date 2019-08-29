@@ -1,16 +1,17 @@
 import React from 'react';
-import './featured.scss';
 import { Link } from "gatsby"
 
-const Featured = (props) => {
+import './featured-analyses-tile.scss';
+
+const FeaturedAnalysesTile = (props) => {
   return (
     <>
       <Link to="colleges-and-universities"
             className="primary__link"
             ga-on="click" ga-event-category="Data Lab Home Page"
-            ga-event-action="Clicked ${props.heading}">
+            ga-event-action={"Clicked " + props.heading}>
 
-          <div className="featured">
+          <section className="featured">
             <h1 className="featured__heading--mobile">
               {props.heading}
             </h1>
@@ -30,11 +31,11 @@ const Featured = (props) => {
                 {props.mobileBody}
               </p>
             </div>
-          </div>
+          </section>
       </Link>
     </>
   )
 }
 
 
-export default Featured
+export default FeaturedAnalysesTile

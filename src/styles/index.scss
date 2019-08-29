@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
+@import 'variables';
 
-// device screen min widths
-$desktop-xl: 1200px;
-$desktop: 992px;
-$tablet: 768px;
-$phone: 576px;
+body {
+  margin: 0px;
+  padding: 0px;
+}
 
 body, p, h1, h2, h3, h4, h5, input, select, textarea {
-  color: #000;
+  color: #666666;
   font-family: 'Source Sans Pro';
+}
+
+a:-webkit-any-link {
+  color: #999;
+  cursor: pointer;
+  text-decoration: none;
 }
