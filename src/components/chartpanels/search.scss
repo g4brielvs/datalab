@@ -1,6 +1,26 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
+
+$border-width: 3px;
+$border-color: #eee;
 
 .search-panel {
-  border: 3px solid #eee;
-  border-radius: 0 15px 15px 0;
+  position: absolute;
+  left: 0;
+
+  .panel-group {
+    border: $border-width solid $border-color;
+    border-radius: 0 15px 15px 0;
+
+    .panel-button {
+      margin: 12px 10px 8px;
+      background: none;
+      border: none;
+      opacity: 0.3;
+    }
+
+    .divider {
+      height: $border-width;
+      color: $border-color;
+    }
+  }
 }
