@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "gatsby"
-import "./dts.scss"
-import * as d3 from "d3";
+import "./dts-tile.scss"
+import "./landing-dts.scss"
 import { graphql, useStaticQuery } from "gatsby"
+import * as d3 from 'd3'
 
-function Dts(props) {
+function DtsTile(props) {
+
+
   let svg,
     data,
     debounce,
@@ -17,20 +20,17 @@ function Dts(props) {
     valueline,
     height;
 
-  // Similar to componentDidMount and componentDidUpdate:
+  const dateFormatter = d3.timeFormat("%B %e, %Y");
+
+  const dollarFormatter = function dollarFormatter(d) {
+    return d3.format("$,.2s")(d).replace(/G/, "B");
+  };
+
   useEffect(() => {
     // Update the document title using the browser API
     data = _data.allRecent30Csv.nodes;
     redraw();
   });
-
-  const dateFormatter = d3.timeFormat("%B %e, %Y");
-
-  const parseTime = d3.timeParse("%Y-%m-%d");
-
-  const dollarFormatter = function dollarFormatter(d) {
-      return d3.format("$,.2s")(d).replace(/G/, "B");
-  };
 
   function setDimensions() {
     containerWidth = document.getElementsByClassName('dtsm-img')[0].getBoundingClientRect().width;
@@ -72,13 +72,6 @@ function Dts(props) {
           .tickSize(-width)
           .tickFormat("")
       );
-  }
-
-  function type(d) {
-
-    d.date = parseTime(d.date);
-    d.Totals = +d.Totals * 1000000; // is this wrong? should it be fytd, mtd, and today instead? also multiply?
-    return d;
   }
 
   function redraw() {
@@ -152,20 +145,21 @@ function Dts(props) {
   `)
 
   return (
-
     <>
-        <Link to="colleges-and-universities"
+        <Link to="dts"
            className="landing-chart__link"
            ga-on="click" ga-event-category="Data Lab Home Page"
-           ga-event-action="Clicked 'Visualizing the Daily Treasury Statement'"
-        >
-        <section className="dts">
+           ga-event-action={"Clicked " + props.heading}>
+
+          <section className="dts">
             <h1>
-              Visualizing the Daily Treasury Statement
+              {props.heading}
             </h1>
+
             <h2>
-              How much does the federal government spend each day?
+              {props.title}
             </h2>
+
             <div className="dts-container">
               <div className="dts-module">
                 <div className="dtsm-img"></div>
@@ -176,14 +170,16 @@ function Dts(props) {
                   <div className="dtsm-dollars">$</div>
                 </div>
               </div>
-          </div>
+            </div>
 
-          <div class="side-dts__date"></div>
-        </section>
+            <div className="side-dts__date"></div>
+
+          </section>
+
       </Link>
     </>
   )
 }
 
 
-export default Dts
+export default DtsTile

@@ -1,60 +1,64 @@
-@import "../../styles/index.scss";
+@import "../../styles/index";
 
 $col-padding: 15px;
 
 .page-footer {
-  padding: 1rem 4rem 4rem;
-  display: flex;
-  justify-content: space-around;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
 
-  .logo {
-    padding-bottom: 3rem;
-  }
+  .content {
+    padding: 3rem 4rem 4rem;
+    display: flex;
+    justify-content: space-around;
 
-  .flex-item {
-    padding-left: $col-padding;
-    padding-right: $col-padding;
-    flex: min-content;
-  }
+    .logo {
+      padding-bottom: 3rem;
+    }
 
-  .title {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.24;
-    margin-bottom: 1em;
-    letter-spacing: normal;
-  }
+    .flex-item {
+      padding-left: $col-padding;
+      padding-right: $col-padding;
+      flex: min-content;
+    }
 
-  .social-logos {
-    white-space: nowrap;
-    text-align: right;
+    .title {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.24;
+      margin-bottom: 1em;
+      letter-spacing: normal;
+    }
+
+    .social-logos {
+      white-space: nowrap;
+      text-align: right;
+
+      a:not(:last-of-type) {
+        padding-right: 0.25rem;
+      }
+
+      .float-bottom {
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    p {
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 1.33;
+      letter-spacing: 0.2px;
+    }
 
     a {
-      padding-right: 0.25rem;
+      text-decoration: none;
     }
 
-    .float-bottom {
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
+    .title,
+    a {
+      color: #2272ce;
     }
-  }
-
-  p {
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 1.33;
-    letter-spacing: 0.2px;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .title,
-  a {
-    color: #2272ce;
   }
 }
 
@@ -66,7 +70,7 @@ $col-padding: 15px;
 }
 
 @media (max-width: $desktop - 1) {
-  .page-footer {
+  .page-footer .content {
     max-width: 500px;
     margin: 0 auto;
     flex-direction: column;
