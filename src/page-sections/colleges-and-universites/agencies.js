@@ -4,6 +4,7 @@ import "../../styles/index.scss"
 /* components */
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import SearchPanel from "../../components/chartpanels/search"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 // import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
@@ -33,7 +34,8 @@ import defaultImage from "../../images/default-image.jpg"
         {/*<BubbleChart/>*/}
         <div className="container" style={defaultImageStyle}>
           <div className="row center-xs">
-          <img className="col-xs-6" src={defaultImage} />
+            <SearchPanel />
+            <img className="col-xs-6" src={defaultImage} />
           </div>
         </div>
 
