@@ -1,6 +1,9 @@
+@import '../../../styles/variables';
+
+
 .highlight {
   border-top: 1px solid #ddd;
-  padding: 2.188rem 0;
+  padding: 1.25rem 0;
   text-align: left;
 
   h1, h2 {
@@ -8,13 +11,14 @@
     margin: 0 0 1rem;
   }
 
-  h1 {
+  .h1 {
     color: #2272CE;
-    font-size: 1rem;
+    font-size: 1em;
+    font-weight: bold;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  .h2 {
+    font-size: 130%;
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
@@ -28,13 +32,10 @@
   cursor: pointer;
   display: block;
 
-  &:hover h2 {
+  &:hover p {
     text-decoration: underline;
   }
 
-  &:hover h1 {
-    text-decoration: underline
-  }
 }
 
 .highlight__text {
@@ -46,20 +47,28 @@
   color: #000000;
   clear: both;
   margin: 0;
-  font-size: 16px;
+  font-size: .8em;
 }
 
 .highlight__image {
   box-sizing: border-box;
-  margin-bottom: 1rem;
   float: right;
 
   img {
-    width: 156px;
-    height: 108px;
+    width: 100%;
+    //width: 156px;
+    //height: 108px;
   }
 }
 
 .highlight__headings {
   float: left;
 }
+
+@media screen and (min-width: $desktop-xl) and (max-width: $desktop-xxl) {
+  .highlight__text {
+    display: none;
+  }
+}
+
+
