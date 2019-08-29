@@ -14,7 +14,7 @@ const ToolLayout = props => (
   <>
   <SiteHeader />
   <PageHeader />
-  <div className='tool-page'>
+  <div className='tool-page col-xs-10'>
     <header>
       <span className='title'>{props.title}</span>
       <span><ShareMenu /></span>
