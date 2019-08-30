@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import { graphql } from "gatsby"
+import Sankey from "../../components/visualizations/sankey/sankey"
 
 
 class BudgetFunctionPage extends Component {
@@ -11,9 +12,14 @@ class BudgetFunctionPage extends Component {
     // const sTitle = this.props.data.allSankeyTitlesV1Fy19Csv.nodes;
     // const descriptions = this.props.data.allDescriptionsCsv.nodes;
 
-    return <>
-        <p>hello world!</p>
+    return (
+      <>
+      <Sankey data={this.props.data.allSankeyV1Fy19Csv.nodes}
+              sPanel={this.props.data.allSankeyPanelV1Fy19Csv.nodes}
+              sTitle={this.props.data.allSankeyTitlesV1Fy19Csv.nodes}
+              descriptions={this.props.data.allDescriptionsCsv.nodes} />
       </>
+    )
   }
 }
 

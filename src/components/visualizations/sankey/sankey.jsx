@@ -2,8 +2,14 @@ import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
 import * as $ from "jquery";
+import SankeyBrackets from "./sankey-brackets"
 
 function Sankey(props) {
+
+  const data = props.data;
+  const sPanel = props.sPanel;
+  const sTitle = props.sTitle;
+  const descriptions = props.descriptions;
 
   const margin = {
     top: 0,
@@ -106,33 +112,37 @@ function Sankey(props) {
     // Update the document title using the browser API
     RadioSankeyFY19();
 
-    $(document).ready(() => {
-      $("input[type='radio']").change(() => {
-        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-        d3.selectAll('#sankey-viz > svg').remove();
-        if (FiscalYear === 'fy17') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY17();
-        }
-        else if (FiscalYear === 'fy18') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY18();
-        }
-        else if (FiscalYear === 'fy19') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY19();
-        }
-      });
+    // $(document).ready(() => {
+    //   $("input[type='radio']").change(() => {
+    //     const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+    //     d3.selectAll('#sankey-viz > svg').remove();
+    //     if (FiscalYear === 'fy17') {
+    //       d3.selectAll("#tab").remove();
+    //       d3.selectAll("#tab_2").remove();
+    //       d3.selectAll("#tab_3").remove();
+    //       d3.selectAll("#description").remove();
+    //       RadioSankeyFY17();
+    //     }
+    //     else if (FiscalYear === 'fy18') {
+    //       d3.selectAll("#tab").remove();
+    //       d3.selectAll("#tab_2").remove();
+    //       d3.selectAll("#tab_3").remove();
+    //       d3.selectAll("#description").remove();
+    //       RadioSankeyFY18();
+    //     }
+    //     else if (FiscalYear === 'fy19') {
+    //       d3.selectAll("#tab").remove();
+    //       d3.selectAll("#tab_2").remove();
+    //       d3.selectAll("#tab_3").remove();
+    //       d3.selectAll("#description").remove();
+    //       RadioSankeyFY19();
+    //     }
+    //   });
   });
+
+  function RadioSankeyFY19() {
+    makeSankey(data, sPanel, sTitle, descriptions);
+  }
 
   d3.sankey = () => {
     const sankey = {};
@@ -720,13 +730,16 @@ function Sankey(props) {
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
 
-    const inlineStyle = {
-      position: absolute,
-      margin: '20px'
-    }
 
+  }
 
-    return <>
+  const inlineStyle = {
+    position: 'absolute',
+    margin: '20px'
+  }
+
+  return (
+    <>
       <div className="mask">
         <h5 style={inlineStyle}>Click on nodes to display additional information</h5>
         <div className="viz-actions">
@@ -759,5 +772,8 @@ function Sankey(props) {
         </div>
       </div>
     </>
-  }
-})}
+  )
+}
+
+
+export default Sankey
