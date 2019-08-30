@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
 import * as $ from "jquery";
-import SankeyBrackets from "./sankey-brackets"
+
+import './sankey.scss';
+
+import SankeyBrackets from "./sankey-brackets";
 
 function Sankey(props) {
 
@@ -112,36 +115,43 @@ function Sankey(props) {
     // Update the document title using the browser API
     RadioSankeyFY19();
 
-    // $(document).ready(() => {
-    //   $("input[type='radio']").change(() => {
-    //     const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-    //     d3.selectAll('#sankey-viz > svg').remove();
-    //     if (FiscalYear === 'fy17') {
-    //       d3.selectAll("#tab").remove();
-    //       d3.selectAll("#tab_2").remove();
-    //       d3.selectAll("#tab_3").remove();
-    //       d3.selectAll("#description").remove();
-    //       RadioSankeyFY17();
-    //     }
-    //     else if (FiscalYear === 'fy18') {
-    //       d3.selectAll("#tab").remove();
-    //       d3.selectAll("#tab_2").remove();
-    //       d3.selectAll("#tab_3").remove();
-    //       d3.selectAll("#description").remove();
-    //       RadioSankeyFY18();
-    //     }
-    //     else if (FiscalYear === 'fy19') {
-    //       d3.selectAll("#tab").remove();
-    //       d3.selectAll("#tab_2").remove();
-    //       d3.selectAll("#tab_3").remove();
-    //       d3.selectAll("#description").remove();
-    //       RadioSankeyFY19();
-    //     }
-    //   });
+      $("input[type='radio']").change(() => {
+        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+        d3.selectAll('#sankey-viz > svg').remove();
+        if (FiscalYear === 'fy17') {
+          d3.selectAll("#tab").remove();
+          d3.selectAll("#tab_2").remove();
+          d3.selectAll("#tab_3").remove();
+          d3.selectAll("#description").remove();
+          RadioSankeyFY17();
+        }
+        else if (FiscalYear === 'fy18') {
+          d3.selectAll("#tab").remove();
+          d3.selectAll("#tab_2").remove();
+          d3.selectAll("#tab_3").remove();
+          d3.selectAll("#description").remove();
+          RadioSankeyFY18();
+        }
+        else if (FiscalYear === 'fy19') {
+          d3.selectAll("#tab").remove();
+          d3.selectAll("#tab_2").remove();
+          d3.selectAll("#tab_3").remove();
+          d3.selectAll("#description").remove();
+          RadioSankeyFY19();
+        }
+      });
   });
 
   function RadioSankeyFY19() {
     makeSankey(data, sPanel, sTitle, descriptions);
+  }
+
+  function RadioSankeyFY18() {
+    window.alert('fy18');
+  }
+
+  function RadioSankeyFY17() {
+    window.alert('fy17');
   }
 
   d3.sankey = () => {
@@ -741,18 +751,18 @@ function Sankey(props) {
   return (
     <>
       <div className="mask">
-        <h5 style={inlineStyle}>Click on nodes to display additional information</h5>
+        <h5>Click on nodes to display additional information</h5>
         <div className="viz-actions">
           <form id="SankeyRadio">
-            <div className="select-wrapper1" style={inlineStyle}>
-              {/*<input type="radio" id="contactChoice1" name="FiscalYear" value="fy19" checked>*/}
-              {/*<label htmlFor="contactChoice1">FY 19</label>*/}
+            <div className="select-wrapper1">
+              <input type="radio" id="contactChoice1" name="FiscalYear" value="fy19" checked />
+              <label htmlFor="contactChoice1">FY 19</label>
 
-              {/*<input type="radio" id="contactChoice2" name="FiscalYear" value="fy18">*/}
-              {/*<label htmlFor="contactChoice2">FY 18</label>*/}
+              <input type="radio" id="contactChoice2" name="FiscalYear" value="fy18" />
+              <label htmlFor="contactChoice2">FY 18</label>
 
-              {/*<input type="radio" id="contactChoice3" name="FiscalYear" value="fy17">*/}
-              {/*<label htmlFor="contactChoice3">FY 17</label>*/}
+              <input type="radio" id="contactChoice3" name="FiscalYear" value="fy17" />
+              <label htmlFor="contactChoice3">FY 17</label>
             </div>
           </form>
           <div>
@@ -762,11 +772,15 @@ function Sankey(props) {
         <div className="viz-container">
           <element className="budget-sankey">
             <div id="sankey-container">
-              <div id="sankey-viz">
-                <div className="sankey-brackets">
+
+              <div id="sankey-container">
+                <div id="sankey-viz" style={inlineStyle}>
+                  <div className="sankey-brackets">
+                    <SankeyBrackets/>
+                  </div>
                 </div>
+                <div id="sankey-table"></div>
               </div>
-              <div id="sankey-table"></div>
             </div>
           </element>
         </div>
