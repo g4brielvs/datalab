@@ -1,21 +1,30 @@
 @import "../../styles/index.scss";
 
+$search-width: 200px;
 $border-width: 3px;
 $border-color: #eee;
 
-.search-panel {
+.sidebar {
   position: absolute;
   left: 0;
+  transition: left 0.5s ease-in-out;
+  text-align: left;
+  display: flex;
+
+  .search-panel {
+    width: $search-width;
+  }
 
   .panel-group {
     border: $border-width solid $border-color;
     border-radius: 0 15px 15px 0;
 
     .panel-button {
-      // margin: 12px 10px 8px;
-      // background: none;
-      // border: none;
       opacity: 0.3;
+    }
+
+    .selected {
+      opacity: 1;
     }
 
     .divider {
@@ -23,4 +32,8 @@ $border-color: #eee;
       color: $border-color;
     }
   }
+}
+
+.collapsed {
+  left: -$search-width;
 }
