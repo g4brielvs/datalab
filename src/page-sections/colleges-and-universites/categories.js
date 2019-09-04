@@ -2,28 +2,29 @@ import React from "react"
 import "../../styles/index.scss"
 
 /* components */
-import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Accordion from "../../components/accordion/accordion"
+import SearchPanel from "../../components/chartpanels/search"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 
-const Overview = () => {
-
+const Categories = () => {
   const defaultImageStyle = {
     margin: "1rem 0"
   }
 
+  const searchList = {
+    'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
+    'Medical R&D': ['Human Genome Research']
+  }
+  
   return (
     <>
       <StoryHeading
-        number={'01'}
-        title={'Investment Overview'}
-        teaser={['How much was ', <span className="heading--red">invested in colleges and universities?</span>] }
-        blurb={`In 2018, higher education institutions received a total of $1.068 trillion in revenue from federal and
-                non-federal funding sources. Investments from the federal government were $149 billion of the total,
-                representing 3.6% of federal spending. This money flowed into colleges and universities through three
-                main vehicles: federal student aid, grants, and contracts. In our analysis we focused on data from
-                nonprofit institutions that offer a program of two years or more.`}
+        number={'03'}
+        title={'Investment Categories'}
+        teaser={'How was the money used?'}
+        blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 
       <Accordion
@@ -35,6 +36,7 @@ const Overview = () => {
 
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
+          <SearchPanel search-list={searchList}/>
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>
@@ -49,5 +51,5 @@ const Overview = () => {
 }
 
 
-export default Overview
+export default Categories
 

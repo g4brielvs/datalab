@@ -15,6 +15,11 @@ import defaultImage from "../../images/default-image.jpg"
       margin: "1rem 0"
     }
 
+    const searchList = {
+      'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
+      'Medical R&D': ['Epidemiology and Other Health Studies Financial Assistance Program']
+    }
+  
     return (
       <>
         <StoryHeading
@@ -34,8 +39,8 @@ import defaultImage from "../../images/default-image.jpg"
         {/*<BubbleChart/>*/}
         <div className="container" style={defaultImageStyle}>
           <div className="row center-xs">
-            <SearchPanel />
-            <img className="col-xs-6" src={defaultImage} />
+          <SearchPanel search-list={searchList}/>
+          <img className="col-xs-6" src={defaultImage} />
           </div>
         </div>
 

@@ -9,6 +9,7 @@ import Header from "../../components/header/header"
 import HWCTALink from "../../components/hwcta-link/hwcta-link"
 import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
+import Categories from "../../page-sections/colleges-and-universites/categories"
 import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 import Toc from "../../components/toc/toc"
@@ -68,6 +69,8 @@ class CollegesAndUniversitiesPage extends Component {
       <Overview/>
 
       <Agencies />
+
+      <Categories />
 
       <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',

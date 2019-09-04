@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from 'prop-types'
 import "./search.scss"
 
 import IconButton from "@material-ui/core/IconButton"
@@ -83,4 +84,8 @@ export default class SearchPanel extends React.Component {
       </div >
     )
   }
+}
+
+SearchPanel.PropTypes - {
+  'search-list': PropTypes.object.isRequired
 }
