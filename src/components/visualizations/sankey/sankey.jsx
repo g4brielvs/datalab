@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as d3 from "d3v3";
 import * as $ from "jquery";
@@ -110,49 +110,14 @@ function Sankey(props) {
     color: "#461e45"
   }];
 
-
   useEffect(() => {
-    // Update the document title using the browser API
-    RadioSankeyFY19();
-
-      $("input[type='radio']").change(() => {
-        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-        d3.selectAll('#sankey-viz > svg').remove();
-        if (FiscalYear === 'fy17') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY17();
-        }
-        else if (FiscalYear === 'fy18') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY18();
-        }
-        else if (FiscalYear === 'fy19') {
-          d3.selectAll("#tab").remove();
-          d3.selectAll("#tab_2").remove();
-          d3.selectAll("#tab_3").remove();
-          d3.selectAll("#description").remove();
-          RadioSankeyFY19();
-        }
-      });
-  });
-
-  function RadioSankeyFY19() {
+    d3.selectAll('#sankey-viz > svg').remove();
+    d3.selectAll("#tab").remove();
+    d3.selectAll("#tab_2").remove();
+    d3.selectAll("#tab_3").remove();
+    d3.selectAll("#description").remove();
     makeSankey(data, sPanel, sTitle, descriptions);
-  }
-
-  function RadioSankeyFY18() {
-    window.alert('fy18');
-  }
-
-  function RadioSankeyFY17() {
-    window.alert('fy17');
-  }
+  });
 
   d3.sankey = () => {
     const sankey = {};
@@ -744,47 +709,21 @@ function Sankey(props) {
   }
 
   const inlineStyle = {
-    position: 'absolute',
     margin: '20px'
   }
 
   return (
     <>
-      <div className="mask">
-        <h5>Click on nodes to display additional information</h5>
-        <div className="viz-actions">
-          <form id="SankeyRadio">
-            <div className="select-wrapper1">
-              <input type="radio" id="contactChoice1" name="FiscalYear" value="fy19" checked />
-              <label htmlFor="contactChoice1">FY 19</label>
-
-              <input type="radio" id="contactChoice2" name="FiscalYear" value="fy18" />
-              <label htmlFor="contactChoice2">FY 18</label>
-
-              <input type="radio" id="contactChoice3" name="FiscalYear" value="fy17" />
-              <label htmlFor="contactChoice3">FY 17</label>
+      <figure className="budget-sankey">
+          <div id="sankey-container">
+            <div id="sankey-viz" style={inlineStyle}>
+              {/*<div className="sankey-brackets">*/}
+                {/*<SankeyBrackets/>*/}
+              {/*</div>*/}
             </div>
-          </form>
-          <div>
-            {/*{% include action-buttons.html %}*/}
-          </div>
+            <div id="sankey-table"></div>
         </div>
-        <div className="viz-container">
-          <element className="budget-sankey">
-            <div id="sankey-container">
-
-              <div id="sankey-container">
-                <div id="sankey-viz" style={inlineStyle}>
-                  <div className="sankey-brackets">
-                    <SankeyBrackets/>
-                  </div>
-                </div>
-                <div id="sankey-table"></div>
-              </div>
-            </div>
-          </element>
-        </div>
-      </div>
+      </figure>
     </>
   )
 }
