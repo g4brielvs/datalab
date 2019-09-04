@@ -7,74 +7,80 @@ import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined"
 import Divider from "@material-ui/core/Divider"
 import ListIcon from "@material-ui/icons/List"
 
-const searchButtonId = 'search-icon';
-const chartButtonId = 'chart-icon';
-const tableButtonId = 'list-icon';
 
 export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activeButton: 0 };
+    this.state = {
+      activeButton: 0,
+      expanded: false
+    };
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (this.state.activeButton !== nextState.activeButton) {
-      if (this.state.activeButton) {
-        document.getElementById(this.state.activeButton).classList.remove("selected");
-      }
-      document.getElementById(nextState.activeButton).classList.add("selected");
-    }
-  }
+  // componentWillUpdate(nextProps, nextState) {
+  //   if (this.state.activeButton !== nextState.activeButton) {
+  //     if (this.state.activeButton) {
+  //       document.getElementById(this.state.activeButton).classList.remove("selected");
+  //     }
+  //     document.getElementById(nextState.activeButton).classList.add("selected");
+  //   }
+  // }
 
-  activateButton(buttonId) {
-    if (buttonId === searchButtonId) {
+  activateButton(button) {
+    if (button === 'search') {
       this.toggleSearch();
     }
-    if (buttonId !== this.state.activeButton) {
-      this.setState({ activeButton: buttonId });
-      if (buttonId === chartButtonId) {
+    if (button !== this.state.activeButton) {
+      this.setState({ activeButton: button });
+      if (button === 'chart') {
         alert("switch to chart view");
-      } else if (buttonId === tableButtonId) {
+      } else if (button === 'table') {
         alert("switch to table view");
       } else {
-        console.log(`Invalid parameter to SearchPanel.activateButton: ${buttonId}`);
+        console.log(`Invalid parameter to SearchPanel.activateButton: ${button}`);
       }
     }
   }
 
   toggleSearch() {
-    document.getElementById("sidebar").classList.toggle("collapsed");
+    this.setState((prevState) => { return { expanded: !prevState.expanded } });
   }
 
   render() {
     return (
-      <div id="sidebar" className="sidebar collapsed">
+      <div id="sidebar" className={"sidebar" + (this.state.expanded ? '' : " collapsed")}>
         <div className="search-panel">search panel here</div>
         <div>
           <IconButton
             aria-label="search"
             className="panel-group"
-            onClick={() => this.activateButton(searchButtonId)}
+            onClick={() => this.activateButton('search')}
           >
-            <SearchIcon id={searchButtonId} className="panel-button" />
+            <SearchIcon ref={this.searchButtonRef}
+              className={(this.state.activeButton === 'search' ? ' selected' : ' unselected')}
+            />
           </IconButton>
           <div className="panel-group">
             <IconButton
               aria-label="show bubble chart"
-              onClick={e => this.activateButton(chartButtonId)}
+              onClick={e => this.activateButton('chart')}
             >
-              <BubbleChartOutlinedIcon id={chartButtonId} className="panel-button" />
+              <BubbleChartOutlinedIcon
+                className={(this.state.activeButton === 'chart' ? ' selected' : ' unselected')}
+              />
             </IconButton>
             <Divider variant="middle" className="divider" />
             <IconButton
               aria-label="show data table"
-              onClick={e => this.activateButton(tableButtonId)}
+              onClick={e => this.activateButton('table')}
             >
-              <ListIcon id={tableButtonId} className="panel-button" />
+              <ListIcon
+                className={(this.state.activeButton === 'table' ? ' selected' : ' unselected')}
+              />
             </IconButton>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     )
   }
 }
