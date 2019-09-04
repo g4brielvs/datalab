@@ -4,7 +4,6 @@ import Sankey from "../../components/visualizations/sankey/sankey"
 import SEO from "../../components/seo"
 import ToolLayout from "../../components/layouts/tool/tool"
 import Accordion from "../../components/accordion/accordion"
-import defaultImage from "../../images/default-image.jpg"
 
 
 function BudgetFunctionPage(props) {
@@ -38,8 +37,8 @@ function BudgetFunctionPage(props) {
 
   return (
     <>
-      <SEO title='Tool Layout Demo' keywords={[`application`, `demo`]}/>
-      
+      <SEO title='Data Lab - Budget Function - U.S. Treasury' keywords={[`application`, `demo`]}/>
+
       <ToolLayout
         title='Title'
         introSentence='Lorem ipsum dolor sit amet, consectetur adipiscing eilt, sed do eiusmod. Intro sentence. Keep to one line if possible.'
