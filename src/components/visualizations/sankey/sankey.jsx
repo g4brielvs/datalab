@@ -709,18 +709,19 @@ function Sankey(props) {
   }
 
   const inlineStyle = {
-    margin: '20px'
+    position: 'absolute',
+    margin: '20px',
+    marginLeft: '-240px'
   }
 
   return (
     <>
       <figure className="budget-sankey">
           <div id="sankey-container">
-            <div id="sankey-viz" style={inlineStyle}>
-              {/*<div className="sankey-brackets">*/}
-                {/*<SankeyBrackets/>*/}
-              {/*</div>*/}
+            <div className="sankey-brackets">
+              <SankeyBrackets/>
             </div>
+            <div id="sankey-viz" style={inlineStyle}></div>
             <div id="sankey-table"></div>
         </div>
       </figure>
