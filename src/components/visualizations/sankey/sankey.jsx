@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
-import * as $ from "jquery";
-
 import './sankey.scss';
 
 import SankeyBrackets from "./sankey-brackets";
@@ -111,13 +109,17 @@ function Sankey(props) {
   }];
 
   useEffect(() => {
+    clearAll();
+    makeSankey(data, sPanel, sTitle, descriptions);
+  });
+
+  const clearAll = () => {
     d3.selectAll('#sankey-viz > svg').remove();
     d3.selectAll("#tab").remove();
     d3.selectAll("#tab_2").remove();
     d3.selectAll("#tab_3").remove();
     d3.selectAll("#description").remove();
-    makeSankey(data, sPanel, sTitle, descriptions);
-  });
+  }
 
   d3.sankey = () => {
     const sankey = {};

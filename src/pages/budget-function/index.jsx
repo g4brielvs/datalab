@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Sankey from "../../components/visualizations/sankey/sankey"
-import SankeyBrackets from "../../components/visualizations/sankey/sankey-brackets"
-import * as d3 from "d3v3"
 
 
 function BudgetFunctionPage(props) {
 
   const [year, setFiscalYear] = useState('fy19');
 
-  let data, sPanel, sTitle, descriptions;
-
   function onFiscalYearChange(e) {
-    console.log('in on change', e.currentTarget.value);
     setFiscalYear(e.currentTarget.value);
   };
 
@@ -36,7 +31,6 @@ function BudgetFunctionPage(props) {
       descriptions: props.data.allDescriptionsCsv.nodes
     }
   }
-
 
   return (
     <>
