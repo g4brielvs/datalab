@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import * as d3 from "d3";
-import { graphql, useStaticQuery } from "gatsby";
+
+import * as d3 from "d3v3";
 import * as _ from "lodash";
 import * as $ from "jquery";
 
 function BubbleChart(props) {
+
+  let data;
 
   const bubbleChartContainer = document.getElementById('agency-bubbleChart');
   const color = ['#c8ac7f', '#C6919E', '#C99E7F', '#879BBA', '#A3D1CC', '#88A6A0', '#879BBA',
@@ -15,18 +17,19 @@ function BubbleChart(props) {
     '#C9BB7F', '#c8ac7f', '#C6919E', '#879BBA', '#A3D1CC', '#88A6A0', '#80AEC4', '#C9BB7F',
     '#c8ac7f', '#c8ac7f', '#C99E7F', '#879BBA', '#A3D1CC', '#88A6A0', '#80AEC4', '#C9BB7F'];
 
-  const bTableBtn = $('#bubble-table-trigger');
-  const bTableContainer = $('#bubbleTableContainer');
+  // const bTableBtn = $('#bubble-table-trigger');
+  // const bTableContainer = $('#bubbleTableContainer');
   const bChartContainer = $('#bubbleChartContainer');
   const bChartBtn = $('#bubble-chart-trigger');
-  const tooltipClose = $('.bubble-detail__close');
+  // const tooltipClose = $('.bubble-detail__close');
 
   const detailContainer = d3.select('#bubble-detail section.bubble-detail');
   const detailContainerActiveClass = 'bubble-detail--active';
 
   let node, circle, focus, view, bubbleSvg, recipient, root, nodes;
   const widthPercentage = .7;
-  let maxHeight = document.getElementById("agency-investments__content").clientHeight;
+  // let maxHeight = document.getElementById("agency-investments__content").clientHeight;
+  let maxHeight = 700;
   let calculatedWidth = window.innerWidth * widthPercentage;
   let bubbleWidth = calculatedWidth < maxHeight ? calculatedWidth : maxHeight;
   const margin = 20;
@@ -67,7 +70,9 @@ function BubbleChart(props) {
   useEffect(() => {
     // Update the document title using the browser API
     // popoverData = _.keyBy(rawPopoverData, 'agency');
+    data = props.items;
     root = transformData(data);
+    console.log(root);
     nodes = pack.nodes(root);
     drawBubbleChart(root);
 
@@ -82,15 +87,15 @@ function BubbleChart(props) {
       });
 
     zoomTo([root.x, root.y, root.r * 2 + margin]);
-    createBubbleTable(data); // has to match csv columns!
+    // createBubbleTable(data); // has to match csv columns!
 
-    if (!bubble.setSearchData) {
-      console.warn('bubble method not available')
-    } else {
-      bubble.setSearchData(root);
-      bubble.selectSubAgency = selectSubAgency;
-      bubble.zoom = zoom;
-    }
+    // if (!bubble.setSearchData) {
+    //   console.warn('bubble method not available')
+    // } else {
+    //   bubble.setSearchData(root);
+    //   bubble.selectSubAgency = selectSubAgency;
+    //   bubble.zoom = zoom;
+    // }
   });
 
 // add legend
@@ -196,18 +201,18 @@ function BubbleChart(props) {
 
   function setAgencyTooltipHtml(d) {
     const elName = "agency_tip_" + d.name.replace(/ /g, "_");
-    let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
-
-    if (!isDesktop()) {
-      tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
-    }
-
-    tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
-      "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
-      "<div class='information'><p class='key' style='color: #881E3D;'>Total Investment</p>" +
-      "<span class='bubble-detail__agency-name'>" + formatCurrency(popoverData[d.name].total_investment) + "</span>" +
-      "</div></div>";
-    return tooltipHtml;
+    // let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
+    //
+    // if (!isDesktop()) {
+    //   tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
+    // }
+    //
+    // tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
+    //   "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
+    //   "<div class='information'><p class='key' style='color: #881E3D;'>Total Investment</p>" +
+    //   "<span class='bubble-detail__agency-name'>" + formatCurrency(popoverData[d.name].total_investment) + "</span>" +
+    //   "</div></div>";
+    // return tooltipHtml;
   }
 
   function setSubagencyTooltipHtml(d) {
@@ -222,7 +227,7 @@ function BubbleChart(props) {
       "<span class='bubble-detail__agency-name'>" + d.parent.name + "</span>" +
       "<span class='bubble-detail__agency-label'>Sub-Agency</span>" +
       "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
-      "<div class='information'><p class='key' style='color: #881E3D;'>Total $ of Awards</p>" +
+      "<div class='information'><p>Total $ of Awards</p>" +
       "<span class='bubble-detail__agency-name'>" + formatCurrency(d.size) + "</span>" +
       "</div></div>";
     return tooltipHtml;
@@ -233,23 +238,23 @@ function BubbleChart(props) {
     const targetWidth = bubbleWidth;
     bubble.chartHeight = targetWidth;
 
-    let tooltipHtml = '<div></div>';
-    tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
-      if (isZoomedIn(d)) {
-        if (d.depth === 2) {
-          tooltipHtml = setSubagencyTooltipHtml(d);
-        } else if (d.depth === 1) {
-          tooltipHtml = setAgencyTooltipHtml(d);
-        }
-      } else {
-        if (d.depth === 2) {
-          tooltipHtml = setAgencyTooltipHtml(d.parent);
-        } else if (d.depth === 1) {
-          tooltipHtml = setAgencyTooltipHtml(d);
-        }
-      }
-      return tooltipHtml;
-    });
+    // let tooltipHtml = '<div></div>';
+    // tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
+    //   if (isZoomedIn(d)) {
+    //     if (d.depth === 2) {
+    //       tooltipHtml = setSubagencyTooltipHtml(d);
+    //     } else if (d.depth === 1) {
+    //       tooltipHtml = setAgencyTooltipHtml(d);
+    //     }
+    //   } else {
+    //     if (d.depth === 2) {
+    //       tooltipHtml = setAgencyTooltipHtml(d.parent);
+    //     } else if (d.depth === 1) {
+    //       tooltipHtml = setAgencyTooltipHtml(d);
+    //     }
+    //   }
+    //   return tooltipHtml;
+    // });
 
     focus = root;
     diameter = bubbleWidth = calculatedWidth < maxHeight ? calculatedWidth : maxHeight;
@@ -288,11 +293,11 @@ function BubbleChart(props) {
       .on("click", bubbleClick)
       .on("mouseover", function (d) {
         if (!isTablet()) {
-          tip.show(d);
+          // tip.show(d);
         }
       })
       .on("mouseout", function (d) {
-        tip.hide(d);
+        // tip.hide(d);
       })
     ;
 
@@ -323,18 +328,18 @@ function BubbleChart(props) {
       .on("mouseover", function (d) {
         // const elName = d.name.replace(/ /g,"_");
         if (!isTablet()) {
-          tip.show(d);
+          // tip.show(d);
         }
       })
-      .on("mouseout", tip.hide)
+      // .on("mouseout", tip.hide)
     ;
     node = bubbleSvg.selectAll("circle,text");
-    bubbleSvg.call(tip);
+    // bubbleSvg.call(tip);
   }
 
 // close tooltip
   function closeTooltip() {
-    tip.hide();
+    // tip.hide();
   }
 
 // Zoom into a specific circle
@@ -405,41 +410,41 @@ function BubbleChart(props) {
   /**
    Make a table, a bubble table ;;;;
    **/
-  function createBubbleTable(data) {
-    d3.csv("/data-lab-data/CU_bubble_chart_table.csv", function (err, data) {
-      if (err) {
-        return err;
-      }
-      let table = d3.select('#bubbleTableContainer').append('table')
-        .attr('id', 'bubbletable')
-        .attr('class', 'compact');
-
-      let titles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
-      let headers = table.append('thead').append('tr')
-        .selectAll('th')
-        .data(titles).enter()
-        .append('th')
-        .text(function (d) {
-          return d;
-        });
-
-      // datatable start
-      let dTable = $('#bubbletable').dataTable({
-        data: data,
-        columns: [
-          { "data": 'Recipient' },
-          { "data": 'agency' },
-          { "data": 'subagency' },
-          { "data": 'family' },
-          { "data": 'type' },
-          { "data": 'obligation', 'render': $.fn.dataTable.render.number(',', '.', 0, '$') }
-        ],
-        deferRender: true,
-        scrollCollapse: true,
-        scroller: true
-      });
-    });
-  };
+  // function createBubbleTable(data) {
+  //   d3.csv("/data-lab-data/CU_bubble_chart_table.csv", function (err, data) {
+  //     if (err) {
+  //       return err;
+  //     }
+  //     let table = d3.select('#bubbleTableContainer').append('table')
+  //       .attr('id', 'bubbletable')
+  //       .attr('class', 'compact');
+  //
+  //     let titles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
+  //     let headers = table.append('thead').append('tr')
+  //       .selectAll('th')
+  //       .data(titles).enter()
+  //       .append('th')
+  //       .text(function (d) {
+  //         return d;
+  //       });
+  //
+  //     datatable start
+  //     let dTable = $('#bubbletable').dataTable({
+  //       data: data,
+  //       columns: [
+  //         { "data": 'Recipient' },
+  //         { "data": 'agency' },
+  //         { "data": 'subagency' },
+  //         { "data": 'family' },
+  //         { "data": 'type' },
+  //         { "data": 'obligation', 'render': $.fn.dataTable.render.number(',', '.', 0, '$') }
+  //       ],
+  //       deferRender: true,
+  //       scrollCollapse: true,
+  //       scroller: true
+  //     });
+  //   });
+  // };
 
   function selectSubAgency(d) {
     const elSelector = "circle.node--leaf[id='" + d.name.replace(/ /g, "_") + "']";
@@ -462,7 +467,7 @@ function BubbleChart(props) {
 
         const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
         d3.select(elName).classed("active", true);
-        bubble.activateDetail(d);
+        // bubble.activateDetail(d);
 
       } else if (d.depth === 1) {
         setLegendLeft(false);
@@ -499,42 +504,42 @@ function BubbleChart(props) {
   *   Event Handlers
   */
 
-  bChartBtn.click(function () {
-    bTableContainer.hide(); // show
-    bChartContainer.show(); // hide bubble chart
-  });
-
-// table button toggle click
-  bTableBtn.click(function () {
-    bTableContainer.show(); // show
-    bChartContainer.hide(); // hide bubble chart
-  });
+//   bChartBtn.click(function () {
+//     bTableContainer.hide(); // show
+//     bChartContainer.show(); // hide bubble chart
+//   });
+//
+// // table button toggle click
+//   bTableBtn.click(function () {
+//     bTableContainer.show(); // show
+//     bChartContainer.hide(); // hide bubble chart
+//   });
 
 // Redraw based on the new size whenever the browser window is resized.
-  window.addEventListener("resize", function () {
-    closeDetailPanel();
-    $("#agency-bubbleChart").empty();
-    if (root) {
-      maxHeight = document.getElementById("agency-investments__content").clientHeight;
-      calculatedWidth = window.innerWidth * widthPercentage;
-      diameter = bubbleWidth = calculatedWidth < maxHeight ? calculatedWidth : maxHeight;
-      resize = true;
-      drawBubbleChart(root);
-      resize = false;
+//   window.addEventListener("resize", function () {
+//     closeDetailPanel();
+//     $("#agency-bubbleChart").empty();
+//     if (root) {
+//       maxHeight = document.getElementById("agency-investments__content").clientHeight;
+//       calculatedWidth = window.innerWidth * widthPercentage;
+//       diameter = bubbleWidth = calculatedWidth < maxHeight ? calculatedWidth : maxHeight;
+//       resize = true;
+//       drawBubbleChart(root);
+//       resize = false;
+//
+//       // check the state here and replay
+//       const chartState = getChartState();
+//       if (chartState) {
+//         zoom(chartState);
+//       } else {
+//         zoomTo([root.x, root.y, root.r * 2 + margin]);
+//       }
+//     }
+//   });
 
-      // check the state here and replay
-      const chartState = getChartState();
-      if (chartState) {
-        zoom(chartState);
-      } else {
-        zoomTo([root.x, root.y, root.r * 2 + margin]);
-      }
-    }
-  });
-
-  tooltipClose.click(function () {
-    tip.hide();
-  });
+  // tooltipClose.click(function () {
+  //   tip.hide();
+  // });
 
 
 
@@ -577,21 +582,28 @@ function BubbleChart(props) {
     return tempRoot;
   }
 
-
-  const data = useStaticQuery(graphql`
-    query bubbleChartQuery {
-      allUnivBubbleChartCsv {
-        nodes {
-          agency
-          subagency
-          obligation
-        }
-      }
-    }
-  `)
-
   return (
-    <div></div>
+    <div id="chart-area">
+      <div id="bubble-detail"></div>
+      <div id="chart-container">
+
+        <div id="agency-investments__content">
+          <div id="bubbleChartContainer" className="bubbleChartContainer">
+
+            <div id='agency-legend_colorKey'>
+              <div className='legend_circleKeyLabel'><span>Agency</span></div>
+              <div className='legend_circleKeyLabel'><span>Sub-Agency</span></div>
+              <svg id='agency-legend_scaleKey'></svg>
+            </div>
+
+            <div id="agency-bubbleChart"></div>
+          </div>
+
+          {/*<div id="bubbleTableContainer"></div>*/}
+
+        </div>
+      </div>
+    </div>
   )
 }
 
