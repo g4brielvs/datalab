@@ -36,7 +36,7 @@ const Categories = () => {
 
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
-          <SearchPanel search-list={searchList}/>
+          <SearchPanel list={searchList}/>
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>
