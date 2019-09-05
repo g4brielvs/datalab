@@ -2,12 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import "./search.scss";
 
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from "@material-ui/core/IconButton";
+import { TextField, MenuItem, IconButton, Divider } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
-import Divider from "@material-ui/core/Divider";
 import ListIcon from "@material-ui/icons/List";
 
 
@@ -23,54 +20,58 @@ export default class SearchPanel extends React.Component {
   activateButton(button) {
     if (button === 'search') {
       this.toggleSearch();
-    } else if (button !== this.state.activeButton) {
-      this.setState({ activeButton: button });
+    }
+    if (button !== this.state.activeButton) {
       if (button === 'chart') {
         alert("switch to chart view");
       } else if (button === 'table') {
         alert("switch to table view");
-      } else {
+      } else if (button !== 'search') {
         console.log(`Invalid parameter to SearchPanel.activateButton: ${button}`);
+        return;
       }
+      this.setState({ activeButton: button });
     }
   }
 
   toggleSearch() {
-    this.setState((prevState) => { return { expanded: !prevState.expanded } });
+    this.setState(prevState => { return { expanded: !prevState.expanded } });
   }
 
   render() {
     return (
       <div id="sidebar" className={"sidebar" + (this.state.expanded ? '' : " collapsed")}>
         <div className="search-panel">
-          {/* <TextField
-            id="selection"
+          <TextField
             select
+            id="selection"
             label="Search Agencies"
-            className=''
             value=''
-          onChange={handleChange('selection')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-          > */}
-          {
-            Object.keys(this.props.list).map((oKey, i) => {
-              return (<>
-                <MenuItem key={i} value={oKey}>{oKey}</MenuItem>
+            className='select-menu'
+          // onChange={handleChange('selection')}
+          // SelectProps={{
+          //   MenuProps: {
+          //     className: classes.menu,
+          //   },
+          // }}
+          // helperText="Please select your currency"
+          // margin="normal"
+          >
+            {
+              Object.keys(this.props.list).map((oKey, i) => <>
+                <MenuItem key={i} value={oKey} className='list-item'>{oKey}</MenuItem>
                 {
                   this.props.list[oKey].map((val, i) =>
-                    <MenuItem key={i} value={val}>{val}</MenuItem>
+                    <MenuItem key={i} value={val} className='list-item'>
+                      <span className='list-item-header'>{oKey}</span><br />
+                      <span>{val}</span>
+                    </MenuItem>
                   )
                 }
-              </>)
-            })
-          }
-          {/* </TextField> */}
+              </>
+              )
+            }
+          </TextField>
 
 
 

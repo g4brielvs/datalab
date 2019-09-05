@@ -13,6 +13,10 @@ $border-color: #eee;
 
   .search-panel {
     width: $search-width;
+
+    .select-menu {
+      width: 100%;
+    }
   }
 
   .panel-group {
@@ -36,4 +40,23 @@ $border-color: #eee;
 
 .collapsed {
   left: -$search-width;
+}
+
+li.MuiListItem-root {
+  display: block;
+}
+
+.list-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #4a4a4a;
+  text-decoration: none;
+  padding: 0.5rem 0;
+
+  .list-item-header {
+    display: block;
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+  }
 }
