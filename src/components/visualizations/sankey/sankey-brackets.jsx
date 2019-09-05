@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function SankeyBrackets() {
   const css = `          
           .cls-1{fill:none}
@@ -10,7 +9,12 @@ function SankeyBrackets() {
           `
 
   return (
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 664.4">
+    <svg id="Layer_1"
+         data-name="Layer 1"
+         xmlns="http://www.w3.org/2000/svg"
+         width="640"
+         height="640"
+         viewBox="0 0 640 664.4">
       <defs>
         <style>{css}</style>
         <clipPath id="clip-path">

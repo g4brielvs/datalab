@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
 import './sankey.scss';
+import './sankey-brackets.scss';
+
 
 import SankeyBrackets from "./sankey-brackets";
 
@@ -712,21 +714,20 @@ function Sankey(props) {
 
   const inlineStyle = {
     position: 'absolute',
-    margin: '20px',
-    marginLeft: '-240px'
+    margin: '20px 20px 20px 45px',
   }
 
   return (
     <>
-      <figure className="budget-sankey">
+      <div className="budget-sankey">
           <div id="sankey-container">
             <div className="sankey-brackets">
-              <SankeyBrackets/>
+              <SankeyBrackets />
             </div>
             <div id="sankey-viz" style={inlineStyle}></div>
             <div id="sankey-table"></div>
         </div>
-      </figure>
+      </div>
     </>
   )
 }

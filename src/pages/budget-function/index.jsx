@@ -55,8 +55,6 @@ function BudgetFunctionPage(props) {
           <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
         </Accordion>
 
-        <div className="mask">
-        <h5>Click on nodes to display additional information</h5>
         <div className="viz-actions">
           <form id="SankeyRadio">
             <div className="select-wrapper1">
@@ -85,9 +83,6 @@ function BudgetFunctionPage(props) {
               <label htmlFor="contactChoice3">FY 17</label>
             </div>
           </form>
-          <div>
-            {/*{% include action-buttons.html %}*/}
-          </div>
         </div>
         <div className="viz-container">
           <Sankey data={fiscalYearData[year].data}
@@ -95,7 +90,6 @@ function BudgetFunctionPage(props) {
                   sTitle={fiscalYearData[year].sTitle}
                   descriptions={fiscalYearData[year].descriptions} />
         </div>
-      </div>
 
       </ToolLayout>
     </>
