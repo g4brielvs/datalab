@@ -58,11 +58,18 @@ export default class SearchPanel extends React.Component {
           helperText="Please select your currency"
           margin="normal"
           > */}
-            {Object.keys(this.props.list).map((oKey, i) =>
-              <MenuItem key={i} value={this.props.list[oKey]}>
-                {this.props.list[oKey]}
-              </MenuItem>
-            )}
+          {
+            Object.keys(this.props.list).map((oKey, i) => {
+              return (<>
+                <MenuItem key={i} value={oKey}>{oKey}</MenuItem>
+                {
+                  this.props.list[oKey].map((val, i) =>
+                    <MenuItem key={i} value={val}>{val}</MenuItem>
+                  )
+                }
+              </>)
+            })
+          }
           {/* </TextField> */}
 
 
