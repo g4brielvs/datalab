@@ -40,19 +40,27 @@ function BudgetFunctionPage(props) {
       <SEO title='Data Lab - Budget Function - U.S. Treasury' keywords={[`application`, `demo`]}/>
 
       <ToolLayout
-        title='Title'
-        introSentence='Lorem ipsum dolor sit amet, consectetur adipiscing eilt, sed do eiusmod. Intro sentence. Keep to one line if possible.'
-        contextStatement='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Context - keep to 2 lines if possible.'
-        sectionTitle='Section title. Keep to 2-3 lines if possible.'
-        sectionText='<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.</p>
-            </p>Vivamus integer non suscipit taciti mus etiam at primis tempor sagittis sit, euismod libero facilisi aptent elementum felis blandit cursus gravida sociis erat ante, eleifend lectus nullam dapibus netus feugiat curae curabitur est ad. Massa curae fringilla porttitor quam sollicitudin iaculis aptent leo ligula euismod dictumst, orci penatibus mauris eros etiam praesent erat volutpat posuere hac. Metus fringilla nec ullamcorper odio aliquam lacinia conubia mauris tempor, etiam ultricies proin quisque lectus sociis id tristique, integer phasellus taciti pretium adipiscing tortor sagittis ligula.</p>'
-      >
+        title='BUDGET FUNCTION'
+        introSentence="Understanding federal spending related to the government's main functions."
+        contextStatement="The U.S. Treasury’s Data Lab presents an analysis on federal spending related to the government’s
+        main functions. This visualization sheds light on both budget functions and object classes."
+        sectionTitle='Categorization Systems'
+        sectionText="<p>Budget Functions are used by Congress to categorize federal spending, and are also useful for the
+        public to understand the different missions, or functions of the federal government. Though Budget Functions have
+        evolved over time, the use of Budget Functions is nothing new: Congress has been tracking federal spending using a
+        version of these categories for more than 200 years.</p>
+        <p>The Object Classification system, which was created in the 1920s, explains what the government
+        received in exchange for spending. For example, the Object Classification system captures spending on
+        salaries for federal employees, rent payments for federal buildings, and spending on federal contracts.</p>">
 
         <Accordion
-          title='Accordion Title'>
-          <p>I am an accordion with lots to say.</p>
-          <p>I have several paragraphs...</p>
-          <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
+          title='Instructions'>
+          <ul>
+              <li>This Sankey diagram shows Budget Functions on the left and Object Classes on the right.</li>
+              <li>Hover over a Budget Function category on the left to see how spending breaks down into Object Class categories.</li>
+              <li>Hover over an Object Class on the right to see how spending breaks down into Budget Functions.</li>
+              <li>Click and drag any Budget Function or Object Class color bar to vertically rearrange the ordering of that category.</li>
+          </ul>
         </Accordion>
 
         <div className="viz-actions">
