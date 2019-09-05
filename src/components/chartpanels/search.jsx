@@ -1,12 +1,14 @@
-import React from "react"
-import PropTypes from 'prop-types'
-import "./search.scss"
+import React from "react";
+import PropTypes from 'prop-types';
+import "./search.scss";
 
-import IconButton from "@material-ui/core/IconButton"
-import SearchIcon from "@material-ui/icons/Search"
-import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined"
-import Divider from "@material-ui/core/Divider"
-import ListIcon from "@material-ui/icons/List"
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from "@material-ui/icons/Search";
+import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
+import Divider from "@material-ui/core/Divider";
+import ListIcon from "@material-ui/icons/List";
 
 
 export default class SearchPanel extends React.Component {
@@ -18,20 +20,10 @@ export default class SearchPanel extends React.Component {
     };
   }
 
-  // componentWillUpdate(nextProps, nextState) {
-  //   if (this.state.activeButton !== nextState.activeButton) {
-  //     if (this.state.activeButton) {
-  //       document.getElementById(this.state.activeButton).classList.remove("selected");
-  //     }
-  //     document.getElementById(nextState.activeButton).classList.add("selected");
-  //   }
-  // }
-
   activateButton(button) {
     if (button === 'search') {
       this.toggleSearch();
-    }
-    if (button !== this.state.activeButton) {
+    } else if (button !== this.state.activeButton) {
       this.setState({ activeButton: button });
       if (button === 'chart') {
         alert("switch to chart view");
@@ -50,15 +42,39 @@ export default class SearchPanel extends React.Component {
   render() {
     return (
       <div id="sidebar" className={"sidebar" + (this.state.expanded ? '' : " collapsed")}>
-        <div className="search-panel">search panel here</div>
+        <div className="search-panel">
+          {/* <TextField
+            id="selection"
+            select
+            label="Search Agencies"
+            className=''
+            value=''
+          onChange={handleChange('selection')}
+          SelectProps={{
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          helperText="Please select your currency"
+          margin="normal"
+          > */}
+            {Object.keys(this.props.list).map((oKey, i) =>
+              <MenuItem key={i} value={this.props.list[oKey]}>
+                {this.props.list[oKey]}
+              </MenuItem>
+            )}
+          {/* </TextField> */}
+
+
+
+        </div>
         <div>
           <IconButton
             aria-label="search"
             className="panel-group"
             onClick={() => this.activateButton('search')}
           >
-            <SearchIcon ref={this.searchButtonRef}
-              className={(this.state.activeButton === 'search' ? ' selected' : ' unselected')}
+            <SearchIcon className={(this.state.activeButton === 'search' ? ' selected' : ' unselected')}
             />
           </IconButton>
           <div className="panel-group">
@@ -87,5 +103,5 @@ export default class SearchPanel extends React.Component {
 }
 
 SearchPanel.PropTypes - {
-  'search-list': PropTypes.object.isRequired
+  'list': PropTypes.object.isRequired
 }
