@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import "./search.scss";
 
-import { TextField, MenuItem, IconButton, Divider } from "@material-ui/core";
+import { TextField, List, ListItem, ListItemText, IconButton, Divider } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
 import ListIcon from "@material-ui/icons/List";
@@ -41,13 +41,12 @@ export default class SearchPanel extends React.Component {
   render() {
     return (
       <div id="sidebar" className={"sidebar" + (this.state.expanded ? '' : " collapsed")}>
-        <div className="search-panel">
+        <form className="search-panel">
           <TextField
-            select
             id="selection"
             label="Search Agencies"
             value=''
-            className='select-menu'
+          // className='select-box'
           // onChange={handleChange('selection')}
           // SelectProps={{
           //   MenuProps: {
@@ -57,25 +56,41 @@ export default class SearchPanel extends React.Component {
           // helperText="Please select your currency"
           // margin="normal"
           >
+          </TextField>
+          <List aria-label="List of Agencies">
             {
               Object.keys(this.props.list).map((oKey, i) => <>
-                <MenuItem key={i} value={oKey} className='list-item'>{oKey}</MenuItem>
+                <ListItem button key={i}>
+                  <ListItemText primary={oKey} className='list-item-category' />
+                </ListItem>
                 {
                   this.props.list[oKey].map((val, i) =>
-                    <MenuItem key={i} value={val} className='list-item'>
+                    <ListItem button key={i}>
+                      <ListItemText primary={oKey} secondary={val} className='list-item' />
+                    </ListItem>
+                  )
+                }
+
+                {/*} <MenuItem key={i} value={val} className='list-item'>
                       <span className='list-item-header'>{oKey}</span><br />
                       <span>{val}</span>
                     </MenuItem>
                   )
-                }
-              </>
-              )
+                } 
+               ) */}
+
+                {/* <ListItem href="#simple-list">
+               <ListItemText primary="primary" secondary='secondary' />
+             </ListItem>  */}
+              </>)
             }
-          </TextField>
+          </List>
 
 
 
-        </div>
+
+
+        </form>
         <div>
           <IconButton
             aria-label="search"
