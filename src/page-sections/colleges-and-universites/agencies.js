@@ -20,6 +20,8 @@ import defaultImage from "../../images/default-image.jpg"
       'Medical R&D': ['Epidemiology and Other Health Studies Financial Assistance Program']
     }
   
+    const switchView = (view) => alert('switch to ' + view + ' mode');
+
     return (
       <>
         <StoryHeading
@@ -39,7 +41,7 @@ import defaultImage from "../../images/default-image.jpg"
         {/*<BubbleChart/>*/}
         <div className="container" style={defaultImageStyle}>
           <div className="row center-xs">
-          <SearchPanel list={searchList}/>
+          <SearchPanel chart="Agencies" searchList={searchList} switchView={switchView} />
           <img className="col-xs-6" src={defaultImage} />
           </div>
         </div>

@@ -17,7 +17,9 @@ const Categories = () => {
     'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
     'Medical R&D': ['Human Genome Research']
   }
-  
+    
+  const switchView = (view) => alert('switch to ' + view + ' mode');
+
   return (
     <>
       <StoryHeading
@@ -36,7 +38,7 @@ const Categories = () => {
 
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
-          <SearchPanel list={searchList}/>
+          <SearchPanel chart="Categories" searchList={searchList} switchView={switchView} />
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>
