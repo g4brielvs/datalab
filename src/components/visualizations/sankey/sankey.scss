@@ -62,7 +62,7 @@
     color: #5B616B;
     margin-bottom: -15px;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -89,7 +89,7 @@
   table > tbody > tr > td.val{
     width: 116px;
     overflow:visible;
-    color: #0C99CD;
+    font-weight: bold;
   }
   table > tbody > tr {
     border: none;
@@ -124,7 +124,7 @@
     padding: 0;
     text-transform: capitalize;
     /*font-variant:small-caps;*/
-    color: #0C99CD;
+    color: #666;
     font-family: "Source Sans Pro";
     font-size: 40px;
     font-weight: 300;
@@ -144,9 +144,11 @@
     color: #555555;
   }
   table tbody tr td {
-    color: #5B616B;
+    //color: #5B616B;
+    color: #666;
     font-family: "Source Sans Pro";
-    font-size: 15px;
+    font-weight: 300;
+    font-size: 16px;
     line-height: 18px;
     padding-left: 0;
   }
@@ -166,9 +168,10 @@
   #description > p.body_text {
     position: relative;
     margin-top: -15px;
-    color: #5B616B;
+    //color: #5B616B;
+    color: #666;
     font-family: "Source Sans Pro";
-    font-size: 15px;
+    font-size: 16px;
     line-height: 28px;
     font-weight: 300;
   }
