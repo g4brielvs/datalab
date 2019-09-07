@@ -31,7 +31,7 @@ const MoreAnalyses = () => {
   return (
     <div className="more-analyses container">
       <div className="row center-xs">
-        <div className="col-xs-10">
+        <div className="col-xs-12">
           <h1 className="more-analyses__heading">
             More Analyses
           </h1>
@@ -39,7 +39,7 @@ const MoreAnalyses = () => {
       </div>
       <div className="more-analyses__tiles">
         <div className="row center-xs">
-          <div className="col-xs-10">
+          <div className="col-xs-12">
             <div class="row">
               {analyses.map((item) =>
                 <div className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">

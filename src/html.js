@@ -12,7 +12,9 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=TRE" id="_fed_an_ua_tag" />
-
+        <script>
+          document.documentElement.style.setProperty('--your-variable', '#YOURCOLOR');
+        </script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

@@ -63,35 +63,41 @@ function BudgetFunctionPage(props) {
           </ul>
         </Accordion>
 
-        <div className="viz-actions">
+        <div className="viz-actions container-fluid">
           <form id="SankeyRadio">
-            <div className="select-wrapper1">
-              <input type="radio"
-                     id="contactChoice1"
-                     name="FiscalYear"
-                     value="fy19"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy19'} />
-              <label htmlFor="contactChoice1">FY 19</label>
+            <div className="row">
+              <div className="col-xs-2 col-md-1">
+                <input type="radio"
+                       id="contactChoice1"
+                       name="FiscalYear"
+                       value="fy19"
+                       onChange={onFiscalYearChange}
+                       checked={year==='fy19'} />
+                <label htmlFor="contactChoice1">&nbsp;FY 19</label>
+              </div>
+              <div className="col-xs-2 col-md-1">
+                <input type="radio"
+                       id="contactChoice2"
+                       name="FiscalYear"
+                       value="fy18"
+                       onChange={onFiscalYearChange}
+                       checked={year==='fy18'} />
+                <label htmlFor="contactChoice2">&nbsp;FY 18</label>
+              </div>
 
-              <input type="radio"
-                     id="contactChoice2"
-                     name="FiscalYear"
-                     value="fy18"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy18'} />
-              <label htmlFor="contactChoice2">FY 18</label>
-
-              <input type="radio"
-                     id="contactChoice3"
-                     name="FiscalYear"
-                     value="fy17"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy17'} />
-              <label htmlFor="contactChoice3">FY 17</label>
+              <div className="col-xs-2 col-md-1">
+                <input type="radio"
+                       id="contactChoice3"
+                       name="FiscalYear"
+                       value="fy17"
+                       onChange={onFiscalYearChange}
+                       checked={year==='fy17'} />
+                <label htmlFor="contactChoice3">&nbsp;FY 17</label>
+              </div>
             </div>
           </form>
         </div>
+        <br/>
         <div className="viz-container">
           <Sankey data={fiscalYearData[year].data}
                   sPanel={fiscalYearData[year].sPanel}

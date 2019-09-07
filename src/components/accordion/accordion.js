@@ -25,7 +25,7 @@ class Accordion extends Component {
         return (
           <div className="container">
             <div className="row center-xs">
-              <div className="col-xs-10">
+              <div className="col-xs-12">
                 <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
                   <h1 onClick={this.toggle} className="accordion__heading">
                     {this.props.title}
