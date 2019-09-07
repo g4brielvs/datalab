@@ -4,8 +4,9 @@ import * as d3 from "d3v3";
 import * as _ from "lodash";
 import * as $ from "jquery";
 
-function BubbleChart(props) {
+import './bubble-chart.scss';
 
+function BubbleChart(props) {
 
   /* The useEffect Hook is for running side effects outside of React,
      for instance inserting elements into the DOM using D3 */
@@ -76,6 +77,7 @@ function BubbleChart(props) {
 
     chartInit();
 
+    /* functions */
     function chartInit() {
       root = transformData(data);
       nodes = pack.nodes(root);
@@ -93,8 +95,6 @@ function BubbleChart(props) {
 
       zoomTo([root.x, root.y, root.r * 2 + margin]);
     }
-
-    /* functions */
 
     function setChartState(d) {
       _chartState = d;

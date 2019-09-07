@@ -1,0 +1,83 @@
+svg#chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#agency-legend_colorKey {
+  position: relative;
+  padding: 0;
+  overflow: visible;
+  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
+  transition: left 1000ms;
+}
+
+#agency-legend_colorKey.left {
+  left: -200px;
+}
+
+#agency-legend_scaleKey {
+  width: 225px;
+  height: 130px;
+  position: absolute;
+}
+
+.legend_circleKeyLabel {
+  position: absolute;
+  border-top: solid 1px #DDD;
+  width: 70px;
+  left: 65px;
+}
+
+.legend_circleKeyLabel span {
+  font-size: 10px;
+  color: #999;
+  position: absolute;
+  display: block;
+  width: 90px;
+  top: -8px;
+  left: 75px;
+}
+
+.legend_scaleKeyCircle {
+  stroke-width: 1;
+  stroke: #999;
+  stroke-dasharray: 2;
+  fill: none;
+}
+
+#agency-bubbleChart {
+  height: 700px;
+  width: 700px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+circle.node,  circle.node--root, text.label {
+  //cursor: zoom-in;
+  //cursor: -moz-zoom-in;
+  //cursor: -webkit-zoom-in;
+  cursor: pointer;
+}
+
+circle.node--leaf {
+  cursor: pointer;
+}
+
+circle.node--leaf.active {
+  fill-opacity: .8;
+  stroke: #FAEBD0;
+  stroke-width: 9;
+}
+
+.node--root {
+  fill: #f8f8f8;
+}
+
+.node {
+  stroke: #E6E1E1;
+  fill: #EBEBEB;
+}
