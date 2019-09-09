@@ -49,14 +49,12 @@ module.exports = {
 	path: `${__dirname}/src/data/`
       },
     },
-    `gatsby-transformer-geo`,
     {
       resolve: `gatsby-source-geo`,
       options: {
 	path: `${__dirname}/src/data/mapbox_data.geojson`
       }
-    }
-
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
