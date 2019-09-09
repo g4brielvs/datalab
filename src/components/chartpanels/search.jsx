@@ -64,8 +64,8 @@ export default class SearchPanel extends React.Component {
                   <ListItemText primary={oKey} className='list-item-category' />
                 </ListItem>
                 {
-                  this.props.searchList[oKey].map((val, i) =>
-                    <ListItem button key={i}>
+                  this.props.searchList[oKey].map((val, j) =>
+                    <ListItem button key={i +'/'+ j}>
                       <ListItemText primary={oKey} secondary={val} className='list-item' />
                     </ListItem>
                   )
