@@ -1,0 +1,43 @@
+@import "../../styles/index.scss";
+
+$search-width: 200px;
+$border-width: 3px;
+$border-color: #eee;
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  transition: left 0.5s ease-in-out;
+  text-align: left;
+  display: flex;
+
+  .search-panel {
+    width: $search-width;
+
+    .select-box {
+      width: 100%;
+    }
+  }
+
+  .panel-group {
+    border: $border-width solid $border-color;
+    border-radius: 0 15px 15px 0;
+
+    .unselected {
+      opacity: 0.3;
+    }
+
+    .selected {
+      opacity: 1;
+    }
+
+    .divider {
+      height: $border-width;
+      color: $border-color;
+    }
+  }
+}
+
+.collapsed {
+  left: -$search-width;
+}
