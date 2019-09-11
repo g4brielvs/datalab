@@ -112,8 +112,9 @@ export default class SearchPanel extends React.Component {
   }
 }
 
-SearchPanel.PropTypes - {
-  'chart': PropTypes.string.isRequired,
+SearchPanel.propTypes = {
+  'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
+                                        // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.object.isRequired,
   'switchView': PropTypes.func.isRequired
 }
