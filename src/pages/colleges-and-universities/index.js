@@ -5,16 +5,17 @@ import Story from "../../components/layouts/story/story";
 import "../../styles/index.scss";
 
 /* components */
-import Header from "../../components/header/header";
-import HWCTALink from "../../components/hwcta-link/hwcta-link";
-import Overview from "../../page-sections/colleges-and-universites/overview";
-import Agencies from "../../page-sections/colleges-and-universites/agencies";
+import Header from "../../components/header/header"
+import HWCTALink from "../../components/hwcta-link/hwcta-link"
+import Overview from "../../page-sections/colleges-and-universites/overview"
+import Agencies from "../../page-sections/colleges-and-universites/agencies"
+import Categories from "../../page-sections/colleges-and-universites/categories"
 import Institutions from "../../page-sections/colleges-and-universites/institutions";
-import MoreAnalyses from "../../components/more-analyses/more-analyses";
-import Footnotes from "../../components/footnotes/footnotes";
-import Toc from "../../components/toc/toc";
-import PageFooter from "../../components/footers/page";
-import SiteFooter from "../../components/footers/site";
+import MoreAnalyses from "../../components/more-analyses/more-analyses"
+import Footnotes from "../../components/footnotes/footnotes"
+import Toc from "../../components/toc/toc"
+import PageFooter from "../../components/footers/page"
+import SiteFooter from "../../components/footers/site"
 
 class CollegesAndUniversitiesPage extends Component {
 
@@ -70,12 +71,17 @@ class CollegesAndUniversitiesPage extends Component {
 	    <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
 		    'Due to the way military academies are funded, they have not been included in this analysis.']} />
+          ]}
+      />
+
+      <Agencies />
+
+      <Categories />
 
 	    <HWCTALink
         url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
 
-	    <MoreAnalyses/>
-
+      {/* <MoreAnalyses/> */}
 	</Story>
     </>
     }
