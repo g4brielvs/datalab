@@ -3,7 +3,6 @@ import SEO from "../../components/seo";
 
 import Story from "../../components/layouts/story/story";
 import "../../styles/index.scss";
-//import "";
 
 /* components */
 import Header from "../../components/header/header";
