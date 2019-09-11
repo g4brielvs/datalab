@@ -12,7 +12,7 @@ export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeButton: 0,
+      activeButton: 'chart',
       expanded: false
     };
   }
