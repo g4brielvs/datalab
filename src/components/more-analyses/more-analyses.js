@@ -39,7 +39,7 @@ const MoreAnalyses = () => {
       </div>
       <div className="more-analyses__tiles">
         <div className="row center-xs">
-          <div className="col-xs-10">
+          <div className="col-xs-120">
             <div class="row">
               {analyses.map((item) =>
                 <div className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">

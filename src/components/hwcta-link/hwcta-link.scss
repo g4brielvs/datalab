@@ -1,9 +1,15 @@
+@import '../../styles/variables.scss';
+
 .hwcta-entry {
+  margin-top: $margin-100;
   margin-bottom: 5rem;
 }
 
 .hwcta-entry__link-text {
   justify-content: center;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 90px;
 }
 
 

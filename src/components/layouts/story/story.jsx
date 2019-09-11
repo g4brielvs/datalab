@@ -14,9 +14,11 @@ import MoreAnalyses from "../../more-analyses/more-analyses"
 import Toc from "../../toc/toc"
 
 
-const StoryLayout = (props) => (
-    <Default>
-      <header className="header--hero">
+const StoryLayout = (props) => {
+  let header, toc;
+
+  if (!props.isCustomHeader) {
+    header = <header className="header--hero">
         <div className="row center-xs">
           <div className="col-xs-10">
             <p className="header__title">
@@ -30,61 +32,53 @@ const StoryLayout = (props) => (
             </p>
           </div>
         </div>
-      </header>
+      </header>;
 
-      <Toc
+      toc = <Toc
         sections={
           [{
-            section: "one",
+            section: "Section 1",
             number: "01",
-            subtext: "Investment Overview",
-            subblurb: "WHAT IS A FEDERAL INVESTMENT?",
-            blurb: "Learn more about the three categories of federal investments: student aid, grants, and contracts."
+            subblurb: "Subtitle / Question"
           },
-            {
-              section: "two",
-              number: "02",
-              subtext: "My Alma Mater",
-              subblurb: "How much did my school receive?",
-              blurb: "Search for your school and discover details about federal funding at your alma mater."
-            },
-            {
-              section: "three",
-              number: "03",
-              subtext: "Agency Investment",
-              subblurb: "Which federal agencies are involved?",
-              blurb: "Find out which federal agencies provide investments and in what amounts."
-            },
-            {
-              section: "four",
-              number: "04",
-              subtext: "Investment Categories",
-              subblurb: "What are the investments used for?",
-              blurb: "Discover more about what is funded by federal investment."
-            }
-          ]}
-      />
+        {
+          section: "Section 2",
+          number: "02",
+          subblurb: "Subtitle / Question"
+        },
+        {
+          section: "Section 3",
+          number: "03",
+          subblurb: "Subtitle / Question"
+        },
+        {
+          section: "Section 4",
+          number: "04",
+          subblurb: "Subtitle / Question"
+        }
+      ]}
+    />
 
-      <main>
-        <article>
-          <section className='chart'>
-            {props.children}
-          </section>
-          <section className='follow-up container-fluid'>
-            <div className='row justify-content-center'>
-              <div className='intro col-xs-5' dangerouslySetInnerHTML={{__html: props.sectionTitle}}></div>
-              <div className='col-xs-7' dangerouslySetInnerHTML={{__html: props.sectionText }}></div>
-            </div>
-          </section>
-        </article>
-      </main>
+  }
+  return <Default>
+    {header}
+    {toc}
 
-      <HWCTALink url={'#'}/>
+    <main>
+      <article>
+        <section>
+          {props.children}
+        </section>
+      </article>
+    </main>
 
-      {/*<MoreAnalyses />*/}
+    <HWCTALink url={'#'}/>
 
-    </Default>
-)
+    <MoreAnalyses />
+
+  </Default>
+}
+
 export default StoryLayout
 
 StoryLayout.propTypes = {

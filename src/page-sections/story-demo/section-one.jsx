@@ -7,11 +7,19 @@ import './section.scss'
 
 const SectionOne = (props) => (
   <>
-    <div className="row center-xs">
+    <div className="section__one row center-xs">
       <div className="col-xs-10">
         <header>
           <section className='follow-up'>
             <div className='row'>
+              <div className='col-xs-1 section__number'>
+                <h2>01</h2>
+              </div>
+              <div className='col-xs-9 section__header'>
+                Section
+              </div>
+            </div>
+            <div className='row intro-container'>
               <div className='intro col-xs-5'>Title</div>
               <div className='col-xs-7'>Lorem ipsum dolor sit amet, consectetur adipiscing eilt, sed do eiusmod. Intro sentence. Keep to one line if possible.
                 Lorem ipsum dolor sit amet, consectetur adipiscing eilt, sed do eiusmod. Intro sentence. Keep to one line if possible.
@@ -22,7 +30,7 @@ const SectionOne = (props) => (
         </header>
       </div>
     </div>
-    <div className="row center-xs">
+    <div className="main__section row center-xs">
       <div className="col-xs-10">
         <h1 className="title">Visualization Title</h1>
 

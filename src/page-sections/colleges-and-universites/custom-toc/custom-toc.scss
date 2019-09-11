@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 $cuRed: #881E3D;
 $darkGrey: #666666;
@@ -9,17 +9,13 @@ body, h1, h2, h3, h4, p, li {
   font-family: 'Source Sans Pro';
 }
 
-#TOC {
+#custom__TOC {
   margin-top: $margin-75;
   margin-bottom: $margin-100;
 
   .toc__tile {
     padding-top: 1rem;
-  }
-
-  .toc__tile:not(:first-child) {
-    padding-top: 1rem;
-    padding: 1rem 2rem 2rem !important;
+    padding: 1rem 2rem 0 !important;
   }
 
   .toc__tile:not(:last-child) {
@@ -28,11 +24,10 @@ body, h1, h2, h3, h4, p, li {
 
   .toc__number h2 {
     color: $darkGrey;
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 600;
     line-height: 50px;
     margin: 0.1em 0 0.3em;
-    text-align: left;
   }
 
   .toc__subtext {
@@ -40,6 +35,7 @@ body, h1, h2, h3, h4, p, li {
     font-size: 14px;
     font-weight: 300;
     line-height: 18px;
+    text-align: center;
   }
 
   .toc__subblurb {
@@ -49,15 +45,15 @@ body, h1, h2, h3, h4, p, li {
     text-transform: uppercase;
     max-width: 200px;
     line-height: 17px;
-    text-align: left;
+    text-align: center;
   }
 
   .toc__blurb {
     color: $mdGrey;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 300;
     font-weight: 300;
-    line-height: 58px;
-    text-align: left;
+    line-height: 16px;
+    text-align: center;
   }
 }

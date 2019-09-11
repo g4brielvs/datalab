@@ -2,20 +2,20 @@ import React from 'react';
 import "./hwcta-link.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-// import sourceImage from "../../images/sources.svg";
+import sourceImage from "../../images/sources.svg";
 
 const HWCTALink = (props) => {
   return (
-    <div className="container hwcta-entry">
-      <div className="row center-xs">
-        <div className="col-xs-12">
-          <a className="hwcta-entry__link" href={props.url}>
-            {/*<div className="hwcta-entry__image col-xs-3"><img src={sourceImage} /></div>*/}
-            <span className="hwcta-entry__link-text">Data Sources and Methodologies&nbsp;&nbsp;&nbsp;</span>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </a>
+    <div className="hwcta-entry">
+      <a className="hwcta-entry__link" href={props.url}>
+        <div className="row">
+          <div className="hwcta-entry__image col-xs-offset-1 col-xs-1"><img src={sourceImage} /></div>
+          <span className="hwcta-entry__link-text col-xs-8">
+            &nbsp;&nbsp;&nbsp;Data Sources and Methodologies&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faChevronRight} />
+          </span>
+
         </div>
-      </div>
+      </a>
     </div>
   )
 }
