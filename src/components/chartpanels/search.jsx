@@ -5,7 +5,7 @@ import './search.scss';
 import { TextField, List, ListItem, ListItemText, IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+import SunburstIcon from '../../images/sunburst_icon.svg';
 import ListIcon from '@material-ui/icons/List';
 
 export default class SearchPanel extends React.Component {
@@ -73,11 +73,6 @@ export default class SearchPanel extends React.Component {
               </>)
             }
           </List>
-
-
-
-
-
         </form>
         <div>
           <IconButton
@@ -97,7 +92,7 @@ export default class SearchPanel extends React.Component {
               {
                 // show bubble icon for Agencies, or "sunburst" for Categories
                 this.props.chart === 'Agencies' ? <BubbleChartOutlinedIcon />
-                  : this.props.chart === 'Categories' ? <TrackChangesIcon />
+                  : this.props.chart === 'Categories' ? <img src={SunburstIcon} />
                     : ''
               }
             </IconButton>
