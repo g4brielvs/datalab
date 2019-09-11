@@ -12,11 +12,11 @@ $greyBlack: #979797;
   margin-bottom: $margin-20;
 }
 
-.follow-up {
+.section__header {
   text-align: left;
 }
 
-.section__number {
+.section__header__number {
   margin-bottom: $margin-50;
   border-bottom: 1px solid $darkGrey;
 
@@ -30,7 +30,7 @@ $greyBlack: #979797;
   }
 }
 
-.section__header {
+.section__header__title {
   color: $darkGrey;
   font-size: 20px;
   font-weight: 600;

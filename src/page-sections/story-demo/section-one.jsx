@@ -7,15 +7,15 @@ import './section.scss'
 
 const SectionOne = (props) => (
   <>
-    <div className="section__one row center-xs">
+    <div className="row center-xs">
       <div className="col-xs-10">
         <header>
-          <section className='follow-up'>
+          <section className='section__header'>
             <div className='row'>
-              <div className='col-xs-1 section__number'>
+              <div className='col-xs-1 section__header__number'>
                 <h2>01</h2>
               </div>
-              <div className='col-xs-9 section__header'>
+              <div className='col-xs-9 section__header__title'>
                 Section
               </div>
             </div>
