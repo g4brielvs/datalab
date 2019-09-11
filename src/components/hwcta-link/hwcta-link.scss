@@ -3,6 +3,11 @@
 .hwcta-entry {
   margin-top: $margin-100;
   margin-bottom: 5rem;
+
+  FontAwesomeIcon {
+    line-height: 100px;
+    font-weight: 300;
+  }
 }
 
 .hwcta-entry__link-text {
