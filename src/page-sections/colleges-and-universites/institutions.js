@@ -10,31 +10,29 @@ import defaultImage from "../../images/default-image.jpg";
 import Mapbox from "../../components/visualizations/mapbox/mapbox";
 import ShareMenu from '../../components/share-menu/share-menu';
 
-
 const Institutions = () => {
 
-/* 	const _data = useStaticQuery(graphql`
-	query {
-				 allGeoFeature {
-				 nodes {
-					 featureFields {
-						 Total
-						 Basketball
-						 research_grants_received
-						 subsidized18
-						 Undergrad
-						 INSTURL
-						 grants_received
-					 }
-					 geometry {
-						 type
-						 coordinates
-					 }
-				 }
-			 }
-	 }
-   `)
- */
+   // 	const _data = useStaticQuery(graphql`
+   // 	query {
+   // 				 allGeoFeature {
+   // 				 nodes {
+   // 					 featureFields {
+   // 						 Total
+   // 						 Basketball
+   // 						 research_grants_received
+   // 						 subsidized18
+   // 						 Undergrad
+   // 						 INSTURL
+   // 						 grants_received
+   // 					 }
+   // 					 geometry {
+   // 						 type
+   // 						 coordinates
+   // 					 }
+   // 				 }
+   // 			 }
+   // 	 }
+   // `);
 
     const defaultImageStyle = {
 		marginBottom: "1rem"

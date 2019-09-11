@@ -1,19 +1,20 @@
-import React from "react"
-import "../../styles/index.scss"
-import '../../components/share-menu/share-menu.scss'
+import React from "react";
+import "../../styles/index.scss";
+import '../../components/share-menu/share-menu.scss';
 
 /* components */
-import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import Downloads from "../../components/section-elements/downloads/downloads"
-import defaultImage from "../../images/default-image.jpg"
+import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
+import Accordion from "../../components/accordion/accordion";
+import StoryHeading from "../../components/section-elements/story-heading/story-heading";
+import Downloads from "../../components/section-elements/downloads/downloads";
+import defaultImage from "../../images/default-image.jpg";
 import ShareMenu from '../../components/share-menu/share-menu';
 
 
 const Overview = () => {
   const defaultImageStyle = {
     marginBottom: "1rem"
-  }
+  };
 
   return (
     <>
@@ -42,7 +43,7 @@ const Overview = () => {
 				facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
         <div className="row center-xs">
-          <img className="col-xs-6" src={defaultImage} />
+          <InvestmentOverview/>
         </div>
       </div>
 

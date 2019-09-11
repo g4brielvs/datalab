@@ -1,0 +1,235 @@
+// jrk
+// investment css
+
+#investment-overview__viz {
+
+    margin-right: 11rem;
+    margin-left: 11rem;
+    box-sizing: border-box;
+
+    #investment-chart {
+	display: flex;
+        width: 100%;
+    }
+
+
+    ::-moz-placeholder { /* Firefox 19+ */
+	text-align: center;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+	text-align: center;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+	text-align: center;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	text-align: center;
+    }
+
+    .map-search__list {
+ 	display: none;
+    }
+    
+    .map-search-ul--mobile {
+ 	display: none;
+    }
+
+    .bubble-search__list {
+	display: none;
+    }
+
+    .bubble-search__list--mobile {
+	display: none;
+    }
+
+    #mobile-blurb {
+	display: none;
+	p.mobile-funding-granted {
+ 	    color: #555555;
+ 	    font-size: 14px;
+ 	    line-height: 18px;
+ 	}
+	
+ 	p.mobile-funding-blurb {
+ 	    width: 289px;
+ 	    color: #555555;
+ 	    font-size: 14px;
+ 	    font-weight: 300;
+ 	    line-height: 18px;
+ 	}
+    }
+
+    #title-section {
+	width: 100%;
+	display: flex;
+
+	#chart-title-aid {
+	    color: #0A2F5A;
+	    display: inline-block;
+	    width: 66%;
+	    color: #555555;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: 300;
+	    line-height: 18px;
+	    height: 25px;
+	}
+
+	#chart-title-grants {
+	    color: #004C40;
+	    display: inline-block;
+	    width: 27%;
+	    color: #555555;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: 300;
+	    line-height: 18px;
+	    height: 25px;
+	}
+
+	#chart-title-contracts {
+	    color: #925003;
+	    display: inline-block;
+	    width: 6%;
+	    color: #555555;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: 300;
+	    line-height: 18px;
+	    height: 25px;
+	}
+
+
+    } // end title section
+
+    #studentAid--mobile-title {
+ 	display: none;
+ 	color: #666666;
+ 	font-size: 13px;
+ 	font-weight: bold;
+ 	line-height: 17px;
+ 	text-transform: uppercase;
+    }
+    
+    #grants--mobile-title {
+ 	display: none;
+ 	color: #666666;
+ 	font-size: 13px;
+ 	font-weight: bold;
+ 	line-height: 17px;
+ 	text-transform: uppercase;
+    }
+    
+    #contracts--mobile-title {
+ 	display: none;
+ 	color: #666666;
+ 	font-size: 13px;
+	font-weight: bold;
+ 	line-height: 17px;
+ 	text-transform: uppercase;
+    }
+
+    #bar-text {
+	color: #FFFEFD;
+	font-size: 28px;
+	line-height: 50px;
+	margin: 0;
+	padding-top: .5rem;
+    }
+
+    #bar-text--aid {
+	color: #FFFEFD;
+	font-size: 28px;
+	line-height: 50px;
+	margin: 0;
+	padding-left: .25rem;
+	padding-top: .25rem;
+    }
+
+    #bar-text--contracts {
+	color: #FFFEFD;
+	font-size: 28px;
+	line-height: 50px;
+	margin: 0;
+	padding-top: .5rem;
+	padding-left: .25rem;
+    }
+
+    #bar-text--grants {
+	color: #FFFEFD;
+	font-size: 28px;
+	line-height: 50px;
+	margin: 0;
+	padding-top: .5rem;
+	padding-left: .15rem;
+    }
+
+    #investment-subtext {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 2rem;
+
+	.aid-subsection {
+	    padding-left: 1rem;
+	    padding-right: 1rem;
+	    width: 25%;
+	}
+
+	.aid-subsection:last-child {
+	    padding-right: 0;
+	    border-right: none;
+	}
+
+	#aid-heading-aid {
+	    margin: 0;
+	    padding-bottom: 1rem;
+	    height: 25px;
+	    color: #0A2F5A;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: bold;
+	    line-height: 18px;
+	    text-align: center;
+	}
+
+	#aid-heading-grants {
+	    margin: 0;
+	    padding-bottom: 1rem;
+	    height: 25px;
+	    color: #004C40;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: bold;
+	    line-height: 18px;
+	    text-align: center;
+	}
+
+	#aid-heading-contracts {
+	    margin: 0;
+	    padding-bottom: 1rem;
+	    height: 25px;
+	    color: #925003;
+	    font-family: "Source Sans Pro";
+	    font-size: 14px;
+	    font-weight: bold;
+	    line-height: 18px;
+	    text-align: center;
+	}
+
+	.aid-image {
+	    text-align: center;
+	}
+
+	#aid-description {
+	    color: #555555;
+	    font-size: 15px;
+	    font-weight: 300;
+	    line-height: 18px;
+	    //
+	}
+    }
+
+} // end of investment_viz
+
+
+

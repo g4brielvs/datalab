@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './share-menu.scss';
-import svgShareLogo from '../share-svg/share-svg';
 import shareLogo from '../../images/colleges-and-universities/share.svg'
 import facebookLogo from '../../images/colleges-and-universities/facebook.svg'
 import twitterLogo from '../../images/colleges-and-universities/twitter.svg'
@@ -79,17 +78,6 @@ class ShareMenu extends Component {
       },
     ];
 
-    const shareStyle = {
-      textAlign: 'right',
-    };
-
-    const newShareBtn = {
-      display: 'flex',
-      marginLeft: '20px',
-      cursor: 'pointer',
-      position: 'relative',
-    }
-
     const isShowing = this.state.show;
 
     // https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}#{{include.anchor}}')
@@ -98,8 +86,6 @@ class ShareMenu extends Component {
     // page url is : colleges-and-universities
 
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
-
-
     return (
       <div className='share-container'>
         <div className="popup new-share-button">
