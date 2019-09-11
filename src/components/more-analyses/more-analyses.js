@@ -31,7 +31,7 @@ const MoreAnalyses = () => {
   return (
     <div className="more-analyses container">
       <div className="row center-xs">
-        <div className="col-xs-10">
+        <div className="col-xs-12">
           <h1 className="more-analyses__heading">
             More Analyses
           </h1>
