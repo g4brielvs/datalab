@@ -9,34 +9,10 @@ class Mapbox extends React.Component {
 	constructor(props) {
 		super(props);
 
-/* 		const query = useStaticQuery(graphql`
-		query mapboxQuery {
-			allGeoFeature {
-				nodes {
-				  featureFields {
-					Total
-					  Basketball
-					  research_grants_received
-					subsidized18
-					Undergrad
-					INSTURL
-					grants_received
-				  }
-				  geometry {
-					type
-					coordinates
-				  }
-				}
-			  }
-			}`);
-
- */		this.state = {
+		this.state = {
 			data: null,
 		};
-
 	};
-
-
 
 	componentDidMount() {
 		console.log('mounted');
@@ -44,7 +20,6 @@ class Mapbox extends React.Component {
 		mapboxgl.accessToken = `${process.env.GATSBY_MAPBOX_API_KEY}`;
 		this.createMap(); // this is running inside functions as well.
 	};
-
 
 	createMap() {
 		let map = new mapboxgl.Map({
