@@ -35,7 +35,6 @@
     "gatsby-transformer-sharp": "^2.1.17",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
-    "mapbox-gl": "*",
     "material-table": "^1.40.1",
     "node-sass": "^4.12.0",
     "normalize-scss": "^7.0.1",
