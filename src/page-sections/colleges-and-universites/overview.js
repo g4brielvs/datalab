@@ -29,23 +29,13 @@ const Overview = () => {
                 nonprofit institutions that offer a program of two years or more.`}
       />
 
-      <Accordion
-        title="Accordion Title">
-        <p>I am an accordion with lots to say.</p>
-        <p>I have several paragraphs...</p>
-        <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
-      </Accordion>
-
-
-      <div className="container">
       <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities' 
 				twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending' 
 				facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
-        <div className="row center-xs">
+      <section id='investment-overview'>
           <InvestmentOverview/>
-        </div>
-      </div>
+      </section>
 
       <Downloads
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}

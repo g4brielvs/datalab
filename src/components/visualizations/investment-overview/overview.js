@@ -1,9 +1,4 @@
 import React, { useEffect } from 'react';
-import * as $ from 'jquery';
-import mapboxgl from 'mapbox-gl';
-import * as d3 from 'd3';
-import { useStaticQuery, graphql } from 'gatsby';
-import ShareMenu from '../../share-menu/share-menu';
 import './investment.scss';
 import contractsSvg from '../../../images/colleges-and-universities/contractsv2.svg'
 import aidSvg from '../../../images/colleges-and-universities/aidv2.svg'
@@ -12,10 +7,6 @@ import grantsSvg from '../../../images/colleges-and-universities/grantsv2.svg'
 class InvestmentOverview extends React.Component {
   constructor(props) {
     super(props);
-  };
-
-  componentDidMount() {
-    console.log('overview');
   };
 
   render() {
@@ -92,14 +83,13 @@ class InvestmentOverview extends React.Component {
 
         <div id="investment-chart">
           <div id="studentAid--mobile-title">Student Aid</div>
-          <div id="studentAid-bar" style={aidStyle}><p id="bar-text--aid" style={texthelperAid}>$98B</p></div>
+          <div id="studentAid-bar" style={aidStyle}><p id="bar-text--aid">$98B</p></div>
 
           <div id="grants--mobile-title">Grants</div>
-          <div id="grants-bar" style={grantsStyle}><p id="bar-text--grants" style={texthelperGrants}>$41B</p></div>
-
+          <div id="grants-bar" style={grantsStyle}><p id="bar-text--grants">$41B</p></div>
 
           <div id="contracts--mobile-title">Contracts</div>
-          <div id="contracts-bar" style={contractsStyle}><p id="bar-text--contracts" style={texthelperContracts}>$10B</p></div>
+          <div id="contracts-bar" style={contractsStyle}><p id="bar-text--contracts">$10B</p></div>
         </div>
 
         <div id="investment-subtext">

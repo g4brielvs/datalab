@@ -20,10 +20,6 @@ class ShareMenu extends Component {
     this.handleShareClickReddit = this.handleShareClickReddit.bind(this);
   }
 
-  componentDidMount() {
-    console.log('share mounted');
-  }
-
   handleShow() {
     this.setState(prevState => ({ show: !prevState.show }));
   }

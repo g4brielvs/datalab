@@ -15,7 +15,7 @@ class Mapbox extends React.Component {
   };
 
   componentDidMount() {
-    console.log('mounted');
+    //console.log('mounted');
     //console.log(this.state.data);
     mapboxgl.accessToken = `${process.env.GATSBY_MAPBOX_API_KEY}`;
     this.createMap(); // this is running inside functions as well.
