@@ -5,7 +5,7 @@ const StoryHeading = (props) => {
   return (
     <div className="container">
       <div className="row center-xs">
-        <div className="col-xs-10">
+        <div className="col-xs-12">
           <div className="heading">
             <div className="heading__number">
               <span>{props.number}</span>
