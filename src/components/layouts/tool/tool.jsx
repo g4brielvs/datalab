@@ -30,7 +30,7 @@ class ToolLayout extends React.Component {
 
       <main>
         <article>
-          <section className='chart'>
+          <section>
             {this.props.children}
           </section>
           <section className='follow-up'>
