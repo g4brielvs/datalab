@@ -1,15 +1,18 @@
 import React from "react"
 import "../../styles/index.scss"
+import '../../components/share-menu/share-menu.scss'
 
 /* components */
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
+import ShareMenu from '../../components/share-menu/share-menu';
+
 
 const Overview = () => {
   const defaultImageStyle = {
-    margin: "1rem 0"
+    marginBottom: "1rem"
   }
 
   return (
@@ -32,7 +35,12 @@ const Overview = () => {
         <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
       </Accordion>
 
-      <div className="container" style={defaultImageStyle}>
+
+      <div className="container">
+      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities' 
+				twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending' 
+				facebook='' reddit='' linkedin='' tumblr='' email=''/>
+
         <div className="row center-xs">
           <img className="col-xs-6" src={defaultImage} />
         </div>
