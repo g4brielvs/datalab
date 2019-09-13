@@ -17,65 +17,123 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-
-
-@mixin h1-font-size {
+@mixin H1---Title-Heading-Style {
+  font-family: SourceSansPro;
   font-size: 56px;
-  font-weight: $semibold;
-  line-height: 70px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
 }
 
-@mixin h2-font-size {
+@mixin H2---Sub-Heading-Style {
+  font-family: SourceSansPro;
   font-size: 48px;
-  font-weight: $semibold;
-  line-height: 60px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
 }
 
-@mixin h3-font-size {
+@mixin H3---Sub-Heading-Style {
+  font-family: SourceSansPro;
   font-size: 40px;
-  font-weight: $light;
-  line-height: 50px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
 }
 
-@mixin h4-font-size {
+@mixin H4---Sub-Heading-Style {
+  font-family: SourceSansPro;
   font-size: 32px;
-  font-weight: $semibold;
-  line-height: 40px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
 }
 
-@mixin h5-font-size {
+@mixin H5---Sub-Heading-Style {
+  font-family: SourceSansPro;
   font-size: 24px;
-  font-weight: $semibold;
-  line-height:  31px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
 }
 
-@mixin h6-font-size {
-  font-size: 18px;
-  font-weight: $semibold;
-  line-height: 23px;
-}
-
-@mixin lead-paragraph {
+@mixin Lead-Paragraph-Style {
+  font-family: SourceSansPro;
   font-size: 20px;
-  font-weight: $regular;
-  line-height: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--font-body-copy);
 }
 
-@mixin body-copy {
+@mixin H6---Sub-Heading-Style {
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-title);
+}
+
+@mixin Body-Style {
+  font-family: SourceSansPro;
   font-size: 16px;
-  font-weight: $regular;
-  line-height: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-body-copy);
 }
 
-@mixin body-copy-small {
-  font-size: 12px;
-  font-weight: $regular;
-  line-height: 15px;
+@mixin Body-Copy---Light {
+  font-family: SourceSansPro;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-body-copy);
 }
 
-@mixin table-copy {
+@mixin Table---copy-Style {
+  font-family: SourceSansPro;
   font-size: 15px;
-  font-weight: $regular;
-  line-height: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-body-copy);
+}
 
+@mixin Body---Small-Style {
+  font-family: SourceSansPro;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--font-body-copy);
 }
