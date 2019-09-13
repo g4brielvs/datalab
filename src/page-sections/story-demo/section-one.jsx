@@ -5,7 +5,7 @@ import defaultImage from "../../images/default-image.jpg"
 
 import './section.scss'
 
-const SectionOne = (props) => (
+const SectionOne = () => (
   <>
     <div className="row center-xs">
       <div className="col-xs-10">

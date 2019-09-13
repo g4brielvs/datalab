@@ -5,17 +5,17 @@ import defaultImage from "../../images/default-image.jpg"
 
 import './section.scss'
 
-const SectionTwo = (props) => (
+const SectionTwo = () => (
   <>
-    <div className="section__one row center-xs">
+    <div className="row center-xs">
       <div className="col-xs-10">
         <header>
-          <section className='follow-up'>
+          <section className='section__header'>
             <div className='row'>
-              <div className='col-xs-1 section__number'>
+              <div className='col-xs-1 section__header__number'>
                 <h2>02</h2>
               </div>
-              <div className='col-xs-9 section__header'>
+              <div className='col-xs-9 section__header__title'>
                 Section
               </div>
             </div>
@@ -30,7 +30,7 @@ const SectionTwo = (props) => (
         </header>
       </div>
     </div>
-    <div className="row center-xs">
+    <div className="main__section row center-xs">
       <div className="col-xs-10">
         <h1 className="title">Visualization Title</h1>
 

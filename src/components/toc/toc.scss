@@ -35,14 +35,7 @@ body, h1, h2, h3, h4, p, li {
     text-align: left;
   }
 
-  .toc__subtext {
-    color: $cuRed;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-  }
-
-  .toc__subtext {
+  .toc__subtitle {
     color: $mdGrey;
     font-weight: bold;
     font-size: 14px;
@@ -59,5 +52,30 @@ body, h1, h2, h3, h4, p, li {
     font-weight: 300;
     line-height: 58px;
     text-align: left;
+  }
+}
+
+
+@media (min-width: $desktop) {
+
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .story-page {
+    max-width: 768px;
+  }
+
+  .header__title {
+    text-align: left;
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  .toc__subtitle {
+    display: none;
+  }
+
+  .toc__tile:first-child {
+    padding: 1rem 2rem 2rem !important;
   }
 }

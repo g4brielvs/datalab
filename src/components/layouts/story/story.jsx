@@ -35,46 +35,26 @@ const StoryLayout = (props) => {
       </header>;
 
       toc = <Toc
-        sections={
-          [{
-            section: "Section 1",
-            number: "01",
-            subblurb: "Subtitle / Question"
-          },
-        {
-          section: "Section 2",
-          number: "02",
-          subblurb: "Subtitle / Question"
-        },
-        {
-          section: "Section 3",
-          number: "03",
-          subblurb: "Subtitle / Question"
-        },
-        {
-          section: "Section 4",
-          number: "04",
-          subblurb: "Subtitle / Question"
-        }
-      ]}
-    />
+        sections={props.sectionToc} />
 
   }
   return <Default>
-    {header}
-    {toc}
+    <div className="story-page">
+      {header}
+      {toc}
 
-    <main>
-      <article>
-        <section>
-          {props.children}
-        </section>
-      </article>
-    </main>
+      <main>
+        <article>
+          <section>
+            {props.children}
+          </section>
+        </article>
+      </main>
 
-    <HWCTALink url={'#'}/>
+      <HWCTALink url={'#'}/>
 
-    <MoreAnalyses />
+      <MoreAnalyses />
+    </div>
 
   </Default>
 }
