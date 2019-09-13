@@ -1,0 +1,53 @@
+@import '../../styles/variables';
+
+$cuRed: #881E3D;
+$darkGrey: #666666;
+$mdGrey: #555555;
+$greyBlack: #979797;
+
+.title {
+  text-align: left;
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: $margin-20;
+}
+
+.section__header {
+  text-align: left;
+}
+
+.section__header__number {
+  margin-bottom: $margin-50;
+  border-bottom: 1px solid $darkGrey;
+
+  h2 {
+    color: $darkGrey;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 50px;
+    margin: 0.1em 0 0.3em;
+    text-align: left;
+  }
+}
+
+.section__header__title {
+  color: $darkGrey;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 60px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.intro {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.intro-container {
+  margin: 0 0 $margin-50 0;
+}
+
+.main__section {
+  margin-bottom: $margin-100;
+}
