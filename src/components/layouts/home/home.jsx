@@ -11,10 +11,16 @@ import Default from "../default/default"
 
 import "./home.scss"
 
+const defaultStyle = {
+  margin: '1% 9%'
+}
+
 const Home = ({ children }) => (
       <>
         <Default>
-          <main className='home'>{children}</main>
+          <main className='home' style = {defaultStyle}>
+            {children}
+          </main>
         </Default>
       </>
 )
