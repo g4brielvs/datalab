@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 /* components */
 import SEO from '../../components/seo'
@@ -6,7 +6,7 @@ import ToolLayout from '../../components/layouts/tool/tool'
 import Accordion from '../../components/accordion/accordion'
 import defaultImage from '../../images/default-image.jpg'
 
-class ToolDemoPage extends Component {
+class ToolDemoPage extends React.Component {
   render() {
     return <>
       <SEO title='Tool Layout Demo' keywords={[`application`, `demo`]}/>
