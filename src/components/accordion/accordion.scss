@@ -1,4 +1,10 @@
+@import '../../styles/variables.scss';
+
 $padding: 20px;
+
+.accordion-container {
+    margin-bottom: $margin-20;
+}
 
 .accordion {
     margin: 0 0 1rem 0;

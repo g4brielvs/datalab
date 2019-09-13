@@ -23,8 +23,8 @@ class Accordion extends Component {
 
     render() {
         return (
-          <div className="container">
-            <div className="row center-xs">
+          <div className="accordion-container">
+            <div className="row">
               <div className="col-xs-12">
                 <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
                   <h1 onClick={this.toggle} className="accordion__heading">

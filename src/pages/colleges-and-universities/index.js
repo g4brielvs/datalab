@@ -1,25 +1,24 @@
 import React, {Component} from "react"
 import SEO from "../../components/seo"
 
-import Story from "../../components/layouts/story/story"
+import StoryLayout from "../../components/layouts/story/story"
 import "../../styles/index.scss"
 
 /* components */
-import Header from "../../components/header/header"
-import HWCTALink from "../../components/hwcta-link/hwcta-link"
+import CustomHeader from "../../page-sections/colleges-and-universites/custom-header/custom-header"
 import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import Categories from "../../page-sections/colleges-and-universites/categories"
-import MoreAnalyses from "../../components/more-analyses/more-analyses"
-import Footnotes from "../../components/footnotes/footnotes"
-import Toc from "../../components/toc/toc"
+import CustomToc from "../../page-sections/colleges-and-universites/custom-toc/custom-toc"
 
 class CollegesAndUniversitiesPage extends Component {
 
   render() {
-    return <><Story>
+    return <><StoryLayout
+        isCustomHeader={true}>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
-      <Header
+
+      <CustomHeader
         subtext={'Federal Investment in Higher Education'}
         subblurb={['Explore the Federal Investment in your ', <br key="subblurb-linebreak"/>,
           <span key="subblurb-callout" className={'header--red'}>Alma Mater</span>]}
@@ -28,8 +27,7 @@ class CollegesAndUniversitiesPage extends Component {
           'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']}
       />
 
-
-      <Toc
+      <CustomToc
         sections={
           [{
             section: "one",
@@ -75,23 +73,11 @@ class CollegesAndUniversitiesPage extends Component {
       <HWCTALink
         url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
 
-      {/* <MoreAnalyses/> */}
+      <MoreAnalyses/>
 
-    </Story>
+    </StoryLayout>
     </>
   }
 }
 
 export default CollegesAndUniversitiesPage
-
-
-// export const CollegesAndUniversitiesQuery = graphql`
-// query {
-//   allUnivBubbleChartCsv {
-//     nodes {
-//       agency
-//       subagency
-//       obligation
-//     }
-//   },
-// }`

@@ -16,10 +16,6 @@ import SiteFooter from "../../footers/site"
 import '../../../styles/index.scss'
 import './default.scss'
 
-const defaultStyle = {
-  margin: '1% 9%'
-}
-
 const Default = ({ children }) => (
   <>
     <Helmet>
@@ -29,8 +25,7 @@ const Default = ({ children }) => (
     <SiteHeader />
     <PageHeader />
     <main
-      className='default'
-      style = {defaultStyle} >{children}</main>
+      className='default'>{children}</main>
 
     <PageFooter />
     <SiteFooter />

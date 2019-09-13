@@ -1,15 +1,100 @@
-$margin-override: 2% !important;
-$margin: 2%;
-$reset: 0;
-$reset-override: 0 !important;
+:root {
+  --faded-orange: #fa9441;
+  --apricot: #ffbe60;
+  --copper: #b3532d;
+  --warm-brown: #925003;
 
-//$desktop-xl: 1200px; // 1136px flexboxgrid l
-//$desktop: 992px;  // 976px / 1024 px? md
-//$tablet: 768px; // 736 px / 768 px? sm
-//$phone: 576px;  // 480 px ? xs
+  --primary: #0071bc;
+  --primary-darker: #205493;
+  --primary-darkest: #122e51;
+  --primary-base: #212121;
+  --primary-alt: #00bfe7;
 
-$desktop-xxl: 1450px;
-$desktop-xl: 1200px;
-$desktop: 1024px;
-$tablet: 768px;
-$phone: 480px;
+  --secondary: #e21c3d;
+
+  --tertiary-gold: #fdb81e;
+  --tertiary-green: #2e8540;
+  --tertiary-blue: #385c88;
+
+  --background-grey-dark: #323a44;
+  --background-gray: #5b616b;
+  --background-gray-warm-dark: #494440;
+  --background-gray-warm-light: #e4e2e0;
+
+  --specialState-focus: #3d94d0;
+  --specialState-visited: #4c2c92;
+  --specialState-highlight: #f2b733;
+  --specialState-previous: #80b6f6;
+
+  --font-white: #ffffff;
+  --font-black: #000000;
+  --font-title: #555555;
+  --font-body-copy: #666666;
+
+  --color-carrot: #fc5a20;
+  --color-tangerine: #fa9441;
+  --color-cantaloupe: #ffbe60;
+  --color-papaya: #b3532d;
+  --color-rust: #925003;
+  --color-magenta: #d72d79;
+  --color-raspberry: #ae397b;
+  --color-burgundy: #923051;
+  --color-olive: #b1be51;
+  --color-lime: #82b860;
+  --color-grass: #57af74;
+  --color-mint: #41e1b7;
+  --color-turquoise: #00c3c2;
+  --color-pine: #259392;
+  --color-jade: #32a386;
+  --color-green: #008566;
+  --color-teal: #00766c;
+  --color-forest: #004c40;
+  --color-peacock: #398296;
+  --color-iceberg: #a4caeb;
+  --color-sky: #29abe2;
+  --color-blue: #2b71b8;
+  --color-cobalt: #1b4485;
+  --color-midnightblue: #0a2f5a;
+  --color-blueberry: #52708f;
+  --color-sapphire: #2a328c;
+  --color-lavender: #9355dc;
+  --color-violet: #4a0072;
+  --color-grape: #45387a;
+  --color-maroon: #6f4b68;
+  --color-damson: #655e7e;
+
+  // TODO: need to refactor!!!
+  --margin-override: 2% !important;
+  --margin: 2%;
+  --reset: 0;
+  --reset-override: 0 !important;
+
+  --desktop-xxl: 1450px;
+  --desktop-xl: 1200px;
+  --desktop: 1024px;
+  --tablet: 768px;
+  --phone: 480px;
+
+  --margin-150: 150px;
+  --margin-100: 100px;
+  --margin-75: 75px;
+  --margin-50: 50px;
+  --margin-45: 45px;
+  --margin-30: 30px;
+  --margin-25: 25px;
+  --margin-20: 20px;
+  --margin-15: 15px;
+  --margin-10: 10px;
+
+  --bold: 700;
+  --semibold: 600;
+  --regular: 400;
+  --light: 200;
+}
+
+
+
+//--desktop-xl: 1200px; // 1136px flexboxgrid l
+//--desktop: 992px;  // 976px / 1024 px? md
+//--tablet: 768px; // 736 px / 768 px? sm
+//--phone: 576px;  // 480 px ? xs
