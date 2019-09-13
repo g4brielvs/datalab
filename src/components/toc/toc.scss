@@ -3,6 +3,7 @@
 $cuRed: #881E3D;
 $darkGrey: #666666;
 $mdGrey: #555555;
+$lightGrey: #eee;
 $greyBlack: #979797;
 
 body, h1, h2, h3, h4, p, li {
@@ -15,15 +16,6 @@ body, h1, h2, h3, h4, p, li {
 
   .toc__tile {
     padding-top: 1rem;
-  }
-
-  .toc__tile:not(:first-child) {
-    padding-top: 1rem;
-    padding: 1rem 2rem 2rem !important;
-  }
-
-  .toc__tile:not(:last-child) {
-    border-right: 1px solid #EEEEEE;
   }
 
   .toc__number h2 {
@@ -55,27 +47,53 @@ body, h1, h2, h3, h4, p, li {
   }
 }
 
+@media (min-width: $desktop-xl) {
+  #TOC {
+    .toc__tile:not(:last-child) {
+      border-right: 1px solid $lightGrey;
+    }
 
-@media (min-width: $desktop) {
+    .toc__tile:not(:first-child) {
+      padding: 1rem 2rem 2rem;
+    }
+  }
 
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .story-page {
-    max-width: 768px;
-  }
+@media (min-width: $tablet) and (max-width: $desktop-xl) {
+  #TOC {
+    margin: 0 auto;
+    margin-top: $margin-30;
+    margin-bottom: $margin-100;
 
-  .header__title {
-    text-align: left;
+    .story-page {
+      max-width: 768px;
+    }
+
+    .toc__tile {
+      padding: 1rem 2rem 2rem;
+    }
+
+    .toc__tile:nth-child(1), .toc__tile:nth-child(2) {
+      border-bottom: $lightGrey solid 1px;
+    }
+
+    .toc__tile:nth-child(odd) {
+      border-right: 1px solid $lightGrey;
+    }
+
   }
 }
 
 @media (max-width: $tablet - 1) {
-  .toc__subtitle {
-    display: none;
-  }
+  #TOC {
+    .toc__subtitle {
+      display: none;
+    }
 
-  .toc__tile:first-child {
-    padding: 1rem 2rem 2rem !important;
+    .toc__tile {
+      padding: 1rem 2rem 2rem;
+    }
+
   }
 }

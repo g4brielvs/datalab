@@ -55,8 +55,9 @@ $mdGrey: #555555;
     max-width: 768px;
   }
 
-  .header__title {
-    text-align: left;
+  .header--hero {
+    padding-top: $margin-50;
+    padding-bottom: $margin-30;
   }
 }
 
@@ -65,7 +66,7 @@ $mdGrey: #555555;
     margin: 0 auto;
   }
 
-  .header__title {
+  .header__title, .header__introSentence, .header__contextStatement {
     text-align: left;
   }
 }

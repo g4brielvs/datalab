@@ -17,4 +17,9 @@
   line-height: 90px;
 }
 
+@media (max-width: $tablet - 1) {
+  .hwcta-entry__image {
+    display: none;
+  }
+}
 

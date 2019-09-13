@@ -7,8 +7,8 @@ const Toc = ({sections}) => {
 	return (
 		<>
       <section id="TOC">
-        <div className="row">
-          <div className="col-lg-offset-1 col-lg-10">
+        <div className="row center-md center-sm">
+          <div className="col-lg-10 col-sm-9 col-xs-9">
             <div className="row">
               {sections.map((item, key) =>
                   <div key={key} className="col-lg-3 col-md-6 col-xs-12 toc__tile">
