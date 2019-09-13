@@ -16,3 +16,66 @@ a:-webkit-any-link {
   cursor: pointer;
   text-decoration: none;
 }
+
+
+
+@mixin h1-font-size {
+  font-size: 56px;
+  font-weight: $semibold;
+  line-height: 70px;
+}
+
+@mixin h2-font-size {
+  font-size: 48px;
+  font-weight: $semibold;
+  line-height: 60px;
+}
+
+@mixin h3-font-size {
+  font-size: 40px;
+  font-weight: $light;
+  line-height: 50px;
+}
+
+@mixin h4-font-size {
+  font-size: 32px;
+  font-weight: $semibold;
+  line-height: 40px;
+}
+
+@mixin h5-font-size {
+  font-size: 24px;
+  font-weight: $semibold;
+  line-height:  31px;
+}
+
+@mixin h6-font-size {
+  font-size: 18px;
+  font-weight: $semibold;
+  line-height: 23px;
+}
+
+@mixin lead-paragraph {
+  font-size: 20px;
+  font-weight: $regular;
+  line-height: 30px;
+}
+
+@mixin body-copy {
+  font-size: 16px;
+  font-weight: $regular;
+  line-height: 20px;
+}
+
+@mixin body-copy-small {
+  font-size: 12px;
+  font-weight: $regular;
+  line-height: 15px;
+}
+
+@mixin table-copy {
+  font-size: 15px;
+  font-weight: $regular;
+  line-height: 15px;
+
+}
