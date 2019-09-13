@@ -2,10 +2,10 @@
 
 $darkGrey: #666666;
 
-.more-analyses {
+.analyses {
   text-align: left;
 
-  .more-analyses__heading {
+  .analyses__heading {
     font-size: 1.17em;
     color: $darkGrey;
     padding-bottom: 1rem;
@@ -13,11 +13,15 @@ $darkGrey: #666666;
     text-align: left;
   }
 
-  .more-analyses__tile {
+  .analyses__tile {
     text-align: left;
   }
 
-  .more-analyses__tile-text {
+  .analyses__tiles {
+
+  }
+
+  .analyses__tile__text {
     font-size: 12px;
     font-weight: 600;
     font-style: normal;
@@ -32,7 +36,7 @@ $darkGrey: #666666;
     }
   }
 
-  .more-analyses__tile-title {
+  .analyses__tile__title {
     font-size: 20px;
     height: 4rem;
     color: $darkGrey;
@@ -40,27 +44,27 @@ $darkGrey: #666666;
     margin-top: 0;
   }
 
-  .more-analyses__image {
+  .analyses__image {
     width: 100%;
   }
 }
 
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .more-analyses__tile-text {
+  .analyses__tile__text {
     text-align: right;
   }
 
-  .more-analyses__tile {
+  .analyses__tile {
     border-bottom: unset;
   }
 }
 
 @media (max-width: $tablet - 1) {
-  .more-analyses__tile-text {
+  .analyses__tile__text {
     text-align: right;
   }
 
-  .more-analyses__heading {
+  .analyses__heading {
     border-bottom: 1px solid $darkGrey;
   }
 }
