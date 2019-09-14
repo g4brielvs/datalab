@@ -75,8 +75,6 @@ class CollegesAndUniversitiesPage extends Component {
 
       <Agencies />
 
-      <Categories />
-
 	    <HWCTALink
         url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
 
