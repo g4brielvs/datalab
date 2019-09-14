@@ -19,13 +19,27 @@ class ShareMenu extends Component {
     this.handleShareClickTwitter = this.handleShareClickTwitter.bind(this);
     this.handleShareClickLinkedin = this.handleShareClickLinkedin.bind(this);
     this.handleShareClickReddit = this.handleShareClickReddit.bind(this);
+    this.handleClickElementOffscreen = this.handleClickElementOffscreen.bind(this);
   }
 
   componentDidMount() {
-    console.log('share mounted');
+    document.addEventListener('mousedown', this.handleClickElementOffscreen, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickElementOffscreen, false);
+  }
+
+  handleClickElementOffscreen(e) {
+    if (!this.node.contains(e.target) && this.state.show == true) {
+      this.setState(prevState => ({ show: !prevState.show }));
+    }
   }
 
   handleShow() {
+    if (this.state.show == true) {
+      this.handleClickElementOffscreen;
+    }
     this.setState(prevState => ({ show: !prevState.show }));
   }
 
@@ -59,23 +73,23 @@ class ShareMenu extends Component {
       },
       {
         src: facebookLogo,
-        style: { height: '15px', width: '15px' }
+        style: { height: '20px', width: '20px' }
       },
       {
         src: twitterLogo,
-        style: { height: '15px', width: '15px' }
+        style: { height: '20px', width: '20px' }
       },
       {
         src: redditLogo,
-        style: { height: '15px', width: '15px' }
+        style: { height: '20px', width: '20px' }
       },
       {
         src: linkedinLogo,
-        style: { height: '15px', width: '15px' }
+        style: { height: '20px', width: '20px' }
       },
       {
         src: emailLogo,
-        style: { height: '15px', width: '15px' }
+        style: { height: '20px', width: '20px' }
       },
     ];
 
@@ -99,10 +113,9 @@ class ShareMenu extends Component {
 
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
 
-
     return (
       <div className='share-container'>
-        <div className="popup new-share-button">
+        <div className="popup new-share-button" onClick={this.handleClickElementOffscreen} ref={node => {this.node = node;}}>
           <span className="viz-share-icon" aria-hidden="true" onClick={this.handleShow}>
             <img src={images[0].src}></img>
             <span className="share-text">Share</span>
@@ -118,7 +131,7 @@ class ShareMenu extends Component {
                 </li>
                 <li>
                   <a href='#' onClick={this.handleShareClickTwitter} title="Share on Twitter" data-id='2'>
-                    <img src={images[2].src} style={images[2].style} className='icon-twitter'></img>
+                    <img src={images[2].src} style={images[2].style} className='icon-twitter share-icon'></img>
                     <span className="share-button-text">Twitter</span>
                   </a>
                 </li>
