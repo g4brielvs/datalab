@@ -20,28 +20,8 @@ import { Helmet } from "react-helmet"
 
 function IndexPage() {
 
-  let [d3, setD3] = useState(window.d3)
-
-
-  function handleScriptInject({ scriptTags }) {
-    if (scriptTags) {
-      const scriptTag = scriptTags[0]
-      scriptTag.onload = () => {
-        // I don't really like referencing window.
-        console.log(`myExternalLib loaded!`, window.d3)
-        setD3(d3)
-      }
-    }
-  }
-
   return (
     <Home>
-      <Helmet
-        script={[{ src: "https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js" }]}
-        // Helmet doesn't support `onload` in script objects so we have to hack in our own
-        onChangeClientState={(newState, addedTags) => handleScriptInject(addedTags)}
-      />
-
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
 
       <main role="main">

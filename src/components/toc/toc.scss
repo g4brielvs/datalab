@@ -1,6 +1,9 @@
+@import '../../styles/variables.scss';
+
 $cuRed: #881E3D;
 $darkGrey: #666666;
 $mdGrey: #555555;
+$lightGrey: #eee;
 $greyBlack: #979797;
 
 body, h1, h2, h3, h4, p, li {
@@ -8,51 +11,89 @@ body, h1, h2, h3, h4, p, li {
 }
 
 #TOC {
-  border-top: 1px solid $greyBlack;
-  text-align: left;
+  margin-top: $margin-75;
+  margin-bottom: $margin-100;
+
+  .toc__tile {
+    padding-top: 1rem;
+  }
+
+  .toc__number h2 {
+    color: $darkGrey;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 50px;
+    margin: 0.1em 0 0.3em;
+    text-align: left;
+  }
+
+  .toc__subtitle {
+    color: $mdGrey;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    max-width: 200px;
+    line-height: 17px;
+    text-align: left;
+  }
+
+  .toc__section {
+    color: $mdGrey;
+    font-size: 18px;
+    font-weight: 300;
+    font-weight: 300;
+    line-height: 58px;
+    text-align: left;
+  }
 }
 
-.toc__tile {
-  padding-top: 1rem;
-  padding: 1rem 2rem 0 !important;
+@media (min-width: $desktop-xl) {
+  #TOC {
+    .toc__tile:not(:last-child) {
+      border-right: 1px solid $lightGrey;
+    }
+
+    .toc__tile:not(:first-child) {
+      padding: 1rem 2rem 2rem;
+    }
+  }
+
 }
 
-.toc__tile:not(:last-child) {
-  border-right: 1px solid #EEEEEE;
+@media (min-width: $tablet) and (max-width: $desktop-xl) {
+  #TOC {
+    margin: 0 auto;
+    margin-top: $margin-30;
+    margin-bottom: $margin-100;
+
+    .story-page {
+      max-width: 768px;
+    }
+
+    .toc__tile {
+      padding: 1rem 2rem 2rem;
+    }
+
+    .toc__tile:nth-child(1), .toc__tile:nth-child(2) {
+      border-bottom: $lightGrey solid 1px;
+    }
+
+    .toc__tile:nth-child(odd) {
+      border-right: 1px solid $lightGrey;
+    }
+
+  }
 }
 
-.toc__number h2 {
-  color: $darkGrey;
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 50px;
-  margin: 0.1em 0 0.3em;
-}
+@media (max-width: $tablet - 1) {
+  #TOC {
+    .toc__subtitle {
+      display: none;
+    }
 
-.toc__subtext {
-  color: $cuRed;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 18px;
-}
+    .toc__tile {
+      padding: 1rem 2rem 2rem;
+    }
 
-.toc__subblurb {
-  color: $mdGrey;
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase;
-  max-width: 200px;
-  line-height: 17px;
-}
-
-.toc__blurb {
-  color: $mdGrey;
-  font-size: 14px;
-  font-weight: 300;
-  font-weight: 300;
-  line-height: 16px;
-}
-
-.TOC.container {
-  margin-bottom: 5rem;
+  }
 }

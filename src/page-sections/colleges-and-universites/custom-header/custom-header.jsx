@@ -1,8 +1,8 @@
 import React from 'react';
-import "./header.scss"
+import "./custom-header.scss"
 
 
-const Header = (props) => (
+const CustomHeader = (props) => (
   <div className="header container-fluid">
     <div className="row center-xs">
       <div className="col-xs-10">
@@ -24,4 +24,4 @@ const Header = (props) => (
   </div>
 )
 
-export default Header;
+export default CustomHeader;

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import "./dts-tile.scss"
 import "./landing-dts.scss"
 import { graphql, useStaticQuery } from "gatsby"
-import * as d3 from 'd3'
+import * as d3 from 'd3v4'
 
 function DtsTile(props) {
 
@@ -30,6 +30,15 @@ function DtsTile(props) {
     // Update the document title using the browser API
     data = _data.allRecent30Csv.nodes;
     redraw();
+
+    window.addEventListener('resize', function () {
+      if (debounce) {
+        clearTimeout(debounce);
+      }
+
+      debounce = setTimeout(redraw, 100);
+    });
+
   });
 
   function setDimensions() {
@@ -124,14 +133,6 @@ function DtsTile(props) {
     d3.select(".dtsm-dollars").text(dollarFormatter(lastValue));
     d3.select(".side-dts__date").text("Updated " + dateFormatter(lastDate));
   }
-
-  window.addEventListener('resize', function () {
-    if (debounce) {
-      clearTimeout(debounce);
-    }
-
-    debounce = setTimeout(redraw, 100);
-  });
 
   const _data = useStaticQuery(graphql`
     query dtsQuery {

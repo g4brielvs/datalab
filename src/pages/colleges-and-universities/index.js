@@ -1,29 +1,28 @@
-import React, {Component} from "react"
-import SEO from "../../components/seo"
+import React, {Component} from "react";
+import SEO from "../../components/seo";
 
-import Story from "../../components/layouts/story/story"
+import StoryLayout from "../../components/layouts/story/story"
 import "../../styles/index.scss"
 
 /* components */
-import Header from "../../components/header/header"
-import HWCTALink from "../../components/hwcta-link/hwcta-link"
+import CustomHeader from "../../page-sections/colleges-and-universites/custom-header/custom-header"
 import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import Categories from "../../page-sections/colleges-and-universites/categories"
+import CustomToc from "../../page-sections/colleges-and-universites/custom-toc/custom-toc"
+import HWCTALink from "../../components/hwcta-link/hwcta-link"
+//import Institutions from "../../page-sections/colleges-and-universites/institutions";
 import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
-import Toc from "../../components/toc/toc"
-import PageFooter from "../../components/footers/page"
-import SiteFooter from "../../components/footers/site"
 
 class CollegesAndUniversitiesPage extends Component {
 
-
-
   render() {
-    return <><Story>
+    return <><StoryLayout
+        isCustomHeader={true}>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
-      <Header
+
+      <CustomHeader
         subtext={'Federal Investment in Higher Education'}
         subblurb={['Explore the Federal Investment in your ', <br key="subblurb-linebreak"/>,
           <span key="subblurb-callout" className={'header--red'}>Alma Mater</span>]}
@@ -32,8 +31,7 @@ class CollegesAndUniversitiesPage extends Component {
           'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']}
       />
 
-
-      <Toc
+      <CustomToc
         sections={
           [{
             section: "one",
@@ -66,7 +64,7 @@ class CollegesAndUniversitiesPage extends Component {
           ]}
       />
 
-      {/* <Overview/> */}
+      <Overview/>
 
       <Agencies />
 
@@ -76,26 +74,14 @@ class CollegesAndUniversitiesPage extends Component {
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
       'Due to the way military academies are funded, they have not been included in this analysis.']} /> */}
 
-      <HWCTALink
-        url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
+	    <HWCTALink
+    	    url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
 
-      {/* <MoreAnalyses/> */}
+      <MoreAnalyses/>
 
-    </Story>
+    </StoryLayout>
     </>
   }
 }
 
 export default CollegesAndUniversitiesPage
-
-
-// export const CollegesAndUniversitiesQuery = graphql`
-// query {
-//   allUnivBubbleChartCsv {
-//     nodes {
-//       agency
-//       subagency
-//       obligation
-//     }
-//   },
-// }`

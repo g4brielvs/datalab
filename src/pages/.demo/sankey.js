@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
-import * as d3 from "d3"
+import * as d3 from "d3v3"
 import Home from "../../components/layouts/home/home"
 import SEO from "../../components/seo"
 
-class Sankey extends Component {
+class SankeyDemo extends Component {
 
   componentDidMount() {
 
@@ -709,7 +709,7 @@ class Sankey extends Component {
   }
 }
 
-export default Sankey;
+export default SankeyDemo;
 
 export const IndexQuery = graphql`
   query {

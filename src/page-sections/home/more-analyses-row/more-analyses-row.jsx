@@ -37,7 +37,7 @@ const MoreAnalysesRow = () => {
   ]
 
   return (
-    <section className="more-analyses">
+    <section className="more-analyses__home">
       <div className="row">
         <h1 className="more-analyses__heading col-xs-12">
           More Analyses
