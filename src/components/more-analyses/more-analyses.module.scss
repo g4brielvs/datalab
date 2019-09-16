@@ -6,23 +6,23 @@ $darkGrey: #666666;
   text-align: left;
 }
 
-.analyses__heading {
+.heading {
   font-size: 1.17em;
-  color: $darkGrey;
+  color: $font-body-copy;
   padding-bottom: 1rem;
   text-transform: uppercase;
   text-align: left;
 }
 
-.analyses__tile {
+.tile {
   text-align: left;
 }
 
-.analyses__tiles {
+.tiles {
 
 }
 
-.analyses__tile__text {
+.tile__text {
   font-size: 12px;
   font-weight: 600;
   font-style: normal;
@@ -37,34 +37,34 @@ $darkGrey: #666666;
   }
 }
 
-.analyses__tile__title {
+.tile__title {
   font-size: 20px;
   height: 4rem;
-  color: $darkGrey;
+  color: $font-body-copy;
   margin-bottom: 0;
   margin-top: 0;
 }
 
-.analyses__image {
+.image {
   width: 100%;
 }
 
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .analyses__tile__text {
+  .tile__text {
     text-align: right;
   }
 
-  .analyses__tile {
+  .tile {
     border-bottom: unset;
   }
 }
 
 @media (max-width: $tablet - 1) {
-  .analyses__tile__text {
+  .tile__text {
     text-align: right;
   }
 
-  .analyses__heading {
-    border-bottom: 1px solid $darkGrey;
+  .heading {
+    border-bottom: 1px solid $font-body-copy;
   }
 }

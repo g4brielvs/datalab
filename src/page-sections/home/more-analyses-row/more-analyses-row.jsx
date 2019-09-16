@@ -9,7 +9,7 @@ import workers from "../../../images/more-analyses/workers.jpg"
 import budget from "../../../images/more-analyses/budget.jpg"
 import competition from "../../../images/more-analyses/competition.jpg"
 
-import componentStyles from "./more-analyses-row.module.scss"
+import moreAnalysesStyles from "./more-analyses-row.module.scss"
 
 
 const MoreAnalysesRow = () => {
@@ -37,15 +37,15 @@ const MoreAnalysesRow = () => {
   ]
 
   return (
-    <section className={componentStyles.analyses__home}>
+    <section className={moreAnalysesStyles.main}>
       <div className="row">
-        <h1 className={`col-xs-12 ${componentStyles.analyses__heading}`}>
+        <h1 className={`col-xs-12 ${moreAnalysesStyles.heading}`}>
           More Analyses
         </h1>
       </div>
 
       <div className="row">
-        <div className={`col-md-12 col-lg-6 last-lg ${componentStyles.analyses__featured__tile}`}>
+        <div className={`col-md-12 col-lg-6 last-lg ${moreAnalysesStyles.featured__tile}`}>
           <FeaturedAnalysesTile
             href={'americas-finance-guide'}
             imgSrc={cg}
@@ -64,24 +64,24 @@ const MoreAnalysesRow = () => {
 
         </div>
 
-        <div className={`col-md-12 col-lg-6 first-lg ${componentStyles.analyses__tiles}`}>
+        <div className={`col-md-12 col-lg-6 first-lg ${moreAnalysesStyles.tiles}`}>
           <div className="row">
             {analyses.map((item, index) =>
             <div
-              key={'more-analyses__tile_' + index}
-              className={index === 0 ? `${componentStyles.analyses__tile} col-sm-12 col-md-6 col-lg-6` : `${componentStyles.analyses__tile} col-sm-12 col-md-6 col-lg-6`}>
+              key={'more-tile_' + index}
+              className={index === 0 ? `${moreAnalysesStyles.tile} col-sm-12 col-md-6 col-lg-6` : `${moreAnalysesStyles.tile} col-sm-12 col-md-6 col-lg-6`}>
               <Link to={item.href}>
                 <div className="row">
-                  <div className={`col-md-12 col-sm-6 col-xs-6 ${componentStyles.analyses__tile__text}`}>
+                  <div className={`col-md-12 col-sm-6 col-xs-6 ${moreAnalysesStyles.tile__title}`}>
                     <h2>
                     {item.title}
                     </h2>
-                    <p className={componentStyles.analyses__tile__title}>
+                    <p className={moreAnalysesStyles.tile__subtitle}>
                     {item.subtitle}
                     </p>
                   </div>
-                  <div className={`col-md-12 col-sm-6 col-xs-6 first-sm first-xs  ${componentStyles.analyses__image__container}`}>
-                    <img src={item.imageSrc} className={componentStyles.analyses__image} />
+                  <div className={`col-md-12 col-sm-6 col-xs-6 first-sm first-xs  ${moreAnalysesStyles.image__container}`}>
+                    <img src={item.imageSrc} className={moreAnalysesStyles.image} />
                   </div>
                 </div>
               </Link>

@@ -1,48 +1,48 @@
 @import '../../../styles/variables';
 
-.analyses__tile {
+.tile {
   padding-bottom: $margin * 3;
   padding-right: $margin * 2 !important;
 }
 
-.analyses__tile__title {
+.tile__subtitle {
   padding-bottom: $margin * 8;
 }
 
-.analyses__tile__text {
+.tile__title {
   padding-bottom: $margin * 4;
 }
 
-.analyses__image {
+.image {
   width: 100%;
 }
 
 @media screen and (max-width: $desktop-xl) {
-  .analyses__tile {
+  .tile {
     padding-bottom: $reset-override;
     border-bottom: 1px solid #ddd;
     margin-bottom: $margin * 2;
   }
 
-  .analyses__tile__title {
+  .tile__title {
     padding-bottom: 0;
   }
 
-  .analyses__tile__text {
+  .tile__subtitle {
     padding-bottom: 0;
   }
 
-  .analyses__featured__tile {
+  .featured__tile {
     padding-bottom: $margin * 2;
   }
 
-  .analyses__image-container {
+  .image__container {
     padding: $reset-override;
   }
 }
 
 @media screen and (min-width: $desktop-xl) {
-  .analyses__featured-tile {
+  .featured-tile {
     padding-right: $reset-override;
   }
 }
