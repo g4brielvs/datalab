@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-sass",
       options: {
-        useResolveUrlLoader: true,
+        useResolveUrlLoader: true
       },
     },
     {
