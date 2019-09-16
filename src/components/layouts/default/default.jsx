@@ -7,7 +7,7 @@ import PageHeader from '../../headers/page'
 import PageFooter from "../../footers/page"
 import SiteFooter from "../../footers/site"
 import '../../../styles/index.scss'
-import './default.scss'
+import defaultStyles from './default.module.scss'
 
 const Default = ({ children }) => (
   <>
@@ -17,7 +17,7 @@ const Default = ({ children }) => (
 
     <SiteHeader />
     <PageHeader />
-    <div className='default'>
+    <div className={defaultStyles.default}>
       {children}
     </div>
     <PageFooter />
