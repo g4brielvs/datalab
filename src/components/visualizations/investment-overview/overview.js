@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './investment.scss';
-import contractsSvg from '../../../images/colleges-and-universities/contractsv2.svg'
-import aidSvg from '../../../images/colleges-and-universities/aidv2.svg'
-import grantsSvg from '../../../images/colleges-and-universities/grantsv2.svg'
+import contractsSvg from '../../../images/colleges-and-universities/contractsv2.svg';
+import aidSvg from '../../../images/colleges-and-universities/aidv2.svg';
+import grantsSvg from '../../../images/colleges-and-universities/grantsv2.svg';
 
 class InvestmentOverview extends React.Component {
   constructor(props) {

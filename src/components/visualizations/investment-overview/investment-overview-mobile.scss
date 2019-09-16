@@ -3,7 +3,13 @@
 // scale text down as screen shrinks
 @media (max-width: 1300px) {
     #investment-overview #investment-overview__viz #bar-text--contracts {
-      font-size: 20px;
+      font-size: 24px;
+    }
+}
+
+@media (max-width: 970px) {
+    #investment-overview #investment-overview__viz #bar-text--contracts {
+	font-size: 16px;
     }
 }
 
