@@ -13,9 +13,15 @@ $border-color: #eee;
 
   .search-panel {
     width: $search-width;
+    background-color: #fff;
 
-    .select-box {
-      width: 100%;
+    // .select-box {
+    //   width: 100%;
+    // }
+
+    ul {
+      max-height: 400px;
+      overflow: scroll;
     }
   }
 
