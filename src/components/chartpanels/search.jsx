@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import ListIcon from '@material-ui/icons/List';
+import { faFighterJet } from '@fortawesome/free-solid-svg-icons';
 
 export default class SearchPanel extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class SearchPanel extends React.Component {
       activeButton: 'chart',
       expanded: false
     };
+    this.filteredList = this.props.searchList;
   }
 
   activateButton(button) {
@@ -38,6 +40,25 @@ export default class SearchPanel extends React.Component {
     this.setState(prevState => { return { expanded: !prevState.expanded } });
   }
 
+  filterSearch(event) {
+    const filter = new RegExp(event.target.value, 'i');
+    this.filteredList = {};
+
+    Object.keys(this.props.searchList)(key => {
+      if (key.search(filter) !== -1) {
+        this.filteredList[key] = [];
+      }
+      this.props.searchList[key].forEach(item => {
+        if (item.search(filter) !== -1) {
+          if (!this.filteredList[key]) {
+            this.filteredList[key] = [];
+          }
+          this.filteredList[key].push(item);
+        }
+      });
+    });
+  }
+
   render() {
     return (
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
@@ -45,9 +66,9 @@ export default class SearchPanel extends React.Component {
           <TextField
             id='selection'
             label={'Search ' + this.props.chart}
-            value=''
-          // className='select-box'
-          // onChange={handleChange('selection')}
+            variant="outlined"
+            className='select-box'
+            onChange={(event) => this.filterSearch(event)}
           // SelectProps={{
           //   MenuProps: {
           //     className: classes.menu,
@@ -65,13 +86,12 @@ export default class SearchPanel extends React.Component {
                 </ListItem>
                 {
                   this.props.searchList[oKey].map((val, j) =>
-                    <ListItem button key={i +'/'+ j}>
+                    <ListItem button key={i + '/' + j}>
                       <ListItemText primary={oKey} secondary={val} className='list-item' />
                     </ListItem>
                   )
                 }
-              </>)
-            }
+              </>)}
           </List>
         </form>
         <div>
@@ -114,7 +134,7 @@ export default class SearchPanel extends React.Component {
 
 SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
-                                        // or, perhaps parent should pass in the button or icon to use for the middle one?
+  // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.object.isRequired,
   'switchView': PropTypes.func.isRequired
 }
