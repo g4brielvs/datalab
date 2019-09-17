@@ -4,7 +4,7 @@ import Home from '../components/layouts/home/home';
 import SEO from '../components/seo';
 
 const NotFoundPage = () => {
-  if (window && window.location.href.slice(-5) === '.html') {
+  if (typeof window !== 'undefined' && window.location.href.slice(-5) === '.html') {
     window.location = window.location.href.slice(0, window.location.href.length - 5);
   }
   return (
