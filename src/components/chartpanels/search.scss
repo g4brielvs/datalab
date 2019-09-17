@@ -22,6 +22,16 @@ $border-color: #eee;
     ul {
       max-height: 400px;
       overflow: scroll;
+
+      .list-item {
+        .MuiListItemText-primary {
+          color: red;
+        }
+
+        .MuiListItemText-secondary {
+          
+        }
+      }
     }
   }
 

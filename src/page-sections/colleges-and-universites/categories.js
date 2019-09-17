@@ -14,6 +14,7 @@ const Categories = () => {
   }
 
   const searchList = {
+    'R&D': [],
     'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
     'Medical R&D': ['Human Genome Research']
   }
@@ -48,10 +49,7 @@ const Categories = () => {
         date={'March 2019'}
       />
     </>
-
   )
 }
 
-
 export default Categories
-
