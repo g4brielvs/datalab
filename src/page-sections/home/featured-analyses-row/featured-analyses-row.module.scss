@@ -14,17 +14,17 @@ $landing-title-color: #4a4a4a;
   font-weight: bold;
 }
 
-.feature-row__text {
+.content {
   margin-top: 1rem;
   padding-right: $margin-override;
 }
 
-.feature-row__border {
+.border {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
 }
 
-.feature-row__image {
+.image {
   padding-right: $reset-override;
 
   img {
@@ -34,20 +34,20 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-.feature-row__heading {
+.heading {
   @include landing-header;
 
   margin-top: 0;
 }
 
-.feature-row__title {
+.title {
   @include landing-subtext;
   color: $landing-title-color;
   margin-bottom: 2.188rem;
   margin-top: 1rem;
 }
 
-.feature-row__blurb {
+.blurb {
   font-size: 16px;
   font-weight: 300;
   font-style: normal;
@@ -60,12 +60,12 @@ $landing-title-color: #4a4a4a;
 
 .feature-row {
   &:hover {
-    .feature-row__text {
-      .feature-row__heading {
+    .content {
+      .heading {
         text-decoration: underline;
       }
 
-      .feature-row__title {
+      .title {
         text-decoration: underline;
       }
     }
@@ -74,11 +74,11 @@ $landing-title-color: #4a4a4a;
 
 
 @media screen and (max-width: $tablet) {
-  .feature-row__blurb {
+  .blurb {
     display: none;
   }
 
-  .feature-row__title {
+  .title {
     font-size: 18px;
   }
 
@@ -87,11 +87,11 @@ $landing-title-color: #4a4a4a;
 @media screen and (max-width: $desktop-xl) {
 
 
-  .feature-row__border {
+  .border {
     border: none;
   }
 
-  .feature-row__image {
+  .image {
     padding-left: $margin-override;
     img {
       border-radius: 0;

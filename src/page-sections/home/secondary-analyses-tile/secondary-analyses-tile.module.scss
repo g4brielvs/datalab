@@ -28,17 +28,17 @@
   }
 }
 
-.highlight__link {
-  cursor: pointer;
-  display: block;
+//.highlight__link {
+//  cursor: pointer;
+//  display: block;
+//
+//  &:hover p {
+//    text-decoration: underline;
+//  }
+//
+//}
 
-  &:hover p {
-    text-decoration: underline;
-  }
-
-}
-
-.highlight__text {
+.highlight-text {
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -50,7 +50,7 @@
   font-size: .8em;
 }
 
-.highlight__image {
+.highlight-image {
   box-sizing: border-box;
   float: right;
 
@@ -61,12 +61,12 @@
   }
 }
 
-.highlight__headings {
+.highlight-headings {
   float: left;
 }
 
 @media screen and (min-width: $desktop-xl) and (max-width: $desktop-xxl) {
-  .highlight__text {
+  .highlight-text {
     display: none;
   }
 }

@@ -5,7 +5,7 @@ import apiImg from '../../../images/home/resources-api-2.svg'
 import userGuideImg from '../../../images/home/resources-user-guide-2.svg'
 import playbookImg from '../../../images/home/resources-playbook-2.svg'
 
-import './resources-row.scss'
+import resourcesRowStyles from './resources-row.module.scss'
 
 const ResourcesRow = () => {
 
@@ -29,36 +29,36 @@ const ResourcesRow = () => {
 
   return (
     <>
-      <section className="landing-row--resources">
+      <section className={resourcesRowStyles.resources}>
         <div className="row">
           <div className="col-xs-12">
-            <h1 className="landing-row__heading">
+            <h1 className={resourcesRowStyles.heading}>
               Resources
             </h1>
           </div>
         </div>
         <div className="row">
-          <div className="landing-row__tile col-lg-3 col-md-12 center-xs">
-            <p className="landing-row__title">
+          <div className={`${resourcesRowStyles.tile} col-lg-3 col-md-12 center-xs`}>
+            <p className={resourcesRowStyles.title}>
               Do you want
               <strong> to conduct your own analysis?</strong>
             </p>
-            <p className="landing-row__p">
+            <p className={resourcesRowStyles.description}>
               Access Treasury data and create your own charts and visualizations!
             </p>
           </div>
           {resourcesItems.map((resource, index) =>
             <Link
               key={'landing-row__tile_' + index}
-              className="landing-row__tile col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md"
+              className={`${resourcesRowStyles.tile} col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md`}
               to={resource.href}>
-              <div className="row landing-row__tile-row">
+              <div className={`row ${resourcesRowStyles.tileRow}`}>
                 <img src={resource.imageSrc}
-                     className="svgImg first-sm col-xs-6 col-sm-6 col-md-12"/>
-                <h1 className="landing-row__title col-xs-6 col-sm-6 col-md-12">
+                     className={`${resourcesRowStyles.svgImg} first-sm col-xs-6 col-sm-6 col-md-12`} />
+                <h1 className={`${resourcesRowStyles.title} col-xs-6 col-sm-6 col-md-12`}>
                   {resource.title}
                 </h1>
-                <p className="landing-row__p">
+                <p className={resourcesRowStyles.description}>
                   {resource.description}
                 </p>
               </div>
