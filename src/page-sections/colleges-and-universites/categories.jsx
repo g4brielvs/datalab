@@ -7,6 +7,8 @@ import Accordion from "../../components/accordion/accordion"
 import SearchPanel from "../../components/chartpanels/search"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
+import SunburstIcon from '../../images/sunburst_icon.svg';
+
 
 const Categories = () => {
   const defaultImageStyle = {
@@ -82,11 +84,13 @@ const Categories = () => {
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
           <SearchPanel
-            chart="Categories"
             searchList={searchList}
-            switchView={switchView}
+            listDescription="Categories"
             onSelect={searchSelected}
-          />
+            switchView={switchView}
+          >
+            <img src={SunburstIcon} />
+          </SearchPanel>
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>

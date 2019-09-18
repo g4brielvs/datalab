@@ -4,8 +4,6 @@ import './search.scss';
 
 import { TextField, List, ListItem, ListItemText, IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import SunburstIcon from '../../images/sunburst_icon.svg';
 import ListIcon from '@material-ui/icons/List';
 
 export default class SearchPanel extends React.Component {
@@ -76,13 +74,13 @@ export default class SearchPanel extends React.Component {
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
         <form className='search-panel'>
           <TextField
-            label={'Search ' + this.props.chart}
+            label={'Search ' + this.props.listDescription}
             variant='outlined'
             className='select-box'
             onChange={event => this.filterSearch(event)}
           >
           </TextField>
-          <List aria-label={'List of ' + this.props.chart}>
+          <List aria-label={'List of ' + this.props.listDescription}>
             {
               this.filteredList.map(parent => <>
                 <ListItem
@@ -125,12 +123,7 @@ export default class SearchPanel extends React.Component {
               onClick={() => this.activateButton('chart')}
               className={(this.state.activeButton === 'chart' ? 'selected' : 'unselected')}
             >
-              {
-                // show bubble icon for Agencies, or "sunburst" for Categories
-                this.props.chart === 'Agencies' ? <BubbleChartOutlinedIcon />
-                  : this.props.chart === 'Categories' ? <img src={SunburstIcon} />
-                    : ''
-              }
+              {this.props.children}
             </IconButton>
             <Divider variant='middle' className='divider' />
             <IconButton
@@ -181,9 +174,9 @@ export default class SearchPanel extends React.Component {
 */
 
 SearchPanel.propTypes = {
-  'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
-                                        // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
-  'switchView': PropTypes.func.isRequired,
-  'onSelect': PropTypes.func
+  'listDescription': PropTypes.string.isRequired,
+  'children': PropTypes.node.isRequired,
+  'onSelect': PropTypes.func,
+  'switchView': PropTypes.func.isRequired
 }
