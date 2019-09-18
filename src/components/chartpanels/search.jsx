@@ -41,65 +41,71 @@ export default class SearchPanel extends React.Component {
   }
 
   filterSearch(event) {
+    this.filteredList = [];
     const filter = new RegExp(event.target.value, 'i');
-    this.filteredList = {};
 
-    Object.keys(this.props.searchList).map(key => {
-      if (key.search(filter) !== -1) {
-        this.filteredList[key] = [];
+    this.props.searchList.forEach(parent => {
+      let keepParent = false;
+      let childrenToKeep = []
+
+      if (parent.text.search(filter) !== -1) {
+        keepParent = true;
       }
-      this.props.searchList[key].forEach(item => {
-        if (item.search(filter) !== -1) {
-
-          // if object key doesn't match filter but value item does, add object key
-          if (!this.filteredList[key]) {
-            this.filteredList[key] = [];
+      if (parent.children) {
+        parent.children.forEach(child => {
+          if (child.text.search(filter) !== -1) {
+            childrenToKeep.push(child);
           }
-          this.filteredList[key].push(item);
-        }
-      });
+        });
+      }
+      if (keepParent || childrenToKeep.length > 0) {
+        this.filteredList.push({ ...parent, children: childrenToKeep });
+      }
     });
     this.forceUpdate();
+    // console.log(JSON.stringify(this.filteredList));
   }
 
   selectItem(event) {
     console.log(event.target.textContent);
   }
 
+  i = 0;
   render() {
     return (
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
         <form className='search-panel'>
           <TextField
-            id='selection'
             label={'Search ' + this.props.chart}
-            variant="outlined"
+            variant='outlined'
             className='select-box'
             onChange={event => this.filterSearch(event)}
           >
           </TextField>
           <List aria-label={'List of ' + this.props.chart}>
             {
-              Object.keys(this.filteredList).map((oKey, i) => <>
+              this.filteredList.map(parent => <>
                 <ListItem
-                  key={i}
-                  button='true'
-                  divider='true'
+                  key={parent.id}
+                  button
+                  divider
                   onClick={event => this.selectItem(event)}
                 >
-                  <ListItemText primary={oKey} />
+                  <ListItemText primary={parent.text} key={++i} />
                 </ListItem>
                 {
-                  this.filteredList[oKey].map((val, j) =>
-                    <ListItem
-                      key={i + '/' + j}
-                      button='true'
-                      divider='true'
-                      onClick={event => this.selectItem(event)}
-                    >
-                      <ListItemText primary={oKey} secondary={val} className='list-item' />
-                    </ListItem>
-                  )
+                  parent.children ?
+                    parent.children.map(child =>
+                      <ListItem
+                        key={child.id}
+                        button
+                        divider
+                        onClick={event => this.selectItem(event)}
+                      >
+                        <ListItemText primary={parent.text} secondary={child.text} className='list-item' key={++i} />
+                      </ListItem>
+                    )
+                    : ''
                 }
               </>)}
           </List>
@@ -142,10 +148,41 @@ export default class SearchPanel extends React.Component {
   }
 }
 
+/*
+  NOTE: searchList is expected to be an array of {id, text to display, children (optional; array of {id, text}) }
+  id values are arbitrary, but must be unique within the list (expected but not enforced by SearchPanel)
+  e.g. [
+    {
+      id: 1,
+      text: 'R&D'
+    }, {
+      id: 2,
+      text: 'Education',
+      children: [
+        {
+          id: 3,
+          text: 'Adult Education - Basic Grants to States'
+        }, {
+          id: 4,
+          text: '1890 Institution Capacity Building Grants'
+        }
+      ]
+    }, {
+      id: 5,
+      text: 'Medical R&D',
+      children: [
+        {
+          id: 6,
+          text: 'Human Genome Research'
+        }
+      ]
+    }
+  ]
+*/
+
 SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
   // or, perhaps parent should pass in the button or icon to use for the middle one?
-  'searchList': PropTypes.object.isRequired, // "shape" is: {parent (string): [array of children (strings), or empty array]}
-  // e.g. {'R&D': [], 'Education': ['Basic Grants to States', '1890 Institution Capacity Building Grants']}
+  'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'switchView': PropTypes.func.isRequired
 }

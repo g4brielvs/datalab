@@ -13,12 +13,34 @@ const Categories = () => {
     margin: "1rem 0"
   }
 
-  const searchList = {
-    'R&D': [],
-    'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
-    'Medical R&D': ['Human Genome Research']
-  }
-    
+  const searchList = [
+    {
+      id: 1,
+      text: 'R&D'
+    }, {
+      id: 2,
+      text: 'Education',
+      children: [
+        {
+          id: 3,
+          text: 'Adult Education - Basic Grants to States'
+        }, {
+          id: 4,
+          text: '1890 Institution Capacity Building Grants'
+        }
+      ]
+    }, {
+      id: 5,
+      text: 'Medical R&D',
+      children: [
+        {
+          id: 6,
+          text: 'Human Genome Research'
+        }
+      ]
+    }
+  ];
+
   const switchView = (view) => alert('switch to ' + view + ' mode');
 
   return (

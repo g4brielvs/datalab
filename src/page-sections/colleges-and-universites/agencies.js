@@ -15,10 +15,30 @@ import defaultImage from "../../images/default-image.jpg"
       margin: "1rem 0"
     }
 
-    const searchList = {
-      'Education': ['Adult Education - Basic Grants to States', '1890 Institution Capacity Building Grants'],
-      'Medical R&D': ['Epidemiology and Other Health Studies Financial Assistance Program']
-    }
+    const searchList = [
+      {
+        id: 2,
+        text: 'Education',
+        children: [
+          {
+            id: 3,
+            text: 'Adult Education - Basic Grants to States'
+          }, {
+            id: 4,
+            text: '1890 Institution Capacity Building Grants'
+          }
+        ]
+      }, {
+        id: 5,
+        text: 'Medical R&D',
+        children: [
+          {
+            id: 6,
+            text: 'Epidemiology and Other Health Studies Financial Assistance Program'
+          }
+        ]
+      }
+    ];
   
     const switchView = (view) => alert('switch to ' + view + ' mode');
 
