@@ -6,7 +6,7 @@ const ControlBar = (props) => (
 
       <div className={controlBarStyles.controlBar}>
         <div className="row">
-          <div className="col-xs-12 leftAlignChildren">
+          <div className={'col-xs-12 ' + controlBarStyles.leftAlignChildren}>
             {props.children}
           </div>
         </div>

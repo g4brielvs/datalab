@@ -8,6 +8,12 @@ import redditLogo from '../../images/colleges-and-universities/reddit.svg'
 import emailLogo from '../../images/colleges-and-universities/email.svg'
 
 class Share extends Component {
+
+  /* NOTE: Meant to serve as a stand-in for the ShareMenu component as a
+     containerless button for placement in the layout of story-template pages.
+     tp-19/09/19
+   */
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,8 +52,6 @@ class Share extends Component {
 
   render() {
 
-    // there is an article i read regarding using svgs
-    // we shouldn't be importing them as images! we should find a better way...
     const images = [
       {
         src: shareLogo
@@ -75,11 +79,6 @@ class Share extends Component {
     ];
 
     const isShowing = this.state.show;
-
-    // https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}#{{include.anchor}}')
-    // site url is : localhost:8000/
-    // base url is : we dont need this
-    // page url is : colleges-and-universities
 
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
     return (

@@ -40,7 +40,7 @@ class FederalEmployeesPage extends Component {
 						tagName: "where",
 					},
 					{
-						section: "Where",
+						section: "What",
 						number: "03",
 						subtext: "What",
 						subblurb: "What do federal employees do?",

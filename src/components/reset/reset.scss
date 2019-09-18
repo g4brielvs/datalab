@@ -1,4 +1,7 @@
 .resetButton {
   display: inline-block;
-  margin-right: 25px;
+  margin-left: 30px;
+  * {
+    vertical-align: middle;
+  }
 }
