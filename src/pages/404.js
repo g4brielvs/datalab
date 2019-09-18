@@ -1,14 +1,24 @@
 import React from "react"
 
-import Home from "../components/layouts/home/home"
-import SEO from "../components/seo"
+import './404.scss';
+
+import HeaderOnly from '../components/layouts/header-only/header-only'
 
 const NotFoundPage = () => (
-  <Home>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Home>
+  <HeaderOnly _containerClass="four-oh-four" _headerClass="four-oh-four__header">
+    <div id="four-oh-four">
+      <div className="four-container">
+        <h1>Oops!</h1>
+        <h4>Looks like you got lost in the data.
+          <div><span>It happens.</span> Find your way back.</div></h4>
+
+        <div id="btn-container">
+          <div id="back-btn"><a href='/'><i className="fas fa-arrow-left"></i>BACK</a></div>
+          <div id="home-btn"><a href='/'><i className="fas fa-home"></i>HOME</a></div>
+        </div>
+      </div>
+    </div>
+  </HeaderOnly>
 )
 
 export default NotFoundPage
