@@ -44,12 +44,14 @@ export default class SearchPanel extends React.Component {
     const filter = new RegExp(event.target.value, 'i');
     this.filteredList = {};
 
-    Object.keys(this.props.searchList)(key => {
+    Object.keys(this.props.searchList).map(key => {
       if (key.search(filter) !== -1) {
         this.filteredList[key] = [];
       }
       this.props.searchList[key].forEach(item => {
         if (item.search(filter) !== -1) {
+
+          // if object key doesn't match filter but value item does, add object key
           if (!this.filteredList[key]) {
             this.filteredList[key] = [];
           }
@@ -57,6 +59,7 @@ export default class SearchPanel extends React.Component {
         }
       });
     });
+    this.forceUpdate();
   }
 
   render() {
@@ -80,12 +83,12 @@ export default class SearchPanel extends React.Component {
           </TextField>
           <List aria-label={'List of ' + this.props.chart}>
             {
-              Object.keys(this.props.searchList).map((oKey, i) => <>
+              Object.keys(this.filteredList).map((oKey, i) => <>
                 <ListItem button key={i}>
                   <ListItemText primary={oKey} />
                 </ListItem>
                 {
-                  this.props.searchList[oKey].map((val, j) =>
+                  this.filteredList[oKey].map((val, j) =>
                     <ListItem button key={i + '/' + j}>
                       <ListItemText primary={oKey} secondary={val} className='list-item' />
                     </ListItem>
@@ -135,6 +138,7 @@ export default class SearchPanel extends React.Component {
 SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
   // or, perhaps parent should pass in the button or icon to use for the middle one?
-  'searchList': PropTypes.object.isRequired,
+  'searchList': PropTypes.object.isRequired, // "shape" is: {parent (string): [array of children (strings), or empty array]}
+    // e.g. {'R&D': [], 'Education': ['Basic Grants to States', '1890 Institution Capacity Building Grants']}
   'switchView': PropTypes.func.isRequired
 }
