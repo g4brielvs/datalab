@@ -7,7 +7,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import ListIcon from '@material-ui/icons/List';
-import { faFighterJet } from '@fortawesome/free-solid-svg-icons';
 
 export default class SearchPanel extends React.Component {
   constructor(props) {
@@ -183,7 +182,7 @@ export default class SearchPanel extends React.Component {
 
 SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
-  // or, perhaps parent should pass in the button or icon to use for the middle one?
+                                        // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'switchView': PropTypes.func.isRequired,
   'onSelect': PropTypes.func
