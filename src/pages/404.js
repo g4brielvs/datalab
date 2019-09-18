@@ -3,6 +3,7 @@ import React from 'react';
 import './404.scss';
 
 import HeaderOnly from '../components/layouts/header-only/header-only'
+import SEO from "../components/seo"
 
 const NotFoundPage = () => {
   if (typeof window !== 'undefined' && window.location.href.slice(-5) === '.html') {
@@ -10,6 +11,7 @@ const NotFoundPage = () => {
   }
   return (
     <HeaderOnly _containerClass="four-oh-four" _headerClass="four-oh-four__header">
+      <SEO title="404: Not found" />
       <div id="four-oh-four">
         <div className="four-container">
           <h1>Oops!</h1>

@@ -15,7 +15,6 @@ const HeaderOnly = ({children, _containerClass, _headerClass}) => (
       <SiteHeader />
       <PageHeader />
     </div>
-    <SEO title="404: Not found" />
     {children}
   </div>
 )
