@@ -42,6 +42,14 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg', // support for svg components
+      options: {
+          rule: {
+            include: /svgs/
+          }
+      }
+  },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
