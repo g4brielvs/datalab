@@ -62,6 +62,10 @@ export default class SearchPanel extends React.Component {
     this.forceUpdate();
   }
 
+  selectItem(event) {
+    console.log(event.target.textContent);
+  }
+
   render() {
     return (
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
@@ -71,25 +75,28 @@ export default class SearchPanel extends React.Component {
             label={'Search ' + this.props.chart}
             variant="outlined"
             className='select-box'
-            onChange={(event) => this.filterSearch(event)}
-          // SelectProps={{
-          //   MenuProps: {
-          //     className: classes.menu,
-          //   },
-          // }}
-          // helperText='Please select your currency'
-          // margin='normal'
+            onChange={event => this.filterSearch(event)}
           >
           </TextField>
           <List aria-label={'List of ' + this.props.chart}>
             {
               Object.keys(this.filteredList).map((oKey, i) => <>
-                <ListItem button key={i}>
+                <ListItem
+                  key={i}
+                  button='true'
+                  divider='true'
+                  onClick={event => this.selectItem(event)}
+                >
                   <ListItemText primary={oKey} />
                 </ListItem>
                 {
                   this.filteredList[oKey].map((val, j) =>
-                    <ListItem button key={i + '/' + j}>
+                    <ListItem
+                      key={i + '/' + j}
+                      button='true'
+                      divider='true'
+                      onClick={event => this.selectItem(event)}
+                    >
                       <ListItemText primary={oKey} secondary={val} className='list-item' />
                     </ListItem>
                   )
@@ -139,6 +146,6 @@ SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
   // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.object.isRequired, // "shape" is: {parent (string): [array of children (strings), or empty array]}
-    // e.g. {'R&D': [], 'Education': ['Basic Grants to States', '1890 Institution Capacity Building Grants']}
+  // e.g. {'R&D': [], 'Education': ['Basic Grants to States', '1890 Institution Capacity Building Grants']}
   'switchView': PropTypes.func.isRequired
 }
