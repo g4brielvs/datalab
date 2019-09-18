@@ -63,11 +63,10 @@ export default class SearchPanel extends React.Component {
       }
     });
     this.forceUpdate();
-    // console.log(JSON.stringify(this.filteredList));
   }
 
-  selectItem(event) {
-    console.log(event.target.textContent);
+  selectItem(id) {
+    console.log(id);
   }
 
   i = 0;
@@ -89,7 +88,7 @@ export default class SearchPanel extends React.Component {
                   key={parent.id}
                   button
                   divider
-                  onClick={event => this.selectItem(event)}
+                  onClick={event => this.selectItem(parent.id)}
                 >
                   <ListItemText primary={parent.text} key={++i} />
                 </ListItem>
@@ -100,7 +99,7 @@ export default class SearchPanel extends React.Component {
                         key={child.id}
                         button
                         divider
-                        onClick={event => this.selectItem(event)}
+                        onClick={event => this.selectItem(child.id)}
                       >
                         <ListItemText primary={parent.text} secondary={child.text} className='list-item' key={++i} />
                       </ListItem>
