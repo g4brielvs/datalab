@@ -41,7 +41,27 @@ const Categories = () => {
     }
   ];
 
-  const switchView = (view) => alert('switch to ' + view + ' mode');
+  const switchView = view => alert('switch to ' + view + ' mode');
+
+  const searchSelected = id => {
+    let choice;
+    searchList.some(parent => {
+      if (parent.id === id) {
+        choice = parent;
+        return true;
+      } else {
+        if (parent.children) {
+          parent.children.some(child => {
+            if (child.id === id) {
+              choice = child;
+              return true;
+            }
+          });
+        }
+      }
+    });
+    alert(JSON.stringify(choice));
+  }
 
   return (
     <>
@@ -61,7 +81,12 @@ const Categories = () => {
 
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
-          <SearchPanel chart="Categories" searchList={searchList} switchView={switchView} />
+          <SearchPanel
+            chart="Categories"
+            searchList={searchList}
+            switchView={switchView}
+            onSelect={searchSelected}
+          />
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>

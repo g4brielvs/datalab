@@ -66,7 +66,9 @@ export default class SearchPanel extends React.Component {
   }
 
   selectItem(id) {
-    console.log(id);
+    if (this.props.onSelect) {
+      this.props.onSelect(id);
+    }
   }
 
   i = 0;
@@ -183,5 +185,6 @@ SearchPanel.propTypes = {
   'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
   // or, perhaps parent should pass in the button or icon to use for the middle one?
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
-  'switchView': PropTypes.func.isRequired
+  'switchView': PropTypes.func.isRequired,
+  'onSelect': PropTypes.func
 }
