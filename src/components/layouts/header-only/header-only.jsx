@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet'
 
 import SiteHeader from '../../headers/site'
 import PageHeader from '../../headers/page'
-import SEO from "../../seo"
 import React from "react"
 import PropTypes from "prop-types"
 
