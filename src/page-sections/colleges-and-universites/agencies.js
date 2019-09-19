@@ -4,7 +4,7 @@ import "../../styles/index.scss"
 /* components */
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import VizControlPanel from "../../components/chartpanels/viz-control-panel"
+import VizControlPanel from "../../components/chartpanels/viz-control"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 // import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"

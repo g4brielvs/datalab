@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './search.module.scss';
+import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 
 import { OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -11,7 +11,7 @@ export default class SearchPanel extends React.Component {
     super(props);
     this.filteredList = this.props.searchList;
     this.state = {
-      collapsed: true
+      collapsed: this.props.showCollapse
     }
   }
 
@@ -42,32 +42,44 @@ export default class SearchPanel extends React.Component {
 
   selectItem(id) {
     if (this.props.onSelect) {
+      if (this.props.showCollapse) {
+        this.setState({ collapsed: true });
+      }
       this.props.onSelect(id);
+    }
+  }
+
+  onFocus = () => {
+    if (this.props.showCollapse) {
+      this.setState({ collapsed: false });
     }
   }
 
   render() {
     return (
-      <form className={styles.searchPanel} >
+      <form>
         <OutlinedInput
           placeholder={'Search ' + this.props.listDescription}
           variant='outlined'
           fullWidth
+          onFocus={this.onFocus}
           onChange={event => this.filterSearch(event)}
           endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label='search'
-                onClick={() => this.toggleSearch()}
-              >
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
+            this.props.showCollapse ?
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label='search'
+                  onClick={this.toggleSearch}
+                >
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+              : ''
           }
         />
 
         <List aria-label={'List of ' + this.props.listDescription}
-          className={this.state.collapsed ? styles.collapsed : ''}
+          className={this.state.collapsed ? 'collapsed' : ''}
         >
           {
             this.filteredList.map(parent => <>
@@ -75,7 +87,8 @@ export default class SearchPanel extends React.Component {
                 key={parent.id}
                 button
                 divider
-                onClick={event => this.selectItem(parent.id)}
+                className='listItem parent'
+                onClick={() => this.selectItem(parent.id)}
               >
                 <ListItemText primary={parent.text} />
               </ListItem>
@@ -86,9 +99,10 @@ export default class SearchPanel extends React.Component {
                       key={child.id}
                       button
                       divider
-                      onClick={event => this.selectItem(child.id)}
+                      className='listItem child'
+                      onClick={() => this.selectItem(child.id)}
                     >
-                      <ListItemText primary={parent.text} secondary={child.text} className={styles.listItem} />
+                      <ListItemText primary={parent.text} secondary={child.text} />
                     </ListItem>
                   )
                   : ''
@@ -101,7 +115,8 @@ export default class SearchPanel extends React.Component {
 }
 
 /*
-  NOTE: searchList is expected to be an array of {id, text to display, children (optional; array of {id, text}) }
+  Notes on props:
+  searchList is expected to be an array of {id, text to display, children (optional; array of {id, text}) }
   id values are arbitrary, but must be unique within the list (expected but not enforced by SearchPanel)
   e.g. [
     {
@@ -130,10 +145,14 @@ export default class SearchPanel extends React.Component {
       ]
     }
   ]
+
+  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box,
+  don't include if you use another method to hide list
 */
 
 SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
+  'showCollapse': PropTypes.bool,
   'onSelect': PropTypes.func
 }

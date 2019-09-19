@@ -1,0 +1,45 @@
+@import '../../styles/index.scss';
+
+$list-height: 400px;
+$border-color: #eee;
+$hover-background: #fbebd0;
+
+ul {
+	max-height: $list-height;
+	overflow-y: auto;
+	background-color: #fff;
+	border: 1px solid $border-color;
+
+	.listItem {
+		&:hover {
+			background-color: $hover-background;
+		}
+
+		.MuiTypography-root {
+			font-family: 'Source Sans Pro', Helvetica, sans-serif;
+		}
+	}
+
+	.parent {
+		.MuiListItemText-primary {
+			font-size: 1rem;
+			color: #4a4a4a;
+		}
+	}
+
+	.child {
+		.MuiListItemText-primary {
+			font-size: 0.8rem;
+			font-weight: 300;
+		}
+
+		.MuiListItemText-secondary {
+			font-size: 1rem;
+			color: #4a4a4a;
+		}
+	}
+}
+
+.collapsed {
+	display: none;
+}

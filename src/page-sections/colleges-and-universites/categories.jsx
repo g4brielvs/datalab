@@ -5,7 +5,7 @@ import "../../styles/index.scss"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
 import Accordion from "../../components/accordion/accordion"
 import SearchPanel from "../../components/chartpanels/search"
-import VizControlPanel from "../../components/chartpanels/viz-control-panel"
+import VizControlPanel from "../../components/chartpanels/viz-control"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 import SunburstIcon from '../../images/sunburst_icon.svg';
@@ -78,6 +78,7 @@ const Categories = () => {
       <SearchPanel
         searchList={searchList}
         listDescription="Categories"
+        showCollapse
         onSelect={searchSelected}
       />
 
