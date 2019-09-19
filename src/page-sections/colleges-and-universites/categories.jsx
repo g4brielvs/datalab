@@ -4,7 +4,7 @@ import "../../styles/index.scss"
 /* components */
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
 import Accordion from "../../components/accordion/accordion"
-import SearchPanel from "../../components/chartpanels/search"
+import VizControlPanel from "../../components/chartpanels/viz-control-panel"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 import SunburstIcon from '../../images/sunburst_icon.svg';
@@ -83,14 +83,14 @@ const Categories = () => {
 
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
-          <SearchPanel
+          <VizControlPanel
             searchList={searchList}
             listDescription="Categories"
             onSelect={searchSelected}
             switchView={switchView}
           >
             <img src={SunburstIcon} />
-          </SearchPanel>
+          </VizControlPanel>
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>
