@@ -70,15 +70,15 @@ export default class VizControlPanel extends React.Component {
 
   render() {
     return (
-      <div id='sidebar' className={styles.sidebar + (this.state.expanded ? '' : ' '+ styles.collapsed)}>
+      <div id='sidebar' className={styles.sidebar + (this.state.expanded ? '' : ' ' + styles.collapsed)}>
         <form className={styles.searchPanel}>
           <TextField
             label={'Search ' + this.props.listDescription}
             variant='outlined'
             className={styles.selectBox}
             onChange={event => this.filterSearch(event)}
-          >
-          </TextField>
+          />
+
           <List aria-label={'List of ' + this.props.listDescription}>
             {
               this.filteredList.map(parent => <>
