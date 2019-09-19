@@ -19,8 +19,8 @@ const NotFoundPage = () => {
             <div><span>It happens.</span> Find your way back.</div></h4>
 
           <div id="btn-container">
-            <div id="back-btn"><a href='/'><i className="fas fa-arrow-left"></i>BACK</a></div>
-            <div id="home-btn"><a href='/'><i className="fas fa-home"></i>HOME</a></div>
+            <div id="back-btn"><a href='/'>BACK</a></div>
+            <div id="home-btn"><a href='/'>HOME</a></div>
           </div>
         </div>
       </div>
