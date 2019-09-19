@@ -11,11 +11,11 @@ $border-color: #eee;
 	text-align: left;
 	display: flex;
 
-	.search-panel {
+	.searchPanel {
 		width: $search-width;
 		background-color: #fff;
 
-		.select-box {
+		.selectBox {
 		  width: 100%;
 		}
 
@@ -23,14 +23,14 @@ $border-color: #eee;
 			max-height: 400px;
 			overflow: scroll;
 
-			.list-item {
+			.listItem {
 				.MuiListItemText-primary {
 					font-family: 'Source Sans Pro', Helvetica, sans-serif;
 					font-size: 0.8rem;
 					font-weight: 300;
 				}
 
-				.MuiTypography-body2 {
+				.MuiTypographyBody2 {
 					font-family: 'Source Sans Pro', Helvetica, sans-serif;
 					font-size: 1rem;
 					color: #4a4a4a;
@@ -39,7 +39,7 @@ $border-color: #eee;
 		}
 	}
 
-	.panel-group {
+	.panelGroup {
 		background-color: #fff;
 		border: $border-width solid $border-color;
 		border-radius: 0 15px 15px 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './search.scss';
+import styles from './search.module.scss';
 
 import { TextField, List, ListItem, ListItemText, IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -70,12 +70,12 @@ export default class SearchPanel extends React.Component {
 
   render() {
     return (
-      <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
-        <form className='search-panel'>
+      <div id='sidebar' className={styles.sidebar + (this.state.expanded ? '' : ' '+ styles.collapsed)}>
+        <form className={styles.searchPanel}>
           <TextField
             label={'Search ' + this.props.listDescription}
             variant='outlined'
-            className='select-box'
+            className={styles.selectBox}
             onChange={event => this.filterSearch(event)}
           >
           </TextField>
@@ -99,7 +99,7 @@ export default class SearchPanel extends React.Component {
                         divider
                         onClick={event => this.selectItem(child.id)}
                       >
-                        <ListItemText primary={parent.text} secondary={child.text} className='list-item' />
+                        <ListItemText primary={parent.text} secondary={child.text} className={styles.listItem} />
                       </ListItem>
                     )
                     : ''
@@ -110,27 +110,27 @@ export default class SearchPanel extends React.Component {
         <div>
           <IconButton
             aria-label='search'
-            className='panel-group'
+            className={styles.panelGroup}
             onClick={() => this.activateButton('search')}
           >
-            <SearchIcon className={(this.state.activeButton === 'search' ? 'selected' : 'unselected')}
+            <SearchIcon className={(this.state.activeButton === 'search' ? styles.selected : styles.unselected)}
             />
           </IconButton>
-          <div className='panel-group'>
+          <div className={styles.panelGroup}>
             <IconButton
               aria-label='show chart'
               onClick={() => this.activateButton('chart')}
-              className={(this.state.activeButton === 'chart' ? 'selected' : 'unselected')}
+              className={(this.state.activeButton === 'chart' ? styles.selected : styles.unselected)}
             >
               {this.props.children}
             </IconButton>
-            <Divider variant='middle' className='divider' />
+            <Divider variant='middle' className={styles.divider} />
             <IconButton
               aria-label='show data table'
               onClick={() => this.activateButton('table')}
             >
               <ListIcon
-                className={(this.state.activeButton === 'table' ? 'selected' : 'unselected')}
+                className={(this.state.activeButton === 'table' ? styles.selected : styles.unselected)}
               />
             </IconButton>
           </div>
