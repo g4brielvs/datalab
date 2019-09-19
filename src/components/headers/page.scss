@@ -7,14 +7,52 @@
   box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
   width: 100%;
   position: fixed;
-  top: 29px;
   z-index: 21;
+}
+
+.header-logo__wrapper.row {
+  flex-direction: row;
+}
+
+.header-logo__wrapper.col {
+  flex-direction: column;
+}
+
+nav.header-nav {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+
+  span {
+    font-weight: 800;
+    //padding-left: .25rem;
+    //padding-top: .25rem;
+    //padding-bottom: 1.5rem;
+  }
+
+  ul.nav {
+    display: flex;
+    list-style: none;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.nav > li {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+}
+
+nav.header-nav.tight {
+  padding-top: 0;
 }
 
 .header__main {
   display: flex;
   box-sizing: border-box;
-  height: 102px;
+  height: 140px;
   padding-top: 1.5rem;
   padding-right: 4rem;
   padding-bottom: 1.5rem;
@@ -22,6 +60,23 @@
   justify-content: space-between;
   align-items: center;
   z-index: 20;
+  flex-direction: column;
+}
+
+.header-logo__wrapper {
+  display: flex;
+  justify-content: center;
+  //flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  //border-bottom: .1px solid #ccc;
+  width: 100%;
+}
+
+.header__main.tight {
+  height: 50px; 
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 ul.nav {
@@ -32,18 +87,10 @@ ul.nav {
   padding: 0;
 }
 
-ul.nav > li {
-  padding: 0 20px;
-}
-
 #header ul li a {
     position: relative;
     text-decoration: none;
     color: #666;
-}
-
-ul.nav > li {
-  padding: 0 20px;
 }
 
 .header__sub {

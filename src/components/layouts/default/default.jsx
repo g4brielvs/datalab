@@ -16,7 +16,9 @@ const Default = ({ children }) => (
     </Helmet>
 
     <SiteHeader />
-    <PageHeader />
+    <PageHeader
+      headerItems={['Analyses', 'DataLab Express',  "America's Finance Guide", 'Resources', 'Glossary']}
+     />
     <div className='default'>
       {children}
     </div>

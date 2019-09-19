@@ -3,46 +3,79 @@ import "./page.scss"
 
 //import datalabLogo from "../logos/datalab";
 import TagLine from '../../svgs/Logo-with-tagline.svg'
+import NoTagLine from '../../svgs/Logo-without-tagline.svg'
+import Arrow from '../../svgs/arrow.svg'
 
 class PageHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stickyHeader: true,
+      isSticky: false,
+      top: 29,
       hiddenNav: true,
     };
+    //this.fixNav = this.fixNav.bind(this);
   };
 
-  componentWillMount() {
-    console.log('page header here');
+  componentDidMount() {
+
+    document.addEventListener('scroll', () => {
+      const isSticky = window.scrollY > 100;
+      if (isSticky !== this.state.isSticky) {
+        this.setState({ isSticky })
+      }
+      console.log(this.state);
+    });
+
+    document.addEventListener('scroll', () => {
+      const max = 29;
+      let top = max - window.pageYOffset;
+      if (window.pageYOffset > max) {
+        top = 0;
+      }
+      this.setState({top});
+    });
   };
+
+  
+  componentWillUnmount() {
+    document.removeEventListener('scroll');
+  }
 
   render() {
-    return (
-      <header id="header">
-        <div className="header__main">
-          <a className="header-logo header-logo--init" href="/">
-            <div className="header-logo__wrapper">
-              <TagLine/>
-            </div>
-          </a>
+    let listItems = this.props.headerItems;
+    let returnItems = listItems.map(function (item) {
+      return <li className='navListItem'>
+        <a href='#'>{item} <span><Arrow /></span></a>
+      </li>;
+    });
 
-          <nav className="header-nav">
-            <span className="navbar-toggle" id="burger-navbar-toggle">
-              <i className="fas fa-bars"> </i>
-            </span>
-            <ul className="nav" id="burger-menu">
-              <li className="navListItem desktop-nav-item" data-target="analyses">
-                <a href="#">ANALYSES</a>
-              </li>
-              <li className="navListItem desktop-nav-item" data-target="resources">
-                <a href="#">RESOURCES</a>
-              </li>
-              <li className="navListItem desktop-nav-item" data-target="ffg">
-                <a href="/americas-finance-guide/" id="ffgNavAnchor">AMERICA'S FINANCE GUIDE</a>
-              </li>
-            </ul>
-          </nav>
+    const isSticky = this.state.isSticky;
+    const top = this.state.top
+
+    return (
+      <header id="header" style={{top: `${top}px`}}>
+        <div className={`header__main ${isSticky ? `tight` : ``}`}>
+          <div className={`header-logo__wrapper ${isSticky ? `row` : `col`}`}>
+            <a href="/">
+              <div>
+                {isSticky ? (
+                  <NoTagLine />
+                ) : (
+                    <TagLine />
+                  )}
+              </div>
+            </a>
+
+            <nav className={`header-nav ${isSticky ? `tight` : ``}`}>
+              <span className="navbar-toggle" id="burger-navbar-toggle">
+                <i className="fas fa-bars"> </i>
+              </span>
+              <ul className="nav" id="burger-menu">
+                {returnItems}
+              </ul>
+            </nav>
+          </div>
         </div>
 
         <div className="header__sub">
