@@ -4,8 +4,6 @@ import './search.scss';
 
 import { TextField, List, ListItem, ListItemText, IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import SunburstIcon from '../../images/sunburst_icon.svg';
 import ListIcon from '@material-ui/icons/List';
 
 export default class SearchPanel extends React.Component {
@@ -15,6 +13,7 @@ export default class SearchPanel extends React.Component {
       activeButton: 'chart',
       expanded: false
     };
+    this.filteredList = this.props.searchList;
   }
 
   activateButton(button) {
@@ -38,40 +37,74 @@ export default class SearchPanel extends React.Component {
     this.setState(prevState => { return { expanded: !prevState.expanded } });
   }
 
+  filterSearch(event) {
+    this.filteredList = [];
+    const filter = new RegExp(event.target.value, 'i');
+
+    this.props.searchList.forEach(parent => {
+      let keepParent = false;
+      const childrenToKeep = [];
+
+      if (parent.text.search(filter) !== -1) {
+        keepParent = true;
+      }
+      if (parent.children) {
+        parent.children.forEach(child => {
+          if (child.text.search(filter) !== -1) {
+            childrenToKeep.push(child);
+          }
+        });
+      }
+      if (keepParent || childrenToKeep.length > 0) {
+        this.filteredList.push({ ...parent, children: childrenToKeep });
+      }
+    });
+    this.forceUpdate();
+  }
+
+  selectItem(id) {
+    if (this.props.onSelect) {
+      this.props.onSelect(id);
+    }
+  }
+
   render() {
     return (
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
         <form className='search-panel'>
           <TextField
-            id='selection'
-            label={'Search ' + this.props.chart}
-            value=''
-          // className='select-box'
-          // onChange={handleChange('selection')}
-          // SelectProps={{
-          //   MenuProps: {
-          //     className: classes.menu,
-          //   },
-          // }}
-          // helperText='Please select your currency'
-          // margin='normal'
+            label={'Search ' + this.props.listDescription}
+            variant='outlined'
+            className='select-box'
+            onChange={event => this.filterSearch(event)}
           >
           </TextField>
-          <List aria-label={'List of ' + this.props.chart}>
+          <List aria-label={'List of ' + this.props.listDescription}>
             {
-              Object.keys(this.props.searchList).map((oKey, i) => <>
-                <ListItem button key={i}>
-                  <ListItemText primary={oKey} className='list-item-category' />
+              this.filteredList.map(parent => <>
+                <ListItem
+                  key={parent.id}
+                  button
+                  divider
+                  onClick={event => this.selectItem(parent.id)}
+                >
+                  <ListItemText primary={parent.text} />
                 </ListItem>
                 {
-                  this.props.searchList[oKey].map((val, j) =>
-                    <ListItem button key={i +'/'+ j}>
-                      <ListItemText primary={oKey} secondary={val} className='list-item' />
-                    </ListItem>
-                  )
+                  parent.children ?
+                    parent.children.map(child =>
+                      <ListItem
+                        key={child.id}
+                        button
+                        divider
+                        onClick={event => this.selectItem(child.id)}
+                      >
+                        <ListItemText primary={parent.text} secondary={child.text} className='list-item' />
+                      </ListItem>
+                    )
+                    : ''
                 }
-              </>)
-            }
+              </>)}
           </List>
         </form>
         <div>
@@ -89,12 +122,7 @@ export default class SearchPanel extends React.Component {
               onClick={() => this.activateButton('chart')}
               className={(this.state.activeButton === 'chart' ? 'selected' : 'unselected')}
             >
-              {
-                // show bubble icon for Agencies, or "sunburst" for Categories
-                this.props.chart === 'Agencies' ? <BubbleChartOutlinedIcon />
-                  : this.props.chart === 'Categories' ? <img src={SunburstIcon} />
-                    : ''
-              }
+              {this.props.children}
             </IconButton>
             <Divider variant='middle' className='divider' />
             <IconButton
@@ -106,15 +134,48 @@ export default class SearchPanel extends React.Component {
               />
             </IconButton>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
     )
   }
 }
 
+/*
+  NOTE: searchList is expected to be an array of {id, text to display, children (optional; array of {id, text}) }
+  id values are arbitrary, but must be unique within the list (expected but not enforced by SearchPanel)
+  e.g. [
+    {
+      id: 1,
+      text: 'R&D'
+    }, {
+      id: 2,
+      text: 'Education',
+      children: [
+        {
+          id: 3,
+          text: 'Adult Education - Basic Grants to States'
+        }, {
+          id: 4,
+          text: '1890 Institution Capacity Building Grants'
+        }
+      ]
+    }, {
+      id: 5,
+      text: 'Medical R&D',
+      children: [
+        {
+          id: 6,
+          text: 'Human Genome Research'
+        }
+      ]
+    }
+  ]
+*/
+
 SearchPanel.propTypes = {
-  'chart': PropTypes.string.isRequired, // instead of C&U section, this should probably be chart type for button to display
-                                        // or, perhaps parent should pass in the button or icon to use for the middle one?
-  'searchList': PropTypes.object.isRequired,
+  'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
+  'listDescription': PropTypes.string.isRequired,
+  'children': PropTypes.node.isRequired,
+  'onSelect': PropTypes.func,
   'switchView': PropTypes.func.isRequired
 }
