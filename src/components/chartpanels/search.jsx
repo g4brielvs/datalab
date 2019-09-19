@@ -43,7 +43,7 @@ export default class SearchPanel extends React.Component {
 
     this.props.searchList.forEach(parent => {
       let keepParent = false;
-      let childrenToKeep = []
+      const childrenToKeep = [];
 
       if (parent.text.search(filter) !== -1) {
         keepParent = true;
@@ -68,7 +68,6 @@ export default class SearchPanel extends React.Component {
     }
   }
 
-  i = 0;
   render() {
     return (
       <div id='sidebar' className={'sidebar' + (this.state.expanded ? '' : ' collapsed')}>
@@ -89,7 +88,7 @@ export default class SearchPanel extends React.Component {
                   divider
                   onClick={event => this.selectItem(parent.id)}
                 >
-                  <ListItemText primary={parent.text} key={++i} />
+                  <ListItemText primary={parent.text} />
                 </ListItem>
                 {
                   parent.children ?
@@ -100,7 +99,7 @@ export default class SearchPanel extends React.Component {
                         divider
                         onClick={event => this.selectItem(child.id)}
                       >
-                        <ListItemText primary={parent.text} secondary={child.text} className='list-item' key={++i} />
+                        <ListItemText primary={parent.text} secondary={child.text} className='list-item' />
                       </ListItem>
                     )
                     : ''
@@ -135,8 +134,8 @@ export default class SearchPanel extends React.Component {
               />
             </IconButton>
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
     )
   }
 }
