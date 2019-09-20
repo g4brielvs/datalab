@@ -4,6 +4,16 @@ $list-height: 400px;
 $border-color: #eee;
 $hover-background: #fbebd0;
 
+@mixin main-text {
+	font-size: 1rem;
+	color: #4a4a4a;
+}
+
+@mixin head-text {
+	font-size: 0.8rem;
+	font-weight: 300;
+}
+
 ul {
 	max-height: $list-height;
 	overflow-y: auto;
@@ -22,20 +32,17 @@ ul {
 
 	.parent {
 		.MuiListItemText-primary {
-			font-size: 1rem;
-			color: #4a4a4a;
+			@include main-text;
 		}
 	}
 
 	.child {
 		.MuiListItemText-primary {
-			font-size: 0.8rem;
-			font-weight: 300;
+			@include head-text;
 		}
 
 		.MuiListItemText-secondary {
-			font-size: 1rem;
-			color: #4a4a4a;
+			@include main-text;
 		}
 	}
 }
