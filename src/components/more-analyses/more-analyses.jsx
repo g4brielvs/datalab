@@ -42,9 +42,9 @@ const MoreAnalyses = () => {
       <div className="more-analyses__tiles">
         <div className="row center-xs">
           <div className="col-xs-12">
-            <div class="row">
-              {analyses.map((item) =>
-                <div className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">
+            <div className="row">
+              {analyses.map((item, key) =>
+                <div key={key} className="more-analyses__tile col-lg-3 col-md-6 col-xs-12">
                   <Link to={item.href}>
                     <div className="row">
                       <div className="more-analyses__tile-text col-md-12 first-md col-md-offset-0 col-xs-6 col-xs-offset-2 last-xs">
