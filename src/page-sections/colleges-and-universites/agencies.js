@@ -5,18 +5,25 @@ import "../../styles/index.scss"
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
 import VizControlPanel from "../../components/chartpanels/viz-control"
+import VizDetails from "../../components/chartpanels/viz-detail"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 // import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 
-const Agencies = (props) => {
+export default class Agencies extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailShowing: false
+    }
+  }
 
-  const defaultImageStyle = {
+  defaultImageStyle = {
     margin: "1rem 0"
   }
 
-  const searchList = [
+  searchList = [
     {
       id: 2,
       text: 'Education',
@@ -41,10 +48,15 @@ const Agencies = (props) => {
     }
   ];
 
-  const switchView = (view) => alert('switch to ' + view + ' mode');
+  switchView = view => alert('switch to ' + view + ' mode');
 
-  return (
-    <>
+  showDetails() {
+    alert('');
+    this.setState({ detailShowing: true });
+  }
+
+  render() {
+    return (<>
       <StoryHeading
         number={'02'}
         title={'xxxx'}
@@ -60,16 +72,22 @@ const Agencies = (props) => {
       </Accordion>
 
       {/*<BubbleChart/>*/}
-      <div className="container" style={defaultImageStyle}>
+      <div className="container" style={this.defaultImageStyle}>
         <div className="row center-xs">
           <VizControlPanel
-            searchList={searchList}
+            searchList={this.searchList}
             listDescription="Agencies"
-            switchView={switchView}
+            switchView={this.switchView}
           >
             <BubbleChartOutlinedIcon />
           </VizControlPanel>
-          <img className="col-xs-6" src={defaultImage} />
+          <img className="col-xs-6" src={defaultImage}
+            onClick={() => this.showDetails()}
+          />
+          <VizDetails
+          >
+            Just checking...
+          </VizDetails>
         </div>
       </div>
 
@@ -77,11 +95,6 @@ const Agencies = (props) => {
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
         date={'March 2019'}
       />
-    </>
-  )
+    </>)
+  }
 }
-
-export default Agencies
-
-
-
