@@ -14,9 +14,6 @@ import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 export default class Agencies extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      detailShowing: false
-    }
   }
 
   defaultImageStyle = {
@@ -50,10 +47,7 @@ export default class Agencies extends React.Component {
 
   switchView = view => alert('switch to ' + view + ' mode');
 
-  showDetails() {
-    alert('');
-    this.setState({ detailShowing: true });
-  }
+  showDetails = () => this.setState({ detailShowing: true });
 
   render() {
     return (<>
@@ -85,6 +79,7 @@ export default class Agencies extends React.Component {
             onClick={() => this.showDetails()}
           />
           <VizDetails
+            showDetails={click => this.showDetails = click}
           >
             Just checking...
           </VizDetails>

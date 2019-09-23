@@ -1,0 +1,22 @@
+@import '../../styles/index.scss';
+
+$details-width: 350px;
+
+.details {
+	position: absolute;
+	width: $details-width;
+	padding: 2rem;
+	right: 0;
+	display: none;
+	transition: display 0.5s ease-in-out;
+}
+
+.expanded {
+	display: block;
+}
+
+.closeButton.MuiIconButton-root {
+	position: absolute;
+	top: 0;
+	right: 0;
+}

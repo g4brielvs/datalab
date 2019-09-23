@@ -15,9 +15,6 @@ import SunburstIcon from '../../images/sunburst_icon.svg';
 export default class Categories extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      detailShowing: false
-    }
   }
 
   defaultImageStyle = {
@@ -108,11 +105,13 @@ export default class Categories extends React.Component {
             >
               <img src={SunburstIcon} />
             </VizControlPanel>
-              <img className="col-xs-6" src={defaultImage} />
+            <img className="col-xs-6" src={defaultImage}
+              onClick={() => this.showDetails()}
+            />
             <VizDetails
+              showDetails={click => this.showDetails = click}
             >
-              Just checking...
-          </VizDetails>
+            </VizDetails>
           </div>
         </div>
 
