@@ -40,6 +40,7 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         crossOrigin: `use-credentials`,
+        icon: `src/images/favicon.png`
       },
     },
     `gatsby-transformer-json`,

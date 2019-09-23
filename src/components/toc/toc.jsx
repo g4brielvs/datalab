@@ -9,7 +9,7 @@ const Toc = ({sections}) => {
       <section id="TOC">
         <div className="row center-md center-sm">
           <div className="col-lg-10 col-sm-9 col-xs-9">
-            <div className="row">
+            <div className="row center-md center-sm">
               {sections.map((item, key) =>
                   <div key={key} className="col-lg-3 col-md-6 col-xs-12 toc__tile">
                     <a href={`#section-${item.section}`}>

@@ -3,7 +3,7 @@ import "./story-heading.scss"
 
 const StoryHeading = (props) => {
   return (
-    <div className="container">
+    <div>
       <div className="row center-xs">
         <div className="col-xs-12">
           <div className="heading">

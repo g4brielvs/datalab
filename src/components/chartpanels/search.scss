@@ -1,43 +1,52 @@
-@import "../../styles/index.scss";
+@import '../../styles/index.scss';
 
-$search-width: 200px;
-$border-width: 3px;
+$list-height: 400px;
 $border-color: #eee;
+$hover-background: #fbebd0;
 
-.sidebar {
-  position: absolute;
-  left: 0;
-  transition: left 0.5s ease-in-out;
-  text-align: left;
-  display: flex;
+@mixin main-text {
+	font-size: 1rem;
+	color: #4a4a4a;
+}
 
-  .search-panel {
-    width: $search-width;
+@mixin head-text {
+	font-size: 0.8rem;
+	font-weight: 300;
+}
 
-    .select-box {
-      width: 100%;
-    }
-  }
+ul {
+	max-height: $list-height;
+	overflow-y: auto;
+	background-color: #fff;
+	border: 1px solid $border-color;
 
-  .panel-group {
-    border: $border-width solid $border-color;
-    border-radius: 0 15px 15px 0;
+	.listItem {
+		&:hover {
+			background-color: $hover-background;
+		}
 
-    .unselected {
-      opacity: 0.3;
-    }
+		.MuiTypography-root {
+			font-family: 'Source Sans Pro', Helvetica, sans-serif;
+		}
+	}
 
-    .selected {
-      opacity: 1;
-    }
+	.parent {
+		.MuiListItemText-primary {
+			@include main-text;
+		}
+	}
 
-    .divider {
-      height: $border-width;
-      color: $border-color;
-    }
-  }
+	.child {
+		.MuiListItemText-primary {
+			@include head-text;
+		}
+
+		.MuiListItemText-secondary {
+			@include main-text;
+		}
+	}
 }
 
 .collapsed {
-  left: -$search-width;
+	display: none;
 }
