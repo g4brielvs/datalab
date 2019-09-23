@@ -8,11 +8,11 @@ export default function HTML(props) {
   const theme = createMuiTheme({
     breakpoints: {
       values: {
-        xs: 0,
-        sm: 576,
-        md: 768,
-        lg: 992,
-        xl: 1200
+        xs: styles.xs,
+        sm: styles.sm,
+        md: styles.md,
+        lg: styles.lg,
+        xl: styles.xl
       }
     }
   });
