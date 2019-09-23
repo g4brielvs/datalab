@@ -73,7 +73,7 @@ $desktop-xl: 1200px;
 $desktop: 992px;
 $tablet: 768px;
 $phone: 576px;
-$xs: 0;
+$min: 0;
 
 $margin-150: 150px;
 $margin-100: 100px;
@@ -97,5 +97,5 @@ $light: 200;
   lg: $desktop;
   md: $tablet;
   sm: $phone;
-  xs: $xs;
+  xs: $min;
 }

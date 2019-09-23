@@ -9,12 +9,6 @@ require("dotenv").config({
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    devtool: "eval-source-map",
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+    devtool: "eval-source-map"
   });
 };
