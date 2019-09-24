@@ -28,7 +28,7 @@ const DataModule = {
 	},
 
 	loadEmployeeSalaryData: (cbs, props) => {
-				cbs.forEach((cb) => cb(DataModule.mem.employeeSalaries, props));
+				cbs.forEach((cb) => cb(DataModule.mem.employeesSalaries, props));
 	}
 };
 
