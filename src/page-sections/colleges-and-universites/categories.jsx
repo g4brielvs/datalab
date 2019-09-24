@@ -110,6 +110,7 @@ export default class Categories extends React.Component {
             />
             <VizDetails
               showDetails={click => this.showDetails = click}
+              data={{}}
             >
             </VizDetails>
           </div>

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './tool.scss';
 
 import Grid from '@material-ui/core/Grid';
-
 import Default from '../default/default';
 import ShareMenu from '../../share-menu/share-menu';
 import HWCTALink from '../../hwcta-link/hwcta-link';

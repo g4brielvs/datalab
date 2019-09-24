@@ -45,6 +45,37 @@ export default class Agencies extends React.Component {
     }
   ];
 
+  details = {
+    'header': {
+      'title': 'Institution',
+      'itemName': 'Central College',
+      'label': 'Public, 2-year',
+      'subItemName': null,
+      'totalLabel': 'Total $ Received',
+      'totalValue': 1100000
+    },
+    'tables': [
+      {
+        'col1Title': 'Funding Investment Type',
+        'col2Title': null,
+        'rows': {
+          'Contracts': 35000,
+          'Grants': 590200,
+          '   Grants (Research)': 0
+        }
+      },
+      {
+        'col1Title': 'Institution (Top 5)',
+        'col2Title': 'Toatal Investment',
+        'rows': {
+          'UNLV': 35000,
+          'Baker College': 590200,
+          'Massachusetts General Hospital Dietetic Intership': 6954359235967253
+        }
+      }
+    ]
+  };
+
   switchView = view => alert('switch to ' + view + ' mode');
 
   showDetails = () => this.setState({ detailShowing: true });
@@ -80,8 +111,8 @@ export default class Agencies extends React.Component {
           />
           <VizDetails
             showDetails={click => this.showDetails = click}
+            data={this.details}
           >
-            Just checking...
           </VizDetails>
         </div>
       </div>

@@ -2,11 +2,20 @@
 
 $details-width: 350px;
 
+@mixin tableRows {
+	font-size: 0.9rem;
+	font-weight: 300;
+	color: #555;
+	padding: 0.35rem 0 !important;
+	border-bottom: 1px solid #ddd;
+}
+
 .details {
 	position: absolute;
 	width: $details-width;
 	padding: 2rem;
-	right: -$details-width;
+	text-align: left;
+	right: calc(-#{$details-width} - 4rem);
 
 	&.MuiPaper-root {
 		transition: right 0.5s ease-in-out;
@@ -21,4 +30,33 @@ $details-width: 350px;
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+.label {
+	color: #666666;
+	font-size: 0.8rem;
+	font-weight: 300;
+
+	&.MuiGrid-item {
+		margin: 0 0 0.3rem;
+	}
+}
+
+.itemName {
+	color: #666;
+	font-size: 1.25rem;
+	font-weight: 700;
+
+	&.MuiGrid-item {
+		margin: 0 0 1rem;
+	}
+}
+
+.rowLabel {
+	@include tableRows;
+}
+
+.rowValue {
+	@include tableRows;
+	text-align: right;
 }
