@@ -1,14 +1,14 @@
 @import '../../../styles/variables';
 
 
-.landing-row__heading {
+.heading {
   font-size: 1.17em;
   padding-bottom: 1rem;
   border-bottom: 1px solid #aaa;
   text-transform: uppercase;
 }
 
-.landing-row__tile {
+.tile {
 
   .svgImg {
     height: 62px;
@@ -17,22 +17,22 @@
     width: 50%;
   }
 
-  .landing-row__text {
+  .text {
     text-align: center;
     width: auto;
   }
 
-  .landing-row__title {
+  .title {
     font-size: 24px;
     height: 1.5em;
   }
 
-  p.landing-row__title {
+  p.title {
     font-size: 2em;
     height: auto;
   }
 
-  .landing-row__p {
+  .description {
     font-size: 18px;
     font-weight: 100;
     font-style: normal;
@@ -43,31 +43,22 @@
     margin-bottom: 2rem;
   }
 
-  &.landing-row__tile--primary {
-    .landing-row__text {
-      text-align: left;
-
-      .landing-row__title {
-        text-align: left;
-      }
-    }
-  }
 }
 
 
 @media screen and (max-width: $desktop) {
-  .landing-row__p {
+  .description {
     display: none;
   }
 
-  .landing-row__title {
+  .title {
     text-align: center;
   }
 
-  .landing-row__tile {
+  .tile {
   }
 
-  .landing-row__tile-row {
+  .tile-row {
     padding-top: $margin;
     border-top: 1px solid #dddddd;
   }

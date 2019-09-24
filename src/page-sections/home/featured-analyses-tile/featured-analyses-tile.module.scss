@@ -7,17 +7,17 @@
   min-height: 100%;
 }
 
-.featured__heading {
+.heading {
   font-size: 24px;
   text-align: center;
   text-align: center;
 }
 
-.featured__image {
+.image {
   width: 100%;
 }
 
-.featured__text {
+.text {
   padding: 0 2.188rem;
   font-stretch: normal;
   line-height: 1.43;
@@ -27,20 +27,21 @@
   text-align: center;
 }
 
-.featured__heading--mobile, .featured__text--mobile {
+// TODO: Fix BEM
+.heading-mobile, .text-mobile {
   display: none;
 }
 
-.feature-row__image {
+.image {
   padding-left: 0;
 }
 
 @media screen and (max-width: $desktop) {
-  .feature-row__text {
+  .text {
     padding-right: $margin-override;
   }
 
-  .feature-row__image {
+  .image {
     padding-left: $margin-override;
   }
 }

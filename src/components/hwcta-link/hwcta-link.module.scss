@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.hwcta-entry {
+.entry {
   margin-top: $margin-100;
   margin-bottom: 5rem;
 
@@ -10,7 +10,7 @@
   }
 }
 
-.hwcta-entry__link-text {
+.link-text {
   justify-content: center;
   font-size: 32px;
   font-weight: 300;
@@ -18,7 +18,7 @@
 }
 
 @media (max-width: $tablet - 1) {
-  .hwcta-entry__image {
+  .image {
     display: none;
   }
 }

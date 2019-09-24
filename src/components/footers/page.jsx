@@ -1,5 +1,5 @@
 import React from "react"
-import "./page.scss"
+import pageFooterStyles from "./page.module.scss"
 
 import DataLab from "../logos/datalab"
 import Github from "../logos/github"
@@ -24,38 +24,38 @@ import LinkedIn from "../logos/linkedin"
 </script> */
 
 const PageFooter = props => (
-  <div className="page-footer">
-    <div className="content">
-      <div className="flex-item logo">
+  <div className={pageFooterStyles.pageFooter}>
+    <div className={pageFooterStyles.content}>
+      <div className={`${pageFooterStyles.flexItem} ${pageFooterStyles.logo}`}>
         <DataLab fillColor="#666" />
       </div>
-      <div className="flex-item">
-        <div className="title">Contact Us</div>
+      <div className={pageFooterStyles.flexItem}>
+        <div className={pageFooterStyles.title}>Contact Us</div>
         <p>
           For media inquiries or questions on Data Lab activities or operations,
           please contact our Legislative and Public Affairs Office:
         </p>
         <p>E: media.relations@fiscal.treasury.gov</p>
       </div>
-      <div className="flex-item">
-        <div className="title">Mailing List</div>
+      <div className={pageFooterStyles.flexItem}>
+        <div className={pageFooterStyles.title}>Mailing List</div>
         <p>
           To join our mailing list, send a blank email with no subject to:{" "}
           <a href="mailto: datalab@lists.fiscal.treasury.gov">
             datalab@lists.fiscal.treasury.gov
           </a>
         </p>
-        <div className="title">Join the Conversation</div>
+        <div className={pageFooterStyles.title}>Join the Conversation</div>
         <p>
           Visit our&nbsp;
           {/* <a onclick="leaveSiteLink('https://usaspending-help.zendesk.com/hc/en-us/community/topics'); trackLinkClick('Send Feedback'); return false;" href="https://usaspending-help.zendesk.com/hc/en-us/community/topics"> */}
           <a>Community Page today.</a>
         </p>
       </div>
-      <div className="flex-item social-logos">
-        <div className="float-bottom">
+      <div className={`${pageFooterStyles.flexItem} ${pageFooterStyles.socialLogos}`}>
+        <div className={pageFooterStyles.floatBottom}>
           <div>
-            <div className="title">Connect With Us</div>
+            <div className={pageFooterStyles.title}>Connect With Us</div>
             <div>
               {/* <a onclick="trackLinkClick('GitHub')" target="_blank" rel="noopener noreferrer" aria-labelledby="Github-icon-title" href="https://github.com/fedspendingtransparency/datalab"> */}
               <a><Github /></a>

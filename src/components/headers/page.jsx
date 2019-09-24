@@ -1,10 +1,10 @@
 import React from "react"
-import "./page.scss"
+import pageHeaderStyles from "./page.module.scss"
 
 import DataLab from "../logos/datalab"
 
 const PageHeader = props => (
-  <div className="page-header">
+  <div className={pageHeaderStyles.pageHeader}>
     <DataLab beta="true" />
     <div>Menu here</div>
   </div>
