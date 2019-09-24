@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "gatsby"
 
-import './featured-analyses-tile.scss';
+import featuredAnalysesTitleStyles from './featured-analyses-tile.module.scss';
 
 const FeaturedAnalysesTile = (props) => {
   return (
@@ -11,23 +11,23 @@ const FeaturedAnalysesTile = (props) => {
             ga-on="click" ga-event-category="Data Lab Home Page"
             ga-event-action={"Clicked " + props.heading}>
 
-          <section className="featured">
-            <h1 className="featured__heading--mobile">
+          <section className={featuredAnalysesTitleStyles.featured}>
+            <h1 className={featuredAnalysesTitleStyles.headingMobile}>
               {props.heading}
             </h1>
 
-            <img className="featured__image" src={props.imgSrc} alt={props.imgAlt} />
+            <img className={featuredAnalysesTitleStyles.image} src={props.imgSrc} alt={props.imgAlt} />
 
-            <div className="featured__content">
-              <h2 className="featured__heading">
+            <div className={featuredAnalysesTitleStyles.content}>
+              <h2 className={featuredAnalysesTitleStyles.heading}>
                 {props.heading}
               </h2>
 
-              <p className="featured__text">
+              <p className={featuredAnalysesTitleStyles.text}>
                 {props.body}
               </p>
 
-              <p className="featured__text featured__text--mobile">
+              <p className={`${featuredAnalysesTitleStyles.text} ${featuredAnalysesTitleStyles.textMobile}`}>
                 {props.mobileBody}
               </p>
             </div>

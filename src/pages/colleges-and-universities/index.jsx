@@ -10,9 +10,7 @@ import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import Categories from "../../page-sections/colleges-and-universites/categories"
 import CustomToc from "../../page-sections/colleges-and-universites/custom-toc/custom-toc"
-import HWCTALink from "../../components/hwcta-link/hwcta-link"
 //import Institutions from "../../page-sections/colleges-and-universites/institutions";
-import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 
 class CollegesAndUniversitiesPage extends Component {
