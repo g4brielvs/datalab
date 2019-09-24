@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-sass",
       options: {
-        useResolveUrlLoader: true,
+        useResolveUrlLoader: true
       },
     },
     {
@@ -42,6 +42,14 @@ module.exports = {
         crossOrigin: `use-credentials`,
         icon: `src/images/favicon.png`
       },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg', // support for svg components
+      options: {
+        rule: {
+          include: /svgs/
+        }
+      }
     },
     `gatsby-transformer-json`,
     {

@@ -1,6 +1,6 @@
 $darkGrey: #666;
 
-#footnotes, .footnote__number, .footnote__text {
+#footnotes, .number, .text {
   font-size: 16px !important;
   color: $darkGrey;
 }
@@ -9,6 +9,6 @@ $darkGrey: #666;
   margin-bottom: 5rem;
 }
 
-.footnotes__header {
+.header {
   margin-bottom: 0.5rem;
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import './footnotes.scss';
+import footnotesStyles from './footnotes.module.scss';
 
 const Footnotes = (props) => {
   return (
-    <div id="footnotes" className="container">
+    <div id={footnotesStyles.footnotes} className="container">
       <div className="row">
         <div className="col-xs-10 col-xs-offset-1">
-          <div className="footnotes__header">Footnotes</div>
+          <div className={footnotesStyles.header}>Footnotes</div>
           <hr />
         </div>
       </div>
@@ -14,7 +14,7 @@ const Footnotes = (props) => {
         <div className="col-xs-10 col-xs-offset-1">
           {props.footnotes.map(function (footnote, index) {
             return<>
-              <p><sup className="footnote__number">{index + 1}</sup><span className="footnote__text">{footnote}</span></p>
+              <p><sup className={footnotesStyles.number}>{index + 1}</sup><span className={footnotesStyles.text}>{footnote}</span></p>
             </>
           })}
         </div>

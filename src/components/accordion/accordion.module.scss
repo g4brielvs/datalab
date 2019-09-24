@@ -1,8 +1,6 @@
 @import '../../styles/variables.scss';
 
-$padding: 20px;
-
-.accordion-container {
+.container {
     margin-bottom: $margin-20;
 }
 
@@ -14,8 +12,8 @@ $padding: 20px;
     }
 }
 
-.accordion__heading {
-    padding: 20px;
+.heading {
+    padding: $margin-20;
     font-size: 18px;
     text-align: left;
     border: 1px solid #eee;
@@ -26,8 +24,8 @@ $padding: 20px;
     font-weight: 600;
 }
 
-.accordion__content {
-    padding: $padding;
+.content {
+    padding: $margin-20;
     border: 1px solid transparent;
     border-top: none;
     line-height: 0;
@@ -44,7 +42,7 @@ $padding: 20px;
     }
 }
 
-.accordion__toggle {
+.toggle {
     font-size: 16px;
     background: transparent;
     border: none;
@@ -52,19 +50,19 @@ $padding: 20px;
     width: 26px;
 }
 
-.accordion__plus {
+.plus {
     display: block;
 }
 
-.accordion__minus {
+.minus {
     display: none;
 }
 
-.accordion--open {
-    .accordion__content {
+.open {
+    .content {
         line-height: 1.2;
-        padding-top: $padding;
-        padding-bottom: $padding;
+        padding-top: $margin-20;
+        padding-bottom: $margin-20;
         border-color: #eee;
         opacity: 1;
 
@@ -73,11 +71,11 @@ $padding: 20px;
         }
     }
 
-    .accordion__plus {
+    .plus {
         display: none;
     }
 
-    .accordion__minus {
+    .minus {
         display: block;
     }
 }

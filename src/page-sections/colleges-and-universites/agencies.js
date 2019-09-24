@@ -4,7 +4,7 @@ import "../../styles/index.scss"
 /* components */
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import SearchPanel from "../../components/chartpanels/search"
+import VizControlPanel from "../../components/chartpanels/viz-control"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 // import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
@@ -62,13 +62,13 @@ const Agencies = (props) => {
       {/*<BubbleChart/>*/}
       <div className="container" style={defaultImageStyle}>
         <div className="row center-xs">
-          <SearchPanel
+          <VizControlPanel
             searchList={searchList}
             listDescription="Agencies"
             switchView={switchView}
           >
             <BubbleChartOutlinedIcon />
-          </SearchPanel>
+          </VizControlPanel>
           <img className="col-xs-6" src={defaultImage} />
         </div>
       </div>
