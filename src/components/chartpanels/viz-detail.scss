@@ -6,13 +6,12 @@ $details-width: 350px;
 	position: absolute;
 	width: $details-width;
 	padding: 2rem;
-	right: 0;
-	display: none;
-	transition: display 0.5s ease-in-out;
+	right: -$details-width;
+	transition: right 0.5s ease-in-out;
 }
 
 .expanded {
-	display: block;
+	right: 0;
 }
 
 .closeButton.MuiIconButton-root {
