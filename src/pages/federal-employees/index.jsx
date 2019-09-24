@@ -65,7 +65,7 @@ class FederalEmployeesPage extends Component {
 				const SectionTag = this.sectionComponents[item.tagName];
 				return (
 					<StorySection key={key} header={item}>
-						<SectionTag />
+						<SectionTag sectionId={'section-' + item.section}/>
 					</StorySection>
 				)
 			})

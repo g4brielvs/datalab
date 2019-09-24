@@ -1,8 +1,8 @@
 import React from 'react';
-import './reset.scss';
+import resetStyles from './reset.module.scss';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
-const Reset = ({props}) => (<span className="resetButton"><RefreshIcon /><span> Reset</span></span>);
+const Reset = ({props}) => (<span className={'reset-button ' + resetStyles.resetButton}><RefreshIcon /><span> Reset</span></span>);
 
 
 export default Reset
