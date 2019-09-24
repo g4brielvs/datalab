@@ -9,8 +9,8 @@ import workers from "../../../images/more-analyses/workers.jpg"
 import budget from "../../../images/more-analyses/budget.jpg"
 import competition from "../../../images/more-analyses/competition.jpg"
 
-import moreAnalysesStyles from "./more-analyses-row.module.scss"
-
+import { Grid } from "@material-ui/core"
+import moreAnalysesStyles from './more-analyses-row.module.scss'
 
 const MoreAnalysesRow = () => {
   const analyses = [{
@@ -37,59 +37,61 @@ const MoreAnalysesRow = () => {
   ]
 
   return (
-    <section className={moreAnalysesStyles.main}>
-      <div className="row">
-        <h1 className={`col-xs-12 ${moreAnalysesStyles.heading}`}>
-          More Analyses
-        </h1>
-      </div>
+    <section className={moreAnalysesStyles.moreAnalyses}>
+      <h1 className={moreAnalysesStyles.heading}>
+        More Analyses
+      </h1>
 
-      <div className="row">
-        <div className={`col-md-12 col-lg-6 last-lg ${moreAnalysesStyles.featured__tile}`}>
-          <MainTile
-            href={'americas-finance-guide'}
-            imgSrc={cg}
-            imgAlt={'Answer all your questions about federal government finance'}
-            heading={"Your Guide to America's Finances"}
-            body={`Your Guide to America's Finances is an overview of federal government finances in 2018, providing
-              information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data
-              Lab,
-              presents a series of interactive visualizations to allow you to explore these categories and how they
-              have
-              changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
-              dollars collected and spent by the federal government each year.`}
-            mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
-                well as the deficit and debt in 2018.`
-            } />
+      <Grid
+        container
+        spacing={2}>
+        <Grid item md={12} lg={6}>
+            <MainTile
+              href={'americas-finance-guide'}
+              imgSrc={cg}
+              imgAlt={'Answer all your questions about federal government finance'}
+              heading={"Your Guide to America's Finances"}
+              body={`Your Guide to America's Finances is an overview of federal government finances in 2018, providing
+                information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data
+                Lab,
+                presents a series of interactive visualizations to allow you to explore these categories and how they
+                have
+                changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
+                dollars collected and spent by the federal government each year.`}
+              mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
+                  well as the deficit and debt in 2018.`
+              } />
 
-        </div>
+        </Grid>
 
-        <div className={`col-md-12 col-lg-6 first-lg ${moreAnalysesStyles.tiles}`}>
-          <div className="row">
-            {analyses.map((item, index) =>
-            <div
-              key={'more-tile_' + index}
-              className={index === 0 ? `${moreAnalysesStyles.tile} col-sm-12 col-md-6 col-lg-6` : `${moreAnalysesStyles.tile} col-sm-12 col-md-6 col-lg-6`}>
-              <Link to={item.href}>
-                <div className="row">
-                  <div className={`col-md-12 col-sm-6 col-xs-6 ${moreAnalysesStyles.tile__title}`}>
-                    <h2>
-                    {item.title}
-                    </h2>
-                    <p className={moreAnalysesStyles.tile__subtitle}>
-                    {item.subtitle}
-                    </p>
-                  </div>
-                  <div className={`col-md-12 col-sm-6 col-xs-6 first-sm first-xs  ${moreAnalysesStyles.image__container}`}>
-                    <img src={item.imageSrc} className={moreAnalysesStyles.image} />
-                  </div>
-                </div>
-              </Link>
-            </div>
-            )}
-          </div>
-        </div>
-      </div>
+        <Grid item md={12} lg={6}>
+          <Grid
+            container
+            spacing={2}>
+              {analyses.map((item, index) =>
+                <Grid item sm={6} md={3} lg={6}>
+                  <Link to={item.href}
+                        key={'more-tile_' + index}
+                        className={index === 0 ? `${moreAnalysesStyles.tile}` : `${moreAnalysesStyles.tile}`}>
+                    <div className={moreAnalysesStyles.tileHeading}>
+                        <p className={moreAnalysesStyles.title}>
+                        {item.title}
+                        </p>
+                        <p className={moreAnalysesStyles.subtitle}>
+                        {item.subtitle}
+                        </p>
+                    </div>
+
+                    <div className={moreAnalysesStyles.imageContainer}>
+                        <img src={item.imageSrc} className={moreAnalysesStyles.image} />
+                    </div>
+                  </Link>
+                </Grid>
+              )}
+          </Grid>
+        </Grid>
+      </Grid>
+
     </section>
   )
 }

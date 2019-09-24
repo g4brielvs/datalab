@@ -1,21 +1,62 @@
 @import '../../../styles/variables';
 
-.tile {
-  padding-bottom: $margin * 3;
-  padding-right: $margin * 2 !important;
+$darkGrey: #666666;
+
+.more-analyses {
+  text-align: left;
+
+  .heading {
+    font-size: 1.17em;
+    color: $font-body-copy;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .tile {
+    margin-bottom: $margin-15;
+    text-align: left;
+  }
+
+  .tile-heading {
+    height: 130px;
+  }
+
+  .title {
+    font-size: 16px;
+    text-align: left;
+    color: #2272CE;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    text-align: left;
+    font-size: 130%;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.24;
+    letter-spacing: normal;
+    color: #4A4A4A;
+  }
+
+  .image {
+    width: 100%;
+  }
 }
 
-.tile__subtitle {
-  padding-bottom: $margin * 8;
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .tile {
+    border-bottom: unset;
+  }
 }
 
-.tile__title {
-  padding-bottom: $margin * 4;
+@media (max-width: $tablet - 1) {
+  .heading {
+    border-bottom: 1px solid $font-body-copy;
+  }
 }
 
-.image {
-  width: 100%;
-}
 
 @media screen and (max-width: $desktop-xl) {
   .tile {
@@ -24,15 +65,15 @@
     margin-bottom: $margin * 2;
   }
 
-  .tile__title {
+  .title {
     padding-bottom: 0;
   }
 
-  .tile__subtitle {
+  .subtitle {
     padding-bottom: 0;
   }
 
-  .featured__tile {
+  .tile {
     padding-bottom: $margin * 2;
   }
 
@@ -42,7 +83,7 @@
 }
 
 @media screen and (min-width: $desktop-xl) {
-  .featured-tile {
+  .tile {
     padding-right: $reset-override;
   }
 }

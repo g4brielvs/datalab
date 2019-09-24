@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 
 import featuredAnalysesTitleStyles from './main-tile.module.scss';
 
+
 const MainTile = (props) => {
   return (
     <>
