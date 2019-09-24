@@ -5,7 +5,6 @@ import './tool.scss';
 import Grid from '@material-ui/core/Grid';
 
 import Default from '../default/default';
-import ShareMenu from '../../share-menu/share-menu';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 
@@ -16,7 +15,6 @@ class ToolLayout extends React.Component {
         <header>
           <Grid container justify='space-between'>
             <Grid item className='title'>{this.props.title}</Grid>
-            <Grid item><ShareMenu /></Grid>
           </Grid>
         </header>
         <section>
