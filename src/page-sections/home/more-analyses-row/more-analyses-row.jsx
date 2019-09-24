@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import FeaturedAnalysesTile from "../featured-analyses-tile/featured-analyses-tile"
+import MainTile from "../main-tile/main-tile"
 
 import cg from "../../../images/home/cg-gif.gif"
 import federal from "../../../images/more-analyses/federal.jpg"
@@ -46,7 +46,7 @@ const MoreAnalysesRow = () => {
 
       <div className="row">
         <div className={`col-md-12 col-lg-6 last-lg ${moreAnalysesStyles.featured__tile}`}>
-          <FeaturedAnalysesTile
+          <MainTile
             href={'americas-finance-guide'}
             imgSrc={cg}
             imgAlt={'Answer all your questions about federal government finance'}

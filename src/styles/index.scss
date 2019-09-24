@@ -17,7 +17,7 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-@mixin H1---Title-Heading-Style {
+@mixin h1-style {
   font-family: SourceSansPro;
   font-size: 56px;
   font-weight: 300;
@@ -25,10 +25,10 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
-@mixin H2---Sub-Heading-Style {
+@mixin h2-style {
   font-family: SourceSansPro;
   font-size: 48px;
   font-weight: 300;
@@ -36,7 +36,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
 @mixin H3---Sub-Heading-Style {
@@ -47,7 +47,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
 @mixin H4---Sub-Heading-Style {
@@ -58,7 +58,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
 @mixin H5---Sub-Heading-Style {
@@ -69,7 +69,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
 @mixin Lead-Paragraph-Style {
@@ -80,7 +80,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: 1.5;
   letter-spacing: normal;
-  color: var(--font-body-copy);
+  color: $font-body-copy;
 }
 
 @mixin H6---Sub-Heading-Style {
@@ -91,7 +91,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-title);
+  color: $font-title;
 }
 
 @mixin Body-Style {
@@ -102,7 +102,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-body-copy);
+  color: $font-body-copy;
 }
 
 @mixin Body-Copy---Light {
@@ -113,7 +113,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-body-copy);
+  color: $font-body-copy;
 }
 
 @mixin Table---copy-Style {
@@ -124,7 +124,7 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-body-copy);
+  color: $font-body-copy;
 }
 
 @mixin Body---Small-Style {
@@ -135,5 +135,5 @@ a:-webkit-any-link {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: var(--font-body-copy);
+  color: $font-body-copy;
 }

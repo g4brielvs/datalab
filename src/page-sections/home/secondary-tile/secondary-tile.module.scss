@@ -1,0 +1,76 @@
+@import '../../../styles/variables';
+@import '../../../styles/index';
+
+.highlight {
+  border-top: 1px solid #ddd;
+  text-align: left;
+
+  .headings {
+    float: left;
+  }
+
+  .heading {
+    text-align: left;
+    color: #2272CE;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .subheading {
+    text-align: left;
+    font-size: 130%;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.24;
+    letter-spacing: normal;
+    color: #4A4A4A;
+  }
+
+  .link {
+    cursor: pointer;
+    display: block;
+
+    &:hover h1, &:hover h2 {
+      text-decoration: underline;
+    }
+
+  }
+
+  .text {
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: 0.4px;
+    color: #000000;
+    clear: both;
+    margin: 0 $margin-15;
+    font-size: .8em;
+  }
+
+  .image {
+    box-sizing: border-box;
+    float: right;
+
+    img {
+      padding-top: $margin-15;
+      width: 100%;
+    }
+  }
+
+}
+
+
+
+
+
+@media screen and (min-width: $desktop-xl) and (max-width: $desktop-xxl) {
+  .highlight {
+    .text {
+      display: none;
+    }
+  }
+}
+
+
