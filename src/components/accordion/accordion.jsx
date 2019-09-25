@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './accordion.scss';
+import accordionStyles from './accordion.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,19 +23,19 @@ class Accordion extends Component {
 
     render() {
         return (
-          <div className="accordion-container">
+          <div className={accordionStyles.container}>
             <div className="row">
               <div className="col-xs-12">
-                <section className={this.state.open ? 'accordion accordion--open' : 'accordion'} >
-                  <h1 onClick={this.toggle} className="accordion__heading">
+                <section className={this.state.open ? `${accordionStyles.accordion} ${accordionStyles.open}` : `${accordionStyles.accordion}`} >
+                  <h1 onClick={this.toggle} className={accordionStyles.heading}>
                     {this.props.title}
-                    <button onClick={this.toggle} className="accordion__toggle">
-                      <FontAwesomeIcon icon={faPlus} className="accordion__plus" />
-                      <FontAwesomeIcon icon={faMinus} className="accordion__minus" />
+                    <button onClick={this.toggle} className={accordionStyles.toggle}>
+                      <FontAwesomeIcon icon={faPlus} className={accordionStyles.plus} />
+                      <FontAwesomeIcon icon={faMinus} className={accordionStyles.minus} />
                       <span className="sr-only">toggle contents</span>
                     </button>
                   </h1>
-                  <div className="accordion__content">
+                  <div className={accordionStyles.content}>
                     {this.props.children}
                   </div>
                 </section>

@@ -10,9 +10,7 @@ import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import Categories from "../../page-sections/colleges-and-universites/categories"
 import CustomToc from "../../page-sections/colleges-and-universites/custom-toc/custom-toc"
-import HWCTALink from "../../components/hwcta-link/hwcta-link"
 //import Institutions from "../../page-sections/colleges-and-universites/institutions";
-import MoreAnalyses from "../../components/more-analyses/more-analyses"
 import Footnotes from "../../components/footnotes/footnotes"
 
 class CollegesAndUniversitiesPage extends Component {
@@ -70,14 +68,9 @@ class CollegesAndUniversitiesPage extends Component {
 
       <Categories />
 
-      {/* <Footnotes
+      <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
-      'Due to the way military academies are funded, they have not been included in this analysis.']} /> */}
-
-	    <HWCTALink
-    	    url={"https://datalab.usaspending.gov/colleges-and-universities-more.html"}/>
-
-      <MoreAnalyses/>
+      'Due to the way military academies are funded, they have not been included in this analysis.']} />
 
     </StoryLayout>
     </>
