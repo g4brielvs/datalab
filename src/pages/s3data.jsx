@@ -9,7 +9,7 @@ const AWS = require('aws-sdk');
 // );
 
 let data;
-const s3 = new AWS.S3();
+// const s3 = new AWS.S3();
 // s3.getObject(
 //   { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
 //   function (error, data) {
@@ -21,6 +21,6 @@ const s3 = new AWS.S3();
 //     }
 //   }
 // );
-// export default class DataPOC extends React.Component {
-//   render = () => (<>{JSON.stringify(data)}</>);
-// }
+export default class DataPOC extends React.Component {
+  render = () => (<>{JSON.stringify(data)}</>);
+}
