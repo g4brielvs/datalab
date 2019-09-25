@@ -63,7 +63,7 @@ table {
 	@include tableRows;
 	width: 100%;
 	padding: 2rem 0 0.35rem;
-	white-space: pre;
+	white-space: pre-wrap;
 }
 
 td {
