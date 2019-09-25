@@ -30,8 +30,8 @@ nav.header-nav {
     color: #666;
 
     &:hover {
-      color: blue;
-      border-bottom: 2.5px solid blue;
+      color: #046b99;
+      border-bottom: 3.5px solid #046b99;
     }
   }
 
@@ -103,7 +103,7 @@ ul.nav {
   position: relative;
   z-index: 20;
 
-  ul.ul-dropdown > li.secondaryNavli > a{
+  ul.ul-dropdown > li.secondaryNavli > a {
     text-decoration: none;
     color: #666;  
   }
@@ -140,7 +140,66 @@ ul.nav {
   
 }
 
+.data-table {
+  display: none;
+  justify-content: center;
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+  background: #FFF;
+  list-style-type: none;
+  padding: 0.5rem 4rem;
+  top: 0;
+  right: 0;
+  width: 100%;
+
+
+  .data-row {
+    display: flex;
+    justify-content: space-evenly;
+    display: block;
+    float: left;
+    text-align: center;
+  }
+
+  .header-row {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+  }
+
+  tbody {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  td {
+    display: block;
+    text-align: left;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #666;  
+  }
+
+  a:hover {
+    color: #046b99;
+  }
+
+}
+
+
 .active {
   display: flex;
 }
+
+.active-table {
+  display: table;
+}
+
+
 

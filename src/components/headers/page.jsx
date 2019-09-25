@@ -13,12 +13,11 @@ class PageHeader extends React.Component {
     this.state = {
       isSticky: false,
       top: 29,
-      showAnalysesUl: false,
-      showExpressUl: false,
-      showFFGUl: false,
-      showResourcesUl: false,
-      showGlossaryUl: false,
-      mouseOnUlPanel: false,
+      showAnalysesTable: false,
+      showExpressTable: false,
+      showFFGTable: false,
+      showResourcesTable: false,
+      showGlossaryTable: false,
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleAnalyses = this.handleAnalyses.bind(this);
@@ -26,7 +25,8 @@ class PageHeader extends React.Component {
     this.handleFFG = this.handleFFG.bind(this);
     this.handleResources = this.handleResources.bind(this);
     this.handleGlossary = this.handleGlossary.bind(this);
-    this.handleUlOut = this.handleUlOut.bind(this);
+    this.handleTableOut = this.handleTableOut.bind(this);
+    this.renderFFGtd = this.renderFFGtd.bind(this);
   };
 
   componentDidMount() {
@@ -58,7 +58,7 @@ class PageHeader extends React.Component {
       case "Analyses":
         this.handleAnalyses();
         break;
-      case "DataLab Express": 
+      case "DataLab Express":
         this.handleExpress();
         break;
       case "America's Finance Guide":
@@ -73,72 +73,88 @@ class PageHeader extends React.Component {
     }
   }
 
-    handleAnalyses() {
-      console.log('handle Analyses');
-      this.setState({
-          showAnalysesUl: true,
-          showExpressUl: false,
-          showFFGUl: false,
-          showResourcesUl: false,
-          showGlossaryUl: false,
-        });
-    }
+  handleAnalyses() {
+    this.setState({
+      showAnalysesTable: true,
+      showExpressTable: false,
+      showFFGTable: false,
+      showResourcesTable: false,
+      showGlossaryTable: false,
+    });
+  }
 
-    handleExpress() {
-      console.log('handle express');
-      this.setState({
-        showExpressUl: true,
-        showAnalysesUl: false,
-        showFFGUl: false,
-        showResourcesUl: false,
-        showGlossaryUl: false,
-      });
-    }
+  handleExpress() {
+    this.setState({
+      showExpressTable: true,
+      showAnalysesTable: false,
+      showFFGTable: false,
+      showResourcesTable: false,
+      showGlossaryTable: false,
+    });
+  }
 
-    handleFFG() {
-      console.log('handle FFG');
-      this.setState({
-        showExpressUl: false,
-        showAnalysesUl: false,
-        showFFGUl: true,
-        showResourcesUl: false,
-        showGlossaryUl: false,
-      });
-    }
+  handleFFG() {
+    this.setState({
+      showExpressTable: false,
+      showAnalysesTable: false,
+      showFFGTable: true,
+      showResourcesTable: false,
+      showGlossaryTable: false,
+    });
+  }
 
-    handleResources() {
-      console.log('handle resources');
-      this.setState({
-        showExpressUl: false,
-        showAnalysesUl: false,
-        showFFGUl: false,
-        showResourcesUl: true,
-        showGlossaryUl: false,
-      });
-    }
+  handleResources() {
+    this.setState({
+      showExpressTable: false,
+      showAnalysesTable: false,
+      showFFGTable: false,
+      showResourcesTable: true,
+      showGlossaryTable: false,
+    });
+  }
 
-    handleGlossary() {
-      console.log('handle glossary');
-      this.setState({
-        showExpressUl: false,
-        showAnalysesUl: false,
-        showFFGUl: false,
-        showResourcesUl: false,
-        showGlossaryUl: true,
-      });
-    }
+  handleGlossary() {
+    this.setState({
+      showExpressTable: false,
+      showAnalysesTable: false,
+      showFFGTable: false,
+      showResourcesTable: false,
+      showGlossaryTable: true,
+    });
+  }
 
-    handleUlOut(e) {
-      e.stopPropagation();
-      this.setState({
-        showExpressUl: false,
-        showAnalysesUl: false,
-        showFFGUl: false,
-        showResourcesUl: false,
-        showGlossaryUl: false,
-      });
-    }
+  handleTableOut(e) {
+    e.stopPropagation();
+    this.setState({
+      showExpressTable: false,
+      showAnalysesTable: false,
+      showFFGTable: false,
+      showResourcesTable: false,
+      showGlossaryTable: false,
+    });
+  }
 
+  renderFFGtd(name) {
+    let data = this.props.megamenuItems[2].ffg;
+    let dataFilter = data.filter(x => x.header == name)
+    return dataFilter.map((item) => {
+      return (
+        <td>
+          <a href={item.link}>{item.name}</a>
+        </td>
+      );
+    })
+  }
+
+  renderTabletd(data) {
+    return data.map((item) => {
+      return (
+        <td>
+          <a href={item.link}>{item.name}</a>
+        </td>
+      );
+    })
+  }
 
   render() {
 
@@ -147,14 +163,15 @@ class PageHeader extends React.Component {
     const top = this.state.top;
     const that = this; // used to preserve this inside nested map in render return
 
-    console.log(this.state);
-
     let returnItems = listItems.map((item, i) => {
       return <li className='navListItem' key={i} onMouseOver={that.handleMouseOver}>
         <a href='#' data-target={item}> {item} <span><Arrow /></span></a>
       </li>;
     });
 
+    // the 'header__sub' region can be redone as a component 
+    // needed to get working for now... go back and "componentize the table section"
+    // TODO! xxx
     return (
       <header id="header" style={{ top: `${top}px` }}>
         <div className={`header__main ${isSticky ? `tight` : ``}`}>
@@ -181,34 +198,51 @@ class PageHeader extends React.Component {
         </div>
 
         <div className="header__sub">
-          <ul className={`ul-dropdown ${this.state.showAnalysesUl ? `active`: ``}`} id='subnav-analysis' onMouseLeave={this.handleUlOut}>
-            {this.props.megamenuItems[0].analyses.map(function (x, i) {
-              // consider going back to this whole section and rewriting
-              // the whole data structure itself. (props) Should be able to just
-              // loop through them all with perhaps nested forEach and Map
-              return <li className='secondaryNavli' key={i}><a href={x.link}> {x.name}</a></li>;
-            })}
-          </ul>
-          <ul className={`ul-dropdown ${this.state.showExpressUl ? `active`: ``}`} id='subnav-express' onMouseLeave={this.handleUlOut}>
-            {this.props.megamenuItems[1].express.map(function (x, i) {
-              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
-            })}
-          </ul>
-          <ul className={`ul-dropdown ${this.state.showFFGUl ? `active`: ``}`} id='subnav-ffg' onMouseLeave={this.handleUlOut}>
-            {this.props.megamenuItems[2].ffg.map(function (x, i) {
-              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
-            })}
-          </ul>
-          <ul className={`ul-dropdown ${this.state.showResourcesUl ? `active`: ``}`} id='subnav-resources' onMouseLeave={this.handleUlOut}>
-            {this.props.megamenuItems[3].resources.map(function (x, i) {
-              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
-            })}
-          </ul>
-          <ul className={`ul-dropdown ${this.state.showGlossaryUl ? `active`: ``}`} id='subnav-glossary' ref='Glossary' onMouseLeave={this.handleUlOut}>
-            {this.props.megamenuItems[4].glossary.map(function (x, i) {
-              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
-            })}
-          </ul>
+          <table className={`data-table ${this.state.showAnalysesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
+            <tbody>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(0, 3))}</tr>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(3, 6))}</tr>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(6, 9))}</tr>
+            </tbody>
+          </table>
+
+          <table className={`data-table ${this.state.showExpressTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
+            <tbody>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[1].express)}</tr>
+            </tbody>
+          </table>
+
+          <table className={`data-table ${this.state.showFFGTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
+            <tr className='header-row'>
+              <th>Overview</th>
+              <th>Revenue</th>
+              <th>Spending</th>
+              <th>Deficit</th>
+              <th>Debt</th>
+            </tr>
+            <tbody>
+              <tr className='data-row'>{this.renderFFGtd('Overview')}</tr>
+              <tr className='data-row'>{this.renderFFGtd('Revenue')}</tr>
+              <tr className='data-row'>{this.renderFFGtd('Spending')}</tr>
+              <tr className='data-row'>{this.renderFFGtd('Deficit')}</tr>
+              <tr className='data-row'>{this.renderFFGtd('Debt')}</tr>
+            </tbody>
+          </table>
+
+          <table className={`data-table ${this.state.showResourcesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
+            <tbody>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(0, 2)}</tr>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(2, 4)}</tr>
+            </tbody>
+          </table>
+
+          <table className={`data-table ${this.state.showGlossaryTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
+            <tbody>
+              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[4].glossary)}</tr>
+            </tbody>
+          </table>
+
+
         </div>
 
       </header>
