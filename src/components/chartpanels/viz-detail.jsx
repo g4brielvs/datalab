@@ -93,6 +93,6 @@ export default class VizDetailPanel extends React.Component {
 */
 
 VizDetailPanel.propTypes = {
-  showDetails: PropTypes.objectOf(PropTypes.func),
+  showDetails: PropTypes.func,
   data: PropTypes.object.isRequired
 };
