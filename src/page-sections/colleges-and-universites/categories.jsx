@@ -1,16 +1,14 @@
 import React from "react"
 import "../../styles/index.scss"
-
-/* components */
-import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import Accordion from "../../components/accordion/accordion"
-import SearchPanel from "../../components/chartpanels/search"
-import VizControlPanel from "../../components/chartpanels/viz-control"
-import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
-import SunburstIcon from '../../images/sunburst_icon.svg';
-import { Hidden } from "@material-ui/core"
 
+import Accordion from "../../components/accordion/accordion"
+import Downloads from "../../components/section-elements/downloads/downloads"
+import { Hidden } from "@material-ui/core"
+import SearchPanel from "../../components/chartpanels/search"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import SunburstIcon from '../../images/sunburst_icon.svg';
+import VizControlPanel from "../../components/chartpanels/viz-control"
 
 const Categories = () => {
   const defaultImageStyle = {
