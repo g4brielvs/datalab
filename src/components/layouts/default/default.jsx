@@ -7,7 +7,6 @@ import SiteHeader from '../../headers/site'
 import PageHeader from '../../headers/page'
 import PageFooter from "../../footers/page"
 import SiteFooter from "../../footers/site"
-import defaultStyles from './default.module.scss'
 
 import styles from '../../../styles/variables.scss'
 import '../../../styles/index.scss'
@@ -33,7 +32,7 @@ const Default = ({ children }) => (
     <MuiThemeProvider theme = { theme }>
         <SiteHeader />
         <PageHeader />
-        <div className={defaultStyles.default}>
+        <div>
           {children}
         </div>
         <PageFooter />

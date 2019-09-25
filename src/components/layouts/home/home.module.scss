@@ -1,25 +1,29 @@
 @import '../../../styles/variables';
 
+
 .default {
-  max-width: 1140px;
   margin: 50px auto;
 }
 
-@media (min-width: $tablet + 1) and (max-width: $desktop) {
+@media screen and (min-width: $desktop-xl) {
   .default {
-    max-width: 930px;
-    margin: 50px auto;
+    max-width: 1140px;
   }
 }
 
-@media (min-width: $phone + 1) and (max-width: $tablet) {
+@media (min-width: $desktop) and (max-width: $desktop-xl) {
+  .default {
+    max-width: 940px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop) {
   .default {
     max-width: 720px;
-    margin: 50px auto;
   }
 }
 
-@media screen and (max-width: $phone) {
+@media (max-width: $tablet) {
   .default {
     margin: 50px auto 0;
   }
