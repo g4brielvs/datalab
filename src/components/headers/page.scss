@@ -18,10 +18,22 @@
   flex-direction: column;
 }
 
+// nav with 5 elements
 nav.header-nav {
   display: flex;
   justify-content: center;
   padding-top: 1rem;
+
+  ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #666;
+
+    &:hover {
+      color: blue;
+      border-bottom: 2.5px solid blue;
+    }
+  }
 
   span {
     font-weight: 800;
@@ -39,12 +51,13 @@ nav.header-nav {
     padding-left: 40px;
     padding-right: 40px;
   }
+  
+} // end header-nav
 
-}
-
-nav.header-nav.tight {
+.header-nav.tight {
   padding-top: 0;
 }
+
 
 .header__main {
   display: flex;
@@ -84,62 +97,50 @@ ul.nav {
   padding: 0;
 }
 
-#header ul li a {
-    position: relative;
-    text-decoration: none;
-    color: #666;
-}
 
+// container for "subnav"
 .header__sub {
   position: relative;
   z-index: 20;
+
+  ul.ul-dropdown > li.secondaryNavli > a{
+    text-decoration: none;
+    color: #666;  
+  }
+
+  .ul-dropdown {
+    display: none;
+    justify-content: center;  
+    box-shadow: inset 0 10px 20px rgba(0,0,0,0.1);
+    border-top: 1px solid #ddd;
+    //flex-wrap: wrap;
+    box-sizing: border-box;
+    background: #FFF;
+    list-style-type: none;
+    position: absolute;
+    padding: 0.5rem 4rem;
+    top: -1.5rem;
+    right: 0;
+    width: 100%;
+  }
+  
+  .ul-dropdown.active {
+    display: flex;
+  }
+  
+  .secondaryNavli {
+    //display: inline-block; 
+    float: left;
+    font-size: 13px;
+    white-space: nowrap;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+  }
+  
 }
 
 .active {
   display: flex;
 }
 
-.dropdown-ul-section {
-  display: none;
-  top: -1.5rem;
-  justify-content: center;
-  box-shadow: inset 0 10px 20px rgba(0,0,0,0.1);
-  border-top: 1px solid #ddd;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  padding: 0.5rem 4rem;
-  background: #FFF;
-  width: 100%;
-  right: 0;
-  position: absolute;
-}
-
-.ul-dropdown {
-  display: none;
-  justify-content: center;  
-  box-shadow: inset 0 10px 20px rgba(0,0,0,0.1);
-  border-top: 1px solid #ddd;
-  //flex-wrap: wrap;
-  box-sizing: border-box;
-  background: #FFF;
-  list-style-type: none;
-  position: absolute;
-  padding: 0.5rem 4rem;
-  top: -1.5rem;
-  right: 0;
-  width: 100%;
-}
-
-.ul-dropdown.active {
-  display: flex;
-}
-
-.secondaryNavli {
-  //display: inline-block; 
-  float: left;
-  font-size: 13px;
-  white-space: nowrap;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  width: 100%;
-}

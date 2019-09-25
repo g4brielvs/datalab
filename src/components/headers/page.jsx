@@ -13,19 +13,20 @@ class PageHeader extends React.Component {
     this.state = {
       isSticky: false,
       top: 29,
-      isMouseOverUlorLi: false,
       showAnalysesUl: false,
-      showAnalysesUl: false,
-      showAnalysesUl: false,
-      showAnalysesUl: false,
-      showAnalysesUl: false,
+      showExpressUl: false,
+      showFFGUl: false,
+      showResourcesUl: false,
+      showGlossaryUl: false,
+      mouseOnUlPanel: false,
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
-    this.handleULMouseOver = this.handleULMouseOver.bind(this);
-    this.handleULMouseOut = this.handleULMouseOut.bind(this);
-    this.handleInnerLiOver = this.handleInnerLiOver.bind(this);
-    this.handleInnerLiOut = this.handleInnerLiOut.bind(this);
+    this.handleAnalyses = this.handleAnalyses.bind(this);
+    this.handleExpress = this.handleExpress.bind(this);
+    this.handleFFG = this.handleFFG.bind(this);
+    this.handleResources = this.handleResources.bind(this);
+    this.handleGlossary = this.handleGlossary.bind(this);
+    this.handleUlOut = this.handleUlOut.bind(this);
   };
 
   componentDidMount() {
@@ -52,78 +53,107 @@ class PageHeader extends React.Component {
   }
 
   handleMouseOver(e) {
-    let options = ['Analyses', 'DataLab Express', "America's Finance Guide", 'Resources', 'Glossary'];
     let target = e.target.getAttribute('data-target');
-    let node = this.refs[target];
-    let newOptions = options.filter(x => x != target);
-    node.classList.add('active');
-
-    // make sure if we mouse over another one
-    // we dont ever have 2 active states!
-    newOptions.forEach(x => {
-      this.refs[x].classList.remove('active');
-    });
-  }
-
-  handleMouseOut(e) {
-    let target = e.target.getAttribute('data-target');
-    let node = this.refs[target];
-
-    if (this.state.isMouseOverUlorLi) {      
-      setTimeout(() => {
-        node.classList.remove('active');
-      }, 700)    
+    switch (target) {
+      case "Analyses":
+        this.handleAnalyses();
+        break;
+      case "DataLab Express": 
+        this.handleExpress();
+        break;
+      case "America's Finance Guide":
+        this.handleFFG();
+        break;
+      case "Resources":
+        this.handleResources();
+        break;
+      case "Glossary":
+        this.handleGlossary();
+        break;
     }
   }
 
-  handleULMouseOver(e) {
-    this.setState({isMouseOverUlorLi: true});
-    console.log('ul mouseover');
-    let target = e.target.getAttribute('data-ul-target');
-    let node = this.refs[target];
-    node.classList.add('active');
-  }
-
-  handleULMouseOut(e) {
-    this.setState({isMouseOverUlorLi: false});
-    let target = e.target.getAttribute('data-ul-target');
-    let node = this.refs[target];
-  }
-
-  handleInnerLiOver(e) {
-    console.log('li mouseover');
-    this.setState({isMouseOverUlorLi: true});
-  }
-
-  handleInnerLiOut(e) {
-    console.log('we out this bitch li');
-    this.setState({isMouseOverUlorLi: false});
-    let target = e.target.getAttribute('data-target');
-    let node = this.refs[target];
-    console.log(e.target);
-    console.log(e.currentTarget);
-    console.log(node);
-    if (this.state.isMouseOverUlorLi) {
-      setTimeout(() => {
-        node.classList.remove('active');
-      }, 700)
+    handleAnalyses() {
+      console.log('handle Analyses');
+      this.setState({
+          showAnalysesUl: true,
+          showExpressUl: false,
+          showFFGUl: false,
+          showResourcesUl: false,
+          showGlossaryUl: false,
+        });
     }
-  }
-  
+
+    handleExpress() {
+      console.log('handle express');
+      this.setState({
+        showExpressUl: true,
+        showAnalysesUl: false,
+        showFFGUl: false,
+        showResourcesUl: false,
+        showGlossaryUl: false,
+      });
+    }
+
+    handleFFG() {
+      console.log('handle FFG');
+      this.setState({
+        showExpressUl: false,
+        showAnalysesUl: false,
+        showFFGUl: true,
+        showResourcesUl: false,
+        showGlossaryUl: false,
+      });
+    }
+
+    handleResources() {
+      console.log('handle resources');
+      this.setState({
+        showExpressUl: false,
+        showAnalysesUl: false,
+        showFFGUl: false,
+        showResourcesUl: true,
+        showGlossaryUl: false,
+      });
+    }
+
+    handleGlossary() {
+      console.log('handle glossary');
+      this.setState({
+        showExpressUl: false,
+        showAnalysesUl: false,
+        showFFGUl: false,
+        showResourcesUl: false,
+        showGlossaryUl: true,
+      });
+    }
+
+    handleUlOut(e) {
+      e.stopPropagation();
+      this.setState({
+        showExpressUl: false,
+        showAnalysesUl: false,
+        showFFGUl: false,
+        showResourcesUl: false,
+        showGlossaryUl: false,
+      });
+    }
+
+
   render() {
 
-    let listItems = this.props.headerItems;
-    console.log(this.state);    
-
-    let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={i} onMouseEnter={this.handleMouseOver} onMouseLeave={this.handleMouseOut}>
-        <a href='#' data-target={item} ref={item}> {item} <span><Arrow /></span></a>
-      </li>;
-    });
-
+    const listItems = this.props.headerItems;
     const isSticky = this.state.isSticky;
     const top = this.state.top;
-    let that = this; // used to preserve this inside nested map in render return
+    const that = this; // used to preserve this inside nested map in render return
+
+    console.log(this.state);
+
+    let returnItems = listItems.map((item, i) => {
+      return <li className='navListItem' key={i} onMouseOver={that.handleMouseOver}>
+        <a href='#' data-target={item}> {item} <span><Arrow /></span></a>
+      </li>;
+    });
 
     return (
       <header id="header" style={{ top: `${top}px` }}>
@@ -134,7 +164,7 @@ class PageHeader extends React.Component {
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
-                  <TagLine />
+                    <TagLine />
                   )}
               </div>
             </a>
@@ -151,32 +181,32 @@ class PageHeader extends React.Component {
         </div>
 
         <div className="header__sub">
-          <ul className={`ul-dropdown`} id='subnav-analysis' ref='Analyses' data-ul-target='Analyses' onMouseEnter={this.handleULMouseOver} onMouseLeave={this.handleULMouseOut}>
+          <ul className={`ul-dropdown ${this.state.showAnalysesUl ? `active`: ``}`} id='subnav-analysis' onMouseLeave={this.handleUlOut}>
             {this.props.megamenuItems[0].analyses.map(function (x, i) {
               // consider going back to this whole section and rewriting
               // the whole data structure itself. (props) Should be able to just
               // loop through them all with perhaps nested forEach and Map
-              return <li className='secondaryNavli' key={i} ref='Analyses' data-target='Analyses' onMouseEnter={that.handleInnerLiOver} onMouseLeave={that.handleInnerLiOut}><a href={x.link}> {x.name}</a></li>;
+              return <li className='secondaryNavli' key={i}><a href={x.link}> {x.name}</a></li>;
             })}
           </ul>
-          <ul className={`ul-dropdown`} id='subnav-express' ref='DataLab Express' onMouseEnter={this.handleULMouseOver} onMouseEnter={this.handleULMouseOut} data-ul-target='DataLab Express'>
+          <ul className={`ul-dropdown ${this.state.showExpressUl ? `active`: ``}`} id='subnav-express' onMouseLeave={this.handleUlOut}>
             {this.props.megamenuItems[1].express.map(function (x, i) {
-              return <li className='secondaryNavli' ref='DataLab Express' data-target='DataLab Express' key={i}><a href={x.link}> {x.name}</a></li>;
+              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
             })}
           </ul>
-          <ul className='ul-dropdown' id='subnav-ffg' ref="America's Finance Guide" data-ul-target="America's Finance Guide" onMouseOver={this.handleULMouseOver} onMouseOut={this.handleULMouseOut}>
+          <ul className={`ul-dropdown ${this.state.showFFGUl ? `active`: ``}`} id='subnav-ffg' onMouseLeave={this.handleUlOut}>
             {this.props.megamenuItems[2].ffg.map(function (x, i) {
-              return <li className='secondaryNavli' ref="America's Finance Guide" data-target="America's Finance Guide" key={i}><a href={x.link}> {x.name}</a></li>;
+              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
             })}
           </ul>
-          <ul className='ul-dropdown' id='subnav-resources' ref='Resources' data-ul-target='Resources' onMouseOver={this.handleULMouseOver} onMouseOut={this.handleULMouseOut}>
+          <ul className={`ul-dropdown ${this.state.showResourcesUl ? `active`: ``}`} id='subnav-resources' onMouseLeave={this.handleUlOut}>
             {this.props.megamenuItems[3].resources.map(function (x, i) {
-              return <li className='secondaryNavli' ref="Resources" data-target='Resources' key={i}><a href={x.link}> {x.name}</a></li>;
+              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
             })}
           </ul>
-          <ul className='ul-dropdown' id='subnav-glossary' ref='Glossary' data-ul-target='Glossary' onMouseOver={this.handleULMouseOver} onMouseOut={this.handleULMouseOut}>
+          <ul className={`ul-dropdown ${this.state.showGlossaryUl ? `active`: ``}`} id='subnav-glossary' ref='Glossary' onMouseLeave={this.handleUlOut}>
             {this.props.megamenuItems[4].glossary.map(function (x, i) {
-              return <li className='secondaryNavli' ref="Glossary" data-target='Glossary' key={i}><a href={x.link}> {x.name}</a></li>;
+              return <li className='secondaryNavli' key={i} ><a href={x.link}> {x.name}</a></li>;
             })}
           </ul>
         </div>
