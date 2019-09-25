@@ -39,7 +39,7 @@ class ToolLayout extends React.Component {
             </section>
           </article>
         </main>
-        <HWCTALink url={'#'} _mainClass={toolStyles.hwcta} />
+        <HWCTALink url={'#'} _mainClass={toolStyles.hwcta} _noOffset='true' />
         <MoreAnalyses />
       </div>
     </Default>
