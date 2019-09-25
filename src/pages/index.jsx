@@ -18,7 +18,6 @@ import contractSpending from "../images/home/c-o-t.png"
 import "../styles/index.scss"
 import homeStyles from "./index.module.scss"
 import cg from "../images/home/cg-gif.gif"
-import moreAnalysesStyles from "../page-sections/home/more-analyses-tiles/more-analyses-tiles.module.scss"
 
 
 function IndexPage() {
