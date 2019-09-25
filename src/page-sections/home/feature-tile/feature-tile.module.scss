@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/index';
 
 .featured {
   border: 1px solid #ddd;
@@ -8,8 +9,7 @@
 }
 
 .heading {
-  font-size: 24px;
-  text-align: center;
+  @include homepageSubtitle();
   text-align: center;
 }
 
@@ -18,12 +18,8 @@
 }
 
 .text {
+  @include homepageBodyCopy();
   padding: 0 2.188rem;
-  font-stretch: normal;
-  line-height: 1.43;
-  letter-spacing: 0.4px;
-  font-size: 16px;
-  font-weight: 300;
   text-align: center;
 }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { Grid } from "@material-ui/core"
+
 
 import apiImg from '../../../images/home/resources-api-2.svg'
 import userGuideImg from '../../../images/home/resources-user-guide-2.svg'
@@ -30,41 +32,43 @@ const ResourcesRow = () => {
   return (
     <>
       <section className={resourcesRowStyles.resources}>
-        <div className="row">
-          <div className="col-xs-12">
+        <Grid container
+              spacing={3}>
+          <Grid item xs={12}>
             <h1 className={resourcesRowStyles.heading}>
               Resources
             </h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className={`${resourcesRowStyles.tile} col-lg-3 col-md-12 center-xs`}>
-            <p className={resourcesRowStyles.title}>
-              Do you want
-              <strong> to conduct your own analysis?</strong>
-            </p>
-            <p className={resourcesRowStyles.description}>
-              Access Treasury data and create your own charts and visualizations!
-            </p>
-          </div>
+          </Grid>
+          <Grid item md={12} lg={3}
+              className={resourcesRowStyles.tile}>
+              <p className={resourcesRowStyles.title}>
+                Do you want
+                <strong> to conduct your own analysis?</strong>
+              </p>
+              <p className={resourcesRowStyles.description}>
+                Access Treasury data and create your own charts and visualizations!
+              </p>
+          </Grid>
           {resourcesItems.map((resource, index) =>
-            <Link
-              key={'landing-row__tile_' + index}
-              className={`${resourcesRowStyles.tile} col-lg-3 col-md-4 col-sm-12 col-xs-12 center-md`}
-              to={resource.href}>
-              <div className={`row ${resourcesRowStyles.tileRow}`}>
-                <img src={resource.imageSrc}
-                     className={`${resourcesRowStyles.svgImg} first-sm col-xs-6 col-sm-6 col-md-12`} />
-                <h1 className={`${resourcesRowStyles.title} col-xs-6 col-sm-6 col-md-12`}>
-                  {resource.title}
-                </h1>
-                <p className={resourcesRowStyles.description}>
-                  {resource.description}
-                </p>
-              </div>
-            </Link>
+            <Grid item xs={12} sm={12} md={4} lg={3}
+                  className={resourcesRowStyles.tileRow}>
+              <Link
+                key={'landing-row__tile_' + index}
+                className={resourcesRowStyles.tile}
+                to={resource.href}>
+
+                  <img src={resource.imageSrc}
+                       className={resourcesRowStyles.svgImg} />
+                  <h1 className={resourcesRowStyles.title}>
+                    {resource.title}
+                  </h1>
+                  <p className={resourcesRowStyles.description}>
+                    {resource.description}
+                  </p>
+              </Link>
+            </Grid>
           )}
-        </div>
+        </Grid>
       </section>
     </>
   )

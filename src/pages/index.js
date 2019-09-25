@@ -4,10 +4,10 @@ import { Grid } from "@material-ui/core"
 
 import Home from "../components/layouts/home/home"
 import SEO from "../components/seo"
-import MainTile from "../page-sections/home/main-tile/main-tile"
+import FeatureTile from "../page-sections/home/feature-tile/feature-tile"
 import SecondaryTile from "../page-sections/home/secondary-tile/secondary-tile"
 import DtsTile from "../page-sections/home/dts-tile/dts-tile"
-import MoreAnalysesRow from "../page-sections/home/more-analyses-row/more-analyses-row"
+import MoreAnalysesTiles from "../page-sections/home/more-analyses-tiles/more-analyses-tiles"
 import FeatureRow from "../page-sections/home/feature-row/feature-row"
 import ResourcesRow from "../page-sections/home/resources-row/resources-row"
 
@@ -17,6 +17,8 @@ import contractSpending from "../images/home/c-o-t.png"
 
 import "../styles/index.scss"
 import homeStyles from "./index.module.scss"
+import cg from "../images/home/cg-gif.gif"
+import moreAnalysesStyles from "../page-sections/home/more-analyses-tiles/more-analyses-tiles.module.scss"
 
 
 function IndexPage() {
@@ -26,13 +28,14 @@ function IndexPage() {
       <SEO title="Data Lab - U.S. Treasury" keywords={[`gatsby`, `application`, `react`]}/>
 
       <Grid container
-              spacing={2}
+              spacing={3}
               justify="center"
               className={homeStyles.featuredTileRow}>
 
           <Grid item md={12} lg={8}
                 className={homeStyles.featuredTile}>
-            <MainTile
+
+            <FeatureTile
               href={"colleges-and-universities"}
               imgSrc={main}
               imgAlt={"Answer all your questions about federal government finance"}
@@ -51,6 +54,7 @@ function IndexPage() {
           </Grid>
 
           <Grid item md={12} lg={4}>
+
             <DtsTile
               href={"dts"}
               heading={"Visualizing the Daily Treasury Statement"}
@@ -60,6 +64,7 @@ function IndexPage() {
               container
               direction="column"
               spacing={3}>
+
               <Grid item sm={12} md={6} lg={12}>
                 <SecondaryTile
                   heading={"Contract Spending Analysis"}
@@ -85,33 +90,59 @@ function IndexPage() {
               </Grid>
             </Grid>
           </Grid>
-
-
-          <Grid item xs={12}
-                className={homeStyles.moreAnalysesRow}>
-            <MoreAnalysesRow/>
-          </Grid>
-
-          <Grid item xs={12}
-                className={homeStyles.featuredRow}>
-              <FeatureRow
-                href={"homelessness-analysis"}
-                heading={"Homelessness Analysis"}
-                title={"Explore federal programs that address homelessness"}
-                blurb={`On a single night in 2016, more than 500,000 people experienced homelessness in the United States. With
-									our visualizations, you can see which federal programs are addressing homelessness, the amount of federal
-									spending on homelessness by region, and where individuals experiencing homelessness are located. We also
-									provide information about which regions are similar to others based on their homeless populations and
-									funding profiles.`}
-              />
-          </Grid>
-
-          <Grid item xs={12}
-                className={homeStyles.resourceRow}>
-              <ResourcesRow/>
-          </Grid>
-
         </Grid>
+
+        <Grid
+            container
+            spacing={3}
+            className={homeStyles.moreAnalysesRow}>
+
+            <Grid item xs={12}>
+              <p className={homeStyles.heading}>
+                More Analyses
+              </p>
+            </Grid>
+
+            <Grid item md={12} lg={6}>
+              <MoreAnalysesTiles/>
+            </Grid>
+
+            <Grid item md={12} lg={6}>
+              <FeatureTile
+                href={'americas-finance-guide'}
+                imgSrc={cg}
+                imgAlt={'Answer all your questions about federal government finance'}
+                heading={"Your Guide to America's Finances"}
+                body={`Your Guide to America's Finances is an overview of federal government finances in 2018, providing
+                information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data
+                Lab,
+                presents a series of interactive visualizations to allow you to explore these categories and how they
+                have
+                changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
+                dollars collected and spent by the federal government each year.`}
+                mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
+                  well as the deficit and debt in 2018.`
+                } />
+
+            </Grid>
+          </Grid>
+
+          <div className={homeStyles.featuredRow}>
+            <FeatureRow
+              href={"homelessness-analysis"}
+              heading={"Homelessness Analysis"}
+              title={"Explore federal programs that address homelessness"}
+              blurb={`On a single night in 2016, more than 500,000 people experienced homelessness in the United States. With
+                our visualizations, you can see which federal programs are addressing homelessness, the amount of federal
+                spending on homelessness by region, and where individuals experiencing homelessness are located. We also
+                provide information about which regions are similar to others based on their homeless populations and
+                funding profiles.`}
+            />
+          </div>
+
+        <div className={homeStyles.resourceRow}>
+            <ResourcesRow/>
+        </div>
 
     </Home>
   )

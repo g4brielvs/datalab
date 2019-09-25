@@ -24,12 +24,14 @@
 
   .title {
     font-size: 24px;
-    height: 1.5em;
+    height: 52px;
+    text-align: center;
   }
 
   p.title {
     font-size: 2em;
     height: auto;
+    margin-top: 0;
   }
 
   .description {
@@ -41,6 +43,7 @@
     letter-spacing: normal;
     color: #4a4a4a;
     margin-bottom: 2rem;
+    text-align: center;
   }
 
 }

@@ -17,7 +17,49 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-@mixin h1-style {
+@mixin homepageSectionHeading {
+  font-size: 1.17em;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #aaa;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+@mixin homepageTitle {
+  text-align: left;
+  color: #2272CE;
+  font-size: 1em;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin homepageSubtitle {
+  text-align: left;
+  font-size: 130%;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.24;
+  letter-spacing: normal;
+  color: #4A4A4A;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin homepageBodyCopy {
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+@mixin h1-heading {
   font-family: SourceSansPro;
   font-size: 56px;
   font-weight: 300;
@@ -28,7 +70,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin h2-style {
+@mixin h2-subheading {
   font-family: SourceSansPro;
   font-size: 48px;
   font-weight: 300;
@@ -39,7 +81,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin H3---Sub-Heading-Style {
+@mixin h3-subheading {
   font-family: SourceSansPro;
   font-size: 40px;
   font-weight: 600;
@@ -50,7 +92,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin H4---Sub-Heading-Style {
+@mixin h4-subheading {
   font-family: SourceSansPro;
   font-size: 32px;
   font-weight: normal;
@@ -61,7 +103,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin H5---Sub-Heading-Style {
+@mixin h5-subheading {
   font-family: SourceSansPro;
   font-size: 24px;
   font-weight: 600;
@@ -72,7 +114,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin Lead-Paragraph-Style {
+@mixin lead-paragraph {
   font-family: SourceSansPro;
   font-size: 20px;
   font-weight: normal;
@@ -83,7 +125,7 @@ a:-webkit-any-link {
   color: $font-body-copy;
 }
 
-@mixin H6---Sub-Heading-Style {
+@mixin h6-subheading {
   font-family: SourceSansPro;
   font-size: 18px;
   font-weight: 600;
@@ -94,7 +136,7 @@ a:-webkit-any-link {
   color: $font-title;
 }
 
-@mixin Body-Style {
+@mixin body-copy {
   font-family: SourceSansPro;
   font-size: 16px;
   font-weight: normal;
@@ -105,7 +147,7 @@ a:-webkit-any-link {
   color: $font-body-copy;
 }
 
-@mixin Body-Copy---Light {
+@mixin body-copy {
   font-family: SourceSansPro;
   font-size: 16px;
   font-weight: 300;
@@ -116,7 +158,7 @@ a:-webkit-any-link {
   color: $font-body-copy;
 }
 
-@mixin Table---copy-Style {
+@mixin table-copy {
   font-family: SourceSansPro;
   font-size: 15px;
   font-weight: normal;
@@ -127,7 +169,7 @@ a:-webkit-any-link {
   color: $font-body-copy;
 }
 
-@mixin Body---Small-Style {
+@mixin body-small {
   font-family: SourceSansPro;
   font-size: 12px;
   font-weight: normal;

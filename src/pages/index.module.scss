@@ -1,24 +1,39 @@
 @import '../styles/variables';
+@import '../styles/index';
+
+.featured-tile-row {
+  padding-bottom: $margin-30;
+}
 
 .featured-row {
-  padding-bottom: $margin * 2;
+  padding-bottom: $margin-45;
 }
 
 .resource-row {
-  padding-bottom: $margin * 2;
+  padding-bottom: $margin-45;
 }
 
 .more-analyses-row {
-  padding-bottom: $margin * 2;
+  padding-bottom: $margin-45;
+
+  .heading-container {
+      border-bottom: 1px solid red;
+  }
+
+  .heading {
+    @include homepageSectionHeading();
+  }
+
+  MainTile {
+    margin-top: $margin-15;
+  }
 }
 
 @media screen and (min-width: $desktop-xl) {
   .featured-tile {
-    padding-right: $margin-override;
   }
 
   .featured-tile-row {
-    padding-bottom: $margin * 2;
   }
 }
 

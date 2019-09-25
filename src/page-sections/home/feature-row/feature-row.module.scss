@@ -1,22 +1,13 @@
 @import '../../../styles/variables';
+@import '../../../styles/index';
 
-// main-tile-row.scss
+// feature-tile-row.scss
 $landing-title-color: #4a4a4a;
 
-@mixin landing-header {
-  font-size: 17px;
-  color: #2272CE;
-  font-weight: bold;
-}
 
 @mixin landing-subtext {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
-}
-
-.content {
-  margin-top: 1rem;
-  padding-right: $margin-override;
 }
 
 .border {
@@ -25,37 +16,34 @@ $landing-title-color: #4a4a4a;
 }
 
 .image {
-  padding-right: $reset-override;
 
   img {
-    width: 100%;
+    width: calc(100% - 16px);
+    margin-left: 16px;
     height: 100%;
     border-bottom-right-radius: 0.25rem;
   }
 }
 
 .heading {
-  @include landing-header;
+  @include homepageTitle();
+  width: calc(100% - 32px);
+}
 
-  margin-top: 0;
+.content {
+  padding-left: $margin-15;
+  padding-top: $margin-15;
+  margin-right: -16px;
 }
 
 .title {
-  @include landing-subtext;
-  color: $landing-title-color;
-  margin-bottom: 2.188rem;
-  margin-top: 1rem;
+  @include homepageSubtitle();
+  width: calc(100% - 32px);
 }
 
 .blurb {
-  font-size: 16px;
-  font-weight: 300;
-  font-style: normal;
-  line-height: 1.43;
-  letter-spacing: 0.4px;
-  color: black;
-  font-stretch: normal;
-  margin-top: 0;
+  @include homepageBodyCopy();
+  width: calc(100% - 32px);
 }
 
 .feature-row {
@@ -92,7 +80,6 @@ $landing-title-color: #4a4a4a;
   }
 
   .image {
-    padding-left: $margin-override;
     img {
       border-radius: 0;
       height: unset;
