@@ -11,6 +11,7 @@ $details-width: 350px;
 }
 
 .details {
+	z-index: 99;
 	position: absolute;
 	width: $details-width;
 	padding: 2rem;
@@ -59,4 +60,17 @@ $details-width: 350px;
 .rowValue {
 	@include tableRows;
 	text-align: right;
+}
+
+.col1title {
+	@include tableRows;
+}
+
+.col2title {
+	@include tableRows;
+	text-align: right;
+}
+
+.value {
+	@include tableRows;
 }

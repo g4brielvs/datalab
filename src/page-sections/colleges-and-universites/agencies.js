@@ -66,7 +66,7 @@ export default class Agencies extends React.Component {
       },
       {
         'col1Title': 'Institution (Top 5)',
-        'col2Title': 'Toatal Investment',
+        'col2Title': 'Total Investment',
         'rows': {
           'UNLV': 35000,
           'Baker College': 590200,
