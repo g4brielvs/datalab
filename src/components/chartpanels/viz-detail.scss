@@ -4,10 +4,8 @@ $details-width: 350px;
 
 @mixin tableRows {
 	font-size: 0.9rem;
-	font-weight: 300;
 	color: #555;
-	padding: 0.35rem 0 !important;
-	border-bottom: 1px solid #ddd;
+	padding: 0.35rem 0;
 }
 
 .details {
@@ -47,30 +45,34 @@ $details-width: 350px;
 	color: #666;
 	font-size: 1.25rem;
 	font-weight: 700;
-
-	&.MuiGrid-item {
-		margin: 0 0 1rem;
-	}
-}
-
-.rowLabel {
-	@include tableRows;
-}
-
-.rowValue {
-	@include tableRows;
-	text-align: right;
 }
 
 .col1title {
 	@include tableRows;
+	padding: 2rem 0 0.35rem;
+	font-weight: 700;
 }
 
 .col2title {
 	@include tableRows;
+	font-weight: 700;
 	text-align: right;
 }
 
-.value {
+table {
 	@include tableRows;
+	width: 100%;
+	padding: 2rem 0 0.35rem;
+	white-space: pre;
+}
+
+td {
+	font-weight: 300;
+	border-top: 1px solid #ddd;
+}
+
+th + th,
+td + td {
+	@include tableRows;
+	text-align: right;
 }
