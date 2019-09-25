@@ -4,7 +4,6 @@ import Default from "../default/default"
 
 import homeTemplateStyles from "./home.module.scss"
 
-
 const Home = ({ children }) => (
       <>
         <Default>

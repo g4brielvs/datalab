@@ -31,7 +31,7 @@ function IndexPage() {
               justify="center"
               className={homeStyles.featuredTileRow}>
 
-          <Grid item md={12} lg={8}
+          <Grid item lg={12} xl={8}
                 className={homeStyles.featuredTile}>
 
             <FeatureTile
@@ -52,7 +52,7 @@ function IndexPage() {
 
           </Grid>
 
-          <Grid item md={12} lg={4}>
+          <Grid item lg={12} xl={4}>
 
             <DtsTile
               href={"dts"}
@@ -61,10 +61,10 @@ function IndexPage() {
 
             <Grid
               container
-              direction="column"
-              spacing={3}>
+              spacing={3}
+              className={homeStyles.secondaryTiles}>
 
-              <Grid item sm={12} md={6} lg={12}>
+              <Grid item md={12} lg={6} xl={12}>
                 <SecondaryTile
                   heading={"Contract Spending Analysis"}
                   subheading={"How has federal contract spending changed over time?"}
@@ -76,7 +76,7 @@ function IndexPage() {
                 />
               </Grid>
 
-              <Grid item sm={12} md={6} lg={12}>
+              <Grid item md={12} lg={6} xl={12}>
                 <SecondaryTile
                   heading={"Contract Explorer"}
                   subheading={"Who receives federal contracts?"}
@@ -102,11 +102,11 @@ function IndexPage() {
               </p>
             </Grid>
 
-            <Grid item md={12} lg={6}>
+            <Grid item lg={12} xl={6}>
               <MoreAnalysesTiles/>
             </Grid>
 
-            <Grid item md={12} lg={6}>
+            <Grid item lg={12} xl={6}>
               <FeatureTile
                 href={'americas-finance-guide'}
                 imgSrc={cg}

@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import styles from './styles/variables.scss';
 
-export default function HTML(props) {
-
-  const theme = createMuiTheme({
-    breakpoints: {
-      values: {
-        xs: styles.xs,
-        sm: styles.sm,
-        md: styles.md,
-        lg: styles.lg,
-        xl: styles.xl
-      }
+const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200
     }
-  });
+  }
+});
+
+export default function HTML(props) {
 
   return (
     <html {...props.htmlAttributes}>
@@ -31,12 +31,12 @@ export default function HTML(props) {
         <noscript key="noscript" id="gatsby-noscript">
           This app works best with JavaScript enabled.
         </noscript>
-        <div
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
         <MuiThemeProvider theme = { theme }>
+          <div
+            key={`body`}
+            id="___gatsby"
+            dangerouslySetInnerHTML={{ __html: props.body }}
+          />
           {props.postBodyComponents}
         </MuiThemeProvider>
       </body>

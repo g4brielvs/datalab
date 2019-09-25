@@ -28,9 +28,8 @@
 
 }
 
-
 @media screen and (max-width: $desktop-xl) {
-  .dts {
+  .dts h1, .dts h2 {
     text-align: center;
   }
 }

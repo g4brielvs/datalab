@@ -13,12 +13,12 @@
   padding-bottom: $margin-45;
 }
 
+.secondaryTiles {
+  flex-direction: row;
+}
+
 .more-analyses-row {
   padding-bottom: $margin-45;
-
-  .heading-container {
-      border-bottom: 1px solid red;
-  }
 
   .heading {
     @include homepageSectionHeading();
@@ -47,3 +47,4 @@
   }
 
 }
+

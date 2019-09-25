@@ -8,7 +8,6 @@ import * as d3 from 'd3v4'
 
 function DtsTile(props) {
 
-
   let svg,
     data,
     debounce,
