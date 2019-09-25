@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './tool.scss';
+import toolStyles from './tool.module.scss';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -11,14 +11,14 @@ import MoreAnalyses from '../../more-analyses/more-analyses';
 class ToolLayout extends React.Component {
   render = () =>
     <Default>
-      <div className='tool-page'>
+      <div className={toolStyles.toolPage}>
         <header>
           <Grid container justify='space-between'>
-            <Grid item className='title'>{this.props.title}</Grid>
+            <Grid item className={toolStyles.title}>{this.props.title}</Grid>
           </Grid>
         </header>
         <section>
-          <p className='intro' dangerouslySetInnerHTML={{ __html: this.props.introSentence }}></p>
+          <p className={toolStyles.intro} dangerouslySetInnerHTML={{ __html: this.props.introSentence }}></p>
           <p dangerouslySetInnerHTML={{ __html: this.props.contextStatement }}></p>
         </section>
 
@@ -27,10 +27,10 @@ class ToolLayout extends React.Component {
             <section>
               {this.props.children}
             </section>
-            <section className='follow-up'>
+            <section className={toolStyles.followUp}>
               <Grid container>
                 <Grid item xs={4}>
-                  <div className='intro' dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
+                  <div className={toolStyles.intro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
                 </Grid>
                 <Grid item xs={8}>
                   <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
@@ -39,7 +39,7 @@ class ToolLayout extends React.Component {
             </section>
           </article>
         </main>
-        <HWCTALink url={'#'} />
+        <HWCTALink url={'#'} _mainClass={toolStyles.hwcta} />
         <MoreAnalyses />
       </div>
     </Default>
