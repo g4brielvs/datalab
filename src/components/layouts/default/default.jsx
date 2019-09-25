@@ -1,13 +1,28 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from 'react-helmet'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import SiteHeader from '../../headers/site'
 import PageHeader from '../../headers/page'
 import PageFooter from "../../footers/page"
 import SiteFooter from "../../footers/site"
+
+import styles from '../../../styles/variables.scss'
 import '../../../styles/index.scss'
-import defaultStyles from './default.module.scss'
+
+const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: parseInt(styles.xs),
+      sm: parseInt(styles.sm),
+      md: parseInt(styles.md),
+      lg: parseInt(styles.lg),
+      xl: parseInt(styles.xl)
+    }
+  }
+});
+
 
 const Default = ({ children }) => (
   <>
@@ -15,13 +30,15 @@ const Default = ({ children }) => (
         <title>Data Lab - U.S. Treasury</title>
     </Helmet>
 
-    <SiteHeader />
-    <PageHeader />
-    <div className={defaultStyles.default}>
-      {children}
-    </div>
-    <PageFooter />
-    <SiteFooter />
+    <MuiThemeProvider theme = { theme }>
+        <SiteHeader />
+        <PageHeader />
+            <div>
+              {children}
+            </div>
+        <PageFooter />
+        <SiteFooter />
+    </MuiThemeProvider>
   </>
 );
 
