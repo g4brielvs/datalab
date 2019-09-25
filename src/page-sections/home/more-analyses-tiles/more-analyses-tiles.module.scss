@@ -24,6 +24,7 @@ $darkGrey: #666666;
 
   .title {
     @include homepageTitle();
+    margin-top: 0;
   }
 
   .subtitle {

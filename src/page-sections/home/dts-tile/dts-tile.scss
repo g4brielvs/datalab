@@ -1,14 +1,11 @@
 @import '../../../styles/variables';
-
-@mixin margin {
-  margin-bottom: 45px;
-}
+@import '../../../styles/index';
 
 .dts {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   text-align: left;
-  @include margin;
+  margin-bottom: $margin-30;
 
   h1 {
     text-transform: uppercase;
@@ -25,14 +22,10 @@
   }
 
   h2 {
-    font-size: 22px;
-    color: #4a4a4a;
+    @include homepageSubtitle();
     padding: 0 1rem;
   }
 
-  h2:hover {
-    text-decoration: underline;
-  }
 }
 
 
