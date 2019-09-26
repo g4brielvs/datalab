@@ -46,10 +46,6 @@ $mdGrey: #555555;
   margin-bottom: $margin-25;
 }
 
-@media (min-width: $desktop) {
-
-}
-
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
   .story-page {
     max-width: 768px;
@@ -63,7 +59,7 @@ $mdGrey: #555555;
 
 @media (max-width: $tablet - 1) {
   .story-page {
-    margin: 0 auto;
+    margin: 30px auto 0;
   }
 
   .header__title, .header__introSentence, .header__contextStatement {

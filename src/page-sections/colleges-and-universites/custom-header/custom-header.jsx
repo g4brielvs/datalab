@@ -1,7 +1,6 @@
 import React from 'react';
 import "./custom-header.scss"
 
-
 const CustomHeader = (props) => (
   <div className="header container-fluid">
     <div className="row center-xs">

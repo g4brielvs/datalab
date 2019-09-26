@@ -1,11 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import "./story.scss"
+
 import Default from "../default/default"
+import { Grid } from "@material-ui/core"
 import HwctaLink from "../../hwcta-link/hwcta-link"
 import MoreAnalyses from "../../more-analyses/more-analyses"
 import Toc from "../../toc/toc"
-import { Grid } from "@material-ui/core"
 
 
 const StoryLayout = (props) => {
@@ -38,11 +39,7 @@ const StoryLayout = (props) => {
       {toc}
 
       <main>
-        <article>
-          <section>
-            {props.children}
-          </section>
-        </article>
+        {props.children}
       </main>
 
       <HwctaLink url={'#'} />

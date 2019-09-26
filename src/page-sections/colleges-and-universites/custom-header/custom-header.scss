@@ -6,6 +6,10 @@ p {
   margin-bottom: 1em;
 }
 
+// .header {
+//   background: url(header-banner.svg) center top no-repeat;
+// }
+
 .header__blurb {
   color: $mdGrey;
   font-size: 17px;
@@ -33,6 +37,6 @@ p {
   line-height: 20px;
 }
 
-.header.container {
-  margin: 3rem 0;
-}
+// .header.container-fluid {
+//   margin: 3rem 0;
+// }
