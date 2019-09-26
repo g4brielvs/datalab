@@ -38,13 +38,10 @@
 }
 
 @media screen and (max-width: $desktop-xl) {
-  .highlight__text {
-    display: none;
+  .secondaryTiles {
+    border-top: 1px solid #ddd;
   }
 
-  .featured-tile {
-    padding-bottom: $margin * 2 !important;
-  }
 
 }
 

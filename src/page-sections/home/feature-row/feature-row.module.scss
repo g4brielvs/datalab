@@ -59,6 +59,16 @@ $landing-title-color: #4a4a4a;
   }
 }
 
+@media screen and (max-width: $desktop-xl) {
+  .content {
+    padding-top: 0;
+  }
+
+  .heading {
+    margin-top: 0;
+  }
+}
+
 
 @media screen and (max-width: $tablet) {
   .blurb {
