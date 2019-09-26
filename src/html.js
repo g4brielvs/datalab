@@ -1,21 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import styles from './styles/variables.scss';
 
 export default function HTML(props) {
-
-  const theme = createMuiTheme({
-    breakpoints: {
-      values: {
-        xs: styles.xs,
-        sm: styles.sm,
-        md: styles.md,
-        lg: styles.lg,
-        xl: styles.xl
-      }
-    }
-  });
 
   return (
     <html {...props.htmlAttributes}>
@@ -36,9 +22,7 @@ export default function HTML(props) {
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-        <MuiThemeProvider theme = { theme }>
           {props.postBodyComponents}
-        </MuiThemeProvider>
       </body>
     </html>
   )

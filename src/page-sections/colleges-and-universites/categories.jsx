@@ -1,16 +1,14 @@
 import React from "react"
 import "../../styles/index.scss"
-
-/* components */
-import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import Accordion from "../../components/accordion/accordion"
-import SearchPanel from "../../components/chartpanels/search"
-import VizControlPanel from "../../components/chartpanels/viz-control"
-import VizDetails from "../../components/chartpanels/viz-detail"
-import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
-import SunburstIcon from '../../images/sunburst_icon.svg';
 
+import Accordion from "../../components/accordion/accordion"
+import Downloads from "../../components/section-elements/downloads/downloads"
+import { Hidden } from "@material-ui/core"
+import SearchPanel from "../../components/chartpanels/search"
+import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import SunburstIcon from '../../images/sunburst_icon.svg';
+import VizControlPanel from "../../components/chartpanels/viz-control"
 
 export default class Categories extends React.Component {
   constructor(props) {
@@ -53,7 +51,7 @@ export default class Categories extends React.Component {
 
   searchSelected = id => {
     let choice;
-    searchList.some(parent => {
+    this.searchList.some(parent => {
       if (parent.id === id) {
         choice = parent;
         return true;
@@ -81,12 +79,14 @@ export default class Categories extends React.Component {
           blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
         />
 
-        <SearchPanel
-          searchList={this.searchList}
-          listDescription="Categories"
-          showCollapse
-          onSelect={this.searchSelected}
-        />
+        <Hidden lgUp>
+          <SearchPanel
+            searchList={this.searchList}
+            listDescription="Categories"
+            showCollapse
+            onSelect={this.searchSelected}
+          />
+        </Hidden>
 
         <Accordion
           title="Accordion Title">
@@ -97,22 +97,17 @@ export default class Categories extends React.Component {
 
         <div className="container" style={this.defaultImageStyle}>
           <div className="row center-xs">
-            <VizControlPanel
-              searchList={this.searchList}
-              listDescription="Categories"
-              onSelect={this.searchSelected}
-              switchView={this.switchView}
-            >
-              <img src={SunburstIcon} />
-            </VizControlPanel>
-            <img className="col-xs-6" src={defaultImage}
-              onClick={() => this.showDetails()}
-            />
-            <VizDetails
-              showDetails={click => this.showDetails = click}
-              data={{}}
-            >
-            </VizDetails>
+            <Hidden mdDown>
+              <VizControlPanel
+                searchList={this.searchList}
+                listDescription="Categories"
+                onSelect={this.searchSelected}
+                switchView={this.switchView}
+              >
+                <img src={SunburstIcon} />
+              </VizControlPanel>
+            </Hidden>
+            <img className="col-xs-6" src={defaultImage} />
           </div>
         </div>
 
