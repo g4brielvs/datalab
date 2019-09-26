@@ -181,7 +181,7 @@ class PageHeader extends React.Component {
     // TODO! xxx
     return (
       <header id="header" style={{ top: `${top}px` }}>
-        <div className={`header__main ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
+        <div className={`header__main ${isSticky ? `tight` : ``}`}>
           <div className={`header-logo__wrapper ${isSticky ? `row` : `col`}`}>
             <a href="/">
               <div>
