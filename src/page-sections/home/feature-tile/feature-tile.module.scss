@@ -10,7 +10,7 @@
 
 .heading {
   @include homepageSubtitle();
-  margin-top: $margin-45;
+  margin-top: $margin-25;
   text-align: center;
 }
 
@@ -34,9 +34,7 @@
 }
 
 @media screen and (max-width: $desktop) {
-  .text {
-    padding-right: 0;
-  }
+
 
   .image {
     padding-left: 0;

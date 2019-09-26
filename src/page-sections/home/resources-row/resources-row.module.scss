@@ -50,20 +50,39 @@
 
 
 @media screen and (max-width: $desktop) {
-  .description {
-    display: none;
-  }
-
   .title {
     text-align: center;
   }
 
-  .tile {
+  .tile-row {
+    padding-top: $margin;
+  }
+
+}
+
+@media screen and (max-width: $tablet) {
+  .title {
+    text-align: center;
   }
 
   .tile-row {
-    padding-top: $margin;
     border-top: 1px solid #dddddd;
+
+    .description {
+      display: none;
+    }
+
+    .tile {
+      .svgImg {
+        float: left;
+      }
+
+      .title {
+        font-size: 16px;
+        padding-top: 20px;
+      }
+    }
+
   }
 
 }

@@ -39,7 +39,7 @@ const ResourcesRow = () => {
               Resources
             </h1>
           </Grid>
-          <Grid item md={12} lg={3}
+          <Grid item sm={12} md={12} lg={3}
               className={resourcesRowStyles.tile}>
               <p className={resourcesRowStyles.title}>
                 Do you want
