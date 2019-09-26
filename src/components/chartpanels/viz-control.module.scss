@@ -6,10 +6,10 @@ $border-color: #eee;
 
 .sidebar {
 	position: absolute;
-	left: 0;
-	transition: left 0.5s ease-in-out;
 	text-align: left;
 	display: flex;
+	left: -$search-width;
+	transition: left 0.5s ease-in-out;
 
 	form {
 		width: $search-width;
@@ -36,6 +36,6 @@ $border-color: #eee;
 	}
 }
 
-.collapsed {
-	left: -$search-width;
+.expanded {
+	left: 0;
 }

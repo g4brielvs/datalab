@@ -10,12 +10,16 @@ import StoryHeading from "../../components/section-elements/story-heading/story-
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import VizControlPanel from "../../components/chartpanels/viz-control"
 
-const Categories = () => {
-  const defaultImageStyle = {
+export default class Categories extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  defaultImageStyle = {
     margin: "1rem 0"
   }
 
-  const searchList = [
+  searchList = [
     {
       id: 1,
       text: 'R&D'
@@ -43,11 +47,11 @@ const Categories = () => {
     }
   ];
 
-  const switchView = view => alert('switch to ' + view + ' mode');
+  switchView = view => alert('switch to ' + view + ' mode');
 
-  const searchSelected = id => {
+  searchSelected = id => {
     let choice;
-    searchList.some(parent => {
+    this.searchList.some(parent => {
       if (parent.id === id) {
         choice = parent;
         return true;
@@ -65,53 +69,53 @@ const Categories = () => {
     alert(JSON.stringify(choice));
   }
 
-  return (
-    <>
-      <StoryHeading
-        number={'03'}
-        title={'Investment Categories'}
-        teaser={'How was the money used?'}
-        blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
-      />
-
-      <Hidden lgUp>
-        <SearchPanel
-          searchList={searchList}
-          listDescription="Categories"
-          showCollapse
-          onSelect={searchSelected}
+  render() {
+    return (
+      <>
+        <StoryHeading
+          number={'03'}
+          title={'Investment Categories'}
+          teaser={'How was the money used?'}
+          blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
         />
-      </Hidden>
 
-      <Accordion
-        title="Accordion Title">
-        <p>I am an accordion with lots to say.</p>
-        <p>I have several paragraphs...</p>
-        <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
-      </Accordion>
+        <Hidden lgUp>
+          <SearchPanel
+            searchList={this.searchList}
+            listDescription="Categories"
+            showCollapse
+            onSelect={this.searchSelected}
+          />
+        </Hidden>
 
-      <div className="container" style={defaultImageStyle}>
-        <div className="row center-xs">
-          <Hidden mdDown>
-            <VizControlPanel
-              searchList={searchList}
-              listDescription="Categories"
-              onSelect={searchSelected}
-              switchView={switchView}
-            >
-              <img src={SunburstIcon} />
-            </VizControlPanel>
-          </Hidden>
-          <img className="col-xs-6" src={defaultImage} />
+        <Accordion
+          title="Accordion Title">
+          <p>I am an accordion with lots to say.</p>
+          <p>I have several paragraphs...</p>
+          <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
+        </Accordion>
+
+        <div className="container" style={this.defaultImageStyle}>
+          <div className="row center-xs">
+            <Hidden mdDown>
+              <VizControlPanel
+                searchList={this.searchList}
+                listDescription="Categories"
+                onSelect={this.searchSelected}
+                switchView={this.switchView}
+              >
+                <img src={SunburstIcon} />
+              </VizControlPanel>
+            </Hidden>
+            <img className="col-xs-6" src={defaultImage} />
+          </div>
         </div>
-      </div>
 
-      <Downloads
-        href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
-        date={'March 2019'}
-      />
-    </>
-  )
+        <Downloads
+          href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+          date={'March 2019'}
+        />
+      </>
+    )
+  }
 }
-
-export default Categories
