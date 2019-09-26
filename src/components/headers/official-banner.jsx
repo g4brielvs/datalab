@@ -1,14 +1,11 @@
 import React from "react"
-import "./site.scss"
+import "./official-banner.scss"
 
 import flag from "../../../src/images/us_flag_small.png"
 
-class SiteHeader extends React.Component {
+class OfficialBanner extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			// todo
-		};
 	};
 
 	render() {
@@ -43,4 +40,4 @@ class SiteHeader extends React.Component {
 
 
 
-export default SiteHeader
+export default OfficialBanner

@@ -31,12 +31,14 @@ class PageHeader extends React.Component {
 
   componentDidMount() {
 
-    document.addEventListener('scroll', () => {
-      const isSticky = window.scrollY > 100;
-      if (isSticky !== this.state.isSticky) {
-        this.setState({ isSticky })
-      }
-    });
+    if (this.props.isHome == true) {
+      document.addEventListener('scroll', () => {
+        let isSticky = window.scrollY > 100;
+        if (isSticky !== this.state.isSticky) {
+          this.setState({ isSticky })
+        }
+      });  
+    }
 
     document.addEventListener('scroll', () => {
       const max = 29;
@@ -46,6 +48,11 @@ class PageHeader extends React.Component {
       }
       this.setState({ top });
     });
+
+    // if we're NOT on the homepage...
+    if (this.props.isHome == false) {
+      this.setState({isSticky: true});
+    }
   };
 
   componentWillUnmount() {
@@ -159,8 +166,8 @@ class PageHeader extends React.Component {
   render() {
 
     const listItems = this.props.headerItems;
-    const isSticky = this.state.isSticky;
-    const top = this.state.top;
+    let isSticky = this.state.isSticky;
+    const top = this.state.top;      
     const that = this; // used to preserve this inside nested map in render return
 
     let returnItems = listItems.map((item, i) => {
@@ -174,7 +181,7 @@ class PageHeader extends React.Component {
     // TODO! xxx
     return (
       <header id="header" style={{ top: `${top}px` }}>
-        <div className={`header__main ${isSticky ? `tight` : ``}`}>
+        <div className={`header__main ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
           <div className={`header-logo__wrapper ${isSticky ? `row` : `col`}`}>
             <a href="/">
               <div>
@@ -186,7 +193,7 @@ class PageHeader extends React.Component {
               </div>
             </a>
 
-            <nav className={`header-nav ${isSticky ? `tight` : ``}`}>
+            <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
               <span className="navbar-toggle" id="burger-navbar-toggle">
                 <i className="fas fa-bars"> </i>
               </span>
