@@ -62,6 +62,8 @@ $landing-title-color: #4a4a4a;
 @media screen and (max-width: $desktop-xl) {
   .content {
     padding-top: 0;
+    padding-left: 0;
+    margin-right: 0;
   }
 
   .heading {
