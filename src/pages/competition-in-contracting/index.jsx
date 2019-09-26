@@ -39,6 +39,69 @@ class CompetitionInContractingPage extends Component {
           <Grid item><Reset /></Grid>
           <Grid item ><Share /></Grid>
         </Grid>
+
+          <div className="viz-container">
+            <div className="competition-in-contracting">
+
+              <div id="summary">
+                <div id="tooltip" className="tooltip-module"></div>
+
+                <div className="summary-item">
+                  <p style={{color: '#2a5da8'}}>$ COMPETED</p>
+                  <h2 id="competed-dollars"></h2>
+                </div>
+                <div className="summary-item" style={{borderRight: '2px solid #a4a4a4'}}>
+                  <p style={{color: '#2a5da8'}}>ACTIONS COMPETED</p>
+                  <h2 id="competed-actions"></h2>
+                </div>
+                <div className="summary-item">
+                  <p style={{color: '#2a5da8'}}>$ NOT COMPETED</p>
+                  <h2 id="not-competed-dollars"></h2>
+                </div>
+                <div className="summary-item">
+                  <p style={{color: '#2a5da8'}}>ACTIONS NOT COMPETED</p>
+                  <h2 id="not-competed-actions"></h2>
+                </div>
+              </div>
+
+              <div>
+                <div className="legend" id="notCompeted">
+                  <svg height="15" width="15">
+                    <circle cx="7.5" cy="7.5" r="7.5" fill="#D334BA"/>
+                  </svg>
+                  <label htmlFor="notCompeted" style={{fontSize:'12px', verticalAlign: 'bottom'}}>Not Competed</label>
+                </div>
+                <div className="legend" id="competed">
+                  <svg height="15" width="15">
+                    <circle cx="7.5" cy="7.5" r="7.5" fill="#0071bc"/>
+                  </svg>
+                  <label htmlFor="contactChoice1" style={{fontSize:'12px', verticalAlign: 'bottom'}}>Competed</label>
+                </div>
+                <form id="barchartToolbar">
+                  <div className="select-wrapper1">
+                    <input type="radio" id="contactChoice1" name="xAxisScale" value="quantity" />
+                    <label htmlFor="contactChoice1" style={{fontSize:'12px'}}>Quantity</label>
+
+                    <input type="radio" id="contactChoice2" name="xAxisScale" value="percent"/>
+                    <label htmlFor="contactChoice2" style={{fontSize:'12px'}}>Percent</label>
+                  </div>
+                  <div className="select-wrapper2">
+                    <input type="radio" id="contactChoice3" name="xAxisUnit" value="dollars" />
+                    <label htmlFor="contactChoice3" style={{fontSize:'12px'}}>Dollars</label>
+
+                    <input type="radio" id="contactChoice4" name="xAxisUnit" value="actions"/>
+                    <label htmlFor="contactChoice4" style={{fontSize:'12px'}}>Actions</label>
+                  </div>
+                </form>
+              </div>
+
+
+              <div>
+                <svg width="1200" height="700" viewBox="0 0 1200 700" id="barchartSvg"></svg>
+              </div>
+
+            </div>
+          </div>
       </ToolLayout>
     </>
   }
