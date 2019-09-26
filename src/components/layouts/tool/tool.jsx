@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import toolStyles from './tool.module.scss';
 
 import Grid from '@material-ui/core/Grid';
-
 import Default from '../default/default';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
