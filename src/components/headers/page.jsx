@@ -55,7 +55,7 @@ class PageHeader extends React.Component {
   };
 
   componentWillUnmount() {
-    document.removeEventListener('scroll');
+    document.removeEventListener('scroll', false);
   }
 
   handleMouseOver(e) {
