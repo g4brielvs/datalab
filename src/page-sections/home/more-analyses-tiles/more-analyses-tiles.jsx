@@ -44,10 +44,10 @@ const MoreAnalysesTiles = () => {
         container
         spacing={4}>
           {analyses.map((item, index) =>
-            <Grid item sm={12} md={6}>
+            <Grid item sm={12} md={6}
+              className={moreAnalysesStyles.tile}>
               <Link to={item.href}
-                    key={'more-tile_' + index}
-                    className={index === 0 ? `${moreAnalysesStyles.tile}` : `${moreAnalysesStyles.tile}`}>
+                    key={'more-tile_' + index}>
                 <div
                   className={moreAnalysesStyles.tileHeading}>
                     <p className={moreAnalysesStyles.title}>
