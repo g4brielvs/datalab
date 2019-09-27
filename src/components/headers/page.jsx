@@ -54,10 +54,6 @@ class PageHeader extends React.Component {
     }
   };
 
-  componentWillUnmount() {
-    document.removeEventListener('scroll', false);
-  }
-
   handleMouseOver(e) {
     let target = e.target.getAttribute('data-target');
     switch (target) {
