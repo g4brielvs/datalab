@@ -7,7 +7,7 @@ import Default from '../default/default';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 
-class ToolLayout extends React.Component {
+export default class ToolLayout extends React.Component {
   render = () =>
     <Default>
       <div className={toolStyles.toolPage}>
@@ -28,10 +28,10 @@ class ToolLayout extends React.Component {
             </section>
             <section className={toolStyles.followUp}>
               <Grid container>
-                <Grid item xs={4}>
-                  <div className={toolStyles.intro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
+                <Grid item xs={12} sm={4}>
+                  <div className={toolStyles.bodyIntro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={8}>
                   <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
                 </Grid>
               </Grid>
@@ -54,4 +54,4 @@ ToolLayout.propTypes = {
   sectionText: PropTypes.string.isRequired,
 }
 
-export default ToolLayout
+// export default ToolLayout
