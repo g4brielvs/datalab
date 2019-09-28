@@ -10,7 +10,8 @@ const FeatureRow = (props) => {
       <Link to={props.href}>
         <Grid
             container
-            className={featuredAnalysesStyles.border}>
+            spacing={3}
+            className={featuredAnalysesStyles.container}>
 
             <Grid items xs={12} sm={6}
               className={featuredAnalysesStyles.content}>

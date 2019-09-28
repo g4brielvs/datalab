@@ -28,7 +28,7 @@ const FeatureTile = (props) => {
                 {props.body}
               </p>
 
-              <p className={`${featuredAnalysesTitleStyles.text} ${featuredAnalysesTitleStyles.textMobile}`}>
+              <p className={featuredAnalysesTitleStyles.textMobile}>
                 {props.mobileBody}
               </p>
             </div>

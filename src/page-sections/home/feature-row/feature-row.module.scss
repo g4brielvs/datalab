@@ -9,7 +9,7 @@ $landing-title-color: #4a4a4a;
   font-weight: bold;
 }
 
-.border {
+.container {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
 }
@@ -81,12 +81,26 @@ $landing-title-color: #4a4a4a;
     font-size: 18px;
   }
 
+  .container {
+    flex-direction: row-reverse;
+
+    .image {
+      float: left;
+    }
+  }
+
+}
+
+@media screen and (max-width: $phone) {
+  .container {
+    flex-direction: column-reverse;
+  }
 }
 
 @media screen and (max-width: $desktop-xl) {
 
 
-  .border {
+  .container {
     border: none;
   }
 

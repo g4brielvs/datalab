@@ -8,7 +8,7 @@
   min-height: 100%;
 }
 
-.heading {
+.heading, .heading-mobile {
   @include homepageSubtitle();
   margin-top: $margin-25;
   text-align: center;
@@ -18,13 +18,12 @@
   width: 100%;
 }
 
-.text {
+.text, .text-mobile {
   @include homepageBodyCopy();
   padding: 0 2.188rem;
   text-align: center;
 }
 
-// TODO: Fix BEM
 .heading-mobile, .text-mobile {
   display: none;
 }
@@ -34,9 +33,21 @@
 }
 
 @media screen and (max-width: $desktop) {
-
-
   .image {
     padding-left: 0;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  .featured {
+    border: none;
+  }
+
+  .heading-mobile, .text-mobile {
+    display: block;
+  }
+
+  .heading, .text {
+    display: none;
   }
 }
