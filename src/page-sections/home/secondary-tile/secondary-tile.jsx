@@ -15,18 +15,22 @@ const SecondaryTile = (props) => {
             <Grid
               container
               spacing={3}>
-              <Grid item xs={6} sm={6} md={8}
+
+              <Grid item xs={6} sm={6} md={6} lg={7} xl={8}
                   className={secondaryAnalysesTileStyles.headings}>
                   <p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
                   <p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
               </Grid>
-              <Grid item xs={6} sm={6} md={4}
+
+              <Grid item xs={6} sm={6} md={6} lg={4} xl={4}
                 className={secondaryAnalysesTileStyles.image}>
                   <img className="" src={props.imgSrc} alt=""/>
               </Grid>
+
               <p className={secondaryAnalysesTileStyles.text}>
                 {props.body}
               </p>
+
             </Grid>
           </a>
       </section>

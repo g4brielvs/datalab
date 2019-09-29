@@ -10,29 +10,25 @@ $landing-title-color: #4a4a4a;
 }
 
 .container {
-  border: 1px solid #ddd;
-  border-radius: 0.25rem;
+  margin-left: 0 !important;
+  width: 100% !important;
 }
 
 .image {
-
   img {
-    width: calc(100% - 16px);
-    margin-left: 16px;
-    height: 100%;
-    border-bottom-right-radius: 0.25rem;
+    width: 100%;
   }
 }
 
 .heading {
   @include homepageTitle();
   width: calc(100% - 32px);
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .content {
-  padding-left: $margin-15;
-  padding-top: $margin-15;
-  margin-right: -16px;
+  padding-top: 0;
 }
 
 .title {
@@ -59,11 +55,32 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media screen and (max-width: $desktop-xl) {
+@media screen and (min-width: $desktop-xl) {
+  .container {
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+  }
+
+  .image {
+    margin-left: 8px;
+
+    img {
+      width: calc(100% - 12px);
+      border-bottom-right-radius: 0.25rem;
+      float: right;
+    }
+  }
+
+  .content {
+    padding-top: $margin-15;
+    padding-left: $margin-15;
+    margin-right: -24px;
+  }
+}
+
+@media (min-width: $desktop) and (max-width: $desktop-xl) {
   .content {
     padding-top: 0;
-    padding-left: 0;
-    margin-right: 0;
   }
 
   .heading {
@@ -71,6 +88,15 @@ $landing-title-color: #4a4a4a;
   }
 }
 
+@media (min-width: $tablet) and (max-width: $desktop) {
+  .image {
+
+    img {
+      width: calc(100% - 16px);
+      float: right;
+    }
+  }
+}
 
 @media screen and (max-width: $tablet) {
   .blurb {
@@ -81,36 +107,21 @@ $landing-title-color: #4a4a4a;
     font-size: 18px;
   }
 
-  .container {
-    flex-direction: row-reverse;
 
-    .image {
-      float: left;
-    }
-  }
+  //.container {
+  //  flex-direction: row-reverse;
+  //
+  //  .image {
+  //    float: left;
+  //  }
+  //}
 
 }
 
 @media screen and (max-width: $phone) {
-  .container {
-    flex-direction: column-reverse;
-  }
+
 }
 
-@media screen and (max-width: $desktop-xl) {
-
-
-  .container {
-    border: none;
-  }
-
-  .image {
-    img {
-      border-radius: 0;
-      height: unset;
-    }
-  }
-}
 
 
 

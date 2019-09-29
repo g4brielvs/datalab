@@ -17,15 +17,21 @@
   flex-direction: row;
 }
 
+.heading {
+    @include homepageSectionHeading();
+}
+
 .more-analyses-row {
   padding-bottom: $margin-45;
 
-  .heading {
-    @include homepageSectionHeading();
-  }
-
   MainTile {
     margin-top: $margin-15;
+  }
+}
+
+@media screen and (max-width: $desktop) {
+  .more-analyses-row {
+    flex-direction: column-reverse;
   }
 }
 

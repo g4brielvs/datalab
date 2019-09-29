@@ -68,7 +68,7 @@ function IndexPage() {
                 <SecondaryTile
                   heading={"Contract Spending Analysis"}
                   subheading={"How has federal contract spending changed over time?"}
-                  href={"contract-explorer.html"}
+                  href={"contract-spending"}
                   imgSrc={contractSpending}
                   imgAlt={" "}
                   body={`We explore 10 years of contract data, and provide an analysis of the
@@ -80,7 +80,7 @@ function IndexPage() {
                 <SecondaryTile
                   heading={"Contract Explorer"}
                   subheading={"Who receives federal contracts?"}
-                  href={"contract-explorer.html"}
+                  href={"contract-explorer"}
                   imgSrc={contractExplorer}
                   imgAlt={" "}
                   body={`The federal government spends about $500 billion each year on contracts. Learn more
@@ -91,16 +91,16 @@ function IndexPage() {
           </Grid>
         </Grid>
 
+        <Grid item xs={12}>
+          <p className={homeStyles.heading}>
+            More Analyses
+          </p>
+        </Grid>
+
         <Grid
             container
             spacing={3}
             className={homeStyles.moreAnalysesRow}>
-
-            <Grid item xs={12}>
-              <p className={homeStyles.heading}>
-                More Analyses
-              </p>
-            </Grid>
 
             <Grid item lg={12} xl={6}>
               <MoreAnalysesTiles/>

@@ -34,11 +34,13 @@ const ResourcesRow = () => {
       <section className={resourcesRowStyles.resources}>
         <Grid container
               spacing={3}>
+
           <Grid item xs={12}>
             <h1 className={resourcesRowStyles.heading}>
               Resources
             </h1>
           </Grid>
+
           <Grid item sm={12} md={12} lg={3}
               className={resourcesRowStyles.tile}>
               <p className={resourcesRowStyles.title}>
@@ -49,6 +51,7 @@ const ResourcesRow = () => {
                 Access Treasury data and create your own charts and visualizations!
               </p>
           </Grid>
+
           {resourcesItems.map((resource, index) =>
             <Grid item xs={12} sm={12} md={4} lg={3}
                   className={resourcesRowStyles.tileRow}>
@@ -68,7 +71,9 @@ const ResourcesRow = () => {
               </Link>
             </Grid>
           )}
+
         </Grid>
+
       </section>
     </>
   )

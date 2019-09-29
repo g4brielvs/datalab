@@ -29,8 +29,10 @@
     padding-bottom: 0 !important;
 
     img {
-      padding-top: $margin-15;
+      margin-top: $margin-15;
       width: 100%;
+      border: 1px solid #ddd;
+
     }
   }
 
@@ -39,6 +41,12 @@
 @media screen and (max-width: $desktop) {
   .text {
     display: none;
+  }
+}
+
+@media (min-width: $desktop) and (max-width: $desktop-xl) {
+  .image {
+    margin-right: $margin-20;
   }
 }
 

@@ -38,11 +38,13 @@
   }
 }
 
-@media screen and (max-width: $phone) {
+@media screen and (max-width: $tablet) {
   .featured {
     border: none;
   }
+}
 
+@media screen and (max-width: $phone) {
   .heading-mobile, .text-mobile {
     display: block;
   }

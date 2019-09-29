@@ -43,6 +43,7 @@ const MoreAnalysesTiles = () => {
       <Grid
         container
         spacing={4}>
+
           {analyses.map((item, index) =>
             <Grid item sm={12} md={6}
               className={moreAnalysesStyles.tile}>
@@ -64,7 +65,9 @@ const MoreAnalysesTiles = () => {
                 </div>
               </Link>
             </Grid>
+
           )}
+
       </Grid>
 
     </section>
