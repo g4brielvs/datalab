@@ -15,6 +15,8 @@ $landing-title-color: #4a4a4a;
 }
 
 .image {
+  padding: 0 !important;
+
   img {
     width: 100%;
   }
@@ -25,10 +27,6 @@ $landing-title-color: #4a4a4a;
   width: calc(100% - 32px);
   padding-top: 0;
   margin-top: 0;
-}
-
-.content {
-  padding-top: 0;
 }
 
 .title {
@@ -80,7 +78,7 @@ $landing-title-color: #4a4a4a;
 
 @media (min-width: $desktop) and (max-width: $desktop-xl) {
   .content {
-    padding-top: 0;
+    padding-top: 0 !important;
   }
 
   .heading {
@@ -89,6 +87,10 @@ $landing-title-color: #4a4a4a;
 }
 
 @media (min-width: $tablet) and (max-width: $desktop) {
+  .content {
+    padding: 0 !important;
+  }
+
   .image {
     img {
       width: calc(100% - 16px);

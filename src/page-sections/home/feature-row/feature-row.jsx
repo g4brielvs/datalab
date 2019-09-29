@@ -13,7 +13,7 @@ const FeatureRow = (props) => {
             spacing={3}
             className={featuredAnalysesStyles.container}>
 
-            <Grid items sm={12} md={6}
+            <Grid item sm={12} md={6}
               className={featuredAnalysesStyles.content}>
               <h1 className={featuredAnalysesStyles.heading}>
                 {props.heading}
@@ -26,7 +26,7 @@ const FeatureRow = (props) => {
               </p>
             </Grid>
 
-            <Grid items sm={12} md={6}
+            <Grid item sm={12} md={6}
               className={featuredAnalysesStyles.image}>
               <img src={homelessImg} />
             </Grid>
