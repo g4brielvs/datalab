@@ -54,6 +54,7 @@ const ResourcesRow = () => {
 
           {resourcesItems.map((resource, index) =>
             <Grid item xs={12} sm={12} md={4} lg={3}
+                  key={index}
                   className={resourcesRowStyles.tileRow}>
               <Link
                 key={'landing-row__tile_' + index}

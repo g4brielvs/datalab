@@ -46,6 +46,7 @@ const MoreAnalysesTiles = () => {
 
           {analyses.map((item, index) =>
             <Grid item sm={12} md={6}
+                  key={index}
               className={moreAnalysesStyles.tile}>
               <Link to={item.href}
                     key={'more-tile_' + index}>
