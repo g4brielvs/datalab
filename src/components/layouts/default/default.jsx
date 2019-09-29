@@ -1,10 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from 'react-helmet'
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import SiteHeader from '../../headers/site'
-import PageHeader from '../../headers/page'
+import OfficialBanner from '../../headers/official-banner'
 import PageFooter from "../../footers/page"
 import SiteFooter from "../../footers/site"
 
@@ -29,15 +28,14 @@ const Default = ({ children }) => (
         <title>Data Lab - U.S. Treasury</title>
     </Helmet>
 
-    <MuiThemeProvider theme = { theme }>
-        <SiteHeader />
-        <PageHeader />
-        <div>
-          {children}
-        </div>
-        <PageFooter />
-        <SiteFooter />
-    </MuiThemeProvider>
+  <MuiThemeProvider theme = { theme }>
+    <OfficialBanner />
+    <div className='default'>
+      {children}
+    </div>
+    <PageFooter />
+    <SiteFooter />
+  </MuiThemeProvider>
   </>
 );
 

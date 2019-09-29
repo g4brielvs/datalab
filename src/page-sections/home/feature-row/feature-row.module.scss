@@ -90,7 +90,6 @@ $landing-title-color: #4a4a4a;
 
 @media (min-width: $tablet) and (max-width: $desktop) {
   .image {
-
     img {
       width: calc(100% - 16px);
       float: right;
@@ -106,21 +105,8 @@ $landing-title-color: #4a4a4a;
   .title {
     font-size: 18px;
   }
-
-
-  //.container {
-  //  flex-direction: row-reverse;
-  //
-  //  .image {
-  //    float: left;
-  //  }
-  //}
-
 }
 
-@media screen and (max-width: $phone) {
-
-}
 
 
 

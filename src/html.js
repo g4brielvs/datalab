@@ -1,19 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import styles from './styles/variables.scss';
-
-const theme = createMuiTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 576,
-      md: 768,
-      lg: 992,
-      xl: 1200
-    }
-  }
-});
 
 export default function HTML(props) {
 
@@ -31,14 +17,12 @@ export default function HTML(props) {
         <noscript key="noscript" id="gatsby-noscript">
           This app works best with JavaScript enabled.
         </noscript>
-        <MuiThemeProvider theme = { theme }>
-          <div
-            key={`body`}
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: props.body }}
-          />
+        <div
+          key={`body`}
+          id="___gatsby"
+          dangerouslySetInnerHTML={{ __html: props.body }}
+        />
           {props.postBodyComponents}
-        </MuiThemeProvider>
       </body>
     </html>
   )
