@@ -1,10 +1,9 @@
-import React from "react"
-import "./page.scss"
+import React from 'react';
+import './page.scss';
 
-//import datalabLogo from "../logos/datalab";
-import TagLine from '../../svgs/Logo-with-tagline.svg'
-import NoTagLine from '../../svgs/Logo-without-tagline.svg'
-import Arrow from '../../svgs/arrow.svg'
+import TagLine from '../../svgs/Logo-with-tagline.svg';
+import NoTagLine from '../../svgs/Logo-without-tagline.svg';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -29,14 +28,13 @@ class PageHeader extends React.Component {
   };
 
   componentDidMount() {
-
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
         if (isSticky !== this.state.isSticky) {
           this.setState({ isSticky })
         }
-      });  
+      });
     }
 
     document.addEventListener('scroll', () => {
@@ -50,7 +48,7 @@ class PageHeader extends React.Component {
 
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
-      this.setState({isSticky: true});
+      this.setState({ isSticky: true });
     }
   };
 
@@ -159,15 +157,14 @@ class PageHeader extends React.Component {
   }
 
   render() {
-
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
-    const top = this.state.top;      
+    const top = this.state.top;
     const that = this; // used to preserve this inside nested map in render return
 
     let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={i} onMouseOver={that.handleMouseOver}>
-        <a href='#' data-target={item}> {item} <span><Arrow /></span></a>
+      return <li className='navListItem' key={item} onMouseOver={that.handleMouseOver}>
+        <a href='#' data-target={item}> {item} <span><ExpandMoreIcon /></span></a>
       </li>;
     });
 
@@ -215,13 +212,15 @@ class PageHeader extends React.Component {
           </table>
 
           <table className={`data-table ${this.state.showFFGTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tr className='header-row'>
-              <th>Overview</th>
-              <th>Revenue</th>
-              <th>Spending</th>
-              <th>Deficit</th>
-              <th>Debt</th>
-            </tr>
+            <thead>
+              <tr className='header-row'>
+                <th>Overview</th>
+                <th>Revenue</th>
+                <th>Spending</th>
+                <th>Deficit</th>
+                <th>Debt</th>
+              </tr>
+            </thead>
             <tbody>
               <tr className='data-row'>{this.renderFFGtd('Overview')}</tr>
               <tr className='data-row'>{this.renderFFGtd('Revenue')}</tr>
@@ -243,10 +242,7 @@ class PageHeader extends React.Component {
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[4].glossary)}</tr>
             </tbody>
           </table>
-
-
         </div>
-
       </header>
     );
   }
