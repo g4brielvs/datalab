@@ -4,7 +4,7 @@
 	margin: 50px 8.33% 0;
 	color: #666666;
 
-	header {
+	.header {
 		margin-bottom: 25px;
 	}
 
@@ -16,15 +16,15 @@
 		line-height: 20px;
 	}
 
-	p {
-		margin-top: 25px;
-		margin-bottom: 0;
-	}
-
 	.intro {
 		font-size: 42px;
 		font-weight: 300;
 		line-height: 50px;
+	}
+
+	.p {
+		margin-top: 25px;
+		margin-bottom: 0;
 	}
 
 	.follow-up {
@@ -37,7 +37,7 @@
 }
 
 @media (min-width: $desktop) {
-	main {
+	.main {
 		margin-top: 50px;
 		margin-bottom: 75px;
 	}
@@ -48,7 +48,7 @@
 		margin: 50px 39px 0;
 	}
 
-	main {
+	.main {
 		margin-top: 25px;
 		margin-bottom: 75px;
 	}
@@ -59,7 +59,7 @@
 		margin: 30px 39px 0;
 	}
 
-	main {
+	.main {
 		margin-top: 25px;
 		margin-bottom: 30px;
 	}
