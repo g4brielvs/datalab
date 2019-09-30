@@ -1,0 +1,59 @@
+$fedEmpBlue: #2272CE;
+$fedEmpLtBlue: #c2d8f2;
+
+/* managing style overrides for DOM elements rendered by Material-UI with their own static class names */
+
+.filter-tools {
+  .MuiOutlinedInput-root {
+
+    .MuiSelect-outlined, .MuiOutlinedInput-notchedOutline {
+      border-radius: 0;
+    }
+
+    &.Mui-focused {
+      background-color: $fedEmpBlue;
+
+      .MuiInputBase-input h2, .MuiSelect-icon {
+        color: white;
+      }
+
+      .MuiOutlinedInput-notchedOutline {
+        border: none;
+      }
+
+      .MuiSelect-outlined {
+      }
+    }
+  }
+
+  .MuiFormControl-root .MuiChip-deleteIcon.MuiSvgIcon-root {
+    color: rgba(0, 0, 0, 0.67);
+    font-size: 1.2rem
+  }
+
+  .MuiFormControl-root .MuiChip-label {
+    color: rgba(0, 0, 0, 0.67);
+  }
+}
+
+#menu-Agencies, #menu-States {
+
+  .MuiMenu-paper .MuiMenuItem-root {
+    border-bottom: 1px solid #cccccc;
+    margin: 0 22px 0 5px;
+  }
+
+  .MuiMenu-paper .MuiListItem-root.Mui-selected, .MuiMenu-paper .MuiListItem-root.Mui-selected:hover {
+    background-color: #e6f5f9;
+  }
+
+  .MuiMenu-paper .MuiListItem-root {
+    font-size: 0.85rem;
+    font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    font-weight: bolder;
+  }
+
+  .MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
+    min-width: 375px;
+  }
+}

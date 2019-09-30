@@ -20,7 +20,7 @@ const DataModule = {
 	},
 
 	loadOccupationCategories: (cb) => {
-				cb(DataModule.mem.occupationCategories);
+			cb(DataModule.mem.occupationCategories);
 	},
 
 	loadEmployeeCountData: (cbs, props) => {
@@ -28,7 +28,7 @@ const DataModule = {
 	},
 
 	loadEmployeeSalaryData: (cbs, props) => {
-				cbs.forEach((cb) => cb(DataModule.mem.employeesSalaries, props));
+			cbs.forEach((cb) => cb(DataModule.mem.employeesSalaries, props));
 	}
 };
 

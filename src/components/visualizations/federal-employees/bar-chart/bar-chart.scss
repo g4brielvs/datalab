@@ -1,0 +1,15 @@
+// styling for non-react static styles as ported from DatalabJS d3 viz
+
+.fed-emp-bar-chart {
+  path.domain {
+    opacity: 0;
+  }
+
+  .tick line {
+    opacity: 0;
+  }
+
+  #barChartKey {
+    margin-left: 90px;
+  }
+}

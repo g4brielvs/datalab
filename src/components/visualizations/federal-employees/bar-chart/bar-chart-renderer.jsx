@@ -1,6 +1,7 @@
 import KeyModule from "../util/key-module"
 import * as d3 from "d3v4"
 import Tooltip from "../util/tooltip"
+
 /* Adapted from fedscope barchart-module.js */
 const BarChartRenderer = {
 
@@ -42,11 +43,11 @@ const BarChartRenderer = {
     function findFillColor(type) {
       switch (type) {
         case "Blue Collar":
-          return "#0C99CD"
+          return "#2272ce"
         case "White Collar":
-          return "white"
+          return "#2fbab7"
         case "Other":
-          return "#075D7D"
+          return "#5d6474"
         default:
           return ""
       }
@@ -57,24 +58,24 @@ const BarChartRenderer = {
       [
         {
           name: "White Collar",
-          fillColor: "#fff",
-          borderColor: "rgb(0,0,0)",
+          fillColor: "#2fbab7",
+          borderColor: "#2fbab7",
         },
         {
           name: "Blue Collar",
-          fillColor: "#0C99CD",
-          borderColor: "#0C99CD",
+          fillColor: "#2272ce",
+          borderColor: "#2272ce",
         },
         {
           name: "Other",
-          fillColor: "#075D7D",
-          borderColor: "#075D7D",
+          fillColor: "#5d6474",
+          borderColor: "#5d6474",
         },
       ],
       {
         orientation: "horizontal",
         fontSize: 16,
-        shape: "circle",
+        shape: "rect",
         spacing: 150,
         borderWidth: 2,
       },
@@ -125,10 +126,14 @@ const BarChartRenderer = {
       .append("text")
       .attr("y", 6)
       .attr("dy", "0.71em")
+      .attr("font-size", "14")
+      .attr("font-family", "Source Sans Pro")
+      .attr("font-weight", "700")
       .attr("text-anchor", "start")
-      .text("Employee Count")
+      .text("EMPLOYEE COUNT")
       .attr("transform", `translate(-85,250) rotate(-90)`)
-      .attr("fill", "black")
+      .attr("fill", "#444")
+      .attr("stroke-width", "0")
 
     g
       .selectAll(".bar")
@@ -141,7 +146,7 @@ const BarChartRenderer = {
       .attr("width", x.bandwidth())
       .attr("height", (d) => height - y(d.employeeCount))
       .attr("fill", (d) => findFillColor(d.occupationCategoryType))
-      .attr("stroke", "rgb(0,0,0)")
+      .attr("stroke", (d) => findFillColor(d.occupationCategoryType))
       .attr("stroke-width", "1")
       .on("mouseover", handleMouseOver)
       .on("mousemove", handleMouseMove)

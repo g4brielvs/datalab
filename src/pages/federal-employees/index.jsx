@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import SEO from "../../components/seo";
 import "../../styles/index.scss";
 import fedEmpStyles from './index.module.scss';
+import DataModule from "../../components/visualizations/federal-employees/util/data-module";
 
 /* components */
 import StoryLayout from "../../components/layouts/story/story";
@@ -65,7 +66,7 @@ class FederalEmployeesPage extends Component {
 				const SectionTag = this.sectionComponents[item.tagName];
 				return (
 					<StorySection key={key} header={item}>
-						<SectionTag sectionId={'section-' + item.section}/>
+						<SectionTag sectionId={'section-' + item.section} dataSource={DataModule}/>
 					</StorySection>
 				)
 			})

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BarChartRenderer from "./bar-chart-renderer";
-import DataModule from "../util/data-module";
 import * as $ from "jquery";
 import * as d3 from "d3v4";
 import barChartStyles from './bar-chart.module.scss';
+import './bar-chart.scss';
+import Multiselector from "../../../multiselector/multiselector"
 
 /* Extracted and adapted from fedscope.js */
 
@@ -13,102 +14,106 @@ function BarChart(props) {
     d3.selectAll('#barChartSvg > g').remove();
   }
 
-  useEffect(() => {
-    clearAll();
+  const {
+    loadEmployeeCountData,
+    loadStates,
+    loadAgencies,
+    loadOccupationCategories,
+    mem
+  } = props.dataSource;
 
-    const dataModule = DataModule;
+  let stateOptionList = [];
+  let agencyOptionList = [];
+  let agencyOccupationIds = [];
 
-    const {
-      loadEmployeeCountData,
-      loadStates,
-      loadAgencies,
-      loadOccupationCategories,
-      mem
-    } = dataModule;
+  function initAgencyOccupationIds() {
+    for (let e of mem.employeeCounts) {
+      if (!agencyOccupationIds[e.agencyId]) {
+        agencyOccupationIds[e.agencyId] = [];
+      }
+      if (!agencyOccupationIds[e.agencyId].includes(e.occupationCategoryId)) {
+        agencyOccupationIds[e.agencyId].push(e.occupationCategoryId);
+      }
+    }
+  }
 
-    let occupationDropdownMasterList;
-    let agencyOccupationIds = [];
-    let occupationDropdownOptions;
-
-    loadStates(states => {
-      loadAgencies(agencies => {
-        loadOccupationCategories(occupationCategories => {
-          loadEmployeeCountData([BarChartRenderer.draw, initAgencyOccupationIds], {
-            states,
-            agencies,
-            occupationCategories
-          });
-
-          const sorter = (a, b) => {
-            if (a.name < b.name) return -1;
-            if (a.name > b.name) return 1;
-            return 0;
-          };
-
-          const stateDropdownOptions = Object.values(states)
-            .sort(sorter)
-            .map(s => `<option value="${s.abbreviation}">${s.name}</option>`)
-          ;
-          $("#barChartStateDropdown").append(...stateDropdownOptions);
-
-          const agencyDropdownOptions = Object.values(agencies)
-            .sort(sorter)
-            .map(a => `<option value="${a.id}">${a.name}</option>`)
-          ;
-          $("#barChartAgencyDropdown").append(...agencyDropdownOptions);
-
-          occupationDropdownMasterList = Object.values(occupationCategories).sort(sorter);
-          filterOccupationsList();
+  loadStates(states => {
+    loadAgencies(agencies => {
+      loadOccupationCategories(occupationCategories => {
+        loadEmployeeCountData([initAgencyOccupationIds], {
+          states,
+          agencies,
+          occupationCategories
         });
+
+        const sorter = (a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        };
+        filterOccupationsList();
+        stateOptionList = Object.values(states).sort(sorter);
+        agencyOptionList = Object.values(agencies).sort(sorter);
+
       });
     });
+  });
 
-    // create array of agency IDs, each an array of occupation IDs within that agency
-    function initAgencyOccupationIds() {
-      for (let e of mem.employeeCounts) {
-        if (!agencyOccupationIds[e.agencyId]) {
-          agencyOccupationIds[e.agencyId] = [];
-        }
-        if (!agencyOccupationIds[e.agencyId].includes(e.occupationCategoryId)) {
-          agencyOccupationIds[e.agencyId].push(e.occupationCategoryId);
-        }
+  // create array of agency IDs, each an array of occupation IDs within that agency
+  function initAgencyOccupationIds() {
+    for (let e of mem.employeeCounts) {
+      if (!agencyOccupationIds[e.agencyId]) {
+        agencyOccupationIds[e.agencyId] = [];
+      }
+      if (!agencyOccupationIds[e.agencyId].includes(e.occupationCategoryId)) {
+        agencyOccupationIds[e.agencyId].push(e.occupationCategoryId);
       }
     }
+  }
 
-    function filterOccupationsList(selectedAgencies) {
-      if (selectedAgencies) {
-        let currentOccupations = agencyOccupationIds[selectedAgencies[0]].slice();
-        if (selectedAgencies.length > 1) { // add to array of unique occupation IDs for the other selected agencies (besides above)
-          selectedAgencies.slice(1).forEach(agencyId => {
-            agencyOccupationIds[agencyId].forEach(occupationId => {
-              if (!currentOccupations.includes(occupationId)) {
-                currentOccupations.push(occupationId);
-              }
-            })
+  function filterOccupationsList(selectedAgencies) {
+    if (selectedAgencies) {
+      let currentOccupations = agencyOccupationIds[selectedAgencies[0]].slice();
+      if (selectedAgencies.length > 1) { // add to array of unique occupation IDs for the other selected agencies (besides above)
+        selectedAgencies.slice(1).forEach(agencyId => {
+          agencyOccupationIds[agencyId].forEach(occupationId => {
+            if (!currentOccupations.includes(occupationId)) {
+              currentOccupations.push(occupationId);
+            }
           })
-        }
-        occupationDropdownOptions = occupationDropdownMasterList.filter(o => currentOccupations.includes(o.id));
-      } else {
-        occupationDropdownOptions = occupationDropdownMasterList;
+        })
       }
     }
+  }
+
+  const [selectedStates, setSelectedStates] = useState([]);
+  const [selectedAgencies, setSelectedAgencies] = useState([]);
+
+
+
+  useEffect(() => {
+    clearAll();
     const containerElem = $('#' + props.sectionId);
 
     containerElem.find(".filter-button").click(() => {
-      clearAll();
-      const filterStates = $("#barChartStateDropdown").val();
-      const filterAgencies = $("#barChartAgencyDropdown").val();
+      filterBySelections();
+    });
 
+    function filterBySelections() {
+      clearAll();
+      const filterStates = selectedStates.map(item => item.abbreviation);
+      const filterAgencies = selectedAgencies.map(item => item.id);
       const { employeeCounts, agencies, occupationCategories } = mem;
+
       let newData = employeeCounts;
 
-      if (filterStates) {
+      if (filterStates && filterStates.length) {
         newData = newData.filter(e =>
           filterStates.some(s => e.stateAbbreviation === s)
         );
       }
 
-      if (filterAgencies) {
+      if (filterAgencies && filterAgencies.length) {
         newData = newData.filter(e =>
           filterAgencies.some(a => e.agencyId === +a)
         );
@@ -118,14 +123,12 @@ function BarChart(props) {
         agencies,
         occupationCategories
       });
-    });
+    }
 
     $(containerElem).find(".reset-button").click(e => {
       e.preventDefault();
-      clearAll();
-
-      $("#barChartAgencyDropdown > option").attr("selected", false);  // $().prop() maybe worth resetting as well as attr?
-      $("#barChartStateDropdown > option").attr("selected", false);
+      setSelectedStates([]);
+      setSelectedAgencies([]);
 
       const { employeeCounts, states, occupationCategories } = mem;
 
@@ -134,30 +137,40 @@ function BarChart(props) {
         occupationCategories
       });
     });
-  });
+
+    filterBySelections();
+
+  }, [selectedStates, selectedAgencies]);
 
   return (
     <>
       <div id="tooltip" className="tooltip-module" />
-      <form id="barChartToolbar" className={barChartStyles.toolbar}>
-        <div className="formItem">
-          <div className="select-title">Agencies:</div>
-          <select multiple="multiple" id="barChartAgencyDropdown" />
-          <br />
+      <form id="barChartToolbar" className={'row ' + barChartStyles.toolbar}>
+        <div className={'filter-tools ' + barChartStyles.formItem}>
+          <Multiselector key={'Agencies'}
+                         optionList={agencyOptionList}
+                         valueKey={'id'}
+                         labelKey={'name'}
+                         selectedVal={selectedAgencies}
+                         placeholder={'Agencies'}
+                         changeHandler={setSelectedAgencies} />
         </div>
-        <div className="formItem">
-          <div className={barChartStyles.selectTitle}>States:</div>
-          <select multiple="multiple" id="barChartStateDropdown" />
-          <br />
+        <div className={'filter-tools ' + barChartStyles.formItem}>
+          <Multiselector key={'States'}
+                         optionList={stateOptionList}
+                         valueKey={'abbreviation'}
+                         labelKey={'name'}
+                         selectedVal={selectedStates}
+                         placeholder={'States'}
+                         changeHandler={setSelectedStates} />
         </div>
       </form>
-      <div className={barChartStyles.visContainer}>
-        <svg id="barChartKey" />
+      <div className={'fed-emp-bar-chart ' + barChartStyles.visContainer}>
         <svg width="900" height="500" viewBox="0 0 900 500" id="barChartSvg" className={barChartStyles.visBarChart} />
+        <svg id="barChartKey" />
       </div>
     </>
   );
-
 }
 
 export default BarChart;

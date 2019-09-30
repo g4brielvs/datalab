@@ -25,7 +25,7 @@ function What(props) {
                twitter='#DataLab #Treasury #DataTransparency #USAspending'
                facebook='' reddit='' linkedin='' tumblr='' email=''/>
       </ControlBar>
-      <BarChart sectionId={props.sectionId} />
+      <BarChart sectionId={props.sectionId} dataSource={props.dataSource}/>
     </>
   )
 }
