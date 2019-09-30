@@ -79,6 +79,6 @@
 
 @media (max-width: $phone - 1) {
 	.bodyIntro {
-		@include H6---Sub-Heading-Style;
+		@include h6-subheading;
 	}
 }
