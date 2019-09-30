@@ -4,7 +4,7 @@
 	margin: 50px 8.33% 0;
 	color: #666666;
 
-	header {
+	.header {
 		margin-bottom: 25px;
 	}
 
@@ -16,15 +16,15 @@
 		line-height: 20px;
 	}
 
-	p {
-		margin-top: 25px;
-		margin-bottom: 0;
-	}
-
 	.intro {
 		font-size: 42px;
 		font-weight: 300;
 		line-height: 50px;
+	}
+
+	.p {
+		margin-top: 25px;
+		margin-bottom: 0;
 	}
 
 	.follow-up {
@@ -32,29 +32,53 @@
 	}
 }
 
+.hwcta {
+	margin-top: 75px;
+}
+
 @media (min-width: $desktop) {
-	main {
+	.main {
 		margin-top: 50px;
 		margin-bottom: 75px;
 	}
 }
+
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
 	.tool-page {
 		margin: 50px 39px 0;
 	}
 
-	main {
+	.main {
 		margin-top: 25px;
 		margin-bottom: 75px;
 	}
 }
+
 @media (max-width: $tablet - 1) {
 	.tool-page {
 		margin: 30px 39px 0;
 	}
 
-	main {
+	.main {
 		margin-top: 25px;
 		margin-bottom: 30px;
+	}
+
+	.follow-up {
+		margin-top: 30px;
+	}
+}
+
+@media (min-width: $phone) {
+	.bodyIntro {
+		font-size: 42px;
+		font-weight: 300;
+		line-height: 50px;
+	}
+}
+
+@media (max-width: $phone - 1) {
+	.bodyIntro {
+		@include H6---Sub-Heading-Style;
 	}
 }

@@ -10,7 +10,6 @@ import Downloads from "../../components/section-elements/downloads/downloads";
 import defaultImage from "../../images/default-image.jpg";
 import ShareMenu from '../../components/share-menu/share-menu';
 
-
 const Overview = () => {
   const defaultImageStyle = {
     marginBottom: "1rem"

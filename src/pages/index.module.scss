@@ -1,0 +1,37 @@
+@import '../styles/variables';
+@import '../styles/index';
+
+.featured-tile-row {
+  padding-bottom: $margin-30;
+}
+
+.featured-row {
+  padding-bottom: $margin-45;
+}
+
+.resource-row {
+  padding-bottom: $margin-45;
+}
+
+.secondaryTiles {
+  flex-direction: row;
+}
+
+.heading {
+    @include homepageSectionHeading();
+}
+
+.more-analyses-row {
+  padding-bottom: $margin-45;
+
+  MainTile {
+    margin-top: $margin-15;
+  }
+}
+
+@media screen and (max-width: $desktop) {
+  .more-analyses-row {
+    flex-direction: column-reverse;
+  }
+}
+

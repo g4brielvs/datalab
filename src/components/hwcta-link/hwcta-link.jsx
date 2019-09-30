@@ -6,10 +6,10 @@ import sourceImage from "../../images/sources.svg";
 
 const HWCTALink = (props) => {
   return (
-    <div className={hwctaLinkStyles.entry}>
+    <div className={hwctaLinkStyles.entry + ' ' + props._mainClass}>
       <a className={hwctaLinkStyles.link} href={props.url}>
         <div className="row">
-          <div className={`${hwctaLinkStyles.image} col-xs-offset-1 col-xs-2 col-md-1`}><img src={sourceImage} /></div>
+          <div className={`${hwctaLinkStyles.image} ${props._noOffset ? '' : 'col-xs-offset-1'} col-xs-2 col-md-1`}><img src={sourceImage} /></div>
           <span className={`${hwctaLinkStyles.linkText} col-xs-10`}>
             &nbsp;&nbsp;&nbsp;Data Sources and Methodologies&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon={faChevronRight} />
           </span>
