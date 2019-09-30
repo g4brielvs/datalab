@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react"
 import classnames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     maxWidth: 600,
-    minWidth: 375,
+    minWidth: 385,
   },
   chip: {
     margin: 2,
@@ -50,11 +50,8 @@ export default function Multiselector(props) {
     props.changeHandler(props.selectedVal.filter(item => item[props.labelKey] !== deletedChip[props.labelKey]));
   }
 
-  const MenuProps = {
+  const menuProps = {
     getContentAnchorEl: null,
-    anchorEl: () => {
-      return document.getElementsByClassName(classnames(classes.chipsContainer, props.placeholder)).item(0);
-    },
     transformOrigin: { vertical: 'top', horizontal: 'left'},
     PaperProps: {
       style: {
@@ -63,6 +60,11 @@ export default function Multiselector(props) {
     },
   };
 
+  useEffect(() => {
+    menuProps.anchorEl = () => {
+      return document.getElementsByClassName(classnames(classes.chipsContainer, props.placeholder)).item(0);
+    }
+  });
 
   return (
     <div className={classes.root}>
@@ -77,7 +79,7 @@ export default function Multiselector(props) {
             id: 'select-multiple-placeholder-' + props.placeholder,
           }}
           renderValue={() => <h2 className={classes.placeholderDefault}>{props.placeholder}</h2>}
-          MenuProps={MenuProps}
+          MenuProps={menuProps}
           autoWidth={true}
         >
           <MenuItem disabled value="">
