@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from "gatsby"
 
-import featuredAnalysesTitleStyles from './featured-analyses-tile.module.scss';
+import featuredAnalysesTitleStyles from './feature-tile.module.scss';
 
-const FeaturedAnalysesTile = (props) => {
+
+const FeatureTile = (props) => {
   return (
     <>
       <Link to="colleges-and-universities"
@@ -27,7 +28,7 @@ const FeaturedAnalysesTile = (props) => {
                 {props.body}
               </p>
 
-              <p className={`${featuredAnalysesTitleStyles.text} ${featuredAnalysesTitleStyles.textMobile}`}>
+              <p className={featuredAnalysesTitleStyles.textMobile}>
                 {props.mobileBody}
               </p>
             </div>
@@ -38,4 +39,4 @@ const FeaturedAnalysesTile = (props) => {
 }
 
 
-export default FeaturedAnalysesTile
+export default FeatureTile

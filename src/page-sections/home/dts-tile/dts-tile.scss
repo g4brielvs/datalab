@@ -1,20 +1,11 @@
 @import '../../../styles/variables';
-
-@mixin margin {
-  margin-bottom: 1.25rem;
-}
-
-// device screen min widths
-$desktop-xl: 1200px; // 1136px flexboxgrid l
-$desktop: 992px;  // 976px / 1024 px? md
-$tablet: 768px; // 736 px / 768 px? sm
-$phone: 576px;  // 480 px ? xs
+@import '../../../styles/index';
 
 .dts {
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   text-align: left;
-  @include margin;
+  margin-bottom: $margin-30;
 
   h1 {
     text-transform: uppercase;
@@ -31,19 +22,14 @@ $phone: 576px;  // 480 px ? xs
   }
 
   h2 {
-    font-size: 22px;
-    color: #4a4a4a;
+    @include homepageSubtitle();
     padding: 0 1rem;
   }
 
-  h2:hover {
-    text-decoration: underline;
-  }
 }
 
-
 @media screen and (max-width: $desktop-xl) {
-  .dts {
+  .dts h1, .dts h2 {
     text-align: center;
   }
 }

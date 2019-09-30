@@ -1,0 +1,63 @@
+@import '../../../styles/variables';
+@import '../../../styles/index';
+
+$darkGrey: #666666;
+
+.more-analyses {
+  text-align: left;
+
+  .heading {
+    font-size: 1.17em;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #aaa;
+    text-transform: uppercase;
+  }
+
+  .tile {
+    margin-bottom: $margin-15;
+    text-align: left;
+  }
+
+  .tile-heading {
+    height: 130px;
+  }
+
+  .title {
+    @include homepageTitle();
+    margin-top: 0;
+  }
+
+  .subtitle {
+    @include homepageSubtitle();
+  }
+
+  .image {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: $tablet) {
+  .heading {
+    border-bottom: 1px solid $font-body-copy;
+  }
+
+  .tile {
+    border-bottom: 1px solid #ddd;
+
+    .tile-heading {
+      width: 50%;
+      float: right;
+
+      .title, .subtitle {
+        text-align: right;
+      }
+    }
+
+    .image {
+      width: 50%;
+      float: left;
+    }
+  }
+
+}

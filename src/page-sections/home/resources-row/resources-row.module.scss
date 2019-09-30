@@ -24,12 +24,14 @@
 
   .title {
     font-size: 24px;
-    height: 1.5em;
+    height: 52px;
+    text-align: center;
   }
 
   p.title {
     font-size: 2em;
     height: auto;
+    margin-top: 0;
   }
 
   .description {
@@ -41,26 +43,46 @@
     letter-spacing: normal;
     color: #4a4a4a;
     margin-bottom: 2rem;
+    text-align: center;
   }
 
 }
 
 
 @media screen and (max-width: $desktop) {
-  .description {
-    display: none;
-  }
-
   .title {
     text-align: center;
   }
 
-  .tile {
+  .tile-row {
+    padding-top: $margin;
+  }
+
+}
+
+@media screen and (max-width: $tablet) {
+  .title {
+    text-align: center;
   }
 
   .tile-row {
-    padding-top: $margin;
     border-top: 1px solid #dddddd;
+
+    .description {
+      display: none;
+    }
+
+    .tile {
+      .svgImg {
+        float: left;
+      }
+
+      .title {
+        font-size: 16px;
+        padding-top: 20px;
+      }
+    }
+
   }
 
 }
