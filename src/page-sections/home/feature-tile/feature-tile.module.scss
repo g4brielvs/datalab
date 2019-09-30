@@ -1,0 +1,55 @@
+@import '../../../styles/variables';
+@import '../../../styles/index';
+
+.featured {
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.heading, .heading-mobile {
+  @include homepageSubtitle();
+  margin-top: $margin-25;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+}
+
+.text, .text-mobile {
+  @include homepageBodyCopy();
+  padding: 0 2.188rem;
+  text-align: center;
+}
+
+.heading-mobile, .text-mobile {
+  display: none;
+}
+
+.image {
+  padding-left: 0;
+}
+
+@media screen and (max-width: $desktop) {
+  .image {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .featured {
+    border: none;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  .heading-mobile, .text-mobile {
+    display: block;
+  }
+
+  .heading, .text {
+    display: none;
+  }
+}
