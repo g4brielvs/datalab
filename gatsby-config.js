@@ -50,7 +50,7 @@ module.exports = {
             include: /svgs/
           }
       }
-  },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
