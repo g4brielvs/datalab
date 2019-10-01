@@ -54,8 +54,6 @@ const KeyModule = (() => {
 
     d3
       .select(`#${id}`)
-      .style("height", bb.height + (2 * borderWidth))
-      .style("width", bb.width + (2 * borderWidth))
       .style("padding", borderWidth)
       .style("overflow", "visible")
   }

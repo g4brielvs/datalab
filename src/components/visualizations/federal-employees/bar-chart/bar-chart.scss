@@ -10,6 +10,16 @@
   }
 
   #barChartKey {
-    margin-left: 90px;
+    min-width: 280px;
+    height: auto;
+    width: 67%;
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 1000px) {
+  #barChartToolbar {
+    flex-direction: column !important;
+    padding-left: 0;
   }
 }

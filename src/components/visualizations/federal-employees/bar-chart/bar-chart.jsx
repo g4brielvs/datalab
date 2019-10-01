@@ -26,6 +26,7 @@ function BarChart(props) {
   let agencyOptionList = [];
   let agencyOccupationIds = [];
 
+  // create array of agency IDs, each an array of occupation IDs within that agency
   function initAgencyOccupationIds() {
     for (let e of mem.employeeCounts) {
       if (!agencyOccupationIds[e.agencyId]) {
@@ -59,18 +60,6 @@ function BarChart(props) {
     });
   });
 
-  // create array of agency IDs, each an array of occupation IDs within that agency
-  function initAgencyOccupationIds() {
-    for (let e of mem.employeeCounts) {
-      if (!agencyOccupationIds[e.agencyId]) {
-        agencyOccupationIds[e.agencyId] = [];
-      }
-      if (!agencyOccupationIds[e.agencyId].includes(e.occupationCategoryId)) {
-        agencyOccupationIds[e.agencyId].push(e.occupationCategoryId);
-      }
-    }
-  }
-
   function filterOccupationsList(selectedAgencies) {
     if (selectedAgencies) {
       let currentOccupations = agencyOccupationIds[selectedAgencies[0]].slice();
@@ -88,8 +77,6 @@ function BarChart(props) {
 
   const [selectedStates, setSelectedStates] = useState([]);
   const [selectedAgencies, setSelectedAgencies] = useState([]);
-
-
 
   useEffect(() => {
     clearAll();
@@ -145,8 +132,8 @@ function BarChart(props) {
   return (
     <>
       <div id="tooltip" className="tooltip-module" />
-      <form id="barChartToolbar" className={'row ' + barChartStyles.toolbar}>
-        <div className={'filter-tools ' + barChartStyles.formItem}>
+      <form id="barChartToolbar" className={`row ${barChartStyles.toolbar}`}>
+        <div className={`filter-tools ${barChartStyles.formItem}`}>
           <Multiselector key={'Agencies'}
                          optionList={agencyOptionList}
                          valueKey={'id'}
@@ -155,7 +142,7 @@ function BarChart(props) {
                          placeholder={'Agencies'}
                          changeHandler={setSelectedAgencies} />
         </div>
-        <div className={'filter-tools ' + barChartStyles.formItem}>
+        <div className={`filter-tools ${barChartStyles.formItem}`}>
           <Multiselector key={'States'}
                          optionList={stateOptionList}
                          valueKey={'abbreviation'}
@@ -165,9 +152,9 @@ function BarChart(props) {
                          changeHandler={setSelectedStates} />
         </div>
       </form>
-      <div className={'fed-emp-bar-chart ' + barChartStyles.visContainer}>
+      <div className={`fed-emp-bar-chart ${barChartStyles.visContainer}`}>
         <svg width="900" height="500" viewBox="0 0 900 500" id="barChartSvg" className={barChartStyles.visBarChart} />
-        <svg id="barChartKey" />
+        <svg id="barChartKey" width="600" height="16" viewBox="0 0 600 16" />
       </div>
     </>
   );

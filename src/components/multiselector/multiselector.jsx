@@ -8,6 +8,10 @@ import ClearIcon from '@material-ui/icons/Clear';
 import Chip from '@material-ui/core/Chip';
 import './multiselector.scss';
 
+const CHIP_COLOR = '#c2d8f2';
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -19,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   chip: {
     margin: 2,
     borderRadius: 2,
-    backgroundColor: '#c2d8f2'
+    backgroundColor: CHIP_COLOR
   },
   noLabel: {
     marginTop: theme.spacing(3),
@@ -33,11 +37,7 @@ const useStyles = makeStyles(theme => ({
   placeholderDefault: {
     margin: 0
   }
-
 }));
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
 
 export default function Multiselector(props) {
   const classes = useStyles();
@@ -68,7 +68,7 @@ export default function Multiselector(props) {
 
   return (
     <div className={classes.root}>
-      <FormControl className={classnames(classes.formControl, classes.focused)} variant="outlined">
+      <FormControl className={`multiselector-dropdown-btn ${classes.formControl}`} variant="outlined" >
         <Select
           displayEmpty
           multiple

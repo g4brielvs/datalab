@@ -34,6 +34,16 @@ $fedEmpLtBlue: #c2d8f2;
   .MuiFormControl-root .MuiChip-label {
     color: rgba(0, 0, 0, 0.67);
   }
+
+  @media (max-width: 600px) {
+    .MuiChip-root {
+      font-size: 60%
+    }
+    .multiselector-dropdown-btn {
+      max-width: 90%;
+      min-width: 80vw;
+    }
+  }
 }
 
 #menu-Agencies, #menu-States {
@@ -55,5 +65,15 @@ $fedEmpLtBlue: #c2d8f2;
 
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
     min-width: 385px;
+  }
+
+  @media (max-width: 600px) {
+    .MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
+      min-width: 85%;
+      max-width: 90%;
+      .MuiListItem-root {
+        font-size: 70%;
+      }
+    }
   }
 }
