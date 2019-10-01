@@ -9,6 +9,19 @@ require("dotenv").config({
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
-    devtool: "eval-source-map"
+    devtool: "eval-source-map",
+    module: {
+      rules: [
+        {
+          test: /\.csv$/,
+          loader: 'csv-loader',
+          options: {
+            dynamicTyping: true,
+            header: true,
+            skipEmptyLines: true
+          }
+        }
+      ]
+    }
   });
 };

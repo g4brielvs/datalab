@@ -1,10 +1,9 @@
-// landing-dts-tile-analyses.cscc
-// handle our little module on the home
+@import '../../../styles/variables';
 
 .dts-module {
   box-sizing: border-box;
   background-color: inherit;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +84,7 @@ hr.horizontal_dts{
   margin-top: -5px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: $desktop-xl) {
   .dts-container {
     display: flex;
     justify-content: center;
@@ -105,6 +104,10 @@ hr.horizontal_dts{
 
   .dtsm-img svg {
     width: 80%;
+  }
+
+  .side-dts__date {
+    text-align: center;
   }
 
 }

@@ -5,18 +5,22 @@ import "../../styles/index.scss"
 import Accordion from "../../components/accordion/accordion"
 import StoryHeading from "../../components/section-elements/story-heading/story-heading"
 import VizControlPanel from "../../components/chartpanels/viz-control"
+import VizDetails from "../../components/chartpanels/viz-detail"
 import Downloads from "../../components/section-elements/downloads/downloads"
 import defaultImage from "../../images/default-image.jpg"
 // import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 
-const Agencies = (props) => {
+export default class Agencies extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const defaultImageStyle = {
+  defaultImageStyle = {
     margin: "1rem 0"
   }
 
-  const searchList = [
+  searchList = [
     {
       id: 2,
       text: 'Education',
@@ -41,10 +45,43 @@ const Agencies = (props) => {
     }
   ];
 
-  const switchView = (view) => alert('switch to ' + view + ' mode');
+  details = {
+    'header': {
+      'title': 'Institution',
+      'itemName': 'Central College',
+      'label': 'Public, 2-year',
+      'subItemName': null,
+      'totalLabel': 'Total $ Received',
+      'totalValue': 1100000
+    },
+    'tables': [
+      {
+        'col1Title': 'Funding Investment Type',
+        'col2Title': null,
+        'rows': {
+          'Contracts': 35000,
+          'Grants': 590200,
+          '   Grants (Research)': 0
+        }
+      },
+      {
+        'col1Title': 'Institution (Top 5)',
+        'col2Title': 'Total Investment',
+        'rows': {
+          'UNLV': 35000,
+          'Baker College': 590200,
+          'Massachusetts General Hospital Dietetic Intership': 6954359235967253
+        }
+      }
+    ]
+  };
 
-  return (
-    <>
+  switchView = view => alert('switch to ' + view + ' mode');
+
+  showDetails = () => this.setState({ detailShowing: true });
+
+  render() {
+    return (<>
       <StoryHeading
         number={'02'}
         title={'xxxx'}
@@ -60,16 +97,23 @@ const Agencies = (props) => {
       </Accordion>
 
       {/*<BubbleChart/>*/}
-      <div className="container" style={defaultImageStyle}>
+      <div className="container" style={this.defaultImageStyle}>
         <div className="row center-xs">
           <VizControlPanel
-            searchList={searchList}
+            searchList={this.searchList}
             listDescription="Agencies"
-            switchView={switchView}
+            switchView={this.switchView}
           >
             <BubbleChartOutlinedIcon />
           </VizControlPanel>
-          <img className="col-xs-6" src={defaultImage} />
+          <img className="col-xs-6" src={defaultImage}
+            onClick={() => this.showDetails()}
+          />
+          <VizDetails
+            showDetails={click => this.showDetails = click}
+            data={this.details}
+          >
+          </VizDetails>
         </div>
       </div>
 
@@ -77,11 +121,6 @@ const Agencies = (props) => {
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
         date={'March 2019'}
       />
-    </>
-  )
+    </>)
+  }
 }
-
-export default Agencies
-
-
-
