@@ -3,7 +3,6 @@ import BarChartRenderer from "./bar-chart-renderer";
 import * as $ from "jquery";
 import * as d3 from "d3v4";
 import barChartStyles from './bar-chart.module.scss';
-import './bar-chart.scss';
 import Multiselector from "../../../multiselector/multiselector"
 
 /* Extracted and adapted from fedscope.js */
