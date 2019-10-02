@@ -1,0 +1,57 @@
+.visContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2vw;
+  flex-direction: column;
+
+  .visBarChart {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.visContainer > svg > g > rect:hover {
+    fill: #D334BA;
+}
+
+.formItem {
+  vertical-align: top;
+  align-self: flex-start;
+  margin: 0 26px 0 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  padding-left: 6%;
+}
+
+.selectTitle {
+  text-align: center;
+}
+
+:global {
+  .fed-emp-bar-chart {
+    path.domain {
+      opacity: 0;
+    }
+
+    .tick line {
+      opacity: 0;
+    }
+
+    #barChartKey {
+      min-width: 280px;
+      height: auto;
+      width: 67%;
+      margin-left: 10%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    #barChartToolbar {
+      flex-direction: column !important;
+      padding-left: 0;
+    }
+  }
+}
