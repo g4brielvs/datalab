@@ -100,7 +100,7 @@ ul.nav {
 
 
 // container for "subnav"
-.header__sub {
+.header__sub {  
   position: relative;
   z-index: 20;
 
@@ -141,59 +141,6 @@ ul.nav {
   
 }
 
-.data-table {
-  display: none;
-  justify-content: center;
-  //box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #ddd;
-  box-sizing: border-box;
-  background: #FFF;
-  list-style-type: none;
-  padding: 0.5rem 4rem;
-  top: 0;
-  right: 0;
-  width: 100%;
-
-
-  .data-row {
-    display: flex;
-    justify-content: space-evenly;
-    display: block;
-    float: left;
-    text-align: center;
-  }
-
-  .header-row {
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
-  }
-
-  tbody {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  td {
-    display: block;
-    text-align: left;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    border: none;
-  }
-
-  a {
-    text-decoration: none;
-    color: #666;  
-  }
-
-  a:hover {
-    color: #046b99;
-  }
-
-}
-
 .active {
   display: flex;
 }
@@ -202,5 +149,78 @@ ul.nav {
   display: table;
 }
 
+.spacer-element {
+  flex-grow: 1;
+}
+ 
 
+// generic for dropdown dynamic list.
+.data-list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+  background: #fff;
+  padding-bottom: .25rem;
+
+  .data-list-ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: center;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: 0;
+  
+    .data-list-li {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      font-weight: 300;
+    }
+
+  }
+
+  // specific for FFG section as they have headers.
+  .data-list-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: .25rem;
+
+    .data-list-ul--ffg {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .data-list-li {
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      font-weight: 300;
+    }
+
+    .section-title {
+      margin: 0;
+      padding: 0;
+    }
+
+  }
+
+  .data-list-a {
+    text-decoration: none;
+    color: #666;  
+  }
+
+  .data-list-a:hover {
+    color: #046b99;
+  }
+
+}
 
