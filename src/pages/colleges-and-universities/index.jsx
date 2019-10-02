@@ -1,23 +1,18 @@
-import React, {Component} from "react";
-import SEO from "../../components/seo";
+import React from "react";
 
-import StoryLayout from "../../components/layouts/story/story"
-import "../../styles/index.scss"
-
-/* components */
-import CustomHeader from "../../page-sections/colleges-and-universites/custom-header/custom-header"
-import Overview from "../../page-sections/colleges-and-universites/overview"
 import Agencies from "../../page-sections/colleges-and-universites/agencies"
 import Categories from "../../page-sections/colleges-and-universites/categories"
+import CustomHeader from "../../page-sections/colleges-and-universites/custom-header/custom-header"
 import CustomToc from "../../page-sections/colleges-and-universites/custom-toc/custom-toc"
-//import Institutions from "../../page-sections/colleges-and-universites/institutions";
 import Footnotes from "../../components/footnotes/footnotes"
+//import Institutions from "../../page-sections/colleges-and-universites/institutions";
+import Overview from "../../page-sections/colleges-and-universites/overview"
+import SEO from "../../components/seo";
+import StoryLayout from "../../components/layouts/story/story"
 
-class CollegesAndUniversitiesPage extends Component {
-
+class CollegesAndUniversitiesPage extends React.Component {
   render() {
-    return <><StoryLayout
-        isCustomHeader={true}>
+    return <><StoryLayout isCustomHeader={true}>
       <SEO title="Colleges and Universities" keywords={[`gatsby`, `application`, `react`]}/>
 
       <CustomHeader
@@ -63,15 +58,11 @@ class CollegesAndUniversitiesPage extends Component {
       />
 
       <Overview/>
-
       <Agencies />
-
       <Categories />
-
       <Footnotes
         footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
       'Due to the way military academies are funded, they have not been included in this analysis.']} />
-
     </StoryLayout>
     </>
   }
