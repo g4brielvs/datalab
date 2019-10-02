@@ -22,7 +22,7 @@ a:-webkit-any-link {
 // there was a random border appearing...
 ul {
   max-height: none;
-  overflow-y: auto;
+  overflow-y: inherit;
   border: none;
   background-color: inherit;
 }
