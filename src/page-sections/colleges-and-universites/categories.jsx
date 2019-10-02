@@ -86,7 +86,7 @@ const Categories = () => {
     research: {
       categoryLabel: 'Research Grant',
       dataType: 'CFDA',
-      centerText: 'Total FY2018 Research Gran Funding'
+      centerText: 'Total FY2018 Research Grants Funding'
     }
   }
 
