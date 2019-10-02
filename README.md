@@ -9,6 +9,17 @@
 </h1>
 
 ## 🚀 Quick start
+0.  **Setup Your Development Environment**
+
+    OS specific directions - https://www.gatsbyjs.org/tutorial/part-zero/
+    
+    
+    Install node.js and npm
+    
+    Check npm version by running `npm --version` (note: must be 6.9.0 or greater)
+    
+    If you need to update npm run `npm install npm@latest -g`
+   
 
 1.  **Start developing.**
 

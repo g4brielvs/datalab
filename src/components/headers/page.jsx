@@ -1,7 +1,6 @@
 import React from "react"
 import "./page.scss"
 
-//import datalabLogo from "../logos/datalab";
 import TagLine from '../../svgs/Logo-with-tagline.svg'
 import NoTagLine from '../../svgs/Logo-without-tagline.svg'
 import Arrow from '../../svgs/arrow.svg'
@@ -12,20 +11,10 @@ class PageHeader extends React.Component {
     this.state = {
       isSticky: false,
       top: 29,
-      showAnalysesTable: false,
-      showExpressTable: false,
-      showFFGTable: false,
-      showResourcesTable: false,
-      showGlossaryTable: false,
+      activeItem: ''
     };
-    this.handleMouseOver = this.handleMouseOver.bind(this);
-    this.handleAnalyses = this.handleAnalyses.bind(this);
-    this.handleExpress = this.handleExpress.bind(this);
-    this.handleFFG = this.handleFFG.bind(this);
-    this.handleResources = this.handleResources.bind(this);
-    this.handleGlossary = this.handleGlossary.bind(this);
-    this.handleTableOut = this.handleTableOut.bind(this);
-    this.renderFFGtd = this.renderFFGtd.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.returnActiveList = this.returnActiveList.bind(this);
   };
 
   componentDidMount() {
@@ -36,7 +25,7 @@ class PageHeader extends React.Component {
         if (isSticky !== this.state.isSticky) {
           this.setState({ isSticky })
         }
-      });  
+      });
     }
 
     document.addEventListener('scroll', () => {
@@ -50,123 +39,35 @@ class PageHeader extends React.Component {
 
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
-      this.setState({isSticky: true});
+      this.setState({ isSticky: true });
     }
   };
 
-  handleMouseOver(e) {
-    let target = e.target.getAttribute('data-target');
-    switch (target) {
-      case "Analyses":
-        this.handleAnalyses();
-        break;
-      case "DataLab Express":
-        this.handleExpress();
-        break;
-      case "America's Finance Guide":
-        this.handleFFG();
-        break;
-      case "Resources":
-        this.handleResources();
-        break;
-      case "Glossary":
-        this.handleGlossary();
-        break;
-    }
-  }
-
-  handleAnalyses() {
-    this.setState({
-      showAnalysesTable: true,
-      showExpressTable: false,
-      showFFGTable: false,
-      showResourcesTable: false,
-      showGlossaryTable: false,
-    });
-  }
-
-  handleExpress() {
-    this.setState({
-      showExpressTable: true,
-      showAnalysesTable: false,
-      showFFGTable: false,
-      showResourcesTable: false,
-      showGlossaryTable: false,
-    });
-  }
-
-  handleFFG() {
-    this.setState({
-      showExpressTable: false,
-      showAnalysesTable: false,
-      showFFGTable: true,
-      showResourcesTable: false,
-      showGlossaryTable: false,
-    });
-  }
-
-  handleResources() {
-    this.setState({
-      showExpressTable: false,
-      showAnalysesTable: false,
-      showFFGTable: false,
-      showResourcesTable: true,
-      showGlossaryTable: false,
-    });
-  }
-
-  handleGlossary() {
-    this.setState({
-      showExpressTable: false,
-      showAnalysesTable: false,
-      showFFGTable: false,
-      showResourcesTable: false,
-      showGlossaryTable: true,
-    });
-  }
-
-  handleTableOut(e) {
+  handleMouseLeave(e) {
     e.stopPropagation();
-    this.setState({
-      showExpressTable: false,
-      showAnalysesTable: false,
-      showFFGTable: false,
-      showResourcesTable: false,
-      showGlossaryTable: false,
-    });
+    this.setState({activeItem: ''});
   }
 
-  renderFFGtd(name) {
-    let data = this.props.megamenuItems[2].ffg;
-    let dataFilter = data.filter(x => x.header == name)
-    return dataFilter.map((item) => {
-      return (
-        <td>
-          <a href={item.link}>{item.name}</a>
-        </td>
-      );
-    })
-  }
-
-  renderTabletd(data) {
+  returnActiveList(data) {
     return data.map((item) => {
       return (
-        <td>
-          <a href={item.link}>{item.name}</a>
-        </td>
+      <li className='data-list-li'>
+        <a className='data-list-a' href={item.link}>{item.name}</a>
+      </li>
       );
     })
+
   }
 
   render() {
 
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
-    const top = this.state.top;      
+    const top = this.state.top;
     const that = this; // used to preserve this inside nested map in render return
 
     let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={i} onMouseOver={that.handleMouseOver}>
+      return <li className='navListItem' key={i} onMouseOver={() => this.setState({activeItem: item})}>
         <a href='#' data-target={item}> {item} <span><Arrow /></span></a>
       </li>;
     });
@@ -183,7 +84,7 @@ class PageHeader extends React.Component {
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
-                    <TagLine />
+                  <TagLine />
                   )}
               </div>
             </a>
@@ -198,53 +99,69 @@ class PageHeader extends React.Component {
             </nav>
           </div>
         </div>
-
+        
         <div className="header__sub">
-          <table className={`data-table ${this.state.showAnalysesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(0, 3))}</tr>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(3, 6))}</tr>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(6, 9))}</tr>
-            </tbody>
-          </table>
-
-          <table className={`data-table ${this.state.showExpressTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[1].express)}</tr>
-            </tbody>
-          </table>
-
-          <table className={`data-table ${this.state.showFFGTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tr className='header-row'>
-              <th>Overview</th>
-              <th>Revenue</th>
-              <th>Spending</th>
-              <th>Deficit</th>
-              <th>Debt</th>
-            </tr>
-            <tbody>
-              <tr className='data-row'>{this.renderFFGtd('Overview')}</tr>
-              <tr className='data-row'>{this.renderFFGtd('Revenue')}</tr>
-              <tr className='data-row'>{this.renderFFGtd('Spending')}</tr>
-              <tr className='data-row'>{this.renderFFGtd('Deficit')}</tr>
-              <tr className='data-row'>{this.renderFFGtd('Debt')}</tr>
-            </tbody>
-          </table>
-
-          <table className={`data-table ${this.state.showResourcesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(0, 2)}</tr>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(2, 4)}</tr>
-            </tbody>
-          </table>
-
-          <table className={`data-table ${this.state.showGlossaryTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
-              <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[4].glossary)}</tr>
-            </tbody>
-          </table>
-
-
+        {
+        (() => {
+          if (this.state.activeItem == 'Analyses') {
+            return (
+              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(0, 3))}</ul>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(3, 6))}</ul>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(6, 9))}</ul>
+              </div>
+            );
+          }
+          if (this.state.activeItem == 'DataLab Express') {
+            return (
+              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[1].express)}</ul>
+              </div>
+            );
+          }
+          if (this.state.activeItem == "America's Finance Guide") {
+            return (
+              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
+                <section className='data-list-section'>
+                  <h4 className='section-title'>Overview</h4>
+                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(0,1))}</ul>
+                </section>
+                <section className='data-list-section'>
+                  <h4 className='section-title'>Revenue</h4>
+                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(1,5))}</ul>
+                </section>
+                <section className='data-list-section'>
+                  <h4 className='section-title'>Spending</h4>
+                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(5,9))}</ul>
+                </section>
+                <section className='data-list-section'>
+                  <h4 className='section-title'>Deficit</h4>
+                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(9,12))}</ul>
+                </section>
+                <section className='data-list-section'>
+                  <h4 className='section-title'>Debt</h4>
+                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(12,16))}</ul>
+                </section>
+              </div>
+            );
+          }
+          if (this.state.activeItem == "Resources") {
+            return (
+              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[3].resources.slice(0,2))}</ul>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[3].resources.slice(2,4))}</ul>
+              </div>
+            );
+          }
+          if (this.state.activeItem == "Glossary") {
+            return (
+              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
+                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[4].glossary)}</ul>
+              </div>
+            );
+          }
+        })()
+      }
         </div>
 
       </header>
