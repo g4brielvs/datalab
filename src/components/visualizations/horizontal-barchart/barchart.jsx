@@ -254,10 +254,6 @@ function Barchart(props){
       .on("mouseout", handleMouseOut);
   }
 
-  // useEffect(() => {
-  //   draw(data, settings, helpers);
-  // });
-
   return (
     <svg width="1200" height="700" viewBox="0 0 1200 700" id="barchartSvg" className={props._svgClass}></svg>
   );
