@@ -86,9 +86,7 @@ const Agencies = () => {
     }
   }
 `)
-
-  console.log(_data);
-
+  
   return (<>
     <StoryHeading
       number={'02'}
