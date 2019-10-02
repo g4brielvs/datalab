@@ -13,19 +13,19 @@ const Home = ({ children }) => (
             megamenuItems={[
               {
               analyses: [
-                {name: 'Colleges and Universities', link: 'colleges-and-universities.html'},
-                {name: 'DTS Tracker', link: 'dts.html'},
-                {name: 'Contract Spending Analysis', link: 'contracts-over-time.html'},
-                {name: 'Federal Account Explorer', link: 'federal-account-explorer.html'},
-                {name: 'Contract Explorer', link: 'contract-explorer.html'},
-                {name: 'Homelessness Analysis', link: 'homelessness-analysis.html'},
-                {name: 'Budget Function', link: 'budget-function.html'},
-                {name: 'Federal Employees', link: 'federal-employees.html'},
-                {name: 'Competition In Contracting', link: 'competition-in-contacting.html'}
+                {name: 'Colleges and Universities', link: 'colleges-and-universities'},
+                {name: 'DTS Tracker', link: 'dts'},
+                {name: 'Contract Spending Analysis', link: 'contracts-over-time'},
+                {name: 'Federal Account Explorer', link: 'federal-account-explorer'},
+                {name: 'Contract Explorer', link: 'contract-explorer'},
+                {name: 'Homelessness Analysis', link: 'homelessness-analysis'},
+                {name: 'Budget Function', link: 'budget-function'},
+                {name: 'Federal Employees', link: 'federal-employees'},
+                {name: 'Competition In Contracting', link: 'competition-in-contacting'}
               ]},
               {
               express: [
-                {name: 'test express', link: 'test-link.html'}
+                {name: 'test express', link: 'test-link'}
               ]},
               {
               ffg: [

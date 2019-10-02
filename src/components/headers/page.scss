@@ -100,7 +100,7 @@ ul.nav {
 
 
 // container for "subnav"
-.header__sub {
+.header__sub {  
   position: relative;
   z-index: 20;
 
@@ -156,16 +156,16 @@ ul.nav {
 
 
   .data-row {
-    display: flex;
-    justify-content: space-evenly;
     display: block;
     float: left;
     text-align: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .header-row {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding-top: .25rem;
     padding-bottom: .25rem;
   }
@@ -175,12 +175,21 @@ ul.nav {
     justify-content: space-evenly;
   }
 
-  td {
+  .data-table-td {
     display: block;
-    text-align: left;
+    text-align: center;
     padding-top: .5rem;
     padding-bottom: .5rem;
     border: none;
+  }
+
+  .data-table-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-left: 10rem;
+    padding-right: 11rem;
+    box-sizing: border-box;
   }
 
   a {
@@ -200,6 +209,10 @@ ul.nav {
 
 .active-table {
   display: table;
+}
+
+.spacer-element {
+  flex-grow: 1;
 }
 
 

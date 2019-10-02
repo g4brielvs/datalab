@@ -17,6 +17,7 @@ class PageHeader extends React.Component {
       showFFGTable: false,
       showResourcesTable: false,
       showGlossaryTable: false,
+      showSomething: ''
     };
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleAnalyses = this.handleAnalyses.bind(this);
@@ -141,7 +142,7 @@ class PageHeader extends React.Component {
     let dataFilter = data.filter(x => x.header == name)
     return dataFilter.map((item) => {
       return (
-        <td>
+        <td className='data-table-td'>
           <a href={item.link}>{item.name}</a>
         </td>
       );
@@ -151,7 +152,7 @@ class PageHeader extends React.Component {
   renderTabletd(data) {
     return data.map((item) => {
       return (
-        <td>
+        <td className='data-table-td'>
           <a href={item.link}>{item.name}</a>
         </td>
       );
@@ -159,6 +160,8 @@ class PageHeader extends React.Component {
   }
 
   render() {
+
+    console.log(this.state.showSomething);
 
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
@@ -201,7 +204,7 @@ class PageHeader extends React.Component {
 
         <div className="header__sub">
           <table className={`data-table ${this.state.showAnalysesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
+            <tbody className='data-table-body'>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(0, 3))}</tr>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(3, 6))}</tr>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[0].analyses.slice(6, 9))}</tr>
@@ -209,20 +212,20 @@ class PageHeader extends React.Component {
           </table>
 
           <table className={`data-table ${this.state.showExpressTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
+            <tbody className='data-table-body'>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[1].express)}</tr>
             </tbody>
           </table>
 
           <table className={`data-table ${this.state.showFFGTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
             <tr className='header-row'>
-              <th>Overview</th>
-              <th>Revenue</th>
-              <th>Spending</th>
-              <th>Deficit</th>
-              <th>Debt</th>
+              <th className='data-table-header'>Overview</th>
+              <th className='data-table-header'>Revenue</th>
+              <th className='data-table-header'>Spending</th>
+              <th className='data-table-header'>Deficit</th>
+              <th className='data-table-header'>Debt</th>
             </tr>
-            <tbody>
+            <tbody className='data-table-body'>
               <tr className='data-row'>{this.renderFFGtd('Overview')}</tr>
               <tr className='data-row'>{this.renderFFGtd('Revenue')}</tr>
               <tr className='data-row'>{this.renderFFGtd('Spending')}</tr>
@@ -232,18 +235,17 @@ class PageHeader extends React.Component {
           </table>
 
           <table className={`data-table ${this.state.showResourcesTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
+            <tbody className='data-table-body'>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(0, 2)}</tr>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[3].resources).slice(2, 4)}</tr>
             </tbody>
           </table>
 
           <table className={`data-table ${this.state.showGlossaryTable ? `active-table` : ``}`} onMouseLeave={this.handleTableOut}>
-            <tbody>
+            <tbody className='data-table-body'>
               <tr className='data-row'>{this.renderTabletd(this.props.megamenuItems[4].glossary)}</tr>
             </tbody>
           </table>
-
 
         </div>
 
