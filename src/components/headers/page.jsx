@@ -22,8 +22,8 @@ class PageHeader extends React.Component {
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
-        if (isSticky !== this.state.isSticky) {
-          this.setState({ isSticky })
+        if (isSticky == true) {
+          this.setState({ isSticky: true })
         }
       });
     }
