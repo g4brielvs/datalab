@@ -12,9 +12,9 @@ AWS.config.update(
 let csv;
 const s3 = new AWS.S3();
 s3.getObject(
-  { Bucket: 'datalab-dev', Key: 'data-lab-data/dts/dts.csv' },
+  { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
   function (error, data) {
-    if (error != null) {
+    if (error) {
       alert('Failed to retrieve an object: ' + error);
     } else {
       alert('Loaded ' + data.ContentLength + ' bytes');
