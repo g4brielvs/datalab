@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as d3 from "d3v4";
 import Tooltip from "../util/tooltip";
 import treemapStyles from './treemap.module.scss';
