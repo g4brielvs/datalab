@@ -1,6 +1,6 @@
 import React from 'react';
+import AWS from 'aws-sdk';
 
-const AWS = require('aws-sdk');
 AWS.config.update(
   {
     accessKeyId: 'AKIA3YCOPFO3LMPSH75B',
@@ -9,19 +9,27 @@ AWS.config.update(
   }
 );
 
-let csv;
 const s3 = new AWS.S3();
-s3.getObject(
-  { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
-  function (error, data) {
-    if (error) {
-      alert('Failed to retrieve an object: ' + error);
-    } else {
-      alert('Loaded ' + data.ContentLength + ' bytes');
-      csv = data.Body;
-    }
-  }
-);
+
 export default class DataPOC extends React.Component {
-  render = () => (<>{JSON.stringify(csv)}</>);
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      csv: 'gathering data...'
+    }
+
+    s3.getObject(
+      { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
+      (error, data) => {
+        if (error) {
+          console.log('Could not get DTS data: ' + error);
+        } else {
+          this.setState({csv: data.Body.toString('ascii')});
+        }
+      }
+    );
+  }
+
+  render = () => (<div>{JSON.stringify(this.state.csv)}</div>);
 }
