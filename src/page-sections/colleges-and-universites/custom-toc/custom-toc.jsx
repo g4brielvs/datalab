@@ -2,7 +2,7 @@ import './custom-toc.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 
 const CustomToc = (props) => {
   return (
@@ -15,12 +15,18 @@ const CustomToc = (props) => {
               className='toc__tile'
             >
               <a href={`#section-${item.section}`}>
-                <div className='toc__number'>
-                  {item.number}
-                  <p className='toc__subtext'>{item.subtext}</p>
-                </div>
-                <p className='toc__subblurb'>{item.subblurb}</p>
-                <p className='toc__blurb'>{item.blurb}</p>
+                <Grid container alignItems='center'>
+                  <Grid item xs={6} md={12} xl={6}
+                    className='toc__number'
+                  >
+                    {item.number}
+                  </Grid>
+                  <Grid item xs className='toc__subtext'>{item.subtext}</Grid>
+                </Grid>
+                <Hidden smDown>
+                  <p className='toc__subblurb'>{item.subblurb}</p>
+                  <p className='toc__blurb'>{item.blurb}</p>
+                </Hidden>
               </a>
             </Grid>
           )}
