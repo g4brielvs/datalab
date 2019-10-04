@@ -1,10 +1,12 @@
 import './custom-header.scss'
 import React from 'react';
 
+import { Grid } from '@material-ui/core';
+
 const CustomHeader = (props) => (
   <div className='header container-fluid'>
-    <div className='row center-xs'>
-      <div className='col-xs-10'>
+    <Grid container>
+      <Grid item xs={10}>
         <section className='header--hero'>
           <div id='header__banner'>
             <p className='header__subtext'>
@@ -18,8 +20,8 @@ const CustomHeader = (props) => (
             </p>
           </div>
         </section>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   </div>
 )
 
