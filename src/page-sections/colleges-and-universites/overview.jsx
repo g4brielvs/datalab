@@ -1,18 +1,15 @@
-import React from "react";
-import "../../styles/index.scss";
+import '../../styles/index.scss';
 import '../../components/share-menu/share-menu.scss';
+import React from 'react';
 
-/* components */
+import Downloads from '../../components/section-elements/downloads/downloads';
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
-import Accordion from "../../components/accordion/accordion";
-import StoryHeading from "../../components/section-elements/story-heading/story-heading";
-import Downloads from "../../components/section-elements/downloads/downloads";
-import defaultImage from "../../images/default-image.jpg";
 import ShareMenu from '../../components/share-menu/share-menu';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 
 const Overview = () => {
   const defaultImageStyle = {
-    marginBottom: "1rem"
+    marginBottom: '1rem'
   };
 
   return (

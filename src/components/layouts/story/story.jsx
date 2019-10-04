@@ -98,13 +98,8 @@ const StoryLayout = (props) => {
         <div className='story-page'>
           {header}
           {toc}
-
-          <main>
-            {props.children}
-          </main>
-
+          {props.children}
           <HwctaLink url={'#'} />
-
           <MoreAnalyses />
         </div>
       </Grid>
