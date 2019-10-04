@@ -74,11 +74,11 @@ $md: 768;
 $sm: 576;
 $xs: 0;
 
-$desktop-xl: $xl + 'px';
-$desktop: $lg + 'px';
-$tablet: $md + 'px';
-$phone: $sm + 'px';
-$min: $xs + 'px';
+$desktop-xl: 1200px;
+$desktop: 992px;
+$tablet: 768px;
+$phone: 576px;
+$min: 0px;
 
 $margin-150: 150px;
 $margin-100: 100px;

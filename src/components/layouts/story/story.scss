@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/index.scss';
 
 $cuRed: #881E3D;
 $darkGrey: #666666;
@@ -6,8 +6,7 @@ $mdGrey: #555555;
 
 .story-page {
   max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 50px auto 0;
 }
 
 .header--hero {
@@ -49,10 +48,6 @@ $mdGrey: #555555;
 }
 
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .story-page {
-    max-width: 768px;
-  }
-
   .header--hero {
     padding-top: $margin-50;
     padding-bottom: $margin-30;
@@ -61,7 +56,7 @@ $mdGrey: #555555;
 
 @media (max-width: $tablet - 1) {
   .story-page {
-    margin: 30px auto 0;
+    margin-top: 30px;
   }
 
   .header__title, .header__introSentence, .header__contextStatement {
