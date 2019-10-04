@@ -1,4 +1,4 @@
-import './custom-header.scss'
+import './custom-header.scss';
 import React from 'react';
 
 const CustomHeader = (props) => (
