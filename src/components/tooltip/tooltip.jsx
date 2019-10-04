@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './tooltip.scss';
 
 import * as d3 from "d3v3";
 

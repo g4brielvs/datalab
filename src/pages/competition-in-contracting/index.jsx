@@ -26,6 +26,7 @@ class CompetitionInContractingPage extends Component {
     this.setScaleFn = this.setScaleFn.bind(this);
     this.setUnitFn = this.setUnitFn.bind(this);
     this.drawSummaryTableModule = this.drawSummaryTableModule.bind(this);
+    this.resetFn = this.resetFn.bind(this);
     this.handleYAxisCheckboxChange = this.handleYAxisCheckboxChange.bind(this);
   }
 
@@ -35,6 +36,12 @@ class CompetitionInContractingPage extends Component {
 
   setUnitFn(e){
     this.setState({unit: e.currentTarget.value});
+  }
+
+  resetFn(){
+    this.setState({scale: 'quantity'});
+    this.setState({unit: 'dollars'});
+    this.setState({data: JSON.parse(JSON.stringify(this.rawData))});
   }
 
   drawSummaryTableModule(){
@@ -89,6 +96,8 @@ class CompetitionInContractingPage extends Component {
 
 
   render() {
+    console.log("inside render");
+    console.log('location:', this.props.location);
     const pageTitle = 'Competition in Contracting';
     const introSentence = 'In FY 2017, over 60 percent of federal contracts were competitively awarded.';
     const contextSentence = 'How often do federal agencies compete for contracts? In FY 2017 more than 60% of federal contracts were competitively awarded.';
@@ -98,6 +107,7 @@ class CompetitionInContractingPage extends Component {
       + '\t\t\t\t<p>The 1984 Competition in Contracting Act requires full and open competition while also allowing for exceptions in certain situations. '
       + 'In many cases, federal agencies will pursue competition even when an exception to the law applies, as competition may help to provide innovative '
       + 'solutions or better prices.</p>';
+    const shareText = 'Data Lab – Competition in Contracting – U.S. Treasury ';
 
     return (<>
         <ToolLayout title={pageTitle}
@@ -117,8 +127,9 @@ class CompetitionInContractingPage extends Component {
             </ul>
           </Accordion>
           <Grid container justify='flex-end'>
-            <Grid item><Reset/></Grid>
-            <Grid item><Share/></Grid>
+            <Grid item><Reset _resetClick={this.resetFn}/></Grid>
+            <Grid item><Share location={this.props.location}
+                              title={shareText}/></Grid>
           </Grid>
 
           <div className={competitionStyles.vizContainer}>

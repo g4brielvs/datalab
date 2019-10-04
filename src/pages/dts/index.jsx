@@ -8,7 +8,7 @@ import csvData from '../../large-datasets/dts.csv'
 import HWCTALink from "../../components/hwcta-link/hwcta-link"
 import Share from "../../components/share/share"
 
-function DTSPage() {
+function DTSPage(props) {
 
   return (
     <>
@@ -36,7 +36,8 @@ function DTSPage() {
                 <div></div>
                 <div className="header-updated-when"></div>
                 <div className="flex">
-                  <Share/>
+                  <Share
+                    location={props.location}/>
                 </div>
               </div>
             </div>
