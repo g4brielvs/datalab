@@ -1,6 +1,5 @@
 @import '../../../styles/index.scss';
 
-
 .heading {
 	padding: 100px 0 50px;
 }
@@ -53,6 +52,10 @@
 	.heading {
 		padding: 100px 0 30px;
 		text-align: center;
+
+		.heading__number {
+			margin-right: 0;
+		}
 	}
 }
 
