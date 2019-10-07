@@ -12,11 +12,6 @@ import Filter from "../../components/filter/filter"
 import Downloads from "../../components/section-elements/downloads/downloads"
 
 function Where(props) {
-
-  const defaultImageStyle = {
-    marginBottom: "1rem"
-  };
-
   return (
     <>
       <h2>Federal Employees Density Map</h2>
