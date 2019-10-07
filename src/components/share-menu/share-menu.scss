@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 $silver: #ccc;
 
 // this needs to be replaced with "cu-header-controls" from the original Jekyll project! 
@@ -21,7 +23,7 @@ $silver: #ccc;
   }
   
   .new-share-button .viz-share-icon:hover {
-    fill: #881E3D;
+    fill: $cuRed;
   }
 
   .share-buttons {

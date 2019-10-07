@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 $silver: #ccc;
 
 .new-share {
@@ -12,7 +14,7 @@ $silver: #ccc;
   }
   
   .new-share-button .viz-share-icon:hover {
-    fill: #881E3D;
+    fill: $cuRed;
   }
 
   .share-buttons {
