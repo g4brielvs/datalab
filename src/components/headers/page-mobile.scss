@@ -1,0 +1,48 @@
+@media screen and (max-width: 958px) {
+  .navbar-toggle {
+    display: flex;
+    cursor: pointer;
+    color: #4a4a4a;
+    font-size: 28px;
+    justify-content: flex-end;
+    align-content: flex-end;
+  }
+
+
+  .header-nav {
+    position: absolute;
+    padding: 0;
+    padding-right: 2rem;
+    right: 0;
+
+    #burger-menu {
+      display: none;
+    }
+  }
+
+  .mobileDropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    list-style-type: none;
+    padding-right: 2rem;
+    transition: all 700ms ease-in;
+
+    .navListItemMobile {
+      padding-top: .5rem;
+    }      
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .header-nav {
+    #burger-menu {
+      .navListItem {
+	padding-left: 20px;
+	padding-right: 20px;
+      }
+    }
+  }
+}
+
+  

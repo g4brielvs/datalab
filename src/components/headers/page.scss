@@ -19,7 +19,6 @@
   flex-direction: column;
 }
 
-// nav with 5 elements
 .header-nav {
   display: flex;
   justify-content: center;
@@ -40,18 +39,19 @@
     font-weight: 800;
   }
 
-  ul.nav {
+  #burger-menu {
     display: flex;
     list-style: none;
     font-size: 13px;
     margin: 0;
     padding: 0;
+
+    .navListItem {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
   }
 
-  ul.nav > li {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
   
 } // end header-nav
 
@@ -204,3 +204,12 @@ ul.nav {
 
 }
 
+.navbar-toggle {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@import './page-mobile.scss'

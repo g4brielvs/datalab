@@ -5,6 +5,9 @@ import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
 import Arrow from '../../svgs/arrow.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
+import MobileMenu from '../../components/headers/mobile-menu.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -13,8 +16,11 @@ class PageHeader extends React.Component {
       isSticky: false,
       top: 29,
       activeItem: '',
+      showMobileMenu: false,
+      width: window.innerWidth,
       menuData: this.props.megamenuItems,
     };
+    this.updateWidth = this.updateWidth.bind(this);
   };
 
   componentDidMount() {
@@ -22,7 +28,7 @@ class PageHeader extends React.Component {
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
-          this.setState({ isSticky: isSticky });
+        this.setState({ isSticky: isSticky });
       });
     }
 
@@ -35,50 +41,66 @@ class PageHeader extends React.Component {
       this.setState({ top });
     });
 
+    window.addEventListener('resize', this.updateWidth);
+
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
       this.setState({ isSticky: true });
     }
   };
 
-  returnWidth = () => {
-    this.setState({ width: window.innerWidth })
-  }
+  updateWidth() {
+    this.setState({ width: window.innerWidth });
+  };
 
   handleMouseLeave = e => {
     e.stopPropagation();
     this.setState({ activeItem: '' });
-  }
+  };
+
+  burgerClick = () =>  {
+    this.setState({showMobileMenu: !this.state.showMobileMenu});
+  };
 
   render() {
 
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
     const top = this.state.top;
+    const isTablet = this.state.width < 955;
 
     let returnItems = listItems.map((item, i) => {
       return <li className='navListItem' key={i} onMouseOver={() => this.setState({ activeItem: item })}>
-        <a href='#' className='navListAnchor' data-target={item}> {item} <span className='navListArrow'><Arrow /></span></a>
-      </li>;
+               <a href='#' className='navListAnchor' data-target={item}> {item} <span className='navListArrow'><Arrow /></span></a>
+             </li>;
     });
 
+    let logoToggler;
+    if (isTablet) {
+      logoToggler = 'row';
+    } else if (!isSticky) {
+      logoToggler = 'col';
+    } else if (isSticky && isTablet) {
+      logoToggler = 'row';
+    }
+    
     return (
       <header id="header" style={{ top: `${top}px` }}>
         <div className={`header__main ${isSticky ? `tight` : ``}`}>
-          <div className={`header-logo__wrapper ${isSticky ? `row` : `col`}`}>
+          <div className={`header-logo__wrapper ${logoToggler}`}>
             <a href="/">
               <div>
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
-                    <TagLine />
-                  )}
+                  <TagLine />
+                )}
               </div>
             </a>
 
             <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
-              <span className="navbar-toggle" id="burger-navbar-toggle">
-                <i className="fas fa-bars"> </i>
+              <span className="navbar-toggle" id="burger-navbar-toggle" onClick={this.burgerClick}>
+                <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className="nav" id="burger-menu">
                 {returnItems}
@@ -89,8 +111,14 @@ class PageHeader extends React.Component {
 
         <div className="header__sub">
           <Dropdown activeItem={this.state.activeItem}
-            mouseHandle={this.handleMouseLeave}
-            data={this.props.megamenuItems} />
+                    mouseHandle={this.handleMouseLeave}
+                    data={this.props.megamenuItems} />
+
+          { this.state.showMobileMenu
+            ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} />
+            : <></>
+          }
+          
         </div>
 
       </header>
