@@ -8,10 +8,6 @@ import ShareMenu from '../../components/share-menu/share-menu';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 
 const Overview = () => {
-  const defaultImageStyle = {
-    marginBottom: '1rem'
-  };
-
   return (
     <>
       <StoryHeading
