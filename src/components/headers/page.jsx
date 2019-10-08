@@ -115,7 +115,7 @@ class PageHeader extends React.Component {
                     data={this.props.megamenuItems} />
 
           { this.state.showMobileMenu
-            ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} />
+            ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} data={this.props.megamenuItems} />
             : <></>
           }
           
