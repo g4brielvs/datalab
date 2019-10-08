@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="162px" height="27px" viewBox="0 0 162 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>Group 3</title>
-    <desc>Created with Sketch.</desc>
+<svg width="162px" height="27px" viewBox="0 0 162 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
     <defs>
         <polygon id="path-1" points="0.186561351 0.568245818 13.1297569 0.568245818 13.1297569 15.7222866 0.186561351 15.7222866"></polygon>
         <polygon id="path-3" points="0 22.1803401 161.428415 22.1803401 161.428415 0 0 0"></polygon>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="DL-Nav-on-scroll" transform="translate(-150.000000, -11.000000)">
             <g id="Navigation-/-Layer-1" transform="translate(0.000000, 1.000000)">
                 <g id="Group-3" transform="translate(150.000000, 8.000000)">
@@ -22,13 +19,13 @@
                                 <path d="M141.450374,12.899565 L140.573691,10.5902218 C139.924782,8.90407376 139.330768,7.24085535 138.736754,5.48509943 L138.624506,5.48509943 C138.031311,7.24085535 137.438116,8.90407376 136.787569,10.5902218 L135.883029,12.899565 L141.450374,12.899565 Z M142.043568,14.4473162 L135.289015,14.4473162 L133.508612,19.0676403 L131.106337,19.0676403 L137.380763,3.91359961 L140.03703,3.91359961 L146.311456,19.0676403 L143.823971,19.0676403 L142.043568,14.4473162 Z" id="Fill-11" fill="#ACACAC"></path>
                                 <g id="Group-15" transform="translate(148.298658, 3.345272)">
                                     <mask id="mask-2" fill="white">
-                                        <use xlink:href="#path-1"></use>
+                                        <use xlinkHref="#path-1"></use>
                                     </mask>
                                     <g id="Clip-14"></g>
                                     <path d="M5.78176321,14.1974649 C8.94683346,14.1974649 10.812447,13.2499791 10.812447,11.1953189 C10.812447,9.32409578 9.03204374,8.46914747 5.78176321,8.46914747 L2.56015921,8.46914747 L2.56015921,14.1974649 L5.78176321,14.1974649 Z M5.30163606,7.03686337 C8.43884911,7.03686337 9.76616306,6.11312611 9.76616306,4.42697805 C9.76616306,2.78668929 8.26924788,2.09388634 5.41470354,2.09388634 L2.56015921,2.09388634 L2.56015921,7.03686337 L5.30163606,7.03686337 Z M0.186561351,0.568245818 L5.69655293,0.568245818 C9.45481781,0.568245818 12.0840465,1.60826915 12.0840465,4.2656516 C12.0840465,5.76590573 11.0385819,7.10647123 8.83458531,7.56752094 L8.83458531,7.66087737 C11.5465663,8.00727884 13.1303304,9.20862863 13.1303304,11.2870375 C13.1303304,14.2670728 10.2471095,15.7222866 6.12096566,15.7222866 L0.186561351,15.7222866 L0.186561351,0.568245818 Z" id="Fill-13" fill="#ACACAC" mask="url(#mask-2)"></path>
                                 </g>
                                 <mask id="mask-4" fill="white">
-                                    <use xlink:href="#path-3"></use>
+                                    <use xlinkHref="#path-3"></use>
                                 </mask>
                                 <g id="Clip-17"></g>
                                 <polygon id="Fill-16" fill="#212F64" mask="url(#mask-4)" points="48.2429463 22.1803401 49.1679694 22.1803401 49.1679694 0 48.2429463 0"></polygon>
@@ -46,7 +43,7 @@
                                 <polygon id="Fill-29" fill="#212F64" mask="url(#mask-4)" points="13.7925945 0.836522703 13.7835819 11.6355681 12.2063724 11.6355681 12.2162044 0.836522703"></polygon>
                             </g>
                         </g>
-                        <text id="BETA" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="6.87889447" font-weight="normal" letter-spacing="0.51591708" fill="#A9A9A9">
+                        <text id="BETA" fontFamily="SourceSansPro-Regular, Source Sans Pro" fontSize="6.87889447" fontWeight="normal" letterSpacing="0.51591708" fill="#A9A9A9">
                             <tspan x="57.8973618" y="7">BETA</tspan>
                         </text>
                     </g>

@@ -1,9 +1,9 @@
-<svg width="344px" height="73px" viewBox="0 0 344 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="344px" height="73px" viewBox="0 0 344 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
     <defs>
         <polygon id="path-1" points="0.39054 1.18954286 27.485303 1.18954286 27.485303 32.9124 0.39054 32.9124"></polygon>
         <polygon id="path-3" points="0 46.4314286 337.927727 46.4314286 337.927727 0 0 0"></polygon>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="DL-Nav-menu-main" transform="translate(-547.000000, -51.000000)">
             <g id="Logo" transform="translate(547.000000, 47.000000)">
                 <g id="Group-7" transform="translate(0.000000, 13.310000)">
@@ -16,13 +16,13 @@
                         <path d="M296.106502,27.0034286 L294.27129,22.1691429 C292.91289,18.6394286 291.669405,15.1577143 290.42592,11.4822857 L290.190944,11.4822857 C288.949175,15.1577143 287.707405,18.6394286 286.345575,22.1691429 L284.452047,27.0034286 L296.106502,27.0034286 Z M297.348272,30.2434286 L283.208562,30.2434286 L279.481538,39.9154286 L274.452714,39.9154286 L287.587344,8.19257143 L293.147865,8.19257143 L306.282496,39.9154286 L301.075296,39.9154286 L297.348272,30.2434286 Z" id="Fill-11" fill="#ACACAC"></path>
                         <g id="Group-15" transform="translate(310.442424, 7.002857)">
                             <mask id="mask-2" fill="white">
-                                <use xlink:href="#path-1"></use>
+                                <use xlinkHref="#path-1"></use>
                             </mask>
                             <g id="Clip-14"></g>
                             <path d="M12.1033097,29.7204 C18.72894,29.7204 22.63434,27.7369714 22.63434,23.4358286 C22.63434,19.5186857 18.9073158,17.7289714 12.1033097,17.7289714 L5.35933394,17.7289714 L5.35933394,29.7204 L12.1033097,29.7204 Z M11.0982309,14.7306857 C17.6655461,14.7306857 20.4440915,12.7969714 20.4440915,9.26725714 C20.4440915,5.83354286 17.3105097,4.38325714 11.3349218,4.38325714 L5.35933394,4.38325714 L5.35933394,14.7306857 L11.0982309,14.7306857 Z M0.39054,1.18954286 L11.9249339,1.18954286 C19.7923339,1.18954286 25.2962552,3.36668571 25.2962552,8.92954286 C25.2962552,12.0701143 23.1077218,14.8764 18.4939642,15.8415429 L18.4939642,16.0369714 C24.1711158,16.7621143 27.4865036,19.2769714 27.4865036,23.6278286 C27.4865036,29.8661143 21.4508855,32.9124 12.8133824,32.9124 L0.39054,32.9124 L0.39054,1.18954286 Z" id="Fill-13" fill="#ACACAC" mask="url(#mask-2)"></path>
                         </g>
                         <mask id="mask-4" fill="white">
-                            <use xlink:href="#path-3"></use>
+                            <use xlinkHref="#path-3"></use>
                         </mask>
                         <g id="Clip-17"></g>
                         <polygon id="Fill-16" fill="#212F64" mask="url(#mask-4)" points="100.989836 46.4314286 102.926242 46.4314286 102.926242 0 100.989836 0"></polygon>
@@ -39,11 +39,11 @@
                         <polygon id="Fill-28" fill="#212F64" mask="url(#mask-4)" points="19.1719636 24.3565714 22.4719152 24.3565714 22.4719152 5.09314286 19.1719636 5.09314286"></polygon>
                         <polygon id="Fill-29" fill="#212F64" mask="url(#mask-4)" points="28.8728606 1.75114286 28.8539939 24.3574286 25.5523273 24.3574286 25.5729091 1.75114286"></polygon>
                     </g>
-                    <text id="Visualizations-to-he" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="13.31" font-weight="normal" line-spacing="16.94" letter-spacing="0.33275001" fill="#4F4F4F">
+                    <text id="Visualizations-to-he" font-family="SourceSansPro-Regular, Source Sans Pro" fontSize="13.31" fontWeight="normal" linespacing="16.94" letterSpacing="0.33275001" fill="#4F4F4F">
                         <tspan x="0.625" y="60.19">Visualizations to help you understand government finance.</tspan>
                     </text>
                 </g>
-                <text id="BETA" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14.52" font-weight="normal" letter-spacing="1.08899994" fill="#A9A9A9">
+                <text id="BETA" fontFamily="SourceSansPro-Regular, Source Sans Pro" fontSize="14.52" fontWeight="normal" letterSpacing="1.08899994" fill="#A9A9A9">
                     <tspan x="123.62" y="14">BETA</tspan>
                 </text>
             </g>

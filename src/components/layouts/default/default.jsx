@@ -1,24 +1,22 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from 'react-helmet'
+import '../../../styles/index.scss';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import OfficialBanner from '../../headers/official-banner'
-import PageFooter from "../../footers/page"
-import SiteFooter from "../../footers/site"
-
-import '../../../styles/index.scss'
-
+import { Helmet } from 'react-helmet';
+import OfficialBanner from '../../headers/official-banner';
+import PageFooter from '../../footers/page';
+import SiteFooter from '../../footers/site';
 
 const Default = ({ children }) => (
   <>
     <Helmet>
-        <title>Data Lab - U.S. Treasury</title>
+      <title>Data Lab - U.S. Treasury</title>
     </Helmet>
 
     <OfficialBanner />
-    <div className='default'>
-      {children}
-    </div>
+
+    {children}
+
     <PageFooter />
     <SiteFooter />
   </>

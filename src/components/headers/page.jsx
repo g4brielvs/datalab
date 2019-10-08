@@ -1,9 +1,9 @@
-import React from "react"
-import "./page.scss"
+import React from 'react';
+import './page.scss';
 
-import TagLine from '../../svgs/Logo-with-tagline.svg'
-import NoTagLine from '../../svgs/Logo-without-tagline.svg'
-import Arrow from '../../svgs/arrow.svg'
+import TagLine from '../../svgs/Logo-with-tagline.svg';
+import NoTagLine from '../../svgs/Logo-without-tagline.svg';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class PageHeader extends React.Component {
   };
 
   componentDidMount() {
-
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
@@ -62,15 +61,14 @@ class PageHeader extends React.Component {
   }
 
   render() {
-
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
     const top = this.state.top;
     const that = this; // used to preserve this inside nested map in render return
 
     let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={i} onMouseOver={() => this.setState({activeItem: item})}>
-        <a href='#' data-target={item}> {item} <span><Arrow /></span></a>
+      return <li className='navListItem' key={item} onMouseOver={that.handleMouseOver}>
+        <a href='#' data-target={item}> {item} <span><ExpandMoreIcon /></span></a>
       </li>;
     });
 
@@ -165,7 +163,6 @@ class PageHeader extends React.Component {
         })()
       }
         </div>
-
       </header>
     );
   }
