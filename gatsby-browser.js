@@ -8,5 +8,3 @@
 import('normalize-scss');
 import('flexboxgrid');
 
-import muiRootWrapper from "./mui-theme-wrapper"
-export const wrapRootElement = muiRootWrapper
