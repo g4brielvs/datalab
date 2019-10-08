@@ -39,7 +39,7 @@
                         <polygon id="Fill-28" fill="#212F64" mask="url(#mask-4)" points="19.1719636 24.3565714 22.4719152 24.3565714 22.4719152 5.09314286 19.1719636 5.09314286"></polygon>
                         <polygon id="Fill-29" fill="#212F64" mask="url(#mask-4)" points="28.8728606 1.75114286 28.8539939 24.3574286 25.5523273 24.3574286 25.5729091 1.75114286"></polygon>
                     </g>
-                    <text id="Visualizations-to-he" font-family="SourceSansPro-Regular, Source Sans Pro" fontSize="13.31" fontWeight="normal" lineSpacing="16.94" letterSpacing="0.33275001" fill="#4F4F4F">
+                    <text id="Visualizations-to-he" font-family="SourceSansPro-Regular, Source Sans Pro" fontSize="13.31" fontWeight="normal" linespacing="16.94" letterSpacing="0.33275001" fill="#4F4F4F">
                         <tspan x="0.625" y="60.19">Visualizations to help you understand government finance.</tspan>
                     </text>
                 </g>
