@@ -21,8 +21,10 @@ const Overview = () => {
                 nonprofit institutions that offer a program of two years or more.`}
       />
 
-      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities' 
-				twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending' 
+      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities'
+        location={props.location}
+        title='Check out this analysis on Data Lab'
+        text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
 				facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
       <section id='investment-overview'>

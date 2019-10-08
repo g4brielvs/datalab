@@ -54,7 +54,7 @@ const Institutions = () => {
             <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
 	    </Accordion>
 
-{/* 		<ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities' 
+{/* 		<ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities'
 			twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending' 
 			facebook='' reddit='' linkedin='' tumblr='' email=''/>
  */}
