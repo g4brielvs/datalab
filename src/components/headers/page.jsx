@@ -18,14 +18,16 @@ class PageHeader extends React.Component {
       isSticky: false,
       top: 0,
       skinnyTop: 29,
+      skinnySub: 80,
       activeItem: '',
       showMobileMenu: false,
-//      width: document.width,
+      width: 1000,
       menuData: this.props.megamenuItems,
     };
   };
 
   componentDidMount() {
+
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 130;
@@ -44,21 +46,29 @@ class PageHeader extends React.Component {
       });
     }
 
-//    document.addEventListener('resize', this.updateWidth);
+    if (this.props.isHome == false) {
+      document.addEventListener('scroll', () => {
+        const max = 80;
+        let skinnySub = max - window.pageYOffset;
+        if (window.pageYOffset > 51) {
+          skinnySub = 50;
+        }
+        this.setState({ skinnySub });
+      });
+    }
+
+    document.addEventListener('resize', this.updateWidth);
 
     // if we're NOT on the homepage...
+    // always set to true!
     if (this.props.isHome == false) {
       this.setState({ isSticky: true });
     }
   };
 
-  componentWillUnmount() {
-//    window.removeEventListener('scroll', true);
-  }
-
-  // updateWidth = () => {
-  //   this.setState({ width: document.innerWidth });
-  // };
+  updateWidth = () => {
+    this.setState({ width: window.innerWidth });
+  };
 
   handleMouseLeave = e => {
     e.stopPropagation();
@@ -77,20 +87,11 @@ class PageHeader extends React.Component {
 
     let isSticky = this.state.isSticky;
     const isTablet = this.state.width <= 958;
-
-    let logoToggler;
-    if (isTablet) {
-      logoToggler = 'row';
-    } else if (!isSticky) {
-      logoToggler = 'col';
-    } else if (isSticky && isTablet) {
-      logoToggler = 'row';
-    }
     
     return (
       <header id="header"  className={`${isSticky ? `header-container-sticky` : ``}`}>
         <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`header__main ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : ``}`}>
-          <div className={`header-logo__wrapper ${logoToggler}`}>
+          <div className={`header-logo__wrapper ${!isSticky ? `col`: ``}`}>
             <a href="/">
               <div className='header-logo__container'>
                 {isSticky ? (
@@ -102,7 +103,7 @@ class PageHeader extends React.Component {
             </a>
 
             <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
-              <span className={`${isSticky && isTablet ? `burger-menu-skinny` : `navbar-toggle`}`} id="burger-navbar-toggle" onClick={this.burgerClick}>
+              <span className={`navbar-toggle`} id="burger-navbar-toggle" onClick={this.burgerClick}>
                 <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className="nav" id="burger-menu">
@@ -126,7 +127,7 @@ class PageHeader extends React.Component {
           </div>
         </div>
 
-        <div className={`header__sub ${isSticky ? `tight` : ``}`}>
+        <div className={`header__sub ${isSticky ? `tight` : ``}`} style={{top: this.props.isHome == true ? `` : `${this.state.skinnySub}px`}}>
           <Dropdown activeItem={this.state.activeItem}
                     mouseHandle={this.handleMouseLeave}
                     data={this.props.megamenuItems} />

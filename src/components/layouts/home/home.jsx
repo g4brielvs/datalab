@@ -25,7 +25,8 @@ const Home = ({ children }) => (
               ]},
               {
               express: [
-                {name: 'test express', link: 'test-link'}
+                {name: 'Research and Development in Contracting', link: 'test-link'},
+                {name: 'Women-Owned Small Businesses', link: 'test-link'}
               ]},
               {
               ffg: [

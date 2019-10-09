@@ -52,7 +52,8 @@ const StoryLayout = (props) => {
         },
         {
           express: [
-            { name: 'test express', link: 'test-link' }
+            { name: 'Research and Development in Contracting', link: 'test-link' },
+            { name: 'Woman-Owned Small Businesses', link: 'test-link' }
           ]
         },
         {

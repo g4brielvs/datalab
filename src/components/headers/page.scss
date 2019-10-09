@@ -185,8 +185,8 @@ ul.nav {
     flex-direction: column;
     list-style-type: none;
     justify-content: center;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+//    padding-left: 2.5rem;
+//    padding-right: 2.5rem;
     font-size: 14px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -197,8 +197,12 @@ ul.nav {
       padding-bottom: .5rem;
       font-weight: 300;
     }
-
   }
+
+  .data-list-ul__analyses {
+    padding: 0;
+  }
+
 
   // specific for FFG section as they have headers.
   .data-list-section {
@@ -241,6 +245,43 @@ ul.nav {
 
   .data-list-a:hover {
     color: #046b99;
+  }
+
+}
+
+// data list modifiers for spacing
+.data-list {
+  .data-list-section__analyses {
+    margin-right: 2rem;
+  }
+
+  .data-list-section__resources {
+    margin-left: 31rem;
+    padding: 0;
+    justify-content: flex-end;
+  }
+  .data-list-ul__resources {
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .data-list-section__express {
+    margin-right: 15rem;
+    padding: 0;
+  }
+  .data-list-ul__express {
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .data-list-section__glossary {
+    margin-left: 42rem;
+    padding: 0;
+  }
+  .data-list-ul__glossary {
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
 }
