@@ -1,8 +1,13 @@
-import React from 'react';
-import './page.scss';
+import React from "react";
+import "./page.scss";
 
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
+import Arrow from '../../svgs/arrow.svg';
+import Dropdown from '../../components/headers/dropdown.jsx';
+import MobileMenu from '../../components/headers/mobile-menu.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
@@ -11,21 +16,19 @@ class PageHeader extends React.Component {
     this.state = {
       isSticky: false,
       top: 29,
-      activeItem: ''
+      activeItem: '',
+      showMobileMenu: false,
+      width: window.innerWidth,
+      menuData: this.props.megamenuItems,
     };
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.returnActiveList = this.returnActiveList.bind(this);
+    this.updateWidth = this.updateWidth.bind(this);
   };
 
   componentDidMount() {
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
-        if (isSticky == true) {
-          this.setState({ isSticky: true });
-        } else {
-          this.setState({ isSticky: false });
-        }
+        this.setState({ isSticky: isSticky });
       });
     }
 
@@ -38,33 +41,32 @@ class PageHeader extends React.Component {
       this.setState({ top });
     });
 
+    window.addEventListener('resize', this.updateWidth);
+
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
       this.setState({ isSticky: true });
     }
   };
 
-  handleMouseLeave(e) {
+  updateWidth() {
+    this.setState({ width: window.innerWidth });
+  };
+
+  handleMouseLeave = e => {
     e.stopPropagation();
-    this.setState({activeItem: ''});
-  }
+    this.setState({ activeItem: '' });
+  };
 
-  returnActiveList(data) {
-    return data.map((item) => {
-      return (
-      <li className='data-list-li'>
-        <a className='data-list-a' href={item.link}>{item.name}</a>
-      </li>
-      );
-    })
-
-  }
+  burgerClick = () =>  {
+    this.setState({showMobileMenu: !this.state.showMobileMenu});
+  };
 
   render() {
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
     const top = this.state.top;
-    const that = this; // used to preserve this inside nested map in render return
+    const isTablet = this.state.width < 955;
 
     let returnItems = listItems.map((item, i) => {
       return <li className='navListItem' key={item} onMouseOver={that.handleMouseOver}>
@@ -72,26 +74,32 @@ class PageHeader extends React.Component {
       </li>;
     });
 
-    // the 'header__sub' region can be redone as a component 
-    // needed to get working for now... go back and "componentize the table section"
-    // TODO! xxx
+    let logoToggler;
+    if (isTablet) {
+      logoToggler = 'row';
+    } else if (!isSticky) {
+      logoToggler = 'col';
+    } else if (isSticky && isTablet) {
+      logoToggler = 'row';
+    }
+    
     return (
       <header id="header" style={{ top: `${top}px` }}>
         <div className={`header__main ${isSticky ? `tight` : ``}`}>
-          <div className={`header-logo__wrapper ${isSticky ? `row` : `col`}`}>
+          <div className={`header-logo__wrapper ${logoToggler}`}>
             <a href="/">
-              <div>
+              <div className='header-logo__container'>
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
                   <TagLine />
-                  )}
+                )}
               </div>
             </a>
 
             <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
-              <span className="navbar-toggle" id="burger-navbar-toggle">
-                <i className="fas fa-bars"> </i>
+              <span className={`${isSticky && isTablet ? `burger-menu-skinny` : `navbar-toggle`}`} id="burger-navbar-toggle" onClick={this.burgerClick}>
+                <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className="nav" id="burger-menu">
                 {returnItems}
@@ -99,69 +107,17 @@ class PageHeader extends React.Component {
             </nav>
           </div>
         </div>
-        
+
         <div className="header__sub">
-        {
-        (() => {
-          if (this.state.activeItem == 'Analyses') {
-            return (
-              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(0, 3))}</ul>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(3, 6))}</ul>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[0].analyses.slice(6, 9))}</ul>
-              </div>
-            );
+          <Dropdown activeItem={this.state.activeItem}
+                    mouseHandle={this.handleMouseLeave}
+                    data={this.props.megamenuItems} />
+
+          { this.state.showMobileMenu
+            ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} data={this.props.megamenuItems} />
+            : <></>
           }
-          if (this.state.activeItem == 'DataLab Express') {
-            return (
-              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[1].express)}</ul>
-              </div>
-            );
-          }
-          if (this.state.activeItem == "America's Finance Guide") {
-            return (
-              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
-                <section className='data-list-section'>
-                  <h4 className='section-title'>Overview</h4>
-                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(0,1))}</ul>
-                </section>
-                <section className='data-list-section'>
-                  <h4 className='section-title'>Revenue</h4>
-                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(1,5))}</ul>
-                </section>
-                <section className='data-list-section'>
-                  <h4 className='section-title'>Spending</h4>
-                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(5,9))}</ul>
-                </section>
-                <section className='data-list-section'>
-                  <h4 className='section-title'>Deficit</h4>
-                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(9,12))}</ul>
-                </section>
-                <section className='data-list-section'>
-                  <h4 className='section-title'>Debt</h4>
-                  <ul className='data-list-ul--ffg'>{this.returnActiveList(this.props.megamenuItems[2].ffg.slice(12,16))}</ul>
-                </section>
-              </div>
-            );
-          }
-          if (this.state.activeItem == "Resources") {
-            return (
-              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[3].resources.slice(0,2))}</ul>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[3].resources.slice(2,4))}</ul>
-              </div>
-            );
-          }
-          if (this.state.activeItem == "Glossary") {
-            return (
-              <div className='data-list' onMouseLeave={this.handleMouseLeave}>
-                <ul className='data-list-ul'>{this.returnActiveList(this.props.megamenuItems[4].glossary)}</ul>
-              </div>
-            );
-          }
-        })()
-      }
+          
         </div>
       </header>
     );
