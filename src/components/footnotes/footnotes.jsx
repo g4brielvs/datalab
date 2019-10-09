@@ -10,7 +10,7 @@ const Footnotes = (props) => {
           <hr />
         </div>
       </div>
-      <div class="row">
+      <div className="row">
         <div className="col-xs-10 col-xs-offset-1">
           {props.footnotes.map(function (footnote, index) {
             return<>

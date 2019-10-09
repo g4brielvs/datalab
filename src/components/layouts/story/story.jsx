@@ -1,29 +1,29 @@
-import React from "react"
-import PropTypes from "prop-types"
-import "./story.scss"
-import Default from "../default/default"
-import PageHeader from '../../headers/page'
-import HwctaLink from "../../hwcta-link/hwcta-link"
-import MoreAnalyses from "../../more-analyses/more-analyses"
-import Toc from "../../toc/toc"
-import { Grid } from "@material-ui/core"
+import './story.scss';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+import Default from '../default/default';
+import { Grid } from '@material-ui/core';
+import HwctaLink from '../../hwcta-link/hwcta-link';
+import MoreAnalyses from '../../more-analyses/more-analyses';
+import PageHeader from '../../headers/page';
+import Toc from '../../toc/toc';
 
 const StoryLayout = (props) => {
   let header, toc;
 
   if (!props.isCustomHeader) {
     header =
-      <Grid container >
+      <Grid container>
         <Grid item>
-          <header className="header--hero" >
-            <p className="header__title">
+          <header className='header--hero' >
+            <p className='header__title'>
               {props.title}
             </p>
-            <p className="header__introSentence">
+            <p className='header__introSentence'>
               {props.introSentence}
             </p>
-            <p className="header__contextStatement">
+            <p className='header__contextStatement'>
               {props.contextStatement}
             </p>
           </header>
@@ -31,8 +31,8 @@ const StoryLayout = (props) => {
       </Grid>;
 
     toc = <Toc sections={props.sectionToc} />
-
   }
+
   return <Default>
     <PageHeader
       headerItems={['Analyses', 'DataLab Express', "America's Finance Guide", 'Resources', 'Glossary']}
@@ -93,22 +93,17 @@ const StoryLayout = (props) => {
       isHome={false}
     />
 
-    <div className="story-page">
-      {header}
-      {toc}
-
-      <main>
-        <article>
-          <section>
-            {props.children}
-          </section>
-        </article>
-      </main>
-
-      <HwctaLink url={'#'} />
-
-      <MoreAnalyses />
-    </div>
+    <Grid container justify='center'>
+      <Grid item xs={10}>
+        <div className='story-page'>
+          {header}
+          {toc}
+          {props.children}
+          <HwctaLink url={'#'} />
+          <MoreAnalyses />
+        </div>
+      </Grid>
+    </Grid>
 
   </Default>
 }

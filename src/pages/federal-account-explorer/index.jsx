@@ -10,6 +10,9 @@ import Share from "../../components/share/share"
 import ToolLayout from "../../components/layouts/tool/tool";
 
 class FederalAccountExplorerPage extends Component {
+  constructor(props){
+    super(props);
+  }
     render() {
      return <>
             <ToolLayout title='Federal Account Explorer'
@@ -33,7 +36,8 @@ class FederalAccountExplorerPage extends Component {
                 </Accordion>
                 <Grid container justify='flex-end'>
                     <Grid item><Reset /></Grid>
-                    <Grid item ><Share /></Grid>
+                    <Grid item ><Share
+                      location={this.props.location}/></Grid>
                 </Grid>
             </ToolLayout>
         </>

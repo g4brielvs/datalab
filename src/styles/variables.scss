@@ -62,6 +62,9 @@ $color-grape: #45387a;
 $color-maroon: #6f4b68;
 $color-damson: #655e7e;
 
+// C&U
+$cuRed: #881e3d;
+
 // TODO: need to refactor!!!
 $margin-override: 2% !important;
 $margin: 2%;
@@ -74,11 +77,11 @@ $md: 768;
 $sm: 576;
 $xs: 0;
 
-$desktop-xl: $xl + 'px';
-$desktop: $lg + 'px';
-$tablet: $md + 'px';
-$phone: $sm + 'px';
-$min: $xs + 'px';
+$desktop-xl: 1200px;
+$desktop: 992px;
+$tablet: 768px;
+$phone: 576px;
+$min: 0px;
 
 $margin-150: 150px;
 $margin-100: 100px;
@@ -95,7 +98,6 @@ $bold: 700;
 $semibold: 600;
 $regular: 400;
 $light: 200;
-
 
 :export {
   xl: $xl;

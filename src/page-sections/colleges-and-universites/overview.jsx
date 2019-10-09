@@ -1,20 +1,13 @@
-import React from "react";
-import "../../styles/index.scss";
+import '../../styles/index.scss';
 import '../../components/share-menu/share-menu.scss';
+import React from 'react';
 
-/* components */
+import Downloads from '../../components/section-elements/downloads/downloads';
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
-import Accordion from "../../components/accordion/accordion";
-import StoryHeading from "../../components/section-elements/story-heading/story-heading";
-import Downloads from "../../components/section-elements/downloads/downloads";
-import defaultImage from "../../images/default-image.jpg";
 import ShareMenu from '../../components/share-menu/share-menu';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 
-const Overview = () => {
-  const defaultImageStyle = {
-    marginBottom: "1rem"
-  };
-
+const Overview = (props) => {
   return (
     <>
       <StoryHeading
@@ -28,8 +21,10 @@ const Overview = () => {
                 nonprofit institutions that offer a program of two years or more.`}
       />
 
-      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities' 
-				twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending' 
+      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities'
+        location={props.location}
+        title='Check out this analysis on Data Lab'
+        text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
 				facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
       <section id='investment-overview'>

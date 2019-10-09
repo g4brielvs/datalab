@@ -8,6 +8,7 @@ import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -24,7 +25,6 @@ class PageHeader extends React.Component {
   };
 
   componentDidMount() {
-
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 100;
@@ -63,16 +63,15 @@ class PageHeader extends React.Component {
   };
 
   render() {
-
     const listItems = this.props.headerItems;
     let isSticky = this.state.isSticky;
     const top = this.state.top;
     const isTablet = this.state.width < 955;
 
     let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={i} onMouseOver={() => this.setState({ activeItem: item })}>
-               <a href='#' className='navListAnchor' data-target={item}> {item} <span className='navListArrow'><Arrow /></span></a>
-             </li>;
+      return <li className='navListItem' key={item} onMouseOver={that.handleMouseOver}>
+        <a href='#' data-target={item}> {item} <span><ExpandMoreIcon /></span></a>
+      </li>;
     });
 
     let logoToggler;
@@ -120,7 +119,6 @@ class PageHeader extends React.Component {
           }
           
         </div>
-
       </header>
     );
   }
