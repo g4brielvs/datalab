@@ -24,16 +24,27 @@ class Dropdown extends React.Component {
         if (this.props.activeItem == 'Analyses ') {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(0, 3))}</ul>
-              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(3, 6))}</ul>
-              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(6, 9))}</ul>
+              <section className='data-list-section data-list-section__analyses'>
+                <h4 className='section-title'>Topical Analyses</h4>
+                <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(0, 3))}</ul>
+              </section>
+              <section className='data-list-section data-list-section__analyses'>
+                <h4 className='section-title'>Contract Analyses</h4>
+                <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(3, 6))}</ul>
+              </section>
+              <section className='data-list-section data-list-section__analyses'>
+                <h4 className='section-title'>Financial Data Visualizations</h4>
+                <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(6, 9))}</ul>
+              </section>
             </div>
           );
         }
         if (this.props.activeItem == 'DataLab Express ') {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul data-list-ul__express'>{this.returnActiveList(this.state.data[1].express)}</ul>
+              <section className='data-list-section data-list-section__express'>
+                <ul className='data-list-ul data-list-ul__express'>{this.returnActiveList(this.state.data[1].express)}</ul>
+              </section>
             </div>
           );
         }
@@ -66,15 +77,18 @@ class Dropdown extends React.Component {
         if (this.props.activeItem == "Resources ") {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul data-list-ul__resources'>{this.returnActiveList(this.state.data[3].resources.slice(0, 2))}</ul>
-              <ul className='data-list-ul data-list-ul__resources'>{this.returnActiveList(this.state.data[3].resources.slice(2, 4))}</ul>
+              <section className='data-list-section data-list-section__resources'>
+                <ul className='data-list-ul data-list-ul__resources'>{this.returnActiveList(this.state.data[3].resources)}</ul>
+              </section>
             </div>
           );
         }
         if (this.props.activeItem == " Glossary") {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul data-list-ul__glossary'>{this.returnActiveList(this.state.data[4].glossary)}</ul>
+              <section className='data-list-section data-list-section__glossary'>
+                <ul className='data-list-ul data-list-ul__glossary'>{this.returnActiveList(this.state.data[4].glossary)}</ul>
+              </section>
             </div>
           );
         } else {
