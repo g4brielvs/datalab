@@ -6,13 +6,31 @@
   line-height: normal;
   box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
   width: 100%;
+  transition: all .5s ease-in;
+}
+
+@keyframes smoothy {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.header-container-sticky {
   position: fixed;
-  z-index: 21;
+  top: 0;
+  animation: smoothy .5s ease-in;
 }
 
 .header-logo__wrapper.row {
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.header-logo__container {
+  padding-right: 30px;
 }
 
 .header-logo__wrapper.col {
@@ -23,6 +41,10 @@
   display: flex;
   justify-content: center;
   padding-top: 1rem;
+  margin-top: .25rem;
+  padding-top: .75rem;
+  border-top: 1px solid #ddd;
+  width: 100%;
 
   .navListAnchor {
     position: relative;
@@ -32,6 +54,7 @@
     &:hover {
       color: #046b99;
       border-bottom: 3.5px solid #046b99;
+      line-height: 20px;
     }
   }
 
@@ -47,8 +70,9 @@
     padding: 0;
 
     .navListItem {
-      padding-left: 40px;
-      padding-right: 40px;
+      font-size: 15px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
   }
   
@@ -56,17 +80,22 @@
 
 .header-nav.tight {
   padding-top: 0;
+  margin: 0;
+  border-top: none;
+  width: auto;
 }
 
 .header__main {
   display: flex;
+  position: absolute;
+  top: 29px; // from top of blue bar!
+  box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
+  width: 100%;
   flex-wrap: nowrap;
   box-sizing: border-box;
   height: 140px;
-  padding-top: 1.5rem;
-  padding-right: 4rem;
-  padding-bottom: 1.5rem;
-  padding-left: 4rem;
+  padding-top: 17px;
+  padding-bottom: 17px;
   justify-content: space-between;
   align-items: center;
   z-index: 20;
@@ -82,9 +111,15 @@
 }
 
 .header__main.tight {
-  height: 50px; 
+  height: 50px;
+  top: 0px;
+  background: #FFFFFF;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.header__main.tight--story {
+  top: 29px;
 }
 
 ul.nav {
@@ -95,11 +130,13 @@ ul.nav {
   padding: 0;
 }
 
-
-// container for "subnav"
-.header__sub {  
-  position: relative;
+// container for "megamenu"!
+.header__sub {
+  position: absolute;
+  width: 100%;
+  top: 168px; // calculated exactly!
   z-index: 20;
+  background-color: #f9f9f9;
 
   ul.ul-dropdown > li.secondaryNavli > a {
     text-decoration: none;
@@ -107,7 +144,6 @@ ul.nav {
   }
   
   .secondaryNavli {
-    //display: inline-block; 
     float: left;
     font-size: 13px;
     white-space: nowrap;
@@ -115,7 +151,10 @@ ul.nav {
     padding-right: 2rem;
     width: 100%;
   }
-  
+} // end header sub
+
+.header__sub.tight {
+  top: 50px;
 }
 
 .active {
@@ -131,14 +170,14 @@ ul.nav {
 }
  
 
-// generic for dropdown dynamic list.
+// generic for dropdown list (megamenu)
 .data-list {
   display: flex;
   justify-content: center;
   list-style-type: none;
   border-top: 1px solid #ddd;
   box-sizing: border-box;
-  background: #fff;
+  background: #F9F9F9F9;
   padding-bottom: .25rem;
 
   .data-list-ul {
@@ -148,8 +187,11 @@ ul.nav {
     justify-content: center;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    font-size: 14px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     margin: 0;
-  
+
     .data-list-li {
       padding-top: .5rem;
       padding-bottom: .5rem;
@@ -166,7 +208,9 @@ ul.nav {
     height: 100%;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    padding-top: .25rem;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 14px;
 
     .data-list-ul--ffg {
       display: flex;
@@ -185,20 +229,24 @@ ul.nav {
 
     .section-title {
       margin: 0;
-      padding: 0;
+      padding-bottom: .5rem;
     }
 
   }
 
   .data-list-a {
     text-decoration: none;
-    color: #666;  
+    color: #555555;  
   }
 
   .data-list-a:hover {
     color: #046b99;
   }
 
+}
+
+#burger-navbar-toggle:hover {
+  cursor: pointer;
 }
 
 .navbar-toggle {
