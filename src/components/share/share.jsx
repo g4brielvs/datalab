@@ -24,6 +24,23 @@ class Share extends Component {
     this.handleShareClickTwitter = this.handleShareClickTwitter.bind(this);
     this.handleShareClickLinkedin = this.handleShareClickLinkedin.bind(this);
     this.handleShareClickReddit = this.handleShareClickReddit.bind(this);
+    this.url = this.props.location ? this.props.location.href : this.props.siteUrl + this.props.pageUrl;
+    this.pathName = this.props.location ? this.props.location.pathname : this.props.pageUrl;
+
+    // The following will take the url pathname and make it into the readable text we've used in the past (eg. '/federal-employees' becomes 'Federal Employees')
+    if(this.pathName){
+      if(this.pathName.charAt(0) === '/'){
+        this.pathName = this.pathName.slice(1);
+      }
+
+      let pathNameSplit = this.pathName.split('-');
+      for(let i = pathNameSplit.length; i--;){
+        pathNameSplit[i] = pathNameSplit[i].charAt(0).toUpperCase() + pathNameSplit[i].slice(1);
+      }
+      this.pathName = pathNameSplit.join(' ');
+    }
+    this.defaultTitle = `Data Lab - ${this.pathName} - U.S. Treasury`;
+    this.title = this.props.title || this.defaultTitle;
   }
 
   handleShow() {
@@ -36,7 +53,7 @@ class Share extends Component {
   }
 
   handleShareClickTwitter(e) {
-    let finalUrl = `https://twitter.com/intent/tweet?text=${this.props.twitter}'\n${this.props.siteUrl}${this.props.pageUrl}`
+    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}&url=${this.url}`
     window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
   }
 
@@ -51,7 +68,6 @@ class Share extends Component {
   }
 
   render() {
-
     const images = [
       {
         src: shareLogo
@@ -83,10 +99,10 @@ class Share extends Component {
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
     return (
         <div className="popup new-share">
-          <span className="viz-share-icon" aria-hidden="true" onClick={this.handleShow}>
+          <button className="viz-share-icon" aria-hidden="true" onClick={this.handleShow}>
             <img src={images[0].src} />
             <span className="share-text">Share</span>
-          </span>
+          </button>
           <span className={`popuptext right newpopup ${isShowing ? `show` : ``}`} id="sharePopup">
             <div className="share-buttons">
               <ul>
@@ -115,7 +131,7 @@ class Share extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:?subject=Check out this analysis on Data Lab&body=Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!%0D%0A%0D%0ACheck out this site ${this.props.siteUrl}${this.props.pageUrl}`} title="Share via Email" data-id='5'>
+                  <a href={`mailto:?subject=${this.title}&body=${this.props.text ? this.props.text + '%0D%0A%0D%0A' : ''}Check out this site ${this.url}`} title="Share via Email" data-id='5'>
                     <img src={images[5].src} style={images[5].style} className='icon-envelope' />
                     <span className="share-button-text">Email</span>
                   </a>

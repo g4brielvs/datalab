@@ -1,18 +1,15 @@
-@import '../../../styles/variables.scss';
+@import '../../../styles/index.scss';
 
-$cuRed: #881E3D;
 $darkGrey: #666666;
 $mdGrey: #555555;
 
 .story-page {
   max-width: 1140px;
-  margin: 50px 8.33% 0;
-  color: #666666;
+  margin: 50px auto 0;
 }
 
 .header--hero {
-  padding-top: $margin-50;
-  padding-bottom: $margin-75;
+  padding-bottom: 50px;
   border-bottom: $darkGrey 1px solid;
   > * {
     text-align: center;
@@ -32,7 +29,7 @@ $mdGrey: #555555;
   font-weight: 300;
   line-height: 50px;
   margin: 0;
-  margin-bottom: $margin-25;
+  margin-bottom: 25px;
 }
 
 .header--red {
@@ -48,24 +45,19 @@ $mdGrey: #555555;
   margin-bottom: $margin-25;
 }
 
-@media (min-width: $desktop) {
-
-}
-
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .story-page {
-    max-width: 768px;
-  }
-
   .header--hero {
-    padding-top: $margin-50;
-    padding-bottom: $margin-30;
+    padding-bottom: 5px;
   }
 }
 
 @media (max-width: $tablet - 1) {
   .story-page {
-    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .header--hero {
+    padding-bottom: 0;
   }
 
   .header__title, .header__introSentence, .header__contextStatement {

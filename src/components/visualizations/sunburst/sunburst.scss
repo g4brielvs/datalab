@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 #sunburst {
   margin: 0 auto;
 }
@@ -28,7 +30,8 @@
   font-size: 2em;
   font-style: inherit;
   font-weight: lighter;
-  stroke: #881e3d; /*match 1st wedgeColor*/
+  stroke: $cuRed;
+  ; /*match 1st wedgeColor*/
 }
 
 .cu-header__blurb {

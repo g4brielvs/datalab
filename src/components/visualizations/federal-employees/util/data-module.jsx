@@ -1,8 +1,8 @@
-const statesData = require('../../../../data/federal-employees/states.json');
-const agenciesData = require('../../../../data/federal-employees/agencies.json');
-const occupationCategoriesData = require('../../../../data/federal-employees/occupationCategories.json');
-const employeesData = require('../../../../data/federal-employees/employees.json');
-const employeesSalariesData = require('../../../../data/federal-employees/employeeSalaries.json');
+const statesData = require('../../../../unstructured-data/federal-employees/states.json');
+const agenciesData = require('../../../../unstructured-data/federal-employees/agencies.json');
+const occupationCategoriesData = require('../../../../unstructured-data/federal-employees/occupationCategories.json');
+const employeesData = require('../../../../unstructured-data/federal-employees/employees.json');
+const employeesSalariesData = require('../../../../unstructured-data/federal-employees/employeeSalaries.json');
 
 const DataModule = {
 	mem: { states: statesData,

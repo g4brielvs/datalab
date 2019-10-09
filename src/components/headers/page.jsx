@@ -9,6 +9,7 @@ import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -25,7 +26,6 @@ class PageHeader extends React.Component {
   };
 
   componentDidMount() {
-
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 130;
@@ -137,7 +137,6 @@ class PageHeader extends React.Component {
           }
           
         </div>
-
       </header>
     );
   }

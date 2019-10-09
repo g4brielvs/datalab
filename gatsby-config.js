@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-theme-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-sass",
@@ -25,7 +26,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data/`,
+        path: `${__dirname}/src/data`,
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
