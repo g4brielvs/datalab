@@ -89,7 +89,7 @@ class PageHeader extends React.Component {
         <div className={`header__main ${isSticky ? `tight` : ``}`}>
           <div className={`header-logo__wrapper ${logoToggler}`}>
             <a href="/">
-              <div>
+              <div className='header-logo__container'>
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
@@ -99,7 +99,7 @@ class PageHeader extends React.Component {
             </a>
 
             <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
-              <span className="navbar-toggle" id="burger-navbar-toggle" onClick={this.burgerClick}>
+              <span className={`${isSticky && isTablet ? `burger-menu-skinny` : `navbar-toggle`}`} id="burger-navbar-toggle" onClick={this.burgerClick}>
                 <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className="nav" id="burger-menu">
