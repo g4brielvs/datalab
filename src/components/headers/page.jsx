@@ -20,7 +20,7 @@ class PageHeader extends React.Component {
       skinnyTop: 29,
       activeItem: '',
       showMobileMenu: false,
-      width: window.innerWidth,
+//      width: document.width,
       menuData: this.props.megamenuItems,
     };
   };
@@ -44,7 +44,7 @@ class PageHeader extends React.Component {
       });
     }
 
-    document.addEventListener('resize', this.updateWidth);
+//    document.addEventListener('resize', this.updateWidth);
 
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
@@ -56,9 +56,9 @@ class PageHeader extends React.Component {
 //    window.removeEventListener('scroll', true);
   }
 
-  updateWidth = () => {
-    this.setState({ width: window.innerWidth });
-  };
+  // updateWidth = () => {
+  //   this.setState({ width: document.innerWidth });
+  // };
 
   handleMouseLeave = e => {
     e.stopPropagation();
