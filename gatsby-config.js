@@ -5,7 +5,13 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-theme-material-ui`,
+    `gatsby-plugin-top-layout`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      // options: {
+      //   ...stylesConfig,
+      // },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-sass",
