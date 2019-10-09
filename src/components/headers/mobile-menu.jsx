@@ -27,7 +27,6 @@ class MobileMenu extends React.Component {
 
   handleClick = (e) => {
     this.setState({clickedItem: e.target.innerText});
-    console.log(e.target.innerText);
   };
 
   render() {

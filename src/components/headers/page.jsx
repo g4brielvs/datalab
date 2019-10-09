@@ -44,7 +44,7 @@ class PageHeader extends React.Component {
       });
     }
 
-    window.addEventListener('resize', this.updateWidth);
+    document.addEventListener('resize', this.updateWidth);
 
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
