@@ -3,20 +3,15 @@ import "../../styles/index.scss"
 import '../../components/share-menu/share-menu.scss'
 
 /* components */
+import Mapviz from '../../components/visualizations/federal-employees/mapviz/mapviz';
 import Accordion from "../../components/accordion/accordion"
 import ControlBar from "../../components/control-bar/control-bar"
 import Reset from "../../components/reset/reset"
 import Share from "../../components/share/share"
-import defaultImage from "../../images/default-image.jpg"
 import Filter from "../../components/filter/filter"
 import Downloads from "../../components/section-elements/downloads/downloads"
 
-function Where() {
-
-  const defaultImageStyle = {
-    marginBottom: "1rem"
-  };
-
+function Where(props) {
   return (
     <>
       <h2>Federal Employees Density Map</h2>
@@ -35,7 +30,7 @@ function Where() {
                facebook='' reddit='' linkedin='' tumblr='' email=''/>
       </ControlBar>
 
-      <div className="container" style={defaultImageStyle}><img src={defaultImage} alt="visualization"/></div>
+      <Mapviz sectionId={props.sectionId} dataSource={props.dataSource}/>
       <Downloads
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
         date={'March 2019'}

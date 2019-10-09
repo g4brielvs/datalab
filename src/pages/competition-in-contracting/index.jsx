@@ -96,8 +96,6 @@ class CompetitionInContractingPage extends Component {
 
 
   render() {
-    console.log("inside render");
-    console.log('location:', this.props.location);
     const pageTitle = 'Competition in Contracting';
     const introSentence = 'In FY 2017, over 60 percent of federal contracts were competitively awarded.';
     const contextSentence = 'How often do federal agencies compete for contracts? In FY 2017 more than 60% of federal contracts were competitively awarded.';
