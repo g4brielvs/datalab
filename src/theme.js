@@ -11,7 +11,12 @@ const theme = createMuiTheme({
       lg: 992,
       xl: 1200
     }
+  },
+  palette: {
+  background: {
+  default: '#ffffff'
   }
+}
 });
 
 export default theme;
