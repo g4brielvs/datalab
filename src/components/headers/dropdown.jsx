@@ -21,23 +21,23 @@ class Dropdown extends React.Component {
   render() {
     return (
       (() => {
-        if (this.props.activeItem == 'Analyses') {
+        if (this.props.activeItem == 'Analyses ') {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[0].analyses.slice(0, 3))}</ul>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[0].analyses.slice(3, 6))}</ul>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[0].analyses.slice(6, 9))}</ul>
+              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(0, 3))}</ul>
+              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(3, 6))}</ul>
+              <ul className='data-list-ul data-list-ul__analyses'>{this.returnActiveList(this.state.data[0].analyses.slice(6, 9))}</ul>
             </div>
           );
         }
-        if (this.props.activeItem == 'DataLab Express') {
+        if (this.props.activeItem == 'DataLab Express ') {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[1].express)}</ul>
+              <ul className='data-list-ul data-list-ul__express'>{this.returnActiveList(this.state.data[1].express)}</ul>
             </div>
           );
         }
-        if (this.props.activeItem == "America's Finance Guide") {
+        if (this.props.activeItem == "America's Finance Guide ") {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
               <section className='data-list-section'>
@@ -63,18 +63,18 @@ class Dropdown extends React.Component {
             </div>
           );
         }
-        if (this.props.activeItem == "Resources") {
+        if (this.props.activeItem == "Resources ") {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[3].resources.slice(0, 2))}</ul>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[3].resources.slice(2, 4))}</ul>
+              <ul className='data-list-ul data-list-ul__resources'>{this.returnActiveList(this.state.data[3].resources.slice(0, 2))}</ul>
+              <ul className='data-list-ul data-list-ul__resources'>{this.returnActiveList(this.state.data[3].resources.slice(2, 4))}</ul>
             </div>
           );
         }
-        if (this.props.activeItem == "Glossary") {
+        if (this.props.activeItem == " Glossary") {
           return (
             <div className='data-list' onMouseLeave={this.props.mouseHandle}>
-              <ul className='data-list-ul'>{this.returnActiveList(this.state.data[4].glossary)}</ul>
+              <ul className='data-list-ul data-list-ul__glossary'>{this.returnActiveList(this.state.data[4].glossary)}</ul>
             </div>
           );
         } else {

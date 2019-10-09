@@ -4,6 +4,7 @@ import "./page.scss";
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
 import Arrow from '../../svgs/arrow.svg';
+import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,33 +16,35 @@ class PageHeader extends React.Component {
     super(props);
     this.state = {
       isSticky: false,
-      top: 29,
+      top: 0,
+      skinnyTop: 29,
       activeItem: '',
       showMobileMenu: false,
       width: window.innerWidth,
       menuData: this.props.megamenuItems,
     };
-    this.updateWidth = this.updateWidth.bind(this);
   };
 
   componentDidMount() {
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.scrollY > 100;
+        let isSticky = window.scrollY > 130;
         this.setState({ isSticky: isSticky });
       });
     }
 
-    document.addEventListener('scroll', () => {
-      const max = 29;
-      let top = max - window.pageYOffset;
-      if (window.pageYOffset > max) {
-        top = 0;
-      }
-      this.setState({ top });
-    });
+    if (this.props.isHome == false) {
+      document.addEventListener('scroll', () => {
+        const max = 29;
+        let skinnyTop = max - window.pageYOffset;
+        if (window.pageYOffset > max) {
+          skinnyTop = 0;
+        }
+        this.setState({ skinnyTop });
+      });
+    }
 
-    window.addEventListener('resize', this.updateWidth);
+    document.addEventListener('resize', this.updateWidth);
 
     // if we're NOT on the homepage...
     if (this.props.isHome == false) {
@@ -49,7 +52,11 @@ class PageHeader extends React.Component {
     }
   };
 
-  updateWidth() {
+  componentWillUnmount() {
+//    window.removeEventListener('scroll', true);
+  }
+
+  updateWidth = () => {
     this.setState({ width: window.innerWidth });
   };
 
@@ -62,17 +69,14 @@ class PageHeader extends React.Component {
     this.setState({showMobileMenu: !this.state.showMobileMenu});
   };
 
-  render() {
-    const listItems = this.props.headerItems;
-    let isSticky = this.state.isSticky;
-    const top = this.state.top;
-    const isTablet = this.state.width < 955;
+  handleItemClick = e => {
+    this.setState({ activeItem: e.target.innerText });
+  };
 
-    let returnItems = listItems.map((item, i) => {
-      return <li className='navListItem' key={item} onMouseOver={that.handleMouseOver}>
-        <a href='#' data-target={item}> {item} <span><ExpandMoreIcon /></span></a>
-      </li>;
-    });
+  render() {
+
+    let isSticky = this.state.isSticky;
+    const isTablet = this.state.width <= 958;
 
     let logoToggler;
     if (isTablet) {
@@ -84,8 +88,8 @@ class PageHeader extends React.Component {
     }
     
     return (
-      <header id="header" style={{ top: `${top}px` }}>
-        <div className={`header__main ${isSticky ? `tight` : ``}`}>
+      <header id="header"  className={`${isSticky ? `header-container-sticky` : ``}`}>
+        <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`header__main ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : ``}`}>
           <div className={`header-logo__wrapper ${logoToggler}`}>
             <a href="/">
               <div className='header-logo__container'>
@@ -102,13 +106,27 @@ class PageHeader extends React.Component {
                 <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className="nav" id="burger-menu">
-                {returnItems}
+                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                  <a href='#' className='navListAnchor'>Analyses <span className='navListArrow'><Arrow /></span></a>
+                </li>
+                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                  <a href='#' className='navListAnchor'>DataLab Express <span className='navListArrow'><Arrow /></span></a>
+                </li>
+                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                  <a href='#' className='navListAnchor'>America's Finance Guide <span className='navListArrow'><Arrow /></span></a>
+                </li>
+                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                  <a href='#' className='navListAnchor'>Resources <span className='navListArrow'><Arrow /></span></a>
+                </li>
+                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                  <a href='#' className='navListAnchor'><span className='navListArrow'><Book/></span> Glossary </a>
+                </li>
               </ul>
             </nav>
           </div>
         </div>
 
-        <div className="header__sub">
+        <div className={`header__sub ${isSticky ? `tight` : ``}`}>
           <Dropdown activeItem={this.state.activeItem}
                     mouseHandle={this.handleMouseLeave}
                     data={this.props.megamenuItems} />
