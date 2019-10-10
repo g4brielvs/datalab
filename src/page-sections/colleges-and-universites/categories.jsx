@@ -1,71 +1,68 @@
-import '../../styles/index.scss';
-import React from 'react';
-
+// import '../../styles/index.scss'
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from '../../components/accordion/accordion';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import { Hidden } from '@material-ui/core'
+import { Hidden } from '@material-ui/core';
 import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import Sunburst from '../../components/visualizations/sunburst/sunburst';
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import VizControlPanel from '../../components/chartpanels/viz-control';
+import VizDetails from '../../components/chartpanels/viz-detail';
 
-export default class Categories extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Categories = () => {
 
   let searchList = [
-  {
-    id: 1,
-    text: 'R&D'
-  }, {
-    id: 2,
-    text: 'Education',
-    children: [
-      {
-        id: 3,
-        text: 'Adult Education - Basic Grants to States'
-      }, {
-        id: 4,
-        text: '1890 Institution Capacity Building Grants'
-      }
-    ]
-  }, {
-    id: 5,
-    text: 'Medical R&D',
-    children: [
-      {
-        id: 6,
-        text: 'Human Genome Research'
-      }
-    ]
-  }
-];
+    {
+      id: 1,
+      text: 'R&D'
+    }, {
+      id: 2,
+      text: 'Education',
+      children: [
+        {
+          id: 3,
+          text: 'Adult Education - Basic Grants to States'
+        }, {
+          id: 4,
+          text: '1890 Institution Capacity Building Grants'
+        }
+      ]
+    }, {
+      id: 5,
+      text: 'Medical R&D',
+      children: [
+        {
+          id: 6,
+          text: 'Human Genome Research'
+        }
+      ]
+    }
+  ];
 
   const switchView = view => alert('switch to ' + view + ' mode');
 
   const searchSelected = id => {
-  let choice;
-  this.searchList.some(parent => {
-    if (parent.id === id) {
-      choice = parent;
-      return true;
-    } else {
-      if (parent.children) {
-        parent.children.some(child => {
-          if (child.id === id) {
-            choice = child;
-            return true;
-          }
-        });
+    let choice;
+    this.searchList.some(parent => {
+      if (parent.id === id) {
+        choice = parent;
+        return true;
+      } else {
+        if (parent.children) {
+          parent.children.some(child => {
+            if (child.id === id) {
+              choice = child;
+              return true;
+            }
+          });
+        }
       }
-    }
-  });
-  alert(JSON.stringify(choice));
-}
+    });
+    alert(JSON.stringify(choice));
+  }
 
   const [funding, setFundingType] = useState('contracts');
 
@@ -95,7 +92,6 @@ export default class Categories extends React.Component {
   const leaf = { name: 'Recipient', size: 'Obligation' };
   const wedgeColors = ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40'];
   const centerColor = 'rgba(0, 0, 0, 0)';
-
 
   const _data = useStaticQuery(graphql`
     query {
@@ -132,7 +128,9 @@ export default class Categories extends React.Component {
         }
       }
     }
-  `)
+  `);
+
+  const panelDetails =
 
   return (
     <>
@@ -177,30 +175,33 @@ export default class Categories extends React.Component {
               <div className='row'>
                 <div className='col-xs-2 col-md-1'>
                   <input type='radio'
-                         id='choice1'
-                         name='FundingType'
-                         value='contracts'
-                         onChange={onTypeChange}
-                         checked={funding==='contracts'} />
+                    id='choice1'
+                    name='FundingType'
+                    value='contracts'
+                    onChange={onTypeChange}
+                    checked={funding === 'contracts'}
+                    />
                   <label htmlFor='contactChoice1'>&nbsp;Contracts</label>
                 </div>
                 <div className='col-xs-2 col-md-1'>
                   <input type='radio'
-                         id='choice2'
-                         name='FundingType'
-                         value='grants'
-                         onChange={onTypeChange}
-                         checked={funding==='grants'} />
+                    id='choice2'
+                    name='FundingType'
+                    value='grants'
+                    onChange={onTypeChange}
+                    checked={funding === 'grants'}
+                    />
                   <label htmlFor='contactChoice2'>&nbsp;Grants</label>
                 </div>
 
                 <div className='col-xs-3 col-md-2'>
                   <input type='radio'
-                         id='choice3'
-                         name='FundingType'
-                         value='research'
-                         onChange={onTypeChange}
-                         checked={funding==='research'} />
+                    id='choice3'
+                    name='FundingType'
+                    value='research'
+                    onChange={onTypeChange}
+                    checked={funding === 'research'}
+                  />
                   <label htmlFor='contactChoice3'>&nbsp;Research Grants</label>
                 </div>
               </div>
@@ -215,7 +216,10 @@ export default class Categories extends React.Component {
               centerColor={centerColor}
             />
 
-            {/*<img className='col-xs-6' src={defaultImage} />*/}
+            <VizDetails
+              showDetails={click => showDetails = click}
+              data={panelDetails}
+            />
           </div>
         </div>
       </div>
@@ -227,3 +231,5 @@ export default class Categories extends React.Component {
     </>
   )
 }
+
+export default Categories;
