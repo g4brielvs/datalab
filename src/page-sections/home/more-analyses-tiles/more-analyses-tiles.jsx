@@ -38,8 +38,6 @@ const MoreAnalysesTiles = () => {
 
   return (
     <section className={moreAnalysesStyles.moreAnalyses}>
-
-
       <Grid
         container
         spacing={4}>
@@ -48,23 +46,25 @@ const MoreAnalysesTiles = () => {
             <Grid item sm={12} md={6}
                   key={index}
               className={moreAnalysesStyles.tile}>
+
               <Link to={item.href}
                     key={'more-tile_' + index}>
-                <div
-                  className={moreAnalysesStyles.tileHeading}>
-                    <p className={moreAnalysesStyles.title}>
-                    {item.title}
-                    </p>
-                    <p className={moreAnalysesStyles.subtitle}>
-                    {item.subtitle}
-                    </p>
+
+                <div className={moreAnalysesStyles.tileHeading}>
+                  <p className={moreAnalysesStyles.title}>
+                  {item.title}
+                  </p>
+                  <p className={moreAnalysesStyles.subtitle}>
+                  {item.subtitle}
+                  </p>
                 </div>
 
-                <div
-                  className={moreAnalysesStyles.imageContainer}>
-                    <img src={item.imageSrc} className={moreAnalysesStyles.image} />
+                <div className={moreAnalysesStyles.imageContainer}>
+                  <img src={item.imageSrc} className={moreAnalysesStyles.image} />
                 </div>
+
               </Link>
+
             </Grid>
 
           )}

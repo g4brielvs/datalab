@@ -14,57 +14,79 @@ $darkGrey: #666666;
   text-align: left;
 }
 
-.tile {
-  text-align: left;
-}
+//.tile {
+//}
+//
+//.tiles {
+//
+//}
 
-.tiles {
-
-}
-
-.tile__text {
+.text {
   font-size: 12px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
 
-  h2 {
+  .title {
     color: #2272CE;
     height: 1rem;
     margin-bottom: 1rem;
     font-size: 18px;
   }
+
+  .subtitle {
+     font-size: 20px;
+     height: 4rem;
+     color: $font-body-copy;
+     margin-bottom: 0;
+     margin-top: 0;
+   }
+
 }
 
-.tile__title {
-  font-size: 20px;
-  height: 4rem;
-  color: $font-body-copy;
-  margin-bottom: 0;
-  margin-top: 0;
-}
+
 
 .image {
   width: 100%;
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .tile__text {
-    text-align: right;
-  }
+//@media (min-width: $tablet) and (max-width: $desktop - 1) {
+//  .text {
+//    text-align: right;
+//  }
+//
+//  .tile {
+//    border-bottom: unset;
+//  }
+//}
+//
+//@media (max-width: $tablet - 1) {
+//  .text {
+//    text-align: right;
+//  }
+//
+//  .heading {
+//    border-bottom: 1px solid $font-body-copy;
+//  }
+//}
 
+@media screen and (max-width: $tablet) {
   .tile {
-    border-bottom: unset;
-  }
-}
+    border-bottom: 1px solid #ddd;
 
-@media (max-width: $tablet - 1) {
-  .tile__text {
-    text-align: right;
-  }
+    .text {
+      width: 50%;
+      float: right;
 
-  .heading {
-    border-bottom: 1px solid $font-body-copy;
+      .title, .subtitle {
+        text-align: right;
+      }
+    }
+
+    .image {
+      width: 50%;
+      float: left;
+    }
   }
 }
