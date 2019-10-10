@@ -1,4 +1,3 @@
-// import '../../styles/index.scss';
 import React, { Component } from 'react';
 
 import Accordion from '../../components/accordion/accordion';
@@ -44,6 +43,3 @@ export default class ContractExplorerPage extends Component {
 	</>
 
 }
-
-// export default ContractExplorerPage;
-
