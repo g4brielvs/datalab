@@ -1,20 +1,21 @@
-import React, { useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import '../../styles/index.scss';
+import React from 'react';
 
-import "../../styles/index.scss"
-import defaultImage from "../../images/default-image.jpg"
+import { graphql, useStaticQuery } from 'gatsby';
 
-import Accordion from "../../components/accordion/accordion"
-import Downloads from "../../components/section-elements/downloads/downloads"
-import { Hidden } from "@material-ui/core"
-import SearchPanel from "../../components/chartpanels/search"
-import StoryHeading from "../../components/section-elements/story-heading/story-heading"
+import Accordion from '../../components/accordion/accordion';
+import Downloads from '../../components/section-elements/downloads/downloads';
+import { Hidden } from '@material-ui/core'
+import SearchPanel from '../../components/chartpanels/search';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import Sunburst from '../../components/visualizations/sunburst/sunburst';
 import SunburstIcon from '../../images/sunburst_icon.svg';
-import VizControlPanel from "../../components/chartpanels/viz-control"
-import Sunburst from "../../components/visualizations/sunburst/sunburst"
+import VizControlPanel from '../../components/chartpanels/viz-control';
 
-
-const Categories = () => {
+export default class Categories extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   let searchList = [
   {
@@ -119,7 +120,7 @@ const Categories = () => {
           family
         }
       },
-      research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+      research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: 'y'}}) {
         nodes {
           Agency
           Obligation
@@ -145,25 +146,25 @@ const Categories = () => {
       <Hidden lgUp>
         <SearchPanel
           searchList={searchList}
-          listDescription="Categories"
+          listDescription='Categories'
           showCollapse
           onSelect={searchSelected}
         />
       </Hidden>
 
       <Accordion
-        title="Accordion Title">
+        title='Accordion Title'>
         <p>I am an accordion with lots to say.</p>
         <p>I have several paragraphs...</p>
-        <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
+        <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
       </Accordion>
 
-      <div className="container">
-        <div className="row">
+      <div className='container'>
+        <div className='row'>
           <Hidden mdDown>
             <VizControlPanel
               searchList={searchList}
-              listDescription="Categories"
+              listDescription='Categories'
               onSelect={searchSelected}
               switchView={switchView}
             >
@@ -171,36 +172,36 @@ const Categories = () => {
             </VizControlPanel>
           </Hidden>
 
-          <div className="container">
-            <form id="sunburstRadio">
-              <div className="row">
-                <div className="col-xs-2 col-md-1">
-                  <input type="radio"
-                         id="choice1"
-                         name="FundingType"
-                         value="contracts"
+          <div className='container'>
+            <form id='sunburstRadio'>
+              <div className='row'>
+                <div className='col-xs-2 col-md-1'>
+                  <input type='radio'
+                         id='choice1'
+                         name='FundingType'
+                         value='contracts'
                          onChange={onTypeChange}
                          checked={funding==='contracts'} />
-                  <label htmlFor="contactChoice1">&nbsp;Contracts</label>
+                  <label htmlFor='contactChoice1'>&nbsp;Contracts</label>
                 </div>
-                <div className="col-xs-2 col-md-1">
-                  <input type="radio"
-                         id="choice2"
-                         name="FundingType"
-                         value="grants"
+                <div className='col-xs-2 col-md-1'>
+                  <input type='radio'
+                         id='choice2'
+                         name='FundingType'
+                         value='grants'
                          onChange={onTypeChange}
                          checked={funding==='grants'} />
-                  <label htmlFor="contactChoice2">&nbsp;Grants</label>
+                  <label htmlFor='contactChoice2'>&nbsp;Grants</label>
                 </div>
 
-                <div className="col-xs-3 col-md-2">
-                  <input type="radio"
-                         id="choice3"
-                         name="FundingType"
-                         value="research"
+                <div className='col-xs-3 col-md-2'>
+                  <input type='radio'
+                         id='choice3'
+                         name='FundingType'
+                         value='research'
                          onChange={onTypeChange}
                          checked={funding==='research'} />
-                  <label htmlFor="contactChoice3">&nbsp;Research Grants</label>
+                  <label htmlFor='contactChoice3'>&nbsp;Research Grants</label>
                 </div>
               </div>
             </form>
@@ -214,7 +215,7 @@ const Categories = () => {
               centerColor={centerColor}
             />
 
-            {/*<img className="col-xs-6" src={defaultImage} />*/}
+            {/*<img className='col-xs-6' src={defaultImage} />*/}
           </div>
         </div>
       </div>
@@ -226,5 +227,3 @@ const Categories = () => {
     </>
   )
 }
-
-export default Categories
