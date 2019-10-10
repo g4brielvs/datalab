@@ -12,6 +12,11 @@ const theme = createMuiTheme({
       xl: 1200
     }
   },
+  typography: {
+    fontFamily: [
+      'Source Sans Pro'
+      ]
+  },
   palette: {
   background: {
   default: '#ffffff'
