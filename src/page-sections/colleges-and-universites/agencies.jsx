@@ -10,13 +10,11 @@ import StoryHeading from '../../components/section-elements/story-heading/story-
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
+const Agencies = () => {
+  const [detailShowing, setDetailShowing] = React.useState(false);
+  const switchView = view => alert('switch to ' + view + ' mode');
 
-export default class Agencies extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  searchList = [
+  let searchList = [
     {
       id: 2,
       text: 'Education',
@@ -41,7 +39,7 @@ export default class Agencies extends React.Component {
     }
   ];
 
-  details = {
+  let details = {
     'header': {
       'title': 'Institution',
       'itemName': 'Central College',
@@ -72,65 +70,60 @@ export default class Agencies extends React.Component {
     ]
   };
 
-  switchView = view => alert('switch to ' + view + ' mode');
-
-  showDetails = () => this.setState({ detailShowing: true });
-
-  _data = useStaticQuery(graphql`
-  query {
-    allUnivBubbleChartCsv {
-      nodes {
-        agency
-        subagency
-        obligation
+  const _data = useStaticQuery(graphql`
+    query {
+      allUnivBubbleChartCsv {
+        nodes {
+          agency
+          subagency
+          obligation
+        }
       }
     }
-  }
-`);
+  `);
 
-  render() {
-    return (<>
-      <StoryHeading
-        number={'02'}
-        title={'xxxx'}
-        teaser={['xxxxx']}
-        blurb={`In 2018, higher education institutions received a total of xxxxx`}
-      />
+  return (<>
+    <StoryHeading
+      number={'02'}
+      title={'xxxx'}
+      teaser={['xxxxx']}
+      blurb={`In 2018, higher education institutions received a total of xxxxx`}
+    />
 
-      <Accordion
-        title='Accordion Title'>
-        <p>I am an accordion with lots to say.</p>
-        <p>I have several paragraphs...</p>
-        <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
-      </Accordion>
+    <Accordion
+      title='Accordion Title'>
+      <p>I am an accordion with lots to say.</p>
+      <p>I have several paragraphs...</p>
+      <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
+    </Accordion>
+
+    <div className='container'>
+      <div className='row center-xs'>
+        <VizControlPanel
+          searchList={searchList}
+          listDescription='Agencies'
+          switchView={switchView}
+        >
+          <BubbleChartOutlinedIcon />
+        </VizControlPanel>
 
 
-      <div className='container'>
-        <div className='row center-xs'>
-          <VizControlPanel
-            searchList={this.searchList}
-            listDescription='Agencies'
-            switchView={this.switchView}
-          >
-            <BubbleChartOutlinedIcon />
-          </VizControlPanel>
-          {/*<img className='col-xs-6' src={defaultImage}*/}
-          {/*onClick={() => showDetails()}*/}
-          {/*/>*/}
-          <VizDetails
-            showDetails={click => showDetails = click}
-            data={this.details}
-          >
-          </VizDetails>
-          <BubbleChart items={this._data.allUnivBubbleChartCsv.nodes} />
-        </div>
+
+
+
+        <VizDetails
+          showDetails={setDetailShowing}
+          data={details}
+        />
+        <BubbleChart items={_data.allUnivBubbleChartCsv.nodes} />
       </div>
+    </div>
 
-      <Downloads
-        href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
-        date={'March 2019'}
-      />
-    </>)
-  }
-
+    <Downloads
+      href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+      date={'March 2019'}
+    />
+  </>)
 }
+
+export default Agencies
