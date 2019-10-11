@@ -33,9 +33,13 @@ const MoreAnalyses = () => {
   ]
   return (
     <section className={moreAnalysesStyles.analyses}>
-      <h1 className={moreAnalysesStyles.heading}>
-        More Analyses
-      </h1>
+
+      <Grid item xs={12}
+            className={moreAnalysesStyles.heading}>
+        <h1>
+          More Analyses
+        </h1>
+      </Grid>
 
       <Grid
         container
