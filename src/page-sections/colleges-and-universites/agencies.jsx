@@ -52,8 +52,31 @@ const Agencies = () => {
           obligation
         }
       }
+      allAgenciesRhpSummaryCsv {
+        nodes {
+          subagency
+          type
+          obligation
+        }
+      }
+      allTop5InstitutionsPerAgencyV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+      allTop5InvestmentsPerAgencyV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
     }
   `);
+
+console.log(_data.allAgenciesRhpSummaryCsv);
 
   const [detailShowing, setDetailShowing] = React.useState(details);
   const switchView = view => alert('switch to ' + view + ' mode');

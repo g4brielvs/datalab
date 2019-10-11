@@ -357,6 +357,8 @@ function BubbleChart(props) {
         } else if (d.depth === 1) {
           setLegendLeft(true);
           setChartState(d);
+          console.log(d);
+          // props.showDetails(d);
 
           if (focus !== d) {
             zoom(d);
