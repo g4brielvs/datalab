@@ -1,9 +1,10 @@
+import './viz-detail.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Paper, IconButton } from '@material-ui/core';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Grid from '@material-ui/core/Grid';
-import './viz-detail.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 export default class VizDetailPanel extends React.Component {
   constructor(props) {
@@ -28,11 +29,11 @@ export default class VizDetailPanel extends React.Component {
 
   renderDetails() {
     let tables;
-    if (this.props.data.tables) {
-      tables = this.renderTables(this.props.data.tables);
+    if (this.props.details.tables) {
+      tables = this.renderTables(this.props.details.tables);
     }
 
-    const header = this.props.data.header;
+    const header = this.props.details.header;
     if (header) {
       let display = <>
         <Grid container justify='space-between' alignItems='baseline'>
@@ -88,7 +89,7 @@ export default class VizDetailPanel extends React.Component {
 /*
   Notes on props:
   showDetails is a function on the parent viz triggering opening this panel
-  data is all the info for the details, with main properties "header" and array of "table"s
+  details is all the info for the details to display, with main properties "header" and array of "table"s
   e.g.
 {
   'header': {
@@ -124,5 +125,5 @@ export default class VizDetailPanel extends React.Component {
 
 VizDetailPanel.propTypes = {
   showDetails: PropTypes.func,
-  data: PropTypes.object.isRequired
+  details: PropTypes.object.isRequired
 };

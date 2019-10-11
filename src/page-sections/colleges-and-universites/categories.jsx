@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from '../../components/accordion/accordion';
 import Downloads from '../../components/section-elements/downloads/downloads';
+import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
@@ -13,7 +14,7 @@ import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
 const Categories = () => {
-  const [detailShowing, setDetailShowing] = React.useState(false);
+  const [detailShowing, setDetailShowing] = React.useState(panelDetails);
   const switchView = view => alert('switch to ' + view + ' mode');
 
   let searchList = [
@@ -180,15 +181,14 @@ const Categories = () => {
         />
       </Hidden>
 
-      <Accordion
-        title='Accordion Title'>
+      <Accordion title='Accordion Title'>
         <p>I am an accordion with lots to say.</p>
         <p>I have several paragraphs...</p>
         <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
       </Accordion>
 
-      <div className='container'>
-        <div className='row'>
+      <Grid container>
+        <Grid item>
           <Hidden mdDown>
             <VizControlPanel
               searchList={searchList}
@@ -200,59 +200,56 @@ const Categories = () => {
             </VizControlPanel>
           </Hidden>
 
-          <div className='container'>
-            <form id='sunburstRadio'>
-              <div className='row'>
-                <div className='col-xs-2 col-md-1'>
-                  <input type='radio'
-                    id='choice1'
-                    name='FundingType'
-                    value='contracts'
-                    onChange={onTypeChange}
-                    checked={funding === 'contracts'}
-                  />
-                  <label htmlFor='contactChoice1'>&nbsp;Contracts</label>
-                </div>
-                <div className='col-xs-2 col-md-1'>
-                  <input type='radio'
-                    id='choice2'
-                    name='FundingType'
-                    value='grants'
-                    onChange={onTypeChange}
-                    checked={funding === 'grants'}
-                  />
-                  <label htmlFor='contactChoice2'>&nbsp;Grants</label>
-                </div>
+          <form id='sunburstRadio'>
+            <Grid container>
+              <Grid item>
+                <input type='radio'
+                  id='cuContracts'
+                  name='FundingType'
+                  value='contracts'
+                  onChange={onTypeChange}
+                  checked={funding === 'contracts'}
+                />
+                <label htmlFor='cuContracts'>&nbsp;Contracts</label>
+              </Grid>
+              <Grid item>
+                <input type='radio'
+                  id='cuGrants'
+                  name='FundingType'
+                  value='grants'
+                  onChange={onTypeChange}
+                  checked={funding === 'grants'}
+                />
+                <label htmlFor='cuGrants'>&nbsp;Grants</label>
+              </Grid>
+              <Grid item>
+                <input type='radio'
+                  id='cuResearch'
+                  name='FundingType'
+                  value='research'
+                  onChange={onTypeChange}
+                  checked={funding === 'research'}
+                />
+                <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
+              </Grid>
+            </Grid>
+          </form>
 
-                <div className='col-xs-3 col-md-2'>
-                  <input type='radio'
-                    id='choice3'
-                    name='FundingType'
-                    value='research'
-                    onChange={onTypeChange}
-                    checked={funding === 'research'}
-                  />
-                  <label htmlFor='contactChoice3'>&nbsp;Research Grants</label>
-                </div>
-              </div>
-            </form>
+          <Sunburst
+            items={_data[funding].nodes}
+            title={titlesByType[funding]}
+            levels={levels}
+            leaf={leaf}
+            wedgeColors={wedgeColors}
+            centerColor={centerColor}
+          />
 
-            <Sunburst
-              items={_data[funding].nodes}
-              title={titlesByType[funding]}
-              levels={levels}
-              leaf={leaf}
-              wedgeColors={wedgeColors}
-              centerColor={centerColor}
-            />
-
-            <VizDetails
-              showDetails={setDetailShowing}
-              data={panelDetails}
-            />
-          </div>
-        </div>
-      </div>
+          {/* <VizDetails
+            showDetails={setDetailShowing}
+            details={detailShowing}
+          /> */}
+        </Grid>
+      </Grid >
 
       <Downloads
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}

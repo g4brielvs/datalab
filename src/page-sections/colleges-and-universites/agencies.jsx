@@ -6,39 +6,12 @@ import Accordion from '../../components/accordion/accordion';
 import BubbleChart from '../../components/visualizations/bubble-chart/bubble-chart';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../components/section-elements/downloads/downloads';
+import Grid from '@material-ui/core/Grid';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
 const Agencies = () => {
-  const [detailShowing, setDetailShowing] = React.useState(false);
-  const switchView = view => alert('switch to ' + view + ' mode');
-
-  let searchList = [
-    {
-      id: 2,
-      text: 'Education',
-      children: [
-        {
-          id: 3,
-          text: 'Adult Education - Basic Grants to States'
-        }, {
-          id: 4,
-          text: '1890 Institution Capacity Building Grants'
-        }
-      ]
-    }, {
-      id: 5,
-      text: 'Medical R&D',
-      children: [
-        {
-          id: 6,
-          text: 'Epidemiology and Other Health Studies Financial Assistance Program'
-        }
-      ]
-    }
-  ];
-
   let details = {
     'header': {
       'title': 'Institution',
@@ -82,6 +55,34 @@ const Agencies = () => {
     }
   `);
 
+  const [detailShowing, setDetailShowing] = React.useState(details);
+  const switchView = view => alert('switch to ' + view + ' mode');
+
+  let searchList = [
+    {
+      id: 2,
+      text: 'Education',
+      children: [
+        {
+          id: 3,
+          text: 'Adult Education - Basic Grants to States'
+        }, {
+          id: 4,
+          text: '1890 Institution Capacity Building Grants'
+        }
+      ]
+    }, {
+      id: 5,
+      text: 'Medical R&D',
+      children: [
+        {
+          id: 6,
+          text: 'Epidemiology and Other Health Studies Financial Assistance Program'
+        }
+      ]
+    }
+  ];
+
   return (<>
     <StoryHeading
       number={'02'}
@@ -90,15 +91,14 @@ const Agencies = () => {
       blurb={`In 2018, higher education institutions received a total of xxxxx`}
     />
 
-    <Accordion
-      title='Accordion Title'>
+    <Accordion title='Accordion Title'>
       <p>I am an accordion with lots to say.</p>
       <p>I have several paragraphs...</p>
       <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
     </Accordion>
 
-    <div className='container'>
-      <div className='row center-xs'>
+    <Grid container justify='center'>
+      <Grid item>
         <VizControlPanel
           searchList={searchList}
           listDescription='Agencies'
@@ -106,18 +106,16 @@ const Agencies = () => {
         >
           <BubbleChartOutlinedIcon />
         </VizControlPanel>
-
-
-
-
-
+        <BubbleChart
+          items={_data.allUnivBubbleChartCsv.nodes}
+          showDetails={setDetailShowing}
+        />
         <VizDetails
           showDetails={setDetailShowing}
-          data={details}
+          details={detailShowing}
         />
-        <BubbleChart items={_data.allUnivBubbleChartCsv.nodes} />
-      </div>
-    </div>
+      </Grid>
+    </Grid>
 
     <Downloads
       href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}

@@ -1,10 +1,10 @@
+import './bubble-chart.scss';
 import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
 import * as _ from "lodash";
 import * as $ from "jquery";
 
-import './bubble-chart.scss';
 
 function BubbleChart(props) {
 
@@ -333,7 +333,7 @@ function BubbleChart(props) {
 
           const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
           d3.select(elName).classed("active", true);
-          // bubble.activateDetail(d);
+          this.props.showDetails(d);
 
         } else if (d.depth === 1) {
           setLegendLeft(false);
