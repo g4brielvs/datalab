@@ -52,7 +52,7 @@ function HWCTA(props) {
   }
 
   if(additionalInformation.length > 0){
-    let donothing = true;
+    let donothing = true; //Dummy comment
   }
 
   if(props.location){
