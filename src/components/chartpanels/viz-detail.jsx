@@ -10,13 +10,9 @@ export default class VizDetailPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: true
     };
     this.expandDetails = this.expandDetails.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.showDetails(this.expandDetails);
   }
 
   expandDetails() {

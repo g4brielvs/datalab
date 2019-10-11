@@ -330,10 +330,11 @@ function BubbleChart(props) {
         if (d.depth === 2) {
           d3.event.stopPropagation();
           setChartState(d.parent);
+          console.log(d);
+          // props.showDetails(d);
 
           const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
           d3.select(elName).classed("active", true);
-          this.props.showDetails(d);
 
         } else if (d.depth === 1) {
           setLegendLeft(false);
@@ -428,5 +429,4 @@ function BubbleChart(props) {
   )
 }
 
-
-export default BubbleChart
+export default BubbleChart;
