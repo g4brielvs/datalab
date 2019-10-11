@@ -10,14 +10,16 @@ $darkGrey: #666666;
 
 .heading {
   border-bottom: 1px solid $darkGrey;
-  padding-bottom: 0.25rem;
 
   h1 {
     color: $darkGrey;
-    padding-bottom: 0.25rem;
     text-transform: uppercase;
     text-align: left;
   }
+}
+
+.tiles {
+  padding-top: 1rem;
 }
 
 .text {
@@ -43,8 +45,6 @@ $darkGrey: #666666;
    }
 
 }
-
-
 
 .image {
   width: 100%;
