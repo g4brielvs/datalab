@@ -23,9 +23,6 @@ function HWCTA(props) {
       ]
     }];
    */
-
-  const additionalInformation = props.additionalInformation || [];
-  const additionalInformationHTML = [];
   const categories = props.categories;
   const categoriesHTML = [];
   let curCategory = null;
@@ -49,10 +46,6 @@ function HWCTA(props) {
         </ul>
       </Grid>
       );
-  }
-
-  if(additionalInformation.length > 0){
-    let donothing = true; //Dummy comment
   }
 
   if(props.location){
@@ -87,14 +80,12 @@ function HWCTA(props) {
           </Grid>
         </section>
         <section>
-          <Grid container>
-            {additionalInformationHTML}
-          </Grid>
+          {props.additionalInformation}
         </section>
       </div>
       <section className={hwctaStyles.footer}>
         <Grid container>
-          {dataPage ?
+          {dataPage && !props.noFooterBackButton ?
             <Grid item xs={12}>
               <a href={dataPage} className={hwctaStyles.backButtonFooter}>
                 <div className={hwctaStyles.backButtonFooterChevron}>

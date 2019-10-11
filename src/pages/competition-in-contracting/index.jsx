@@ -96,8 +96,6 @@ class CompetitionInContractingPage extends Component {
 
 
   render() {
-    console.log("inside render");
-    console.log('location:', this.props.location);
     const pageTitle = 'Competition in Contracting';
     const introSentence = 'In FY 2017, over 60 percent of federal contracts were competitively awarded.';
     const contextSentence = 'How often do federal agencies compete for contracts? In FY 2017 more than 60% of federal contracts were competitively awarded.';
@@ -114,7 +112,8 @@ class CompetitionInContractingPage extends Component {
                     introSentence={introSentence}
                     contextStatement={contextSentence}
                     sectionTitle={sectionTitle}
-                    sectionText={sectionText}>
+                    sectionText={sectionText}
+                    hwctaLink={this.props.location.pathname + '/methodologies'}>
           <SEO title="Competition in Contracting" keywords={[`gatsby`, `application`, `react`]}/>
           <Accordion
             title="Instructions">
