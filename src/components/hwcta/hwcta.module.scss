@@ -1,0 +1,54 @@
+.hwcta-page {
+  max-width: 1140px;
+  margin: 50px auto 0;
+}
+
+.container {
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 8rem;
+}
+
+.back-button-header {
+  color: rgb(73, 159, 220) !important;
+  font-size: 0.95rem;
+}
+
+.back-button-header-slash {
+  margin-right: 15px;
+}
+
+.back-button-footer {
+  color: rgb(73, 159, 220) !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.back-button-footer-chevron {
+  margin-right: 30px;
+  display: inline;
+
+  svg {
+    margin-bottom: -5px;
+    margin-left: -8px;
+  }
+}
+
+.sources, .section-text {
+  color: #AAA;
+  font-size: 1rem;
+}
+
+.footer {
+  margin-bottom: 8rem;
+}
+
+.analysis-offset {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-bottom: 8rem;
+}
+
+h3 {
+  font-size:1.5rem;
+}
