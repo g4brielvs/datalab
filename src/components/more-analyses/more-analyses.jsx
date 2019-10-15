@@ -65,9 +65,7 @@ const MoreAnalyses = () => {
                   </p>
                 </div>
 
-                <div className={moreAnalysesStyles.imageContainer}>
-                  <img src={item.imageSrc} className={moreAnalysesStyles.image} />
-                </div>
+                <img src={item.imageSrc} className={moreAnalysesStyles.image} />
 
             </Link>
           </Grid>
