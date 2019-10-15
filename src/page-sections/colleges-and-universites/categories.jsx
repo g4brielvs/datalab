@@ -14,7 +14,6 @@ import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
 const Categories = () => {
-  const [detailShowing, setDetailShowing] = React.useState(panelDetails);
   const switchView = view => alert('switch to ' + view + ' mode');
 
   let searchList = [
@@ -132,35 +131,39 @@ const Categories = () => {
     }
   `);
 
-  const panelDetails = {
-    'header': {
-      'title': 'Institution',
-      'itemName': 'Central College',
-      'label': 'Public, 2-year',
-      'subItemName': null,
-      'totalLabel': 'Total $ Received',
-      'totalValue': 1100000
-    },
-    'tables': [
-      {
-        'col1Title': 'Funding Investment Type',
-        'col2Title': null,
-        'rows': {
-          'Contracts': 35000,
-          'Grants': 590200,
-          '   Grants (Research)': 0
-        }
+  const detailPanelRef = React.createRef();
+  let currentDetails = {};
+  const getClickedDetails = d => {
+    currentDetails = {
+      'header': {
+        'title': 'Institution',
+        'itemName': 'Central College',
+        'label': 'Public, 2-year',
+        'subItemName': null,
+        'totalLabel': 'Total $ Received',
+        'totalValue': 1100000
       },
-      {
-        'col1Title': 'Institution (Top 5)',
-        'col2Title': 'Total Investment',
-        'rows': {
-          'UNLV': 35000,
-          'Baker College': 590200,
-          'Massachusetts General Hospital Dietetic Intership': 6954359235967253
+      'tables': [
+        {
+          'col1Title': 'Funding Investment Type',
+          'col2Title': null,
+          'rows': {
+            'Contracts': 35000,
+            'Grants': 590200,
+            '   Grants (Research)': 0
+          }
+        },
+        {
+          'col1Title': 'Institution (Top 5)',
+          'col2Title': 'Total Investment',
+          'rows': {
+            'UNLV': 35000,
+            'Baker College': 590200,
+            'Massachusetts General Hospital Dietetic Intership': 6954359235967253
+          }
         }
-      }
-    ]
+      ]
+    }
   };
 
   return (
@@ -244,10 +247,11 @@ const Categories = () => {
             centerColor={centerColor}
           />
 
-          {/* <VizDetails
-            showDetails={setDetailShowing}
-            details={detailShowing}
-          /> */}
+          <VizDetails
+            showDetails={getClickedDetails}
+            details={currentDetails}
+            ref={detailPanelRef}
+          />
         </Grid>
       </Grid >
 

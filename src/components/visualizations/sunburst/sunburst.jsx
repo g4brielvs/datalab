@@ -366,8 +366,6 @@ function Sunburst(props) {
         });
       });
 
-      console.log(data);
-
       return data;
     }
 

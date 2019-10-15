@@ -12,37 +12,6 @@ import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
 const Agencies = () => {
-  let details = {
-    'header': {
-      'title': 'Institution',
-      'itemName': 'Central College',
-      'label': 'Public, 2-year',
-      'subItemName': null,
-      'totalLabel': 'Total $ Received',
-      'totalValue': 1100000
-    },
-    'tables': [
-      {
-        'col1Title': 'Funding Investment Type',
-        'col2Title': null,
-        'rows': {
-          'Contracts': 35000,
-          'Grants': 590200,
-          '   Grants (Research)': 0
-        }
-      },
-      {
-        'col1Title': 'Institution (Top 5)',
-        'col2Title': 'Total Investment',
-        'rows': {
-          'UNLV': 35000,
-          'Baker College': 590200,
-          'Massachusetts General Hospital Dietetic Intership': 6954359235967253
-        }
-      }
-    ]
-  };
-
   const _data = useStaticQuery(graphql`
     query {
       allUnivBubbleChartCsv {
@@ -59,14 +28,14 @@ const Agencies = () => {
           obligation
         }
       }
-      allTop5InstitutionsPerAgencyV2Csv {
+      allTop5InvestmentsPerAgencyV2Csv {
         nodes {
           source
           target
           value
         }
       }
-      allTop5InvestmentsPerAgencyV2Csv {
+      allTop5InstitutionsPerAgencyV2Csv {
         nodes {
           source
           target
@@ -76,10 +45,73 @@ const Agencies = () => {
     }
   `);
 
-console.log(_data.allAgenciesRhpSummaryCsv);
-
-  const [detailShowing, setDetailShowing] = React.useState(details);
   const switchView = view => alert('switch to ' + view + ' mode');
+
+  const detailPanelRef = React.createRef();
+  let currentDetails = {};
+  const getClickedDetails = d => {
+    if (!d) {
+      detailPanelRef.current.closeDetails();
+    } else {
+      const summary = _data.allAgenciesRhpSummaryCsv.nodes.filter(i => i.subagency === d.name);
+      const summaryObligations = {};
+      if (summary[0].type === 'grant') {
+        parseInt(summaryObligations.grant = summary[0].obligation);
+        parseInt(summaryObligations.contract = summary[1].obligation);
+      } else {
+        parseInt(summaryObligations.grant = summary[1].obligation);
+        parseInt(summaryObligations.contract = summary[0].obligation);
+      }
+
+      const invTop5 = {};
+      _data.allTop5InvestmentsPerAgencyV2Csv.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          invTop5[j.target] = j.value;
+        })
+      ;
+
+      const instTop5 = {};
+      _data.allTop5InstitutionsPerAgencyV2Csv.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          instTop5[j.target] = j.value;
+        })
+      ;
+
+      currentDetails = {
+        'header': {
+          'title': 'Agency',
+          'itemName': d.parent.name,
+          'label': 'Sub-Agency',
+          'subItemName': d.name,
+          'totalLabel': 'Total $ of Awards',
+          'totalValue': d.size
+        },
+        'tables': [
+          {
+            'col1Title': 'Funding Instrument Type',
+            'col2Title': null,
+            'rows': {
+              'Grants': summaryObligations.grant,
+              'Contracts': summaryObligations.contract
+            }
+          },
+          {
+            'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': invTop5
+          },
+          {
+            'col1Title': 'Institutions' + (Object.keys(instTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': instTop5
+          }
+        ]
+      }
+      detailPanelRef.current.updateDetails(currentDetails);
+    }
+  }
 
   let searchList = [
     {
@@ -129,13 +161,18 @@ console.log(_data.allAgenciesRhpSummaryCsv);
         >
           <BubbleChartOutlinedIcon />
         </VizControlPanel>
+      </Grid>
+      <Grid item>
         <BubbleChart
           items={_data.allUnivBubbleChartCsv.nodes}
-          showDetails={setDetailShowing}
+          showDetails={getClickedDetails}
         />
+      </Grid>
+      <Grid item>
         <VizDetails
-          showDetails={setDetailShowing}
-          details={detailShowing}
+          showDetails={getClickedDetails}
+          details={currentDetails}
+          ref={detailPanelRef}
         />
       </Grid>
     </Grid>
