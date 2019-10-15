@@ -53,7 +53,10 @@ $darkGrey: #666666;
 @media screen and (max-width: $tablet) {
   .tile {
     border-bottom: 1px solid #ddd;
-    margin-top: 1rem !important;
+
+    &.MuiGrid-item {
+      margin-top: 1rem !important;
+    }
 
     .text {
       width: 50%;

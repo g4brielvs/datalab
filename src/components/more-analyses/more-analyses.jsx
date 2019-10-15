@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
 import moreAnalysesStyles from './more-analyses.module.scss';
+import  './more-analyses-mui-override.scss';
 import federal from "../../images/more-analyses/federal.jpg"
 import workers from "../../images/more-analyses/workers.jpg"
 import budget from "../../images/more-analyses/budget.jpg"
@@ -50,7 +51,7 @@ const MoreAnalyses = () => {
         {analyses.map((item, index) =>
           <Grid item sm={12} md={6} lg={3}
             key={'analyses__tile_' + index}
-            className={moreAnalysesStyles.tile}>
+            className={`tile ${moreAnalysesStyles.tile}`}>
 
             <Link to={item.href}>
 
