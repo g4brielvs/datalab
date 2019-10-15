@@ -4,67 +4,73 @@ $darkGrey: #666666;
 
 .analyses {
   text-align: left;
+  margin-bottom: 1rem;
+
 }
 
 .heading {
-  font-size: 1.17em;
-  color: $font-body-copy;
-  padding-bottom: 1rem;
-  text-transform: uppercase;
-  text-align: left;
-}
+  border-bottom: 1px solid $darkGrey;
 
-.tile {
-  text-align: left;
+  h1 {
+    color: $darkGrey;
+    text-transform: uppercase;
+    text-align: left;
+  }
 }
 
 .tiles {
-
+  padding-top: 1rem;
 }
 
-.tile__text {
+.text {
   font-size: 12px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
 
-  h2 {
+  .title {
     color: #2272CE;
-    height: 1rem;
+    height: 2rem;
     margin-bottom: 1rem;
     font-size: 18px;
   }
-}
 
-.tile__title {
-  font-size: 20px;
-  height: 4rem;
-  color: $font-body-copy;
-  margin-bottom: 0;
-  margin-top: 0;
+  .subtitle {
+     font-size: 20px;
+     height: 6rem;
+     color: $font-body-copy;
+     margin-bottom: 0;
+     margin-top: 0;
+   }
+
 }
 
 .image {
   width: 100%;
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .tile__text {
-    text-align: right;
-  }
-
+@media screen and (max-width: $tablet) {
   .tile {
-    border-bottom: unset;
-  }
-}
+    border-bottom: 1px solid #ddd;
 
-@media (max-width: $tablet - 1) {
-  .tile__text {
-    text-align: right;
-  }
+    &.MuiGrid-item {
+      margin-top: 1rem !important;
+    }
 
-  .heading {
-    border-bottom: 1px solid $font-body-copy;
+    .text {
+      width: 50%;
+      float: right;
+
+      .title, .subtitle {
+        text-align: right;
+      }
+    }
+
+    .image {
+      width: 50%;
+      float: left;
+      margin-bottom: 1rem;
+    }
   }
 }
