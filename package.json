@@ -47,9 +47,12 @@
     "normalize-scss": "^7.0.1",
     "papaparse": "^5.1.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
+    "react": "^16.10.2",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-vega": "^7.0.1",
+    "vega": "^5.7.2",
+    "vega-lite": "^4.0.0-beta.10"
   },
   "devDependencies": {
     "prettier": "^1.17.0",
