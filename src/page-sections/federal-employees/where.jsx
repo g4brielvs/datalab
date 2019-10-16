@@ -20,7 +20,7 @@ function Where(props) {
         <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
       </Accordion>
 
-      <Mapviz sectionId={props.sectionId} dataSource={props.dataSource}/>
+      <Mapviz sectionId={props.sectionId} dataSource={props.dataSource} location={props.location}/>
       <Downloads
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
         date={'March 2019'}

@@ -232,9 +232,7 @@ export default function Mapviz(props) {
     <>
       <ControlBar>
         <Reset _resetClick={reset}/>
-        <Share siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='federal-employees'
-               twitter='#DataLab #Treasury #DataTransparency #USAspending'
-               facebook='' reddit='' linkedin='' tumblr='' email=''/>
+        <Share location={props.location}/>
       </ControlBar>
       <div id="tooltip" className="tooltip-module" />
       <form id="mapVizToolbar" className={`row ${barChartStyles.toolbar}`}>
