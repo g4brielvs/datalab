@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
 import './dendro.scss';
-//import Bars from '../../../svgs/bars.svg';
-//import List from '../../../svgs/list.svg';
+import '../../../utils/tooltipModule';
 
 function Dendro(props) {
 
   useEffect(() => {
-    
+
     const dendroData17 = props.fy17;
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
@@ -213,7 +212,6 @@ function Dendro(props) {
         }
 
         function handleMouseOver(d) {
-          //console.log('d: ',d);
           if (d.depth === 3) {
             window.tooltipModule.draw("#tooltip", d.name, {
               "Total Obligations": formatNumber(d.size),
@@ -430,7 +428,6 @@ function Dendro(props) {
       }
 
       // Toggle children function
-
       function toggleChildren(d) {
         if (d.children) {
           d._children = d.children;
@@ -477,10 +474,10 @@ function Dendro(props) {
           centerNode(d);
         }
 
-        window.Analytics.event({
-          category: 'Federal Account Explorer - Click Node',
-          action: d.name
-        });
+        // window.Analytics.event({
+        //   category: 'Federal Account Explorer - Click Node',
+        //   action: d.name
+        // });
 
         resetToCenter();
       }
@@ -496,23 +493,19 @@ function Dendro(props) {
 
       function resetToCenter() {
         var theSvg = document.getElementById("svg-dendrogram");
-
         theSvg.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, clientX: 1, clientY: 1, view: window }));
         theSvg.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
         theSvg.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
       }
     }
 
-    // call create dendro...
     CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
       let data = [];
       $("input[type='radio']").change(() => {
         const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-        // console.log('Fiscal Year: ',FiscalYear);
         if (FiscalYear === 'fy17') {
-          // console.log('2017 selected')
           d3.selectAll('#svg-dendrogram').remove();
           const Quarter = $('input[name="Quarter"]:checked').val();
           if (Quarter == '12-31'){
@@ -525,45 +518,42 @@ function Dendro(props) {
               .attr('id', 'svg-dendrogram')
               .attr('class', 'overlay')
               .html("<h1>Sorry, our current schema didn't exist for FY17 Q1</h1>");
-          }else if (Quarter == '03-31'){
-            // console.log('FY17 Q2 selected')
+          } else if (Quarter == '03-31') {
+
             data = dendroData17.filter((d) => d.reporting_period_end == '2017-03-31');
             CreateDendro(data);
-          }else if (Quarter == '06-30'){
-            // console.log('FY17 Q3 selected')
+          } else if (Quarter == '06-30') {
+
             data = dendroData17.filter((d) => d.reporting_period_end == '2017-06-30');
             CreateDendro(data);
-          }else {
-            // console.log('FY17 Q4 selected')
+          } else {
+
             data = dendroData17.filter((d) => d.reporting_period_end == '2017-09-30');
             CreateDendro(data);
           }
-        }else if (FiscalYear === 'fy18'){
-          // console.log('2018 selected')
+        } else if (FiscalYear === 'fy18') {
+
           d3.selectAll('#svg-dendrogram').remove();
           const Quarter = $('input[name="Quarter"]:checked').val();
-          if (Quarter == '12-31'){
-            // console.log('FY18 Q1 selected')
+          if (Quarter == '12-31') {
+
             data = dendroData18.filter((d) => d.reporting_period_end == '2017-12-31');
             CreateDendro(data);
           }else if (Quarter == '03-31'){
-            // console.log('FY18 Q2 selected')
+
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-03-31');
             CreateDendro(data);
           }else if (Quarter == '06-30'){
-            // console.log('FY18 Q3 selected')
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-06-30');
             CreateDendro(data);
           }else {
-            // console.log('FY18 Q4 selected')
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-09-30');
             CreateDendro(data);
           }             
         }else if (FiscalYear === 'fy19'){
           d3.selectAll('#svg-dendrogram').remove();
           const Quarter = $('input[name="Quarter"]:checked').val();
-          if (Quarter == '12-31'){
-            // console.log('FY19 Q1 selected')
+          if (Quarter == '12-31') {
             data = dendroData19.filter((d) => d.reporting_period_end == '2018-12-31');
             CreateDendro(data);
           } else if (Quarter == '03-31') {
@@ -588,8 +578,7 @@ function Dendro(props) {
         }
       });
     });
-
-  }); // wrap the whole thing.. (use effect);
+  }); // end use Effect
 
   return(
     <section id='one' className='viz-section center-text'>
@@ -604,11 +593,11 @@ function Dendro(props) {
                 <input type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
                 <label htmlFor="contactChoice">FY 18 </label>
 
-                <input type='radio' id='contactChoice7' name="FiscalYear" value='fy19'/>
+                <input type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
                 <label htmlFor="contactChoice1">FY 19 </label>
               </div>
               <div className="select-wrapper2">
-                <input type="radio" id="contactChoice3" name="Quarter" value="12-31" />
+                <input type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
                 <label htmlFor="contactChoice3">Q1</label>
 
                 <input type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
@@ -625,8 +614,10 @@ function Dendro(props) {
         </div>
       </div>
       <div className="viz-container">
-        <div id="tooltip" className="tooltip-module"></div>
-        <div id="tree-container"></div>
+        <element className='dendrogram'>
+          <div id="tooltip" className="tooltip-module"></div>
+          <div id="tree-container"></div>
+        </element>
       </div>
     </section>
   );

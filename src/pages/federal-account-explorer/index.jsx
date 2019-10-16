@@ -39,14 +39,15 @@ class FederalAccountExplorerPage extends Component {
                    <li>xxx</li>
                  </ul>
                </Accordion>
-               
-               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data} />
 
                <Grid container justify='flex-end'>
                  <Grid item><Reset /></Grid>
                  <Grid item ><Share
-                   location={this.props.location}/></Grid>
+                               location={this.props.location}/></Grid>
                </Grid>
+
+               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data} />
+
              </ToolLayout>
            </>;
   }
