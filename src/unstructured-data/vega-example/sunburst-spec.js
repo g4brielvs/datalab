@@ -29,8 +29,8 @@ export default {
   {
     "name": "color",
     "type": "ordinal",
-    "domain": {"data": "tree", "field": "depth"},
-    "range": {"scheme": "tableau20"}
+    "domain": {"data": "tree", "field": "children"},
+    "range": {"scheme": ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40']}
   }
 ],
 
@@ -42,7 +42,7 @@ export default {
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
-        "fill": {"scale": "color", "field": "depth"},
+        "fill": {"scale": "color", "field": "children"},
         "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.size + ' bytes' : '')"}
       },
       "update": {
