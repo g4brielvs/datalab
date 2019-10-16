@@ -105,7 +105,7 @@ const Categories = () => {
           Subagency
           family
         }
-      },
+      }
       grants: allInvestmentSectionGrantsV2Csv {
         nodes {
           Agency
@@ -116,7 +116,7 @@ const Categories = () => {
           Subagency
           family
         }
-      },
+      }
       research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         nodes {
           Agency
@@ -128,41 +128,69 @@ const Categories = () => {
           family
         }
       }
+      top5Agencies: allTop5AgenciesPerInvestmentTypeV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+      top5InvestmentTypes: allTop5InstitutionsPerInvestmentTypeV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
     }
   `);
 
   const detailPanelRef = React.createRef();
   let currentDetails = {};
   const getClickedDetails = d => {
-    currentDetails = {
-      'header': {
-        'title': 'Institution',
-        'itemName': 'Central College',
-        'label': 'Public, 2-year',
-        'subItemName': null,
-        'totalLabel': 'Total $ Received',
-        'totalValue': 1100000
-      },
-      'tables': [
-        {
-          'col1Title': 'Funding Investment Type',
-          'col2Title': null,
-          'rows': {
-            'Contracts': 35000,
-            'Grants': 590200,
-            '   Grants (Research)': 0
-          }
+    if (!d) {
+      detailPanelRef.current.closeDetails();
+    } else {
+
+      const agenciesTop5 = {};
+      _data.top5Agencies.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          agenciesTop5[j.target] = j.value;
+        })
+      ;
+
+      const invTop5 = {};
+      _data.top5InvestmentTypes.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          invTop5[j.target] = j.value;
+        })
+      ;
+
+      currentDetails = {
+        'header': {
+          'title': 'Category',
+          'itemName': d.parent.name,
+          'label': 'Sub-Category',
+          'subItemName': d.name,
+          'totalLabel': 'Total $ of Funding',
+          'totalValue': d.value
         },
-        {
-          'col1Title': 'Institution (Top 5)',
-          'col2Title': 'Total Investment',
-          'rows': {
-            'UNLV': 35000,
-            'Baker College': 590200,
-            'Massachusetts General Hospital Dietetic Intership': 6954359235967253
+        'tables': [
+          {
+            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': agenciesTop5
+          },
+          {
+            'col1Title': 'Institution' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': invTop5
           }
-        }
-      ]
+        ]
+      };
+      detailPanelRef.current.updateDetails(currentDetails);
     }
   };
 
@@ -202,7 +230,8 @@ const Categories = () => {
               <img src={SunburstIcon} />
             </VizControlPanel>
           </Hidden>
-
+        </Grid>
+        <Grid item>
           <form id='sunburstRadio'>
             <Grid container>
               <Grid item>
@@ -245,8 +274,10 @@ const Categories = () => {
             leaf={leaf}
             wedgeColors={wedgeColors}
             centerColor={centerColor}
+            showDetails={getClickedDetails}
           />
-
+        </Grid>
+        <Grid item>
           <VizDetails
             showDetails={getClickedDetails}
             details={currentDetails}
