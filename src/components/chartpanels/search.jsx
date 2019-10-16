@@ -15,7 +15,7 @@ export default class SearchPanel extends React.Component {
     }
   }
 
-  toggleSearch = () => this.setState(prevState => { return { collapsed: !prevState.collapsed } });
+  toggleSearch = () => this.setState(prevState => {{ collapsed: !prevState.collapsed }});
 
   filterSearch(event) {
     this.filteredList = [];
