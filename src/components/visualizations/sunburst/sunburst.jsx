@@ -141,6 +141,7 @@ function Sunburst(props) {
           .attr('class', 'center-amount')
           .style('font-size', labelFontSize * largeText + "em")
 
+          props.showDetails(null); // hide details panel
 
       } else if (d.depth === 1) {
         centerGroup = svg.append('svg:text')
@@ -180,6 +181,8 @@ function Sunburst(props) {
           .attr('class', 'center-amount')
           .style('font-size', labelFontSize * largeText + "em")
 
+          props.showDetails(null); // hide details panel
+
       } else {
         centerGroup = svg.append('svg:text')
           .attr('id', 'tab');
@@ -210,7 +213,6 @@ function Sunburst(props) {
           .attr('class', 'center-heading')
           .style('font-size', labelFontSize * mediumText + "em")
 
-
         centerGroup.append('tspan')
           .attr('dy', lineHeight + "em")
           .attr('x', '0')
@@ -227,6 +229,9 @@ function Sunburst(props) {
           .text(formatNumber(d.value))
           .attr('class', 'center-amount')
           .style('font-size', labelFontSize * exLargeText + "em")
+          
+          props.showDetails(d); // show details in panel
+          // console.log(d);
       }
 
       /* Scale text to fit */
@@ -331,9 +336,6 @@ function Sunburst(props) {
         .attrTween('d', d => function () {
           return arc(d);
         });
-
-      //TODO: To activate the details panel - out of scope of ticket
-      // sunburst.activateDetail(d);
     }
 
     function buildDataHierarchy(title, dataArray) {
@@ -365,8 +367,6 @@ function Sunburst(props) {
           }
         });
       });
-
-      console.log(data);
 
       return data;
     }
