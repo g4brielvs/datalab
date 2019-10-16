@@ -74,8 +74,12 @@ $fedEmpLtBlue: #c2d8f2;
     }
   }
 
-
-  #menu-Agencies, #menu-States {
+/*
+ * The following ids are very specific, but that's because of how MUI generates the dropdown. It takes the name property
+ * of the InputProps on the Select element to and prefixes it with "menu-". We have no good way of applying any other
+ * classes or css select options.
+ */
+  #menu-barChartAgencies, #menu-barChartStates, #menu-mapVizAgencies, #menu-mapVizOccupations {
 
     .MuiMenu-paper .MuiMenuItem-root {
       border-bottom: 1px solid #cccccc;

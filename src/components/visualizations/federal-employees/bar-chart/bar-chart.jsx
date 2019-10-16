@@ -139,6 +139,7 @@ function BarChart(props) {
                          labelKey={'name'}
                          selectedVal={selectedAgencies}
                          placeholder={'Agencies'}
+                         id={'barChartAgencies'}
                          changeHandler={setSelectedAgencies} />
         </div>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
@@ -148,6 +149,7 @@ function BarChart(props) {
                          labelKey={'name'}
                          selectedVal={selectedStates}
                          placeholder={'States'}
+                         id={'barChartStates'}
                          changeHandler={setSelectedStates} />
         </div>
       </form>

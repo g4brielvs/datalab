@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react"
 import * as d3 from "d3v4";
 import Tooltip from "../util/tooltip";
 import mapStyles from './mapviz.module.scss';
+import Multiselector from "../../../multiselector/multiselector"
+import barChartStyles from "../bar-chart/bar-chart.module.scss"
+import ControlBar from "../../../control-bar/control-bar"
+import Reset from "../../../reset/reset"
+import Share from "../../../share/share"
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
 export default function Mapviz(props) {
+
   const MapvizModule = {
     draw: (data, { states }) => {
-      const { tooltipModule } = window;
-
       const svg = d3.select("#mapSvg");
       svg.selectAll("*").remove();
 
@@ -117,23 +121,144 @@ export default function Mapviz(props) {
   const {
     loadStates,
     loadAgencies,
-    loadEmployeeCountData
+    loadEmployeeCountData,
+    loadOccupationCategories,
+    mem
   } = props.dataSource;
 
-  useEffect(() => {
-    loadStates(states => {
-      loadAgencies(agencies => {
-        loadEmployeeCountData([MapvizModule.draw], {
+  let occupationName = 'mapVizOccupations';
+  let agencyOptionList = [];
+  let agencyOccupationIds = [];
+
+  let [selectedOccupations, setSelectedOccupations] = useState([]);
+  let [occupationOptionList, setOccupationList] = useState([]);
+  let [selectedAgencies, setSelectedAgencies] = useState([]);
+
+  // create array of agency IDs, each an array of occupation IDs within that agency
+  function initAgencyOccupationIds() {
+    for (let e of mem.employeeCounts) {
+      if (!agencyOccupationIds[e.agencyId]) {
+        agencyOccupationIds[e.agencyId] = [];
+      }
+      if (!agencyOccupationIds[e.agencyId].includes(e.occupationCategoryId)) {
+        agencyOccupationIds[e.agencyId].push(e.occupationCategoryId);
+      }
+    }
+  }
+
+  function reset(){
+    setSelectedAgencies([]);
+    setSelectedOccupations([]);
+  }
+
+
+  loadStates(states => {
+    loadAgencies(agencies => {
+      loadOccupationCategories(occupationCategories => {
+        loadEmployeeCountData([initAgencyOccupationIds], {
           states,
           agencies,
-        })
-      })
-    })
-  })
+          occupationCategories
+        });
+
+        const sorter = (a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        };
+
+        function filterOccupationsList() {
+          if (selectedAgencies.length) {
+            let currentOccupations = [];
+              selectedAgencies.forEach(agency => {
+                if(agencyOccupationIds[agency.id]){
+                  agencyOccupationIds[agency.id].forEach(occupationId => {
+                    if (!currentOccupations.includes(occupationId)) {
+                      currentOccupations.push(occupationId);
+                    }
+                  })
+                }
+              })
+
+            occupationOptionList = currentOccupations.map((occupationId) => {
+              return Object.values(occupationCategories).find((occupation) => {
+                return occupation.id === occupationId;
+              })
+            }).sort(sorter);
+          } else {
+            occupationOptionList = Object.values(occupationCategories).sort(sorter);
+          }
+        }
+
+        filterOccupationsList();
+        agencyOptionList = Object.values(agencies).sort(sorter);
+
+      });
+    });
+  });
+
+  useEffect(() => {
+    function filterBySelections() {
+      const filterOccupations = selectedOccupations.map(item => item.id);
+      const filterAgencies = selectedAgencies.map(item => item.id);
+      const { employeeCounts, agencies, states, occupationCategories } = mem;
+
+      let newData = employeeCounts;
+
+      if (filterOccupations && filterOccupations.length) {
+        newData = newData.filter(e =>
+          filterOccupations.some(s => e.occupationCategoryId === s)
+        );
+      }
+
+      if (filterAgencies && filterAgencies.length) {
+        newData = newData.filter(e =>
+          filterAgencies.some(a => e.agencyId === +a)
+        );
+      }
+
+      MapvizModule.draw(newData, {
+        states,
+        agencies,
+        occupationCategories
+      });
+    }
+
+    filterBySelections();
+
+  }, [selectedOccupations, selectedAgencies]);
 
   return (
     <>
+      <ControlBar>
+        <Reset _resetClick={reset}/>
+        <Share siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='federal-employees'
+               twitter='#DataLab #Treasury #DataTransparency #USAspending'
+               facebook='' reddit='' linkedin='' tumblr='' email=''/>
+      </ControlBar>
       <div id="tooltip" className="tooltip-module" />
+      <form id="mapVizToolbar" className={`row ${barChartStyles.toolbar}`}>
+        <div className={`filter-tools ${barChartStyles.formItem}`}>
+          <Multiselector key={'mapVizAgencies'}
+                         optionList={agencyOptionList}
+                         valueKey={'id'}
+                         labelKey={'name'}
+                         selectedVal={selectedAgencies}
+                         placeholder={'Agencies'}
+                         id={'mapVizAgencies'}
+                         changeHandler={setSelectedAgencies} />
+        </div>
+        <div className={`filter-tools ${barChartStyles.formItem}`}>
+          <Multiselector key={'mapVizOccupations'}
+                         optionList={occupationOptionList}
+                         valueKey={'id'}
+                         labelKey={'name'}
+                         selectedVal={selectedOccupations}
+                         placeholder={'Occupations'}
+                         id={occupationName}
+                         changeHandler={setSelectedOccupations} />
+        </div>
+      </form>
       <div className="visContainer">
         <svg width="947" height="700" viewBox="0 0 1200 700" id="mapSvg" className={mapStyles.mapSvg}/>
       </div>
