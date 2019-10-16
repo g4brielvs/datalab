@@ -1,21 +1,20 @@
+import './viz-detail.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Paper, IconButton } from '@material-ui/core';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Grid from '@material-ui/core/Grid';
-import './viz-detail.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import formatNumber from '../../utils/number-formatter';
 
 export default class VizDetailPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      details: props.details
     };
     this.expandDetails = this.expandDetails.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.showDetails(this.expandDetails);
   }
 
   expandDetails() {
@@ -26,26 +25,32 @@ export default class VizDetailPanel extends React.Component {
     this.setState({ expanded: false });
   }
 
+  updateDetails(data) {
+    this.setState({
+      expanded: true,
+      details: data
+    });
+  }
+
   renderDetails() {
     let tables;
-    if (this.props.data.tables) {
-      tables = this.renderTables(this.props.data.tables);
+    if (this.state.details.tables) {
+      tables = this.renderTables(this.state.details.tables);
     }
 
-    const header = this.props.data.header;
+    const header = this.state.details.header;
     if (header) {
-      let display = <>
+      return <>
         <Grid container justify='space-between' alignItems='baseline'>
           <Grid item xs={12} className='label'>{header.title}</Grid>
           <Grid item xs={12} className='itemName'>{header.itemName}</Grid>
           <Grid item xs={12} className='label'>{header.label}</Grid>
-          <Grid item xs={12} className='itemName'>{header.subitemName}</Grid>
+          <Grid item xs={12} className='itemName'>{header.subItemName}</Grid>
           <Grid item xs={6} className='col1title'>{header.totalLabel}</Grid>
-          <Grid item xs={6} className='col2title'>${header.totalValue.toLocaleString('en')}</Grid>
+          <Grid item xs={6} className='col2title'>{formatNumber('dollars', header.totalValue)}</Grid>
         </Grid>
         {tables}
       </>
-      return display;
     }
   }
 
@@ -57,7 +62,7 @@ export default class VizDetailPanel extends React.Component {
         Object.keys(table.rows).forEach(rowLabel => {
           rowsFrag.push(<tr>
             <td>{rowLabel}</td>
-            <td>${table.rows[rowLabel].toLocaleString('en')}</td>
+            <td>{formatNumber('dollars', table.rows[rowLabel])}</td>
           </tr>);
         });
       }
@@ -88,7 +93,7 @@ export default class VizDetailPanel extends React.Component {
 /*
   Notes on props:
   showDetails is a function on the parent viz triggering opening this panel
-  data is all the info for the details, with main properties "header" and array of "table"s
+  details is all the info for the details to display, with main properties "header" and array of "table"s
   e.g.
 {
   'header': {
@@ -124,5 +129,5 @@ export default class VizDetailPanel extends React.Component {
 
 VizDetailPanel.propTypes = {
   showDetails: PropTypes.func,
-  data: PropTypes.object.isRequired
+  details: PropTypes.object.isRequired
 };

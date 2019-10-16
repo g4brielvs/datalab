@@ -1,19 +1,117 @@
-import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+// import '../../styles/index.scss';
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import "../../styles/index.scss"
-
-/* components */
-import Accordion from "../../components/accordion/accordion"
-import StoryHeading from "../../components/section-elements/story-heading/story-heading"
-import VizControlPanel from "../../components/chartpanels/viz-control"
-import VizDetails from "../../components/chartpanels/viz-detail"
-import Downloads from "../../components/section-elements/downloads/downloads"
-import BubbleChart from "../../components/visualizations/bubble-chart/bubble-chart"
-import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined'
-
+import Accordion from '../../components/accordion/accordion';
+import BubbleChart from '../../components/visualizations/bubble-chart/bubble-chart';
+import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
+import Downloads from '../../components/section-elements/downloads/downloads';
+import Grid from '@material-ui/core/Grid';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import VizControlPanel from '../../components/chartpanels/viz-control';
+import VizDetails from '../../components/chartpanels/viz-detail';
 
 const Agencies = () => {
+  const _data = useStaticQuery(graphql`
+    query {
+      allUnivBubbleChartCsv {
+        nodes {
+          agency
+          subagency
+          obligation
+        }
+      }
+      allAgenciesRhpSummaryCsv {
+        nodes {
+          subagency
+          type
+          obligation
+        }
+      }
+      allTop5InvestmentsPerAgencyV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+      allTop5InstitutionsPerAgencyV2Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+    }
+  `);
+
+  const switchView = view => alert('switch to ' + view + ' mode');
+
+  const detailPanelRef = React.createRef();
+  let currentDetails = {};
+  const getClickedDetails = d => {
+    if (!d) {
+      detailPanelRef.current.closeDetails();
+    } else {
+      const summary = _data.allAgenciesRhpSummaryCsv.nodes.filter(i => i.subagency === d.name);
+      const summaryObligations = {};
+      if (summary[0].type === 'grant') {
+        parseInt(summaryObligations.grant = summary[0].obligation);
+        parseInt(summaryObligations.contract = summary[1].obligation);
+      } else {
+        parseInt(summaryObligations.grant = summary[1].obligation);
+        parseInt(summaryObligations.contract = summary[0].obligation);
+      }
+
+      const invTop5 = {};
+      _data.allTop5InvestmentsPerAgencyV2Csv.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          invTop5[j.target] = j.value;
+        })
+      ;
+
+      const instTop5 = {};
+      _data.allTop5InstitutionsPerAgencyV2Csv.nodes
+        .filter(i => i.source === d.name)
+        .forEach(j => {
+          instTop5[j.target] = j.value;
+        })
+      ;
+
+      currentDetails = {
+        'header': {
+          'title': 'Agency',
+          'itemName': d.parent.name,
+          'label': 'Sub-Agency',
+          'subItemName': d.name,
+          'totalLabel': 'Total $ of Awards',
+          'totalValue': d.size
+        },
+        'tables': [
+          {
+            'col1Title': 'Funding Instrument Type',
+            'col2Title': null,
+            'rows': {
+              'Grants': summaryObligations.grant,
+              'Contracts': summaryObligations.contract
+            }
+          },
+          {
+            'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': invTop5
+          },
+          {
+            'col1Title': 'Institutions' + (Object.keys(instTop5).length > 4 ? ' (Top 5)' : ''),
+            'col2Title': 'Total Investment',
+            'rows': instTop5
+          }
+        ]
+      }
+      detailPanelRef.current.updateDetails(currentDetails);
+    }
+  }
 
   let searchList = [
     {
@@ -40,53 +138,6 @@ const Agencies = () => {
     }
   ];
 
-  let details = {
-    'header': {
-      'title': 'Institution',
-      'itemName': 'Central College',
-      'label': 'Public, 2-year',
-      'subItemName': null,
-      'totalLabel': 'Total $ Received',
-      'totalValue': 1100000
-    },
-    'tables': [
-      {
-        'col1Title': 'Funding Investment Type',
-        'col2Title': null,
-        'rows': {
-          'Contracts': 35000,
-          'Grants': 590200,
-          '   Grants (Research)': 0
-        }
-      },
-      {
-        'col1Title': 'Institution (Top 5)',
-        'col2Title': 'Total Investment',
-        'rows': {
-          'UNLV': 35000,
-          'Baker College': 590200,
-          'Massachusetts General Hospital Dietetic Intership': 6954359235967253
-        }
-      }
-    ]
-  };
-
-  const switchView = view => alert('switch to ' + view + ' mode');
-
-  const showDetails = () => this.setState({ detailShowing: true });
-
-  const _data = useStaticQuery(graphql`
-  query {
-    allUnivBubbleChartCsv {
-      nodes {
-        agency
-        subagency
-        obligation
-      }
-    }
-  }
-`)
-  
   return (<>
     <StoryHeading
       number={'02'}
@@ -95,34 +146,36 @@ const Agencies = () => {
       blurb={`In 2018, higher education institutions received a total of xxxxx`}
     />
 
-    <Accordion
-      title="Accordion Title">
+    <Accordion title='Accordion Title'>
       <p>I am an accordion with lots to say.</p>
       <p>I have several paragraphs...</p>
-      <a href="https://datalab.usaspending.gov">...and a link to the Data Lab</a>
+      <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
     </Accordion>
 
-
-    <div className="container">
-      <div className="row center-xs">
+    <Grid container justify='center'>
+      <Grid item>
         <VizControlPanel
           searchList={searchList}
-          listDescription="Agencies"
+          listDescription='Agencies'
           switchView={switchView}
         >
           <BubbleChartOutlinedIcon />
         </VizControlPanel>
-        {/*<img className="col-xs-6" src={defaultImage}*/}
-          {/*onClick={() => showDetails()}*/}
-        {/*/>*/}
-        {/*<VizDetails*/}
-          {/*showDetails={click => showDetails = click}*/}
-          {/*data={this.details}*/}
-        {/*>*/}
-        {/*</VizDetails>*/}
-        <BubbleChart items={_data.allUnivBubbleChartCsv.nodes} />
-      </div>
-    </div>
+      </Grid>
+      <Grid item>
+        <BubbleChart
+          items={_data.allUnivBubbleChartCsv.nodes}
+          showDetails={getClickedDetails}
+        />
+      </Grid>
+      <Grid item>
+        <VizDetails
+          showDetails={getClickedDetails}
+          details={currentDetails}
+          ref={detailPanelRef}
+        />
+      </Grid>
+    </Grid>
 
     <Downloads
       href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
@@ -132,5 +185,3 @@ const Agencies = () => {
 }
 
 export default Agencies
-
-

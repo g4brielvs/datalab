@@ -1,10 +1,10 @@
+import './bubble-chart.scss';
 import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
 import * as _ from "lodash";
 import * as $ from "jquery";
 
-import './bubble-chart.scss';
 
 function BubbleChart(props) {
 
@@ -330,14 +330,16 @@ function BubbleChart(props) {
         if (d.depth === 2) {
           d3.event.stopPropagation();
           setChartState(d.parent);
+          props.showDetails(d); // show details in panel
 
           const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
           d3.select(elName).classed("active", true);
-          // bubble.activateDetail(d);
 
         } else if (d.depth === 1) {
           setLegendLeft(false);
           clearChartState();
+          props.showDetails(null); // hide details panel
+
           if (focus !== d) {
             zoom(d);
             d3.event.stopPropagation();
@@ -347,6 +349,7 @@ function BubbleChart(props) {
         if (d.depth === 2) {
           setLegendLeft(true);
           setChartState(d.parent);
+          props.showDetails(null); // hide details panel
 
           // check if a bubble is already selected
           if (focus !== d.parent) {
@@ -356,6 +359,7 @@ function BubbleChart(props) {
         } else if (d.depth === 1) {
           setLegendLeft(true);
           setChartState(d);
+          props.showDetails(null); // hide details panel
 
           if (focus !== d) {
             zoom(d);
@@ -428,5 +432,4 @@ function BubbleChart(props) {
   )
 }
 
-
-export default BubbleChart
+export default BubbleChart;
