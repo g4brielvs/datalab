@@ -10,7 +10,7 @@ function convertCsvToJson() {
   csvData.forEach(function (row) {
     Object.keys(row).forEach(function(key) {
 
-      existingItem = _.filter(items, _.matches({ key : row[key]}));
+      existingItem = _.filter(tree, _.matches({ 'name' : row[key], 'type' : key}));
 
       if(key === 'obligation') {
         return;
@@ -21,8 +21,7 @@ function convertCsvToJson() {
         // check if the item exists
         // if exists, add to the sum
 
-        const treeItem = _.filter(tree, _.matches({ 'id' : existingItem[0]['id']}));
-        const index = tree.indexOf(treeItem[0]);
+        const index = tree.indexOf(existingItem[0]);
         tree[index]['size'] += parseInt(row['obligation']);
 
       } else {
@@ -37,7 +36,7 @@ function convertCsvToJson() {
           "id": id,
           "name": row[key],
           "type": key,
-          "size": row[key] && parseInt(row['obligation']) ? row['obligation'] : 0,
+          "size": row['obligation'] ? parseInt(row['obligation']) : 0,
           "parent": null
         };
 
@@ -49,12 +48,12 @@ function convertCsvToJson() {
             break;
           case 'subagency':
             const tempSubAgencyParent = _.filter(tree, _.matches({ 'name' : row['agency'], 'type' : 'agency'}));
-            const tempSubAgencyParentId = tempSubAgencyParent && tempSubAgencyParent[0] ? tempSubAgencyParent[0]['id'] : 1;
+            const tempSubAgencyParentId = tempSubAgencyParent && tempSubAgencyParent[0] ? tempSubAgencyParent[0]['id'] : -1;
             newObj.parent = tempSubAgencyParentId;
             break;
           case 'recipient':
             const tempRecipientParent = _.filter(tree, _.matches({ 'name' : row['subagency'], 'type' : 'subagency'}));
-            const tempRecipientParentId = tempRecipientParent && tempRecipientParent[0] ? tempRecipientParent[0]['id'] : 1;
+            const tempRecipientParentId = tempRecipientParent && tempRecipientParent[0] ? tempRecipientParent[0]['id'] : -1;
             newObj.parent = tempRecipientParentId;
             break;
           case 'obligation':

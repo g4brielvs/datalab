@@ -3,12 +3,14 @@ import React from 'react';
 import { Vega } from 'react-vega';
 import sunburstSpec from '../../../unstructured-data/vega-example/sunburst-spec';
 import flare from '../../../unstructured-data/vega-example/flare1.json';
+import transformData from './transformData.js';
 
 const code1 = `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`;
 
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
+    // console.log(transformData());
     this.state = {
       data: flare,
       info: '',
