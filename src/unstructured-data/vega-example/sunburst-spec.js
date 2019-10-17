@@ -17,7 +17,7 @@ export default {
       {
         "type": "partition",
         "field": "size",
-        "sort": {"field": "value"},
+        "sort": {"field": "children"},
         "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
         "as": ["a0", "r0", "a1", "r1", "depth", "children"]
       }
@@ -42,7 +42,7 @@ export default {
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
-        "fill": {"scale": "color", "field": "parent"},
+        "fill": {"scale": "color", "field": "children"},
         "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.size + ' bytes' : '')"}
       },
       "update": {
