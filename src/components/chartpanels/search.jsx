@@ -9,35 +9,22 @@ import SearchIcon from '@material-ui/icons/Search';
 export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
-    this.filteredList = this.props.searchList;
     this.state = {
-      collapsed: this.props.showCollapse
+      collapsed: this.props.showCollapse,
+      filteredList: this.props.searchList
     }
   }
 
-  toggleSearch = () => this.setState(prevState => {{ collapsed: !prevState.collapsed }});
+  toggleSearch = () => this.setState(prevState => { { collapsed: !prevState.collapsed } });
 
   filterSearch(event) {
-    this.filteredList = [];
     const filter = new RegExp(event.target.value, 'i');
 
-    this.props.searchList.forEach(parent => {
-      const childrenToKeep = [];
-
-      if (parent.children) {
-        parent.children.forEach(child => {
-          if (child.text.search(filter) !== -1) {
-            childrenToKeep.push(child);
-          }
-        });
-      }
-      if (childrenToKeep.length > 0) {
-        this.filteredList.push({ ...parent, children: childrenToKeep });
-      } else if (parent.text.search(filter) !== -1) {
-        this.filteredList.push({ ...parent, children: null });
-      }
+    this.setState({
+      filteredList: this.props.searchList.filter(i =>
+        i.heading.search(filter) !== -1 || i.subheading.search(filter) !== -1
+      )
     });
-    this.forceUpdate();
   }
 
   selectItem(id) {
@@ -82,32 +69,17 @@ export default class SearchPanel extends React.Component {
           className={this.state.collapsed ? 'collapsed' : ''}
         >
           {
-            this.filteredList.map(parent => <>
+            this.state.filteredList.map(i =>
               <ListItem
-                key={parent.id}
+                key={i.id}
                 button
                 divider
-                className='listItem parent'
-                onClick={() => this.selectItem(parent.id)}
+                className='listItem child'
+                onClick={() => this.selectItem(i.id)}
               >
-                <ListItemText primary={parent.text} />
+                <ListItemText primary={i.heading} secondary={i.subheading} />
               </ListItem>
-              {
-                parent.children ?
-                  parent.children.map(child =>
-                    <ListItem
-                      key={child.id}
-                      button
-                      divider
-                      className='listItem child'
-                      onClick={() => this.selectItem(child.id)}
-                    >
-                      <ListItemText primary={parent.text} secondary={child.text} />
-                    </ListItem>
-                  )
-                  : ''
-              }
-            </>)}
+            )}
         </List>
       </form >
     )
@@ -116,33 +88,21 @@ export default class SearchPanel extends React.Component {
 
 /*
   Notes on props:
-  searchList is expected to be an array of {id, text to display, children (optional; array of {id, text}) }
+  searchList is expected to be an array of {id, heading text, subheading text}
   id values are arbitrary, but must be unique within the list (expected but not enforced by SearchPanel)
   e.g. [
     {
       id: 1,
-      text: 'R&D'
+      heading: 'R&D',
+      subheading: 'R&D',
     }, {
       id: 2,
-      text: 'Education',
-      children: [
-        {
-          id: 3,
-          text: 'Adult Education - Basic Grants to States'
-        }, {
-          id: 4,
-          text: '1890 Institution Capacity Building Grants'
-        }
-      ]
+      heading: 'Education',
+      subheading: 'Education',
     }, {
-      id: 5,
-      text: 'Medical R&D',
-      children: [
-        {
-          id: 6,
-          text: 'Human Genome Research'
-        }
-      ]
+      id: 'dfsak3729',
+      heading: 'Education',
+      subheading: 'Adult Education - Basic Grants to States'
     }
   ]
 

@@ -30,11 +30,11 @@ ul {
 		}
 	}
 
-	.parent {
-		.MuiListItemText-primary {
-			@include main-text;
-		}
-	}
+	// .parent {
+	// 	.MuiListItemText-primary {
+	// 		@include main-text;
+	// 	}
+	// }
 
 	.child {
 		.MuiListItemText-primary {

@@ -44,8 +44,7 @@ const Categories = () => {
     }
   ];
 
-
-  const searchSelected = id => {
+  const searchItemSelected = id => {
     let choice;
     this.searchList.some(parent => {
       if (parent.id === id) {
@@ -203,14 +202,14 @@ const Categories = () => {
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 
-      <Hidden lgUp>
+      {/* <Hidden lgUp>
         <SearchPanel
           searchList={searchList}
           listDescription='Categories'
           showCollapse
           onSelect={searchSelected}
         />
-      </Hidden>
+      </Hidden> */}
 
       <Accordion title='Accordion Title'>
         <p>I am an accordion with lots to say.</p>
@@ -220,16 +219,16 @@ const Categories = () => {
 
       <Grid container>
         <Grid item>
-          <Hidden mdDown>
+          {/* <Hidden mdDown>
             <VizControlPanel
               searchList={searchList}
               listDescription='Categories'
-              onSelect={searchSelected}
+              onSelect={searchItemSelected}
               switchView={switchView}
             >
               <img src={SunburstIcon} />
             </VizControlPanel>
-          </Hidden>
+          </Hidden> */}
         </Grid>
         <Grid item>
           <form id='sunburstRadio'>

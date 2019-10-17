@@ -88,7 +88,7 @@ export default class VizControlPanel extends React.Component {
 VizControlPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
-  'children': PropTypes.node.isRequired,
   'onSelect': PropTypes.func,
-  'switchView': PropTypes.func.isRequired
+  'switchView': PropTypes.func.isRequired,
+  'children': PropTypes.node.isRequired
 }
