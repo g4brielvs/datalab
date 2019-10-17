@@ -30,10 +30,6 @@ export default function Multiselector(props) {
     },
   };
 
-  useState(() => {
-    d3.select('#' + props.id).remove();
-  })
-
   useEffect(() => {
     menuProps.anchorEl = () => {
       return document.getElementsByClassName(classnames(multiselectorStyles.chipsContainer, props.id)).item(0);
