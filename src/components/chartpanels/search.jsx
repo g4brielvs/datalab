@@ -1,6 +1,6 @@
+import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 import React from 'react';
 import PropTypes from 'prop-types';
-import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 
 import { OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
