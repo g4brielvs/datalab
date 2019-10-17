@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
 import './dendro.scss';
-import '../../../utils/tooltipModule';
+import { draw, move, remove } from '../../../utils/tooltipModule';
 
 function Dendro(props) {
 
@@ -213,32 +213,32 @@ function Dendro(props) {
 
         function handleMouseOver(d) {
           if (d.depth === 3) {
-            window.tooltipModule.draw("#tooltip", d.name, {
+            draw("#tooltip", d.name, {
               "Total Obligations": formatNumber(d.size),
               "Unobligated Balance": formatNumber(d.unob)
             }, ["Click to visit federal account page", "Federal account page contains FY17-FY19 data"]);
           }
           if (d.depth === 2) {
-            window.tooltipModule.draw("#tooltip", `${d.name}, ${d.parent.name}`, {
+            draw("#tooltip", `${d.name}, ${d.parent.name}`, {
               "Total Obligations": sumUpLvl2(d),
               "Unobligated Balance": sumUpLvl2Unob(d)
             }, ["Click to view federal accounts"]);
           }
           if (d.depth === 1) {
-            window.tooltipModule.draw("#tooltip", d.name, {
+            draw("#tooltip", d.name, {
               "Total Obligations": sumUp(d),
               "Unobligated Balance": sumUpUnob(d)
             }, ["Click to view agencies"]);
           }
           if (d.depth === 0) {
-            window.tooltipModule.draw("#tooltip", "FY17 Federal Agencies");
+            draw("#tooltip", "FY17 Federal Agencies");
           }
         }
         function handleMouseOut() {
-          window.tooltipModule.remove("#tooltip");
+          remove("#tooltip");
         }
         function handleMouseMove() {
-          window.tooltipModule.move("#tooltip");
+          move("#tooltip");
         }
 
         // Enter any new nodes at the parent's previous position.
@@ -614,10 +614,10 @@ function Dendro(props) {
         </div>
       </div>
       <div className="viz-container">
-        <element className='dendrogram'>
+        <div className='dendrogram'>
           <div id="tooltip" className="tooltip-module"></div>
           <div id="tree-container"></div>
-        </element>
+        </div>
       </div>
     </section>
   );
