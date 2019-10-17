@@ -15,28 +15,26 @@ $hover-background: #fbebd0;
 }
 
 .searchlist {
-	ul {
-		max-height: $list-height;
-		overflow-y: auto;
-		background-color: #fff;
-		border: 1px solid $border-color;
+	max-height: $list-height;
+	overflow-y: auto;
+	background-color: #fff;
+	border: 1px solid $border-color;
 
-		.listItem {
-			&:hover {
-				background-color: $hover-background;
-			}
+	.listItem {
+		&:hover {
+			background-color: $hover-background;
+		}
 
-			.MuiTypography-root {
-				font-family: 'Source Sans Pro', Helvetica, sans-serif;
-			}
+		.MuiTypography-root {
+			font-family: 'Source Sans Pro', Helvetica, sans-serif;
+		}
 
-			.MuiListItemText-primary {
-				@include head-text;
-			}
+		.MuiListItemText-primary {
+			@include head-text;
+		}
 
-			.MuiListItemText-secondary {
-				@include main-text;
-			}
+		.MuiListItemText-secondary {
+			@include main-text;
 		}
 	}
 

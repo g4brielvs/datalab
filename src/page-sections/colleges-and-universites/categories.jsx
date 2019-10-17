@@ -139,7 +139,7 @@ const Categories = () => {
 
 
 
-  console.log(searchList);
+  // console.log(searchList);
 
 
 

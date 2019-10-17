@@ -65,7 +65,7 @@ export default class SearchPanel extends React.Component {
       />
 
       <List aria-label={'List of ' + this.props.listDescription}
-        className={'searchlist' + this.state.collapsed ? ' collapsed' : ''}
+        className={'searchlist' + (this.state.collapsed ? ' collapsed' : '')}
       >
         {
           this.state.filteredList.map(i =>
