@@ -14,39 +14,33 @@ $hover-background: #fbebd0;
 	font-weight: 300;
 }
 
-ul {
-	max-height: $list-height;
-	overflow-y: auto;
-	background-color: #fff;
-	border: 1px solid $border-color;
+.searchlist {
+	ul {
+		max-height: $list-height;
+		overflow-y: auto;
+		background-color: #fff;
+		border: 1px solid $border-color;
 
-	.listItem {
-		&:hover {
-			background-color: $hover-background;
-		}
+		.listItem {
+			&:hover {
+				background-color: $hover-background;
+			}
 
-		.MuiTypography-root {
-			font-family: 'Source Sans Pro', Helvetica, sans-serif;
-		}
-	}
+			.MuiTypography-root {
+				font-family: 'Source Sans Pro', Helvetica, sans-serif;
+			}
 
-	// .parent {
-	// 	.MuiListItemText-primary {
-	// 		@include main-text;
-	// 	}
-	// }
+			.MuiListItemText-primary {
+				@include head-text;
+			}
 
-	.child {
-		.MuiListItemText-primary {
-			@include head-text;
-		}
-
-		.MuiListItemText-secondary {
-			@include main-text;
+			.MuiListItemText-secondary {
+				@include main-text;
+			}
 		}
 	}
-}
 
-.collapsed {
-	display: none;
+	.collapsed {
+		display: none;
+	}
 }

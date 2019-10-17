@@ -1,6 +1,6 @@
+import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 import React from 'react';
 import PropTypes from 'prop-types';
-import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
 
 import { OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -42,48 +42,45 @@ export default class SearchPanel extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <form>
-        <OutlinedInput
-          placeholder={'Search ' + this.props.listDescription}
-          variant='outlined'
-          fullWidth
-          onFocus={this.onFocus}
-          onChange={event => this.filterSearch(event)}
-          endAdornment={
-            this.props.showCollapse ?
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label='search'
-                  onClick={this.toggleSearch}
-                >
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-              : ''
-          }
-        />
-
-        <List aria-label={'List of ' + this.props.listDescription}
-          className={this.state.collapsed ? 'collapsed' : ''}
-        >
-          {
-            this.state.filteredList.map(i =>
-              <ListItem
-                key={i.id}
-                button
-                divider
-                className='listItem child'
-                onClick={() => this.selectItem(i.id)}
+  render = () =>
+    <form>
+      <OutlinedInput
+        placeholder={'Search ' + this.props.listDescription}
+        variant='outlined'
+        fullWidth
+        onFocus={this.onFocus}
+        onChange={event => this.filterSearch(event)}
+        endAdornment={
+          this.props.showCollapse ?
+            <InputAdornment position="end">
+              <IconButton
+                aria-label='search'
+                onClick={this.toggleSearch}
               >
-                <ListItemText primary={i.heading} secondary={i.subheading} />
-              </ListItem>
-            )}
-        </List>
-      </form >
-    )
-  }
+                <SearchIcon />
+              </IconButton>
+            </InputAdornment>
+            : ''
+        }
+      />
+
+      <List aria-label={'List of ' + this.props.listDescription}
+        className={'searchlist' + this.state.collapsed ? ' collapsed' : ''}
+      >
+        {
+          this.state.filteredList.map(i =>
+            <ListItem
+              key={i.id}
+              button
+              divider
+              className='listItem'
+              onClick={() => this.selectItem(i.id)}
+            >
+              <ListItemText primary={i.heading} secondary={i.subheading} />
+            </ListItem>
+          )}
+      </List>
+    </form>
 }
 
 /*
