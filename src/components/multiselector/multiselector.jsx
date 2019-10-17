@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import classnames from 'classnames';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,7 +12,6 @@ const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 
 export default function Multiselector(props) {
-
   const handleChange = event => {
     props.changeHandler(event.target.value);
   };
@@ -33,12 +32,12 @@ export default function Multiselector(props) {
 
   useEffect(() => {
     menuProps.anchorEl = () => {
-      return document.getElementsByClassName(classnames(multiselectorStyles.chipsContainer, props.placeholder)).item(0);
+      return document.getElementsByClassName(classnames(multiselectorStyles.chipsContainer, props.id)).item(0);
     }
   });
 
   return (
-    <div className={multiselectorStyles.root}>
+    <div className={multiselectorStyles.root} id={props.id}>
       <FormControl className={`multiselector-dropdown-btn ${multiselectorStyles.formControl}`} variant="outlined" >
         <Select
           displayEmpty
@@ -46,8 +45,8 @@ export default function Multiselector(props) {
           value={props.selectedVal}
           onChange={handleChange}
           inputProps={{
-            name: props.placeholder,
-            id: 'select-multiple-placeholder-' + props.placeholder,
+            name: (props.id || props.placeholder),
+            id: 'select-multiple-placeholder-' + (props.id || props.placeholder)
           }}
           renderValue={() => <h2 className={multiselectorStyles.placeholderDefault}>{props.placeholder}</h2>}
           MenuProps={menuProps}
@@ -62,7 +61,7 @@ export default function Multiselector(props) {
             </MenuItem>
           ))}
         </Select>
-        <div className={classnames(multiselectorStyles.chipsContainer, props.placeholder)}>
+        <div className={classnames(multiselectorStyles.chipsContainer, props.id)}>
           <div className={multiselectorStyles.chips}>
             {props.selectedVal.map(value => (
               <Chip key={value[props.labelKey]}
