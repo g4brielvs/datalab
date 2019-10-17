@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from "gatsby"
-import "./dts-tile.scss"
-import "./landing-dts.scss"
+import dtsTileStyles from "./dts-tile.module.scss"
+import landingStyles from "./landing-dts.module.scss"
 import { graphql, useStaticQuery } from "gatsby"
 import * as d3 from 'd3v4'
 
@@ -42,7 +42,7 @@ function DtsTile(props) {
   });
 
   function setDimensions() {
-    containerWidth = document.getElementsByClassName('dtsm-img')[0].getBoundingClientRect().width;
+    containerWidth = document.getElementsByClassName(landingStyles.dtsmImg)[0].getBoundingClientRect().width;
 
     margin = { top: 0, right: 20, bottom: 30, left: 50 };
     width = containerWidth - margin.left - margin.right;
@@ -51,9 +51,9 @@ function DtsTile(props) {
   }
 
   function setSvg() {
-    d3.select('.dtsm-img').selectAll('*').remove();
+    d3.select('.' + landingStyles.dtsmImg).selectAll('*').remove();
 
-    svg = d3.select(".dtsm-img").append("svg")
+    svg = d3.select("." + landingStyles.dtsmImg).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -73,7 +73,7 @@ function DtsTile(props) {
   function drawYAxisGridlines(svg, y, width, ticks) {
     svg
       .append("g")
-      .attr("class", "grid")
+      .attr("class", landingStyles.grid)
       .call(
         d3
           .axisLeft(y)
@@ -120,7 +120,7 @@ function DtsTile(props) {
 
     svg.append("path")
       .data([data])
-      .attr("class", "line")
+      .attr("class", landingStyles.line)
       .attr("d", valueline);
 
     drawYAxisGridlines(svg, y, width, 10);
@@ -130,8 +130,8 @@ function DtsTile(props) {
       .attr("stroke-width", 1)
       .attr("transform", "translate(" + (x(lastDate)) + "," + (y(lastValue)) + ")");
 
-    d3.select(".dtsm-dollars").text(dollarFormatter(lastValue));
-    d3.select(".side-dts__date").text("Updated " + dateFormatter(lastDate));
+    d3.select("." + landingStyles.dtsmDollars).text(dollarFormatter(lastValue));
+    d3.select("." + landingStyles.sideDtsDate).text("Updated " + dateFormatter(lastDate));
   }
 
   const _data = useStaticQuery(graphql`
@@ -152,7 +152,7 @@ function DtsTile(props) {
            ga-on="click" ga-event-category="Data Lab Home Page"
            ga-event-action={"Clicked " + props.heading}>
 
-          <section className="dts">
+          <section className={dtsTileStyles.dts}>
             <h1>
               {props.heading}
             </h1>
@@ -161,19 +161,19 @@ function DtsTile(props) {
               {props.title}
             </h2>
 
-            <div className="dts-container">
-              <div className="dts-module">
-                <div className="dtsm-img"></div>
-                <div className="dtsm-right-column">
-                  <div className="dtsm-tas-container">
-                    <div className="dtsm-tas-header">All categories</div>
+            <div className={landingStyles.dtsmImg}>
+              <div className={landingStyles.dtsModule}>
+                <div className={landingStyles.dtsmImg}></div>
+                <div className={landingStyles.dtsmRightColumn}>
+                  <div className={landingStyles.dtsmTasContainer}>
+                    <div className={landingStyles.dtsmTasHeader}>All categories</div>
                   </div>
-                  <div className="dtsm-dollars">$</div>
+                  <div className={landingStyles.dtsmDollars}>$</div>
                 </div>
               </div>
             </div>
 
-            <div className="side-dts__date"></div>
+            <div className={landingStyles.sideDtsDate}></div>
 
           </section>
 
