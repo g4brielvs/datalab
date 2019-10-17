@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
 import './dendro.scss';
-import { draw, move, remove } from '../../../utils/tooltipModule';
+import tooltipModule from '../../../components/tooltip/tooltip';
 
 function Dendro(props) {
 
@@ -11,6 +11,7 @@ function Dendro(props) {
     const dendroData17 = props.fy17;
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
+    const tooltip = tooltipModule();
 
     function CreateDendro(newData){
 
@@ -213,32 +214,32 @@ function Dendro(props) {
 
         function handleMouseOver(d) {
           if (d.depth === 3) {
-            draw("#tooltip", d.name, {
+            tooltip.draw("#tooltip", d.name, {
               "Total Obligations": formatNumber(d.size),
               "Unobligated Balance": formatNumber(d.unob)
             }, ["Click to visit federal account page", "Federal account page contains FY17-FY19 data"]);
           }
           if (d.depth === 2) {
-            draw("#tooltip", `${d.name}, ${d.parent.name}`, {
+            tooltip.draw("#tooltip", `${d.name}, ${d.parent.name}`, {
               "Total Obligations": sumUpLvl2(d),
               "Unobligated Balance": sumUpLvl2Unob(d)
             }, ["Click to view federal accounts"]);
           }
           if (d.depth === 1) {
-            draw("#tooltip", d.name, {
+            tooltip.draw("#tooltip", d.name, {
               "Total Obligations": sumUp(d),
               "Unobligated Balance": sumUpUnob(d)
             }, ["Click to view agencies"]);
           }
           if (d.depth === 0) {
-            draw("#tooltip", "FY17 Federal Agencies");
+            tooltip.draw("#tooltip", "FY17 Federal Agencies");
           }
         }
         function handleMouseOut() {
-          remove("#tooltip");
+          tooltip.remove("#tooltip");
         }
         function handleMouseMove() {
-          move("#tooltip");
+          tooltip.move("#tooltip");
         }
 
         // Enter any new nodes at the parent's previous position.
