@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
 import * as d3 from "d3v3";
-import './sankey.scss';
-import './sankey-brackets.scss';
+import styles from './sankey.module.scss';
 
 
 import SankeyBrackets from "./sankey-brackets";
@@ -116,11 +115,12 @@ function Sankey(props) {
   });
 
   const clearAll = () => {
-    d3.selectAll('#sankey-viz > svg').remove();
-    d3.selectAll("#tab").remove();
-    d3.selectAll("#tab_2").remove();
-    d3.selectAll("#tab_3").remove();
-    d3.selectAll("#description").remove();
+    console.log('clearAll');
+    d3.selectAll('#' + styles.sankeyViz).select('svg').remove();
+    d3.selectAll("#" + styles.tab).remove();
+    d3.selectAll("#" + styles.tabTwo).remove();
+    d3.selectAll("#" + styles.tabThree).remove();
+    d3.selectAll("#" + styles.description).remove();
   }
 
   d3.sankey = () => {
@@ -424,11 +424,11 @@ function Sankey(props) {
 
   function makeSankey(data, sPanel, sTitle, descriptions) {
     // append the svg canvas to the page
-    const svg = d3.select("#sankey-viz").append("svg")
+    const svg = d3.select("#" + styles.sankeyViz).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-      .attr("class", "sankey-viz-svg")
+      .attr("class", styles.sankeyVizSvg)
       .append("g")
       .attr("transform",
         `translate(${margin.left},${margin.top})`);
@@ -441,7 +441,7 @@ function Sankey(props) {
 
     const path = sankey.link();
 
-    const legend = d3.select("#sankey-table");
+    const legend = d3.select("#" + styles.sankeyTable);
 
     // set up graph in same style as original example but empty
     const graph = {
@@ -488,11 +488,11 @@ function Sankey(props) {
       .layout(200);
 
     // add in the links
-    const link = svg.append("g").selectAll(".link")
+    const link = svg.append("g").selectAll("." + styles.link)
       .data(graph.links)
       .enter()
       .append("path")
-      .attr("class", "link")
+      .attr("class", styles.link)
       .attr("d", path)
       .attr("id", (d, i) => {
         d.id = i;
@@ -559,10 +559,15 @@ function Sankey(props) {
           remainingNodes = nextNodes;
         }
       });
-      d3.selectAll("#tab").remove();
-      d3.selectAll("#tab_2").remove();
-      d3.selectAll("#tab_3").remove();
-      d3.selectAll("#description").remove();
+      console.log('remove elements');
+      console.log('styles.tab:', d3.selectAll('#' + styles.tab));
+      console.log('styles.tabTwo:', d3.selectAll('#' + styles.tabTwo));
+      console.log('styles.tabThree:', d3.selectAll('#' + styles.tabThree));
+      console.log('styles.description:', d3.selectAll('#' + styles.description));
+      d3.selectAll("#" + styles.tab).remove();
+      d3.selectAll("#" + styles.tabTwo).remove();
+      d3.selectAll("#" + styles.tabThree).remove();
+      d3.selectAll("#" + styles.description).remove();
     }
 
     function dragmove(d) {
@@ -587,21 +592,21 @@ function Sankey(props) {
       for (let j = 0; j < sTitle.length; j++) {
         if (sTitle[j].name === innerNode.name) {
           legend.append("div")
-            .attr("id", "tab")
+            .attr("id", styles.tab)
             .attr("height", 200)
             .attr("width", 700)
-            .html(`<h1 class='panel_title'>${sTitle[j].name}</h1>` +
-              `<h3 class='panel_desc'><div class='panel_total_amount'>Total Amount</div>${formatNumber(sTitle[j].value)
+            .html(`<h1 class='${styles.panelTitle}'>${sTitle[j].name}</h1>` +
+              `<h3 class='${styles.panelDesc}'><div class='${styles.panelTotalAmount}'>Total Amount</div>${formatNumber(sTitle[j].value)
                 }<br /></h3>`);
         }
       }
       for (let j = 0; j < descriptions.length; j++) {
         if (descriptions[j].name === innerNode.name) {
           legend.append("div")
-            .attr("id", "description")
+            .attr("id", styles.description)
             .attr("height", 200)
             .attr("width", 600)
-            .html(`<p class='body_text'>${descriptions[j].desc}</p>`);
+            .html(`<p class='${styles.bodyText}'>${descriptions[j].desc}</p>`);
         }
       }
 
@@ -628,20 +633,20 @@ function Sankey(props) {
 
       for (let k = 0; k < sPanel.length; k++) {
         if (sPanel[k].target === innerNode.name) {
-          dataTable += `<tr><td class='val'>${formatNumber(sPanel[k].value)}</td><td>${sPanel[k].source}</td></tr>`;
+          dataTable += `<tr><td class='${styles.val}'>${formatNumber(sPanel[k].value)}</td><td>${sPanel[k].source}</td></tr>`;
         }
         if (sPanel[k].source === innerNode.name) {
-          dataTable += `<tr><td class='val'>${formatNumber(sPanel[k].value)}</td><td>${sPanel[k].target}</td></tr>`;
+          dataTable += `<tr><td class='${styles.val}'>${formatNumber(sPanel[k].value)}</td><td>${sPanel[k].target}</td></tr>`;
         }
       }
 
       if (dataTable.length > 0) {
-        legend.append("div").attr("id", "tab_2").attr("class", "treecolumn").append("table")
+        legend.append("div").attr("id", styles.tabTwo).attr("class", styles.treecolumn).append("table")
           .html(dataTable);
       }
 
       legend.append("div")
-        .attr("id", "tab_3")
+        .attr("id", styles.tabThree)
         .style("margin-top", "20px")
         .html("<div>Negative values are not included in the visualization.</div>");
 
@@ -674,11 +679,11 @@ function Sankey(props) {
       });
     }
 
-    const node = svg.append("g").selectAll(".node")
+    const node = svg.append("g").selectAll("." + styles.node)
       .data(graph.nodes)
       .enter()
       .append("g")
-      .attr("class", "node")
+      .attr("class", styles.node)
       .attr("transform", (d) => `translate(${d.x},${d.y})`)
       .on("click", highlightNodeLinks);
     // .on("mouseout", removeHighlight)
@@ -719,13 +724,13 @@ function Sankey(props) {
 
   return (
     <>
-      <div className="budget-sankey">
-          <div id="sankey-container">
-            <div className="sankey-brackets">
+      <div className={styles.budgetSankey}>
+          <div id={styles.sankeyContainer}>
+            <div className={styles.sankeyBrackets}>
               <SankeyBrackets />
             </div>
-            <div id="sankey-viz" style={inlineStyle}></div>
-            <div id="sankey-table"></div>
+            <div id={styles.sankeyViz} style={inlineStyle}></div>
+            <div id={styles.sankeyTable}></div>
         </div>
       </div>
     </>

@@ -83,7 +83,7 @@
   }
   table td { display: block; }​
 
-  #tab_2 > table > tbody > td {
+  #tab-two > table > tbody > td {
     height: 32px;
   }
   table > tbody > tr > td.val{
@@ -95,9 +95,12 @@
     border: none;
     display: block;
   }
-  #tab_2 {
+  #tab-two {
     margin-top: 30px;
     //margin-bottom:-15px;
+  }
+  #tab-three {
+    margin-top: 20px;
   }
   #sankey-table h1 {
     margin-top: 0;
