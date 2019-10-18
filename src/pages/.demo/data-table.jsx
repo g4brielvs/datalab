@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MUIDataTable from 'mui-datatables';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+// import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 export default class dataTable extends React.Component {
   constructor(props) {
@@ -18,15 +18,15 @@ export default class dataTable extends React.Component {
     };
   }
 
-  theme = () => createMuiTheme({
-    overrides: {
-      MUIDataTableBodyCell: {
-        root: {
-          backgroundColor: "#FF0000"
-        }
-      }
-    }
-  });
+  // theme = () => createMuiTheme({
+  //   overrides: {
+  //     MUIDataTableBodyCell: {
+  //       root: {
+  //         backgroundColor: "#FF0000"
+  //       }
+  //     }
+  //   }
+  // });
 
   render = () =>
     <MUIDataTable
