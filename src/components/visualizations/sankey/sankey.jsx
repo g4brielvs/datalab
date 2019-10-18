@@ -559,11 +559,6 @@ function Sankey(props) {
           remainingNodes = nextNodes;
         }
       });
-      console.log('remove elements');
-      console.log('styles.tab:', d3.selectAll('#' + styles.tab));
-      console.log('styles.tabTwo:', d3.selectAll('#' + styles.tabTwo));
-      console.log('styles.tabThree:', d3.selectAll('#' + styles.tabThree));
-      console.log('styles.description:', d3.selectAll('#' + styles.description));
       d3.selectAll("#" + styles.tab).remove();
       d3.selectAll("#" + styles.tabTwo).remove();
       d3.selectAll("#" + styles.tabThree).remove();
