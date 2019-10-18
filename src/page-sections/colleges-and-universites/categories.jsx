@@ -16,26 +16,6 @@ import VizDetails from '../../components/chartpanels/viz-detail';
 const Categories = () => {
   const switchView = view => alert('switch to ' + view + ' mode');
 
-  const searchItemSelected = id => {
-    let choice;
-    this.searchList.some(parent => {
-      if (parent.id === id) {
-        choice = parent;
-        return true;
-      } else {
-        if (parent.children) {
-          parent.children.some(child => {
-            if (child.id === id) {
-              choice = child;
-              return true;
-            }
-          });
-        }
-      }
-    });
-    alert(JSON.stringify(choice));
-  }
-
   const [fundingType, setFundingType] = useState('contracts');
 
   function onTypeChange(e) {
@@ -143,6 +123,11 @@ const Categories = () => {
 
 
 
+  const controlPanelRef = React.createRef();
+  const searchItemSelected = id => {
+    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+  }
+
   const detailPanelRef = React.createRef();
   let currentDetails = {};
   const getClickedDetails = d => {
@@ -201,14 +186,14 @@ const Categories = () => {
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 
-      {/* <Hidden lgUp>
+      <Hidden lgUp>
         <SearchPanel
           searchList={searchList[fundingType]}
           listDescription='Categories'
           showCollapse
-          onSelect={searchSelected}
+          onSelect={searchItemSelected}
         />
-      </Hidden> */}
+      </Hidden>
 
       <Accordion title='Accordion Title'>
         <p>I am an accordion with lots to say.</p>

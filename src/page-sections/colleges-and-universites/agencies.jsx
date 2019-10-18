@@ -7,6 +7,8 @@ import BubbleChart from '../../components/visualizations/bubble-chart/bubble-cha
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
+import { Hidden } from '@material-ui/core';
+import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
@@ -135,6 +137,15 @@ const Agencies = () => {
       blurb={`In 2018, higher education institutions received a total of xxxxx`}
     />
 
+    <Hidden lgUp>
+      <SearchPanel
+        searchList={searchList}
+        listDescription='Agencies'
+        showCollapse
+        onSelect={searchItemSelected}
+      />
+    </Hidden>
+
     <Accordion title='Accordion Title'>
       <p>I am an accordion with lots to say.</p>
       <p>I have several paragraphs...</p>
@@ -143,14 +154,16 @@ const Agencies = () => {
 
     <Grid container justify='center'>
       <Grid item>
-        <VizControlPanel
-          searchList={searchList}
-          listDescription='Agencies'
-          onSelect={searchItemSelected}
-          switchView={switchView}
-        >
-          <BubbleChartOutlinedIcon />
-        </VizControlPanel>
+        <Hidden mdDown>
+          <VizControlPanel
+            searchList={searchList}
+            listDescription='Agencies'
+            onSelect={searchItemSelected}
+            switchView={switchView}
+          >
+            <BubbleChartOutlinedIcon />
+          </VizControlPanel>
+        </Hidden>
       </Grid>
       <Grid item>
         <BubbleChart

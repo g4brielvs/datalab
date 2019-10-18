@@ -37,8 +37,8 @@ $hover-background: #fbebd0;
 			@include main-text;
 		}
 	}
+}
 
-	.collapsed {
-		display: none;
-	}
+.collapsed {
+	display: none;
 }
