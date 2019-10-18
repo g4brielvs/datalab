@@ -101,12 +101,12 @@ const Agencies = () => {
             }
           },
           {
-            'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': invTop5
           },
           {
-            'col1Title': 'Institutions' + (Object.keys(instTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Institutions' + (Object.keys(instTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': instTop5
           }

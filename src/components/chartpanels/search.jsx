@@ -11,20 +11,18 @@ export default class SearchPanel extends React.Component {
     super(props);
     this.state = {
       collapsed: true,
-      filteredList: this.props.searchList
     }
+    this.filteredList = this.props.searchList;
   }
 
   toggleSearch = () => this.setState(prevState => ({ collapsed: !prevState.collapsed }));
 
   filterSearch(event) {
     const filter = new RegExp(event.target.value, 'i');
-
-    this.setState({
-      filteredList: this.props.searchList.filter(i =>
-        i.heading.search(filter) !== -1 || i.subheading.search(filter) !== -1
-      )
-    });
+    this.filteredList = this.props.searchList.filter(i =>
+      i.heading.search(filter) !== -1 || i.subheading.search(filter) !== -1
+    )
+    this.forceUpdate();
   }
 
   selectItem(id) {
@@ -42,45 +40,57 @@ export default class SearchPanel extends React.Component {
     }
   }
 
-  render = () =>
-    <form>
-      <OutlinedInput
-        placeholder={'Search ' + this.props.listDescription}
-        variant='outlined'
-        fullWidth
-        onFocus={this.onFocus}
-        onChange={event => this.filterSearch(event)}
-        endAdornment={
-          this.props.showCollapse ?
-            <InputAdornment position="end">
-              <IconButton
-                aria-label='search'
-                onClick={this.toggleSearch}
-              >
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
-            : ''
-        }
-      />
+  // detect if searchList prop changed (since it isn't in state)
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.searchList !== this.props.searchList) {
+      this.filteredList = nextProps.searchList;
+    }
+    return true;
+  }
 
-      <List aria-label={'List of ' + this.props.listDescription}
-        className={'searchlist' + (this.state.collapsed ? ' collapsed' : '')}
-      >
-        {
-          this.state.filteredList.map(i =>
-            <ListItem
-              key={i.id}
-              button
-              divider
-              className='listItem'
-              onClick={() => this.selectItem(i.id)}
-            >
-              <ListItemText primary={i.heading} secondary={i.subheading} />
-            </ListItem>
-          )}
-      </List>
-    </form>
+  render = () => {
+    return (
+      <form>
+        <OutlinedInput
+          placeholder={'Search ' + this.props.listDescription}
+          variant='outlined'
+          fullWidth
+          onFocus={this.onFocus}
+          onChange={event => this.filterSearch(event)}
+          endAdornment={
+            this.props.showCollapse ?
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label='search'
+                  onClick={this.toggleSearch}
+                >
+                  <SearchIcon />
+                </IconButton>
+              </InputAdornment>
+              : ''
+          }
+        />
+
+        <List aria-label={'List of ' + this.props.listDescription}
+          className={'searchlist' + (this.state.collapsed ? ' collapsed' : '')}
+        >
+          {
+            this.filteredList.map(i =>
+              <ListItem
+                key={i.id}
+                button
+                divider
+                className='listItem'
+                onClick={() => this.selectItem(i.id)}
+              >
+                <ListItemText primary={i.heading} secondary={i.subheading} />
+              </ListItem>
+            )}
+        </List>
+      </form>
+
+    )
+  }
 }
 
 /*

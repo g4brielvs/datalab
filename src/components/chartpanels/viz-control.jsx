@@ -41,6 +41,11 @@ export default class VizControlPanel extends React.Component {
     }
   }
 
+  // shouldComponentUpdate(nextProps) {
+  //   console.log(nextProps);
+  //   return nextProps.searchList !== this.props.searchList;
+  // }
+
   render() {
     return (
       <div id='sidebar' className={styles.sidebar + (this.state.expanded ? ' ' + styles.expanded : '')}>

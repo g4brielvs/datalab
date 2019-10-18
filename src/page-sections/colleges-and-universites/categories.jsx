@@ -49,7 +49,6 @@ const Categories = () => {
     query {
       contracts: allInvestmentSectionContractsV2Csv {
         nodes {
-          id
           Agency
           Obligation
           Program_Title
@@ -60,7 +59,6 @@ const Categories = () => {
       }
       grants: allInvestmentSectionGrantsV2Csv {
         nodes {
-          id
           Agency
           Obligation
           Program_Title
@@ -72,7 +70,6 @@ const Categories = () => {
       }
       research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         nodes {
-          id
           Agency
           Obligation
           Program_Title
@@ -96,32 +93,65 @@ const Categories = () => {
           value
         }
       }
+      contractsSearch: allInvestmentSectionContractsV2Csv {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
+      grantsSearch: allInvestmentSectionGrantsV2Csv {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
+      researchSearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
     }
   `);
 
-  const searchList = {
-    contracts: _data.contracts.nodes.map(n => ({
-      id: n.id,
-      heading: n.family,
-      subheading: n.Program_Title
-    })),
-    grants: _data.grants.nodes.map(n => ({
-      id: n.id,
-      heading: n.family,
-      subheading: n.Program_Title
-    })),
-    research: _data.research.nodes.map(n => ({
-      id: n.id,
-      heading: n.family,
-      subheading: n.Program_Title
-    }))
+ const searchSort = (a, b) => {
+    if (a.heading > b.heading) return 1;
+    if (a.heading < b.heading) return -1;
+    if (a.subheading > b.subheading) return 1;
+    if (a.subheading < b.subheading) return -1;
+    return 0;
   };
 
-
-
-  // console.log(searchList);
-
-
+  // due to how GraphQL groups, we only want the first of each unique group
+  const searchList = {
+    contracts: _data.contractsSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort),
+    grants: _data.grantsSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort),
+    research: _data.researchSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort)
+  };
 
   const controlPanelRef = React.createRef();
   const searchItemSelected = id => {
@@ -162,12 +192,12 @@ const Categories = () => {
         },
         'tables': [
           {
-            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': agenciesTop5
           },
           {
-            'col1Title': 'Institution' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Institution' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': invTop5
           }
