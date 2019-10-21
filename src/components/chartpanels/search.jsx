@@ -10,12 +10,12 @@ export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: !this.props.initShow
+      expanded: this.props.initShow
     }
     this.filteredList = this.props.searchList;
   }
 
-  toggleSearch = () => this.setState(prevState => ({ collapsed: !prevState.collapsed }));
+  toggleSearch = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
   filterSearch(event) {
     const filter = new RegExp(event.target.value, 'i');
@@ -28,7 +28,7 @@ export default class SearchPanel extends React.Component {
   selectItem(id) {
     if (this.props.onSelect) {
       if (this.props.showCollapse) {
-        this.setState({ collapsed: true });
+        this.setState({ expanded: false });
       }
       this.props.onSelect(id);
     }
@@ -36,7 +36,7 @@ export default class SearchPanel extends React.Component {
 
   onFocus = () => {
     if (this.props.showCollapse) {
-      this.setState({ collapsed: false });
+      this.setState({ expanded: true });
     }
   }
 
@@ -72,7 +72,7 @@ export default class SearchPanel extends React.Component {
         />
 
         <List aria-label={'List of ' + this.props.listDescription}
-          className={'searchlist' + (this.state.collapsed ? ' collapsed' : '')}
+          className={'searchlist' + (this.state.expanded ? ' expanded' : '')}
         >
           {
             this.filteredList.map(i =>

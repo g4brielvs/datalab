@@ -15,6 +15,7 @@ $hover-background: #fbebd0;
 }
 
 .searchlist {
+	display: none;
 	max-height: $list-height;
 	overflow-y: auto;
 	background-color: #fff;
@@ -39,6 +40,6 @@ $hover-background: #fbebd0;
 	}
 }
 
-.collapsed {
-	display: none;
+.expanded {
+	display: block;
 }
