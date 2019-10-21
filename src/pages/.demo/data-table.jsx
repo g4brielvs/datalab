@@ -1,45 +1,58 @@
-// import styles from './data-table.module.scss';
+
 import React from 'react';
-import PropTypes from 'prop-types';
+import DataTable from '../../components/chartpanels/data-table';
 
-import MUIDataTable from 'mui-datatables';
-// import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+export default class dataTablePage extends React.Component {
 
-export default class dataTable extends React.Component {
-  constructor(props) {
-    super(props);
+  title = 'Table Title';
+  columns = ['Name', 'Company', 'City', 'State'];
+  data = [
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+    ['Joe James', 'Test Corp', 'Yonkers', 'NY'],
+    ['John Walsh', 'Test Corp', 'Hartford', 'CT'],
+    ['Bob Herm', 'Test Corp', 'Tampa', 'FL'],
+    ['James Houston', 'Test Corp', 'Dallas', 'TX'],
+  ];
 
-    options = {
-      serverSide: false,
-      selectableRows: 'none',
-      download: true,
-      print: true,
-      filterType: 'textField'
-    };
-  }
-
-  // theme = () => createMuiTheme({
-  //   overrides: {
-  //     MUIDataTableBodyCell: {
-  //       root: {
-  //         backgroundColor: "#FF0000"
-  //       }
-  //     }
-  //   }
-  // });
-
-  render = () =>
-    <MUIDataTable
-      title={this.props.title}
-      columns={this.props.columns}
-      data={this.props.data}
-      options={this.options}
-    />
+render = () =>
+  <DataTable
+    // title={this.title}
+    columnTitles={this.columns}
+    data={this.data}
+  />
 }
-
-dataTable.propTypes = {
-  title: PropTypes.string,
-  columns: PropTypes.arrayOf(PropTypes.string),
-  data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
-}
-
