@@ -6,12 +6,9 @@ import StoryHeading from "../../components/section-elements/story-heading/story-
 import Downloads from "../../components/section-elements/downloads/downloads";
 import Mapbox from "../../components/visualizations/mapbox/mapbox";
 import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
+import ShareMenu from '../../components/share-menu/share-menu';
 
-const Institutions = () => {
-
-  const defaultImageStyle = {
-    marginBottom: "1rem"
-  };
+const Institutions = (props) => {
 
   return (
     <>
@@ -28,6 +25,12 @@ const Institutions = () => {
         <p>I have several paragraphs...</p>
         <p>I have several paragraphs...</p>
       </Accordion>
+
+      <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities'
+                 location={props.location}
+                 title='Check out this analysis on Data Lab'
+                 text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+		 facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
       <div>
 	<Mapbox data={GeoDataMapbox}/>

@@ -18,7 +18,6 @@ import "../styles/index.scss";
 import homeStyles from "./index.module.scss";
 import cg from "../images/home/cg-gif.gif";
 
-
 function IndexPage() {
 
   return (
