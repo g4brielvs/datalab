@@ -7,9 +7,21 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-exports.onCreateWebpackConfig = ({ actions, loaders }) => {
+// window does not exist when we do builds.
+// to account for this, we will check and use null loaders.
+exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /mapbox-gl/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
   actions.setWebpackConfig({
     devtool: 'eval-source-map',
     // // this works to process css files, but not scss

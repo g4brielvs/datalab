@@ -1,0 +1,308 @@
+#collegesMap {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  top: 0;
+  bottom: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 600px;
+}
+
+// font override.
+.mapboxgl-map {
+  font-family: 'Source Sans Pro';
+}
+
+#mapContainer {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+
+  #mapContainer__institution {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #mapContainer__searchBox {
+    display: none;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+  }
+
+  #mapContainer--labelText {
+    font-size: 1rem;
+    display: inline;
+  }
+
+  #mapContainer__searchArea {
+    padding-top: 3rem;
+    //      font-size: 2rem;
+
+    #college-dropdown-list:placeholder {
+      font-size: 18px;
+    }
+
+    ::-webkit-input-placeholder {
+      /* Edge */
+      font-size: 18px;
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      font-size: 18px;
+    }
+
+    ::placeholder {
+      font-size: 18px;
+    }
+  }
+
+  #schoolList {
+    height: 25rem; // big enough to fill whole container wont go over..
+    overflow: auto;
+  }
+
+  #college-dropdown-list {
+    width: 98%; // offset with margin.. look into fixing..
+  }
+
+  #schoolUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #schoolUl li {
+    border: 1px solid #ddd; /* Add a border to all links */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Grey background color */
+    padding: 0.25rem;
+    text-decoration: none; /* Remove default text underline */
+    color: black; /* Add a black text color */
+    display: block; /* Make it into a block element to fill the whole list */
+  }
+
+  #schoolUl li:hover {
+    background-color: #eee; /* Add a hover effect to all links, except for headers */
+  }
+
+  #mapContainer--switch {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #mapContainer__year {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #circleFloat {
+    float: right;
+  }
+
+  // left hand panel jazz (search btns and panel)
+  #map-btn-overlay {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    border-radius: .25rem;
+    background-color: white;
+    padding: .5rem;
+  }
+
+  #map-search-btn {
+    display: inline-block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  #map-table-btn {
+    display: inline-block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // right hand panel jazz
+  #inst-panel {
+    display: none;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    width: 40%;
+    border-radius: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
+
+    #inst-panel-close {
+      padding-top: 0.5rem;
+      text-align: right;
+    }
+
+    #inst-panel-close:hover {
+      cursor: pointer;
+    }
+
+    .inst-panel-preheader {
+      color: #555555;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 18px;
+    }
+
+    .inst-panel-header {
+      color: #555555;
+      font-size: 25.2px;
+      font-weight: 600;
+      line-height: 32px;
+      text-align: left;
+    }
+
+    // have to reset margin on all of these
+    // defaults with 2em
+    .inst-panel-subheading {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 18px;
+      margin: 0; 
+    }
+
+    .inst-panel-subheading--bold {
+      color: #4A4A4A;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      margin: 0;
+    }
+
+    .inst-panel-subheading--data {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 18px;
+      margin: 0;
+    }
+
+    .inst-panel-subheading--bold--center {
+      color: #4A4A4A;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      text-align: center;
+    }
+
+    #inst-panel-section {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #F2F2F2;
+      font-size: 15px;
+      line-height: 18px;
+      color: #4a4a4a;
+      font-weight: 400; // regular
+      margin-top: 1rem;
+
+      &:last-child {
+	margin-bottom: 1rem;
+      }
+
+      // child p tag class
+      p.inst-panel-subtext {
+        display: block;
+        font-size: 15px;
+        line-height: 18px;
+        margin: 0;
+        padding-top: 0.3rem;
+        color: #4a4a4a;
+      }
+    }
+  }
+} // end mapContainer
+
+#mapFilter {
+  display: flex;
+  box-sizing: border-box;
+  margin-right: -45px;
+  z-index: 20;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .mapFilter__search {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    border: 1px solid #eeeeee;
+    border-radius: 0.25rem;
+    padding-bottom: 4rem;
+  }
+
+  .mapFilter__controls {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    border: 1px solid #eeeeee;
+    border-radius: 0.25rem;
+  }
+
+  .mapFilter__controls > i {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+} // end mapFilter
+
+.tooltip-float {
+  clear: both;
+  margin: 0;
+  padding: 0;
+
+  .tooltip-float--underline {
+    border-bottom: 1px solid #666666;
+  }
+
+  .map-tooltip-p-left-inst {
+    //	padding-right: 3em; // tab space
+    margin: 0;
+    color: #666666;
+    float: left;
+  }
+
+  .map-tooltip-p-left {
+    color: #666666;
+    margin: 0;
+    float: left;
+  }
+  
+  .map-tooltip-p-right {
+    color: #000000;
+    margin: 0;
+    float: right;
+  }
+
+  .map-tooltip-p-right-invest {
+    color: #881E3D;
+    margin: 0;
+    float: right;
+  }
+
+  .map-tooltip-p-right-students {
+    color: #000000;
+    margin: 0;
+    float: right;
+    border-bottom: 1px solid #666666;
+  }
+
+  .tooltip-hr {
+    clear: both;
+    width: 250px;
+    text-align: center;
+  }
+}

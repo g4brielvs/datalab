@@ -1,24 +1,22 @@
-import React from "react"
-import { Grid } from "@material-ui/core"
+import React from "react";
+import { Grid } from "@material-ui/core";
 
+import Home from "../components/layouts/home/home";
+import SEO from "../components/seo";
+import FeatureTile from "../page-sections/home/feature-tile/feature-tile";
+import SecondaryTile from "../page-sections/home/secondary-tile/secondary-tile";
+import DtsTile from "../page-sections/home/dts-tile/dts-tile";
+import MoreAnalysesTiles from "../page-sections/home/more-analyses-tiles/more-analyses-tiles";
+import FeatureRow from "../page-sections/home/feature-row/feature-row";
+import ResourcesRow from "../page-sections/home/resources-row/resources-row";
 
-import Home from "../components/layouts/home/home"
-import SEO from "../components/seo"
-import FeatureTile from "../page-sections/home/feature-tile/feature-tile"
-import SecondaryTile from "../page-sections/home/secondary-tile/secondary-tile"
-import DtsTile from "../page-sections/home/dts-tile/dts-tile"
-import MoreAnalysesTiles from "../page-sections/home/more-analyses-tiles/more-analyses-tiles"
-import FeatureRow from "../page-sections/home/feature-row/feature-row"
-import ResourcesRow from "../page-sections/home/resources-row/resources-row"
+import main from "../images/home/collegehomepage.svg";
+import contractExplorer from "../images/home/contract-explorer.png";
+import contractSpending from "../images/home/c-o-t.png";
 
-import main from "../images/home/collegehomepage.svg"
-import contractExplorer from "../images/home/contract-explorer.png"
-import contractSpending from "../images/home/c-o-t.png"
-
-import "../styles/index.scss"
-import homeStyles from "./index.module.scss"
-import cg from "../images/home/cg-gif.gif"
-
+import "../styles/index.scss";
+import homeStyles from "./index.module.scss";
+import cg from "../images/home/cg-gif.gif";
 
 function IndexPage() {
 
@@ -144,9 +142,9 @@ function IndexPage() {
         </div>
 
     </Home>
-  )
+  );
 }
 
-export default IndexPage
+export default IndexPage;
 
 

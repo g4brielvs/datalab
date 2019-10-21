@@ -17,9 +17,6 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-// this was being rendered with borders
-// not sure if this needs to be here but i was running into issues
-// there was a random border appearing...
 ul {
   max-height: none;
   overflow-y: inherit;
@@ -189,7 +186,6 @@ ul {
   letter-spacing: normal;
   color: $font-body-copy;
 }
-
 .superscript {
   vertical-align:super;
   font-size: smaller;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './share-menu.scss';
-import shareLogo from '../../images/colleges-and-universities/share.svg'
-import facebookLogo from '../../images/colleges-and-universities/facebook.svg'
-import twitterLogo from '../../images/colleges-and-universities/twitter.svg'
-import linkedinLogo from '../../images/colleges-and-universities/linkedin.svg'
-import redditLogo from '../../images/colleges-and-universities/reddit.svg'
-import emailLogo from '../../images/colleges-and-universities/email.svg'
+import shareLogo from '../../images/colleges-and-universities/share.svg';
+import facebookLogo from '../../images/colleges-and-universities/facebook.svg';
+import twitterLogo from '../../images/colleges-and-universities/twitter.svg';
+import linkedinLogo from '../../images/colleges-and-universities/linkedin.svg';
+import redditLogo from '../../images/colleges-and-universities/reddit.svg';
+import emailLogo from '../../images/colleges-and-universities/email.svg';
 
 class ShareMenu extends Component {
   constructor(props) {
@@ -46,14 +46,18 @@ class ShareMenu extends Component {
   }
 
   handleClickElementOffscreen(e) {
-    if (this.node && !this.node.contains(e.target) && this.state.show == true) {
-      this.setState(prevState => ({ show: !prevState.show }));
+    try {
+      if (!this.node.contains(e.target) && this.state.show == true) {
+        this.setState(prevState => ({ show: !prevState.show }));
+      } 
+    } catch(err) {
+      if (err) { return; };
     }
   }
 
   handleShow() {
     if (this.state.show == true) {
-      this.handleClickElementOffscreen;
+      this.handleClickElementOffscreen();
     }
     this.setState(prevState => ({ show: !prevState.show }));
   }
@@ -64,7 +68,7 @@ class ShareMenu extends Component {
   }
 
   handleShareClickTwitter(e) {
-    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}&url=${this.url}`
+    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}&url=${this.url}`;
     window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
   }
 
