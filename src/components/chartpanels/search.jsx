@@ -10,7 +10,7 @@ export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true,
+      collapsed: !this.props.initShow
     }
     this.filteredList = this.props.searchList;
   }
@@ -113,13 +113,15 @@ export default class SearchPanel extends React.Component {
     }
   ]
 
-  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box,
-  don't include if you use another method to hide list
+  initShow is true if it should be open when initialized
+  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
+  onSelect is parent callback when an item is selected, passes back id value only
 */
 
 SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
+  'initShow': PropTypes.bool,
   'showCollapse': PropTypes.bool,
   'onSelect': PropTypes.func
 }
