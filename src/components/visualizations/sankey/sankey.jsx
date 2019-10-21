@@ -674,11 +674,11 @@ function Sankey(props) {
       });
     }
 
-    const node = svg.append("g").selectAll(".node")
+    const node = svg.append("g").selectAll(".sankey-node")
       .data(graph.nodes)
       .enter()
       .append("g")
-      .attr("class", "node")
+      .attr("class", "sankey-node")
       .attr("transform", (d) => `translate(${d.x},${d.y})`)
       .on("click", highlightNodeLinks);
     // .on("mouseout", removeHighlight)

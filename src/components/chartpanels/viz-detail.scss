@@ -59,20 +59,22 @@ $details-width: 350px;
 	text-align: right;
 }
 
-table {
-	@include tableRows;
-	width: 100%;
-	padding: 2rem 0 0.35rem;
-	white-space: pre-wrap;
-}
+.viz-detail-table-section{
+	table {
+		@include tableRows;
+		width: 100%;
+		padding: 2rem 0 0.35rem;
+		white-space: pre-wrap;
+	}
 
-td {
-	font-weight: 300;
-	border-top: 1px solid #ddd;
-}
+	td {
+		font-weight: 300;
+		border-top: 1px solid #ddd;
+	}
 
-th + th,
-td + td {
-	@include tableRows;
-	text-align: right;
+	th + th,
+	td + td {
+		@include tableRows;
+		text-align: right;
+	}
 }

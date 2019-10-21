@@ -68,12 +68,12 @@ function BudgetFunctionPage(props) {
             <div className="row">
               <div className="col-xs-2 col-md-1">
                 <input type="radio"
-                       id="contactChoice1"
+                       id="contactChoice3"
                        name="FiscalYear"
-                       value="fy19"
+                       value="fy17"
                        onChange={onFiscalYearChange}
-                       checked={year==='fy19'} />
-                <label htmlFor="contactChoice1">&nbsp;FY 19</label>
+                       checked={year==='fy17'} />
+                <label htmlFor="contactChoice3">&nbsp;FY 17</label>
               </div>
               <div className="col-xs-2 col-md-1">
                 <input type="radio"
@@ -84,15 +84,14 @@ function BudgetFunctionPage(props) {
                        checked={year==='fy18'} />
                 <label htmlFor="contactChoice2">&nbsp;FY 18</label>
               </div>
-
               <div className="col-xs-2 col-md-1">
                 <input type="radio"
-                       id="contactChoice3"
+                       id="contactChoice1"
                        name="FiscalYear"
-                       value="fy17"
+                       value="fy19"
                        onChange={onFiscalYearChange}
-                       checked={year==='fy17'} />
-                <label htmlFor="contactChoice3">&nbsp;FY 17</label>
+                       checked={year==='fy19'} />
+                <label htmlFor="contactChoice1">&nbsp;FY 19</label>
               </div>
             </div>
           </form>

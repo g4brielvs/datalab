@@ -52,8 +52,7 @@
     height: 100%;
     background-color: inherit;
     display: inline-block;
-    width:45%;
-    padding-left: 30px;
+    flex: 1;
   }
   .panel_desc{
     margin-top: 10px;
@@ -62,7 +61,7 @@
     color: #5B616B;
     margin-bottom: -15px;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -78,7 +77,6 @@
   table tr {
     background-color: #fff !important;
     page-break-inside: avoid;page-break-before:auto;
-    height: 60px;
     margin-bottom: 10px;
   }
   table td { display: block; }​
@@ -107,7 +105,7 @@
     padding: 0;
     color: #5B616B !important;
     font-family: "Source Sans Pro";
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 31px;
   }
@@ -126,8 +124,8 @@
     /*font-variant:small-caps;*/
     color: #666;
     font-family: "Source Sans Pro";
-    font-size: 40px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 50px;
   }
   #sankey-table h4 {
