@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
 import * as $ from "jquery";
 import mapboxgl from 'mapbox-gl';
+import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+import './mapbox.scss';
 import pin from '../../../images/colleges-and-universities/map-pin.png';
 
 function Mapbox(props) {
 
   useEffect(() => {
     const data = props.data; // geojson
-    console.log(data);
     mapboxgl.accessToken = `${process.env.GATSBY_MAPBOX_API_KEY}`;
-
-    const mapContainer = document.getElementById('collegesMap');
-    const tableContainer = $('#alma-mater-table');
-    let agenciesTopFive;
-    let categoriesTopFive;
 
     function numberWithCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -28,12 +24,11 @@ function Mapbox(props) {
 	zoom: 3 // starting zoom (3 default)
       });
 
-      // Add zoom and rotation controls to the map.
-      let zoomCtrl = new mapboxgl.NavigationControl();
+      var zoomCtrl = new mapboxgl.NavigationControl();
       map.addControl(zoomCtrl, 'top-right');
 
       // Create a popup, but don't add it to the map yet.
-      let tooltip = new mapboxgl.Popup({
+      var tooltip = new mapboxgl.Popup({
 	closeButton: false,
 	closeOnClick: true,
       });
@@ -339,11 +334,12 @@ function Mapbox(props) {
 	  });
 
 	  // click for righthand panel
-	  map.on('click', 'unclustered-point', function(e) {
-	    if ($(window).width() > 949) {
-	      instmap.activateDetail(e.features[0].properties);
-	    }
-	  });
+	  // map.on('click', 'unclustered-point', function(e) {
+	  //   if ($(window).width() > 949) {
+	  //     instmap.activateDetail(e.features[0].properties);
+	  //   }
+	  // });
+
       });
     }; // end function (createMapbox)
 
@@ -468,7 +464,11 @@ function Mapbox(props) {
   }); // end use effect
 
   return(
-    <div id="collegesMap" style={{width: '100%', height: 600, position: 'relative', borderRadius: '.25rem', border: '1px solid #ddd'}}></div>
+    <>
+      <div id="collegesMap"></div>
+      <div id='alma-mater-table'></div>
+      <div id="inst-panel"></div>
+    </>
   );
 
 };

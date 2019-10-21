@@ -17,6 +17,6 @@ const CustomHeader = (props) => (
       </div>
     </section>
   </div>
-)
+);
 
 export default CustomHeader;

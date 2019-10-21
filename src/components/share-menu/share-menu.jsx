@@ -46,8 +46,12 @@ class ShareMenu extends Component {
   }
 
   handleClickElementOffscreen(e) {
-    if (!this.node.contains(e.target) && this.state.show == true) {
-      this.setState(prevState => ({ show: !prevState.show }));
+    try {
+      if (!this.node.contains(e.target) && this.state.show == true) {
+        this.setState(prevState => ({ show: !prevState.show }));
+      } 
+    } catch(err) {
+      if (err) { return; };
     }
   }
 

@@ -29,7 +29,7 @@ const Institutions = () => {
         <p>I have several paragraphs...</p>
       </Accordion>
 
-      <div className="container">
+      <div>
 	<Mapbox data={GeoDataMapbox}/>
       </div>
       

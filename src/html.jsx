@@ -10,6 +10,7 @@ export default function HTML(props) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no" />
         <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=TRE" id="_fed_an_ua_tag" />
+
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -22,7 +23,7 @@ export default function HTML(props) {
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
-          {props.postBodyComponents}
+        {props.postBodyComponents}
       </body>
     </html>
   )
