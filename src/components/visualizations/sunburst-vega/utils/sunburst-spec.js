@@ -24,7 +24,12 @@ export default {
       {
         "type": "partition",
         "field": "agency",
+      },
+      {
+        "type": "partition",
+        "field": "colorHex"
       }
+
     ]
   }
 ],
@@ -51,8 +56,8 @@ export default {
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
-        "fill": {"scale": "color", "field": "agency"},
-        "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.agency + ' agency' : '')"}
+        "fill": {"signal": "datum.colorHex"},
+        "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.colorHex + ' colorHex' : '')"}
       },
       "update": {
         "startAngle": {"signal": "datum.a0"},

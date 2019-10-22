@@ -29,9 +29,7 @@ function Sunburst(props) {
     const leaf = props.leaf;
     const wedgeColors = props.wedgeColors;
     const centerColor = props.centerColor;        // transparent to show #center
-
-    // TODO: For the Contract Explorer
-    const hasCenterText = true;
+    const hasCenterText = "hasCenterText" in props ? props.hasCenterText : false;  // Contract Explorer doesn't have center text, C & U does
 
     // Other variables
     const formatNumber = d3.format('$,.0f');
@@ -68,7 +66,7 @@ function Sunburst(props) {
     // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
     hierarchy = buildDataHierarchy(title, data, levels);
     chartArray = partition.nodes(hierarchy)
-      .filter(d => d.depth < 3); // leave off recipients
+      .filter(d => d.depth <= 3); // leave off recipients
     hierarchy.children.forEach((node, index) => {
       node.colorIndex = index % wedgeColors.length;
     });
@@ -309,8 +307,8 @@ function Sunburst(props) {
         // .on('mouseover', hover)
         .on('click', click)
         .append('title').text(function(d) {
-        const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
-        return name;
+          const name = d.name ? d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim() : '';
+          return name;
       });
 
       click(data[0]); // simulate clicking center to reset zoom
@@ -318,7 +316,9 @@ function Sunburst(props) {
 
     function click(d) {
       // setCategoryState(d);
-      updateCenter(d);
+
+      if (hasCenterText) { updateCenter(d); }
+
       svg.transition()
         .duration(750)
         .tween('scale', () => {
@@ -343,7 +343,6 @@ function Sunburst(props) {
         let depthCursor = data.children;
         // Go down one level at a time
         levels.forEach((property, depth) => {
-
           // Look to see if a branch has already been created
           let index;
           depthCursor.forEach((child, i) => {

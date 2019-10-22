@@ -5,20 +5,25 @@ import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
-import Sunburst from "../../components/visualizations/sunburst-vega/sunburst-vega";
+import Sunburst from "../../components/visualizations/sunburst/sunburst";
 import ToolLayout from '../../components/layouts/tool/tool';
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
 		super(props);
 
-    this.rawData = props.data.allContractExplorerJson.nodes;
+    this.rawData = props.data.allAwardsContractsFy18V2Csv.nodes;
 
     this.state = {
       scale: '',
       data: JSON.parse(JSON.stringify(this.rawData)),
       unit: ''
     }
+
+    this.levels = ['agency', 'subagency','recipient'];
+    this.leaf = { name: 'recipient', size: 'obligation' };
+    this.wedgeColors = ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40'];
+    this.centerColor = 'rgba(0, 0, 0, 0)';
 	}
 
   render = () => <>
@@ -45,7 +50,15 @@ export default class ContractExplorerPage extends Component {
 				<Grid item><Share location={this.props.location} /></Grid>
 			</Grid>
 
-			<Sunburst data = {this.state.data} />
+      <Sunburst
+        items={this.state.data}
+        title={''}
+        levels={this.levels}
+        leaf={this.leaf}
+        wedgeColors={this.wedgeColors}
+        centerColor={this.centerColor}
+				hasCenterText={false}
+      />
 
 		</ToolLayout>
 	</>
@@ -54,17 +67,12 @@ export default class ContractExplorerPage extends Component {
 
 export const IndexQuery = graphql`
   query {
-		allContractExplorerJson {
+		allAwardsContractsFy18V2Csv {
 			nodes {
-				tree {
-					agency
-					colorHex
-					id
-					name
-					parent
-					size
-					type
-				}
+				obligation
+				recipient
+				subagency
+				agency
 			}
 		}
   }

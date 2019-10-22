@@ -1,10 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
 import { Vega } from 'react-vega';
-import sunburstSpec from './sunburst-spec';
-import transformData from './transformData.js';
-
-// const code1 = `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`;
+import sunburstSpec from './utils/sunburst-spec';
+import transformData from './utils/transformData.js';
 
 export default class Demo extends React.Component {
   constructor(props) {
@@ -38,6 +36,7 @@ export default class Demo extends React.Component {
   render() {
     const { data, spec, info } = this.state;
 
+    // `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`
     return <Vega data={data} spec={spec} signalListeners={this.handlers} />;
   }
 }
