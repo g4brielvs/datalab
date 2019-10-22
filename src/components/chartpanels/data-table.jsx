@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import tableTheme from './data-table-theme';
 import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+const theme = () => createMuiTheme(tableTheme);
 
 export default class dataTable extends React.Component {
   constructor(props) {
@@ -19,10 +20,8 @@ export default class dataTable extends React.Component {
     filterType: 'textField'
   };
 
-  theme = () => createMuiTheme(tableTheme);
-
   render = () =>
-    <MuiThemeProvider theme={this.theme()}>
+    <MuiThemeProvider theme={theme()}>
       <MUIDataTable
         title={this.props.title}
         columns={this.props.columnTitles}
