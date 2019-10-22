@@ -17,9 +17,13 @@ export default {
       {
         "type": "partition",
         "field": "size",
-        "sort": {"field": "children"},
+        "sort": {"field": "depth"},
         "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
         "as": ["a0", "r0", "a1", "r1", "depth", "children"]
+      },
+      {
+        "type": "partition",
+        "field": "agency",
       }
     ]
   }
@@ -29,8 +33,13 @@ export default {
   {
     "name": "color",
     "type": "ordinal",
-    "domain": {"data": "tree", "field": "children"},
-    "range": {"scheme": ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40', '#881e3d', '#daa200', '#D25d15', '#082344', '#004c40', '#881e3d', '#daa200', '#D25d15', '#082344', '#004c40']}
+    "domain": {"data": "tree", "field": "agency"},
+    "range": {"scheme": ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40']}
+  },
+  {
+    "name": "xscale",
+    "type": "linear",
+    "domain": [0, {"signal": "2 * PI"}]
   }
 ],
 
@@ -42,12 +51,12 @@ export default {
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
-        "fill": {"scale": "color", "field": "children"},
-        "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.size + ' bytes' : '')"}
+        "fill": {"scale": "color", "field": "agency"},
+        "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.agency + ' agency' : '')"}
       },
       "update": {
-        "startAngle": {"field": "a0"},
-        "endAngle": {"field": "a1"},
+        "startAngle": {"signal": "datum.a0"},
+        "endAngle": {"signal": "datum.a1"},
         "innerRadius": {"field": "r0"},
         "outerRadius": {"field": "r1"},
         "stroke": {"value": "white"},

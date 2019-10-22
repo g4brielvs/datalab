@@ -287,9 +287,6 @@ function Sunburst(props) {
       maxHeight = 700;
       width = 700;
       height = 700;
-      radius = Math.min(width, height) / 2;
-      xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-      yScale = d3.scale.sqrt().range([0, radius]);
 
       d3.select("#sunburst").selectAll("*").remove();
 

@@ -4,12 +4,21 @@ import Accordion from '../../components/accordion/accordion';
 import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
-import Share from '../../components/share/share'
+import Share from '../../components/share/share';
+import Sunburst from "../../components/visualizations/sunburst-vega/sunburst-vega";
 import ToolLayout from '../../components/layouts/tool/tool';
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
 		super(props);
+
+    this.rawData = props.data.allContractExplorerJson.nodes;
+
+    this.state = {
+      scale: '',
+      data: JSON.parse(JSON.stringify(this.rawData)),
+      unit: ''
+    }
 	}
 
   render = () => <>
@@ -36,10 +45,28 @@ export default class ContractExplorerPage extends Component {
 				<Grid item><Share location={this.props.location} /></Grid>
 			</Grid>
 
-
-
+			<Sunburst data = {this.state.data} />
 
 		</ToolLayout>
 	</>
 
 }
+
+export const IndexQuery = graphql`
+  query {
+		allContractExplorerJson {
+			nodes {
+				tree {
+					agency
+					id
+					name
+					parent
+					size
+					type
+				}
+			}
+		}
+  }
+`
+
+

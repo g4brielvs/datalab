@@ -37,7 +37,8 @@ function convertCsvToJson() {
           "name": row[key],
           "type": key,
           "size": row['obligation'] ? parseInt(row['obligation']) : 0,
-          "parent": null
+          "parent": null,
+          "agency": row['agency']
         };
 
 
