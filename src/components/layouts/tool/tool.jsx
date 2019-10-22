@@ -38,7 +38,7 @@ export default class ToolLayout extends React.Component {
             </section>
           </article>
         </main>
-        <HWCTALink url={'#'} _mainClass={styles.hwcta} _noOffset='true' />
+        <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
         <MoreAnalyses />
       </div>
     </Default>
@@ -52,6 +52,7 @@ ToolLayout.propTypes = {
   contextStatement: PropTypes.string.isRequired,
   sectionTitle: PropTypes.string.isRequired,
   sectionText: PropTypes.string.isRequired,
+  hwctaLink: PropTypes.string,
 }
 
 // export default ToolLayout
