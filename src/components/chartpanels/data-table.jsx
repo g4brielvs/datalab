@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import tableTheme from './data-table-theme';
 import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
@@ -18,22 +19,7 @@ export default class dataTable extends React.Component {
     filterType: 'textField'
   };
 
-  theme = () => createMuiTheme({
-    overrides: {
-      MUIDataTableHeadCell: {
-        fixedHeader: {
-          textTransform: 'uppercase',
-          fontSize: '17px',
-          fontWeight: 700
-        }
-      },
-      MUIDataTableBodyCell: {
-        root: {
-          fontSize: '17px'
-        }
-      }
-    }
-  });
+  theme = () => createMuiTheme(tableTheme);
 
   render = () =>
     <MuiThemeProvider theme={this.theme()}>
@@ -48,11 +34,11 @@ export default class dataTable extends React.Component {
 
 /*
   Notes on props:
-  length of "columns" and "data" should match and have same order; excess data columns will not appear
+  length of "columns" and each "data" row should match and have same order; excess data columns will not appear
 */
 dataTable.propTypes = {
   title: PropTypes.string,
-  columnTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  columnTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   data: PropTypes.arrayOf(PropTypes.array).isRequired
 }
 
