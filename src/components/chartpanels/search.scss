@@ -14,7 +14,8 @@ $hover-background: #fbebd0;
 	font-weight: 300;
 }
 
-ul {
+.searchlist {
+	display: none;
 	max-height: $list-height;
 	overflow-y: auto;
 	background-color: #fff;
@@ -28,15 +29,7 @@ ul {
 		.MuiTypography-root {
 			font-family: 'Source Sans Pro', Helvetica, sans-serif;
 		}
-	}
 
-	.parent {
-		.MuiListItemText-primary {
-			@include main-text;
-		}
-	}
-
-	.child {
 		.MuiListItemText-primary {
 			@include head-text;
 		}
@@ -47,6 +40,6 @@ ul {
 	}
 }
 
-.collapsed {
-	display: none;
+.expanded {
+	display: block;
 }
