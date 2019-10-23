@@ -66,14 +66,14 @@ export default class VizDetailPanel extends React.Component {
           </tr>);
         });
       }
-      tableFrag.push(<table><thead><tr>
+      tableFrag.push(<div className="viz-detail-table-section"><table><thead><tr>
         <th>{table.col1Title}</th>
         <th>{table.col2Title}</th>
       </tr></thead>
         <tbody>
           {rowsFrag}
         </tbody>
-      </table>);
+      </table></div>);
     });
     return tableFrag;
   }
