@@ -86,7 +86,6 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    const isTablet = this.state.width <= 958;
     
     return (
       <header id="header"  className={`${isSticky ? `header-container-sticky` : ``}`}>
