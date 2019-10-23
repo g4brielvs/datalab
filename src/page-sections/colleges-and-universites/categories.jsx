@@ -16,56 +16,7 @@ import VizDetails from '../../components/chartpanels/viz-detail';
 const Categories = () => {
   const switchView = view => alert('switch to ' + view + ' mode');
 
-  let searchList = [
-    {
-      id: 1,
-      text: 'R&D'
-    }, {
-      id: 2,
-      text: 'Education',
-      children: [
-        {
-          id: 3,
-          text: 'Adult Education - Basic Grants to States'
-        }, {
-          id: 4,
-          text: '1890 Institution Capacity Building Grants'
-        }
-      ]
-    }, {
-      id: 5,
-      text: 'Medical R&D',
-      children: [
-        {
-          id: 6,
-          text: 'Human Genome Research'
-        }
-      ]
-    }
-  ];
-
-
-  const searchSelected = id => {
-    let choice;
-    this.searchList.some(parent => {
-      if (parent.id === id) {
-        choice = parent;
-        return true;
-      } else {
-        if (parent.children) {
-          parent.children.some(child => {
-            if (child.id === id) {
-              choice = child;
-              return true;
-            }
-          });
-        }
-      }
-    });
-    alert(JSON.stringify(choice));
-  }
-
-  const [funding, setFundingType] = useState('contracts');
+  const [fundingType, setFundingType] = useState('contracts');
 
   function onTypeChange(e) {
     setFundingType(e.currentTarget.value);
@@ -142,8 +93,70 @@ const Categories = () => {
           value
         }
       }
+      contractsSearch: allInvestmentSectionContractsV2Csv {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
+      grantsSearch: allInvestmentSectionGrantsV2Csv {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
+      researchSearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+        group(field: Program_Title) {
+          nodes {
+            family
+            Program_Title
+          }
+        }
+      }
     }
   `);
+
+ const searchSort = (a, b) => {
+    if (a.heading > b.heading) return 1;
+    if (a.heading < b.heading) return -1;
+    if (a.subheading > b.subheading) return 1;
+    if (a.subheading < b.subheading) return -1;
+    return 0;
+  };
+
+  // due to how GraphQL groups, we only want the first of each unique group
+  const searchList = {
+    contracts: _data.contractsSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort),
+    grants: _data.grantsSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort),
+    research: _data.researchSearch.group
+      .map(n => ({
+        id: n.nodes[0].id,
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
+      }))
+      .sort(searchSort)
+  };
+
+  const controlPanelRef = React.createRef();
+  const searchItemSelected = id => {
+    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+  }
 
   const detailPanelRef = React.createRef();
   let currentDetails = {};
@@ -158,7 +171,7 @@ const Categories = () => {
         .forEach(j => {
           agenciesTop5[j.target] = j.value;
         })
-      ;
+        ;
 
       const invTop5 = {};
       _data.top5InvestmentTypes.nodes
@@ -166,7 +179,7 @@ const Categories = () => {
         .forEach(j => {
           invTop5[j.target] = j.value;
         })
-      ;
+        ;
 
       currentDetails = {
         'header': {
@@ -179,12 +192,12 @@ const Categories = () => {
         },
         'tables': [
           {
-            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': agenciesTop5
           },
           {
-            'col1Title': 'Institution' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
+            'col1Title': 'Institution' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': invTop5
           }
@@ -205,10 +218,10 @@ const Categories = () => {
 
       <Hidden lgUp>
         <SearchPanel
-          searchList={searchList}
+          searchList={searchList[fundingType]}
           listDescription='Categories'
           showCollapse
-          onSelect={searchSelected}
+          onSelect={searchItemSelected}
         />
       </Hidden>
 
@@ -222,9 +235,9 @@ const Categories = () => {
         <Grid item>
           <Hidden mdDown>
             <VizControlPanel
-              searchList={searchList}
+              searchList={searchList[fundingType]}
               listDescription='Categories'
-              onSelect={searchSelected}
+              onSelect={searchItemSelected}
               switchView={switchView}
             >
               <img src={SunburstIcon} />
@@ -240,7 +253,7 @@ const Categories = () => {
                   name='FundingType'
                   value='contracts'
                   onChange={onTypeChange}
-                  checked={funding === 'contracts'}
+                  checked={fundingType === 'contracts'}
                 />
                 <label htmlFor='cuContracts'>&nbsp;Contracts</label>
               </Grid>
@@ -250,7 +263,7 @@ const Categories = () => {
                   name='FundingType'
                   value='grants'
                   onChange={onTypeChange}
-                  checked={funding === 'grants'}
+                  checked={fundingType === 'grants'}
                 />
                 <label htmlFor='cuGrants'>&nbsp;Grants</label>
               </Grid>
@@ -260,7 +273,7 @@ const Categories = () => {
                   name='FundingType'
                   value='research'
                   onChange={onTypeChange}
-                  checked={funding === 'research'}
+                  checked={fundingType === 'research'}
                 />
                 <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
               </Grid>
@@ -268,8 +281,8 @@ const Categories = () => {
           </form>
 
           <Sunburst
-            items={_data[funding].nodes}
-            title={titlesByType[funding]}
+            items={_data[fundingType].nodes}
+            title={titlesByType[fundingType]}
             levels={levels}
             leaf={leaf}
             wedgeColors={wedgeColors}

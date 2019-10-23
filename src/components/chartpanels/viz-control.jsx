@@ -33,9 +33,7 @@ export default class VizControlPanel extends React.Component {
     }
   }
 
-  toggleSearch() {
-    this.setState(prevState => { return { expanded: !prevState.expanded } });
-  }
+  toggleSearch = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
   selectItem(id) {
     if (this.props.onSelect) {
@@ -49,6 +47,7 @@ export default class VizControlPanel extends React.Component {
         <SearchPanel
           searchList={this.props.searchList}
           listDescription={this.props.listDescription}
+          initShow
           onSelect={this.props.onSelect}
         />
 
@@ -88,7 +87,7 @@ export default class VizControlPanel extends React.Component {
 VizControlPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
-  'children': PropTypes.node.isRequired,
   'onSelect': PropTypes.func,
-  'switchView': PropTypes.func.isRequired
+  'switchView': PropTypes.func.isRequired,
+  'children': PropTypes.node.isRequired
 }
