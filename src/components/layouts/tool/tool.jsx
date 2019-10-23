@@ -90,13 +90,14 @@ export default class ToolLayout extends React.Component {
               <Grid item xs={12} sm={8}>
                 <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
               </Grid>
-            </section>
-          </article>
-        </main>
-        <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
-        <MoreAnalyses />
-      </div>
-    </Default>
+            </Grid>
+          </section>
+        </article>
+      </main>
+      <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
+      <MoreAnalyses />
+    </div>
+  </Default>
 }
 
 
