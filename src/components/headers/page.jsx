@@ -21,13 +21,13 @@ class PageHeader extends React.Component {
       skinnySub: 80,
       activeItem: '',
       showMobileMenu: false,
-      width: 1000,
       menuData: this.props.megamenuItems,
     };
   };
 
   componentDidMount() {
 
+    // homepage listener...
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.scrollY > 135;
@@ -35,6 +35,7 @@ class PageHeader extends React.Component {
       });
     }
 
+    // not on homepage..
     if (this.props.isHome == false) {
       document.addEventListener('scroll', () => {
         const max = 29;
@@ -46,6 +47,7 @@ class PageHeader extends React.Component {
       });
     }
 
+    // not on homepage...
     if (this.props.isHome == false) {
       document.addEventListener('scroll', () => {
         const max = 80;
@@ -57,17 +59,11 @@ class PageHeader extends React.Component {
       });
     }
 
-    document.addEventListener('resize', this.updateWidth);
-
     // if we're NOT on the homepage...
     // always set to true!
     if (this.props.isHome == false) {
       this.setState({ isSticky: true });
     }
-  };
-
-  updateWidth = () => {
-    this.setState({ width: window.innerWidth });
   };
 
   handleMouseLeave = e => {
@@ -118,7 +114,7 @@ class PageHeader extends React.Component {
                 <li className='navListItem' onMouseOver={this.handleItemClick}>
                   <a href='#' className='navListAnchor'>Resources <span className='navListArrow'><Arrow /></span></a>
                 </li>
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                <li className='navListItem'>
                   <a href='#' className='navListAnchor'><span className='navListArrow'><Book/></span> Glossary </a>
                 </li>
               </ul>
