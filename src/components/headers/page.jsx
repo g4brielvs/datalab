@@ -30,7 +30,7 @@ class PageHeader extends React.Component {
 
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.scrollY > 130;
+        let isSticky = window.scrollY > 135;
         this.setState({ isSticky: isSticky });
       });
     }
@@ -123,6 +123,7 @@ class PageHeader extends React.Component {
                 </li>
               </ul>
             </nav>
+
           </div>
         </div>
 
