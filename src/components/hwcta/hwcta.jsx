@@ -53,7 +53,7 @@ function HWCTA(props) {
           {props.children}
         </section>
         <div className={hwctaStyles.sourcesSections}>
-          {dataSources ?
+          {dataSources && dataSources.length ?
             <section>
               <h2>
                 Data Sources
@@ -77,7 +77,7 @@ function HWCTA(props) {
             </section>
             : ''
           }
-          {methodologies ?
+          {methodologies && methodologies.length ?
             <section>
               <h2>
                 Methodologies
@@ -101,7 +101,7 @@ function HWCTA(props) {
             </section>
             : ''
           }
-          {notes ?
+          {notes && notes.length ?
             <section>
               <h2>
                 Notes
