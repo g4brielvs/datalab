@@ -1,0 +1,134 @@
+@import '../../styles/variables.scss';
+
+html {
+  color: #444;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size:1.5rem;
+}
+
+.title {
+  color: #333;
+  font-size: 1rem;
+}
+
+.page-header-text {
+  margin-top: 0.5rem;
+}
+
+.hwcta-page {
+  max-width: 1140px;
+  margin: 50px auto 0;
+}
+
+.container {
+  margin-left: 75px;
+  margin-right: 75px;
+  margin-bottom: 100px;
+}
+
+.back-button-header {
+  color: #2272CE !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.back-button-header-slash {
+  margin-right: 15px;
+}
+#back-button-footer-section {
+  text-align: center;
+
+  .back-button-footer {
+    background-color: rgb(34, 114, 206);
+    color: #FFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+
+    a {
+      color: #FFF;
+      font-size: 0.9rem;
+      margin: 0 2.5rem;
+    }
+  }
+}
+
+
+.back-button-footer-chevron {
+  margin-right: 30px;
+  display: inline;
+
+  svg {
+    margin-bottom: -5px;
+    margin-left: -8px;
+  }
+}
+
+.sources, .section-text {
+  color: #777;
+  font-size: 1rem;
+}
+
+.footer {
+  margin-bottom: 100px;
+}
+
+.sources-sections {
+  section {
+    padding: 50px 0;
+  }
+  section:last-child {
+    padding-bottom: 0;
+  }
+  section + section {
+    border-top: 1px solid #333;
+  }
+}
+
+@media screen and (max-width: $desktop) {
+  .page-header-text {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size:1.2rem;
+    margin: 15px 0;
+  }
+
+  .container {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 50px;
+  }
+
+  .footer {
+    margin-bottom: 60px;
+  }
+
+  .sources-sections {
+    section {
+      padding: 0;
+    }
+    section + section {
+      border-top: 0;
+    }
+  }
+}

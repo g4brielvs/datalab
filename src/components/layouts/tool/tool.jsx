@@ -90,14 +90,13 @@ export default class ToolLayout extends React.Component {
               <Grid item xs={12} sm={8}>
                 <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
               </Grid>
-            </Grid>
-          </section>
-        </article>
-      </main>
-      <HWCTALink url={'#'} _mainClass={styles.hwcta} _noOffset='true' />
-      <MoreAnalyses />
-    </div>
-  </Default>
+            </section>
+          </article>
+        </main>
+        <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
+        <MoreAnalyses />
+      </div>
+    </Default>
 }
 
 
@@ -108,6 +107,7 @@ ToolLayout.propTypes = {
   contextStatement: PropTypes.string.isRequired,
   sectionTitle: PropTypes.string.isRequired,
   sectionText: PropTypes.string.isRequired,
+  hwctaLink: PropTypes.string,
 }
 
 // export default ToolLayout

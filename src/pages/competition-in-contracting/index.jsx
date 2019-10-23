@@ -112,7 +112,8 @@ class CompetitionInContractingPage extends Component {
                     introSentence={introSentence}
                     contextStatement={contextSentence}
                     sectionTitle={sectionTitle}
-                    sectionText={sectionText}>
+                    sectionText={sectionText}
+                    hwctaLink={this.props.location.pathname + '/methodologies'}>
           <SEO title="Competition in Contracting" keywords={[`gatsby`, `application`, `react`]}/>
           <Accordion
             title="Instructions">
