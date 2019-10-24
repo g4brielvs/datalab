@@ -6,13 +6,13 @@
   line-height: normal;
   box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
   width: 100%;
-  transition: all .5s ease-in;
-  z-index: 5;
+  transition: all .3s ease-in;
+  z-index: 100;
 }
 
 @keyframes smoothy {
   0% {
-    transform: translateY(-20px);
+    transform: translateY(-50px);
   }
   100% {
     transform: translateY(0px);
@@ -93,7 +93,6 @@
   width: 100%;
   flex-wrap: nowrap;
   box-sizing: border-box;
-  height: 140px;
   padding-top: 17px;
   padding-bottom: 17px;
   justify-content: space-between;
