@@ -5,6 +5,8 @@ import SEO from "../../components/seo"
 import Test from "../../components/.demo/test"
 
 
+// fake comment to make a change to the page to commit
+
 const TestPage = () => (
   <Home>
     <SEO title="D3 Test Page" keywords={[`gatsby`, `application`, `react`]} />
