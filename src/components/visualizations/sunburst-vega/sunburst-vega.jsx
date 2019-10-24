@@ -4,7 +4,7 @@ import { Vega } from 'react-vega';
 import sunburstSpec from './utils/sunburst-spec';
 import transformData from './utils/transformData.js';
 
-export default class Demo extends React.Component {
+export default class Sunburst extends React.Component {
   constructor(props) {
     super(props);
     // console.log(transformData());
@@ -28,6 +28,8 @@ export default class Demo extends React.Component {
   }
 
   handleUpdateData() {
+    console.log('update');
+    const flare = this.state.data;
     this.setState({ data: { flare } });
   }
 
@@ -37,6 +39,6 @@ export default class Demo extends React.Component {
     const { data, spec, info } = this.state;
 
     // `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`
-    return <Vega data={data} spec={spec} signalListeners={this.handlers} />;
+    return <Vega data={data} spec={spec} onClick={this.handleUpdateData} />;
   }
 }

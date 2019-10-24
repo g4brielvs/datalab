@@ -17,8 +17,6 @@ export default {
       {
         "type": "partition",
         "field": "size",
-        "sort": {"field": "depth"},
-        "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
         "as": ["a0", "r0", "a1", "r1", "depth", "children"]
       },
       {
@@ -44,7 +42,12 @@ export default {
   {
     "name": "xscale",
     "type": "linear",
-    "domain": [0, {"signal": "2 * PI"}]
+    "range": [0, {"signal": "2 * PI"}]
+  },
+  {
+    "name": "yscale",
+    "type": "sqrt",
+    "range": [0, {"signal": "width / 2"}]
   }
 ],
 
@@ -60,10 +63,10 @@ export default {
         "tooltip": {"signal": "datum.name + (datum.size ? ', ' + datum.colorHex + ' colorHex' : '')"}
       },
       "update": {
-        "startAngle": {"signal": "datum.a0"},
-        "endAngle": {"signal": "datum.a1"},
-        "innerRadius": {"field": "r0"},
-        "outerRadius": {"field": "r1"},
+        "startAngle": {"scale": "xscale", "signal": "max(0, min(2 * PI, datum.a0))"},
+        "endAngle": {"scale": "xscale", "signal": "max(0, min(2 * PI, datum.a1))"},
+        "innerRadius": {"scale": "yscale", "signal": "max(0, datum.r0)"},
+        "outerRadius": {"scale": "yscale", "signal": "max(0, datum.r1)"},
         "stroke": {"value": "white"},
         "strokeWidth": {"value": 0.5},
         "zindex": {"value": 0}
@@ -72,6 +75,9 @@ export default {
         "stroke": {"value": "red"},
         "strokeWidth": {"value": 2},
         "zindex": {"value": 1}
+      },
+      "click": {
+        "stroke": {"value": "#ddd"}
       }
     }
   }
