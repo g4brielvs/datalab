@@ -66,7 +66,7 @@ class CollegesAndUniversitiesPage extends React.Component {
 
         <Agencies location={this.props.location} />
 
-        {/* <Categories location={this.props.location} /> */}
+        <Categories location={this.props.location} />
       </main>
 
       <Footnotes
