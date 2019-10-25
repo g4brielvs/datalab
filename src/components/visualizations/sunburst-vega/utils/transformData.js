@@ -1,7 +1,8 @@
 import csvData from "../../../../data/contract-explorer/awards_contracts_FY18_v2.csv";
 
 function convertCsvToJson() {
-  let id = 1, items = [], existingItem;
+  let id = 1, existingItem;
+
   let tree = [{
     "id": id,
     "name": "flare"
@@ -107,34 +108,20 @@ function convertCsvToJson() {
         return;
       }
 
-      if (existingItem.length > 0) {
-        // get the id of the existing item
-        // check if the item exists
-        // if exists, add to the sum
+      // DO NOT SUM, ELSE ARCS WILL NOT BE CALCULATED CORRECTLY
+      // const index = tree.indexOf(existingItem[0]);
+      // tree[index]['size'] += parseInt(row['obligation']);
 
-        const index = tree.indexOf(existingItem[0]);
-        tree[index]['size'] += parseInt(row['obligation']);
-
-      } else {
-        // if doesn't exist add the item
-
-        items.push({
-          id: ++id,
-          key: row[key]
-        });
-
-        const colorIndex = agencies.indexOf(row['agency']) % 5;
+      if (!existingItem) {
 
         const newObj = {
           "id": id,
           "name": row[key],
           "type": key,
-          "size": row['obligation'] ? parseInt(row['obligation']) : 0,
           "parent": null,
           "agency": row['agency'],
-          "colorHex": colorIndex >= 0 ? wedgeColors[colorIndex] : wedgeColors[0]
+          "colorHex": agencies.indexOf(row['agency']) % 5
         };
-
 
         // Set parent id
         switch (key) {
@@ -143,15 +130,14 @@ function convertCsvToJson() {
             break;
           case 'subagency':
             const tempSubAgencyParent = _.filter(tree, _.matches({ 'name' : row['agency'], 'type' : 'agency'}));
-            const tempSubAgencyParentId = tempSubAgencyParent && tempSubAgencyParent[0] ? tempSubAgencyParent[0]['id'] : -1;
+            const tempSubAgencyParentId = tempSubAgencyParent[0]['id'];
             newObj.parent = tempSubAgencyParentId;
             break;
           case 'recipient':
+            newObj['size'] = parseInt(row['obligation']);
             const tempRecipientParent = _.filter(tree, _.matches({ 'name' : row['subagency'], 'type' : 'subagency'}));
-            const tempRecipientParentId = tempRecipientParent && tempRecipientParent[0] ? tempRecipientParent[0]['id'] : -1;
+            const tempRecipientParentId = tempRecipientParent[0]['id'];
             newObj.parent = tempRecipientParentId;
-            break;
-          case 'obligation':
             break;
         }
 

@@ -45,7 +45,18 @@ export default class ContractExplorerPage extends Component {
 				<Grid item><Share location={this.props.location} /></Grid>
 			</Grid>
 
-			<Sunburst data = {this.state.data} />
+			<Grid
+				container
+				spacing = {4}>
+
+				<Grid item xs={6}>
+					details here
+				</Grid>
+
+				<Grid item xs={6}>
+					<Sunburst data = {this.state.data} />
+				</Grid>
+			</Grid>
 
 		</ToolLayout>
 	</>

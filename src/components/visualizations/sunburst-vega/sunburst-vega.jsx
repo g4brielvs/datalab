@@ -7,7 +7,7 @@ import transformData from './utils/transformData.js';
 export default class Sunburst extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(transformData());
+    console.log(transformData());
 
     this.state = {
       data: props.data[0],
@@ -32,6 +32,7 @@ export default class Sunburst extends React.Component {
     const flare = this.state.data;
     this.setState({ data: { flare } });
   }
+
 
 
 

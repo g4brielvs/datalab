@@ -7,10 +7,19 @@ import SEO from '../../components/seo';
 import Share from '../../components/share/share';
 import ToolLayout from '../../components/layouts/tool/tool';
 import Sunburst from '../../svgs/visualization.svg';
+import { ResponsiveSunburst } from '@nivo/sunburst';
+import nivoData from '../../unstructured-data/contract-explorer/contracts';
+
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
 		super(props);
+		console.log(nivoData);
+
+		this.inlineStyles = {
+			height: 700,
+			width: 700
+		}
 	}
 
   render = () => <>
@@ -37,7 +46,27 @@ export default class ContractExplorerPage extends Component {
 				<Grid item><Share location={this.props.location} /></Grid>
 			</Grid>
 
-      <Sunburst />
+      {/*<Sunburst />*/}
+
+      <div style={this.inlineStyles}>
+				<ResponsiveSunburst
+					data={nivoData}
+					margin={{ top: 40, right: 20, bottom: 20, left: 20 }}
+					identity="name"
+					value="size"
+					cornerRadius={2}
+					borderWidth={1}
+					borderColor="white"
+					colors={{ scheme: 'nivo' }}
+					childColor={{ from: 'color' }}
+					animate={true}
+					motionStiffness={90}
+					motionDamping={15}
+					isInteractive={true}
+				/>
+			</div>
+
+
 
 		</ToolLayout>
 	</>
