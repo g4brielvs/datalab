@@ -40,6 +40,6 @@ export default class Sunburst extends React.Component {
     const { data, spec, info } = this.state;
 
     // `<Vega data={this.state.data} spec={this.state.spec} onSignalHover={this.handleHover} />`
-    return <Vega data={data} spec={spec} onClick={this.handleUpdateData} />;
+    return <Vega data={data} spec={spec} signalListeners={this.handlers} />;
   }
 }
