@@ -14,7 +14,7 @@ const CategoriesViz = loadable(() => import(`../../page-sections/colleges-and-un
 const InstitutionsViz = loadable(() => import(`../../page-sections/colleges-and-universites/institutions`));
 
 export default class CollegesAndUniversitiesPage extends React.Component {
-  render = () => <>
+  render = () =>
     <StoryLayout isCustomHeader={true}>
       <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
 
@@ -75,6 +75,4 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           'Due to the way military academies are funded, they have not been included in this analysis.']}
       />
     </StoryLayout>
-  </>
-
 }
