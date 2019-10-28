@@ -1,19 +1,15 @@
 import './cu.scss';
-import React, { Suspense } from 'react';
+import React from 'react';
 
-// import Agencies from '../../page-sections/colleges-and-universites/agencies';
-// import Categories from '../../page-sections/colleges-and-universites/categories';
+import Agencies from '../../page-sections/colleges-and-universites/agencies';
+import Categories from '../../page-sections/colleges-and-universites/categories';
 import CustomHeader from '../../page-sections/colleges-and-universites/custom-header/custom-header';
 import CustomToc from '../../page-sections/colleges-and-universites/custom-toc/custom-toc';
 import Footnotes from '../../components/footnotes/footnotes';
-// import Institutions from '../../page-sections/colleges-and-universites/institutions';
+import Institutions from '../../page-sections/colleges-and-universites/institutions';
 import Overview from '../../page-sections/colleges-and-universites/overview';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
-
-const AgenciesViz = React.lazy(() => import('../../page-sections/colleges-and-universites/agencies'))
-const CategoriesViz = React.lazy(() => import('../../page-sections/colleges-and-universites/categories'))
-const InstitutionsViz = React.lazy(() => import('../../page-sections/colleges-and-universites/institutions'))
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () => <>
@@ -65,17 +61,11 @@ export default class CollegesAndUniversitiesPage extends React.Component {
       <main className='main'>
         <Overview location={this.props.location} />
 
-        <Suspense fallback='waiting...'>
-          <InstitutionsViz location={this.props.location} />
-        </Suspense>
+        <Institutions location={this.props.location} />
 
-        <Suspense fallback='waiting...'>
-          <AgenciesViz location={this.props.location} />
-        </Suspense>
+        <Agencies location={this.props.location} />
 
-        <Suspense fallback='waiting...'>
-          <CategoriesViz location={this.props.location} />
-        </Suspense>
+        <Categories location={this.props.location} />
       </main>
 
       <Footnotes
