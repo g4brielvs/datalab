@@ -18,6 +18,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
       },
     });
   };
+  
   actions.setWebpackConfig({
     plugins: [
       new LoadablePlugin()

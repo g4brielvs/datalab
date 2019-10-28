@@ -1,15 +1,17 @@
 import './cu.scss';
 import React from 'react';
 
-import Agencies from '../../page-sections/colleges-and-universites/agencies';
-import Categories from '../../page-sections/colleges-and-universites/categories';
 import CustomHeader from '../../page-sections/colleges-and-universites/custom-header/custom-header';
 import CustomToc from '../../page-sections/colleges-and-universites/custom-toc/custom-toc';
 import Footnotes from '../../components/footnotes/footnotes';
-import Institutions from '../../page-sections/colleges-and-universites/institutions';
 import Overview from '../../page-sections/colleges-and-universites/overview';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
+
+import loadable from '@loadable/component';
+const AgenciesViz = loadable(() => import(`../../page-sections/colleges-and-universites/agencies`));
+const CategoriesViz = loadable(() => import(`../../page-sections/colleges-and-universites/categories`));
+const InstitutionsViz = loadable(() => import(`../../page-sections/colleges-and-universites/institutions`));
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () => <>
@@ -61,11 +63,11 @@ export default class CollegesAndUniversitiesPage extends React.Component {
       <main className='main'>
         <Overview location={this.props.location} />
 
-        <Institutions location={this.props.location} />
+        <InstitutionsViz location={this.props.location} />
 
-        <Agencies location={this.props.location} />
+        <AgenciesViz location={this.props.location} />
 
-        <Categories location={this.props.location} />
+        <CategoriesViz location={this.props.location} />
       </main>
 
       <Footnotes
