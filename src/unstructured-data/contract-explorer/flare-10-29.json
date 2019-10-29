@@ -1,5 +1,5 @@
 {
-"tree": [
+  "tree": [
   {
     "id": 1,
     "name": "flare",
@@ -74007,15 +74007,7 @@
     "colorHex": "#881e3d",
     "size": 3605389
   },
-  {
-    "id": 8253,
-    "name": "RMA ASSOCIATES LLC",
-    "type": "recipient",
-    "parent": 3626,
-    "agency": "Department of Defense",
-    "colorHex": "#881e3d",
-    "size": 3605196
-  },
+
   {
     "id": 8254,
     "name": "FORRESTER RESEARCH INC",
@@ -115570,15 +115562,7 @@
     "colorHex": "#881e3d",
     "size": 1616862
   },
-  {
-    "id": 12876,
-    "name": "ONETEAM CONSULTING LLC",
-    "type": "recipient",
-    "parent": 3626,
-    "agency": "Department of Defense",
-    "colorHex": "#881e3d",
-    "size": 1616803
-  },
+
   {
     "id": 12877,
     "name": "CONVERGINT TECHNOLOGIES LLC",
@@ -146940,14 +146924,16 @@
     "name": null,
     "type": "agency",
     "parent": 1,
-    "agency": null
+    "agency": null,
+    "colorHex": "#881e3d"
   },
   {
     "id": 16364,
     "name": null,
     "type": "subagency",
     "parent": 16363,
-    "agency": null
+    "agency": null,
+    "colorHex": "#881e3d"
   },
   {
     "id": 16365,

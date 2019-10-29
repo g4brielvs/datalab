@@ -1,11 +1,12 @@
-import csvData from "../../../../data/contract-explorer/awards_contracts_FY18_v2.csv";
+import csvData from "../../../../unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv";
 
 function convertCsvToJson() {
   let id = 1, existingItem;
 
   let tree = [{
     "id": id,
-    "name": "flare"
+    "name": "flare",
+    "colorHex": "#fff"
   }];
 
   const wedgeColors = ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40'];
@@ -112,15 +113,15 @@ function convertCsvToJson() {
       // const index = tree.indexOf(existingItem[0]);
       // tree[index]['size'] += parseInt(row['obligation']);
 
-      if (!existingItem) {
+      if (existingItem.length < 1) {
 
         const newObj = {
-          "id": id,
+          "id": ++id,
           "name": row[key],
           "type": key,
           "parent": null,
           "agency": row['agency'],
-          "colorHex": agencies.indexOf(row['agency']) % 5
+          "colorHex": wedgeColors[agencies.indexOf(row['agency']) % 5]
         };
 
         // Set parent id
@@ -147,6 +148,8 @@ function convertCsvToJson() {
     });
   });
 
+  console.log(tree);
+  
   return tree;
 
 }
