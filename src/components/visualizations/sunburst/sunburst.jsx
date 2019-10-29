@@ -29,7 +29,7 @@ function Sunburst(props) {
     const leaf = props.leaf;
     const wedgeColors = props.wedgeColors;
     const centerColor = props.centerColor;        // transparent to show #center
-    const hasCenterText = "hasCenterText" in props ? props.hasCenterText : false;  // Contract Explorer doesn't have center text, C & U does
+    const hasCenterText = true;
 
     // Other variables
     const formatNumber = d3.format('$,.0f');
@@ -66,7 +66,7 @@ function Sunburst(props) {
     // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
     hierarchy = buildDataHierarchy(title, data, levels);
     chartArray = partition.nodes(hierarchy)
-      .filter(d => d.depth <= 3); // leave off recipients
+      .filter(d => d.depth < 3); // leave off recipients
     hierarchy.children.forEach((node, index) => {
       node.colorIndex = index % wedgeColors.length;
     });
