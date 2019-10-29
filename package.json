@@ -39,6 +39,7 @@
     "gatsby-transformer-csv": "^2.0.0",
     "gatsby-transformer-json": "^2.2.7",
     "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-transformer-yaml-plus": "^0.2.2",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "mapbox-gl": "^1.4.1",

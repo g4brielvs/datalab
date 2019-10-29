@@ -8,6 +8,8 @@ import Accordion from "../../components/accordion/accordion"
 
 function BudgetFunctionPage(props) {
 
+  console.log('props in budget function', props);
+
   const [year, setFiscalYear] = useState('fy19');
 
   function onFiscalYearChange(e) {
