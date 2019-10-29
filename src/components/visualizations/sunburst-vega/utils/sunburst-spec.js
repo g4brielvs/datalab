@@ -1,3 +1,7 @@
+import * as d3 from 'd3v4';
+
+// d3.interpolateArray(xScale.domain(), [d.x, d.x + d.dx])
+
 export default {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 600,
@@ -32,7 +36,15 @@ export default {
     ]
   }
 ],
-
+  "signals": [
+    {
+      "name": "arcClick",
+      "value": "datum",
+      "on": [
+        {"events": "arc:mousedown", "update": "datum"}
+      ]
+    }
+  ],
   "scales": [
   {
     "name": "xscale",
@@ -55,8 +67,7 @@ export default {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
         "fill": {"signal": "datum.colorHex"},
-        "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"},
-        "tooltip": {"signal": "'Name: ' + datum.name + ', Type: ' + datum.type + ', Agency: ' + datum.agency + ', id: ' + datum.id + (datum.parent ? ', ' + datum.parent + ' parent' : '') + (datum.size ? ', ' + datum.size + ' size' : '')"}
+        "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"}
       },
       "update": {
         "startAngle": {"scale": "xscale", "signal": "max(0, min(2 * PI, datum.a0))"},
@@ -72,9 +83,6 @@ export default {
         "strokeWidth": {"value": 2},
         "zindex": {"value": 1}
       },
-      "click": {
-        "stroke": {"value": "#ddd"}
-      }
     }
   }
 ]

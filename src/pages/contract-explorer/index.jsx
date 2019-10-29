@@ -5,20 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
-import Sunburst from "../../components/visualizations/sunburst-vega/sunburst-vega";
+import SunburstContainer from "../../containers/sunburst-vega-container/sunburst-vega-container";
 import ToolLayout from '../../components/layouts/tool/tool';
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
 		super(props);
-
-    this.rawData = props.data.allContractExplorerJson.nodes;
-
-    this.state = {
-      scale: '',
-      data: JSON.parse(JSON.stringify(this.rawData)),
-      unit: ''
-    }
 	}
 
   render = () => <>
@@ -54,7 +46,7 @@ export default class ContractExplorerPage extends Component {
 				</Grid>
 
 				<Grid item xs={6}>
-					<Sunburst data = {this.state.data} />
+          <SunburstContainer />
 				</Grid>
 			</Grid>
 
@@ -62,23 +54,5 @@ export default class ContractExplorerPage extends Component {
 	</>
 
 }
-
-export const IndexQuery = graphql`
-  query {
-		allContractExplorerJson {
-			nodes {
-				tree {
-					agency
-					colorHex
-					id
-					name
-					parent
-					size
-					type
-				}
-			}
-		}
-  }
-`
 
 
