@@ -1,10 +1,11 @@
+@import '../../../styles/variables.scss';
 $grey: #4a4a4a;
 $cuRed: #881E3D;
 
 .download {
   color: $grey;
   font-size: 12pt;
-  margin-bottom: 50px;
+  margin-top: $margin-15;
 }
 
 .faded-modifier {

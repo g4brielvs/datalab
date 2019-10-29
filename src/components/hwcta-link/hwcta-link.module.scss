@@ -1,25 +1,82 @@
 @import '../../styles/variables.scss';
 
 .entry {
-  margin-top: $margin-100;
-  margin-bottom: 5rem;
+  margin-top: $margin-75;
+  margin-bottom: $margin-75;
 
   FontAwesomeIcon {
     line-height: 100px;
     font-weight: 300;
   }
+
+  .image {
+    flex-basis: 16.66666667%;
+    max-width: 16.66666667%;
+  }
 }
 
-.link-text {
+.link-text, .chevron, .chevron-grid {
   justify-content: center;
   font-size: 32px;
   font-weight: 300;
   line-height: 90px;
 }
 
+.link-text div {
+  display: inline-block;
+}
+
+.chevron {
+  padding-left: 1rem;
+}
+
+.chevron-grid {
+  align-self: center;
+}
+
 @media (max-width: $tablet - 1) {
-  .image {
+
+  .entry {
+    margin-top: $margin-30;
+    margin-bottom: $margin-30;
+  }
+}
+
+@media (min-width: $phone){
+  .link-text{
+    .chevron {
+      display: inline-block;
+    }
+  }
+  .chevron-grid {
     display: none;
   }
 }
 
+@media (max-width: $phone - 1 ){
+  .image {
+    display: none;
+  }
+
+  .nbsp {
+    display: none;
+  }
+
+  .data-sources-row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .link-text, .chevron-grid {
+    line-height: 2.5rem;
+  }
+
+  .link-text {
+    .chevron {
+      display: none;
+    }
+  }
+  .chevron-grid {
+    display: inline-block;
+  }
+}

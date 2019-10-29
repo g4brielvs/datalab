@@ -23,7 +23,9 @@ export default class ContractExplorerPage extends Component {
 		>
 			<Accordion
 				title='Instructions'>
-				This diagram has three rings. The inner ring represents federal agencies, like the Department of Defense, which are sized by the total dollar amounts they spent on contracts in FY 17. The middle ring represents sub-agencies, like the Air Force, which in most cases actually award contracts to contractors. The outer ring represents the contractors who receive awards from those sub-agencies.
+				<p>
+					This diagram has three rings. The inner ring represents federal agencies, like the Department of Defense, which are sized by the total dollar amounts they spent on contracts in FY 17. The middle ring represents sub-agencies, like the Air Force, which in most cases actually award contracts to contractors. The outer ring represents the contractors who receive awards from those sub-agencies.
+				</p>
 				<ul>
 					<li>Hover over any part of the diagram to get a preview of the information featured in the next layer</li>
 					<li>Click on an agency (inner ring), sub-agency (middle ring), or contractor (outer ring) to zoom in on that entity and get more detailed information about it</li>

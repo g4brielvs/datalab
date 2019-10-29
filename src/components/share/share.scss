@@ -7,6 +7,7 @@ $silver: #ccc;
     margin-left: 5%;
     cursor: pointer;
     position: relative;
+    margin-bottom: $margin-25;
   }
   
   .newpopup {
@@ -156,4 +157,9 @@ $silver: #ccc;
 .share-text {
   //vertical-align: top;
   line-height: 1.2rem;
+}
+@media screen and (min-width: $desktop-xl){
+  .new-share {
+    margin-bottom: $margin-45;
+  }
 }

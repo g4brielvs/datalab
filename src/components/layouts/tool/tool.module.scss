@@ -1,12 +1,14 @@
 @import '../../../styles/index.scss';
 
 .tool-page {
-	margin: 100px auto 75px;
+	margin: 0 auto 75px;
+	padding-top: 50px;
 
 	color: #666666;
 
 	.header {
-		margin-bottom: 25px;
+		margin-top: $margin-50;
+		margin-bottom: $margin-25;
 	}
 
 	.title {
@@ -21,6 +23,7 @@
 		font-size: 42px;
 		font-weight: 300;
 		line-height: 50px;
+		margin: 0;
 	}
 
 	.p {
@@ -30,7 +33,15 @@
 
 	.follow-up {
 		margin-top: 100px;
+		p {
+			margin-top: $margin-15;
+			margin-bottom: $margin-15;
+		}
+		p:last-child {
+			margin-bottom: 0;
+		}
 	}
+
 }
 
 .hwcta {
@@ -38,25 +49,18 @@
 }
 
 @media screen and (min-width: $desktop-xl) {
+
 	.tool-page {
 		max-width: 1140px;
 	}
-}
 
-@media (min-width: $desktop) and (max-width: $desktop-xl) {
-	.tool-page {
-		max-width: 940px;
-	}
-}
-
-@media (min-width: $desktop) {
 	.main {
 		margin-top: 50px;
 		margin-bottom: 75px;
 	}
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
+@media (min-width: $phone) and (max-width: $desktop-xl - 1) {
 	.tool-page {
 		max-width: 720px;
 	}
@@ -69,22 +73,18 @@
 
 @media (max-width: $tablet - 1) {
 	.tool-page {
-		margin: 50px 16px;
+		margin: 0 15px 50px;
 	}
 
 	.main {
 		margin-top: 25px;
 		margin-bottom: 30px;
 	}
-
-	.follow-up {
-		margin-top: 30px;
-	}
 }
 
 @media (min-width: $phone) {
 	.bodyIntro {
-		font-size: 42px;
+		font-size: 2rem;
 		font-weight: 300;
 		line-height: 50px;
 	}
@@ -93,6 +93,14 @@
 @media (max-width: $phone - 1) {
 	.bodyIntro {
 		@include h6-subheading;
+	}
+	.header {
+		margin-top: $margin-30;
+	}
+	.tool-page {
+		.follow-up {
+			margin-top: $margin-30;
+		}
 	}
 }
 

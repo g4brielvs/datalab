@@ -37,9 +37,9 @@ const MoreAnalyses = () => {
 
       <Grid item xs={12}
             className={moreAnalysesStyles.heading}>
-        <h1>
+        <h2>
           More Analyses
-        </h1>
+        </h2>
       </Grid>
 
       <Grid
@@ -56,9 +56,9 @@ const MoreAnalyses = () => {
             <Link to={item.href}>
 
                 <div className={moreAnalysesStyles.text}>
-                  <h2 className={moreAnalysesStyles.title}>
+                  <h3 className={moreAnalysesStyles.title}>
                     {item.title}
-                  </h2>
+                  </h3>
 
                   <p className={moreAnalysesStyles.subtitle}>
                     {item.subtitle}
