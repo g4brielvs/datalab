@@ -53,8 +53,6 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.17.0",
-    "resolve-url-loader": "^3.1.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
@@ -62,8 +60,12 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "node-sass": "^4.12.0",
+    "prettier": "^1.17.0",
+    "resolve-url-loader": "^3.1.0",
     "sass-loader": "^8.0.0",
-    "webpack": "^4.40.2"
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   },
   "keywords": [
     "gatsby"
@@ -76,7 +78,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "webpackBuild": "webpack"
   },
   "repository": {
     "type": "git",
