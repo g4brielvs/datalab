@@ -34,7 +34,7 @@ const HeaderOnly = ({children, _containerClass, _headerClass}) => (
         {        
         ffg: [
           {header: 'Overview', name: "America's Finance Guide", link: '#'},
-          {header: 'Revenue', name: 'Revenue and GDP', link: '/revenue-and-gdp'},
+          {header: 'Revenue', name: 'Revenue and GDP', link: '#'},
           {header: 'Revenue', name: 'Revenue Categories', link: '#'},
           {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
           {header: 'Revenue', name: 'Country Comparison', link: '#'},
