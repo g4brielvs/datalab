@@ -67,8 +67,8 @@
 @media (min-width: $phone) and (max-width: $desktop-xl - 1) {
 	.tool-page {
 		max-width: 720px;
-		margin-left: $margin-30;
-		margin-right: $margin-30;
+		padding-left: $margin-30;
+		padding-right: $margin-30;
 	}
 
 	.main {
