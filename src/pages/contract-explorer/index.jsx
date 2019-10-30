@@ -41,11 +41,11 @@ export default class ContractExplorerPage extends Component {
 				container
 				spacing = {4}>
 
-				<Grid item xs={6}>
+				<Grid item xs={6} sm={12} >
 					details here
 				</Grid>
 
-				<Grid item xs={6}>
+				<Grid item xs={6} sm={12}>
           <SunburstContainer />
 				</Grid>
 			</Grid>
