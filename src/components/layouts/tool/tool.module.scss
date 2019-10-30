@@ -20,9 +20,9 @@
 	}
 
 	.intro {
-		font-size: 42px;
+		font-size: 2rem;
 		font-weight: 300;
-		line-height: 50px;
+		line-height: 2.5rem;
 		margin: 0;
 	}
 
@@ -52,6 +52,10 @@
 
 	.tool-page {
 		max-width: 1140px;
+		.intro {
+			font-size: 2.5rem;
+			line-height: 3rem;
+		}
 	}
 
 	.main {
@@ -63,6 +67,8 @@
 @media (min-width: $phone) and (max-width: $desktop-xl - 1) {
 	.tool-page {
 		max-width: 720px;
+		margin-left: $margin-30;
+		margin-right: $margin-30;
 	}
 
 	.main {
@@ -72,10 +78,6 @@
 }
 
 @media (max-width: $tablet - 1) {
-	.tool-page {
-		margin: 0 15px 50px;
-	}
-
 	.main {
 		margin-top: 25px;
 		margin-bottom: 30px;
@@ -91,13 +93,17 @@
 }
 
 @media (max-width: $phone - 1) {
+	.tool-page {
+		margin-left: $margin-15;
+		margin-right: $margin-15;
+	}
 	.bodyIntro {
 		@include h6-subheading;
 	}
-	.header {
-		margin-top: $margin-30;
-	}
 	.tool-page {
+		.header {
+			margin-top: $margin-30;
+		}
 		.follow-up {
 			margin-top: $margin-30;
 		}

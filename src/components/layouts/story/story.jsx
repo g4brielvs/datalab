@@ -88,17 +88,14 @@ const StoryLayout = (props) => {
             }
             isHome={ false }
            />
-    <Grid container justify='center'>
-      <Grid item xs={10}>
-        <div className='story-page'>
-          {header}
-          {toc}
-          {props.children}
-          <HwctaLink url={'#'} />
-          <MoreAnalyses />
-        </div>
-      </Grid>
-    </Grid>
+
+      <div className='story-page'>
+        {header}
+        {toc}
+        {props.children}
+        <HwctaLink url={'#'} />
+        <MoreAnalyses />
+      </div>
 
   </Default>
 };

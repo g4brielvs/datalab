@@ -8,11 +8,12 @@ h2 {
 }
 
 .story-page {
-  max-width: 720px;
-  margin: 50px auto 75px;
+  margin: 0 auto 75px;
+  padding-top: $margin-50;
 }
 
 .header--hero {
+  margin-top: $margin-50;
   padding-bottom: $margin-30;
   border-bottom: $darkGrey 1px solid;
   > * {
@@ -30,9 +31,9 @@ h2 {
 
 .header__introSentence {
   color: $darkGrey;
-  font-size: 42px;
+  font-size: 2rem;
   font-weight: 300;
-  line-height: 50px;
+  line-height: 2.5rem;
   margin: 0;
   margin-bottom: 25px;
 }
@@ -48,10 +49,15 @@ h2 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: $margin-25;
-  margin-top: $margin-50;
+  margin-top: 0;
 }
 
 @media screen and (min-width: $desktop-xl) {
+  .header__introSentence {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
   .header--hero {
     padding-bottom: $margin-75;
   }
@@ -63,23 +69,29 @@ h2 {
 
 @media (max-width: $tablet - 1) {
   .story-page {
-    margin: 50px 16px;
+    margin: 0 15px 50px;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $desktop-xl - 1) {
+  .story-page {
+    max-width: 720px;
   }
 }
 
 @media (max-width: $phone - 1) {
+  .story-page {
+    margin-left: $margin-15;
+    margin-right: $margin-15;
+    max-width: none;
+  }
+
   .header__title, .header__introSentence, .header__contextStatement {
     text-align: left;
   }
 
   .header--hero {
-    padding-bottom: $margin-25;
-  }
-
-  .header__title {
     margin-top: $margin-30;
-  }
-  .story-page {
-    max-width: none;
+    padding-bottom: $margin-25;
   }
 }
