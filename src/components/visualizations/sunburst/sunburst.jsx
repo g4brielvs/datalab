@@ -325,7 +325,6 @@ function Sunburst(props) {
 
           // adjust xScale domain values to expand/contract selected sector (no changes to radii (y))
           const i = d3.interpolateArray(xScale.domain(), [d.x, d.x + d.dx]);
-          console.log(xScale.domain());
           return t => {
             xScale.domain(i(t));
           };
