@@ -3,13 +3,17 @@
 $darkGrey: #666666;
 $mdGrey: #555555;
 
+h2 {
+  margin: 0;
+}
+
 .story-page {
-  max-width: 1140px;
-  margin: 100px auto 75px;
+  max-width: 720px;
+  margin: 50px auto 75px;
 }
 
 .header--hero {
-  padding-bottom: 50px;
+  padding-bottom: $margin-30;
   border-bottom: $darkGrey 1px solid;
   > * {
     text-align: center;
@@ -21,6 +25,7 @@ $mdGrey: #555555;
   font-size: 17px;
   font-weight: 300;
   line-height: 24px;
+  margin-bottom: 0;
 }
 
 .header__introSentence {
@@ -43,27 +48,16 @@ $mdGrey: #555555;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: $margin-25;
+  margin-top: $margin-50;
 }
 
 @media screen and (min-width: $desktop-xl) {
+  .header--hero {
+    padding-bottom: $margin-75;
+  }
+
   .story-page {
     max-width: 1140px;
-  }
-}
-
-@media (min-width: $desktop) and (max-width: $desktop-xl) {
-  .story-page {
-    max-width: 940px;
-  }
-}
-
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
-  .story-page {
-    max-width: 720px;
-  }
-
-  .header--hero {
-    padding-bottom: 5px;
   }
 }
 
@@ -71,12 +65,21 @@ $mdGrey: #555555;
   .story-page {
     margin: 50px 16px;
   }
+}
 
-  .header--hero {
-    padding-bottom: 0;
-  }
-
+@media (max-width: $phone - 1) {
   .header__title, .header__introSentence, .header__contextStatement {
     text-align: left;
+  }
+
+  .header--hero {
+    padding-bottom: $margin-25;
+  }
+
+  .header__title {
+    margin-top: $margin-30;
+  }
+  .story-page {
+    max-width: none;
   }
 }

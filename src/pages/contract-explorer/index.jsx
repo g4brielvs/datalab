@@ -6,6 +6,7 @@ import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share'
 import ToolLayout from '../../components/layouts/tool/tool';
+import ControlBar from "../../components/control-bar/control-bar"
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
@@ -33,14 +34,10 @@ export default class ContractExplorerPage extends Component {
 					<li>To find a specific agency or contractor by name, type the name into the search bar.</li>
 				</ul>
 			</Accordion>
-			<Grid container justify='flex-end'>
-				<Grid item><Reset /></Grid>
-				<Grid item><Share location={this.props.location} /></Grid>
-			</Grid>
-
-
-
-
+			<ControlBar>
+				<Reset />
+			  <Share location={this.props.location} />
+			</ControlBar>
 		</ToolLayout>
 	</>
 

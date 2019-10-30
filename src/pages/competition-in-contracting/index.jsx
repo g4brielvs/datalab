@@ -13,6 +13,7 @@ import Share from "../../components/share/share"
 import ToolLayout from "../../components/layouts/tool/tool";
 import * as d3 from "d3v3"
 import numberFormatter from "../../utils/number-formatter"
+import ControlBar from "../../components/control-bar/control-bar"
 
 class CompetitionInContractingPage extends Component {
   constructor (props) {
@@ -125,11 +126,11 @@ class CompetitionInContractingPage extends Component {
               </li>
             </ul>
           </Accordion>
-          <Grid container justify='flex-end'>
-            <Grid item><Reset _resetClick={this.resetFn}/></Grid>
-            <Grid item><Share location={this.props.location}
-                              title={shareText}/></Grid>
-          </Grid>
+          <ControlBar>
+            <Reset _resetClick={this.resetFn}/>
+            <Share location={this.props.location}
+                            title={shareText}/>
+          </ControlBar>
 
           <div className={competitionStyles.vizContainer}>
             <div className={competitionStyles.container}>
