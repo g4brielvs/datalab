@@ -5,6 +5,7 @@ import ToolLayout from "../../components/layouts/tool/tool"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
 import HeaderOnly from "../../components/layouts/Header-only/Header-only"
+import HWCTALink from "../../components/hwcta-link/hwcta-link"
 import { Helmet } from 'react-helmet';
 
 
@@ -17,7 +18,7 @@ function SpendingAndGdpPage(props) {
     <>
 
       <Helmet>
-        <script defer src="{/assets/ffg/spending/intro.js}"></script>
+        <script defer src="/assets/ffg/spending/intro.js"></script>
       </Helmet>
 
       <SEO 
@@ -102,6 +103,7 @@ function SpendingAndGdpPage(props) {
         <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal spending. </p>
     </div>
     </div>
+
      </Default>
     </>
 

@@ -4,6 +4,9 @@ import SpendingData from '../../../../assets/ffg/data/federal_spending_gdp.csv';
 import { findAmountInCsv } from '../../../src/utils';
 
 (function init(){
+
+    console.log('in init index.js');
+
     const config = {
         anecdoteName: 'anecdote-spending.svg',
         comparisonAmount: findAmountInCsv('federal revenue', SpendingData), 

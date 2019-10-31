@@ -81,9 +81,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    optimization: {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    },
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -92,8 +92,8 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/assets/ffg/spending/',
-        publicPath: '/assets/ffg/spending/'
+        path: __dirname + '/public/assets/ffg/spending/',
+        publicPath: '/public/assets/ffg/spending/'
     },
     module: {
         rules: moduleRules
