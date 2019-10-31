@@ -139,34 +139,34 @@ class CompetitionInContractingPage extends Component {
                 <div id={competitionStyles.tooltip}></div>
 
                 <div className={competitionStyles.summaryItem}>
-                  <p style={{ color: '#2a5da8' }}>$ COMPETED</p>
+                  <p className={competitionStyles.summaryItemCompeted}>$ COMPETED</p>
                   <h2 id={competitionStyles.competedDollars}></h2>
                 </div>
                 <div className={competitionStyles.summaryItem} style={{ borderRight: '2px solid #a4a4a4' }}>
-                  <p style={{ color: '#2a5da8' }}>ACTIONS COMPETED</p>
+                  <p className={competitionStyles.summaryItemCompeted}>ACTIONS COMPETED</p>
                   <h2 id={competitionStyles.competedActions}></h2>
                 </div>
                 <div className={competitionStyles.summaryItem}>
-                  <p style={{ color: '#2a5da8' }}>$ NOT COMPETED</p>
+                  <p className={competitionStyles.summaryItemNotCompeted}>$ NOT COMPETED</p>
                   <h2 id={competitionStyles.notCompetedDollars}></h2>
                 </div>
                 <div className={competitionStyles.summaryItem}>
-                  <p style={{ color: '#2a5da8' }}>ACTIONS NOT COMPETED</p>
+                  <p className={competitionStyles.summaryItemNotCompeted}>ACTIONS NOT COMPETED</p>
                   <h2 id={competitionStyles.notCompetedActions}></h2>
                 </div>
               </div>
 
               <div>
-                <div className={competitionStyles.legend} id='not-competed'>
+                <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
                   <svg height="15" width="15">
-                    <circle cx="7.5" cy="7.5" r="7.5" fill="#D334BA"/>
+                    <circle cx="7.5" cy="7.5" r="7.5"/>
                   </svg>
                   <label htmlFor="notCompeted" style={{ fontSize: '12px', verticalAlign: 'bottom' }}>Not
                     Competed</label>
                 </div>
-                <div className={competitionStyles.legend} id='competed'>
+                <div className={competitionStyles.legend} id={competitionStyles.competed}>
                   <svg height="15" width="15">
-                    <circle cx="7.5" cy="7.5" r="7.5" fill="#0071bc"/>
+                    <circle cx="7.5" cy="7.5" r="7.5"/>
                   </svg>
                   <label htmlFor="contactChoice1" style={{ fontSize: '12px', verticalAlign: 'bottom' }}>Competed</label>
                 </div>

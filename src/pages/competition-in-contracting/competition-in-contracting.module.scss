@@ -1,3 +1,6 @@
+$competedColor: #0071bc;
+$nonCompetedColor: #D334BA;
+
 .container {
 
   display: flex;
@@ -108,14 +111,34 @@
 
 }
 
-@media (max-width: 1000px) {
-  .bar-chart-toolbar {
-    flex-direction: column !important;
-  }
-}
-
 .viz-container {
   padding: 25px;
   height: 90%;
   overflow: hidden;
+}
+
+#competed circle {
+  fill: $competedColor;
+}
+
+#notCompeted circle {
+  fill: $nonCompetedColor;
+}
+
+.summary-item-competed, .summary-item-not-competed {
+  font-weight: 600;
+}
+
+.summary-item-competed {
+  color: $competedColor
+}
+
+.summary-item-not-competed {
+  color: $nonCompetedColor;
+}
+
+@media (max-width: 1000px) {
+  .bar-chart-toolbar {
+    flex-direction: column !important;
+  }
 }
