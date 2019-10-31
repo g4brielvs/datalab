@@ -4,7 +4,8 @@ import Accordion from '../../components/accordion/accordion';
 import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
-import Share from '../../components/share/share'
+import Share from '../../components/share/share';
+import SunburstContainer from "../../containers/sunburst-vega-container/sunburst-vega-container";
 import ToolLayout from '../../components/layouts/tool/tool';
 
 export default class ContractExplorerPage extends Component {
@@ -36,10 +37,22 @@ export default class ContractExplorerPage extends Component {
 				<Grid item><Share location={this.props.location} /></Grid>
 			</Grid>
 
+			<Grid
+				container
+				spacing = {4}>
 
+				<Grid item xs={6} sm={12} >
+					details here
+				</Grid>
 
+				<Grid item xs={6} sm={12}>
+          <SunburstContainer />
+				</Grid>
+			</Grid>
 
 		</ToolLayout>
 	</>
 
 }
+
+
