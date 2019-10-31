@@ -2,7 +2,11 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import SEO from "../../components/seo"
 import ToolLayout from "../../components/layouts/tool/tool"
-import AfgData from "../../unstructured-data/afg/object_mapping.yml"
+import AfgData from "../../libs/_data/object_mapping.yml"
+import Default from "../../components/layouts/default/default"
+import HeaderOnly from "../../components/layouts/Header-only/Header-only"
+import { Helmet } from 'react-helmet';
+
 
 function SpendingAndGdpPage(props) {
 
@@ -19,16 +23,10 @@ function SpendingAndGdpPage(props) {
         socialMediaText='How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov'
         />
 
-      <ToolLayout
-        title='spending and gdp demo page'
-        introSentence={`In ${AfgData.current_fy.value}, the government spent ${AfgData.current_fy_spending.value}.`}
-        contextStatement="This is another sentence in a smaller font size."
-        sectionTitle='Section Title Here'
-        sectionText="<p>this is a dummy verison of the budget function page, used by the spending and gdp link</p>">
-
-        <div>This is a div that only exists because the ToolLayout component must have children.</div>
-
-      </ToolLayout>
+     <Default>
+       <HeaderOnly></HeaderOnly>
+       <Helmet></Helmet>
+     </Default>
     </>
 
   )
