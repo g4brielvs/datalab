@@ -49,7 +49,7 @@ const MoreAnalyses = () => {
 
 
         {analyses.map((item, index) =>
-          <Grid item sm={12} md={6} lg={3}
+          <Grid item xs={12} sm={6} xl={3}
             key={'analyses__tile_' + index}
             className={`tile ${moreAnalysesStyles.tile}`}>
 

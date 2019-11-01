@@ -9,10 +9,10 @@
     font-weight: 300;
   }
 
-  .image {
-    flex-basis: 16.66666667%;
-    max-width: 16.66666667%;
-  }
+  //.image {
+  //  flex-basis: 16.66666667%;
+  //  max-width: 16.66666667%;
+  //}
 }
 
 .link-text, .chevron, .chevron-grid {
@@ -32,6 +32,12 @@
 
 .chevron-grid {
   align-self: center;
+}
+
+@media (max-width: $tablet - 1){
+  .link-text {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: $tablet - 1) {

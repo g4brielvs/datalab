@@ -10,8 +10,10 @@ const HWCTALink = (props) => {
     <div className={hwctaLinkStyles.entry + ' ' + props._mainClass}>
       <a className={hwctaLinkStyles.link} href={props.url}>
         <Grid container className={`${hwctaLinkStyles.dataSourcesRow} row`}>
-          <Grid item xs={2} md={1} className={`${hwctaLinkStyles.image} ${props._noOffset ? '' : 'col-xs-offset-1'}`}><img src={sourceImage} /></Grid>
-          <Grid item className={hwctaLinkStyles.linkText} xs={11} sm={10}>
+          <Hidden xsDown>
+            <Grid item sm={3} md={2} className={`${hwctaLinkStyles.image} ${props._noOffset ? '' : 'col-xs-offset-1'}`}><img src={sourceImage} /></Grid>
+          </Hidden>
+          <Grid item className={hwctaLinkStyles.linkText} xs={11} sm={9} md={10}>
             <div>Data Sources and Methodologies</div>
             <div className={hwctaLinkStyles.chevron}>
               <FontAwesomeIcon icon={faChevronRight} />
