@@ -98,4 +98,28 @@ module.exports = [ {
     module: {
         rules: moduleRules
     }
+ }, {
+    entry: [
+        './src/libs/ffg/src/globalSass/cg.scss',
+        './src/libs/ffg/src/globalSass/chapterIntroCommon.scss',
+        './src/libs/ffg/src/globalSass/countryCommon.scss',
+        './src/libs/ffg/src/globalSass/trendsCommon.scss',
+        './src/libs/ffg/src/bigPicture/scss/bp.scss',
+        './src/libs/ffg/src/deficit/trends/deficit-trends.scss',
+        './src/libs/ffg/src/revenue/categories/revenue-categories.scss',
+        './src/libs/ffg/src/spending/categories/spending-categories.scss',
+        './src/libs/ffg/src/debt/trends/debt-trends.scss',
+        './src/libs/ffg/src/debt/analysis/debt-analysis.scss'
+    ],
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
+    output: {
+        path: __dirname + 'public/assets/ffg/css/',
+        publicPath: 'public/assets/ffg/css/'
+    },
+    mode: mode,
+    module: {
+        rules: cssRules
+    }
 }];

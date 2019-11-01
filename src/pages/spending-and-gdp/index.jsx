@@ -1,3 +1,8 @@
+import '../../libs/ffg/src/spending/intro/spending-intro.scss'
+import '../../libs/ffg/src/globalSass/cg.scss'
+import '../../libs/assets/ffg/nav/nav.js'
+import '../../libs/assets/ffg/nav/nav.css'
+
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import SEO from "../../components/seo"
@@ -7,6 +12,8 @@ import Default from "../../components/layouts/default/default"
 import HeaderOnly from "../../components/layouts/Header-only/Header-only"
 import HWCTALink from "../../components/hwcta-link/hwcta-link"
 import { Helmet } from 'react-helmet';
+
+import AnecdoteSpendingSVG from '../../libs/assets/ffg/icons/anecdote-spending.svg';
 
 
 function SpendingAndGdpPage(props) {
@@ -32,10 +39,25 @@ function SpendingAndGdpPage(props) {
      <Default>
        <HeaderOnly></HeaderOnly>
 
+        {/* we may decide not to use this nav block */}
+       <nav className="chapter-nav chapter-nav--spending">
+            <ul className="chapter-nav__primary-list">
+                <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                <li><a href="./">Spending and GDP</a></li>
+                <li><a href="./categories.html">Spending Categories</a></li>
+                <li><a href="./trends.html">Federal Spending Trends</a></li>
+                <li><a href="./country-comparison.html">Country Comparison</a></li>
+            </ul>
+            <button className="chapter-nav-trigger">
+                <i className="fas fa-lg fa-angle-down menu-down"></i>
+                <i className="fas fa-lg fa-angle-up menu-up"></i>
+            </button>
+        </nav>
+
        <div className="ffg-wrapper spending-intro">
         <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
             <button className="info-box-trigger" data-box-id="per-individual">
-                <img src="/assets/ffg/icons/anecdote-spending.svg" alt="anecdote icon"></img>
+                <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
             </button>
         </h1>
 
