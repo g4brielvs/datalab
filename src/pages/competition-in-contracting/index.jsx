@@ -4,7 +4,7 @@ import SEO from "../../components/seo";
 import "../../styles/index.scss";
 import competitionStyles from './competition-in-contracting.module.scss';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Hidden } from "@material-ui/core"
 /* components */
 import Accordion from "../../components/accordion/accordion";
 import Barchart from '../../components/visualizations/horizontal-barchart/barchart';
@@ -133,28 +133,40 @@ class CompetitionInContractingPage extends Component {
           </ControlBar>
 
           <div className={competitionStyles.vizContainer}>
-            <div className={competitionStyles.container}>
+            <Grid container className={competitionStyles.container}>
 
-              <div id={competitionStyles.summary}>
+              <Grid alignItems='stretch' container id={competitionStyles.summary}>
                 <div id={competitionStyles.tooltip}></div>
 
-                <div className={competitionStyles.summaryItem}>
-                  <p className={competitionStyles.summaryItemCompeted}>$ COMPETED</p>
-                  <h2 id={competitionStyles.competedDollars}></h2>
-                </div>
-                <div className={competitionStyles.summaryItem} style={{ borderRight: '2px solid #a4a4a4' }}>
-                  <p className={competitionStyles.summaryItemCompeted}>ACTIONS COMPETED</p>
-                  <h2 id={competitionStyles.competedActions}></h2>
-                </div>
-                <div className={competitionStyles.summaryItem}>
-                  <p className={competitionStyles.summaryItemNotCompeted}>$ NOT COMPETED</p>
-                  <h2 id={competitionStyles.notCompetedDollars}></h2>
-                </div>
-                <div className={competitionStyles.summaryItem}>
-                  <p className={competitionStyles.summaryItemNotCompeted}>ACTIONS NOT COMPETED</p>
-                  <h2 id={competitionStyles.notCompetedActions}></h2>
-                </div>
-              </div>
+                <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
+                  <Grid container alignItems='flex-end'>
+                    <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>$ COMPETED</Grid>
+                    <Grid item xs={12} id={competitionStyles.competedDollars}></Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} md={3} lg={3} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparator}`}>
+                  <Grid container alignItems='flex-end'>
+                    <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>ACTIONS COMPETED</Grid>
+                    <Grid item xs={12} id={competitionStyles.competedActions}></Grid>
+                  </Grid>
+                </Grid>
+                <Hidden mdDown>
+                  <Grid item lg={1} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparatorLg}`}></Grid>
+                  <Grid item lg={1} className={competitionStyles.summaryItem}></Grid>
+                </Hidden>
+                <Grid item xs={6} md={3} lg={3} className={competitionStyles.summaryItem}>
+                  <Grid container alignItems='flex-end'>
+                    <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>$ NOT COMPETED</Grid>
+                    <Grid item xs={12} id={competitionStyles.notCompetedDollars}></Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
+                  <Grid container alignItems='flex-end'>
+                    <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>ACTIONS NOT COMPETED</Grid>
+                    <Grid item xs={12} id={competitionStyles.notCompetedActions}></Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
 
               <div>
                 <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
@@ -212,7 +224,7 @@ class CompetitionInContractingPage extends Component {
                 </form>
               </div>
 
-              <div>
+              <div className={competitionStyles.barChartDiv}>
                 <Barchart data={this.state.data}
                           unit={this.state.unit}
                           scale={this.state.scale}
@@ -223,7 +235,7 @@ class CompetitionInContractingPage extends Component {
                 </Barchart>
               </div>
 
-            </div>
+            </Grid>
           </div>
         </ToolLayout>
       </>

@@ -23,7 +23,6 @@ h2 {
 }
 
 .header__contextStatement {
-  color: $mdGrey;
   font-size: 1.0625rem;
   font-weight: 300;
   line-height: 1.5rem;
@@ -147,6 +146,10 @@ h2 {
   font-size: 2.5rem;
   font-weight: 300;
   margin-bottom: $margin-30;
+
+  span {
+    font-size: 2.5rem;
+  }
 }
 
 .intro-container {
@@ -169,5 +172,9 @@ h2 {
     font-weight: 600;
     color: $darkGrey;
     margin: $margin-25 0;
+
+    span {
+      font-size: 1.125rem;
+    }
   }
 }

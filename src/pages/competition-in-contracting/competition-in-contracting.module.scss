@@ -1,5 +1,8 @@
+@import '../../styles/variables';
+
 $competedColor: #0071bc;
 $nonCompetedColor: #D334BA;
+$summaryBorderColor: #DDD;
 
 .container {
 
@@ -24,20 +27,19 @@ $nonCompetedColor: #D334BA;
   }
 
   #summary {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
     font-size: 12px;
     color: black;
-    border-bottom: 2px solid #a4a4a4;
-    padding: 20px;
+    border-top: 1px solid $summaryBorderColor;
   }
 
   .summary-item {
-    padding: 0 0 10px 0;
-    width: 25%;
     text-align: center;
+    border-bottom: 1px solid $summaryBorderColor;
+    padding: $margin-15 $margin-10 $margin-10 $margin-10;
+    margin-bottom: 0;
+    > div {
+      height: 100%;
+    }
   }
 
   .select-wrapper1, .select-wrapper2 {
@@ -48,10 +50,6 @@ $nonCompetedColor: #D334BA;
   .legend{
     padding-top: 25px;
     display: inline-block;
-  }
-
-  #competed{
-
   }
 
   #one > div > div.mask > div.viz-container > div > div:nth-child(2) > form > div.select-wrapper1 > label,
@@ -67,22 +65,9 @@ $nonCompetedColor: #D334BA;
   #not-competed-dollars,
   #competed-actions,
   #not-competed-actions{
-    font-size: 3.9em;
+    font-size: 2rem;
     font-weight: lighter;
     margin:0;
-  }
-  #summary > div:nth-child(2) > p,
-  #summary > div:nth-child(3) > p,
-  #summary > div:nth-child(4) > p,
-  #summary > div:nth-child(5) > p{
-    font-size: 1.6em;
-    margin:0;
-  }
-  #summary > div:nth-child(2),
-  #summary > div:nth-child(3),
-  #summary > div:nth-child(4),
-  #summary > div:nth-child(5){
-    margin-top:0;
   }
 
   .svg {
@@ -111,8 +96,11 @@ $nonCompetedColor: #D334BA;
 
 }
 
+.bar-chart-div {
+  padding: 0 $margin-25;
+}
+
 .viz-container {
-  padding: 25px;
   height: 90%;
   overflow: hidden;
 }
@@ -126,6 +114,7 @@ $nonCompetedColor: #D334BA;
 }
 
 .summary-item-competed, .summary-item-not-competed {
+  font-size: 1.6em;
   font-weight: 600;
 }
 
@@ -137,8 +126,40 @@ $nonCompetedColor: #D334BA;
   color: $nonCompetedColor;
 }
 
+.summary-item-separator-lg {
+  border-right: 1px solid $summaryBorderColor;
+}
+
 @media (max-width: 1000px) {
   .bar-chart-toolbar {
     flex-direction: column !important;
+  }
+}
+
+@media (min-width: $desktop) {
+  .container .summary-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (min-width: $tablet){
+  #summary {
+    border-bottom: 1px solid #DDD;
+  }
+
+  .container {
+    .summary-item {
+      margin-top: $margin-10;
+      border-bottom: 0;
+      margin-bottom: 7px;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1){
+  .summary-item-separator {
+    border-right: 1px solid $summaryBorderColor;
   }
 }
