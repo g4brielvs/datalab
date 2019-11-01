@@ -29,6 +29,8 @@ function Sunburst(props) {
     const leaf = props.leaf;
     const wedgeColors = props.wedgeColors;
     const centerColor = props.centerColor;        // transparent to show #center
+
+    // TODO: For the Contract Explorer
     const hasCenterText = true;
 
     // Other variables
@@ -285,6 +287,9 @@ function Sunburst(props) {
       maxHeight = 700;
       width = 700;
       height = 700;
+      radius = Math.min(width, height) / 2;
+      xScale = d3.scale.linear().range([0, 2 * Math.PI]);
+      yScale = d3.scale.sqrt().range([0, radius]);
 
       d3.select("#sunburst").selectAll("*").remove();
 
@@ -307,8 +312,8 @@ function Sunburst(props) {
         // .on('mouseover', hover)
         .on('click', click)
         .append('title').text(function(d) {
-          const name = d.name ? d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim() : '';
-          return name;
+        const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
+        return name;
       });
 
       click(data[0]); // simulate clicking center to reset zoom
@@ -316,9 +321,7 @@ function Sunburst(props) {
 
     function click(d) {
       // setCategoryState(d);
-
-      if (hasCenterText) { updateCenter(d); }
-
+      updateCenter(d);
       svg.transition()
         .duration(750)
         .tween('scale', () => {
@@ -343,6 +346,7 @@ function Sunburst(props) {
         let depthCursor = data.children;
         // Go down one level at a time
         levels.forEach((property, depth) => {
+
           // Look to see if a branch has already been created
           let index;
           depthCursor.forEach((child, i) => {
