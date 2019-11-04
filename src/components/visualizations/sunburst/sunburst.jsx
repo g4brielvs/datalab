@@ -12,7 +12,6 @@ class Sunburst extends Component {
     };
 
     // Default values set from props
-    this.data = props.items;
     this.title = props.title.categoryLabel;
     this.centerTextHeading = props.title['centerText'];
     this.levels = props.levels;
@@ -196,7 +195,7 @@ class Sunburst extends Component {
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
 
-      // props.showDetails(null); // hide details panel
+      // this.props.showDetails(null); // hide details panel
 
     } else if (d.depth === 1) {
 
@@ -206,7 +205,7 @@ class Sunburst extends Component {
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
 
-      // props.showDetails(null); // hide details panel
+      // this.props.showDetails(null); // hide details panel
 
     } else {
 
@@ -216,7 +215,7 @@ class Sunburst extends Component {
       this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
 
-      // props.showDetails(d); // show details in panel
+      // this.props.showDetails(d); // show details in panel
       // console.log(d);
     }
 
@@ -332,7 +331,7 @@ class Sunburst extends Component {
     d3.select(self.frameElement).style('height', this.height + 'px');
 
     // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
-    this.hierarchy = this.buildDataHierarchy(this.title, this.data, this.levels);
+    this.hierarchy = this.buildDataHierarchy(this.title, this.state.data, this.levels);
 
     this.chartArray = this.partition.nodes(this.hierarchy)
       .filter(d => d.depth < 3); // leave off recipients
@@ -369,7 +368,7 @@ class Sunburst extends Component {
 
     if (this.props.items !== prevProps.items) {
       // Default values set from props
-      this.data = this.props.items;
+      this.state.data = this.props.items;
       this.title = this.props.title.categoryLabel;
       this.centerTextHeading = this.props.title['centerText'];
       this.levels = this.props.levels;
@@ -377,7 +376,7 @@ class Sunburst extends Component {
       this.wedgeColors = this.props.wedgeColors;
       this.centerColor = this.props.centerColor;
 
-      this.hierarchy = this.buildDataHierarchy(this.title, this.data, this.levels);
+      this.hierarchy = this.buildDataHierarchy(this.title, this.state.data, this.levels);
 
       this.chartArray = this.partition.nodes(this.hierarchy)
         .filter(d => d.depth < 3); // leave off recipients
