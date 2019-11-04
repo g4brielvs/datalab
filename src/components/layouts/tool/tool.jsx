@@ -79,15 +79,15 @@ export default class ToolLayout extends React.Component {
 
       <main className={styles.main}>
         <article>
-          <section>
+          <section className={styles.childrenSection}>
             {this.props.children}
           </section>
           <section className={styles.followUp}>
             <Grid container>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={4} lg={5}>
                 <div className={styles.bodyIntro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
               </Grid>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} sm={8} lg={7}>
                 <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
               </Grid>
             </Grid>

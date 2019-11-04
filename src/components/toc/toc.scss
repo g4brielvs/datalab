@@ -10,7 +10,7 @@ body, h1, h2, h3, h4, p, li {
 }
 
 #TOC {
-  margin-top: $margin-75;
+  margin-top: $margin-30;
   margin-bottom: $margin-100;
 
   .toc__tile {
@@ -48,6 +48,8 @@ body, h1, h2, h3, h4, p, li {
 
 @media (min-width: $desktop-xl) {
   #TOC {
+    margin-top: $margin-75;
+
     .toc__tile:not(:last-child) {
       border-right: 1px solid $lightGrey;
     }
@@ -59,7 +61,7 @@ body, h1, h2, h3, h4, p, li {
 
 }
 
-@media (min-width: $tablet) and (max-width: $desktop-xl) {
+@media (min-width: $phone) and (max-width: $desktop-xl) {
   #TOC {
     margin: 0 auto;
     margin-top: $margin-30;
@@ -84,15 +86,19 @@ body, h1, h2, h3, h4, p, li {
   }
 }
 
-@media (max-width: $tablet - 1) {
+@media (max-width: $phone - 1) {
   #TOC {
+    margin-top: $margin-25;
+
     .toc__subtitle {
       display: none;
     }
-
-    .toc__tile {
-      padding: 1rem 2rem 2rem;
+    .toc__number h2 {
+      font-size: 1.5rem;
+      line-height: 3.125rem;
     }
-
+    .toc__tile {
+      padding: 0;
+    }
   }
 }

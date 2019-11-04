@@ -1,5 +1,6 @@
 @import '../../styles/variables.scss';
 
+$grey: #888;
 $darkGrey: #666666;
 
 .analyses {
@@ -11,8 +12,10 @@ $darkGrey: #666666;
 .heading {
   border-bottom: 1px solid $darkGrey;
 
-  h1 {
-    color: $darkGrey;
+  h2 {
+    color: $grey;
+    font-size: 1.2rem;
+    font-weight: 600;
     text-transform: uppercase;
     text-align: left;
   }
@@ -23,7 +26,7 @@ $darkGrey: #666666;
 }
 
 .text {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -33,11 +36,11 @@ $darkGrey: #666666;
     color: #2272CE;
     height: 2rem;
     margin-bottom: 1rem;
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .subtitle {
-     font-size: 20px;
+     font-size: 1.25rem;
      height: 6rem;
      color: $font-body-copy;
      margin-bottom: 0;
@@ -50,7 +53,7 @@ $darkGrey: #666666;
   width: 100%;
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: $phone - 1) {
   .tile {
     border-bottom: 1px solid #ddd;
 
@@ -73,4 +76,9 @@ $darkGrey: #666666;
       margin-bottom: 1rem;
     }
   }
+
+  .tile:last-child {
+    border-bottom: 0;
+  }
+
 }
