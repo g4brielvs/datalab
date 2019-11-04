@@ -1,12 +1,11 @@
 import React from 'react';
 
-// import Default from '../../components/layouts/default/default';
+import ControlBar from '../../components/control-bar/control-bar';
 import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
-import HWCTALink from '../../components/hwcta-link/hwcta-link';
-// import PageHeader from '../../components/headers/page';
+// import HWCTALink from '../../components/hwcta-link/hwcta-link';
 import SEO from '../../components/seo';
-import Share from '../../components/share/share';
+import ShareMenu from '../../components/share-menu/share-menu';
 import ToolLayout from "../../components/layouts/tool/tool"
 
 import csvData from '../../unstructured-data/dts/dts.csv';
@@ -49,7 +48,16 @@ export default class DTSPage extends React.Component {
           <Grid container justify='space-between'>
             <Grid item xs={1} />
             <Grid item className='header-updated-when' />
-            <Grid item xs={1}><Share location={this.props.location} /></Grid>
+            <Grid item xs={1}>
+              <ControlBar>
+                <ShareMenu location={this.props.location}
+                  siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='dts'
+                  title='Check out this analysis on Data Lab'
+                  text='Check out this site https://datalab.usaspending.gov/dts.html'
+                  facebook='' reddit='' linkedin='' tumblr='' email=''
+                />
+              </ControlBar>
+            </Grid>
           </Grid>
 
           <Grid container justify='space-between' wrap='nowrap' className='top-margin'>
@@ -80,9 +88,9 @@ export default class DTSPage extends React.Component {
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>
+
           <DTS data={csvData} />
 
-          <HWCTALink />
         </div>
       </div>
     </ToolLayout >
