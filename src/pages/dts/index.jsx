@@ -1,13 +1,13 @@
 import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
-import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
-// import HWCTALink from '../../components/hwcta-link/hwcta-link';
 import SEO from '../../components/seo';
 import ShareMenu from '../../components/share-menu/share-menu';
 import ToolLayout from "../../components/layouts/tool/tool"
 
+import loadable from '@loadable/component';
+const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
 import csvData from '../../unstructured-data/dts/dts.csv';
 
 export default class DTSPage extends React.Component {
