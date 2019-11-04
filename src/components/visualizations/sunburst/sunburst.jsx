@@ -27,9 +27,9 @@ class Sunburst extends Component {
     this.hierarchy;
     this.chartArray;
     this.innerRadius;
-    this.maxHeight = document.body.clientWidth;
-    this.width = document.body.clientWidth;
-    this.height = this.maxHeight;
+    this.maxHeight;
+    this.width;
+    this.height;
     this.arc;
     this.radius;
     this.xScale;
@@ -89,14 +89,20 @@ class Sunburst extends Component {
   }
 
   isMobile() {
-    const maxThreshold = 768;
-    return document.body.clientWidth <= maxThreshold;
+    if (typeof document !== `undefined`) {
+      const maxThreshold = 768;
+      return document.body.clientWidth <= maxThreshold;
+    }
+    return false;
   }
 
   isTablet() {
-    const minThreshold = 769;
-    const maxThreshold = 1199;
-    return (minThreshold <= document.body.clientWidth && document.body.clientWidth <= maxThreshold);
+    if (typeof document !== `undefined`) {
+      const minThreshold = 769;
+      const maxThreshold = 1199;
+      return (minThreshold <= document.body.clientWidth && document.body.clientWidth <= maxThreshold);
+    }
+    return false;
   }
 
   getWedgeColor(d) {
@@ -110,6 +116,7 @@ class Sunburst extends Component {
   }
 
   drawChart(data) {
+    console.log('here');
     this.createChart();
     this.refreshData(data);
   }
@@ -117,8 +124,9 @@ class Sunburst extends Component {
   createChart() {
     d3.select("#sunburst").selectAll("*").remove();
 
+    console.log(this.width);
+    console.log(this.height);
     this.svg = d3.select('#sunburst')
-      .attr('style', `width: ${this.width}px; height: ${this.height}px`)
       .append('svg')
       .attr('width', this.width)
       .attr('height', this.height)
@@ -297,6 +305,11 @@ class Sunburst extends Component {
   /* The useEffect Hook is for running side effects outside of React,
      for instance inserting elements into the DOM using D3 */
   componentDidMount() {
+    if (typeof document !== `undefined`) {
+      this.maxHeight = document.body.clientWidth * .7;
+      this.width = document.body.clientWidth * .7;
+      this.height = this.maxHeight;
+    }
 
     this.radius = Math.min(this.width, this.height) / 2;
     this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
@@ -332,6 +345,28 @@ class Sunburst extends Component {
     // Function calls
     this.drawChart(this.chartArray); // default chart is all grants
 
+    const context = this;
+
+    if (typeof window !== 'undefined') {
+      // Redraw based on the new size whenever the browser window is resized.
+      window.addEventListener("resize", function() {
+        context.calculatedWidth = window.innerWidth * .7;
+        context.width = window.innerWidth * .7;
+        console.log(context.calculatedWidth);
+        console.log(context.maxHeight);
+
+        context.height = context.width;
+        context.radius = Math.min(context.width, context.height) / 2;
+        context.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
+        context.yScale = d3.scale.sqrt().range([0, context.radius]);
+
+        const stateData = context.state.selectedItem;
+
+        context.drawChart(context.chartArray);
+
+        if (stateData) context.click(stateData);
+      });
+    }
   }
 
 
