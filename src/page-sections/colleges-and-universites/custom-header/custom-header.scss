@@ -41,6 +41,7 @@ p {
 }
 
 .header__subtext {
+	padding-top: $margin-50;
 	color: $darkGrey;
 	font-size: 16px;
 	font-weight: 600;
@@ -51,3 +52,8 @@ p {
 // .header.container-fluid {
 //   margin: 3rem 0;
 // }
+@media (max-width: $phone - 1){
+	.header__subtext {
+		padding-top: $margin-30;
+	}
+}

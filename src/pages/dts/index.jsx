@@ -8,6 +8,7 @@ import csvData from '../../unstructured-data/dts/dts.csv';
 import HWCTALink from "../../components/hwcta-link/hwcta-link";
 import Share from "../../components/share/share";
 import PageHeader from '../../components/headers/page';
+import ControlBar from "../../components/control-bar/control-bar"
 
 function DTSPage(props) {
 
@@ -89,10 +90,10 @@ function DTSPage(props) {
               <div className="header-sub-container">
                 <div></div>
                 <div className="header-updated-when"></div>
-                <div className="flex">
+                <ControlBar>
                   <Share
                     location={props.location}/>
-                </div>
+                </ControlBar>
               </div>
             </div>
 

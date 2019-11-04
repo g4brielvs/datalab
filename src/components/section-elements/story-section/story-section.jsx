@@ -1,6 +1,7 @@
 import React from "react"
 import storySectionStyles from './story-section.module.scss'
 import StorySectionHeading from "../story-section-heading/story-section-heading"
+import { Grid } from '@material-ui/core';
 
 function StorySection(props) {
   return (
@@ -14,8 +15,8 @@ function StorySection(props) {
           blurb={props.header.introBlurb}
         />
 
-        <div className="row center-xs">
-          <div className="col-xs-10">
+        <Grid container justify="center">
+          <Grid item xs={12} lg={10}>
             <div className={storySectionStyles.alignLeft}>
               <div className="row">
                 <div className="col-xs-12">
@@ -23,8 +24,8 @@ function StorySection(props) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
       </section>
       </div>
     </>

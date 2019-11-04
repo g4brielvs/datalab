@@ -37,9 +37,9 @@ const MoreAnalyses = () => {
 
       <Grid item xs={12}
             className={moreAnalysesStyles.heading}>
-        <h1>
+        <h2>
           More Analyses
-        </h1>
+        </h2>
       </Grid>
 
       <Grid
@@ -49,16 +49,16 @@ const MoreAnalyses = () => {
 
 
         {analyses.map((item, index) =>
-          <Grid item sm={12} md={6} lg={3}
+          <Grid item xs={12} sm={6} xl={3}
             key={'analyses__tile_' + index}
             className={`tile ${moreAnalysesStyles.tile}`}>
 
             <Link to={item.href}>
 
                 <div className={moreAnalysesStyles.text}>
-                  <h2 className={moreAnalysesStyles.title}>
+                  <h3 className={moreAnalysesStyles.title}>
                     {item.title}
-                  </h2>
+                  </h3>
 
                   <p className={moreAnalysesStyles.subtitle}>
                     {item.subtitle}
