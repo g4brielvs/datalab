@@ -1,12 +1,13 @@
+import '../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../libs/ffg/src/spending/intro/spending-intro.scss'
 import '../../libs/ffg/src/globalSass/cg.scss'
+// import '../../libs/ffg/src/globalSass/infoBox.scss'
+import '../../libs/ffg/src/infoBox.js'
 import '../../libs/assets/ffg/nav/nav.js'
 import '../../libs/assets/ffg/nav/nav.css'
 
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React from "react"
 import SEO from "../../components/seo"
-import ToolLayout from "../../components/layouts/tool/tool"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
 import HeaderOnly from "../../components/layouts/Header-only/Header-only"
@@ -14,12 +15,12 @@ import HWCTALink from "../../components/hwcta-link/hwcta-link"
 import { Helmet } from 'react-helmet';
 
 import AnecdoteSpendingSVG from '../../libs/assets/ffg/icons/anecdote-spending.svg';
-
+import DefinitionSpendingSVG from '../../libs/assets/ffg/icons/definition.svg';
 
 function SpendingAndGdpPage(props) {
 
-  console.log('props in spending and gdp', props);
-  console.log('AfgData', AfgData);
+//   console.log('props in spending and gdp', props);
+//   console.log('AfgData', AfgData);
 
   return (
     <>
@@ -97,7 +98,7 @@ function SpendingAndGdpPage(props) {
 
                     <strong>What's gross domestic product?
                         <button className="info-box-trigger" data-box-id="gdp-info">
-                            <img src="/assets/ffg/icons/definition.svg" alt="definition icon"></img>
+                            <img src={DefinitionSpendingSVG} alt="definition icon"></img>
                         </button>
                     </strong>
                 </section>
@@ -111,20 +112,22 @@ function SpendingAndGdpPage(props) {
     </div>
 
     <div className="info-box" id="per-individual">
-        <img src="/assets/ffg/icons/anecdote-spending.svg" alt="anecdote icon"></img>
+        <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
         <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href="{AfgData.census_population.value}" target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
     </div>
 
     <div className="info-box" id="gdp-info">
-        <img src="/assets/ffg/icons/definition.svg" alt="definition icon"></img>
+        <img src={DefinitionSpendingSVG} alt="definition icon"></img>
         <p><strong>Gross domestic product (GDP)</strong> measures the size of the nation's economy by the total value of final goods and services that are produced in a year. Gross domestic product is used to compare the economies of different countries, measure growth in the economy, and determine the right monetary policies to address inflation and unemployment.</p>
     </div>
 
     <div className="info-box" id="billion-dollars">
-        <img src="/assets/ffg/icons/anecdote-spending.svg" alt="anecdote icon"></img>
+        <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
         <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal spending. </p>
     </div>
     </div>
+
+    <HWCTALink></HWCTALink>
 
      </Default>
     </>
