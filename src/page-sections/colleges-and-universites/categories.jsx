@@ -161,6 +161,7 @@ const Categories = () => {
   const detailPanelRef = React.createRef();
   let currentDetails = {};
   const getClickedDetails = d => {
+    console.log(d);
     if (!d) {
       detailPanelRef.current.closeDetails();
     } else {

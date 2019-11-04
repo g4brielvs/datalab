@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import * as d3 from "d3v3";
 import './sunburst.scss';
 
-class Sunburst extends Component {
+export default class Sunburst extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -195,7 +195,7 @@ class Sunburst extends Component {
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
 
-      // this.props.showDetails(null); // hide details panel
+      this.props.showDetails(null); // hide details panel
 
     } else if (d.depth === 1) {
 
@@ -205,7 +205,7 @@ class Sunburst extends Component {
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
 
-      // this.props.showDetails(null); // hide details panel
+      this.props.showDetails(null); // hide details panel
 
     } else {
 
@@ -215,8 +215,7 @@ class Sunburst extends Component {
       this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
 
-      // this.props.showDetails(d); // show details in panel
-      // console.log(d);
+      this.props.showDetails(d); // show details in panel
     }
 
     /* Scale text to fit */
@@ -405,7 +404,4 @@ class Sunburst extends Component {
       </>
     )
   }
-}
-
-
-export default Sunburst;
+};
