@@ -7,7 +7,8 @@ class Sunburst extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedItem: null
+      selectedItem: null,
+      data: props.items
     };
 
     // Default values set from props
@@ -34,6 +35,7 @@ class Sunburst extends Component {
     this.radius;
     this.xScale;
     this.yScale;
+    this.partition;
 
     this.buildDataHierarchy = this.buildDataHierarchy.bind(this);
     this.isMobile = this.isMobile.bind(this);
@@ -116,7 +118,6 @@ class Sunburst extends Component {
   }
 
   drawChart(data) {
-    console.log('here');
     this.createChart();
     this.refreshData(data);
   }
@@ -124,8 +125,6 @@ class Sunburst extends Component {
   createChart() {
     d3.select("#sunburst").selectAll("*").remove();
 
-    console.log(this.width);
-    console.log(this.height);
     this.svg = d3.select('#sunburst')
       .append('svg')
       .attr('width', this.width)
@@ -318,7 +317,7 @@ class Sunburst extends Component {
 
 
     // Initialize d3 visualization
-    const partition = d3.layout.partition().value(d => d.size);
+    this.partition = d3.layout.partition().value(d => d.size);
     this.arc = d3.svg.arc()
       .startAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x))))
       .endAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x + d.dx))))
@@ -330,13 +329,12 @@ class Sunburst extends Component {
       })
       .outerRadius(d => Math.max(0, classContext.yScale(d.y + d.dy)))
 
-    console.log(this.arc);
     d3.select(self.frameElement).style('height', this.height + 'px');
 
     // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
     this.hierarchy = this.buildDataHierarchy(this.title, this.data, this.levels);
 
-    this.chartArray = partition.nodes(this.hierarchy)
+    this.chartArray = this.partition.nodes(this.hierarchy)
       .filter(d => d.depth < 3); // leave off recipients
     this.hierarchy.children.forEach((node, index) => {
       node.colorIndex = index % this.wedgeColors.length;
@@ -352,8 +350,6 @@ class Sunburst extends Component {
       window.addEventListener("resize", function() {
         context.calculatedWidth = window.innerWidth * .7;
         context.width = window.innerWidth * .7;
-        console.log(context.calculatedWidth);
-        console.log(context.maxHeight);
 
         context.height = context.width;
         context.radius = Math.min(context.width, context.height) / 2;
@@ -369,6 +365,29 @@ class Sunburst extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+
+    if (this.props.items !== prevProps.items) {
+      // Default values set from props
+      this.data = this.props.items;
+      this.title = this.props.title.categoryLabel;
+      this.centerTextHeading = this.props.title['centerText'];
+      this.levels = this.props.levels;
+      this.leaf = this.props.leaf;
+      this.wedgeColors = this.props.wedgeColors;
+      this.centerColor = this.props.centerColor;
+
+      this.hierarchy = this.buildDataHierarchy(this.title, this.data, this.levels);
+
+      this.chartArray = this.partition.nodes(this.hierarchy)
+        .filter(d => d.depth < 3); // leave off recipients
+      this.hierarchy.children.forEach((node, index) => {
+        node.colorIndex = index % this.wedgeColors.length;
+      });
+
+      this.drawChart(this.chartArray);
+    }
+  }
 
   render() {
     return (
