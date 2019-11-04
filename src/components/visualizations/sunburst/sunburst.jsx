@@ -239,12 +239,11 @@ export default class Sunburst extends Component {
 
     const padding = 16 * scale; // 1em = 16px
 
-    this.centerGroup.style('cursor', 'pointer')
+    this.centerGroup
+      .style('cursor', 'pointer')
       .attr('y', -maxHeight / 2 + padding)
-      .on('click', function() {
-        this.click(this.chartData);
-      })
-
+      .on('click', () => this.click(this.chartData))
+    ;
   }
 
   setCenterTextLines(className, centerTextHeading, textSize, lineHeight) {
