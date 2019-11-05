@@ -8,7 +8,6 @@ import ToolLayout from "../../components/layouts/tool/tool"
 
 import loadable from '@loadable/component';
 const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
-import csvData from '../../unstructured-data/dts/dts.csv';
 
 import AWS from 'aws-sdk';
 AWS.config.update(
