@@ -70,15 +70,12 @@ export default class BubbleChart extends Component {
     this.nodes = this.pack.nodes(this.root);
     this.drawBubbleChart(this.root);
     const classContext = this;
-    console.log('chart init');
 
     d3.select(this.bubbleChartContainer)
       .on("click", function () {
         const currentState = classContext.state.selectedItem;
-        console.log('chart click');
-        console.log(currentState);
+
         if (!currentState || (currentState && currentState.depth !== 2)) {
-          console.log('here');
           classContext.setLegendLeft(false);
           classContext.updateSelection(null);
           classContext.zoom(classContext.root);
@@ -112,13 +109,11 @@ export default class BubbleChart extends Component {
   }
 
   /* Calculate text font size for bubbles before and after zoom */
-  calculateTextFontSize(d) {
+  calculateTextFontSize(d, context) {
     let radius = 0;
     let labelWidth;
     const classContext = this;
-
-    console.log(this);
-
+    
     if (!this.resize) {
       if (d.fontsize) {
         //if fontsize is already calculated use that.
@@ -126,7 +121,7 @@ export default class BubbleChart extends Component {
       }
       if (!d.computed) {
         //if computed not present get & store the getComputedTextLength() of the text field
-        // d.computed = d.getComputedTextLength();
+        d.computed = context.getComputedTextLength();
       }
     }
 
@@ -134,7 +129,7 @@ export default class BubbleChart extends Component {
       //if computed is not 0 then get the visual radius of DOM
       //if radius present in DOM use that
       radius = d.r ? d.r : 0;
-      labelWidth = radius * 2 * this.diameter / (d.r * 2 + this.margin) - this.margin;
+      labelWidth = radius * 2 * classContext.diameter / (d.parent.r * 2 + classContext.margin) - classContext.margin;
       // labelWidth = radius * 2 * this.diameter / (d.parent.r * 2 + this.margin) - this.margin;
       d.fontsize = labelWidth / d.computed > 0 ? labelWidth / d.computed + "em" : 0.01 + "em";
       return d.fontsize;
@@ -166,8 +161,6 @@ export default class BubbleChart extends Component {
     focus = root;
     this.diameter = this.bubbleWidth = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
     const classContext = this;
-
-    console.log(this.bubbleChartContainer);
 
     d3.select(this.bubbleChartContainer)
       .attr('style', "width: " + this.bubbleWidth + "px; height: " + this.bubbleWidth + "px;")
@@ -229,7 +222,9 @@ export default class BubbleChart extends Component {
       .text(function (d) {
         return d.name;
       })
-      .style("font-size", this.calculateTextFontSize)
+      .style("font-size", function(d) {
+        return classContext.calculateTextFontSize(d, this)
+      })
       .attr("text-anchor", "middle")
       .on("click", this.bubbleClick)
       .on("mouseover", function (d) {
@@ -288,7 +283,9 @@ export default class BubbleChart extends Component {
       // show the text
       d3.selectAll("text.label").filter(function (d) {
         return d.parent === classContext.focused || this.style.display === "inline";
-      }).style("font-size", this.calculateTextFontSize);
+      }).style("font-size", function(d) {
+        return classContext.calculateTextFontSize(d, this)
+      });
     }, 100);
   }
 
@@ -318,7 +315,6 @@ export default class BubbleChart extends Component {
 
     // need to check if focus is d, maybe?
     if (this.isZoomedIn(d)) {
-      console.log('zoomed in');
       if (d.depth === 2) {
         d3.event.stopPropagation();
         this.updateSelection(d.parent);
@@ -338,8 +334,6 @@ export default class BubbleChart extends Component {
         }
       }
     } else {
-      console.log('zoomed in');
-
       if (d.depth === 2) {
         this.setLegendLeft(true);
         this.updateSelection(d.parent);
