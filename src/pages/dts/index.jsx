@@ -116,7 +116,7 @@ export default class DTSPage extends React.Component {
             </Grid>
           </Grid>
 
-          <DTS data={csvData} />
+          <DTS data={this.state.dtsData} />
 
         </div>
       </div>
