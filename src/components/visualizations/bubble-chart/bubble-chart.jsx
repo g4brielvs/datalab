@@ -113,7 +113,7 @@ export default class BubbleChart extends Component {
     let radius = 0;
     let labelWidth;
     const classContext = this;
-    
+
     if (!this.resize) {
       if (d.fontsize) {
         //if fontsize is already calculated use that.
@@ -428,9 +428,29 @@ export default class BubbleChart extends Component {
 
     this.chartInit();
 
-    /* functions */
+    if(typeof window !== 'undefined') {
+      const classContext = this;
+      // Redraw based on the new size whenever the browser window is resized.
+      window.addEventListener("resize", function () {
+        d3.select("#agency-bubbleChart").selectAll("*").remove();
+        if (classContext.root) {
+          classContext.maxHeight = window.innerWidth * classContext.widthPercentage;
+          classContext.calculatedWidth = window.innerWidth * classContext.widthPercentage;
+          classContext.diameter = classContext.bubbleWidth = window.innerWidth * classContext.widthPercentage;
+          classContext.resize = true;
+          classContext.drawBubbleChart(classContext.root);
+          classContext.resize = false;
 
-
+          // check the state here and replay
+          const chartState = classContext.state.selectedItem;
+          if (chartState) {
+            classContext.zoom(chartState);
+          } else {
+            classContext.zoomTo([classContext.root.x, classContext.root.y, classContext.root.r * 2 + classContext.margin]);
+          }
+        }
+      });
+    }
   };
 
   render() {
