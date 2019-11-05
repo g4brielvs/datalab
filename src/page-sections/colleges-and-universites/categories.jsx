@@ -12,6 +12,7 @@ import Sunburst from '../../components/visualizations/sunburst/sunburst';
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
+import ShareMenu from "../../components/share-menu/share-menu"
 
 const Categories = () => {
   const switchView = view => alert('switch to ' + view + ' mode');
@@ -226,11 +227,14 @@ const Categories = () => {
       </Hidden>
 
       <Accordion title='Accordion Title'>
-        <p>I am an accordion with lots to say.</p>
-        <p>I have several paragraphs...</p>
-        <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
+        <ul>
+          <li>Select an investment type: contracts, grants, or research grants</li>
+          <li>Hover over each section to determine the category</li>
+          <li>Click on a specific section to display the total awards for that category</li>
+          <li>Click the center section to return to the original display</li>
+        </ul>
       </Accordion>
-
+      
       <Grid container>
         <Grid item>
           <Hidden mdDown>
