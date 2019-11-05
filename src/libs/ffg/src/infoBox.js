@@ -1,4 +1,6 @@
 import { select, selectAll } from 'd3-selection';
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
@@ -8,8 +10,12 @@ const d3 = { select, selectAll },
     activeClass = 'info-box--active';
 
 function addCloseIcon() {
+    // const rBox = React.findDOMNode(this);
     const box = d3.select(this),
         closeButton = box.append('button'),
+        // const closeButton = rBox.append(<button><FontAwesomeIcon icon={faPlus} className={accordionStyles.plus} /></button>);
+        // const closeButton =  React.createElement('<button><FontAwesomeIcon icon={faPlus} className={accordionStyles.plus} /></button>');
+        // box.append(closeButton);
         closeIcon = closeButton.append('i');
 
     closeButton.lower();

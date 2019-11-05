@@ -1,8 +1,9 @@
 import '../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
-import '../../libs/ffg/src/spending/intro/spending-intro.scss'
 import '../../libs/ffg/src/globalSass/cg.scss'
-// import '../../libs/ffg/src/globalSass/infoBox.scss'
+// spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
+import '../../libs/ffg/src/spending/intro/spending-intro.scss'
 import '../../libs/ffg/src/infoBox.js'
+// import '../../libs/ffg/src/globalSass/infoBox.scss'
 import '../../libs/assets/ffg/nav/nav.js'
 import '../../libs/assets/ffg/nav/nav.css'
 
@@ -10,17 +11,16 @@ import React from "react"
 import SEO from "../../components/seo"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
-import HeaderOnly from "../../components/layouts/Header-only/Header-only"
-import HWCTALink from "../../components/hwcta-link/hwcta-link"
+import HeaderOnly from "../../components/layouts/header-only/header-only"
+import GdpTemplate from '../../components/layouts/gdp-template/gdp-template'
+import Accordion from '../../components/accordion/accordion'
+import HwctaLink from '../../components/hwcta-link/hwcta-link'
 import { Helmet } from 'react-helmet';
 
 import AnecdoteSpendingSVG from '../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../libs/assets/ffg/icons/definition.svg';
 
 function SpendingAndGdpPage(props) {
-
-//   console.log('props in spending and gdp', props);
-//   console.log('AfgData', AfgData);
 
   return (
     <>
@@ -127,7 +127,20 @@ function SpendingAndGdpPage(props) {
     </div>
     </div>
 
-    <HWCTALink></HWCTALink>
+
+    {/* <section className="hwcta">
+        <p>The visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States.</p>
+        <GdpTemplate></GdpTemplate>
+        <p>The spending-to-gross domestic product ratio is included to provide you with context for the trillions of dollars that go out from the federal government annually. Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
+        <div className="afg__download--div">
+            <div className="afg__download--heading">Download Source Data</div>
+            <ul>
+                <li><a href="../../libs/assets/ffg/data/federal_spending_gdp.csv" download>federal_spending_gdp.csv</a></li>
+            </ul>
+        </div>
+    </section> */}
+
+    <HwctaLink></HwctaLink>
 
      </Default>
     </>
