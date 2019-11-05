@@ -8,7 +8,7 @@ const ControlBar = (props) => (
     <Hidden smUp>
       <Grid container justify='space-evenly' className={controlBarStyles.controlBar}>
           {Children.map(props.children, (child) => {
-              return <Grid className={controlBarStyles.child} item xs={2} justify='center'>
+              return <Grid className={controlBarStyles.child} item xs={2}>
                       {child}
                   </Grid>
           })}
