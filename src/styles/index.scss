@@ -6,9 +6,17 @@ body {
   padding: 0;
 }
 
-body, p, h1, h2, h3, h4, h5, input, select, textarea {
-  color: #666666;
+body, p, h1, h2, h3, h4, h5, input, select, textarea, ul, li {
   font-family: 'Source Sans Pro';
+}
+
+body, h1, h2, h3, h4, h5, input, select, textarea, div {
+  color: $font-body-copy;
+}
+
+p, ul, li, span {
+  color: #AAA;
+  font-size: 1rem;
 }
 
 a:-webkit-any-link {
