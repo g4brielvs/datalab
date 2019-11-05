@@ -4,7 +4,6 @@ import './dts.scss';
 import Bars from '../../../svgs/bars.svg';
 import List from '../../../svgs/list.svg';
 
-
 function DTS(props) {
 
   useEffect(() => {
