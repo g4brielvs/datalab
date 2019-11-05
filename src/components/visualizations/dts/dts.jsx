@@ -77,7 +77,7 @@ function DTS(props) {
       }
     ]
 
-    if(_data) loadData(_data);
+    if (_data) loadData(_data);
 
     function loadData(_data) {
       optionsData = [];
@@ -187,7 +187,7 @@ function DTS(props) {
     }
 
     function setFancyLines(selector, lineFn) {
-      svg.selectAll(selector).each(function(lineSel) {
+      svg.selectAll(selector).each(function (lineSel) {
         let d3LineSel = d3.select(this)
         let d3LineSelData = d3LineSel.data();
 
@@ -235,7 +235,7 @@ function DTS(props) {
       if (s == null) {
         handle.attr("display", "none");
       } else {
-        handle.attr("display", null).attr("transform", function(d, i) {
+        handle.attr("display", null).attr("transform", function (d, i) {
           return "translate(" + s[i] + "," + height2 / 2 + ")";
         });
       }
@@ -371,10 +371,10 @@ function DTS(props) {
       barData = barData || yearToSpendingArray.slice(-10);
 
       var svg = d3.select(".svg-tsbfy-container").append("svg")
-          .attr("id", "viz-tsbfy-wrapper")
-          .attr("width", "750") // do we need this?
-          .attr("height", "500") // or this?
-          .attr("viewBox", "0 0 750 500"), // or this?
+        .attr("id", "viz-tsbfy-wrapper")
+        .attr("width", "750") // do we need this?
+        .attr("height", "500") // or this?
+        .attr("viewBox", "0 0 750 500"), // or this?
         margin = { top: 20, right: 20, bottom: 50, left: 150 },
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
@@ -433,7 +433,7 @@ function DTS(props) {
         .append('tr');
 
       let cells = rows.selectAll('td')
-        .data(function(row) {
+        .data(function (row) {
           let tdYear = row.year;
           let tdSpendingPerYear = dollarFormatter(row.spending);
 
@@ -606,11 +606,11 @@ function DTS(props) {
 
       d3.select("#svg-wrapper").selectAll(".line-main").remove();
 
-      d3.selectAll(".period-button").on("click", function() {
+      d3.selectAll(".period-button").on("click", function () {
         choosePeriodButton(this, data);
       });
 
-      brush.on("end", function() {
+      brush.on("end", function () {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
 
         var s = d3.event.selection || x2.range();
@@ -618,7 +618,7 @@ function DTS(props) {
         updateHistoryWithNewBrush(s);
       });
 
-      zoom.on("end", function() {
+      zoom.on("end", function () {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
 
         var t = d3.event.transform || x2.range();
@@ -702,7 +702,7 @@ function DTS(props) {
           .innerRadius(0)
           .outerRadius(height2 / 2)
           .startAngle(0)
-          .endAngle(function(d, i) {
+          .endAngle(function (d, i) {
             return i ? Math.PI : -Math.PI;
           }));
 
@@ -734,11 +734,11 @@ function DTS(props) {
         .attr("width", width)
         .attr("height", height)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .on("mouseover", function() {
+        .on("mouseover", function () {
           ttContainer.style("display", "block");
           mouseOverDataPoint.style("display", "block");
         })
-        .on("mouseout", function() {
+        .on("mouseout", function () {
           ttContainer.style("display", "none");
           mouseOverDataPoint.style("display", "none");
         })
@@ -968,10 +968,7 @@ function DTS(props) {
       return yearToSpendingArray;
     }
 
-
-
-
-// Define filter conditions
+    // Define filter conditions
     function multiFormat(date) {
       return (d3.timeSecond(date) < date ? formatMillisecond
         : d3.timeMinute(date) < date ? formatSecond
@@ -982,133 +979,134 @@ function DTS(props) {
                   : formatYear)(date);
     }
 
-
     function drawChart() {
       init();
+      if (data) {
+        
+        lastDate = data[data.length - 1].date;
 
-      lastDate = data[data.length - 1].date;
+        d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
 
-      d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
+        d3.select(".header-updated-when").text("Updated " + dateFormatter(lastDate));
 
-      d3.select(".header-updated-when").text("Updated " + dateFormatter(lastDate));
+        x = d3.scaleTime().domain(d3.extent(dateScaleValues)).range([0, width]);
+        x2 = d3.scaleTime().domain(d3.extent(dateScaleValues)).range([0, width]);
 
-      x = d3.scaleTime().domain(d3.extent(dateScaleValues)).range([0, width]);
-      x2 = d3.scaleTime().domain(d3.extent(dateScaleValues)).range([0, width]);
+        xAxis = d3.axisBottom(x).tickFormat(multiFormat).ticks(d3.timeMonth.every(3));
+        xAxis2 = d3.axisBottom(x2).ticks(d3.timeYear.every(2));
 
-      xAxis = d3.axisBottom(x).tickFormat(multiFormat).ticks(d3.timeMonth.every(3));
-      xAxis2 = d3.axisBottom(x2).ticks(d3.timeYear.every(2));
+        optionsDict["All Categories"] = allToSpending;
 
-      optionsDict["All Categories"] = allToSpending;
+        createMasterMapping();
 
-      createMasterMapping();
+        allOptions = [...new Set(optionsData)];
+        allOptions.sort();
 
-      allOptions = [...new Set(optionsData)];
-      allOptions.sort();
+        let condensedOptions = Object.keys(categoryToSpendingPrevFY).sort((a, b) => categoryToSpendingPrevFY[b] - categoryToSpendingPrevFY[a]).slice(0, 10);
 
-      let condensedOptions = Object.keys(categoryToSpendingPrevFY).sort((a, b) => categoryToSpendingPrevFY[b] - categoryToSpendingPrevFY[a]).slice(0, 10);
+        let activeOptions = [];
+        let inactiveOptions = [];
 
-      let activeOptions = [];
-      let inactiveOptions = [];
-
-      for (let catKey in categoryToActiveWithinAYear) {
-        if (categoryToActiveWithinAYear[catKey]) {
-          activeOptions.push(catKey);
-        } else {
-          inactiveOptions.push(catKey);
+        for (let catKey in categoryToActiveWithinAYear) {
+          if (categoryToActiveWithinAYear[catKey]) {
+            activeOptions.push(catKey);
+          } else {
+            inactiveOptions.push(catKey);
+          }
         }
-      }
 
-      activeOptions.sort();
-      inactiveOptions.sort();
+        activeOptions.sort();
+        inactiveOptions.sort();
 
-      createSelect(condensedOptions, activeOptions, inactiveOptions);
+        createSelect(condensedOptions, activeOptions, inactiveOptions);
 
-      let theFrequency = getFrequencyFromURL();
-      let theCategory = getCategoryFromURL(allOptions);
+        let theFrequency = getFrequencyFromURL();
+        let theCategory = getCategoryFromURL(allOptions);
 
-      d3.select('#frequency-selector').property('value', theFrequency);
-      d3.select('#category-selector').property('value', theCategory);
+        d3.select('#frequency-selector').property('value', theFrequency);
+        d3.select('#category-selector').property('value', theCategory);
 
-      d3.select(".daily-spending-amount").text(dollarFormatter(todayAllCategorySpending.value));
+        d3.select(".daily-spending-amount").text(dollarFormatter(todayAllCategorySpending.value));
 
-      // data.sort(function(a, b) { return a.date - b.date; });
+        // data.sort(function(a, b) { return a.date - b.date; });
 
-      let graphData = getGraphData();
+        let graphData = getGraphData();
 
-      createGraph(graphData);
-      updateGraph(graphData);
+        createGraph(graphData);
+        updateGraph(graphData);
 
-      setTooltipActiveTimeframe(theFrequency);
+        setTooltipActiveTimeframe(theFrequency);
 
-      let yearToSpendingArray = getYearToSpendingArray(optionsDict["All Categories"]["fytd"]);
+        let yearToSpendingArray = getYearToSpendingArray(optionsDict["All Categories"]["fytd"]);
 
-      function toggleButtonBgColor(context) {
-        d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
-        d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
+        function toggleButtonBgColor(context) {
+          d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
+          d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
 
-        d3.select(context).style("background-color", "rgb(255, 255, 255)");
-      }
+          d3.select(context).style("background-color", "rgb(255, 255, 255)");
+        }
 
-      d3.select(".viz-tsbfy-bar-view").on("click", function () {
-        toggleButtonBgColor(this);
+        d3.select(".viz-tsbfy-bar-view").on("click", function () {
+          toggleButtonBgColor(this);
+          createBarChart(yearToSpendingArray);
+        });
+
+        d3.select(".viz-tsbfy-table-view").on("click", function () {
+          toggleButtonBgColor(this);
+          createTable(yearToSpendingArray);
+        });
+
         createBarChart(yearToSpendingArray);
-      });
 
-      d3.select(".viz-tsbfy-table-view").on("click", function () {
-        toggleButtonBgColor(this);
-        createTable(yearToSpendingArray);
-      });
-
-      createBarChart(yearToSpendingArray);
-
-      d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(255, 255, 255)");
-    }
-
-    function getFrequencyFromURL() {
-      let frequency = getQueryStringValue('frequency');
-      let possibleFrequencies = ["today", "mtd", "fytd"];
-
-      if (!possibleFrequencies.includes(frequency)) {
-        frequency = "today";
+        d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(255, 255, 255)");
       }
 
-      return frequency;
-    }
+      function getFrequencyFromURL() {
+        let frequency = getQueryStringValue('frequency');
+        let possibleFrequencies = ["today", "mtd", "fytd"];
 
-    function getCategoryFromURL(allOptions) {
-      let category = getQueryStringValue('category');
+        if (!possibleFrequencies.includes(frequency)) {
+          frequency = "today";
+        }
 
-      if (!allOptions.includes(category)) {
-        category = "All Categories";
+        return frequency;
       }
 
-      return category;
-    }
+      function getCategoryFromURL(allOptions) {
+        let category = getQueryStringValue('category');
 
-    function type(d) {
-      d.date = parseDateYMD(d.date);
-      d.value = +d.value; // is this wrong? should it be fytd, mtd, and today instead? also multiply?
-      return d;
-    }
+        if (!allOptions.includes(category)) {
+          category = "All Categories";
+        }
 
-    let debounce, previousWidth;
-
-    window.addEventListener('resize', function () {
-      if (debounce) {
-        clearTimeout(debounce);
+        return category;
       }
 
-      if (previousWidth === window.innerWidth) {
-        return;
+      function type(d) {
+        d.date = parseDateYMD(d.date);
+        d.value = +d.value; // is this wrong? should it be fytd, mtd, and today instead? also multiply?
+        return d;
       }
 
-      previousWidth = window.innerWidth;
+      let debounce, previousWidth;
 
-      debounce = setTimeout(function () {
-        d3.select('#svg-wrapper').selectAll('*').remove();
-        drawChart('redraw');
-      }, 300);
-    })
+      window.addEventListener('resize', function () {
+        if (debounce) {
+          clearTimeout(debounce);
+        }
+
+        if (previousWidth === window.innerWidth) {
+          return;
+        }
+
+        previousWidth = window.innerWidth;
+
+        debounce = setTimeout(function () {
+          d3.select('#svg-wrapper').selectAll('*').remove();
+          drawChart('redraw');
+        }, 300);
+      })
+    }
   })
 
   return <>
@@ -1152,10 +1150,10 @@ function DTS(props) {
       It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the
       Treasury account balances by the Federal Reserve banks.
       For more information about the authoritative source of this dataset, please go to: <a
-      href="https://fsapps.fiscal.treasury.gov/dts/issues"
-      className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+        href="https://fsapps.fiscal.treasury.gov/dts/issues"
+        className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
     </div>
-    </>
+  </>
 }
 
 export default DTS;

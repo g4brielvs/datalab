@@ -46,9 +46,8 @@ export default class DTSPage extends React.Component {
             });
             dataArray.push(dataPoint);
           });
+          this.setState({ dtsData: dataArray });
         };
-        this.setState({ dtsData: dataArray });
-        // this.forceUpdate();
       }
     );
   }
