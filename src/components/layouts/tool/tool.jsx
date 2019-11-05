@@ -105,9 +105,9 @@ ToolLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   introSentence: PropTypes.string.isRequired,
-  contextStatement: PropTypes.string.isRequired,
-  sectionTitle: PropTypes.string.isRequired,
-  sectionText: PropTypes.string.isRequired,
+  contextStatement: PropTypes.string,
+  sectionTitle: PropTypes.string,
+  sectionText: PropTypes.string,
   hwctaLink: PropTypes.string,
 }
 
