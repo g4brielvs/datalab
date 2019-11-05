@@ -77,82 +77,81 @@ function DTS(props) {
       }
     ]
 
+
+
     loadData(_data);
 
     function loadData(_data) {
-      if (_data) {
+      optionsData = [];
+      dateScaleValues = [];
+      allToSpending = { "today": {}, "mtd": {}, "fytd": {} };
+      categoryToSpendingPrevFY = {};
 
-        optionsData = [];
-        dateScaleValues = [];
-        allToSpending = { "today": {}, "mtd": {}, "fytd": {} };
-        categoryToSpendingPrevFY = {};
+      optionsDict = {};
 
-        optionsDict = {};
+      data = _data;
 
-        data = _data;
+      data.forEach(function (d) {
+        d.date = new Date(d.date);
+        //d.date = parseDate(d.date);
+        d.today = +d.today * 1000000;
+        d.mtd = +d.mtd * 1000000;
+        d.fytd = +d.fytd * 1000000;
 
-        data.forEach(function (d) {
-          d.date = new Date(d.date);
-          //d.date = parseDate(d.date);
-          d.today = +d.today * 1000000;
-          d.mtd = +d.mtd * 1000000;
-          d.fytd = +d.fytd * 1000000;
+        let lastYear = new Date();
+        lastYear.setFullYear(lastYear.getFullYear() - 1);
 
-          let lastYear = new Date();
-          lastYear.setFullYear(lastYear.getFullYear() - 1);
+        if (!categoryToActiveWithinAYear.hasOwnProperty(d.item_raw)) {
+          categoryToActiveWithinAYear[d.item_raw] = false;
+        }
 
-          if (!categoryToActiveWithinAYear.hasOwnProperty(d.item_raw)) {
-            categoryToActiveWithinAYear[d.item_raw] = false;
+        if (!categoryToActiveWithinAYear[d.item_raw]) {
+          if (Math.abs(d.date.getTime() - lastYear.getTime()) < 31557600000) {
+            categoryToActiveWithinAYear[d.item_raw] = true;
           }
+        }
 
-          if (!categoryToActiveWithinAYear[d.item_raw]) {
-            if (Math.abs(d.date.getTime() - lastYear.getTime()) < 31557600000) {
-              categoryToActiveWithinAYear[d.item_raw] = true;
-            }
-          }
+        let currentYear = new Date().getFullYear();
+        let prevFYStart = new Date("10/01/" + (currentYear - 2)).getTime();
+        let prevFYEnd = new Date("09/30/" + (currentYear - 1)).getTime();
 
-          let currentYear = new Date().getFullYear();
-          let prevFYStart = new Date("10/01/" + (currentYear - 2)).getTime();
-          let prevFYEnd = new Date("09/30/" + (currentYear - 1)).getTime();
+        if (d.date.getTime() >= prevFYStart && d.date.getTime() <= prevFYEnd) {
+          categoryToSpendingPrevFY[d.item_raw] = (categoryToSpendingPrevFY[d.item_raw] || 0) + d.today;
+        }
 
-          if (d.date.getTime() >= prevFYStart && d.date.getTime() <= prevFYEnd) {
-            categoryToSpendingPrevFY[d.item_raw] = (categoryToSpendingPrevFY[d.item_raw] || 0) + d.today;
-          }
+        if (d.item_raw === "Public Debt Cash Redemp ( Table III B )") {
+          allToSpending["today"][d.date] = (allToSpending["today"][d.date] || 0) - d.today;
+          allToSpending["mtd"][d.date] = (allToSpending["mtd"][d.date] || 0) - d.mtd;
+          allToSpending["fytd"][d.date] = (allToSpending["fytd"][d.date] || 0) - d.fytd;
+        }
 
-          if (d.item_raw === "Public Debt Cash Redemp ( Table III B )") {
-            allToSpending["today"][d.date] = (allToSpending["today"][d.date] || 0) - d.today;
-            allToSpending["mtd"][d.date] = (allToSpending["mtd"][d.date] || 0) - d.mtd;
-            allToSpending["fytd"][d.date] = (allToSpending["fytd"][d.date] || 0) - d.fytd;
-          }
+        if (d.item_raw === "Total Withdrawals ( excluding transfers )") {
+          allToSpending["today"][d.date] = (allToSpending["today"][d.date] || 0) + d.today;
+          allToSpending["mtd"][d.date] = (allToSpending["mtd"][d.date] || 0) + d.mtd;
+          allToSpending["fytd"][d.date] = (allToSpending["fytd"][d.date] || 0) + d.fytd;
 
-          if (d.item_raw === "Total Withdrawals ( excluding transfers )") {
-            allToSpending["today"][d.date] = (allToSpending["today"][d.date] || 0) + d.today;
-            allToSpending["mtd"][d.date] = (allToSpending["mtd"][d.date] || 0) + d.mtd;
-            allToSpending["fytd"][d.date] = (allToSpending["fytd"][d.date] || 0) + d.fytd;
+          dateScaleValues.push(d.date);
+        }
 
-            dateScaleValues.push(d.date);
-          }
+        optionsData.push(d.item_raw);
 
-          optionsData.push(d.item_raw);
+        if (!optionsDict.hasOwnProperty(d.item_raw)) {
+          optionsDict[d.item_raw] = { today: [], mtd: [], fytd: [] };
+        }
 
-          if (!optionsDict.hasOwnProperty(d.item_raw)) {
-            optionsDict[d.item_raw] = { today: [], mtd: [], fytd: [] };
-          }
+        optionsDict[d.item_raw]['today'].push({ date: d.date, value: d.today });
+        optionsDict[d.item_raw]['mtd'].push({ date: d.date, value: d.mtd });
+        optionsDict[d.item_raw]['fytd'].push({ date: d.date, value: d.fytd });
+      });
 
-          optionsDict[d.item_raw]['today'].push({ date: d.date, value: d.today });
-          optionsDict[d.item_raw]['mtd'].push({ date: d.date, value: d.mtd });
-          optionsDict[d.item_raw]['fytd'].push({ date: d.date, value: d.fytd });
-        });
+      allToSpending["today"] = transposeKVToArray("today");
+      allToSpending["mtd"] = transposeKVToArray("mtd");
+      allToSpending["fytd"] = transposeKVToArray("fytd");
 
-        allToSpending["today"] = transposeKVToArray("today");
-        allToSpending["mtd"] = transposeKVToArray("mtd");
-        allToSpending["fytd"] = transposeKVToArray("fytd");
+      todayAllCategorySpending = allToSpending["today"].slice(-1) ? allToSpending["today"].slice(-1)[0] : '';
+      //console.log('reminder ^')
 
-        todayAllCategorySpending = allToSpending["today"].slice(-1) ? allToSpending["today"].slice(-1)[0] : '';
-        //console.log('reminder ^')
-
-        drawChart();
-      }
+      drawChart();
     }
 
     function init() {
@@ -190,7 +189,7 @@ function DTS(props) {
     }
 
     function setFancyLines(selector, lineFn) {
-      svg.selectAll(selector).each(function (lineSel) {
+      svg.selectAll(selector).each(function(lineSel) {
         let d3LineSel = d3.select(this)
         let d3LineSelData = d3LineSel.data();
 
@@ -238,7 +237,7 @@ function DTS(props) {
       if (s == null) {
         handle.attr("display", "none");
       } else {
-        handle.attr("display", null).attr("transform", function (d, i) {
+        handle.attr("display", null).attr("transform", function(d, i) {
           return "translate(" + s[i] + "," + height2 / 2 + ")";
         });
       }
@@ -374,10 +373,10 @@ function DTS(props) {
       barData = barData || yearToSpendingArray.slice(-10);
 
       var svg = d3.select(".svg-tsbfy-container").append("svg")
-        .attr("id", "viz-tsbfy-wrapper")
-        .attr("width", "750") // do we need this?
-        .attr("height", "500") // or this?
-        .attr("viewBox", "0 0 750 500"), // or this?
+          .attr("id", "viz-tsbfy-wrapper")
+          .attr("width", "750") // do we need this?
+          .attr("height", "500") // or this?
+          .attr("viewBox", "0 0 750 500"), // or this?
         margin = { top: 20, right: 20, bottom: 50, left: 150 },
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
@@ -436,7 +435,7 @@ function DTS(props) {
         .append('tr');
 
       let cells = rows.selectAll('td')
-        .data(function (row) {
+        .data(function(row) {
           let tdYear = row.year;
           let tdSpendingPerYear = dollarFormatter(row.spending);
 
@@ -609,11 +608,11 @@ function DTS(props) {
 
       d3.select("#svg-wrapper").selectAll(".line-main").remove();
 
-      d3.selectAll(".period-button").on("click", function () {
+      d3.selectAll(".period-button").on("click", function() {
         choosePeriodButton(this, data);
       });
 
-      brush.on("end", function () {
+      brush.on("end", function() {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
 
         var s = d3.event.selection || x2.range();
@@ -621,7 +620,7 @@ function DTS(props) {
         updateHistoryWithNewBrush(s);
       });
 
-      zoom.on("end", function () {
+      zoom.on("end", function() {
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
 
         var t = d3.event.transform || x2.range();
@@ -705,7 +704,7 @@ function DTS(props) {
           .innerRadius(0)
           .outerRadius(height2 / 2)
           .startAngle(0)
-          .endAngle(function (d, i) {
+          .endAngle(function(d, i) {
             return i ? Math.PI : -Math.PI;
           }));
 
@@ -737,11 +736,11 @@ function DTS(props) {
         .attr("width", width)
         .attr("height", height)
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .on("mouseover", function () {
+        .on("mouseover", function() {
           ttContainer.style("display", "block");
           mouseOverDataPoint.style("display", "block");
         })
-        .on("mouseout", function () {
+        .on("mouseout", function() {
           ttContainer.style("display", "none");
           mouseOverDataPoint.style("display", "none");
         })
@@ -974,7 +973,7 @@ function DTS(props) {
 
 
 
-    // Define filter conditions
+// Define filter conditions
     function multiFormat(date) {
       return (d3.timeSecond(date) < date ? formatMillisecond
         : d3.timeMinute(date) < date ? formatSecond
@@ -1155,10 +1154,10 @@ function DTS(props) {
       It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the
       Treasury account balances by the Federal Reserve banks.
       For more information about the authoritative source of this dataset, please go to: <a
-        href="https://fsapps.fiscal.treasury.gov/dts/issues"
-        className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+      href="https://fsapps.fiscal.treasury.gov/dts/issues"
+      className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
     </div>
-  </>
+    </>
 }
 
 export default DTS;
