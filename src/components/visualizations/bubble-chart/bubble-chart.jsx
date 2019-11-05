@@ -1,5 +1,5 @@
 import './bubble-chart.scss';
-import React, { Component, useEffect, useState } from "react"
+import React, { Component } from "react"
 
 import * as d3 from "d3v3";
 import * as _ from "lodash";
@@ -31,7 +31,7 @@ export default class BubbleChart extends Component {
     this.detailContainerActiveClass;
     this.node;
     this.circle;
-    this.focus;
+    this.focused;
     this.view;
     this.bubbleSvg;
     this.recipient;
@@ -70,32 +70,23 @@ export default class BubbleChart extends Component {
     this.nodes = this.pack.nodes(this.root);
     this.drawBubbleChart(this.root);
     const classContext = this;
+    console.log('chart init');
 
     d3.select(this.bubbleChartContainer)
       .on("click", function () {
         const currentState = classContext.state.selectedItem;
+        console.log('chart click');
+        console.log(currentState);
         if (!currentState || (currentState && currentState.depth !== 2)) {
+          console.log('here');
           classContext.setLegendLeft(false);
-          classContext.state.selectedItem = null
-          classContext.zoom(this.root);
+          classContext.updateSelection(null);
+          classContext.zoom(classContext.root);
         }
       });
 
     this.zoomTo([this.root.x, this.root.y, this.root.r * 2 + this.margin]);
   }
-
-
-  // function setChartState(d) {
-  //   _chartState = d;
-  // }
-  //
-  // function getChartState() {
-  //   return _chartState;
-  // }
-  //
-  // function clearChartState() {
-  //   _chartState = null;
-  // }
 
   /* Set color for sub-agency circles */
   circleFill(d) {
@@ -105,7 +96,7 @@ export default class BubbleChart extends Component {
   }
 
   isZoomedIn(d) {
-    if (d.depth === 2 && focus === d.parent || d.depth === 1 && focus === d) {
+    if (d.depth === 2 && this.focused === d.parent || d.depth === 1 && this.focused === d) {
       return true;
     }
     return false;
@@ -126,6 +117,8 @@ export default class BubbleChart extends Component {
     let labelWidth;
     const classContext = this;
 
+    console.log(this);
+
     if (!this.resize) {
       if (d.fontsize) {
         //if fontsize is already calculated use that.
@@ -133,7 +126,7 @@ export default class BubbleChart extends Component {
       }
       if (!d.computed) {
         //if computed not present get & store the getComputedTextLength() of the text field
-        // d.computed = this.getComputedTextLength();
+        // d.computed = d.getComputedTextLength();
       }
     }
 
@@ -173,6 +166,8 @@ export default class BubbleChart extends Component {
     focus = root;
     this.diameter = this.bubbleWidth = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
     const classContext = this;
+
+    console.log(this.bubbleChartContainer);
 
     d3.select(this.bubbleChartContainer)
       .attr('style', "width: " + this.bubbleWidth + "px; height: " + this.bubbleWidth + "px;")
@@ -249,16 +244,16 @@ export default class BubbleChart extends Component {
 
   // Zoom into a specific circle
   zoom(d) {
-    const focus0 = this.focus;
-    const focus = d;
+    const focus0 = this.focused;
+    this.focused = d;
     const classContext = this;
 
-    this.closeDetailPanel();
+    // this.closeDetailPanel();
 
     const transition = d3.transition()
       .duration(d3.event && d3.event.altKey ? 7500 : 750)
       .tween("zoom", function (d) {
-        var i = d3.interpolateZoom(classContext.view, [focus.x, focus.y, focus.r * 2 + classContext.margin]);
+        var i = d3.interpolateZoom(classContext.view, [classContext.focused.x, classContext.focused.y, classContext.focused.r * 2 + classContext.margin]);
         return function (t) {
           classContext.zoomTo(i(t));
         };
@@ -266,22 +261,22 @@ export default class BubbleChart extends Component {
 
     transition.selectAll(".node--root")
       .style("fill-opacity", function () {
-        return this.focus.name === "flare" ? 1 : 0;
+        return classContext.focused.name === "flare" ? 1 : 0;
       })
 
     transition.selectAll("text.label")
       .style("fill-opacity", function (d) {
-        return d.parent === this.focus ? 1 : 0;
+        return d.parent === classContext.focused ? 1 : 0;
       })
       .each("start", function (d) {
-        if (d.parent === this.focus) {
+        if (d.parent === classContext.focused) {
           this.style.display = "inline";
         } else {
           this.style.display = "none";
         }
       })
       .each("end", function (d) {
-        if (d.parent !== this.focus) {
+        if (d.parent !== classContext.focused) {
           this.style.display = "none";
         } else {
           this.style.display = "inline";
@@ -292,7 +287,7 @@ export default class BubbleChart extends Component {
     setTimeout(function () {
       // show the text
       d3.selectAll("text.label").filter(function (d) {
-        return d.parent === this.focus || this.style.display === "inline";
+        return d.parent === classContext.focused || this.style.display === "inline";
       }).style("font-size", this.calculateTextFontSize);
     }, 100);
   }
@@ -312,7 +307,7 @@ export default class BubbleChart extends Component {
     const elSelector = "circle.node--leaf[id='" + d.name.replace(/ /g, "_") + "']";
     circle.classed('active', false);
     d3.select(elSelector).classed("active", true);
-    if (this.focus !== d) {
+    if (this.focused !== d) {
       this.zoom(d.parent);
       d3.event.stopPropagation();
     }
@@ -323,9 +318,10 @@ export default class BubbleChart extends Component {
 
     // need to check if focus is d, maybe?
     if (this.isZoomedIn(d)) {
+      console.log('zoomed in');
       if (d.depth === 2) {
         d3.event.stopPropagation();
-        // this.setChartState(d.parent);
+        this.updateSelection(d.parent);
         // props.showDetails(d); // show details in panel
 
         const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
@@ -333,31 +329,33 @@ export default class BubbleChart extends Component {
 
       } else if (d.depth === 1) {
         this.setLegendLeft(false);
-        // clearChartState();
+        this.updateSelection(null);
         // props.showDetails(null); // hide details panel
 
-        if (this.focus !== d) {
+        if (this.focused !== d) {
           this.zoom(d);
           d3.event.stopPropagation();
         }
       }
     } else {
+      console.log('zoomed in');
+
       if (d.depth === 2) {
         this.setLegendLeft(true);
-        // setChartState(d.parent);
+        this.updateSelection(d.parent);
         // props.showDetails(null); // hide details panel
 
         // check if a bubble is already selected
-        if (this.focus !== d.parent) {
+        if (this.focused !== d.parent) {
           this.zoom(d.parent);
           d3.event.stopPropagation();
         }
       } else if (d.depth === 1) {
         this.setLegendLeft(true);
-        // this.setChartState(d);
+        this.updateSelection(d);
         // props.showDetails(null); // hide details panel
 
-        if (this.focus !== d) {
+        if (this.focused !== d) {
           this.zoom(d);
           d3.event.stopPropagation();
         }
