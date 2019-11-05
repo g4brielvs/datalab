@@ -35,7 +35,7 @@ const Institutions = (props) => {
                    facebook='' reddit='' linkedin='' tumblr='' email=''/>
       </ControlBar>
       <div>
-	<Mapbox data={GeoDataMapbox}/>
+	      <Mapbox data={GeoDataMapbox}/>
       </div>
       
       <Downloads
