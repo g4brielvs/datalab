@@ -38,7 +38,7 @@ export default class BubbleChart extends Component {
     this.root;
     this.nodes;
     this.calculatedWidth;
-    this.bubbleWidth;
+    this.width;
     this.diameter;
     this.pack;
 
@@ -55,7 +55,7 @@ export default class BubbleChart extends Component {
     this.zoom = this.zoom.bind(this);
     this.zoomTo = this.zoomTo.bind(this);
     this.selectSubAgency = this.selectSubAgency.bind(this);
-    this.bubbleClick = this.bubbleClick.bind(this);
+    this.click = this.click.bind(this);
     this.transformData = this.transformData.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
 
@@ -157,13 +157,13 @@ export default class BubbleChart extends Component {
   }
 
   drawBubbleChart(root) {
-    const targetWidth = this.bubbleWidth;
+    const targetWidth = this.width;
     focus = root;
-    this.diameter = this.bubbleWidth = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
+    this.diameter = this.width = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
     const classContext = this;
 
     d3.select(this.bubbleChartContainer)
-      .attr('style', "width: " + this.bubbleWidth + "px; height: " + this.bubbleWidth + "px;")
+      .attr('style', "width: " + this.width + "px; height: " + this.width + "px;")
 
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
       .attr("id", "chart")
@@ -191,7 +191,7 @@ export default class BubbleChart extends Component {
         }
         return name;
       })
-      .on("click", this.bubbleClick)
+      .on("click", this.click)
       .on("mouseover", function (d) {
         if (!classContext.isTablet()) {
           // tip.show(d);
@@ -226,7 +226,7 @@ export default class BubbleChart extends Component {
         return classContext.calculateTextFontSize(d, this)
       })
       .attr("text-anchor", "middle")
-      .on("click", this.bubbleClick)
+      .on("click", this.click)
       .on("mouseover", function (d) {
         // const elName = d.name.replace(/ /g,"_");
         if (!classContext.isTablet()) {
@@ -310,7 +310,7 @@ export default class BubbleChart extends Component {
     }
   }
 
-  bubbleClick(d) {
+  click(d) {
     this.circle.classed('active', false);
 
     // need to check if focus is d, maybe?
@@ -402,8 +402,8 @@ export default class BubbleChart extends Component {
       if(typeof document !== 'undefined' && typeof window !== 'undefined') {
         this.bubbleChartContainer = document.getElementById('agency-bubbleChart');
         this.calculatedWidth = window.innerWidth * this.widthPercentage;
-        this.bubbleWidth = window.innerWidth * this.widthPercentage;
-        this.diameter = this.bubbleWidth;
+        this.width = window.innerWidth * this.widthPercentage;
+        this.diameter = this.width;
       }
 
       this.detailContainer = d3.select('#bubble-detail section.bubble-detail');
@@ -436,7 +436,7 @@ export default class BubbleChart extends Component {
         if (classContext.root) {
           classContext.maxHeight = window.innerWidth * classContext.widthPercentage;
           classContext.calculatedWidth = window.innerWidth * classContext.widthPercentage;
-          classContext.diameter = classContext.bubbleWidth = window.innerWidth * classContext.widthPercentage;
+          classContext.diameter = classContext.width = window.innerWidth * classContext.widthPercentage;
           classContext.resize = true;
           classContext.drawBubbleChart(classContext.root);
           classContext.resize = false;
