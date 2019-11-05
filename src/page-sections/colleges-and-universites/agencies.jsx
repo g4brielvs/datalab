@@ -54,7 +54,7 @@ const Agencies = () => {
   let currentDetails = {};
   const getClickedDetails = d => {
     if (!d) {
-      detailPanelRef.current.closeDetails();
+      detailPanelRef.current && detailPanelRef.current.closeDetails();
     } else {
       const summary = _data.allAgenciesRhpSummaryCsv.nodes.filter(i => i.subagency === d.name);
       const summaryObligations = {};

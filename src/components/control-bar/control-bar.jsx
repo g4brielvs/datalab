@@ -1,16 +1,29 @@
-import React from 'react';
+import React, {Children} from 'react';
 import controlBarStyles from './control-bar.module.scss';
+import { Grid, Hidden } from "@material-ui/core"
 
 
 const ControlBar = (props) => (
-
-      <div className={controlBarStyles.controlBar}>
-        <div className="row">
-          <div className={'col-xs-12 ' + controlBarStyles.leftAlignChildren}>
-            {props.children}
-          </div>
-        </div>
-      </div>
+   <>
+    <Hidden smUp>
+      <Grid container justify='space-evenly' className={controlBarStyles.controlBar}>
+          {Children.map(props.children, (child) => {
+              return <Grid className={controlBarStyles.child} item xs={2} justify='center'>
+                      {child}
+                  </Grid>
+          })}
+      </Grid>
+    </Hidden>
+    <Hidden xsDown>
+        <Grid container justify='flex-end' className={controlBarStyles.controlBar}>
+          {Children.map(props.children, (child) => {
+            return <Grid className={controlBarStyles.child} item sm={2}>
+                {child}
+              </Grid>
+          })}
+        </Grid>
+    </Hidden>
+   </>
 );
 
 

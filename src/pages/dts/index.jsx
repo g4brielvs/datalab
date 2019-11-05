@@ -5,6 +5,7 @@ import HWCTALink from '../../components/hwcta-link/hwcta-link';
 import PageHeader from '../../components/headers/page';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
+import ControlBar from "../../components/control-bar/control-bar"
 
 import AWS from 'aws-sdk';
 AWS.config.update(
@@ -45,7 +46,7 @@ export default class DTSPage extends React.Component {
           });
         };
         console.log(dataArray);
-        this.setState({ dtsData: data.Body.toString('ascii') });
+        this.setState({ dtsData: dataArray });
       }
     );
   }

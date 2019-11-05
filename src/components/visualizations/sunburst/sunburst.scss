@@ -10,6 +10,34 @@
   stroke-width: .4;
 }
 
+//    #sunburst {
+//      height: 700px;
+//      width: 700px;
+//      position: relative;
+//      display: flex;
+//      align-items: center;
+//      justify-content: center;
+//      margin: 0 auto;
+//    }
+//
+//    #sunburst svg {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//    }
+//
+//    #sunburst path {
+//      cursor: pointer;
+//      stroke: #fff;
+//      stroke-width: .4;
+//    }
+//    #sunburst path.depth1 {
+//      opacity: 1;
+//    }
+//    #sunburst path.depth2 {
+//      opacity: 0.5;
+//    }
+
 #sunburst path.depth1 {
   opacity: 1;
 }
@@ -220,7 +248,7 @@
 //
 //    .legend_circleKeyLabel span {
 //      font-size: 10px;
-//      color: #999;
+//      color: #666;
 //      position: absolute;
 //      display: block;
 //      width: 90px;
@@ -230,7 +258,7 @@
 //
 //    .legend_scaleKeyCircle {
 //      stroke-width: 1;
-//      stroke: #999;
+//      stroke: #666;
 //      stroke-dasharray: 2;
 //      fill: none;
 //    }

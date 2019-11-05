@@ -77,10 +77,17 @@ $md: 768;
 $sm: 576;
 $xs: 0;
 
+/*
+ * mcw = max container width.
+ */
 $desktop-xl: 1200px;
+$desktop-xl-mcw: 1140px;
 $desktop: 992px;
+$desktop-mcw: 960px;
 $tablet: 768px;
+$tablet-mcw: 720px;
 $phone: 576px;
+$tablet-portrait-mcw: 540px;
 $min: 0px;
 
 $margin-150: 150px;
