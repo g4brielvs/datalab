@@ -36,28 +36,18 @@ export default class DTSPage extends React.Component {
         } else {
           const dataArray = [];
           const csv = data.Body.toString('ascii').split('\n');
-
-
-          console.log(csv);
-
-
           const fieldNames = csv[0].split(',');
+          csv.pop(); // remove blank line at end of file
           csv.slice(1).forEach(row => {
             const rowArray = row.split(',');
-
-
-            // console.log(rowArray);
-
-
             const dataPoint = {};
             fieldNames.forEach((field, i) => {
               dataPoint[field] = rowArray[i];
             });
             dataArray.push(dataPoint);
           });
-          console.log(dataArray);
         };
-        // this.setState({ dtsData: dataArray });
+        this.setState({ dtsData: dataArray });
         // this.forceUpdate();
       }
     );
