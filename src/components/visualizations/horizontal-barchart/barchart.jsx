@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import * as d3 from "d3v3";
 import numberFormatter from '../../../utils/number-formatter';
 import tooltipModule from '../../../components/tooltip/tooltip';
+import tooltipStyles from '../../../components/tooltip/tooltip.module.scss';
 
 function Barchart(props){
   const data = props.data;
@@ -206,7 +207,7 @@ function Barchart(props){
     );
 
     function handleMouseOver(d) {
-      tooltip.draw("#tooltip", d.data.name, {
+      tooltip.draw(tooltipStyles.tooltip, d.data.name, {
         Competed:
           unit === "dollars"
             ? numberFormatter("dollars", d.data.competed)
@@ -220,11 +221,11 @@ function Barchart(props){
     }
 
     function handleMouseOut() {
-      tooltip.remove("#tooltip");
+      tooltip.remove(tooltipStyles.tooltip);
     }
 
     function handleMouseMove() {
-      tooltip.move("#tooltip");
+      tooltip.move(tooltipStyles.tooltip);
     }
 
     // bars
@@ -256,7 +257,7 @@ function Barchart(props){
 
   return (
     <>
-      <div id="tooltip" className="tooltip-module"></div>
+      <div id={tooltipStyles.tooltip} className={tooltipStyles.tooltipModule}></div>
       <svg width="1200" height="700" viewBox="0 0 1200 700" id="barchartSvg" className={props._svgClass}></svg>
     </>
   );

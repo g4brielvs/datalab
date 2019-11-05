@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './share.scss';
+import styles from './share.module.scss';
 import shareLogo from '../../images/colleges-and-universities/share.svg'
 import facebookLogo from '../../images/colleges-and-universities/facebook.svg'
 import twitterLogo from '../../images/colleges-and-universities/twitter.svg'
@@ -98,42 +98,42 @@ class Share extends Component {
 
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
     return (
-        <div className="popup new-share">
-          <button className="viz-share-icon" aria-hidden="true" onClick={this.handleShow}>
+        <div className={`${styles.popup} ${styles.newShare}`}>
+          <button className={styles.vizShareIcon} aria-hidden="true" onClick={this.handleShow}>
             <img src={images[0].src} />
-            <span className="share-text">Share</span>
+            <span className={styles.shareText}>Share</span>
           </button>
-          <span className={`popuptext right newpopup ${isShowing ? `show` : ``}`} id="sharePopup">
-            <div className="share-buttons">
+          <span className={`${styles.popuptext} ${styles.right} ${styles.newpopup} ${isShowing ? styles.show : ``}`} id="sharePopup">
+            <div className={styles.shareButtons}>
               <ul>
                 <li>                  
                   <a href="#" onClick={this.handleShareClick} title="Share on Facebook" data-id="1">
-                    <img src={images[1].src} style={images[1].style} className='icon-facebook' />
-                    <span className="share-button-text">Facebook</span>
+                    <img src={images[1].src} style={images[1].style} className={styles.iconFacebook} />
+                    <span className={styles.shareButtonText}>Facebook</span>
                   </a>
                 </li>
                 <li>
                   <a href='#' onClick={this.handleShareClickTwitter} title="Share on Twitter" data-id='2'>
-                    <img src={images[2].src} style={images[2].style} className='icon-twitter' />
-                    <span className="share-button-text">Twitter</span>
+                    <img src={images[2].src} style={images[2].style} className={styles.iconTwitter} />
+                    <span className={styles.shareButtonText}>Twitter</span>
                   </a>
                 </li>
                 <li>
                   <a href='#' onClick={this.handleShareClickReddit} title="Share on Reddit" data-id='3'>
-                    <img src={images[3].src} style={images[3].style} className='icon-reddit' />
-                    <span className="share-button-text">Reddit</span>
+                    <img src={images[3].src} style={images[3].style} className={styles.iconReddit} />
+                    <span className={styles.shareButtonText}>Reddit</span>
                   </a>
                 </li>
                 <li>
                   <a href='#' onClick={this.handleShareClickLinkedin} title="Share on LinkedIn" data-id='4'>
-                    <img src={images[4].src} style={images[4].style} className='icon-linkedin' />
-                    <span className="share-button-text">Linkedin</span>
+                    <img src={images[4].src} style={images[4].style} className={styles.iconLinkedin} />
+                    <span className={styles.shareButtonText}>Linkedin</span>
                   </a>
                 </li>
                 <li>
                   <a href={`mailto:?subject=${this.title}&body=${this.props.text ? this.props.text + '%0D%0A%0D%0A' : ''}Check out this site ${this.url}`} title="Share via Email" data-id='5'>
-                    <img src={images[5].src} style={images[5].style} className='icon-envelope' />
-                    <span className="share-button-text">Email</span>
+                    <img src={images[5].src} style={images[5].style} className={styles.iconEnvelope} />
+                    <span className={styles.shareButtonText}>Email</span>
                   </a>
                 </li>
               </ul>
