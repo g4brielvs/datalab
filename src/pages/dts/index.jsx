@@ -1,13 +1,14 @@
 import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
+import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import ShareMenu from '../../components/share-menu/share-menu';
 import ToolLayout from "../../components/layouts/tool/tool"
 
-import loadable from '@loadable/component';
-const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
+// import loadable from '@loadable/component';
+// const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
 // import csvData from '../../unstructured-data/dts/dts.csv';
 
 import AWS from 'aws-sdk';
@@ -35,19 +36,29 @@ export default class DTSPage extends React.Component {
         } else {
           const dataArray = [];
           const csv = data.Body.toString('ascii').split('\n');
+
+
+          console.log(csv);
+
+
           const fieldNames = csv[0].split(',');
           csv.slice(1).forEach(row => {
             const rowArray = row.split(',');
+
+
+            // console.log(rowArray);
+
+
             const dataPoint = {};
             fieldNames.forEach((field, i) => {
               dataPoint[field] = rowArray[i];
             });
             dataArray.push(dataPoint);
           });
+          console.log(dataArray);
         };
-        console.log(dataArray);
-        this.setState({ dtsData: dataArray });
-        this.forceUpdate();
+        // this.setState({ dtsData: dataArray });
+        // this.forceUpdate();
       }
     );
   }
