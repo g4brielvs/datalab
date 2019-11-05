@@ -318,7 +318,7 @@ export default class BubbleChart extends Component {
       if (d.depth === 2) {
         d3.event.stopPropagation();
         this.updateSelection(d.parent);
-        // props.showDetails(d); // show details in panel
+        this.props.showDetails(d); // show details in panel
 
         const elName = "circle.node--leaf#" + d.name.replace(/ /g, "_");
         d3.select(elName).classed("active", true);
@@ -326,7 +326,7 @@ export default class BubbleChart extends Component {
       } else if (d.depth === 1) {
         this.setLegendLeft(false);
         this.updateSelection(null);
-        // props.showDetails(null); // hide details panel
+        this.props.showDetails(null); // hide details panel
 
         if (this.focused !== d) {
           this.zoom(d);
@@ -337,7 +337,7 @@ export default class BubbleChart extends Component {
       if (d.depth === 2) {
         this.setLegendLeft(true);
         this.updateSelection(d.parent);
-        // props.showDetails(null); // hide details panel
+        this.props.showDetails(null); // hide details panel
 
         // check if a bubble is already selected
         if (this.focused !== d.parent) {
@@ -347,7 +347,7 @@ export default class BubbleChart extends Component {
       } else if (d.depth === 1) {
         this.setLegendLeft(true);
         this.updateSelection(d);
-        // props.showDetails(null); // hide details panel
+        this.props.showDetails(null); // hide details panel
 
         if (this.focused !== d) {
           this.zoom(d);
