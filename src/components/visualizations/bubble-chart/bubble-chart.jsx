@@ -1,5 +1,5 @@
 import './bubble-chart.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react"
 
 import * as d3 from "d3v3";
 import * as _ from "lodash";
@@ -7,6 +7,8 @@ import * as $ from "jquery";
 
 
 function BubbleChart(props) {
+
+  const [chartState, setChartState] = useState('Contract');
 
   /* The useEffect Hook is for running side effects outside of React,
      for instance inserting elements into the DOM using D3 */
@@ -53,10 +55,6 @@ function BubbleChart(props) {
       .attr('class', 'legend_scaleKeyCircle')
       .attr('cx', 60)
       .attr('cy', 65)
-
-    function formatCurrency(n) {
-      return '$' + d3.format(",")(Math.round(n));
-    }
 
     const pack = d3.layout.pack()
       .padding(2)
@@ -407,7 +405,7 @@ function BubbleChart(props) {
       }
       return tempRoot;
     }
-  });
+  }, [chartState]);
 
   return (
     <div id="chart-area">
