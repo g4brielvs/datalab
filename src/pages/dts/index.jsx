@@ -10,6 +10,15 @@ import loadable from '@loadable/component';
 const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
 // import csvData from '../../unstructured-data/dts/dts.csv';
 
+import AWS from 'aws-sdk';
+AWS.config.update(
+  {
+    accessKeyId: 'AKIA3YCOPFO3LMPSH75B',
+    secretAccessKey: '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',
+    region: 'us-gov-west-1'
+  }
+);
+
 export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +47,7 @@ export default class DTSPage extends React.Component {
         };
         console.log(dataArray);
         this.setState({ dtsData: dataArray });
+        this.forceUpdate();
       }
     );
   }
