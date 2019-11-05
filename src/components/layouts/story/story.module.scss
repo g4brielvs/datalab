@@ -2,7 +2,6 @@
 
 $darkGrey: #666666;
 $mdGrey: #555555;
-$greyBlack: #979797;
 
 h2 {
   margin: 0;
@@ -13,7 +12,7 @@ h2 {
   margin: 0 auto $margin-75;
 }
 
-.header--hero {
+.header-hero {
   margin-top: $margin-50;
   padding-bottom: $margin-30;
   border-bottom: $darkGrey 1px solid;
@@ -22,7 +21,7 @@ h2 {
   }
 }
 
-.header__contextStatement {
+.context-statement {
   color: $mdGrey;
   font-size: 1.0625rem;
   font-weight: 300;
@@ -30,7 +29,7 @@ h2 {
   margin-bottom: 0;
 }
 
-.header__introSentence {
+.intro-sentence {
   color: $darkGrey;
   font-size: 2rem;
   font-weight: 300;
@@ -39,12 +38,12 @@ h2 {
   margin-bottom: $margin-25;
 }
 
-.header--red {
+.header-red {
   color: $cuRed;
   font-weight: 900;
 }
 
-.header__title {
+.title {
   color: $darkGrey;
   text-transform: uppercase;
   font-size: 1rem;
@@ -54,12 +53,12 @@ h2 {
 }
 
 @media screen and (min-width: $desktop-xl) {
-  .header__introSentence {
+  .intro-sentence {
     font-size: 2.5rem;
     line-height: 3rem;
   }
-
-  .header--hero {
+  /**colleges**/
+  .header-hero {
     padding-bottom: $margin-75;
   }
 
@@ -93,81 +92,12 @@ h2 {
     max-width: none;
   }
 
-  .header__title, .header__introSentence, .header__contextStatement {
+  .title, .intro-sentence, .context-statement {
     text-align: left;
   }
 
-  .header--hero {
+  .header-hero {
     margin-top: $margin-30;
     padding-bottom: $margin-25;
-  }
-}
-
-
-/**
- * Taken from src/page-sections/story-demo/section.scss
- */
-
-.title {
-  text-align: left;
-  font-size: 2rem;
-  font-weight: 300;
-  margin-bottom: $margin-20;
-  margin-top: 0;
-}
-
-.section__header {
-  text-align: left;
-}
-
-.section__header__number {
-  margin-bottom: $margin-50;
-  border-bottom: 1px solid $darkGrey;
-
-  h2 {
-    color: $darkGrey;
-    font-size: 3rem;
-    font-weight: 600;
-    line-height: 3.125rem;
-    margin: 0.1em 0 0.3em;
-    text-align: left;
-  }
-}
-
-.section__header__title {
-  color: $darkGrey;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 3.75rem;
-  text-align: left;
-  text-transform: uppercase;
-}
-
-.MuiGrid-item.intro {
-  font-size: 2.5rem;
-  font-weight: 300;
-  margin-bottom: $margin-30;
-}
-
-.intro-container {
-  margin: 0 0 $margin-50 0;
-}
-
-.main__section {
-  margin-bottom: $margin-100;
-}
-
-@media (min-width: $desktop-xl){
-  .MuiGrid-item.intro {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: $phone - 1){
-  .MuiGrid-item.intro {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: $darkGrey;
-    margin: $margin-25 0;
   }
 }
