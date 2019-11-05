@@ -77,9 +77,7 @@ function DTS(props) {
       }
     ]
 
-
-
-    loadData(_data);
+    if(_data) loadData(_data);
 
     function loadData(_data) {
       optionsData = [];

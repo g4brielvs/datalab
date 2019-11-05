@@ -8,7 +8,7 @@ import ToolLayout from "../../components/layouts/tool/tool"
 
 import loadable from '@loadable/component';
 const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
-import csvData from '../../unstructured-data/dts/dts.csv';
+// import csvData from '../../unstructured-data/dts/dts.csv';
 
 export default class DTSPage extends React.Component {
   constructor(props) {
