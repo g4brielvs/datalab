@@ -105,7 +105,7 @@ class PageHeader extends React.Component {
                 <li className='navListItem' onMouseOver={this.handleItemClick}>
                   <a href='#' className='navListAnchor'>Analyses <span className='navListArrow'><Arrow /></span></a>
                 </li>
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
+                <li className='navListItem'>
                   <a href='#' className='navListAnchor'>DataLab Express <span className='navListArrow'><Arrow /></span></a>
                 </li>
                 <li className='navListItem' onMouseOver={this.handleItemClick}>
