@@ -8,11 +8,46 @@ import ToolLayout from "../../components/layouts/tool/tool"
 
 import loadable from '@loadable/component';
 const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
-import csvData from '../../unstructured-data/dts/dts.csv';
+
+import AWS from 'aws-sdk';
+AWS.config.update(
+  {
+    accessKeyId: 'AKIA3YCOPFO3LMPSH75B',
+    secretAccessKey: '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',
+    region: 'us-gov-west-1'
+  }
+);
 
 export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      dtsData: null
+    }
+
+    const s3 = new AWS.S3();
+    s3.getObject(
+      { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
+      (error, data) => {
+        if (error) {
+          console.log('Could not get DTS data: ' + error);
+        } else {
+          const dataArray = [];
+          const csv = data.Body.toString('ascii').split('\n');
+          const fieldNames = csv[0].split(',');
+          csv.pop(); // remove blank line at end of file
+          csv.slice(1).forEach(row => {
+            const rowArray = row.split(',');
+            const dataPoint = {};
+            fieldNames.forEach((field, i) => {
+              dataPoint[field] = rowArray[i];
+            });
+            dataArray.push(dataPoint);
+          });
+          this.setState({ dtsData: dataArray });
+        };
+      }
+    );
   }
 
   render = () => <>
@@ -89,7 +124,7 @@ export default class DTSPage extends React.Component {
             </Grid>
           </Grid>
 
-          <DTS data={csvData} />
+          <DTS data={this.state.dtsData} />
 
         </div>
       </div>

@@ -13,11 +13,11 @@ body, h1, h2, h3, h4, p, li {
   margin-top: $margin-30;
   margin-bottom: $margin-100;
 
-  .toc__tile {
+  .tile {
     padding-top: 1rem;
   }
 
-  .toc__number h2 {
+  .number h2 {
     color: $darkGrey;
     font-size: 32px;
     font-weight: 600;
@@ -26,7 +26,7 @@ body, h1, h2, h3, h4, p, li {
     text-align: left;
   }
 
-  .toc__subtitle {
+  .subtitle {
     color: $mdGrey;
     font-weight: bold;
     font-size: 14px;
@@ -36,7 +36,7 @@ body, h1, h2, h3, h4, p, li {
     text-align: left;
   }
 
-  .toc__section {
+  .section {
     color: $mdGrey;
     font-size: 18px;
     font-weight: 300;
@@ -50,11 +50,11 @@ body, h1, h2, h3, h4, p, li {
   #TOC {
     margin-top: $margin-75;
 
-    .toc__tile:not(:last-child) {
+    .tile:not(:last-child) {
       border-right: 1px solid $lightGrey;
     }
 
-    .toc__tile:not(:first-child) {
+    .tile:not(:first-child) {
       padding: 1rem 2rem 2rem;
     }
   }
@@ -71,15 +71,15 @@ body, h1, h2, h3, h4, p, li {
       max-width: 768px;
     }
 
-    .toc__tile {
+    .tile {
       padding: 1rem 2rem 2rem;
     }
 
-    .toc__tile:nth-child(1), .toc__tile:nth-child(2) {
+    .tile:nth-child(1), .tile:nth-child(2) {
       border-bottom: $lightGrey solid 1px;
     }
 
-    .toc__tile:nth-child(odd) {
+    .tile:nth-child(odd) {
       border-right: 1px solid $lightGrey;
     }
 
@@ -90,14 +90,14 @@ body, h1, h2, h3, h4, p, li {
   #TOC {
     margin-top: $margin-25;
 
-    .toc__subtitle {
+    .subtitle {
       display: none;
     }
-    .toc__number h2 {
+    .number h2 {
       font-size: 1.5rem;
       line-height: 3.125rem;
     }
-    .toc__tile {
+    .tile {
       padding: 0;
     }
   }

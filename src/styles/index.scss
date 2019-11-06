@@ -6,9 +6,17 @@ body {
   padding: 0;
 }
 
-body, p, h1, h2, h3, h4, h5, input, select, textarea {
-  color: #666666;
+body, p, h1, h2, h3, h4, h5, input, select, textarea, ul, li {
   font-family: 'Source Sans Pro';
+}
+
+body, h1, h2, h3, h4, h5, input, select, textarea, div {
+  color: $font-body-copy;
+}
+
+p, ul, li, span {
+  color: #AAA;
+  font-size: 1rem;
 }
 
 a:-webkit-any-link {
@@ -189,4 +197,77 @@ ul {
 .superscript {
   vertical-align:super;
   font-size: smaller;
+}
+
+/**
+ * Taken from src/page-sections/story-demo/section.scss
+ * todo - Integrate these into a modules file. They're used in multiple places globally, so it's hard to determine exactly which files need to
+          include these.
+ */
+
+$darkGrey: #666666;
+$mdGrey: #555555;
+
+.title {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: $margin-20;
+  margin-top: 0;
+}
+
+.section__header {
+  text-align: left;
+}
+
+.section__header__number {
+  margin-bottom: $margin-50;
+  border-bottom: 1px solid $darkGrey;
+
+  h2 {
+    color: $darkGrey;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3.125rem;
+    margin: 0.1em 0 0.3em;
+    text-align: left;
+  }
+}
+
+.section__header__title {
+  color: $darkGrey;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 3.75rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.MuiGrid-item.intro {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: $margin-30;
+}
+
+.intro-container {
+  margin: 0 0 $margin-50 0;
+}
+
+.main__section {
+  margin-bottom: $margin-100;
+}
+
+@media (min-width: $desktop-xl){
+  .MuiGrid-item.intro {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: $phone - 1){
+  .MuiGrid-item.intro {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $darkGrey;
+    margin: $margin-25 0;
+  }
 }

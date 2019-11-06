@@ -1,9 +1,10 @@
 import './custom-header.scss';
+import storyStyles from '../../../components/layouts/story/story.module.scss';
 import React from 'react';
 
 const CustomHeader = (props) => (
   <div className='header container-fluid'>
-    <section className='header--hero'>
+    <section className={storyStyles.headerHero}>
       <div id='header__banner'>
         <p className='header__subtext'>
           {props.subtext}

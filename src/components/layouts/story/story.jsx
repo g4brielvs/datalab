@@ -1,4 +1,4 @@
-import './story.scss';
+import styles from './story.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,14 +16,14 @@ const StoryLayout = (props) => {
     header =
       <Grid container>
         <Grid item>
-          <header className='header--hero' >
-            <p className='header__title'>
+          <header className={styles.headerHero} >
+            <p className={styles.title}>
               {props.title}
             </p>
-            <p className='header__introSentence'>
+            <p className={styles.introSentence}>
               {props.introSentence}
             </p>
-            <p className='header__contextStatement'>
+            <p className={styles.contextStatement}>
               {props.contextStatement}
             </p>
           </header>
@@ -89,7 +89,7 @@ const StoryLayout = (props) => {
             isHome={ false }
            />
 
-      <div className='story-page'>
+      <div className={styles.storyPage}>
         {header}
         {toc}
         {props.children}

@@ -3,7 +3,6 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from '../../components/accordion/accordion';
-import BubbleChart from '../../components/visualizations/bubble-chart/bubble-chart';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +11,10 @@ import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
+import ShareMenu from "../../components/share-menu/share-menu"
+
+import loadable from '@loadable/component';
+const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = () => {
   const _data = useStaticQuery(graphql`
@@ -132,9 +135,10 @@ const Agencies = () => {
   return (<>
     <StoryHeading
       number={'02'}
-      title={'xxxx'}
-      teaser={['xxxxx']}
-      blurb={`In 2018, higher education institutions received a total of xxxxx`}
+      title={'AGENCY INVESTMENTS'}
+      teaser={['Connect the agency ', <span className="heading--red">to the federal investment.</span>]}
+      blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
+      and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
     />
 
     <Hidden lgUp>
@@ -147,10 +151,20 @@ const Agencies = () => {
     </Hidden>
 
     <Accordion title='Accordion Title'>
-      <p>I am an accordion with lots to say.</p>
-      <p>I have several paragraphs...</p>
-      <a href='https://datalab.usaspending.gov'>...and a link to the Data Lab</a>
+      <p>In this visualization sub-agencies are represented by colorful circles and grouped together by their agency symbolized by the light gray bubble</p>
+      <ul>
+        <li>Hover over the circle cluster or individual circle for the total investment of the agency or sub-agency</li>
+        <li>Click on a circle to view more details for each sub-agency</li>
+        <li>Click anywhere in the gray circle to return to the original view</li>
+      </ul>
     </Accordion>
+
+    <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/'
+               pageUrl='colleges-and-universities'
+               location=''
+               title='Check out this analysis on Data Lab'
+               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+               facebook='' reddit='' linkedin='' tumblr='' email=''/>
 
     <Grid container justify='center'>
       <Grid item>
