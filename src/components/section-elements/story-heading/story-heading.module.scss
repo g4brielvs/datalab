@@ -4,7 +4,7 @@
 	padding: 100px 0 50px;
 }
 
-.heading__number {
+.number {
 	display: inline-block;
 	margin-right: 8.33%;
 	margin-bottom: 50px;
@@ -12,10 +12,9 @@
 	font-size: 48px;
 	font-weight: bold;
 	text-decoration: underline;
-	// border-bottom: 1px solid #ddd;
 }
 
-.heading__title {
+.title {
 	text-transform: uppercase;
 	color: #666;
 	font-size: 16px;
@@ -23,27 +22,27 @@
 	line-height: 20px;
 }
 
-.heading__teaser {
+.teaser {
 	color: #555555;
 	font-size: 42px;
 	line-height: 48px;
 	font-weight: 200;
 }
 
-.heading__blurb {
+.blurb {
 	color: #555555;
 	font-size: 17px;
 	font-weight: 300;
 	line-height: 24px;
 }
 
-.heading--red {
+.heading-red {
 	color: $cuRed;
 	font-weight: 400;
 }
 
 @media (max-width: $desktop-xl - 1) {
-	.heading__number {
+	.number {
 		margin-bottom: 25px;
 	}
 }
@@ -53,7 +52,7 @@
 		padding: 100px 0 30px;
 		text-align: center;
 
-		.heading__number {
+		.number {
 			margin-right: 0;
 		}
 	}

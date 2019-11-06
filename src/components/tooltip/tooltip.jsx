@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import './tooltip.scss';
+import styles from './tooltip.module.scss';
 
 import * as d3 from "d3v3";
 
 function tooltipModule(){
-  function getLeftPosition() {
+  function getLeftPosition(tooltipId) {
     let curX = d3.event.clientX;
     let pageX = d3.event.pageX;
-    let tooltipWidth = document.getElementById("tooltip").clientWidth;
+    let tooltipWidth = document.getElementById(tooltipId).clientWidth;
     let paddingX = 20;
 
     if (curX + tooltipWidth + paddingX > window.innerWidth) {
@@ -17,10 +17,10 @@ function tooltipModule(){
     }
   }
 
-  function getTopPosition() {
+  function getTopPosition(tooltipId) {
     let curY = d3.event.clientY;
     let pageY = d3.event.pageY;
-    let tooltipHeight = document.getElementById("tooltip").clientHeight;
+    let tooltipHeight = document.getElementById(tooltipId).clientHeight;
     let paddingY = 10;
     let cursorPadding = 20;
 
@@ -33,7 +33,7 @@ function tooltipModule(){
 
   function draw(tooltipId, title, information, disclaimers) {
     d3
-      .select(tooltipId)
+      .select(`#${tooltipId}`)
       .transition()
       .duration(200)
       .style("opacity", 1);
@@ -41,36 +41,39 @@ function tooltipModule(){
     function toolTipHtml(t, i, d) {
       function getinfoHtml() {
         return Object.entries(i).reduce((a, c) => {
-          a += `<p class="key">${c[0]}</p><p class="val">${c[1]}</p>`;
+          a += `<p class=${styles.key}>${c[0]}</p><p class=${styles.val}>${c[1]}</p>`;
           return a;
         }, "");
       }
 
       function getDisclaimerHtml() {
         return d.reduce((a, c) => {
-          a += `<div class="disclaimer">${c}<div />`;
+          a += `<div class=${styles.disclaimer}>${c}<div />`;
           return a;
         }, "");
       }
 
       const html = `
-                <p class="title"><b>${t}</b></p>
-                ${i ? `<br><div class="information">${getinfoHtml()}<div />` : ""}
+                <p class=${styles.title}><b>${t}</b></p>
+                ${i ? `<br><div class=${styles.information}>${getinfoHtml()}<div />` : ""}
                 ${d ? `<br>${getDisclaimerHtml()}` : ""}
             `;
       return html;
     }
 
+    const leftPosition = getLeftPosition(tooltipId);
+    const topPosition = getTopPosition(tooltipId);
+
     d3
-      .select(tooltipId)
+      .select(`#${tooltipId}`)
       .html(toolTipHtml(title, information, disclaimers))
-      .style("left", getLeftPosition)
-      .style("top", getTopPosition);
+      .style("left", leftPosition)
+      .style("top", topPosition);
   }
 
   function remove(tooltipId) {
     d3
-      .select(tooltipId)
+      .select(`#${tooltipId}`)
       .transition()
       .duration(500)
       .style("opacity", 0)
@@ -78,10 +81,12 @@ function tooltipModule(){
   }
 
   function move(tooltipId) {
+    const leftPosition = getLeftPosition(tooltipId);
+    const topPosition = getTopPosition(tooltipId);
     d3
-      .select(tooltipId)
-      .style("left", getLeftPosition)
-      .style("top", getTopPosition);
+      .select(`#${tooltipId}`)
+      .style("left", leftPosition)
+      .style("top", topPosition);
   }
 
   return { draw, remove, move };

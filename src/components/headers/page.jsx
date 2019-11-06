@@ -1,5 +1,5 @@
 import React from "react";
-import "./page.scss";
+import styles from "./page.module.scss";
 
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
@@ -84,11 +84,11 @@ class PageHeader extends React.Component {
     let isSticky = this.state.isSticky;
     
     return (
-      <header id="header"  className={`${isSticky ? `header-container-sticky` : ``}`}>
-        <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`header__main ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : ``}`}>
-          <div className={`header-logo__wrapper ${!isSticky ? `col`: ``}`}>
+      <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
+        <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
+          <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
             <a href="/">
-              <div className='header-logo__container'>
+              <div className={styles.logoContainer}>
                 {isSticky ? (
                   <NoTagLine />
                 ) : (
@@ -97,25 +97,25 @@ class PageHeader extends React.Component {
               </div>
             </a>
 
-            <nav className={`header-nav ${isSticky ? `tight` : ``} ${this.props.isHome ? `` : `tight`}`}>
-              <span className={`navbar-toggle`} id="burger-navbar-toggle" onClick={this.burgerClick}>
+            <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
+              <span className={styles.toggle} onClick={this.burgerClick}>
                 <FontAwesomeIcon icon={faBars} />
               </span>
-              <ul className="nav" id="burger-menu">
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
-                  <a href='#' className='navListAnchor'>Analyses <span className='navListArrow'><Arrow /></span></a>
+              <ul className={styles.ulNav} id={styles.burgerMenu}>
+                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                  <a href='#' className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
-                  <a href='#' className='navListAnchor'>DataLab Express <span className='navListArrow'><Arrow /></span></a>
+                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                  <a href='#' className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
-                  <a href='#' className='navListAnchor'>America's Finance Guide <span className='navListArrow'><Arrow /></span></a>
+                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                  <a href='#' className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className='navListItem' onMouseOver={this.handleItemClick}>
-                  <a href='#' className='navListAnchor'>Resources <span className='navListArrow'><Arrow /></span></a>
+                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                  <a href='#' className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className='navListItem'>
-                  <a href='#' className='navListAnchor'><span className='navListArrow'><Book/></span> Glossary </a>
+                <li className={styles.item}>
+                  <a href='#' className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </a>
                 </li>
               </ul>
             </nav>
@@ -123,7 +123,7 @@ class PageHeader extends React.Component {
           </div>
         </div>
 
-        <div className={`header__sub ${isSticky ? `tight` : ``}`} style={{top: this.props.isHome == true ? `` : `${this.state.skinnySub}px`}}>
+        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome == true ? `` : `${this.state.skinnySub}px`}}>
           <Dropdown activeItem={this.state.activeItem}
                     mouseHandle={this.handleMouseLeave}
                     data={this.props.megamenuItems} />

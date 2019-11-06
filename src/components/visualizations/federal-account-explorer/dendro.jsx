@@ -3,6 +3,7 @@ import * as d3 from 'd3v3';
 import * as $ from 'jquery';
 import './dendro.scss';
 import tooltipModule from '../../../components/tooltip/tooltip';
+import tooltipStyles from '../../../components/tooltip/tooltip.module.scss';
 
 function Dendro(props) {
 
@@ -214,32 +215,32 @@ function Dendro(props) {
 
         function handleMouseOver(d) {
           if (d.depth === 3) {
-            tooltip.draw("#tooltip", d.name, {
+            tooltip.draw(tooltipStyles.tooltip, d.name, {
               "Total Obligations": formatNumber(d.size),
               "Unobligated Balance": formatNumber(d.unob)
             }, ["Click to visit federal account page", "Federal account page contains FY17-FY19 data"]);
           }
           if (d.depth === 2) {
-            tooltip.draw("#tooltip", `${d.name}, ${d.parent.name}`, {
+            tooltip.draw(tooltipStyles.tooltip, `${d.name}, ${d.parent.name}`, {
               "Total Obligations": sumUpLvl2(d),
               "Unobligated Balance": sumUpLvl2Unob(d)
             }, ["Click to view federal accounts"]);
           }
           if (d.depth === 1) {
-            tooltip.draw("#tooltip", d.name, {
+            tooltip.draw(tooltipStyles.tooltip, d.name, {
               "Total Obligations": sumUp(d),
               "Unobligated Balance": sumUpUnob(d)
             }, ["Click to view agencies"]);
           }
           if (d.depth === 0) {
-            tooltip.draw("#tooltip", "FY17 Federal Agencies");
+            tooltip.draw(tooltipStyles.tooltip, "FY17 Federal Agencies");
           }
         }
         function handleMouseOut() {
-          tooltip.remove("#tooltip");
+          tooltip.remove(tooltipStyles.tooltip);
         }
         function handleMouseMove() {
-          tooltip.move("#tooltip");
+          tooltip.move(tooltipStyles.tooltip);
         }
 
         // Enter any new nodes at the parent's previous position.
@@ -616,7 +617,7 @@ function Dendro(props) {
       </div>
       <div className="viz-container">
         <div className='dendrogram'>
-          <div id="tooltip" className="tooltip-module"></div>
+          <div id={tooltipStyles.tooltip} className={tooltipStyles.tooltipModule}></div>
           <div id="tree-container"></div>
         </div>
       </div>

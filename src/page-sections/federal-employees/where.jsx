@@ -1,6 +1,6 @@
 import React from "react"
 import "../../styles/index.scss"
-import '../../components/share-menu/share-menu.scss'
+import '../../components/share-menu/share-menu.module.scss'
 
 /* components */
 import Mapviz from '../../components/visualizations/federal-employees/mapviz/mapviz';
