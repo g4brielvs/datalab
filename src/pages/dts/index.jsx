@@ -12,8 +12,8 @@ const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
 import AWS from 'aws-sdk';
 AWS.config.update(
   {
-    accessKeyId: 'AKIA3YCOPFO3LMPSH75B',
-    secretAccessKey: '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',
+    accessKeyId: `${process.env.GATSBY_DTS_ID}`,
+    secretAccessKey: `${process.env.GATSBY_DTS_SECRET}`,
     region: 'us-gov-west-1'
   }
 );
