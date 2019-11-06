@@ -3,7 +3,6 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from '../../components/accordion/accordion';
-import BubbleChart from '../../components/visualizations/bubble-chart/bubble-chart';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +12,9 @@ import StoryHeading from '../../components/section-elements/story-heading/story-
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 import ShareMenu from "../../components/share-menu/share-menu"
+
+import loadable from '@loadable/component';
+const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = () => {
   const _data = useStaticQuery(graphql`

@@ -5,10 +5,12 @@ import storyHeadingStyles from '../../components/section-elements/story-heading/
 import Accordion from "../../components/accordion/accordion";
 import StoryHeading from "../../components/section-elements/story-heading/story-heading";
 import Downloads from "../../components/section-elements/downloads/downloads";
-import Mapbox from "../../components/visualizations/mapbox/mapbox";
 import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
 import ShareMenu from '../../components/share-menu/share-menu';
 import ControlBar from "../../components/control-bar/control-bar"
+
+import loadable from '@loadable/component';
+const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
 
