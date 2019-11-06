@@ -8,11 +8,12 @@ import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import Sunburst from '../../components/visualizations/sunburst/sunburst';
 import SunburstIcon from '../../images/sunburst_icon.svg';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
-import ShareMenu from "../../components/share-menu/share-menu"
+
+import loadable from '@loadable/component';
+const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
 
 const Categories = () => {
   const switchView = view => alert('switch to ' + view + ' mode');
