@@ -127,9 +127,9 @@ const Agencies = () => {
     }
   });
 
-  const controlPanelRef = React.createRef();
+  const chartRef = React.createRef();
   const searchItemSelected = id => {
-    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+    chartRef.current.updateSelection(searchList.filter(i => i.id === id));
   }
 
   return (<>
@@ -159,12 +159,14 @@ const Agencies = () => {
       </ul>
     </Accordion>
 
-    <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/'
-               pageUrl='colleges-and-universities'
-               location=''
-               title='Check out this analysis on Data Lab'
-               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-               facebook='' reddit='' linkedin='' tumblr='' email=''/>
+    <ShareMenu
+      siteUrl='https://datalab-dev.usaspending.gov/'
+      pageUrl='colleges-and-universities'
+      location=''
+      title='Check out this analysis on Data Lab'
+      text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+      facebook='' reddit='' linkedin='' tumblr='' email=''
+    />
 
     <Grid container justify='center'>
       <Grid item>
@@ -183,7 +185,7 @@ const Agencies = () => {
         <BubbleChart
           items={_data.allUnivBubbleChartCsv.nodes}
           showDetails={getClickedDetails}
-          ref={controlPanelRef}
+          ref={chartRef}
         />
       </Grid>
       <Grid item>
@@ -199,7 +201,7 @@ const Agencies = () => {
       href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
       date={'March 2019'}
     />
-  </>)
+  </>);
 }
 
 export default Agencies
