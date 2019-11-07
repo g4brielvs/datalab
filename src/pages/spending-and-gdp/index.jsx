@@ -12,7 +12,7 @@ import SEO from "../../components/seo"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
 import HeaderOnly from "../../components/layouts/header-only/header-only"
-import GdpTemplate from '../../components/layouts/gdp-template/gdp-template'
+import GdpTemplate from '../../components/gdp-template/gdp-template'
 import Accordion from '../../components/accordion/accordion'
 import HwctaLink from '../../components/hwcta-link/hwcta-link'
 import { Helmet } from 'react-helmet';

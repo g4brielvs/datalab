@@ -1,5 +1,5 @@
 import React from "react"
-import AfgData from "../../../libs/_data/object_mapping.yml"
+import AfgData from "../../libs/_data/object_mapping.yml"
 
 const GdpTemplate = () => (
   <>
