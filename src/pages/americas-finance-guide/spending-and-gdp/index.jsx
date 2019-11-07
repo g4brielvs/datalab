@@ -15,8 +15,6 @@ import HeaderOnly from "../../../components/layouts/header-only/header-only"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import { Helmet } from 'react-helmet';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
@@ -29,7 +27,9 @@ function SpendingAndGdpPage(props) {
     <>
       <Helmet>
         <script defer src="/assets/ffg/spending/intro.js"></script>
-        {/* <script defer src="/assets/ffg/css/intro.js"></script> */}
+        {/* <script defer src="/assets/ffg/spending/main.js"></script> */}
+        {/* <script defer src="/assets/ffg/css/chapterIntroCommon.css"></script> */}
+        {/* <script defer src="/assets/ffg/css/cg.css"></script> */}
       </Helmet>
 
       <SEO 
