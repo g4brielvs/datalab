@@ -1,12 +1,15 @@
-import './search.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import styles from './search.module.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import overrides from './mui-override-search';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import { OutlinedInput, List, ListItem, ListItemText, IconButton, MuiThemeProvider } from "@material-ui/core"
+import {createMuiTheme} from "@material-ui/core/styles";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 
 export default class SearchPanel extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +52,7 @@ export default class SearchPanel extends React.Component {
   }
 
   render = () => {
+    const theme = () => createMuiTheme(overrides);
     return (
       <form>
         <OutlinedInput
@@ -70,23 +74,24 @@ export default class SearchPanel extends React.Component {
               : ''
           }
         />
-
-        <List aria-label={'List of ' + this.props.listDescription}
-          className={'searchlist' + (this.state.expanded ? ' expanded' : '')}
-        >
-          {
-            this.filteredList.map(i =>
-              <ListItem
-                key={i.id}
-                button
-                divider
-                className='listItem'
-                onClick={() => this.selectItem(i.id)}
-              >
-                <ListItemText primary={i.heading} secondary={i.subheading} />
-              </ListItem>
-            )}
-        </List>
+        <MuiThemeProvider theme={theme()}>
+          <List aria-label={'List of ' + this.props.listDescription}
+            className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
+          >
+            {
+              this.filteredList.map(i =>
+                <ListItem
+                  key={i.id}
+                  button
+                  divider
+                  className={styles.listItem}
+                  onClick={() => this.selectItem(i.id)}
+                >
+                  <ListItemText primary={i.heading} secondary={i.subheading} />
+                </ListItem>
+              )}
+          </List>
+        </MuiThemeProvider>
       </form>
 
     )

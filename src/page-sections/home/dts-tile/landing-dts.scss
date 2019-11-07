@@ -85,10 +85,6 @@ hr.horizontal_dts{
 }
 
 @media only screen and (max-width: $desktop-xl) {
-  .dts-container {
-    display: flex;
-    justify-content: center;
-  }
 
   .dts-module {
     width: 80%;

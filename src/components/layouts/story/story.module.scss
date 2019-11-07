@@ -1,0 +1,102 @@
+@import '../../../styles/index.scss';
+
+$darkGrey: #666666;
+$mdGrey: #555555;
+
+h2 {
+  margin: 0;
+}
+
+.story-page {
+  padding-top: $margin-50;
+  margin: 0 auto $margin-75;
+}
+
+.header-hero {
+  margin-top: $margin-50;
+  padding-bottom: $margin-30;
+  border-bottom: $darkGrey 1px solid;
+  > * {
+    text-align: center;
+  }
+}
+
+.context-statement {
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.5rem;
+  margin-bottom: 0;
+}
+
+.intro-sentence {
+  color: $darkGrey;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.5rem;
+  margin: 0;
+  margin-bottom: $margin-25;
+}
+
+.header-red {
+  color: $cuRed;
+  font-weight: 900;
+}
+
+.title {
+  color: $darkGrey;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: $margin-25;
+  margin-top: 0;
+}
+
+@media screen and (min-width: $desktop-xl) {
+  .intro-sentence {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  /**colleges**/
+  .header-hero {
+    padding-bottom: $margin-75;
+  }
+
+  .story-page {
+    max-width: $desktop-xl-mcw;
+    margin: 0 auto $margin-15;
+  }
+}
+
+@media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
+  .story-page {
+    max-width: $desktop-mcw;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .story-page {
+    max-width: $tablet-mcw;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .story-page {
+    max-width: $tablet-portrait-mcw;
+  }
+}
+
+@media (max-width: $phone - 1) {
+  .story-page {
+    margin: 0 $margin-15 $margin-50;
+    max-width: none;
+  }
+
+  .title, .intro-sentence, .context-statement {
+    text-align: left;
+  }
+
+  .header-hero {
+    margin-top: $margin-30;
+    padding-bottom: $margin-25;
+  }
+}

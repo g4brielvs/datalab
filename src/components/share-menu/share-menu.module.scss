@@ -1,10 +1,18 @@
-@import '../../styles/variables.scss';
+@import '../../styles/variables';
 
 $silver: #ccc;
 
-.new-share {
-    display: inline-block;
-    margin-left: 5%;
+// this needs to be replaced with "cu-header-controls" from the original Jekyll project! 
+.share-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  max-width: 1200px; // wind up changing this when "CU-Header" is built and we can put it in there
+}
+
+.new-share-button {
+    display: flex;
+    margin-left: 20px;
     cursor: pointer;
     position: relative;
   }
@@ -111,20 +119,12 @@ $silver: #ccc;
     width: auto;
     font-size: 1rem;
     color: #4a4a4a;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
   
     img {
       margin-right: 4px;
       transform: translateY(4px);
     }
   }
-
-#button-instructions {
-  position: static;
-}
 
 .popup .popuptext {
     visibility: hidden;

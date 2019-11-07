@@ -13,6 +13,7 @@ import Accordion from "../../components/accordion/accordion";
 import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
+import ControlBar from "../../components/control-bar/control-bar"
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){
@@ -40,11 +41,10 @@ class FederalAccountExplorerPage extends Component {
                  </ul>
                </Accordion>
 
-               <Grid container justify='flex-end'>
-                 <Grid item><Reset /></Grid>
-                 <Grid item ><Share
-                               location={this.props.location}/></Grid>
-               </Grid>
+               <ControlBar>
+                 <Reset />
+                 <Share location={this.props.location}/>
+               </ControlBar>
 
                <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data} />
 

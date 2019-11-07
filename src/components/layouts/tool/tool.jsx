@@ -25,12 +25,12 @@ export default class ToolLayout extends React.Component {
             {name: 'Homelessness Analysis', link: '/homelessness-analysis'},
             {name: 'Budget Function', link: '/budget-function'},
             {name: 'Federal Employees', link: '/federal-employees'},
-            {name: 'Competition In Contracting', link: '/competition-in-contacting'}
+            {name: 'Competition In Contracting', link: '/competition-in-contracting'}
           ]},
         {
           express: [
-            {name: 'Research and Development in Contracting', link: '/test-link'},
-            {name: 'Women-Owned Small Businesses', link: '/test-link'}
+            /* {name: 'Research and Development in Contracting', link: '/test-link'}, */
+            /* {name: 'Women-Owned Small Businesses', link: '/test-link'} */
           ]},
         {
           ffg: [
@@ -79,15 +79,15 @@ export default class ToolLayout extends React.Component {
 
       <main className={styles.main}>
         <article>
-          <section>
+          <section className={styles.childrenSection}>
             {this.props.children}
           </section>
           <section className={styles.followUp}>
             <Grid container>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={4} lg={5}>
                 <div className={styles.bodyIntro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
               </Grid>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} sm={8} lg={7}>
                 <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
               </Grid>
             </Grid>
@@ -105,9 +105,9 @@ ToolLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   introSentence: PropTypes.string.isRequired,
-  contextStatement: PropTypes.string.isRequired,
-  sectionTitle: PropTypes.string.isRequired,
-  sectionText: PropTypes.string.isRequired,
+  contextStatement: PropTypes.string,
+  sectionTitle: PropTypes.string,
+  sectionText: PropTypes.string,
   hwctaLink: PropTypes.string,
 }
 

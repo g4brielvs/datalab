@@ -1,5 +1,5 @@
 import React from "react"
-import "./official-banner.scss"
+import styles from "./official-banner.module.scss"
 
 import flag from "../../../src/images/us_flag_small.png"
 
@@ -10,33 +10,32 @@ class OfficialBanner extends React.Component {
 
 	render() {
 		return (
-			<header className="official-banner">
-				<ul className="official-banner__site-list">
-					<li className="official-banner__site-item">
-						<a className="official-banner__site-link" href="https://www.usaspending.gov">
+			<header className={styles.officialBanner}>
+				<ul className={styles.siteList}>
+					<li className={styles.siteItem}>
+						<a className={styles.siteLink} href="https://www.usaspending.gov">
 							USAspending.gov
 	    </a>
 					</li>
-					<li className="official-banner__site-item official-banner__site-item_spacer" aria-hidden="true">
+					<li className={`${styles.siteItem} ${styles.itemSpacer}`} aria-hidden="true">
 						|
 	  </li>
-					<li className="official-banner__site-item">
-						<a className="official-banner__site-link" href="https://datalab.usaspending.gov">
+					<li className={styles.siteItem}>
+						<a className={styles.siteLink} href="https://datalab.usaspending.gov">
 							Data Lab
 	    </a>
 					</li>
 				</ul>
-				<div className="official-banner__wrapper">
-					<div className="official-banner__text">
+				<div className={styles.wrapper}>
+					<div className={styles.text}>
 						An official website of the U.S. government
 	  </div>
-					<img className="official-banner__flag" src={flag} alt="U.S. flag" />
+					<img className={styles.flag} src={flag} alt="U.S. flag" />
 				</div>
 			</header>
 		);
 	}
-
-}; // end class
+} // end class
 
 
 

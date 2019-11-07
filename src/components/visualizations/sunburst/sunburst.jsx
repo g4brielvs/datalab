@@ -1,433 +1,395 @@
-import React, { useEffect } from 'react';
+import React, { Component } from "react"
 
 import * as d3 from "d3v3";
-import * as $ from "jquery";
 import './sunburst.scss';
 
-
-function Sunburst(props) {
-
-  // TODO Change this to set state
-  // function setCategoryState(d) {
-  //   _categoryState = d;
-  // }
-  //
-  // function getCategoryState() {
-  //   return _categoryState;
-  // }
-
-
-  /* The useEffect Hook is for running side effects outside of React,
-     for instance inserting elements into the DOM using D3 */
-  useEffect(() => {
+export default class Sunburst extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedItem: null,
+      data: props.items
+    };
 
     // Default values set from props
-    const data = props.items;
-    const title = props.title.categoryLabel;
-    const centerTextHeading = props.title['centerText'];
-    const levels = props.levels;
-    const leaf = props.leaf;
-    const wedgeColors = props.wedgeColors;
-    const centerColor = props.centerColor;        // transparent to show #center
-
-    // TODO: For the Contract Explorer
-    const hasCenterText = true;
+    this.title = props.title.categoryLabel;
+    this.centerTextHeading = props.title['centerText'];
+    this.levels = props.levels;
+    this.leaf = props.leaf;
+    this.wedgeColors = props.wedgeColors;
+    this.centerColor = props.centerColor;        // transparent to show #center
 
     // Other variables
-    const formatNumber = d3.format('$,.0f');
-    let centerGroup;
-    let chartData;                               // ref to current data parent (only for center label)
-    let svg;
-    let hierarchy, chartArray;
-    let innerRadius;
-    let calculatedWidth = 700;
-    let maxHeight = 700;
-    let width = 700;
-    let height = 700;
-    let radius = Math.min(width, height) / 2;
-    let xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-    let yScale = d3.scale.sqrt().range([0, radius]);
+    this.formatNumber = d3.format('$,.0f');
+    this.centerGroup;
+    this.chartData;                               // ref to current data parent (only for center label)
+    this.svg;
+    this.hierarchy;
+    this.chartArray;
+    this.innerRadius;
+    this.maxHeight;
+    this.width;
+    this.height;
+    this.arc;
+    this.radius;
+    this.xScale;
+    this.yScale;
+    this.partition;
 
+    this.buildDataHierarchy = this.buildDataHierarchy.bind(this);
+    this.isMobile = this.isMobile.bind(this);
+    this.isTablet = this.isTablet.bind(this);
+    this.getWedgeColor = this.getWedgeColor.bind(this);
+    this.drawChart = this.drawChart.bind(this);
+    this.createChart = this.createChart.bind(this);
+    this.refreshData = this.refreshData.bind(this);
+    this.click = this.click.bind(this);
+    this.updateCenter = this.updateCenter.bind(this);
+    this.setCenterTextLines = this.setCenterTextLines.bind(this);
+    this.setWrappedCenterTextLines = this.setWrappedCenterTextLines.bind(this);
+    this.wordWrap = this.wordWrap.bind(this);
+    this.updateSelection = this.updateSelection.bind(this);
 
-    // Initialize d3 visualization
-    const partition = d3.layout.partition().value(d => d.size);
-    const arc = d3.svg.arc()
-      .startAngle(d => Math.max(0, Math.min(2 * Math.PI, xScale(d.x))))
-      .endAngle(d => Math.max(0, Math.min(2 * Math.PI, xScale(d.x + d.dx))))
-      .innerRadius(function(d) {
-        if(d.depth === 1 && (!innerRadius || innerRadius > 0)) {
-          innerRadius = Math.max(0, yScale(d.y));
+  }
+
+  updateSelection(d) {
+    this.setState({ selectedItem: d });
+  }
+
+  buildDataHierarchy(title, dataArray) {
+    const data = { name: title, children: [] };
+
+    dataArray.forEach(d => {
+      // Keep this as a reference to the current level
+      let depthCursor = data.children;
+      // Go down one level at a time
+      this.levels.forEach((property, depth) => {
+
+        // Look to see if a branch has already been created
+        let index;
+        depthCursor.forEach((child, i) => {
+          if (d[property] == child.name) {
+            index = i;
+          }
+        });
+        // Add a branch if it isn't there
+        if (isNaN(index)) {
+          depthCursor.push({ 'name': d[property], 'children': [] });
+          index = depthCursor.length - 1;
         }
-        return Math.max(0, yScale(d.y));
-      })
-      .outerRadius(d => Math.max(0, yScale(d.y + d.dy)))
+        // Now reference the new child array as we go deeper into the tree
+        depthCursor = depthCursor[index].children;
+        // This is a leaf, so add the last element to the specified branch
+        if (depth === this.levels.length - 1) {
+          depthCursor.push({ 'name': d[this.leaf.name], 'size': d[this.leaf.size] });
+        }
+      });
+    });
 
-    d3.select(self.frameElement).style('height', height + 'px');
+    return data;
+  }
 
+  isMobile() {
+    if (typeof document !== `undefined`) {
+      const maxThreshold = 768;
+      return document.body.clientWidth <= maxThreshold;
+    }
+    return false;
+  }
 
-    // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
-    hierarchy = buildDataHierarchy(title, data, levels);
-    chartArray = partition.nodes(hierarchy)
-      .filter(d => d.depth < 3); // leave off recipients
-    hierarchy.children.forEach((node, index) => {
-      node.colorIndex = index % wedgeColors.length;
+  isTablet() {
+    if (typeof document !== `undefined`) {
+      const minThreshold = 769;
+      const maxThreshold = 1199;
+      return (minThreshold <= document.body.clientWidth && document.body.clientWidth <= maxThreshold);
+    }
+    return false;
+  }
+
+  getWedgeColor(d) {
+    if (d.depth === 0) {
+      return this.centerColor;
+    }
+    while (d.depth > 1) { //fill with colorIndex color (or ancestors')
+      d = d.parent;
+    }
+    return this.wedgeColors[d.colorIndex];
+  }
+
+  drawChart(data) {
+    this.createChart();
+    this.refreshData(data);
+  }
+
+  createChart() {
+    d3.select("#sunburst").selectAll("*").remove();
+
+    this.svg = d3.select('#sunburst')
+      .append('svg')
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .append('g')
+      .attr('transform', 'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
+  }
+
+  refreshData(data) {
+    this.svg.selectAll('path').remove();
+    const paths = this.svg.selectAll('path').data(data);
+    paths.enter().append('path')
+      .attr('d', this.arc)
+      .attr('class', d => 'depth' + d.depth)
+      .attr('fill', d => this.getWedgeColor(d))
+      // .on('mouseover', hover)
+      .on('click', this.click)
+      .append('title').text(function(d) {
+      const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
+      return name;
     });
 
 
-    // Function calls
-    drawChart(chartArray); // default chart is all grants
+    this.click(data[0]); // simulate clicking center to reset zoom
+  }
 
-    // TODO: Out of scope of ticket
-    // enable search/filter
-    // if (sunburst) {
-    //   sunburst.onSearchSelect = click;
-    //   sunburst.init();
-    //   sunburst.setSearchData(chartArray);
-    // }
+  click(d) {
+    this.updateSelection(d);
+    let classContext = this;
+    this.updateCenter(d);
+    this.svg.transition()
+      .duration(750)
+      .tween('scale', () => {
 
-    // Functions
-
-    // TODO: Don't care about mobile just yet
-
-    function isMobile() {
-      const maxThreshold = 768;
-      return window.innerWidth <= maxThreshold;
-    }
-
-    function isTablet() {
-      const minThreshold = 769;
-      const maxThreshold = 1199;
-
-      return (minThreshold <= window.innerWidth && window.innerWidth <= maxThreshold);
-
-    }
-
-    function updateCenter(d) {
-      chartData = chartArray[0];
-
-      d3.select('text#tab').remove();
-      const boundingBox = innerRadius * 2/Math.sqrt(2);
-
-      let labelFontSize = 1;
-      const lineHeight = 1.1;
-      const doubleSpace = 2;
-      const mediumText = 1.25;
-      const largeText = 1.75;
-      const exLargeText = 2;
-
-      let wordWrapMultiplier = isMobile() ? 5.5 : isTablet() ? 3 : 2;
-      let smWordWrapMultiplier = isMobile() ? 3 : isTablet() ? 2 : 1;
-
-      if (d.depth === 0) {
-
-        centerGroup = svg.append('svg:text')
-          .attr('id', 'tab');
-
-        centerGroup.append('tspan')
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(centerTextHeading)
-          .attr('class', 'center-heading')
-          .style('font-size', function() {
-            return labelFontSize * mediumText + "em";
-          })
-          .attr('dy', '0')
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(formatNumber(d.value))
-          .attr('class', 'center-amount')
-          .style('font-size', labelFontSize * largeText + "em")
-
-          props.showDetails(null); // hide details panel
-
-      } else if (d.depth === 1) {
-        centerGroup = svg.append('svg:text')
-          .attr('id', 'tab');
-
-        // category
-        centerGroup.append('tspan')
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text('Category')
-          .attr('class', 'center-heading')
-          .style('font-size', labelFontSize + "em")
-          .attr('dy', '0')
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(d.name)
-          .attr('class', 'center-title')
-          .style('font-size', labelFontSize * mediumText + "em")
-          .call(wordWrap, boundingBox * smWordWrapMultiplier)
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight * doubleSpace + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text('Total FY2018 Funding')
-          .attr('class', 'center-heading')
-          .style('font-size', labelFontSize + "em")
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(formatNumber(d.value))
-          .attr('class', 'center-amount')
-          .style('font-size', labelFontSize * largeText + "em")
-
-          props.showDetails(null); // hide details panel
-
-      } else {
-        centerGroup = svg.append('svg:text')
-          .attr('id', 'tab');
-
-        centerGroup.append('tspan')
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text('Category')
-          .attr('class', 'center-heading')
-          .style('font-size', labelFontSize * mediumText + "em")
-          .attr('dy', '0')
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(d.parent.name)
-          .attr('class', 'center-title')
-          .style('font-size', labelFontSize * largeText + "em")
-          .call(wordWrap, boundingBox * smWordWrapMultiplier)
-
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight * 2 + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text('Sub-Category')
-          .attr('class', 'center-heading')
-          .style('font-size', labelFontSize * mediumText + "em")
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(d.name)
-          .attr('class', 'center-title')
-          .style('font-size', labelFontSize * largeText + "em")
-          .call(wordWrap, innerRadius * wordWrapMultiplier)
-
-        centerGroup.append('tspan')
-          .attr('dy', lineHeight * 2 + "em")
-          .attr('x', '0')
-          .attr('text-anchor', 'middle')
-          .text(formatNumber(d.value))
-          .attr('class', 'center-amount')
-          .style('font-size', labelFontSize * exLargeText + "em")
-          
-          props.showDetails(d); // show details in panel
-          // console.log(d);
-      }
-
-      /* Scale text to fit */
-      const bbox = centerGroup.node().getBBox();
-      const maxHeight = bbox.height;
-      const maxWidth = bbox.width;
-      let scale = 1;
-
-      if(maxHeight >= maxWidth) {
-        if (maxHeight > boundingBox) {
-          scale = boundingBox / maxHeight;
-          centerGroup.attr("transform", "scale(" + scale + ")");
-        }
-
-      } else {
-        if(maxWidth > boundingBox) {
-          scale = boundingBox / maxWidth;
-          centerGroup.attr("transform", "scale(" + scale + ")");
-        }
-      }
-
-      const padding = 16 * scale; // 1em = 16px
-
-      centerGroup.style('cursor', 'pointer')
-        .attr('y', -maxHeight / 2 + padding)
-        .on('click', function() {
-          click(chartData);
-        })
-
-    }
-
-    function getWedgeColor(d) {
-      if (d.depth === 0) {
-        return centerColor;
-      }
-      while (d.depth > 1) { //fill with colorIndex color (or ancestors')
-        d = d.parent;
-      }
-
-      return wedgeColors[d.colorIndex];
-    }
-
-    function drawChart(data) {
-      createChart();
-      refreshData(data);
-    }
-
-    function createChart() {
-      const widthPercentage = .7;
-      //TODO can I use window here???
-      // calculatedWidth = window.innerWidth * widthPercentage;
-      calculatedWidth = 700;
-      maxHeight = 700;
-      width = 700;
-      height = 700;
-      radius = Math.min(width, height) / 2;
-      xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-      yScale = d3.scale.sqrt().range([0, radius]);
-
-      d3.select("#sunburst").selectAll("*").remove();
-
-      svg = d3.select('#sunburst')
-        .attr('style', `width: ${width}px; height: ${height}px`)
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
-    }
-
-    function refreshData(data) {
-      svg.selectAll('path').remove();
-      const paths = svg.selectAll('path').data(data);
-      paths.enter().append('path')
-        .attr('d', arc)
-        .attr('class', d => 'depth' + d.depth)
-        .attr('fill', d => getWedgeColor(d))
-        // .on('mouseover', hover)
-        .on('click', click)
-        .append('title').text(function(d) {
-        const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
-        return name;
+        // adjust xScale domain values to expand/contract selected sector (no changes to radii (y))
+        const i = d3.interpolateArray(classContext.xScale.domain(), [d.x, d.x + d.dx]);
+        return t => {
+          classContext.xScale.domain(i(t));
+        };
+      })
+      .selectAll('path')
+      .attrTween('d', d => function() {
+        return classContext.arc(d);
       });
 
-      click(data[0]); // simulate clicking center to reset zoom
+  }
+
+  updateCenter(d) {
+    this.chartData = this.chartArray[0];
+    const boundingBox = this.innerRadius * 2 / Math.sqrt(2);
+
+    d3.select('text#tab').remove();
+
+    let labelFontSize = 1;
+    const lineHeight = 1.1;
+    const doubleSpace = 2;
+    const mediumText = 1.25;
+    const largeText = 1.75;
+    const exLargeText = 2;
+
+    let wordWrapRatio = this.isMobile() ? 5.5 : this.isTablet() ? 3 : 2;
+    let smWordWrapRatio = this.isMobile() ? 3 : this.isTablet() ? 2 : 1;
+
+    this.centerGroup = this.svg.append('svg:text')
+      .attr('id', 'tab');
+
+    if (d.depth === 0) {
+
+      this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
+      this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
+
+      this.props.showDetails(null); // hide details panel
+
+    } else if (d.depth === 1) {
+
+      // category
+      this.setCenterTextLines('center-heading', 'Category', labelFontSize, '0');
+      this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
+      this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
+      this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
+
+      this.props.showDetails(null); // hide details panel
+
+    } else {
+
+      this.setCenterTextLines('center-heading', 'Category', mediumText, '0');
+      this.setWrappedCenterTextLines('center-title', d.parent.name, largeText, lineHeight, boundingBox * smWordWrapRatio);
+      this.setCenterTextLines('center-heading', 'Sub-Category', mediumText, lineHeight * 2);
+      this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
+      this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
+
+      this.props.showDetails(d); // show details in panel
     }
 
-    function click(d) {
-      // setCategoryState(d);
-      updateCenter(d);
-      svg.transition()
-        .duration(750)
-        .tween('scale', () => {
+    /* Scale text to fit */
+    const bbox = this.centerGroup.node().getBBox();
+    const maxHeight = bbox.height;
+    const maxWidth = bbox.width;
+    let scale = 1;
 
-          // adjust xScale domain values to expand/contract selected sector (no changes to radii (y))
-          const i = d3.interpolateArray(xScale.domain(), [d.x, d.x + d.dx]);
-          return t => {
-            xScale.domain(i(t));
-          };
-        })
-        .selectAll('path')
-        .attrTween('d', d => function () {
-          return arc(d);
-        });
+    if (maxHeight >= maxWidth) {
+      if (maxHeight > boundingBox) {
+        scale = boundingBox / maxHeight;
+        this.centerGroup.attr("transform", "scale(" + scale + ")");
+      }
+
+    } else {
+      if (maxWidth > boundingBox) {
+        scale = boundingBox / maxWidth;
+        this.centerGroup.attr("transform", "scale(" + scale + ")");
+      }
     }
 
-    function buildDataHierarchy(title, dataArray) {
-      const data = { name: title, children: [] };
+    const padding = 16 * scale; // 1em = 16px
 
-      dataArray.forEach(d => {
-        // Keep this as a reference to the current level
-        let depthCursor = data.children;
-        // Go down one level at a time
-        levels.forEach((property, depth) => {
+    this.centerGroup
+      .style('cursor', 'pointer')
+      .attr('y', -maxHeight / 2 + padding)
+      .on('click', () => this.click(this.chartData))
+    ;
+  }
 
-          // Look to see if a branch has already been created
-          let index;
-          depthCursor.forEach((child, i) => {
-            if (d[property] == child.name) {
-              index = i;
-            }
-          });
-          // Add a branch if it isn't there
-          if (isNaN(index)) {
-            depthCursor.push({ 'name': d[property], 'children': [] });
-            index = depthCursor.length - 1;
-          }
-          // Now reference the new child array as we go deeper into the tree
-          depthCursor = depthCursor[index].children;
-          // This is a leaf, so add the last element to the specified branch
-          if (depth === levels.length - 1) {
-            depthCursor.push({ 'name': d[leaf.name], 'size': d[leaf.size] });
-          }
-        });
-      });
+  setCenterTextLines(className, centerTextHeading, textSize, lineHeight) {
+    this.centerGroup.append('tspan')
+      .attr('x', '0')
+      .attr('text-anchor', 'middle')
+      .text(centerTextHeading)
+      .attr('class', className)
+      .style('font-size', function() {
+        return `${textSize}em`;
+      })
+      .attr('dy', `${lineHeight}em`)
+  }
 
-      return data;
-    }
+  setWrappedCenterTextLines(className, centerTextHeading, textSize, lineHeight, boundingBox) {
+    this.centerGroup.append('tspan')
+      .attr('x', '0')
+      .attr('text-anchor', 'middle')
+      .text(centerTextHeading)
+      .attr('class', className)
+      .style('font-size', function() {
+        return `${textSize}em`;
+      })
+      .attr('dy', `${lineHeight}em`)
+      .call(this.wordWrap, boundingBox)
+  }
 
-    function wordWrap(text, maxWidth) {
-      var words = text.text().split(/\s+/).reverse(),
-        word,
-        line = [],
-        lineHeight = 1.1,
-        tspan;
+  wordWrap(text, maxWidth) {
+    var words = text.text().split(/\s+/).reverse(),
+      word,
+      line = [],
+      lineHeight = 1.1,
+      tspan;
 
-      tspan = text.text(null)
-        .append("tspan")
-        .attr("x", 0);
+    tspan = text.text(null)
+      .append("tspan")
+      .attr("x", 0);
 
-      while (words.length > 0) {
-        word = words.pop();
-        line.push(word);
+    while (words.length > 0) {
+      word = words.pop();
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() >= maxWidth) {
+        line.pop();
         tspan.text(line.join(" "));
-        if (tspan.node().getComputedTextLength() >= maxWidth) {
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [word];
-          tspan = text.append("tspan")
-            .attr("x", 0)
-            .attr("dy", lineHeight + "em")
-            .text(word);
-        }
+        line = [word];
+        tspan = text.append("tspan")
+          .attr("x", 0)
+          .attr("dy", lineHeight + "em")
+          .text(word);
       }
     }
+  }
+
+  /* The useEffect Hook is for running side effects outside of React,
+     for instance inserting elements into the DOM using D3 */
+  componentDidMount() {
+    if (typeof document !== `undefined`) {
+      this.maxHeight = document.body.clientWidth * .7;
+      this.width = document.body.clientWidth * .7;
+      this.height = this.maxHeight;
+    }
+
+    this.radius = Math.min(this.width, this.height) / 2;
+    this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
+    this.yScale = d3.scale.sqrt().range([0, this.radius]);
+    const classContext = this;
 
 
-// TODO: Fix the responsiveness
-// Redraw based on the new size whenever the browser window is resized.
-//     window.addEventListener("resize", function() {
-//       catCalculatedWidth = window.innerWidth * widthPercentage;
-//       catMaxHeight = document.getElementById("sunburst").clientHeight;
-//       width = catCalculatedWidth < catMaxHeight ? catCalculatedWidth : catMaxHeight;
-//       height = width;
-//       radius = Math.min(width, height) / 2;
-//       xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-//       yScale = d3.scale.sqrt().range([0, radius]);
-//
-//       const state = getCategoryState();
-//
-//       if (chartArray) {
-//         drawChart (chartArray);
-//       } else if (scopedData) {
-//         drawChart (scopedData);
-//       }
-//
-//       if (state) click(state);
-//     });
+    // Initialize d3 visualization
+    this.partition = d3.layout.partition().value(d => d.size);
+    this.arc = d3.svg.arc()
+      .startAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x))))
+      .endAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x + d.dx))))
+      .innerRadius(function(d) {
+        if (d.depth === 1 && (!this.innerRadius || this.innerRadius > 0)) {
+          this.innerRadius = Math.max(0, classContext.yScale(d.y));
+        }
+        return Math.max(0, classContext.yScale(d.y));
+      })
+      .outerRadius(d => Math.max(0, classContext.yScale(d.y + d.dy)))
 
+    d3.select(self.frameElement).style('height', this.height + 'px');
 
-  });
+    // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
+    this.hierarchy = this.buildDataHierarchy(this.title, this.state.data, this.levels);
 
+    this.chartArray = this.partition.nodes(this.hierarchy)
+      .filter(d => d.depth < 3); // leave off recipients
+    this.hierarchy.children.forEach((node, index) => {
+      node.colorIndex = index % this.wedgeColors.length;
+    });
 
-  return (
-    <>
-      <div id='chart-area'>
+    // Function calls
+    this.drawChart(this.chartArray); // default chart is all grants
+
+    const context = this;
+
+    if (typeof window !== 'undefined') {
+      // Redraw based on the new size whenever the browser window is resized.
+      window.addEventListener("resize", function() {
+        context.calculatedWidth = window.innerWidth * .7;
+        context.width = window.innerWidth * .7;
+
+        context.height = context.width;
+        context.radius = Math.min(context.width, context.height) / 2;
+        context.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
+        context.yScale = d3.scale.sqrt().range([0, context.radius]);
+
+        const stateData = context.state.selectedItem;
+
+        context.drawChart(context.chartArray);
+
+        if (stateData) context.click(stateData);
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if (this.props.items !== prevProps.items) {
+      // Default values set from props
+      this.state.data = this.props.items;
+      this.title = this.props.title.categoryLabel;
+      this.centerTextHeading = this.props.title['centerText'];
+      this.levels = this.props.levels;
+      this.leaf = this.props.leaf;
+      this.wedgeColors = this.props.wedgeColors;
+      this.centerColor = this.props.centerColor;
+
+      this.hierarchy = this.buildDataHierarchy(this.title, this.state.data, this.levels);
+
+      this.chartArray = this.partition.nodes(this.hierarchy)
+        .filter(d => d.depth < 3); // leave off recipients
+      this.hierarchy.children.forEach((node, index) => {
+        node.colorIndex = index % this.wedgeColors.length;
+      });
+
+      this.drawChart(this.chartArray);
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <div id='chart-area'>
           <div id='chart-container'>
             <div id='investment-sunburst'>
               <div id='investment-sunburst-viz'>
@@ -438,9 +400,7 @@ function Sunburst(props) {
             </div>
           </div>
         </div>
-    </>
-  )
-}
-
-
-export default Sunburst
+      </>
+    )
+  }
+};

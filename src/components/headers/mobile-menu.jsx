@@ -2,7 +2,7 @@ import React from "react";
 import Arrow from '../../svgs/arrow.svg';
 import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
-import './page.scss';
+import styles from './page.module.scss';
 
 class MobileMenu extends React.Component {
   constructor(props) {
@@ -17,10 +17,10 @@ class MobileMenu extends React.Component {
     return data.map((item, i) => {
       return (
         <>
-          <li className='data-list-li' key={i}>
-            <a className='data-list-a' href={item.link}>{item.name}</a>
+          <li className={styles.dataListLi} key={i}>
+            <a className={styles.dataListA} href={item.link}>{item.name}</a>
           </li>
-          <hr id='mobile-hr'/>
+          <hr className={styles.mobileHr}/>
         </>
       );
     });
@@ -35,38 +35,38 @@ class MobileMenu extends React.Component {
 
     return (
       <div>
-        <ul className={`mobileDropdown ${show ? `` : `hidden`}`}>
-          <li className='navListItemMobile' data-id='0' onClick={this.handleClick}>Analyses<span className='navListArrow'> <Arrow/></span></li>
-          <ul className={`toggleList ${this.state.clickedItem == 'Analyses ' ? `` : `hidden`}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
-          <li className='navListItemMobile' data-id='1' onClick={this.handleClick}>DataLab Express<span className='navListArrow'> <Arrow/></span></li>
-          <ul className={`toggleList ${this.state.clickedItem == 'DataLab Express ' ? `` : `hidden`}`}>{this.returnActiveList(this.state.data[1].express)}</ul>
-          <li className='navListItemMobile' data-id='2' onClick={this.handleClick}>America's Finance Guide<span className='navListArrow'> <Arrow/></span></li>
-          <ul className={`toggleList ${this.state.clickedItem == "America's Finance Guide " ? `` : `hidden`}`}>
-            <li className='data-list-li'>
-              <a className='data-list-a' href='/overview'>Overview</a>
+        <ul className={`${styles.mobile} ${show ? `` : styles.hidden}`}>
+          <li className={styles.item} data-id='0' onClick={this.handleClick}>Analyses<span className={styles.arrow}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Analyses ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
+          <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul>
+          <li className={styles.item} data-id='2' onClick={this.handleClick}>America's Finance Guide<span className={styles.arrow}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == "America's Finance Guide " ? `` : ' ' + styles.hidden}`}>
+            <li className={styles.dataListLi}>
+              <a className={styles.dataListA} href='/overview'>Overview</a>
             </li>
-            <hr id='mobile-hr'/>
-            <li className='data-list-li'>
-              <a className='data-list-a' href='/revenue'>Revenue</a>
+            <hr className={styles.mobileHr}/>
+            <li className={styles.dataListLi}>
+              <a className={styles.dataListA} href='/revenue'>Revenue</a>
             </li>
-            <hr id='mobile-hr'/>
-            <li className='data-list-li'>
-              <a className='data-list-a' href='/spending'>Spending</a>
+            <hr className={styles.mobileHr}/>
+            <li className={styles.dataListLi}>
+              <a className={styles.dataListA} href='/spending'>Spending</a>
             </li>
-            <hr id='mobile-hr'/>
-            <li className='data-list-li'>
-              <a className='data-list-a' href='/deficit'>Deficit</a>
+            <hr className={styles.mobileHr}/>
+            <li className={styles.dataListLi}>
+              <a className={styles.dataListA} href='/deficit'>Deficit</a>
             </li>
-            <hr id='mobile-hr'/>
-            <li className='data-list-li'>
-              <a className='data-list-a' href='/debt'>Debt</a>
+            <hr className={styles.mobileHr}/>
+            <li className={styles.dataListLi}>
+              <a className={styles.dataListA} href='/debt'>Debt</a>
             </li>
-            <hr id='mobile-hr'/>
+            <hr className={styles.mobileHr}/>
           </ul>
-          <li className='navListItemMobile' data-id='3' onClick={this.handleClick}>Resources<span className='navListArrow'> <Arrow/></span></li>
-          <ul className={`toggleList ${this.state.clickedItem == 'Resources ' ? `` : `hidden`}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
-          <li className='navListItemMobile' data-id='4'onClick={this.handleClick}><span className='navListArrow'><Book/></span> Glossary</li>
-          <ul className={`toggleList ${this.state.clickedItem == 'Glossary ' ? `` : `hidden`}`}>{this.returnActiveList(this.state.data[4].glossary)}</ul>
+          <li className={styles.item} data-id='3' onClick={this.handleClick}>Resources<span className={styles.arrow}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Resources ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
+          <li className={styles.item} data-id='4'onClick={this.handleClick}><span className={styles.arrow}><Book/></span> Glossary</li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Glossary ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[4].glossary)}</ul>
         </ul>
         <Dropdown clickedItem={this.state.clickedItem}
                   data={this.state.data} />

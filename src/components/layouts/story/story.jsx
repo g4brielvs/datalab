@@ -1,4 +1,4 @@
-import './story.scss';
+import styles from './story.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,14 +16,14 @@ const StoryLayout = (props) => {
     header =
       <Grid container>
         <Grid item>
-          <header className='header--hero' >
-            <p className='header__title'>
+          <header className={styles.headerHero} >
+            <p className={styles.title}>
               {props.title}
             </p>
-            <p className='header__introSentence'>
+            <p className={styles.introSentence}>
               {props.introSentence}
             </p>
-            <p className='header__contextStatement'>
+            <p className={styles.contextStatement}>
               {props.contextStatement}
             </p>
           </header>
@@ -47,12 +47,12 @@ const StoryLayout = (props) => {
                 {name: 'Homelessness Analysis', link: '/homelessness-analysis'},
                 {name: 'Budget Function', link: '/budget-function'},
                 {name: 'Federal Employees', link: '/federal-employees'},
-                {name: 'Competition In Contracting', link: '/competition-in-contacting'}
+                {name: 'Competition In Contracting', link: '/competition-in-contracting'}
               ]},
               {
               express: [
-                {name: 'Research and Development in Contracting', link: '/test-link'},
-                {name: 'Women-Owned Small Businesses', link: '/test-link'}
+                /* {name: 'Research and Development in Contracting', link: '/test-link'}, */
+                /* {name: 'Women-Owned Small Businesses', link: '/test-link'} */
               ]},
               {
               ffg: [
@@ -88,17 +88,14 @@ const StoryLayout = (props) => {
             }
             isHome={ false }
            />
-    <Grid container justify='center'>
-      <Grid item xs={10}>
-        <div className='story-page'>
-          {header}
-          {toc}
-          {props.children}
-          <HwctaLink url={'#'} />
-          <MoreAnalyses />
-        </div>
-      </Grid>
-    </Grid>
+
+      <div className={styles.storyPage}>
+        {header}
+        {toc}
+        {props.children}
+        <HwctaLink url={'#'} />
+        <MoreAnalyses />
+      </div>
 
   </Default>
 };

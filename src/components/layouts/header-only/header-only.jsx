@@ -1,9 +1,9 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
-import OfficialBanner from '../../headers/official-banner'
-import PageHeader from '../../headers/page'
-import React from "react"
-import PropTypes from "prop-types"
+import OfficialBanner from '../../headers/official-banner';
+import PageHeader from '../../headers/page';
+import React from "react";
+import PropTypes from "prop-types";
 
 const HeaderOnly = ({children, _containerClass, _headerClass}) => (
   <div className={_containerClass}>
@@ -17,19 +17,19 @@ const HeaderOnly = ({children, _containerClass, _headerClass}) => (
       megamenuItems={[
         {
         analyses: [
-          {name: 'Colleges and Universities', link: 'colleges-and-universities'},
-          {name: 'DTS Tracker', link: 'dts'},
-          {name: 'Contract Spending Analysis', link: 'contracts-over-time'},
-          {name: 'Federal Account Explorer', link: 'federal-account-explorer'},
-          {name: 'Contract Explorer', link: 'contract-explorer'},
-          {name: 'Homelessness Analysis', link: 'homelessness-analysis'},
-          {name: 'Budget Function', link: 'budget-function'},
-          {name: 'Federal Employees', link: 'federal-employees'},
-          {name: 'Competition In Contracting', link: 'competition-in-contacting'}
+          {name: 'Colleges and Universities', link: '/colleges-and-universities'},
+          {name: 'DTS Tracker', link: '/dts'},
+          {name: 'Contract Spending Analysis', link: '/contracts-over-time'},
+          {name: 'Federal Account Explorer', link: '/federal-account-explorer'},
+          {name: 'Contract Explorer', link: '/contract-explorer'},
+          {name: 'Homelessness Analysis', link: '/homelessness-analysis'},
+          {name: 'Budget Function', link: '/budget-function'},
+          {name: 'Federal Employees', link: '/federal-employees'},
+          {name: 'Competition In Contracting', link: '/competition-in-contracting'}
         ]},
         {
         express: [
-          {name: 'test express', link: 'test-link'}
+          //{name: 'test express', link: 'test-link'}
         ]},
         {        
         ffg: [
@@ -53,9 +53,9 @@ const HeaderOnly = ({children, _containerClass, _headerClass}) => (
         {
         resources: [
           {name: 'Analyst Guide', link: '#'},
-          {name: 'API Guide', link: '#'},
-          {name: 'Data Model', link: '#'},
-          {name: "Student Innovator's Toolbox", link: '#'},
+          {name: 'API Guide', link: 'http://api.usaspending.gov'},
+          {name: 'Data Model', link: 'https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html'},
+          {name: "Student Innovator's Toolbox", link: '/student-innovators-toolbox'},
         ]},
         {
         glossary: [

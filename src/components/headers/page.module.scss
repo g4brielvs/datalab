@@ -19,26 +19,26 @@
   }
 }
 
-.header-container-sticky {
+.header-container {
   position: fixed;
   top: 0;
   animation: smoothy .5s ease-in;
 }
 
-.header-logo__wrapper.row {
+.logo-wrapper.row {
   flex-direction: row;
   flex-wrap: nowrap;
 }
 
-.header-logo__container {
+.logo-container {
   padding-right: 30px;
 }
 
-.header-logo__wrapper.col {
+.logo-wrapper.col {
   flex-direction: column;
 }
 
-.header-nav {
+.nav {
   display: flex;
   justify-content: center;
   padding-top: 1rem;
@@ -47,7 +47,7 @@
   border-top: 1px solid #ddd;
   width: 100%;
 
-  .navListAnchor {
+  .anchor {
     position: relative;
     text-decoration: none;
     color: #666;
@@ -58,7 +58,7 @@
     }
   }
 
-  .navListArrow {
+  .arrow {
     font-weight: 800;
   }
 
@@ -69,7 +69,7 @@
     margin: 0;
     padding: 0;
 
-    .navListItem {
+    .item {
       font-size: 0.9375rem;
       padding-left: 30px;
       padding-right: 30px;
@@ -78,14 +78,14 @@
   
 } // end header-nav
 
-.header-nav.tight {
+.nav.tight {
   padding-top: 0;
   margin: 0;
   border-top: none;
   width: auto;
 }
 
-.header__main {
+.main {
   display: flex;
   position: absolute;
   top: 29px; // from top of blue bar!
@@ -101,7 +101,7 @@
   flex-direction: column;
 }
 
-.header-logo__wrapper {
+.logo-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@
   width: 100%;
 }
 
-.header__main.tight {
+.main.tight {
   height: 50px;
   top: 0px;
   background: #FFFFFF;
@@ -117,11 +117,7 @@
   padding-top: 12px;
 }
 
-.header__main.tight--story {
-  top: 29px;
-}
-
-ul.nav {
+ul.ul-nav {
   display: flex;
   list-style: none;
   font-size: 13px;
@@ -130,7 +126,7 @@ ul.nav {
 }
 
 // container for "megamenu"!
-.header__sub {
+.sub {
   position: absolute;
   width: 100%;
   top: 168px; // calculated exactly!
@@ -152,7 +148,7 @@ ul.nav {
   }
 } // end header sub
 
-.header__sub.tight {
+.sub.tight {
   top: 50px;
 }
 
@@ -179,7 +175,7 @@ ul.nav {
   background: #F9F9F9F9;
   padding-bottom: .25rem;
 
-  .data-list-ul {
+  .ul {
     display: flex;
     flex-direction: column;
     list-style-type: none;
@@ -191,20 +187,20 @@ ul.nav {
     padding-bottom: 25px;
     margin: 0;
 
-    .data-list-li {
+    .li {
       padding-top: .5rem;
       padding-bottom: .5rem;
       font-weight: 300;
     }
   }
 
-  .data-list-ul__analyses {
+  .ul-analyses {
     padding: 0;
   }
 
 
   // specific for FFG section as they have headers.
-  .data-list-section {
+  .section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -215,7 +211,7 @@ ul.nav {
     padding-bottom: 25px;
     font-size: 14px;
 
-    .data-list-ul--ffg {
+    .ul-ffg {
       display: flex;
       flex-direction: column;
       list-style-type: none;
@@ -224,25 +220,25 @@ ul.nav {
       padding: 0;
     }
 
-    .data-list-li {
+    .li {
       padding-top: .5rem;
       padding-bottom: .5rem;
       font-weight: 300;
     }
 
-    .section-title {
+    .title {
       margin: 0;
       padding-bottom: .5rem;
     }
 
   }
 
-  .data-list-a {
+  .a {
     text-decoration: none;
     color: #555555;  
   }
 
-  .data-list-a:hover {
+  .a:hover {
     color: #046b99;
   }
 
@@ -250,34 +246,34 @@ ul.nav {
 
 // data list modifiers for spacing
 .data-list {
-  .data-list-section__analyses {
+  .analyses {
     margin-right: 2rem;
   }
 
-  .data-list-section__resources {
+  .resources {
     margin-left: 31rem;
     padding: 0;
     justify-content: flex-end;
   }
-  .data-list-ul__resources {
+  .ul-resources {
     padding: 0;
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .data-list-section__express {
+  .express {
     margin-right: 15rem;
     padding: 0;
   }
-  .data-list-ul__express {
+  .ul-express {
     padding: 0;
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .data-list-section__glossary {
+  .glossary {
     margin-left: 42rem;
     padding: 0;
   }
-  .data-list-ul__glossary {
+  .ul-glossary {
     padding: 0;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -285,12 +281,11 @@ ul.nav {
 
 }
 
-#burger-navbar-toggle:hover {
-  cursor: pointer;
-}
-
-.navbar-toggle {
+.toggle {
   display: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .hidden {
