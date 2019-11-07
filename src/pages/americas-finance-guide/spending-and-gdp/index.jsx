@@ -1,24 +1,25 @@
-import '../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
-import '../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
+import '../../../libs/ffg/src/globalSass/cg.scss'
 // spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
-import '../../libs/ffg/src/spending/intro/spending-intro.scss'
-import '../../libs/ffg/src/infoBox.js'
+import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
+import '../../../libs/ffg/src/infoBox.js'
 // import '../../libs/ffg/src/globalSass/infoBox.scss'
-import '../../libs/assets/ffg/nav/nav.js'
-import '../../libs/assets/ffg/nav/nav.css'
+import '../../../libs/assets/ffg/nav/nav.js'
+import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
-import SEO from "../../components/seo"
-import AfgData from "../../libs/_data/object_mapping.yml"
-import Default from "../../components/layouts/default/default"
-import HeaderOnly from "../../components/layouts/header-only/header-only"
-import GdpTemplate from '../../components/gdp-template/gdp-template'
-import Accordion from '../../components/accordion/accordion'
-import HwctaLink from '../../components/hwcta-link/hwcta-link'
+import SEO from "../../../components/seo"
+import AfgData from "../../../libs/_data/object_mapping.yml"
+import Default from "../../../components/layouts/default/default"
+import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import GdpTemplate from '../../../components/gdp-template/gdp-template'
+import Accordion from '../../../components/accordion/accordion'
 import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import AnecdoteSpendingSVG from '../../libs/assets/ffg/icons/anecdote-spending.svg';
-import DefinitionSpendingSVG from '../../libs/assets/ffg/icons/definition.svg';
+import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
+import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
 function SpendingAndGdpPage(props) {
 
@@ -28,6 +29,7 @@ function SpendingAndGdpPage(props) {
     <>
       <Helmet>
         <script defer src="/assets/ffg/spending/intro.js"></script>
+        {/* <script defer src="/assets/ffg/css/intro.js"></script> */}
       </Helmet>
 
       <SEO 

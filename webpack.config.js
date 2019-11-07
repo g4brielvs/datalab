@@ -115,8 +115,8 @@ module.exports = [ {
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     output: {
-        path: __dirname + 'public/assets/ffg/css/',
-        publicPath: 'public/assets/ffg/css/'
+        path: __dirname + '/public/assets/ffg/css/',
+        publicPath: '/public/assets/ffg/css/'
     },
     mode: mode,
     module: {
