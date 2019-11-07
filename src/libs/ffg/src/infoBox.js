@@ -10,12 +10,8 @@ const d3 = { select, selectAll },
     activeClass = 'info-box--active';
 
 function addCloseIcon() {
-    // const rBox = React.findDOMNode(this);
     const box = d3.select(this),
         closeButton = box.append('button'),
-        // const closeButton = rBox.append(<button><FontAwesomeIcon icon={faPlus} className={accordionStyles.plus} /></button>);
-        // const closeButton =  React.createElement('<button><FontAwesomeIcon icon={faPlus} className={accordionStyles.plus} /></button>');
-        // box.append(closeButton);
         closeIcon = closeButton.append('i');
 
     closeButton.lower();

@@ -22,9 +22,10 @@ import DefinitionSpendingSVG from '../../libs/assets/ffg/icons/definition.svg';
 
 function SpendingAndGdpPage(props) {
 
+    console.log('props', props);
+    
   return (
     <>
-
       <Helmet>
         <script defer src="/assets/ffg/spending/intro.js"></script>
       </Helmet>
@@ -40,7 +41,7 @@ function SpendingAndGdpPage(props) {
      <Default>
        <HeaderOnly></HeaderOnly>
 
-        {/* we may decide not to use this nav block */}
+        {/* we need to figure out how to use this nav with the main nav; design people are working on it */}
        <nav className="chapter-nav chapter-nav--spending">
             <ul className="chapter-nav__primary-list">
                 <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
@@ -127,26 +128,21 @@ function SpendingAndGdpPage(props) {
     </div>
     </div>
 
-
-    {/* <section className="hwcta">
-        <p>The visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States.</p>
-        <GdpTemplate></GdpTemplate>
-        <p>The spending-to-gross domestic product ratio is included to provide you with context for the trillions of dollars that go out from the federal government annually. Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
+    <section className="hwcta">
+    <Accordion title="Data Sources and Methodology">
+        <p>The visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States. <GdpTemplate></GdpTemplate> The spending-to-gross domestic product ratio is included to provide you with context for the trillions of dollars that go out from the federal government annually. Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
         <div className="afg__download--div">
             <div className="afg__download--heading">Download Source Data</div>
             <ul>
                 <li><a href="../../libs/assets/ffg/data/federal_spending_gdp.csv" download>federal_spending_gdp.csv</a></li>
             </ul>
         </div>
-    </section> */}
+    </Accordion>
+    </section>
 
-    <HwctaLink></HwctaLink>
-
-     </Default>
+    </Default>
     </>
-
   )
-
 }
 
 export default SpendingAndGdpPage
