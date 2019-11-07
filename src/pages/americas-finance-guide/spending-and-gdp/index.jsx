@@ -14,15 +14,13 @@ import Default from "../../../components/layouts/default/default"
 import HeaderOnly from "../../../components/layouts/header-only/header-only"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
+import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 
 import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
 function SpendingAndGdpPage(props) {
-
-    console.log('props', props);
-    
   return (
     <>
       <Helmet>
@@ -59,6 +57,7 @@ function SpendingAndGdpPage(props) {
         </nav>
 
        <div className="ffg-wrapper spending-intro">
+       <Share className="ffg-share"></Share>
         <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
             <button className="info-box-trigger" data-box-id="per-individual">
                 <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
