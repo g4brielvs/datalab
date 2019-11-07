@@ -44,7 +44,6 @@ export default class BubbleChart extends Component {
     this.circleFill = this.circleFill.bind(this);
     this.isZoomedIn = this.isZoomedIn.bind(this);
     this.setLegendLeft = this.setLegendLeft.bind(this);
-    this.closeDetailPanel = this.closeDetailPanel.bind(this);
     this.calculateTextFontSize = this.calculateTextFontSize.bind(this);
     this.isTablet = this.isTablet.bind(this);
     this.isDesktop = this.isDesktop.bind(this);
@@ -55,12 +54,6 @@ export default class BubbleChart extends Component {
     this.click = this.click.bind(this);
     this.transformData = this.transformData.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
-  }
-
-  updateSelection(d) {
-    console.log(d);
-
-    this.setState({ selectedItem: d });
   }
 
   chartInit() {
@@ -90,6 +83,19 @@ export default class BubbleChart extends Component {
     }
   }
 
+  updateSelection(d) {
+    console.log(d);
+
+    this.setState({ selectedItem: d });
+  }
+
+  updateSelectionById(id) {
+
+    // console.log(this.root);
+    console.log(id);
+
+    this.updateSelection(_.filter(this.root, i => i.id === id));
+  }
   isZoomedIn(d) {
     if (d.depth === 2 && this.focused === d.parent || d.depth === 1 && this.focused === d) {
       return true;
@@ -99,11 +105,6 @@ export default class BubbleChart extends Component {
 
   setLegendLeft(leftState) {
     d3.select('#agency-legend_colorKey').classed("left", leftState);
-  }
-
-  closeDetailPanel() {
-    if (d3.event) d3.event.stopPropagation();
-    this.detailContainer.classed(this.detailContainerActiveClass, false);
   }
 
   /* Calculate text font size for bubbles before and after zoom */
@@ -237,12 +238,8 @@ export default class BubbleChart extends Component {
 
   // Zoom into a specific circle
   zoom(d) {
-    const focus0 = this.focused;
     this.focused = d;
     const classContext = this;
-
-    // this.closeDetailPanel();
-
     const transition = d3.transition()
       .duration(d3.event && d3.event.altKey ? 7500 : 750)
       .tween("zoom", function (d) {
@@ -309,6 +306,9 @@ export default class BubbleChart extends Component {
   }
 
   click(d) {
+
+    console.log(d);
+
     this.circle.classed('active', false);
 
     // need to check if focus is d, maybe?
@@ -361,13 +361,6 @@ export default class BubbleChart extends Component {
 
   transformData(data) {
     let result = _.groupBy(data, 'agency');
-
-
-    console.log(data);
-    console.log(result);
-
-
-
     var i = 0;
     let tempRoot = {
       "name": "flare",
@@ -377,7 +370,7 @@ export default class BubbleChart extends Component {
     // Re-structure data
     for (let agency in result) {
       result[agency] = _.groupBy(result[agency], 'subagency');
-      tempRoot.children.push({ "name": agency, "children": [] });
+      tempRoot.children.push({ "name": agency, "id": result[agency][agency] ? result[agency][agency][0].id : null, "children": [] });
 
       for (let subagency in result[agency]) {
         if (result[agency][subagency] && result[agency][subagency].length > 0) {
@@ -386,6 +379,7 @@ export default class BubbleChart extends Component {
           result[agency][subagency] = 0;
         }
         tempRoot.children[i].children.push({ "name": subagency, "children": [], "color": null, "size": result[agency][subagency] });
+        tempRoot.children[i].children.push({ "name": subagency, "id": result[agency][subagency][0].id, "children": [], "color": null, "size": result[agency][subagency] });
       }
       i++;
     }
@@ -398,6 +392,9 @@ export default class BubbleChart extends Component {
         tempRoot.children[i].children[j].color = this.color[i];
       }
     }
+
+    // console.log(tempRoot);
+
     return tempRoot;
   }
 
