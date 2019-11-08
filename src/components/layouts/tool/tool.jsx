@@ -39,7 +39,7 @@ export default class ToolLayout extends React.Component {
             {header: 'Revenue', name: 'Revenue Categories', link: '#'},
             {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
             {header: 'Revenue', name: 'Country Comparison', link: '#'},
-            {header: 'Spending', name: 'Spending and GDP', link: '#'},
+            {header: 'Spending', name: 'Spending and GDP', link: '/americas-finance-guide/spending-and-gdp'},
             {header: 'Spending', name: 'Spending Categories', link: '#'},
             {header: 'Spending', name: 'Federal Spending Trends', link: '#'},
             {header: 'Spending', name: 'Country Comparison', link: '#'},

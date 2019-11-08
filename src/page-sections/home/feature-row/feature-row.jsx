@@ -5,6 +5,7 @@ import homelessImg from "../../../images/home/homelessness.png"
 import { Grid } from "@material-ui/core"
 
 const FeatureRow = (props) => {
+
   return (
     <>
       <Link to={props.href}>
