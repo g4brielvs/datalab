@@ -25,9 +25,6 @@ function SpendingAndGdpPage(props) {
         <>
             <Helmet>
                 <script defer src="/assets/ffg/spending/intro.js"></script>
-                {/* <script defer src="/assets/ffg/spending/main.js"></script> */}
-                {/* <script defer src="/assets/ffg/css/chapterIntroCommon.css"></script> */}
-                {/* <script defer src="/assets/ffg/css/cg.css"></script> */}
             </Helmet>
 
             <SEO
@@ -92,8 +89,8 @@ function SpendingAndGdpPage(props) {
 
                                 <section id="revenue-facts" className="facts__section">
                                     <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government collected {AfgData.current_fy_revenue.value} in federal revenue.</h1>
-                                    <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.
-                    </p><p>
+                                    <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
+                                    <p>
                                         <a target="_blank" href="../revenue/">Go Explore Federal Revenue.</a>
                                     </p>
                                 </section>
@@ -145,7 +142,6 @@ function SpendingAndGdpPage(props) {
                         </div>
                     </Accordion>
                 </section>
-
             </Default>
         </>
     )
