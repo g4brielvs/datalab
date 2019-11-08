@@ -100,10 +100,11 @@ module.exports = [ {
     }
  }, {
     entry: [
-        './src/libs/ffg/src/globalSass/cg.scss',
+        // './src/libs/ffg/src/globalSass/cg.scss',
         './src/libs/ffg/src/globalSass/chapterIntroCommon.scss',
         './src/libs/ffg/src/globalSass/countryCommon.scss',
         './src/libs/ffg/src/globalSass/trendsCommon.scss',
+        // './src/libs/ffg/src/globalSass/normalize.scss',
         './src/libs/ffg/src/bigPicture/scss/bp.scss',
         './src/libs/ffg/src/deficit/trends/deficit-trends.scss',
         './src/libs/ffg/src/revenue/categories/revenue-categories.scss',

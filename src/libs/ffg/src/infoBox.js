@@ -1,6 +1,9 @@
 import { select, selectAll } from 'd3-selection';
-import React from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 
 const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
@@ -10,14 +13,12 @@ const d3 = { select, selectAll },
     activeClass = 'info-box--active';
 
 function addCloseIcon() {
-    const box = d3.select(this),
-        closeButton = box.append('button'),
-        closeIcon = closeButton.append('i');
-
+    const box = d3.select(this);
+    const closeButton = box.append('button');
+    const closeIcon = <FontAwesomeIcon icon={faTimes} />;
+    ReactDOM.render(closeIcon, closeButton.node());
     closeButton.lower();
-
     closeButton.attr('class', closeButtonClass);
-    closeIcon.attr('class', 'fas fa-times');
 }
 
 function closeBox(trigger, box) {
