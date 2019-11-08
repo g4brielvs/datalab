@@ -1,5 +1,4 @@
 import React from 'react';
-import * as d3 from 'd3';
 
 import ControlBar from '../../components/control-bar/control-bar';
 import Grid from '@material-ui/core/Grid';
@@ -10,21 +9,45 @@ import ToolLayout from "../../components/layouts/tool/tool"
 import loadable from '@loadable/component';
 const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
 
+import AWS from 'aws-sdk';
+AWS.config.update(
+  {
+    accessKeyId: `${process.env.GATSBY_DTS_ID}`,
+    secretAccessKey: `${process.env.GATSBY_DTS_SECRET}`,
+    region: 'us-gov-west-1'
+  }
+);
+
 export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
-    };
+      dtsData: null
+    }
 
-    d3.csv('https://datalab-qat.usaspending.gov/data-lab-data/dts/dts.csv', (err, data) => {
-      if (err) {
-        console.error('Problem getting DTS data: ' + err);
+    const s3 = new AWS.S3();
+    s3.getObject(
+      { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
+      (error, data) => {
+        if (error) {
+          console.log('Could not get DTS data: ' + error);
+        } else {
+          const dataArray = [];
+          const csv = data.Body.toString('ascii').split('\n');
+          const fieldNames = csv[0].split(',');
+          csv.pop(); // remove blank line at end of file
+          csv.slice(1).forEach(row => {
+            const rowArray = row.split(',');
+            const dataPoint = {};
+            fieldNames.forEach((field, i) => {
+              dataPoint[field] = rowArray[i];
+            });
+            dataArray.push(dataPoint);
+          });
+          this.setState({ dtsData: dataArray });
+        };
       }
-      else {
-        this.setState({ data: data });
-      }
-    });
+    );
   }
 
   render = () => <>
@@ -101,7 +124,7 @@ export default class DTSPage extends React.Component {
             </Grid>
           </Grid>
 
-          <DTS data={this.state.data} />
+          <DTS data={this.state.dtsData} />
 
         </div>
       </div>
