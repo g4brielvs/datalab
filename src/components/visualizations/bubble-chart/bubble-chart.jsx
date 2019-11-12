@@ -298,17 +298,12 @@ export default class BubbleChart extends Component {
   }
 
   click(d) {
-
-
-console.log(d);
-
-
     this.circle.classed('active', false);
 
     // need to check if focus is d, maybe?
     if (this.isZoomedIn(d)) {
       if (d.depth === 2) {
-        d3.event.stopPropagation();
+        d3.event && d3.event.stopPropagation();
         this.updateSelection(d.parent);
         this.props.showDetails(d); // show details in panel
 
@@ -322,7 +317,7 @@ console.log(d);
 
         if (this.focused !== d) {
           this.zoom(d);
-          d3.event.stopPropagation();
+          d3.event && d3.event.stopPropagation();
         }
       }
     } else {
@@ -334,7 +329,7 @@ console.log(d);
         // check if a bubble is already selected
         if (this.focused !== d.parent) {
           this.zoom(d.parent);
-          d3.event.stopPropagation();
+          d3.event && d3.event.stopPropagation();
         }
       } else if (d.depth === 1) {
         this.setLegendLeft(true);
@@ -343,7 +338,7 @@ console.log(d);
 
         if (this.focused !== d) {
           this.zoom(d);
-          d3.event.stopPropagation();
+          d3.event && d3.event.stopPropagation();
         }
       }
     }
