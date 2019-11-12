@@ -7,6 +7,8 @@ import Default from '../default/default';
 import { Grid } from '@material-ui/core';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 import PageHeader from '../../headers/page';
+import ShareMenu from "../../share-menu/share-menu"
+import ControlBar from "../../control-bar/control-bar"
 
 const FaqLayout = (props) => {
   let header, content;
@@ -21,6 +23,11 @@ const FaqLayout = (props) => {
           </Grid>
         </Grid>
         : ''}
+        <Grid container>
+          <Grid item xs={12} sm={11} className={styles.share}>
+            <ShareMenu location={props.location}/>
+          </Grid>
+        </Grid>
         <Grid container justify='center'>
           <Grid item xs={11} md={10} xl={8}>
             <header className={styles.headerHero} >
@@ -79,7 +86,7 @@ const FaqLayout = (props) => {
           ]},
         {
           resources: [
-            {name: 'Analyst Guide', link: '#'},
+            {name: 'Analyst Guide', link: '/analyst-guide'},
             {name: 'API Guide', link: 'http://api.usaspending.gov'},
             {name: 'Data Model', link: 'https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html'},
             {name: "Student Innovator's Toolbox", link: '/student-innovators-toolbox'},

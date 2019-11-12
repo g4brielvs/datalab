@@ -100,6 +100,7 @@ class AnalystGuidePage extends Component {
           title={title}
           introSentence={introSentence}
           heroImage={heroImage}
+          location={this.props.location}
         >
           {content}
           <Hidden lgDown>
