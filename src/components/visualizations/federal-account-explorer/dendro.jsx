@@ -51,6 +51,8 @@ function Dendro(props) {
             .attr('class', 'overlay')
             .call(zoomListener);
 
+      baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
+
       // Append a group which holds all nodes and which the zoom Listener can act upon.
       svgGroup = baseSvg.append('g');
 
@@ -133,6 +135,8 @@ function Dendro(props) {
             });
           }
         };
+
+
         childCount(0, root);
         const newHeight = d3.max(levelWidth) * 26; // 26 pixels per line
         tree = tree.size([newHeight, viewerWidth]);
@@ -163,55 +167,74 @@ function Dendro(props) {
 
         function sumUp(object) {
           let total = 0;
-          object._children.forEach((d) => {
-            d._children.forEach((dd) => {
-              if(isNaN(dd.size)){
-                total += 0; 
-              } else{
-                total += dd.size;
-              }
+          try {
+            object._children.forEach((d) => {
+              d._children.forEach((dd) => {
+                if(isNaN(dd.size)){
+                  total += 0; 
+                } else{
+                  total += dd.size;
+                }
+              });
             });
-          });
-          return formatNumber(total);
-        }
+            return formatNumber(total);
+          } catch (e) {
+
+          }
+        };
 
         function sumUpLvl2(object) {
           let total = 0;
-          object._children.forEach((d) => {
-            if(isNaN(d.size)){
-              total += 0; 
-            } else{
-              total += d.size;
-            }
-          });
-          return formatNumber(total);
-        }
+          try {
+            object._children.forEach((d) => {
+              if(isNaN(d.size)){
+                total += 0; 
+              } else{
+                total += d.size;
+              }
+            });
+            return formatNumber(total);
+
+          } catch(e) {
+
+          }
+        };
 
         function sumUpUnob(object) {
           let total = 0;
-          object._children.forEach((d) => {
-            d._children.forEach((dd) => {
-              if(isNaN(dd.unob)){
-                total += 0; 
-              } else{
-                total += dd.unob;
-              }
+          try {
+            object._children.forEach((d) => {
+              d._children.forEach((dd) => {
+                if(isNaN(dd.unob)){
+                  total += 0; 
+                } else{
+                  total += dd.unob;
+                }
+              });
             });
-          });
-          return formatNumber(total);
-        }
+            return formatNumber(total);
+
+          } catch(e) {
+
+          }
+        };
 
         function sumUpLvl2Unob(object) {
           let total = 0;
-          object._children.forEach((d) => {
-            if(isNaN(d.unob)){
-              total += 0; 
-            } else{
-              total += d.unob;
-            }
-          });
-          return formatNumber(total);
-        }
+          try {
+            object._children.forEach((d) => {
+              if(isNaN(d.unob)){
+                total += 0; 
+              } else{
+                total += d.unob;
+              }
+            });
+            return formatNumber(total);
+            
+          } catch(e) {
+
+          }
+        };
 
         function handleMouseOver(d) {
           if (d.depth === 3) {
