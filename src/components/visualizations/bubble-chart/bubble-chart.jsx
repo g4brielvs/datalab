@@ -52,6 +52,7 @@ export default class BubbleChart extends Component {
     this.zoomTo = this.zoomTo.bind(this);
     this.selectSubAgency = this.selectSubAgency.bind(this);
     this.click = this.click.bind(this);
+    // this.clickById = this.clickById.bind(this);
     this.transformData = this.transformData.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
   }
@@ -84,20 +85,7 @@ export default class BubbleChart extends Component {
   }
 
   updateSelection(d) {
-    console.log(d);
-
     this.setState({ selectedItem: d });
-  }
-
-  updateSelectionById(id) {
-    let d;
-    this.root.children.some(agency => {
-      if (d = agency.children.find(sub => sub.id === id)) {
-        return true;
-      }
-    });
-    console.log(d);
-    this.updateSelection(d);
   }
 
   isZoomedIn(d) {
@@ -311,7 +299,9 @@ export default class BubbleChart extends Component {
 
   click(d) {
 
-    console.log(d);
+
+console.log(d);
+
 
     this.circle.classed('active', false);
 
@@ -357,6 +347,16 @@ export default class BubbleChart extends Component {
         }
       }
     }
+  }
+
+  clickById(id) {
+    let d;
+    this.root.children.some(agency => {
+      if (d = agency.children.find(sub => sub.id === id)) {
+        return true;
+      }
+    });
+    this.click(d);
   }
 
   /*

@@ -128,7 +128,7 @@ const Agencies = () => {
 
   const chartRef = React.createRef();
   const searchItemSelected = id => {
-    chartRef.current.updateSelectionById(id);
+    chartRef.current.clickById(id);
   }
 
   return (<>
