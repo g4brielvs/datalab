@@ -12,6 +12,11 @@ import MobileImage from '../../images/analyst-guide/Analyst Mobile.png';
 
 /* Sections */
 import typesOfEngagement from '../../page-sections/student-innovators-toolbox/engagements';
+import rolesResponsibilities from '../../page-sections/student-innovators-toolbox/roles-responsibilities';
+import aboutTheData from '../../page-sections/student-innovators-toolbox/about';
+import finalProduct from '../../page-sections/student-innovators-toolbox/final-product';
+import resources from '../../page-sections/student-innovators-toolbox/resources';
+import projects from '../../page-sections/student-innovators-toolbox/about';
 
 class AnalystGuidePage extends Component {
 
@@ -42,7 +47,11 @@ class AnalystGuidePage extends Component {
       </p>
     </>
     const rawContent = [
-      typesOfEngagement
+      typesOfEngagement,
+      rolesResponsibilities,
+      aboutTheData,
+      finalProduct,
+      resources
     ]
 
     const content = <>

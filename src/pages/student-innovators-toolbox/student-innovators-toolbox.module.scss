@@ -11,12 +11,16 @@
       margin: 0;
     }
 
-    ul li ul li {
-      list-style-type: circle;
+    li {
+      list-style-type: decimal;
     }
 
-    ul li ul li ul li {
-      list-style-type: square;
+    .text-indent {
+      padding-left: 2rem;
+      margin-top: $margin-25;
+      p + p {
+        margin-top:0;
+      }
     }
   }
 }

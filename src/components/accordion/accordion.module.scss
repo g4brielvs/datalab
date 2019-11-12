@@ -34,7 +34,7 @@
     opacity: 0;
     text-align: left;
 
-    p {
+    p, h1 {
         margin-bottom: 0;
         margin-top: 0;
         transition: margin 0.5s ease;
@@ -72,6 +72,11 @@
 
         p + p {
             margin-top: $margin-25;
+        }
+
+        h1 {
+            margin-top: $margin-25;
+            margin-bottom: $margin-25;
         }
 
         ul {
