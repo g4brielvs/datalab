@@ -90,12 +90,12 @@ export default class BubbleChart extends Component {
   }
 
   updateSelectionById(id) {
-
-    // console.log(this.root);
+    console.log(this.root.children);
     console.log(id);
 
-    this.updateSelection(_.filter(this.root, i => i.id === id));
+    this.updateSelection(this.root.children.find(i => i.id === id));
   }
+
   isZoomedIn(d) {
     if (d.depth === 2 && this.focused === d.parent || d.depth === 1 && this.focused === d) {
       return true;
@@ -370,7 +370,16 @@ export default class BubbleChart extends Component {
     // Re-structure data
     for (let agency in result) {
       result[agency] = _.groupBy(result[agency], 'subagency');
-      tempRoot.children.push({ "name": agency, "id": result[agency][agency] ? result[agency][agency][0].id : null, "children": [] });
+
+
+// console.log ('agency:');
+// console.log (agency);
+// console.log ('result:');
+// console.log (JSON.parse(JSON.stringify( result[agency])));
+
+debugger;
+
+      tempRoot.children.push({ "name": agency, "id": result[agency] ? result[agency][agency][0].id : null, "children": [] });
 
       for (let subagency in result[agency]) {
         if (result[agency][subagency] && result[agency][subagency].length > 0) {
@@ -387,8 +396,8 @@ export default class BubbleChart extends Component {
     this.recipient = result;
 
     // add color
-    for (var i = 0; i < tempRoot.children.length; i++) {
-      for (var j = 0; j < tempRoot.children[i].children.length; j++) {
+    for (let i = 0; i < tempRoot.children.length; i++) {
+      for (let j = 0; j < tempRoot.children[i].children.length; j++) {
         tempRoot.children[i].children[j].color = this.color[i];
       }
     }

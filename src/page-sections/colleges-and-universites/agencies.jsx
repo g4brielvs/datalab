@@ -126,9 +126,9 @@ const Agencies = () => {
     }
   });
 
-  const controlPanelRef = React.createRef();
+  const chartRef = React.createRef();
   const searchItemSelected = id => {
-    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+    chartRef.current.updateSelectionById(id);
   }
 
   return (<>
@@ -184,7 +184,7 @@ const Agencies = () => {
         <BubbleChart
           items={_data.allUnivBubbleChartCsv.nodes}
           showDetails={getClickedDetails}
-          ref={controlPanelRef}
+          ref={chartRef}
         />
       </Grid>
       <Grid item>

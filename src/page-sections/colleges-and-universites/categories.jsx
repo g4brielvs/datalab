@@ -98,6 +98,7 @@ const Categories = () => {
       contractsSearch: allInvestmentSectionContractsV2Csv {
         group(field: Program_Title) {
           nodes {
+            id
             family
             Program_Title
           }
@@ -106,6 +107,7 @@ const Categories = () => {
       grantsSearch: allInvestmentSectionGrantsV2Csv {
         group(field: Program_Title) {
           nodes {
+            id
             family
             Program_Title
           }
@@ -114,6 +116,7 @@ const Categories = () => {
       researchSearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         group(field: Program_Title) {
           nodes {
+            id
             family
             Program_Title
           }
@@ -155,9 +158,9 @@ const Categories = () => {
       .sort(searchSort)
   };
 
-  const controlPanelRef = React.createRef();
+  const chartRef = React.createRef();
   const searchItemSelected = id => {
-    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+    chartRef.current.bubbleClick(searchList.filter(i => i.id === id));
   }
 
   const detailPanelRef = React.createRef();
@@ -293,6 +296,7 @@ const Categories = () => {
             wedgeColors={wedgeColors}
             centerColor={centerColor}
             showDetails={getClickedDetails}
+            ref={chartRef}
           />
         </Grid>
         <Grid item>
