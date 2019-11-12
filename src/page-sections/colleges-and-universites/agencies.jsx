@@ -1,4 +1,3 @@
-// import '../../styles/index.scss';
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -127,16 +126,16 @@ const Agencies = () => {
     }
   });
 
-  const chartRef = React.createRef();
+  const controlPanelRef = React.createRef();
   const searchItemSelected = id => {
-    chartRef.current.updateSelectionById(id);
+    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
   }
 
   return (<>
     <StoryHeading
       number={'02'}
       title={'AGENCY INVESTMENTS'}
-      teaser={['Connect the agency ', <span className="heading--red">to the federal investment.</span>]}
+      teaser={'Connect the agency ', <span className="heading--red">to the federal investment.</span>}
       blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
       and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
     />
@@ -185,7 +184,7 @@ const Agencies = () => {
         <BubbleChart
           items={_data.allUnivBubbleChartCsv.nodes}
           showDetails={getClickedDetails}
-          ref={chartRef}
+          ref={controlPanelRef}
         />
       </Grid>
       <Grid item>
@@ -204,4 +203,4 @@ const Agencies = () => {
   </>);
 }
 
-export default Agencies
+export default Agencies;
