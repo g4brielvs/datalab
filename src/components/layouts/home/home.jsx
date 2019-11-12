@@ -21,12 +21,12 @@ const Home = ({ children }) => (
                 {name: 'Homelessness Analysis', link: '/homelessness-analysis'},
                 {name: 'Budget Function', link: '/budget-function'},
                 {name: 'Federal Employees', link: '/federal-employees'},
-                {name: 'Competition In Contracting', link: '/competition-in-contacting'}
+                {name: 'Competition In Contracting', link: '/competition-in-contracting'}
               ]},
               {
               express: [
-                {name: 'Research and Development in Contracting', link: '/test-link'},
-                {name: 'Women-Owned Small Businesses', link: '/test-link'}
+                /* {name: 'Research and Development in Contracting', link: '/test-link'}, */
+                /* {name: 'Women-Owned Small Businesses', link: '/test-link'} */
               ]},
               {
               ffg: [
