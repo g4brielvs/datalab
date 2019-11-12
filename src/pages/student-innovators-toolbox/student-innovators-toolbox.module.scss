@@ -1,0 +1,85 @@
+@import '../../styles/variables.scss';
+
+#analyst-guide-page {
+  .accordion-container{
+    margin-bottom: $margin-15;
+    * a {
+      color: blue;
+    }
+
+    .ul-no-margin {
+      margin: 0;
+    }
+
+    ul li ul li {
+      list-style-type: circle;
+    }
+
+    ul li ul li ul li {
+      list-style-type: square;
+    }
+  }
+}
+
+.accordion-title-div {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 1rem;
+  color: $font-black;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.download * div {
+  text-align: center;
+}
+
+.section h1 {
+  font-size: 1.5rem;
+}
+
+div.container-no-flex {
+  display: inline-block;
+  div {
+    word-break: break-word;
+  }
+}
+
+.hero-image {
+  width:100%;
+}
+
+.section-header {
+  color: rgb(34, 114, 206);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: $margin-15;
+  margin-top: $margin-50;
+}
+
+@media screen and (min-width: $desktop-xl){
+  .hero-image {
+    max-height: 417px;
+    max-width: 1439px;
+  }
+}
+
+@media screen and (min-width: $phone) and (max-width: $desktop-xl - 1){
+  .hero-image {
+    max-height: 611px;
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: $phone - 1){
+  .hero-image {
+    max-width: 320px;
+    max-height: 424px;
+  }
+
+  .section-header {
+    margin-top: $margin-30;
+  }
+}
