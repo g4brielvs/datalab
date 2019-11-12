@@ -90,10 +90,14 @@ export default class BubbleChart extends Component {
   }
 
   updateSelectionById(id) {
-    console.log(this.root.children);
-    console.log(id);
-
-    this.updateSelection(this.root.children.find(i => i.id === id));
+    let d;
+    this.root.children.some(agency => {
+      if (d = agency.children.find(sub => sub.id === id)) {
+        return true;
+      }
+    });
+    console.log(d);
+    this.updateSelection(d);
   }
 
   isZoomedIn(d) {
@@ -367,32 +371,22 @@ export default class BubbleChart extends Component {
       "children": []
     };
 
-    // Re-structure data
     for (let agency in result) {
       result[agency] = _.groupBy(result[agency], 'subagency');
-
-
-// console.log ('agency:');
-// console.log (agency);
-// console.log ('result:');
-// console.log (JSON.parse(JSON.stringify( result[agency])));
-
-debugger;
-
-      tempRoot.children.push({ "name": agency, "id": result[agency] ? result[agency][agency][0].id : null, "children": [] });
-
+      tempRoot.children.push({ "name": agency, "children": [] });
       for (let subagency in result[agency]) {
+        let id = null;
         if (result[agency][subagency] && result[agency][subagency].length > 0) {
+          id = result[agency][subagency][0].id;
           result[agency][subagency] = result[agency][subagency][0].obligation;
         } else {
           result[agency][subagency] = 0;
         }
-        tempRoot.children[i].children.push({ "name": subagency, "children": [], "color": null, "size": result[agency][subagency] });
-        tempRoot.children[i].children.push({ "name": subagency, "id": result[agency][subagency][0].id, "children": [], "color": null, "size": result[agency][subagency] });
+        // tempRoot.children[i].children.push({ "name": subagency, "children": [], "color": null, "size": result[agency][subagency] });
+        tempRoot.children[i].children.push({ "name": subagency, "id": id, "children": [], "color": null, "size": result[agency][subagency] });
       }
       i++;
     }
-
     this.recipient = result;
 
     // add color
@@ -401,9 +395,6 @@ debugger;
         tempRoot.children[i].children[j].color = this.color[i];
       }
     }
-
-    // console.log(tempRoot);
-
     return tempRoot;
   }
 
