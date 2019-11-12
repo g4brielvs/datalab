@@ -1,0 +1,37 @@
+@import '../../../styles/variables';
+
+.faq-page {
+  padding-top: $margin-50;
+  margin: 0 auto $margin-50;
+}
+
+.header {
+  padding-top: 50px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.header-hero {
+  text-align: center;
+}
+
+.hero-image {
+  text-align: center;
+}
+
+.children-container {
+  margin-bottom: $margin-50;
+}
+
+@media screen and (min-width: $desktop-xl){
+  .header-hero {
+    text-align: left;
+  }
+
+  .children-container {
+    margin-bottom: $margin-75;
+  }
+}

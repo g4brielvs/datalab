@@ -8,7 +8,7 @@ const Downloads = (props) => {
     <div className="row">
       <div className="col-xs-12 end-xs">
         <div className={downloadsStyles.download}>
-          <span className={downloadsStyles.fadedModifier}>Updated as of {props.date} / </span>
+          {props.date ? <span className={downloadsStyles.fadedModifier}>Updated as of {props.date} / </span> : ''}
           <a className={downloadsStyles.data}
              href={props.href}>
             <FontAwesomeIcon icon={faDownload} />
