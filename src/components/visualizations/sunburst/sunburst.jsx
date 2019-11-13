@@ -58,6 +58,7 @@ export default class Sunburst extends Component {
 
   buildDataHierarchy(title, dataArray) {
     const data = { name: title, children: [] };
+    let idSerial = 0;
 
     dataArray.forEach(d => {
       // Keep this as a reference to the current level
@@ -68,24 +69,27 @@ export default class Sunburst extends Component {
         // Look to see if a branch has already been created
         let index;
         depthCursor.forEach((child, i) => {
-          if (d[property] == child.name) {
+          if (d[property] === child.name) {
             index = i;
           }
         });
         // Add a branch if it isn't there
         if (isNaN(index)) {
-          depthCursor.push({ 'name': d[property], 'children': [] });
+          if (depth === this.levels.length - 1) {
+            depthCursor.push({ 'id': d.id, 'name': d[property], 'children': [] });
+          } else {
+            depthCursor.push({ 'id': idSerial++, 'name': d[property], 'children': [] });
+          }
           index = depthCursor.length - 1;
         }
         // Now reference the new child array as we go deeper into the tree
         depthCursor = depthCursor[index].children;
         // This is a leaf, so add the last element to the specified branch
         if (depth === this.levels.length - 1) {
-          depthCursor.push({ 'name': d[this.leaf.name], 'size': d[this.leaf.size] });
+          depthCursor.push({ 'name': d[this.leaf.name], 'id': d.id, 'size': d[this.leaf.size] });
         }
       });
     });
-
     return data;
   }
 
@@ -129,24 +133,25 @@ export default class Sunburst extends Component {
       .attr('width', this.width)
       .attr('height', this.height)
       .append('g')
-      .attr('transform', 'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
+      .attr('transform', 'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')')
+      ;
   }
 
   refreshData(data) {
     this.svg.selectAll('path').remove();
     const paths = this.svg.selectAll('path').data(data);
-    paths.enter().append('path')
+    paths.enter()
+      .append('path')
       .attr('d', this.arc)
       .attr('class', d => 'depth' + d.depth)
       .attr('fill', d => this.getWedgeColor(d))
       // .on('mouseover', hover)
       .on('click', this.click)
-      .append('title').text(function(d) {
-      const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
-      return name;
-    });
-
-
+      .append('title').text(function (d) {
+        const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
+        return name;
+      })
+      ;
     this.click(data[0]); // simulate clicking center to reset zoom
   }
 
@@ -165,15 +170,14 @@ export default class Sunburst extends Component {
         };
       })
       .selectAll('path')
-      .attrTween('d', d => function() {
+      .attrTween('d', d => function () {
         return classContext.arc(d);
-      });
+      })
+      ;
+  }
 
-  };
-
-  clickById(id){
-
-    this.click(d);
+  clickById(id) {
+    this.click(this.chartArray.find(i => i.id === id));
   }
 
   updateCenter(d) {
@@ -188,38 +192,30 @@ export default class Sunburst extends Component {
     const mediumText = 1.25;
     const largeText = 1.75;
     const exLargeText = 2;
-
     let wordWrapRatio = this.isMobile() ? 5.5 : this.isTablet() ? 3 : 2;
     let smWordWrapRatio = this.isMobile() ? 3 : this.isTablet() ? 2 : 1;
 
-    this.centerGroup = this.svg.append('svg:text')
-      .attr('id', 'tab');
+    this.centerGroup = this.svg.append('svg:text').attr('id', 'tab');
 
     if (d.depth === 0) {
-
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-
       this.props.showDetails(null); // hide details panel
 
     } else if (d.depth === 1) {
-
       // category
       this.setCenterTextLines('center-heading', 'Category', labelFontSize, '0');
       this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-
       this.props.showDetails(null); // hide details panel
 
     } else {
-
       this.setCenterTextLines('center-heading', 'Category', mediumText, '0');
       this.setWrappedCenterTextLines('center-title', d.parent.name, largeText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Sub-Category', mediumText, lineHeight * 2);
       this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
-
       this.props.showDetails(d); // show details in panel
     }
 
@@ -248,7 +244,7 @@ export default class Sunburst extends Component {
       .style('cursor', 'pointer')
       .attr('y', -maxHeight / 2 + padding)
       .on('click', () => this.click(this.chartData))
-    ;
+      ;
   }
 
   setCenterTextLines(className, centerTextHeading, textSize, lineHeight) {
@@ -257,10 +253,11 @@ export default class Sunburst extends Component {
       .attr('text-anchor', 'middle')
       .text(centerTextHeading)
       .attr('class', className)
-      .style('font-size', function() {
+      .style('font-size', function () {
         return `${textSize}em`;
       })
       .attr('dy', `${lineHeight}em`)
+      ;
   }
 
   setWrappedCenterTextLines(className, centerTextHeading, textSize, lineHeight, boundingBox) {
@@ -269,11 +266,12 @@ export default class Sunburst extends Component {
       .attr('text-anchor', 'middle')
       .text(centerTextHeading)
       .attr('class', className)
-      .style('font-size', function() {
+      .style('font-size', function () {
         return `${textSize}em`;
       })
       .attr('dy', `${lineHeight}em`)
       .call(this.wordWrap, boundingBox)
+      ;
   }
 
   wordWrap(text, maxWidth) {
@@ -285,8 +283,8 @@ export default class Sunburst extends Component {
 
     tspan = text.text(null)
       .append("tspan")
-      .attr("x", 0);
-
+      .attr("x", 0)
+      ;
     while (words.length > 0) {
       word = words.pop();
       line.push(word);
@@ -298,7 +296,8 @@ export default class Sunburst extends Component {
         tspan = text.append("tspan")
           .attr("x", 0)
           .attr("dy", lineHeight + "em")
-          .text(word);
+          .text(word)
+          ;
       }
     }
   }
@@ -317,27 +316,26 @@ export default class Sunburst extends Component {
     this.yScale = d3.scale.sqrt().range([0, this.radius]);
     const classContext = this;
 
-
     // Initialize d3 visualization
     this.partition = d3.layout.partition().value(d => d.size);
     this.arc = d3.svg.arc()
       .startAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x))))
       .endAngle(d => Math.max(0, Math.min(2 * Math.PI, this.xScale(d.x + d.dx))))
-      .innerRadius(function(d) {
+      .innerRadius(function (d) {
         if (d.depth === 1 && (!this.innerRadius || this.innerRadius > 0)) {
           this.innerRadius = Math.max(0, classContext.yScale(d.y));
         }
         return Math.max(0, classContext.yScale(d.y));
       })
       .outerRadius(d => Math.max(0, classContext.yScale(d.y + d.dy)))
+      ;
 
     d3.select(self.frameElement).style('height', this.height + 'px');
 
     // Create hierarchy (which sorts by total value), then add colorIndex to 1st level nodes
     this.hierarchy = this.buildDataHierarchy(this.title, this.state.data, this.levels);
 
-    this.chartArray = this.partition.nodes(this.hierarchy)
-      .filter(d => d.depth < 3); // leave off recipients
+    this.chartArray = this.partition.nodes(this.hierarchy).filter(d => d.depth < 3); // leave off recipients
     this.hierarchy.children.forEach((node, index) => {
       node.colorIndex = index % this.wedgeColors.length;
     });
@@ -349,7 +347,7 @@ export default class Sunburst extends Component {
 
     if (typeof window !== 'undefined') {
       // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         context.calculatedWidth = window.innerWidth * .7;
         context.width = window.innerWidth * .7;
 

@@ -51,6 +51,7 @@ const Categories = () => {
     query {
       contracts: allInvestmentSectionContractsV2Csv {
         nodes {
+          id
           Agency
           Obligation
           Program_Title
@@ -61,6 +62,7 @@ const Categories = () => {
       }
       grants: allInvestmentSectionGrantsV2Csv {
         nodes {
+          id
           Agency
           Obligation
           Program_Title
@@ -72,6 +74,7 @@ const Categories = () => {
       }
       research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         nodes {
+          id
           Agency
           Obligation
           Program_Title
@@ -125,7 +128,7 @@ const Categories = () => {
     }
   `);
 
- const searchSort = (a, b) => {
+  const searchSort = (a, b) => {
     if (a.heading > b.heading) return 1;
     if (a.heading < b.heading) return -1;
     if (a.subheading > b.subheading) return 1;
@@ -160,7 +163,7 @@ const Categories = () => {
 
   const chartRef = React.createRef();
   const searchItemSelected = id => {
-    chartRef.current.clickById(searchList.filter(i => i.id === id));
+    chartRef.current.clickById(id);
   }
 
   const detailPanelRef = React.createRef();
@@ -215,7 +218,7 @@ const Categories = () => {
   return (
     <>
       <StoryHeading
-        number={'03'}
+        number={'04'}
         title={'Investment Categories'}
         teaser={'How was the money used?'}
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
@@ -238,7 +241,7 @@ const Categories = () => {
           <li>Click the center section to return to the original display</li>
         </ul>
       </Accordion>
-      
+
       <Grid container>
         <Grid item>
           <Hidden mdDown>
