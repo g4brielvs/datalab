@@ -51,6 +51,8 @@ function Dendro(props) {
             .attr('class', 'overlay')
             .call(zoomListener);
 
+      baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
+
       // Append a group which holds all nodes and which the zoom Listener can act upon.
       svgGroup = baseSvg.append('g');
 
@@ -133,6 +135,8 @@ function Dendro(props) {
             });
           }
         };
+
+
         childCount(0, root);
         const newHeight = d3.max(levelWidth) * 26; // 26 pixels per line
         tree = tree.size([newHeight, viewerWidth]);
@@ -173,7 +177,7 @@ function Dendro(props) {
             });
           });
           return formatNumber(total);
-        }
+        };
 
         function sumUpLvl2(object) {
           let total = 0;
@@ -185,7 +189,7 @@ function Dendro(props) {
             }
           });
           return formatNumber(total);
-        }
+        };
 
         function sumUpUnob(object) {
           let total = 0;
@@ -199,7 +203,7 @@ function Dendro(props) {
             });
           });
           return formatNumber(total);
-        }
+        };
 
         function sumUpLvl2Unob(object) {
           let total = 0;
@@ -211,7 +215,7 @@ function Dendro(props) {
             }
           });
           return formatNumber(total);
-        }
+        };
 
         function handleMouseOver(d) {
           if (d.depth === 3) {
