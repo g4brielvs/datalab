@@ -169,6 +169,11 @@ export default class Sunburst extends Component {
         return classContext.arc(d);
       });
 
+  };
+
+  clickById(id){
+
+    this.click(d);
   }
 
   updateCenter(d) {

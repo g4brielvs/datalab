@@ -160,7 +160,7 @@ const Categories = () => {
 
   const chartRef = React.createRef();
   const searchItemSelected = id => {
-    chartRef.current.bubbleClick(searchList.filter(i => i.id === id));
+    chartRef.current.clickById(searchList.filter(i => i.id === id));
   }
 
   const detailPanelRef = React.createRef();

@@ -52,7 +52,6 @@ export default class BubbleChart extends Component {
     this.zoomTo = this.zoomTo.bind(this);
     this.selectSubAgency = this.selectSubAgency.bind(this);
     this.click = this.click.bind(this);
-    // this.clickById = this.clickById.bind(this);
     this.transformData = this.transformData.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
   }
@@ -377,7 +376,6 @@ export default class BubbleChart extends Component {
         } else {
           result[agency][subagency] = 0;
         }
-        // tempRoot.children[i].children.push({ "name": subagency, "children": [], "color": null, "size": result[agency][subagency] });
         tempRoot.children[i].children.push({ "name": subagency, "id": id, "children": [], "color": null, "size": result[agency][subagency] });
       }
       i++;
@@ -406,7 +404,8 @@ export default class BubbleChart extends Component {
     this.detailContainer = d3.select('#bubble-detail section.bubble-detail');
     this.detailContainerActiveClass = 'bubble-detail--active';
 
-    this.pack = d3.layout.pack()
+    this.pack = d3.layout
+      .pack()
       .padding(2)
       .size([this.diameter - this.margin, this.diameter - this.margin])
       .value(function (d) {
@@ -421,7 +420,7 @@ export default class BubbleChart extends Component {
         } else {
           return -1;
         }
-      })
+      });
 
     this.chartInit();
 
