@@ -17,11 +17,13 @@
 
     .text-indent {
       padding-left: 2rem;
-      margin-top: $margin-25;
       p + p {
         margin-top:0;
       }
     }
+  }
+  .project-margin-top {
+    margin-top: $margin-45;
   }
 }
 
@@ -74,6 +76,13 @@ div.container-no-flex {
   .hero-image {
     max-height: 611px;
     max-width: 768px;
+  }
+}
+
+@media screen and (min-width: $desktop){
+  .project-image {
+    width: 380px;
+    height: 230px;
   }
 }
 

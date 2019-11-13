@@ -6,9 +6,9 @@ import FaqLayout from "../../components/layouts/faq/faq";
 import Downloads from '../../components/section-elements/downloads/downloads';
 import { Hidden, Grid } from '@material-ui/core';
 import Accordion from "../../components/accordion/accordion"
-import DesktopImage from '../../images/analyst-guide/Analyst Desktop.png';
-import TabletImage from '../../images/analyst-guide/Analyst Tablet.png';
-import MobileImage from '../../images/analyst-guide/Analyst Mobile.png';
+import DesktopImage from '../../images/student-innovators-toolbox/Toolbox Desktop.png';
+import TabletImage from '../../images/student-innovators-toolbox/Toolbox Tablet.png';
+import MobileImage from '../../images/student-innovators-toolbox/Toolbox Mobile.png';
 
 /* Sections */
 import typesOfEngagement from '../../page-sections/student-innovators-toolbox/engagements';
@@ -16,12 +16,12 @@ import rolesResponsibilities from '../../page-sections/student-innovators-toolbo
 import aboutTheData from '../../page-sections/student-innovators-toolbox/about';
 import finalProduct from '../../page-sections/student-innovators-toolbox/final-product';
 import resources from '../../page-sections/student-innovators-toolbox/resources';
-import projects from '../../page-sections/student-innovators-toolbox/about';
+import projects from '../../page-sections/student-innovators-toolbox/projects';
 
 class AnalystGuidePage extends Component {
 
   render() {
-    const title = `What is the Analyst's Guide to Federal Spending Data?`;
+    const title = `What is the Student Innovator’s Toolbox?`;
     const heroImage = <>
       <Hidden lgDown>
         <img src={DesktopImage} className={styles.heroImage}/>
@@ -36,14 +36,14 @@ class AnalystGuidePage extends Component {
 
     const introSentence = <>
       <p>
-        The federal government uses contracts to buy the things it needs, from office furniture to airplanes. It also uses contracts to buy services
-        ranging from internet to research and development. Federal Agencies and their sub-agencies are responsible for issuing contracts and
-        categorizing the goods and services they purchase using Product and Service Codes (PSC).
+        The Student Innovator’s Toolbox was designed to connect students and faculty with data from the U.S. Treasury.
+        The purpose is to complement classroom learning about the federal budget, data science, policy analysis as well
+        as facilitation of analysis and research.
       </p>
       <p>
-        Although contracts and grants share some similarities, each serves a different purpose. Generally, contracts allow the government ot purchase
-        goods and services directly to the public. For example, the Air Force uses contracts to acquire fighter jets to execute its mission, while the Federal
-        Highway Administration uses grants to provide funds to states for public roads.
+        The intended audience for this toolbox includes professors and instructors, directors of graduate and
+        undergraduate programs, librarians dealing with data analysis and visualization, and students looking for a
+        real-world project to flex their skills and develop data-driven solutions.
       </p>
     </>
     const rawContent = [
@@ -52,7 +52,11 @@ class AnalystGuidePage extends Component {
       aboutTheData,
       finalProduct,
       resources
-    ]
+    ];
+
+    const nonAccordionContent = [
+      projects
+    ];
 
     const content = <>
       {
@@ -61,6 +65,9 @@ class AnalystGuidePage extends Component {
             <div className={styles.sectionHeader}>
               {section.title}
             </div>
+            {section.introSentence ?
+              section.introSentence : ''
+            }
             {
               section.data.map((datum, key1) => {
                 let accordionTitle = <></>;
@@ -84,6 +91,24 @@ class AnalystGuidePage extends Component {
                 return <Accordion key={key1} title={accordionTitle} containerClass={styles.accordionContainer}>
                   {accordionContent}
                 </Accordion>
+              })
+            }
+          </section>
+        })}
+      {
+        nonAccordionContent.map((section, key) => {
+          return <section key={key} className={styles.section}>
+            <div className={styles.sectionHeader}>
+              {section.title}
+            </div>
+            {section.introSentence ?
+              section.introSentence : ''
+            }
+            {
+              section.data.map((datum, key1) => {
+                return <>
+                  {datum.content}
+                </>
               })
             }
           </section>

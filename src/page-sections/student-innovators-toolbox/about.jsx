@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../pages/student-innovators-toolbox/student-innovators-toolbox.module.scss';
 
 export default {
-  title: 'AGENCY-RELATED QUESTIONS',
+  title: 'ABOUT THE DATA',
   introSentence: <></>,
   data: [
     {

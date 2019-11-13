@@ -1,8 +1,9 @@
 import React from 'react';
 
 export default {
-  title: 'AGENCY-RELATED QUESTIONS',
-  introSentence: <></>,
+  title: 'TYPES OF ENGAGEMENTS',
+  introSentence: <p>We offer three main ways for students and faculty to connect with us. We will keep this list dynamic
+    and growing so let us know if you have suggestions for other types of engagement that better fits your needs.</p>,
   data: [
     {
       accordionTitles: [

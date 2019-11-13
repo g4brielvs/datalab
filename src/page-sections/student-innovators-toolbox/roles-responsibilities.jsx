@@ -1,8 +1,10 @@
 import React from 'react';
 
 export default {
-  title: 'AGENCY-RELATED QUESTIONS',
-  introSentence: <></>,
+  title: 'ROLES, RESPONSIBILITIES, AND EXPECTATIONS',
+  introSentence: <p>The roles, responsibilities, and academic and time expectations vary for each type of engagement.
+    We sketch these out below, but they are not set in stone. They are completely open to discussion to ensure both the
+    institution’s and the Data Lab team's needs are being fulfilled.</p>,
   data: [
     {
       accordionTitles: [<>Using the data to learn (e.g. statistics or budgeting)</>],
