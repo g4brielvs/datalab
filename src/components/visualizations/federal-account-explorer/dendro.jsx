@@ -167,73 +167,54 @@ function Dendro(props) {
 
         function sumUp(object) {
           let total = 0;
-          try {
-            object._children.forEach((d) => {
-              d._children.forEach((dd) => {
-                if(isNaN(dd.size)){
-                  total += 0; 
-                } else{
-                  total += dd.size;
-                }
-              });
+          object._children.forEach((d) => {
+            d._children.forEach((dd) => {
+              if(isNaN(dd.size)){
+                total += 0; 
+              } else{
+                total += dd.size;
+              }
             });
-            return formatNumber(total);
-          } catch (e) {
-
-          }
+          });
+          return formatNumber(total);
         };
 
         function sumUpLvl2(object) {
           let total = 0;
-          try {
-            object._children.forEach((d) => {
-              if(isNaN(d.size)){
-                total += 0; 
-              } else{
-                total += d.size;
-              }
-            });
-            return formatNumber(total);
-
-          } catch(e) {
-
-          }
+          object._children.forEach((d) => {
+            if(isNaN(d.size)){
+              total += 0; 
+            } else{
+              total += d.size;
+            }
+          });
+          return formatNumber(total);
         };
 
         function sumUpUnob(object) {
           let total = 0;
-          try {
-            object._children.forEach((d) => {
-              d._children.forEach((dd) => {
-                if(isNaN(dd.unob)){
-                  total += 0; 
-                } else{
-                  total += dd.unob;
-                }
-              });
+          object._children.forEach((d) => {
+            d._children.forEach((dd) => {
+              if(isNaN(dd.unob)){
+                total += 0; 
+              } else{
+                total += dd.unob;
+              }
             });
-            return formatNumber(total);
-
-          } catch(e) {
-
-          }
+          });
+          return formatNumber(total);
         };
 
         function sumUpLvl2Unob(object) {
           let total = 0;
-          try {
-            object._children.forEach((d) => {
-              if(isNaN(d.unob)){
-                total += 0; 
-              } else{
-                total += d.unob;
-              }
-            });
-            return formatNumber(total);
-            
-          } catch(e) {
-
-          }
+          object._children.forEach((d) => {
+            if(isNaN(d.unob)){
+              total += 0; 
+            } else{
+              total += d.unob;
+            }
+          });
+          return formatNumber(total);
         };
 
         function handleMouseOver(d) {
