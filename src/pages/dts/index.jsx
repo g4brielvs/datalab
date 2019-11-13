@@ -7,7 +7,9 @@ import ShareMenu from '../../components/share-menu/share-menu';
 import ToolLayout from "../../components/layouts/tool/tool"
 
 import loadable from '@loadable/component';
-const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
+const DTS = loadable(() => import(`../../components/visualizations/dts/dts`), {
+  fallback: <div>Loading...</div>
+});
 
 import AWS from 'aws-sdk';
 AWS.config.update(
