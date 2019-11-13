@@ -26,9 +26,6 @@ function closeBox(trigger, box) {
 }
 
 export function triggerInfoBox() {
-
-    // useEffect(() => {
-
     const trigger = d3.select(this),
         id = trigger.attr('data-box-id'),
         box = d3.select('#' + id),
@@ -51,9 +48,6 @@ export function triggerInfoBox() {
         .on('click', function(){
             closeBox(trigger, box)
         });
-
-    // }); // end use effect
-    
 }
 
 (function init() {
