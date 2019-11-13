@@ -1,9 +1,8 @@
 import { select, selectAll } from 'd3-selection';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
 
 const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
@@ -27,6 +26,9 @@ function closeBox(trigger, box) {
 }
 
 export function triggerInfoBox() {
+
+    // useEffect(() => {
+
     const trigger = d3.select(this),
         id = trigger.attr('data-box-id'),
         box = d3.select('#' + id),
@@ -49,6 +51,9 @@ export function triggerInfoBox() {
         .on('click', function(){
             closeBox(trigger, box)
         });
+
+    // }); // end use effect
+    
 }
 
 (function init() {
@@ -56,5 +61,5 @@ export function triggerInfoBox() {
 
     d3.selectAll(triggerClass)
         .on('click', triggerInfoBox)
-
+        
 })();
