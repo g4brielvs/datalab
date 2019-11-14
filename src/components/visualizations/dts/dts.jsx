@@ -1,7 +1,9 @@
+import './dts.scss';
 import React, { useEffect } from 'react';
 import * as d3 from 'd3v4';
-import './dts.scss';
+
 import Bars from '../../../svgs/bars.svg';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '../../../svgs/list.svg';
 
 function DTS(props) {
@@ -1123,7 +1125,10 @@ function DTS(props) {
           </div>
         </div>
         <div className="dts-svg-wrapper">
-          <svg id="svg-wrapper" height="400"></svg>
+          {props.data ?
+            <svg id="svg-wrapper" height="400"></svg> :
+            <CircularProgress className='progress' color='inherit' />
+          }
         </div>
       </div>
       <div className="viz-tsbfy-container">
@@ -1146,12 +1151,8 @@ function DTS(props) {
     </div>
 
     <div className="dts-disclaimer">
-      The Daily Treasury Statement (DTS) is published each day that the Federal Government is open.
-      It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the
-      Treasury account balances by the Federal Reserve banks.
-      For more information about the authoritative source of this dataset, please go to: <a
-        href="https://fsapps.fiscal.treasury.gov/dts/issues"
-        className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+      The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+      <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
     </div>
   </>
 }
