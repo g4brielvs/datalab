@@ -177,6 +177,7 @@ export default class Sunburst extends Component {
   }
 
   clickById(id) {
+    // since the data passed to search panel was built from the same source as this.chartArray, there will always be a match here
     this.click(this.chartArray.find(i => i.id === id));
   }
 

@@ -345,12 +345,14 @@ export default class BubbleChart extends Component {
 
   clickById(id) {
     let d;
-    this.root.children.some(agency => {
+
+      // since the data passed to search panel was built from this.root.children, there will always be a match here
+      this.root.children.some(agency => {
       if (d = agency.children.find(sub => sub.id === id)) {
-        return true;
+        this.click(d);
+        return true; // don't bother searching the rest of this.root.children
       }
     });
-    this.click(d);
   }
 
   /*
