@@ -1,15 +1,11 @@
 import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
+import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import ShareMenu from '../../components/share-menu/share-menu';
-import ToolLayout from "../../components/layouts/tool/tool"
-
-import loadable from '@loadable/component';
-const DTS = loadable(() => import(`../../components/visualizations/dts/dts`), {
-  fallback: <div>Loading...</div>
-});
+import ToolLayout from '../../components/layouts/tool/tool';
 
 import AWS from 'aws-sdk';
 AWS.config.update(
