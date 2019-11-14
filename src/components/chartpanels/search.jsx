@@ -93,7 +93,6 @@ export default class SearchPanel extends React.Component {
           </List>
         </MuiThemeProvider>
       </form>
-
     )
   }
 }

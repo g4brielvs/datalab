@@ -58,7 +58,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           ]}
       />
 
-      <main className='main'>
+      <main className='cu-main'>
         <Overview location={this.props.location} />
 
         <Institutions location={this.props.location} />
