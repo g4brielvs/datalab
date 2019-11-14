@@ -1,17 +1,50 @@
+import styles from './faq.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './tool.module.scss';
 
-import Grid from '@material-ui/core/Grid';
+import Accordion from '../../accordion/accordion';
 import Default from '../default/default';
-import HWCTALink from '../../hwcta-link/hwcta-link';
+import { Grid } from '@material-ui/core';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 import PageHeader from '../../headers/page';
+import ShareMenu from "../../share-menu/share-menu"
+import ControlBar from "../../control-bar/control-bar"
 
-export default class ToolLayout extends React.Component {
-  render = () =>
+const FaqLayout = (props) => {
+  let header, content;
 
-  <Default>
+  if (!props.isCustomHeader) {
+    header =
+      <div className={styles.header}>
+        {props.heroImage ?
+        <Grid container justify='center' direction='column'>
+          <Grid item xs={12} className={styles.heroImage}>
+            {props.heroImage}
+          </Grid>
+        </Grid>
+        : ''}
+        <Grid container>
+          <Grid item xs={12} sm={11} className={styles.share}>
+            <ShareMenu location={props.location}/>
+          </Grid>
+        </Grid>
+        <Grid container justify='center'>
+          <Grid item xs={11} md={10} xl={8}>
+            <header className={styles.headerHero} >
+              <h1 className={styles.title}>
+                {props.title}
+              </h1>
+              <div className={styles.introSentence}>
+                {props.introSentence}
+              </div>
+            </header>
+          </Grid>
+        </Grid>
+      </div>
+  }
+
+
+  return <Default>
     <PageHeader
       headerItems={['Analyses', 'DataLab Express', "America's Finance Guide", 'Resources', 'Glossary']}
       megamenuItems={[
@@ -25,12 +58,12 @@ export default class ToolLayout extends React.Component {
             {name: 'Homelessness Analysis', link: '/homelessness-analysis'},
             {name: 'Budget Function', link: '/budget-function'},
             {name: 'Federal Employees', link: '/federal-employees'},
-            {name: 'Competition In Contracting', link: '/competition-in-contracting'}
+            {name: 'Competition In Contracting', link: '/competition-in-contacting'}
           ]},
         {
           express: [
-            /* {name: 'Research and Development in Contracting', link: '/test-link'}, */
-            /* {name: 'Women-Owned Small Businesses', link: '/test-link'} */
+            {name: 'Research and Development in Contracting', link: '/test-link'},
+            {name: 'Women-Owned Small Businesses', link: '/test-link'}
           ]},
         {
           ffg: [
@@ -63,52 +96,30 @@ export default class ToolLayout extends React.Component {
             {name: 'Glossary', link: '#'}
           ]},
       ]
-                    }
-      isHome={ false }>
-    </PageHeader>
-    <div className={styles.toolPage}>
-      <header className={styles.header}>
-        <Grid container justify='space-between'>
-          <Grid item className={styles.title}>{this.props.title}</Grid>
+      }
+      isHome={ false }
+    />
+
+    <div className={styles.faqPage}>
+      {header}
+      <Grid container justify='center' className={styles.childrenContainer}>
+        <Grid item xs={11} md={10} xl={8}>
+          {props.children}
         </Grid>
-      </header>
-      <section>
-        <p className={styles.intro} dangerouslySetInnerHTML={{ __html: this.props.introSentence }}></p>
-        <p className={styles.p} dangerouslySetInnerHTML={{ __html: this.props.contextStatement }}></p>
-      </section>
-
-      <main className={styles.main}>
-        <article>
-          <section className={styles.childrenSection}>
-            {this.props.children}
-          </section>
-          <section className={styles.followUp}>
-            <Grid container>
-              <Grid item xs={12} sm={4} lg={5}>
-                <div className={styles.bodyIntro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
-              </Grid>
-              <Grid item xs={12} sm={8} lg={7}>
-                <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
-              </Grid>
-            </Grid>
-          </section>
-        </article>
-      </main>
-      <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
-      <MoreAnalyses />
+      </Grid>
+      <Grid container justify='center'>
+        <Grid item xs={11} md={10}>
+          <MoreAnalyses />
+        </Grid>
+      </Grid>
     </div>
+
   </Default>
-}
+};
 
+export default FaqLayout;
 
-ToolLayout.propTypes = {
+FaqLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  introSentence: PropTypes.string.isRequired,
-  contextStatement: PropTypes.string,
-  sectionTitle: PropTypes.string,
-  sectionText: PropTypes.string,
-  hwctaLink: PropTypes.string,
 }
 
-// export default ToolLayout

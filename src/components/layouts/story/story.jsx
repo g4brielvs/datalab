@@ -75,7 +75,7 @@ const StoryLayout = (props) => {
               ]},
               {
               resources: [
-                {name: 'Analyst Guide', link: '#'},
+                {name: 'Analyst Guide', link: '/analyst-guide'},
                 {name: 'API Guide', link: 'http://api.usaspending.gov'},
                 {name: 'Data Model', link: 'https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html'},
                 {name: "Student Innovator's Toolbox", link: '/student-innovators-toolbox'},
