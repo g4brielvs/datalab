@@ -1,7 +1,9 @@
+import './dts.scss';
 import React, { useEffect } from 'react';
 import * as d3 from 'd3v4';
-import './dts.scss';
+
 import Bars from '../../../svgs/bars.svg';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import List from '../../../svgs/list.svg';
 
 function DTS(props) {
@@ -1123,7 +1125,10 @@ function DTS(props) {
           </div>
         </div>
         <div className="dts-svg-wrapper">
-          <svg id="svg-wrapper" height="400"></svg>
+          {props.data ?
+            <svg id="svg-wrapper" height="400"></svg> :
+            <CircularProgress className='progress' color='inherit' />
+          }
         </div>
       </div>
       <div className="viz-tsbfy-container">
