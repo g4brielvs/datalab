@@ -27,7 +27,7 @@ export default class DTSPage extends React.Component {
 
     const s3 = new AWS.S3();
     s3.getObject(
-      { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
+      { Bucket: `${process.env.AWS_BUCKET}`, Key: 'data-lab-data/dts/dts.csv' },
       (error, data) => {
         if (error) {
           console.log('Could not get DTS data: ' + error);
@@ -123,7 +123,6 @@ export default class DTSPage extends React.Component {
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>
-
           <DTS data={this.state.dtsData} />
 
         </div>
