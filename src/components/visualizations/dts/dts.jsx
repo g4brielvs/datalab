@@ -984,7 +984,7 @@ function DTS(props) {
     function drawChart() {
       init();
       if (data) {
-        
+
         lastDate = data[data.length - 1].date;
 
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
@@ -1111,50 +1111,54 @@ function DTS(props) {
     }
   })
 
-  return <>
-    <div className="dts-viz-container">
-      <div className="dts-layout-manager">
-        <div className="dts-brush-date-container">
-          <div className="dts-brush-date-item">
-            <div className="dts-brush-start-date-label">From</div>
-            <div className="dts-brush-start-date">mm/dd/yy</div>
+  if (!props.data) {
+    return <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  } else {
+    return <>
+      <div className="dts-viz-container">
+        <svg id="svg-wrapper" height="400"></svg>
+        <div className="dts-layout-manager">
+          <div className="dts-brush-date-container">
+            <div className="dts-brush-date-item">
+              <div className="dts-brush-start-date-label">From</div>
+              <div className="dts-brush-start-date">mm/dd/yy</div>
+            </div>
+            <div className="dts-brush-date-item">
+              <div className="dts-brush-end-date-label"> to</div>
+              <div className="dts-brush-end-date">mm/dd/yy</div>
+            </div>
           </div>
-          <div className="dts-brush-date-item">
-            <div className="dts-brush-end-date-label"> to</div>
-            <div className="dts-brush-end-date">mm/dd/yy</div>
+          <div className="dts-svg-wrapper">
+            <svg id="svg-wrapper" height="400"></svg>
           </div>
         </div>
-        <div className="dts-svg-wrapper">
-          {props.data ?
-            <svg id="svg-wrapper" height="400"></svg> :
-            <CircularProgress className='progress' color='inherit' />
-          }
+        <div className="viz-tsbfy-container">
+          <div className="viz-tsbfy-header">
+            <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
+            <div className="viz-tsbfy-header-view-buttons">
+              <div className="viz-tsbfy-bar-view"><Bars /></div>
+              <div className="viz-tsbfy-table-view"><List /></div>
+            </div>
+          </div>
+          <div className="svg-tsbfy-container">
+            <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
+          </div>
         </div>
       </div>
-      <div className="viz-tsbfy-container">
-        <div className="viz-tsbfy-header">
-          <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
-          <div className="viz-tsbfy-header-view-buttons">
-            <div className="viz-tsbfy-bar-view"><Bars /></div>
-            <div className="viz-tsbfy-table-view"><List /></div>
-          </div>
-        </div>
-        <div className="svg-tsbfy-container">
-          <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
-        </div>
+
+      <div className="dts-footnote">
+        <div className="dts-footnote-rect"></div>
+        <div className="dts-footnote-text"></div>
       </div>
-    </div>
 
-    <div className="dts-footnote">
-      <div className="dts-footnote-rect"></div>
-      <div className="dts-footnote-text"></div>
-    </div>
-
-    <div className="dts-disclaimer">
-      The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+      <div className="dts-disclaimer">
+        The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
       <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
-    </div>
-  </>
+      </div>
+    </>
+  }
 }
 
 export default DTS;
