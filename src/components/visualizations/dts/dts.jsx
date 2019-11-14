@@ -1111,7 +1111,11 @@ function DTS(props) {
     }
   })
 
-  if (props.data) {
+  if (!props.data) {
+    return <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  } else {
     return <>
       <div className="dts-viz-container">
         <svg id="svg-wrapper" height="400"></svg>
@@ -1154,10 +1158,6 @@ function DTS(props) {
       <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
       </div>
     </>
-  } else {
-    return <div className='progress_wrapper'>
-      <CircularProgress className='progress' size={70} color='inherit' />
-    </div>
   }
 }
 
