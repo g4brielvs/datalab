@@ -123,6 +123,7 @@ export default class DTSPage extends React.Component {
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>
+          
           <DTS data={this.state.dtsData} />
 
         </div>
