@@ -40,7 +40,7 @@
 	.axis text {
 		font-family: 'Source Sans Pro';
 		fill: #4a4a4a;
-		font-size: 13px;
+		font-size: 0.8125rem;
 		letter-spacing: 0;
 	}
 
@@ -98,14 +98,14 @@
 	.header-updated-when {
 		color: #757575;
 		font-weight: 200;
-		font-size: 16px;
+		font-size: 1rem;
 		margin-left: 50px;
 		letter-spacing: 1.9px;
 	}
 
 	.dts-brush-date-container {
 		display: flex;
-		font-size: 13px;
+		font-size: 0.8125rem;
 		position: relative;
 		top: 1rem;
 		left: 5%;
@@ -142,7 +142,7 @@
 
 	.daily-spending-subtext {
 		text-transform: uppercase;
-		font-size: 14px;
+		font-size: 0.875rem;
 		letter-spacing: 1.6px;
 		line-height: 16px;
 		text-align: center;
@@ -175,7 +175,7 @@
 	}
 
 	.viz-tsbfy-header-text {
-		font-size: 14px;
+		font-size: 0.875rem;
 		text-transform: uppercase;
 		font-weight: 600;
 		color: #4a4a4a;
@@ -207,7 +207,7 @@
 	.period-container .period-button {
 		border: 1px solid #e2e2e2;
 		border-right: none;
-		font-size: 14px;
+		font-size: 0.875rem;
 		padding: 0px 16px;
 		cursor: pointer;
 		line-height: 28px;
@@ -259,13 +259,13 @@
 
 	.tsbfy-table th {
 		padding: 0 10px;
-		font-size: 16px;
+		font-size: 1rem;
 	}
 
 	.tsbfy-table td {
 		padding: 0;
 		line-height: 16px;
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: #4a4a4a;
 	}
 
@@ -278,7 +278,7 @@
 	}
 
 	.custom-select {
-		font-size: 14px;
+		font-size: 0.875rem;
 		padding: 7px 40px 7px 30px;
 		height: 30px;
 		line-height: 10px;
@@ -326,20 +326,20 @@
 	.frequency-selector-label,
 	.category-select-label {
 		text-transform: uppercase;
-		font-size: 14px;
+		font-size: 0.875rem;
 		padding-bottom: 10px;
 	}
 
 	.dts-label-brush-start,
 	.dts-label-brush-end {
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 
 	.dts-tt-category {
 		text-transform: none;
 		letter-spacing: 1px;
 		width: 75%;
-		font-size: 14px;
+		font-size: 0.875rem;
 		font-weight: 600;
 		line-height: 17px;
 		color: #00c3c2;
@@ -347,7 +347,7 @@
 
 	.dts-tt-date {
 		font-weight: 400;
-		font-size: 14px;
+		font-size: 0.875rem;
 		line-height: 15px;
 		text-transform: none;
 		letter-spacing: 0.25px;
@@ -361,7 +361,7 @@
 	.dts-tt-amount {
 		font-weight: 600;
 		line-height: 25px;
-		font-size: 18px;
+		font-size: 1.125rem;
 	}
 
 	.dts-tt-hr-separator {
@@ -373,7 +373,7 @@
 
 	.dts-tt-timeframe {
 		font-weight: 500;
-		font-size: 14px;
+		font-size: 0.875rem;
 		line-height: 20px;
 		display: flex;
 		justify-content: space-between;
@@ -393,7 +393,7 @@
 
 	#category-selector {
 		width: 100%;
-		font-size: 14px;
+		font-size: 0.875rem;
 		line-height: 15px;
 		padding: 7px 40px 6px 15px;
 
@@ -414,7 +414,7 @@
 	.dts-disclaimer {
 		margin-left: 25px;
 		width: 95%;
-		font-size: 12px;
+		font-size: 0.75rem;
 		letter-spacing: 0.25px;
 		text-align: center;
 		color: #757575;
@@ -433,7 +433,7 @@
 
 	.dts-footnote-text {
 		width: 99%;
-		font-size: 12px;
+		font-size: 0.75rem;
 		letter-spacing: 0.32px;
 		line-height: 16px;
 		text-align: left;
