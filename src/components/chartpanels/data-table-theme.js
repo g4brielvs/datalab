@@ -3,13 +3,13 @@ export default {
     MUIDataTableHeadCell: {
       fixedHeader: {
         textTransform: 'uppercase',
-        fontSize: '17px',
+        fontSize: '1.0625rem',
         fontWeight: 700
       }
     },
     MUIDataTableBodyCell: {
       root: {
-        fontSize: '17px'
+        fontSize: '1.0625rem'
       }
     }
   }
