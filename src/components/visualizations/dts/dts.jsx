@@ -1118,7 +1118,6 @@ function DTS(props) {
   } else {
     return <>
       <div className="dts-viz-container">
-        <svg id="svg-wrapper" height="400"></svg>
         <div className="dts-layout-manager">
           <div className="dts-brush-date-container">
             <div className="dts-brush-date-item">
