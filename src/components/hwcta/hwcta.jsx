@@ -60,18 +60,22 @@ function HWCTA(props) {
               </h2>
               <Grid container>
                 {dataSources.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content ? item.content :
+                      <>
+                          <Grid item md={12} lg={6}>
+                            <h3>{item.name}</h3>
+                          </Grid><Grid item md={12} lg={6}>
+                          <ul>
+                            {item.sources.map((source, key1) => {
+                              return (
+                                <li className={hwctaStyles.sources}>{source}</li>
+                              )
+                            })}
+                          </ul>
+                        </Grid>
+                      </>
+                  )
                 })}
               </Grid>
             </section>
@@ -84,18 +88,21 @@ function HWCTA(props) {
               </h2>
               <Grid container>
                 {methodologies.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content ? item.content :
+                      <>
+                        <Grid item md={12} lg={6}>
+                          <h3>{item.name}</h3>
+                        </Grid><Grid item md={12} lg={6}>
+                        <ul>
+                          {item.sources.map((source, key1) => {
+                            return (
+                              <li className={hwctaStyles.sources}>{source}</li>
+                            )
+                          })}
+                        </ul></Grid>
+                    </>
+                  )
                 })}
               </Grid>
             </section>
@@ -108,18 +115,21 @@ function HWCTA(props) {
               </h2>
               <Grid container>
                 {notes.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content  ? item.content :
+                      <>
+                        <Grid item md={12} lg={6}>
+                          <h3>{item.name}</h3>
+                        </Grid><Grid item md={12} lg={6}>
+                        <ul>
+                          {item.sources.map((source, key1) => {
+                            return (
+                              <li className={hwctaStyles.sources}>{source}</li>
+                            )
+                          })}
+                        </ul></Grid>
+                    </>
+                  )
                 })}
               </Grid>
             </section>

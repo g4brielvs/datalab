@@ -21,6 +21,7 @@ export default class ContractExplorerPage extends Component {
 			sectionTitle='How does the government buy things?'
 			sectionText='<p>The federal government uses contracts to buy the things it needs, from office furniture to airplanes. It also uses contracts to buy services ranging from internet to research and development. Federal agencies and their sub-agencies are responsible for issuing contracts and categorizing the goods and services they purchase using Product and Service Codes (PSC).</p>
 			<p>Although contracts and grants share some similarities, each serves a different purpose. Generally, contracts allow the government to purchase goods and services it will use to execute its mission, while grants allow the government to provide goods and services directly to the public. For example, the Air Force uses contracts to acquire fighter jets to execute its mission, while the Federal Highway Administration uses grants to provide funds to states for public roads.</p>'
+			hwctaLink={this.props.location.pathname + '/methodologies'}
 		>
 			<Accordion
 				title='Instructions'>
