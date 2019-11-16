@@ -17,7 +17,7 @@ export default class DTSPage extends React.Component {
   }
 
   componentDidMount() {
-      d3.csv('../unstructured-data/dts/dts.csv', (dataArray) => {
+      d3.csv('/data-lab-data/dts/dts.csv', (dataArray) => {
         this.setState({ dtsData: dataArray });
       });
   }
