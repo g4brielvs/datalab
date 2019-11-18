@@ -4,56 +4,61 @@ $darkGrey: #666666;
 $mdGrey: #555555;
 
 p {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+.header-banner--image {
+  background: url(../../../images/colleges-and-universities/cubanner.svg) center top no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  z-index: 0;
 }
 
 .header {
-	// background: url(header-banner.svg) center top no-repeat;
 
-	p {
-		margin: 0;
-	}
+  p {
+    margin: 0;
+  }
 }
 
 #header__banner {
-	p {
-		margin-bottom: 25px;
-	}
+  p {
+    margin-bottom: 25px;
+  }
 }
 
 .header__blurb {
-	color: $mdGrey;
-	font-size: 1.0625rem;
-	font-weight: 300;
-	line-height: 24px;
+  color: $mdGrey;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 24px;
 }
 
 .header__subblurb {
-	color: $darkGrey;
-	font-size: 42px;
-	font-weight: 300;
-	line-height: 50px;
+  color: $darkGrey;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 50px;
 }
 
 .header--red {
-	color: $cuRed;
-	font-weight: 900;
+  color: $cuRed;
+  font-weight: 900;
 }
 
 .header__subtext {
-	padding-top: $margin-50;
-	color: $darkGrey;
-	font-size: 1rem;
-	font-weight: 600;
-	letter-spacing: 2.8px;
-	line-height: 20px;
+  padding-top: $margin-50;
+  color: $darkGrey;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  line-height: 20px;
 }
 
-// .header.container-fluid {
-//   margin: 3rem 0;
-// }
 @media (max-width: $phone - 1){
-	.header__subtext {
-		padding-top: $margin-30;
-	}
+  .header__subtext {
+    padding-top: $margin-30;
+  }
 }
