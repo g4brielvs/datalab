@@ -27,7 +27,7 @@ $summaryBorderColor: #DDD;
   }
 
   #summary {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: black;
     border-top: 1px solid $summaryBorderColor;
   }
@@ -55,7 +55,7 @@ $summaryBorderColor: #DDD;
   #one > div > div.mask > div.viz-container > div > div:nth-child(2) > form > div.select-wrapper1 > label,
   #one > div > div.mask > div.viz-container > div > div:nth-child(2) > form > div.select-wrapper2 > label{
     font-family: inherit;
-    font-size: 10px;
+    font-size: 0.625rem;
   }
 
   #xAxisScaleDropdown{
@@ -84,7 +84,7 @@ $summaryBorderColor: #DDD;
     }
 
     .xtick {
-      font-size: 16px;
+      font-size: 1rem;
       fill: #4f4f4f;
       font-weight: 500;
     }

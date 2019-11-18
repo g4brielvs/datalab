@@ -42,21 +42,21 @@
     //      font-size: 2rem;
 
     #college-dropdown-list:placeholder {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     ::-webkit-input-placeholder {
       /* Edge */
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     :-ms-input-placeholder {
       /* Internet Explorer 10-11 */
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     ::placeholder {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
 
@@ -155,7 +155,7 @@
     .inst-panel-preheader {
       color: #555555;
       text-align: left;
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 300;
       line-height: 18px;
     }
@@ -171,7 +171,7 @@
     // have to reset margin on all of these
     // defaults with 2em
     .inst-panel-subheading {
-      font-size: 12px;
+      font-size: 0.75rem;
       font-weight: 300;
       line-height: 18px;
       margin: 0; 
@@ -179,14 +179,14 @@
 
     .inst-panel-subheading--bold {
       color: #4A4A4A;
-      font-size: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
       line-height: 15px;
       margin: 0;
     }
 
     .inst-panel-subheading--data {
-      font-size: 12px;
+      font-size: 0.75rem;
       font-weight: 300;
       line-height: 18px;
       margin: 0;
@@ -194,7 +194,7 @@
 
     .inst-panel-subheading--bold--center {
       color: #4A4A4A;
-      font-size: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
       line-height: 15px;
       text-align: center;
@@ -204,7 +204,7 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #F2F2F2;
-      font-size: 15px;
+      font-size: 0.9375rem;
       line-height: 18px;
       color: #4a4a4a;
       font-weight: 400; // regular
@@ -217,7 +217,7 @@
       // child p tag class
       p.inst-panel-subtext {
         display: block;
-        font-size: 15px;
+        font-size: 0.9375rem;
         line-height: 18px;
         margin: 0;
         padding-top: 0.3rem;

@@ -70,7 +70,7 @@ ul {
   font-stretch: normal;
   line-height: 1.43;
   letter-spacing: 0.4px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -120,7 +120,7 @@ ul {
 
 @mixin h5-subheading {
   font-family: Source Sans Pro;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -131,7 +131,7 @@ ul {
 
 @mixin lead-paragraph {
   font-family: Source Sans Pro;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -142,7 +142,7 @@ ul {
 
 @mixin h6-subheading {
   font-family: Source Sans Pro;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -153,7 +153,7 @@ ul {
 
 @mixin body-copy {
   font-family: Source Sans Pro;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -164,7 +164,7 @@ ul {
 
 @mixin body-copy {
   font-family: Source Sans Pro;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -175,7 +175,7 @@ ul {
 
 @mixin table-copy {
   font-family: Source Sans Pro;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -186,7 +186,7 @@ ul {
 
 @mixin body-small {
   font-family: Source Sans Pro;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
