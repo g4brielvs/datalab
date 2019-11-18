@@ -77,7 +77,7 @@ export default class ToolLayout extends React.Component {
         <p className={styles.p} dangerouslySetInnerHTML={{ __html: this.props.contextStatement }}></p>
       </section>
 
-      <main className={styles.main}>
+      <div className={styles.main}>
         <article>
           <section className={styles.childrenSection}>
             {this.props.children}
@@ -93,7 +93,7 @@ export default class ToolLayout extends React.Component {
             </Grid>
           </section>
         </article>
-      </main>
+      </div>
       <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
       <MoreAnalyses />
     </div>
