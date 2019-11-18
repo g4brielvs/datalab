@@ -1,22 +1,12 @@
 import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
+import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import ShareMenu from '../../components/share-menu/share-menu';
-import ToolLayout from "../../components/layouts/tool/tool"
-
-import loadable from '@loadable/component';
-const DTS = loadable(() => import(`../../components/visualizations/dts/dts`));
-
-import AWS from 'aws-sdk';
-AWS.config.update(
-  {
-    accessKeyId: 'AKIA3YCOPFO3LMPSH75B',
-    secretAccessKey: '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',
-    region: 'us-gov-west-1'
-  }
-);
+import ToolLayout from '../../components/layouts/tool/tool';
+import * as d3 from "d3v4";
 
 export default class DTSPage extends React.Component {
   constructor(props) {
@@ -24,30 +14,12 @@ export default class DTSPage extends React.Component {
     this.state = {
       dtsData: null
     }
+  }
 
-    const s3 = new AWS.S3();
-    s3.getObject(
-      { Bucket: 'datalab-qat', Key: 'data-lab-data/dts/dts.csv' },
-      (error, data) => {
-        if (error) {
-          console.log('Could not get DTS data: ' + error);
-        } else {
-          const dataArray = [];
-          const csv = data.Body.toString('ascii').split('\n');
-          const fieldNames = csv[0].split(',');
-          csv.pop(); // remove blank line at end of file
-          csv.slice(1).forEach(row => {
-            const rowArray = row.split(',');
-            const dataPoint = {};
-            fieldNames.forEach((field, i) => {
-              dataPoint[field] = rowArray[i];
-            });
-            dataArray.push(dataPoint);
-          });
-          this.setState({ dtsData: dataArray });
-        };
-      }
-    );
+  componentDidMount() {
+      d3.csv('/data-lab-data/dts/dts.csv', (dataArray) => {
+        this.setState({ dtsData: dataArray });
+      });
   }
 
   render = () => <>
@@ -123,7 +95,7 @@ export default class DTSPage extends React.Component {
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>
-
+          
           <DTS data={this.state.dtsData} />
 
         </div>

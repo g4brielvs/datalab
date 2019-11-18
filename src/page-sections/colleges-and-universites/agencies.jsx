@@ -1,4 +1,3 @@
-// import '../../styles/index.scss';
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -127,16 +126,16 @@ const Agencies = () => {
     }
   });
 
-  const controlPanelRef = React.createRef();
+  const chartRef = React.createRef();
   const searchItemSelected = id => {
-    controlPanelRef.current.bubbleClick(searchList.filter(i => i.id === id));
+    chartRef.current.clickById(id);
   }
 
   return (<>
     <StoryHeading
-      number={'02'}
+      number={'03'}
       title={'AGENCY INVESTMENTS'}
-      teaser={['Connect the agency ', <span className="heading--red">to the federal investment.</span>]}
+      teaser={'Connect the agency ', <span className="heading--red">to the federal investment.</span>}
       blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
       and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
     />
@@ -159,12 +158,14 @@ const Agencies = () => {
       </ul>
     </Accordion>
 
-    <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/'
-               pageUrl='colleges-and-universities'
-               location=''
-               title='Check out this analysis on Data Lab'
-               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-               facebook='' reddit='' linkedin='' tumblr='' email=''/>
+    <ShareMenu
+      siteUrl='https://datalab-dev.usaspending.gov/'
+      pageUrl='colleges-and-universities'
+      location=''
+      title='Check out this analysis on Data Lab'
+      text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+      facebook='' reddit='' linkedin='' tumblr='' email=''
+    />
 
     <Grid container justify='center'>
       <Grid item>
@@ -183,7 +184,7 @@ const Agencies = () => {
         <BubbleChart
           items={_data.allUnivBubbleChartCsv.nodes}
           showDetails={getClickedDetails}
-          ref={controlPanelRef}
+          ref={chartRef}
         />
       </Grid>
       <Grid item>
@@ -199,7 +200,7 @@ const Agencies = () => {
       href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
       date={'March 2019'}
     />
-  </>)
+  </>);
 }
 
-export default Agencies
+export default Agencies;

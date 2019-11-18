@@ -14,7 +14,7 @@
 
 .heading {
     padding: $margin-20;
-    font-size: 18px;
+    font-size: 1.125rem;
     text-align: left;
     border: 1px solid #eee;
     margin: 0;
@@ -22,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: 600;
+    flex-wrap: nowrap;
 }
 
 .content {
@@ -46,7 +47,7 @@
 }
 
 .toggle {
-    font-size: 16px;
+    font-size: 1.125rem;
     background: transparent;
     border: none;
     float: right;

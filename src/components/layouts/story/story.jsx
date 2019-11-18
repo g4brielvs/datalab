@@ -61,7 +61,7 @@ const StoryLayout = (props) => {
                 {header: 'Revenue', name: 'Revenue Categories', link: '#'},
                 {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
                 {header: 'Revenue', name: 'Country Comparison', link: '#'},
-                {header: 'Spending', name: 'Spending and GDP', link: '/americas-finance-guide/spending-and-gdp'},
+                {header: 'Spending', name: 'Spending and GDP', link: '#'},
                 {header: 'Spending', name: 'Spending Categories', link: '#'},
                 {header: 'Spending', name: 'Federal Spending Trends', link: '#'},
                 {header: 'Spending', name: 'Country Comparison', link: '#'},
@@ -75,7 +75,7 @@ const StoryLayout = (props) => {
               ]},
               {
               resources: [
-                {name: 'Analyst Guide', link: '#'},
+                {name: 'Analyst Guide', link: '/analyst-guide'},
                 {name: 'API Guide', link: 'http://api.usaspending.gov'},
                 {name: 'Data Model', link: 'https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html'},
                 {name: "Student Innovator's Toolbox", link: '/student-innovators-toolbox'},

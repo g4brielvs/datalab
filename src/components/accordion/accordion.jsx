@@ -23,7 +23,7 @@ class Accordion extends Component {
 
     render() {
         return (
-          <div className={accordionStyles.container}>
+          <div className={this.props.containerClass ? this.props.containerClass : accordionStyles.container}>
             <div className="row">
               <div className="col-xs-12">
                 <section className={this.state.open ? `${accordionStyles.accordion} ${accordionStyles.open}` : `${accordionStyles.accordion}`} >
