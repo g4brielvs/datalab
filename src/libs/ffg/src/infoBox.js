@@ -1,8 +1,10 @@
 import { select, selectAll } from 'd3-selection';
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+// import * as d3 from "d3v3";
 
 const d3 = { select, selectAll },
     infoBoxClass = '.info-box',

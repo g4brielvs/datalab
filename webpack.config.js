@@ -92,8 +92,8 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/public/assets/ffg/spending/',
-        publicPath: '/public/assets/ffg/spending/'
+        path: __dirname + '/static/americas-finance-guide/',
+        publicPath: '/static/americas-finance-guide/'
     },
     module: {
         rules: moduleRules

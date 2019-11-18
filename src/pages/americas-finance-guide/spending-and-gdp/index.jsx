@@ -2,8 +2,8 @@ import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
 // spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
-import '../../../libs/ffg/src/infoBox.js'
-import '../../../libs/assets/ffg/nav/nav.js'
+// import '../../../libs/ffg/src/infoBox.js'
+// import '../../../libs/assets/ffg/nav/nav.js'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
@@ -24,7 +24,8 @@ function SpendingAndGdpPage(props) {
     return (
         <>
             <Helmet>
-                <script defer src="/assets/ffg/spending/intro.js"></script>
+                <script defer src="/americas-finance-guide/intro.js"></script>
+                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -137,7 +138,7 @@ function SpendingAndGdpPage(props) {
                         <div className="afg__download--div">
                             <div className="afg__download--heading">Download Source Data</div>
                             <ul>
-                                <li><a href="../../libs/assets/ffg/data/federal_spending_gdp.csv" download>federal_spending_gdp.csv</a></li>
+                                <li><a href="/americas-finance-guide/federal_spending_gdp.csv" download="federal_spending_gdp.csv">federal_spending_gdp.csv</a></li>
                             </ul>
                         </div>
                     </Accordion>
