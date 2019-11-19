@@ -51,7 +51,8 @@ function BudgetFunctionPage(props) {
         version of these categories for more than 200 years.</p>
         <p>The Object Classification system, which was created in the 1920s, explains what the government
         received in exchange for spending. For example, the Object Classification system captures spending on
-        salaries for federal employees, rent payments for federal buildings, and spending on federal contracts.</p>">
+        salaries for federal employees, rent payments for federal buildings, and spending on federal contracts.</p>"
+        hwctaLink={props.location.pathname + '/methodologies'}>
 
         <Accordion
           title='Instructions'>

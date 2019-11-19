@@ -40,7 +40,7 @@ function HWCTA(props) {
   return <>
 
   <Default>
-    <div className={hwctaStyles.hwctaPage}>
+    <div id={hwctaStyles.hwctaPage}>
       <div className={hwctaStyles.container}>
         <header className={styles.header}>
           <Grid container justify='space-between' spacing={4}>
@@ -58,22 +58,18 @@ function HWCTA(props) {
               <h2>
                 Data Sources
               </h2>
-              <Grid container>
                 {dataSources.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content ? item.content :
+                      <Grid container key={key} className={hwctaStyles.sourcesContainer}>
+                        <Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                          <h3>{item.name}</h3>
+                        </Grid><Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                          {item.sources}
+                        </Grid>
+                      </Grid>
+                  )
                 })}
-              </Grid>
             </section>
             : ''
           }
@@ -82,22 +78,18 @@ function HWCTA(props) {
               <h2>
                 Methodologies
               </h2>
-              <Grid container>
                 {methodologies.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content ? item.content :
+                      <Grid container key={key} className={hwctaStyles.sourcesContainer}>
+                        <Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                          <h3>{item.name}</h3>
+                        </Grid><Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                          {item.sources}
+                        </Grid>
+                    </Grid>
+                  )
                 })}
-              </Grid>
             </section>
             : ''
           }
@@ -106,22 +98,18 @@ function HWCTA(props) {
               <h2>
                 Notes
               </h2>
-              <Grid container>
                 {notes.map((item, key) => {
-                  return <>
-                    <Grid item md={12} lg={6}>
-                      <h3>{item.name}</h3>
-                    </Grid><Grid item md={12} lg={6}>
-                    <ul>
-                      {item.sources.map((source, key1) => {
-                        return (
-                          <li className={hwctaStyles.sources}>{source}</li>
-                        )
-                      })}
-                    </ul></Grid>
-                  </>
+                  return (
+                    item.content  ? item.content :
+                      <Grid container key={key} className={hwctaStyles.sourcesContainer}>
+                        <Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                          <h3>{item.name}</h3>
+                        </Grid><Grid item md={12} lg={6} className={hwctaStyles.sourcesItem}>
+                        {item.sources}
+                      </Grid>
+                    </Grid>
+                  )
                 })}
-              </Grid>
             </section>
             : ''
           }
