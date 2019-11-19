@@ -1,8 +1,12 @@
 import React from 'react';
 import footnotesStyles from './footnotes.module.scss';
 
-const Footnotes = (props) => {
-  return (
+export default class Footnotes extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render = () =>
     <div id={footnotesStyles.footnotes} className="container">
       <div className="row">
         <div className="col-xs-10 col-xs-offset-1">
@@ -12,18 +16,13 @@ const Footnotes = (props) => {
       </div>
       <div className="row">
         <div className="col-xs-10 col-xs-offset-1">
-          {props.footnotes.map(function (footnote, index) {
-            return<>
-              <p><sup className={footnotesStyles.number}>{index + 1}</sup><span className={footnotesStyles.text}>{footnote}</span></p>
-            </>
+          {this.props.footnotes.map((footnote, i) => {
+            return <p key={i}>
+              <sup className={footnotesStyles.number}>{i + 1}</sup>
+              <span className={footnotesStyles.text}>{footnote}</span>
+            </p>
           })}
         </div>
       </div>
-  </div>
-  )
-}
-
-
-export default Footnotes
-
-
+    </div>
+};
