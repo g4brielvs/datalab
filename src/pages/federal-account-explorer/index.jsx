@@ -14,6 +14,7 @@ import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar"
+import StoryLayout from "../../components/layouts/story/story"
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){
@@ -30,6 +31,7 @@ class FederalAccountExplorerPage extends Component {
                          sectionText='Every fiscal year, Congress decides how much money to give the federal government through its budgeting 
                          and appropriations process. These funds, or appropriations, are then designated for specific purposes 
                          and placed in specific federal accounts for each agency to use.'
+                         hwctaLink={this.props.location.pathname + '/methodologies'}
              >
                <SEO title="Federal Account Explorer" keywords={[`gatsby`, `application`, `react`]} />
                <Accordion

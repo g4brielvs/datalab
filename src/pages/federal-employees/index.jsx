@@ -10,6 +10,7 @@ import Who from "../../page-sections/federal-employees/who"
 import Where from "../../page-sections/federal-employees/where"
 import What from "../../page-sections/federal-employees/what"
 import StorySection from "../../components/section-elements/story-section/story-section"
+import ToolLayout from "../../components/layouts/tool/tool"
 
 class FederalEmployeesPage extends Component {
 
@@ -56,6 +57,7 @@ class FederalEmployeesPage extends Component {
 												introSentence={'In 2017, the largest 24 federal agencies employed nearly 2 million people.'}
 												contextStatement={['The U.S. Treasury’s Data Lab presents an analysis exploring federal employees using federal financial data and employment data from the Office of Personnel Management (OPM). In 2017, the 24 CFO Act Agencies employed nearly people.']}
 												sectionToc={sections}
+												hwctaLink={this.props.location.pathname + '/methodologies'}
 
 	>
 	    <SEO title="Federal Employees" keywords={[`gatsby`, `application`, `react`]}/>

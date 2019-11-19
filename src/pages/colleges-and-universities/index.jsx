@@ -13,7 +13,8 @@ import StoryLayout from '../../components/layouts/story/story';
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>
-    <StoryLayout isCustomHeader={true}>
+    <StoryLayout isCustomHeader={true}
+                 hwctaLink={this.props.location.pathname + '/methodologies'}>
       <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
 
       <CustomHeader

@@ -18,6 +18,10 @@ h3 {
   font-size:1.5rem;
 }
 
+.bold {
+  font-weight: $bold;
+}
+
 .title {
   color: #333;
   font-size: 1rem;
@@ -27,15 +31,23 @@ h3 {
   margin-top: 0.5rem;
 }
 
-.hwcta-page {
+#hwcta-page {
   max-width: 1140px;
   margin: 50px auto 0;
+
+  a {
+    color: rgb(166, 163, 194);
+  }
 }
 
 .container {
   margin-left: 75px;
   margin-right: 75px;
   margin-bottom: 100px;
+}
+
+.disc-list {
+  list-style-type: disc;
 }
 
 .back-button-header {
@@ -84,6 +96,13 @@ h3 {
   margin-bottom: 100px;
 }
 
+.sources-container {
+  margin-top: $margin-30;
+  .sources-item > *:first-child {
+    margin-top: 0;
+  }
+}
+
 .sources-sections {
   section {
     padding: 50px 0;
@@ -94,6 +113,10 @@ h3 {
   section + section {
     border-top: 1px solid #333;
   }
+}
+
+.toc-links a:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: $desktop) {
