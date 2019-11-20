@@ -29,6 +29,7 @@ h3 {
 
 .page-header-text {
   margin-top: 0.5rem;
+  text-align: left;
 }
 
 #hwcta-page {
@@ -41,9 +42,10 @@ h3 {
 }
 
 .container {
-  margin-left: 75px;
-  margin-right: 75px;
-  margin-bottom: 100px;
+  padding-top: $margin-30;
+  margin-left: $margin-75;
+  margin-right: $margin-75;
+  margin-bottom: $margin-100;
 }
 
 .disc-list {
@@ -57,7 +59,7 @@ h3 {
 }
 
 .back-button-header-slash {
-  margin-right: 15px;
+  margin-right: $margin-15;
 }
 #back-button-footer-section {
   text-align: center;
@@ -75,18 +77,6 @@ h3 {
     }
   }
 }
-
-
-.back-button-footer-chevron {
-  margin-right: 30px;
-  display: inline;
-
-  svg {
-    margin-bottom: -5px;
-    margin-left: -8px;
-  }
-}
-
 .sources, .section-text {
   color: #777;
   font-size: 1rem;
@@ -105,7 +95,7 @@ h3 {
 
 .sources-sections {
   section {
-    padding: 50px 0;
+    padding: $margin-50 0;
   }
   section:last-child {
     padding-bottom: 0;
@@ -137,9 +127,9 @@ h3 {
   }
 
   .container {
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-bottom: 50px;
+    margin-left: $margin-25;
+    margin-right: $margin-25;
+    margin-bottom: $margin-50;
   }
 
   .footer {
