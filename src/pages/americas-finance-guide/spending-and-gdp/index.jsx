@@ -43,7 +43,7 @@ function SpendingAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
+                        <li><a href="./">Spending and GDP</a></li>
                         <li><a href="./categories.html">Spending Categories</a></li>
                         <li><a href="./trends.html">Federal Spending Trends</a></li>
                         <li><a href="./country-comparison.html">Country Comparison</a></li>
@@ -56,16 +56,13 @@ function SpendingAndGdpPage(props) {
 
                 <div className="ffg-wrapper spending-intro">
                     <ControlBar>
-                        <Share 
-                            location={props.location}
-                            title="Data Lab - Explore Deficit – U.S. Treasury"
-                            text="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
+                        <Share siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='federal-employees'
                             twitter='#DataLab #Treasury #DataTransparency #USAspending'
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
-                        <button className="info-box-trigger" data-box-id="per-individual">
+            <button className="info-box-trigger" data-box-id="per-individual">
                             <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         </button>
                     </h1>
