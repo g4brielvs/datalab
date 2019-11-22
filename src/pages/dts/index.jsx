@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import ShareMenu from '../../components/share-menu/share-menu';
 import ToolLayout from '../../components/layouts/tool/tool';
-import * as d3 from "d3v4";
+import * as d3 from 'd3v4';
 
 export default class DTSPage extends React.Component {
   constructor(props) {
@@ -17,9 +17,9 @@ export default class DTSPage extends React.Component {
   }
 
   componentDidMount() {
-      d3.csv(`/data-lab-data/dts/dts.csv?t=${Date.now()}`, (dataArray) => {
-        this.setState({ dtsData: dataArray });
-      });
+    d3.csv(`/data-lab-data/dts/dts.csv?t=${Date.now()}`, dataArray => {
+      this.setState({ dtsData: dataArray });
+    });
   }
 
   render = () => <>
@@ -95,7 +95,7 @@ export default class DTSPage extends React.Component {
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>
-          
+
           <DTS data={this.state.dtsData} />
 
         </div>

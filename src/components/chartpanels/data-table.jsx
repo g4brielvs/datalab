@@ -7,7 +7,7 @@ import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 const theme = () => createMuiTheme(tableTheme);
 
-export default class dataTable extends React.Component {
+export default class DataTable extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -35,7 +35,7 @@ export default class dataTable extends React.Component {
   Notes on props:
   length of "columns" and each "data" row should match and have same order; excess data columns will not appear
 */
-dataTable.propTypes = {
+DataTable.propTypes = {
   title: PropTypes.string,
   columnTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   data: PropTypes.arrayOf(PropTypes.array).isRequired

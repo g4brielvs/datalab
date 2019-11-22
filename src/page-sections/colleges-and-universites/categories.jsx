@@ -12,6 +12,7 @@ import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
 import loadable from '@loadable/component';
+import DataTable from '../../components/chartpanels/data-table';
 const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
 
 const Categories = () => {
@@ -167,10 +168,26 @@ const Categories = () => {
       .sort(searchSort)
   };
 
+  const tableTitles = ['Family', 'Program Title', 'Agency', 'Subagency', 'Recipient', 'Obligation'];
+ 
+
+console.log(_data.contracts.nodes
+  .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
+  );
+
+
+
+  // const tableData = {
+  //   contracts: _data.contracts.nodes
+  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+  //   grants: _data.grants.nodes
+  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+  //   research: _data.research.nodes
+  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
+  // };
+
   const chartRef = React.createRef();
-  const searchItemSelected = id => {
-    chartRef.current.clickById(id);
-  }
+  const searchItemSelected = id => chartRef.current.clickById(id);
 
   const detailPanelRef = React.createRef();
   let currentDetails = {};
@@ -307,6 +324,12 @@ const Categories = () => {
             centerColor={centerColor}
             showDetails={getClickedDetails}
             ref={chartRef}
+          />
+
+          <DataTable
+            title={titlesByType[fundingType]}
+            columnTitles={tableTitles}
+            data={tableData}
           />
 
         </Grid>
