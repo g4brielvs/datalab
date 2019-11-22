@@ -5,7 +5,7 @@ import { findAmountInCsv } from '../../../src/utils';
 
 (function init(){
     const config = {
-        anecdoteName: 'anecdote.svg',
+        anecdoteName: 'anecdote-revenue.svg',
         comparisonAmount: findAmountInCsv('federal spending', revenueData),
         compareString: 'spending',
         gdpAmount: findAmountInCsv('gdp', revenueData), 
