@@ -117,7 +117,7 @@ function SpendingAndGdpPage(props) {
 
                     <div className="info-box" id="per-individual">
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
-                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href="{AfgData.census_population.value}" target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
+                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href={AfgData.census_population.value} target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
                     </div>
 
                     <div className="info-box" id="gdp-info">
