@@ -20,15 +20,22 @@ export default class DataTable extends React.Component {
     filterType: 'textField'
   };
 
-  render = () =>
-    <MuiThemeProvider theme={theme()}>
-      <MUIDataTable
-        title={this.props.title}
-        columns={this.props.columnTitles}
-        data={this.props.data}
-        options={this.options}
-      />
-    </MuiThemeProvider>
+  render = () => {
+    if (this.props.display) {
+      return (
+        <MuiThemeProvider theme={theme()}>
+          <MUIDataTable
+            title={this.props.title}
+            columns={this.props.columnTitles}
+            data={this.props.data}
+            options={this.options}
+          />
+        </MuiThemeProvider>
+      );
+    } else {
+      return <></>;
+    };
+  }
 }
 
 /*
@@ -36,6 +43,7 @@ export default class DataTable extends React.Component {
   length of "columns" and each "data" row should match and have same order; excess data columns will not appear
 */
 DataTable.propTypes = {
+  display: PropTypes.bool,
   title: PropTypes.string,
   columnTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   data: PropTypes.arrayOf(PropTypes.array).isRequired

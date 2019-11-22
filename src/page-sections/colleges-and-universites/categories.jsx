@@ -168,23 +168,15 @@ const Categories = () => {
       .sort(searchSort)
   };
 
-  const tableTitles = ['Family', 'Program Title', 'Agency', 'Subagency', 'Recipient', 'Obligation'];
- 
-
-console.log(_data.contracts.nodes
-  .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
-  );
-
-
-
-  // const tableData = {
-  //   contracts: _data.contracts.nodes
-  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
-  //   grants: _data.grants.nodes
-  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
-  //   research: _data.research.nodes
-  //     .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
-  // };
+  const tableColumnTitles = ['Family', 'Program Title', 'Agency', 'Subagency', 'Recipient', 'Obligation'];
+  const tableData = {
+    contracts: _data.contracts.nodes
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+    grants: _data.grants.nodes
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+    research: _data.research.nodes
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
+  };
 
   const chartRef = React.createRef();
   const searchItemSelected = id => chartRef.current.clickById(id);
@@ -327,9 +319,10 @@ console.log(_data.contracts.nodes
           />
 
           <DataTable
-            title={titlesByType[fundingType]}
-            columnTitles={tableTitles}
-            data={tableData}
+             display={!chartView}
+             title={titlesByType[fundingType].categoryLabel +'s'}
+            columnTitles={tableColumnTitles}
+            data={tableData[fundingType]}
           />
 
         </Grid>
