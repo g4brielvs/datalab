@@ -1,9 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
-// spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
-// import '../../../libs/ffg/src/infoBox.js'
-// import '../../../libs/assets/ffg/nav/nav.js'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
