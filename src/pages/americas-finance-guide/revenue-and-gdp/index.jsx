@@ -1,9 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
-// import '../../../libs/ffg/src/spending/intro/revenue-intro.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-// import '../../../libs/ffg/src/infoBox.js'
-// import '../../../libs/assets/ffg/nav/nav.js'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
@@ -140,7 +137,7 @@ function RevenueAndGdpPage(props) {
                     <div className="afg__download--div">
                         <div className="afg__download--heading">Download Source Data</div>
                         <ul>
-                            <li><a href="../../libs/assets/ffg/data/federal_revenue_gdp.csv" download>federal_revenue_gdp.csv</a></li>
+                            <li><a href="/americas-finance-guide/afgData/federal_revenue_gdp.csv" download="federal_revenue_gdp.csv">federal_revenue_gdp.csv</a></li>
                         </ul>
                     </div>
                     </Accordion>
