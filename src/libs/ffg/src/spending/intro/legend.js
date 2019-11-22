@@ -56,7 +56,7 @@ function buildLegend() {
         .attr('y', -14)
         .attr('opacity', 0)
         .attr('data-box-id', 'billion-dollars')
-        .attr('xlink:href', `/americas-finance-guide/anecdote-spending.svg`)
+        .attr('xlink:href', `/americas-finance-guide/icons/${config.anecdoteName}`)
         .attr('style', 'cursor:pointer')
         .on('click', triggerInfoBox)
         .transition()
