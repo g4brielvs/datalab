@@ -1,6 +1,6 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 
-import * as d3 from "d3v3";
+import * as d3 from 'd3v3';
 import './sunburst.scss';
 
 export default class Sunburst extends Component {
@@ -126,7 +126,7 @@ export default class Sunburst extends Component {
   }
 
   createChart() {
-    d3.select("#sunburst").selectAll("*").remove();
+    d3.select('#sunburst').selectAll('*').remove();
 
     this.svg = d3.select('#sunburst')
       .append('svg')
@@ -229,13 +229,13 @@ export default class Sunburst extends Component {
     if (maxHeight >= maxWidth) {
       if (maxHeight > boundingBox) {
         scale = boundingBox / maxHeight;
-        this.centerGroup.attr("transform", "scale(" + scale + ")");
+        this.centerGroup.attr('transform', 'scale(' + scale + ')');
       }
 
     } else {
       if (maxWidth > boundingBox) {
         scale = boundingBox / maxWidth;
-        this.centerGroup.attr("transform", "scale(" + scale + ")");
+        this.centerGroup.attr('transform', 'scale(' + scale + ')');
       }
     }
 
@@ -283,20 +283,20 @@ export default class Sunburst extends Component {
       tspan;
 
     tspan = text.text(null)
-      .append("tspan")
-      .attr("x", 0)
+      .append('tspan')
+      .attr('x', 0)
       ;
     while (words.length > 0) {
       word = words.pop();
       line.push(word);
-      tspan.text(line.join(" "));
+      tspan.text(line.join(' '));
       if (tspan.node().getComputedTextLength() >= maxWidth) {
         line.pop();
-        tspan.text(line.join(" "));
+        tspan.text(line.join(' '));
         line = [word];
-        tspan = text.append("tspan")
-          .attr("x", 0)
-          .attr("dy", lineHeight + "em")
+        tspan = text.append('tspan')
+          .attr('x', 0)
+          .attr('dy', lineHeight + 'em')
           .text(word)
           ;
       }
@@ -348,7 +348,7 @@ export default class Sunburst extends Component {
 
     if (typeof window !== 'undefined') {
       // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener("resize", function () {
+      window.addEventListener('resize', function () {
         context.calculatedWidth = window.innerWidth * .7;
         context.width = window.innerWidth * .7;
 
@@ -392,19 +392,17 @@ export default class Sunburst extends Component {
 
   render() {
     return (
-      <>
-        <div id='chart-area'>
-          <div id='chart-container'>
-            <div id='investment-sunburst'>
-              <div id='investment-sunburst-viz'>
-                <div id='sunburst'>
-                </div>
-                <p className="cu-header__blurb">To return to a higher level click the center node</p>
+      <div id='chart-area' className={this.props.display ? '' : 'hidden'}>
+        <div id='chart-container'>
+          <div id='investment-sunburst'>
+            <div id='investment-sunburst-viz'>
+              <div id='sunburst'>
               </div>
+              <p className='cu-header__blurb'>To return to a higher level click the center node</p>
             </div>
           </div>
         </div>
-      </>
-    )
+      </div>
+    );
   }
 };

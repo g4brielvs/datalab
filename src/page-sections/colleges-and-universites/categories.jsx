@@ -1,4 +1,3 @@
-// import '../../styles/index.scss'
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
@@ -16,10 +15,17 @@ import loadable from '@loadable/component';
 const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
 
 const Categories = () => {
-  const switchView = view => alert('switch to ' + view + ' mode');
+
+  const [chartView, isChartView] = useState(true);
+  const switchView = view => {
+    if (view === 'chart') {
+      isChartView(true);
+    } else {
+      isChartView(false);
+    }
+  }
 
   const [fundingType, setFundingType] = useState('contracts');
-
   function onTypeChange(e) {
     setFundingType(e.currentTarget.value);
   };
@@ -292,6 +298,7 @@ const Categories = () => {
           </form>
 
           <Sunburst
+            display={chartView}
             items={_data[fundingType].nodes}
             title={titlesByType[fundingType]}
             levels={levels}
@@ -301,6 +308,7 @@ const Categories = () => {
             showDetails={getClickedDetails}
             ref={chartRef}
           />
+
         </Grid>
         <Grid item>
           <VizDetails
