@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-
-import * as d3 from 'd3v3';
 import './sunburst.scss';
+import React from 'react'
+import * as d3 from 'd3v3';
 
-export default class Sunburst extends Component {
+export default class Sunburst extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,7 +48,6 @@ export default class Sunburst extends Component {
     this.setWrappedCenterTextLines = this.setWrappedCenterTextLines.bind(this);
     this.wordWrap = this.wordWrap.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
-
   }
 
   updateSelection(d) {
@@ -94,7 +92,7 @@ export default class Sunburst extends Component {
   }
 
   isMobile() {
-    if (typeof document !== `undefined`) {
+    if (typeof document !== 'undefined') {
       const maxThreshold = 768;
       return document.body.clientWidth <= maxThreshold;
     }
@@ -102,7 +100,7 @@ export default class Sunburst extends Component {
   }
 
   isTablet() {
-    if (typeof document !== `undefined`) {
+    if (typeof document !== 'undefined') {
       const minThreshold = 769;
       const maxThreshold = 1199;
       return (minThreshold <= document.body.clientWidth && document.body.clientWidth <= maxThreshold);
@@ -114,7 +112,8 @@ export default class Sunburst extends Component {
     if (d.depth === 0) {
       return this.centerColor;
     }
-    while (d.depth > 1) { //fill with colorIndex color (or ancestors')
+    // fill with colorIndex color (or ancestors')
+    while (d.depth > 1) {
       d = d.parent;
     }
     return this.wedgeColors[d.colorIndex];
@@ -147,12 +146,11 @@ export default class Sunburst extends Component {
       .attr('fill', d => this.getWedgeColor(d))
       // .on('mouseover', hover)
       .on('click', this.click)
-      .append('title').text(function (d) {
-        const name = d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim();
-        return name;
-      })
+      .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim())
       ;
-    this.click(data[0]); // simulate clicking center to reset zoom
+    if (this.props.display) {
+      this.click(data[0]); // simulate clicking center to reset zoom
+    };
   }
 
   click(d) {
@@ -303,10 +301,8 @@ export default class Sunburst extends Component {
     }
   }
 
-  /* The useEffect Hook is for running side effects outside of React,
-     for instance inserting elements into the DOM using D3 */
   componentDidMount() {
-    if (typeof document !== `undefined`) {
+    if (typeof document !== 'undefined') {
       this.maxHeight = document.body.clientWidth * .7;
       this.width = document.body.clientWidth * .7;
       this.height = this.maxHeight;
@@ -388,6 +384,10 @@ export default class Sunburst extends Component {
 
       this.drawChart(this.chartArray);
     }
+
+    if (this.props.display && !prevProps.display) {
+      this.updateCenter(this.chartArray[0]); // fill in center in case data set switched while showing table
+    }
   }
 
   render() {
@@ -405,4 +405,5 @@ export default class Sunburst extends Component {
       </div>
     );
   }
+
 };
