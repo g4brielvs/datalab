@@ -26,6 +26,7 @@
     "d3v4": "npm:d3@^4.0.0",
     "d3v5": "npm:d3@^5.0.0",
     "datatables": "^1.10.18",
+    "date-fns": "^2.1.0",
     "dotenv": "^8.1.0",
     "flexboxgrid": "^6.3.1",
     "gatsby": "^2.3.16",
@@ -53,7 +54,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "typescript": "3.7.2"
   },
   "devDependencies": {
     "prettier": "^1.17.0",

@@ -63,9 +63,9 @@ const Home = ({ children }) => (
             isHome={ true }
            />
 
-          <main className={homeTemplateStyles.default}>
+          <div className={homeTemplateStyles.default}>
             {children}
-          </main>
+          </div>
         </Default>
       </>
 )

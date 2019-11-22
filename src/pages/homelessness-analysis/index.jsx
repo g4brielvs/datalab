@@ -97,6 +97,7 @@ class FederalEmployeesPage extends Component {
                             introSentence={'On a single night in 2016, more than 500,000 people experienced homelessness in the United States.'}
                             contextStatement={['Multiple federal, state, and local programs offer support to people experiencing homelessness. Our visualizations display federal financial data to show the breakdown of funding spent to address homelessness.']}
                             sectionToc={sections}
+                            hwctaLink={this.props.location.pathname + '/methodologies'}
 
         >
           <SEO title="Federal Employees" keywords={[`gatsby`, `application`, `react`]}/>

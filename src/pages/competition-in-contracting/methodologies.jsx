@@ -1,88 +1,19 @@
 import React from "react"
 import HWCTA from '../../components/hwcta/hwcta';
-import budgetJpg from '../../images/home/budget.jpg';
 
 function CICHWCTA(props) {
-  const title = 'COMPETITION IN CONTRACTING ANALYSIS';
+  const title = 'COMPETITION IN CONTRACTING';
 
-  const dataSources = [{
-    name: 'Category1',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim Ut enim ad minim Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category2',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category3',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'aaaaaa ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  }];
+
   const methodologies = [{
-    name: 'Category1',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim Ut enim ad minim Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category2',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  }];
-
-  const notes = [{
-    name: 'Category1',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim Ut enim ad minim Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category2',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category3',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'aaaaaa ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category4',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
-  },{
-    name: 'Category5',
-    sources: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et',
-      'aaaaaa ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
-      'Lorem ipsum dolor'
-    ]
+   content: <p>
+     This analysis is generated directly from data available in the Federal Procurement Data System Next Generation,
+     which is the source of U.S. federal procurement data on USASpending.gov. Data updated Dec 2017.
+   </p>
   }];
 
   return (
-    <HWCTA location={props.location} title={title} dataSources={dataSources} methodologies={methodologies} notes={notes}>
-      <img className="" src={budgetJpg} alt=""/>
+    <HWCTA location={props.location} title={title} methodologies={methodologies}>
     </HWCTA>
   )
 }

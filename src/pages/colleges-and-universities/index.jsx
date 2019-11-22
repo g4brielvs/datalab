@@ -13,7 +13,8 @@ import StoryLayout from '../../components/layouts/story/story';
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>
-    <StoryLayout isCustomHeader={true}>
+    <StoryLayout isCustomHeader={true}
+                 hwctaLink={this.props.location.pathname + '/methodologies'}>
       <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
 
       <CustomHeader
@@ -58,7 +59,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           ]}
       />
 
-      <main className='cu-main'>
+      <div className='cu-main'>
         <Overview location={this.props.location} />
 
         <Institutions location={this.props.location} />
@@ -66,7 +67,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
         <Agencies location={this.props.location} />
 
         <Categories location={this.props.location} />
-      </main>
+      </div>
 
       <Footnotes footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
         'Due to the way military academies are funded, they have not been included in this analysis.']}

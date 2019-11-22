@@ -93,7 +93,7 @@ const StoryLayout = (props) => {
         {header}
         {toc}
         {props.children}
-        <HwctaLink url={'#'} />
+        <HwctaLink url={props.hwctaLink || '#'} />
         <MoreAnalyses />
       </div>
 
