@@ -43,7 +43,7 @@ function SpendingAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="./">Spending and GDP</a></li>
+                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
                         <li><a href="./categories.html">Spending Categories</a></li>
                         <li><a href="./trends.html">Federal Spending Trends</a></li>
                         <li><a href="./country-comparison.html">Country Comparison</a></li>
@@ -56,8 +56,10 @@ function SpendingAndGdpPage(props) {
 
                 <div className="ffg-wrapper spending-intro">
                     <ControlBar>
-                        <Share siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='federal-employees'
-                            twitter='#DataLab #Treasury #DataTransparency #USAspending'
+                        <Share 
+                            location={props.location}
+                            title="Data Lab - Federal Spending and GDP – U.S. Treasury"
+                            text="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
