@@ -92,13 +92,40 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/static/americas-finance-guide/',
-        publicPath: '/static/americas-finance-guide/'
+        path: __dirname + '/static/americas-finance-guide/spending/',
+        publicPath: '/static/americas-finance-guide/spending/'
     },
     module: {
         rules: moduleRules
     }
  }, {
+    entry: {
+        intro: './src/libs/ffg/src/revenue/intro/index.js',
+        // categories: './citizens-guide/src/revenue/categories/index.js',
+        // trends: './citizens-guide/src/revenue/trends/index.js',
+        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/revenue/',
+        publicPath: '/static/americas-finance-guide/revenue/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
     entry: [
         // './src/libs/ffg/src/globalSass/cg.scss',
         './src/libs/ffg/src/globalSass/chapterIntroCommon.scss',

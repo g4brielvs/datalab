@@ -2,7 +2,6 @@ import { initChart } from '../../spending/intro/init';
 import colors from '../../globalSass/colors.scss';
 import revenueData from '../../../../assets/ffg/data/federal_revenue_gdp.csv';
 import { findAmountInCsv } from '../../../src/utils';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 (function init(){
     const config = {
