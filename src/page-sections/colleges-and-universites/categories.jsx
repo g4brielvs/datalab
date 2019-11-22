@@ -11,6 +11,8 @@ import SunburstIcon from '../../images/sunburst_icon.svg';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
+import formatNumber from '../../utils/number-formatter';
+
 import loadable from '@loadable/component';
 import DataTable from '../../components/chartpanels/data-table';
 const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
@@ -171,11 +173,11 @@ const Categories = () => {
   const tableColumnTitles = ['Family', 'Program Title', 'Agency', 'Subagency', 'Recipient', 'Obligation'];
   const tableData = {
     contracts: _data.contracts.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)]),
     grants: _data.grants.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)]),
     research: _data.research.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, n.Obligation])
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)])
   };
 
   const chartRef = React.createRef();
@@ -319,8 +321,8 @@ const Categories = () => {
           />
 
           <DataTable
-             display={!chartView}
-             title={titlesByType[fundingType].categoryLabel +'s'}
+            display={!chartView}
+            title={titlesByType[fundingType].categoryLabel + 's'}
             columnTitles={tableColumnTitles}
             data={tableData[fundingType]}
           />
