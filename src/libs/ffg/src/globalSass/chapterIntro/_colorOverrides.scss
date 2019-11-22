@@ -33,6 +33,17 @@
     }
 }
 
+// this revenue block added by petway when moving to gatsby
+.revenue-intro {
+    .facts__trigger {
+        border: 1px solid $revenue-primary;
+    }
+
+    .facts__trigger.facts__trigger--active {
+        background: $revenue-primary;
+    }
+}
+
 @media only screen and (min-width: 960px) {
     .spending-intro .facts__inner {
         border-left: 3px solid $color-spending-primary;
@@ -44,5 +55,9 @@
 
     .debt-intro .facts__inner {
         border-left: 3px solid $color-debt-primary;
+    }
+
+    .revenue-intro .facts__inner {
+        border-left: 3px solid $revenue-primary;
     }
 }
