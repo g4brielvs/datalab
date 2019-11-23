@@ -1,4 +1,3 @@
-import './cu.scss';
 import React from 'react';
 
 import Agencies from '../../page-sections/colleges-and-universites/agencies';
@@ -59,7 +58,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           ]}
       />
 
-      <main className='cu-main'>
+      <main>
         <Overview location={this.props.location} />
 
         <Institutions location={this.props.location} />

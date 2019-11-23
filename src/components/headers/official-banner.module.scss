@@ -1,4 +1,4 @@
-.banner {
+.official-banner {
     display: flex;
     position: relative;
     box-sizing: border-box;
@@ -25,15 +25,15 @@
   margin-left: 20px;
 }
 
-.site-link {
+a.site-link {
   display: block;
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 0.8125rem;
   font-weight: 400;
   text-decoration: none;
 }
 
-.item_spacer {
+.item-spacer {
   flex: 0 0 auto;
   margin: 0 15px 0 10px;
   color: #ffffff;
@@ -42,7 +42,6 @@
 }
 
 .site-item {
-  flex: 0 0 100px;
 }
 
 .wrapper {
