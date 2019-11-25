@@ -14,7 +14,6 @@ import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar";
-import StoryLayout from "../../components/layouts/story/story";
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){

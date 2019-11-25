@@ -12,7 +12,6 @@ function Dendro(props) {
     const dendroData17 = props.fy17;
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
-    const vizReset = props.reset;
     const tooltip = tooltipModule();
 
     function CreateDendro(newData){
@@ -360,8 +359,6 @@ function Dendro(props) {
         centerRootNode(root);
         zoomListener.scale(1);
       }
-
-//      d3.select('#button1').on('click', change);
 
       // A recursive helper function for performing some setup by walking through all nodes
       function visit(parent, visitFn, childrenFn) {
