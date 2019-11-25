@@ -1,9 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
-// spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
-// import '../../../libs/ffg/src/infoBox.js'
-// import '../../../libs/assets/ffg/nav/nav.js'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
@@ -24,7 +21,7 @@ function SpendingAndGdpPage(props) {
     return (
         <>
             <Helmet>
-                <script defer src="/americas-finance-guide/intro.js"></script>
+                <script defer src="/americas-finance-guide/spending/intro.js"></script>
                 <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
@@ -43,7 +40,7 @@ function SpendingAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
+                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
                         <li><a href="./categories.html">Spending Categories</a></li>
                         <li><a href="./trends.html">Federal Spending Trends</a></li>
                         <li><a href="./country-comparison.html">Country Comparison</a></li>
@@ -58,14 +55,13 @@ function SpendingAndGdpPage(props) {
                     <ControlBar>
                         <Share 
                             location={props.location}
-                            title="Data Lab - Explore Deficit – U.S. Treasury"
-                            text="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis."
-                            twitter='#DataLab #OpenGov'
+                            title="Data Lab - Federal Spending and GDP – U.S. Treasury"
+                            text="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
-                        <button className="info-box-trigger" data-box-id="per-individual">
+            <button className="info-box-trigger" data-box-id="per-individual">
                             <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         </button>
                     </h1>
@@ -121,7 +117,7 @@ function SpendingAndGdpPage(props) {
 
                     <div className="info-box" id="per-individual">
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
-                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href="{AfgData.census_population.value}" target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
+                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href={AfgData.census_population.value} target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
                     </div>
 
                     <div className="info-box" id="gdp-info">
@@ -141,7 +137,7 @@ function SpendingAndGdpPage(props) {
                         <div className="afg__download--div">
                             <div className="afg__download--heading">Download Source Data</div>
                             <ul>
-                                <li><a href="/americas-finance-guide/federal_spending_gdp.csv" download="federal_spending_gdp.csv">federal_spending_gdp.csv</a></li>
+                                <li><a href="/americas-finance-guide/afgData/federal_spending_gdp.csv" download="federal_spending_gdp.csv">federal_spending_gdp.csv</a></li>
                             </ul>
                         </div>
                     </Accordion>

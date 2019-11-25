@@ -22,7 +22,7 @@ class Dropdown extends React.Component {
   render() {
     return (
       (() => {
-        if (this.props.activeItem == 'Analyses ') {
+        if (this.props.activeItem == "Analyses ") {
           return (
             <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
               <section className={`${styles.section} ${styles.analyses}`}>
@@ -40,7 +40,7 @@ class Dropdown extends React.Component {
             </div>
           );
         }
-        if (this.props.activeItem == 'DataLab Express ') {
+        if (this.props.activeItem == "DataLab Express ") {
           return (
             <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
               <section className={`${styles.section} ${styles.express}`}>
