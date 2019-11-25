@@ -60,7 +60,7 @@ function SpendingAndGdpPage(props) {
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
-            <button className="info-box-trigger" data-box-id="per-individual">
+                            <button className="info-box-trigger" data-box-id="per-individual">
                             <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         </button>
                     </h1>
@@ -112,7 +112,7 @@ function SpendingAndGdpPage(props) {
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
                             <a className="tour__link" href="./categories.html">Discover<i className="fas fa-chevron-right"></i></a>
                         </section>
-                    </div>
+                    </div> {/* end viz-wrapper */}
 
                     <div className="info-box" id="per-individual">
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
@@ -128,7 +128,7 @@ function SpendingAndGdpPage(props) {
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal spending. </p>
                     </div>
-                </div>
+                </div> {/* end "ffg-wrapper spending-intro" */}
 
                 <section className="hwcta">
                     <Accordion title="Data Sources and Methodology">
