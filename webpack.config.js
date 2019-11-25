@@ -73,6 +73,33 @@ const moduleRules = [
 
 module.exports = [ {
     entry: {
+        intro: './src/libs/ffg/src/revenue/intro/index.js',
+        // categories: './citizens-guide/src/revenue/categories/index.js',
+        // trends: './citizens-guide/src/revenue/trends/index.js',
+        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/revenue/',
+        publicPath: '/static/americas-finance-guide/revenue/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         // categories: './citizens-guide/src/spending/categories/index.js',
         // countryComparison: './citizens-guide/src/spending/countries/index.js',
         intro: './src/libs/ffg/src/spending/intro/index.js',
@@ -100,10 +127,10 @@ module.exports = [ {
     }
  }, {
     entry: {
-        intro: './src/libs/ffg/src/revenue/intro/index.js',
-        // categories: './citizens-guide/src/revenue/categories/index.js',
-        // trends: './citizens-guide/src/revenue/trends/index.js',
-        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+        intro: './src/libs/ffg/src/debt/intro/index.js',
+        // trends: './citizens-guide/src/debt/trends/index.js',
+        // analysis: './citizens-guide/src/debt/analysis/index.js',
+        // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
     devtool: devtool,
     devServer: devServer,
@@ -119,8 +146,8 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/static/americas-finance-guide/revenue/',
-        publicPath: '/static/americas-finance-guide/revenue/'
+        path: __dirname + '/static/americas-finance-guide/debt/',
+        publicPath: '/static/americas-finance-guide/debt/'
     },
     module: {
         rules: moduleRules
