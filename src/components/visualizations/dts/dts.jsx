@@ -9,10 +9,7 @@ import List from '../../../svgs/list.svg';
 function DTS(props) {
 
   useEffect(() => {
-
     const _data = props.data;
-
-    let allOptions, optionsDict, lastDate, categorySeparatorDate;
 
     const formatMillisecond = d3.timeFormat(".%L"),
       formatSecond = d3.timeFormat(":%S"),
@@ -36,6 +33,7 @@ function DTS(props) {
       margin = { top: 20, right: 20, bottom: 110, left: 60 },
       margin2 = { top: 330, right: 20, bottom: 30, left: 60 };
 
+    let allOptions, optionsDict, lastDate, categorySeparatorDate;
     let data, optionsData, dateScaleValues, allToSpending, categoryToSpendingPrevFY, todayAllCategorySpending;
 
     let x = d3.scaleTime(),
@@ -52,14 +50,15 @@ function DTS(props) {
 
     const line = d3.line()
       .x(d => x(d.date))
-      .y(d => y(d.value));
+      .y(d => y(d.value))
+      ;
 
     const line2 = d3.line()
       .x(d => x2(d.date))
-      .y(d => y2(d.value));
+      .y(d => y2(d.value))
+      ;
 
-    const brush = d3.brushX()
-      .on("brush end", brushed);
+    const brush = d3.brushX().on("brush end", brushed);
 
     let width, height, height2, zoom;
 
@@ -86,19 +85,18 @@ function DTS(props) {
       dateScaleValues = [];
       allToSpending = { "today": {}, "mtd": {}, "fytd": {} };
       categoryToSpendingPrevFY = {};
-
       optionsDict = {};
 
       data = _data;
 
-      data.forEach(function (d) {
+      data.forEach(d => {
         d.date = new Date(d.date);
         //d.date = parseDate(d.date);
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
 
-        let lastYear = new Date();
+        const lastYear = new Date();
         lastYear.setFullYear(lastYear.getFullYear() - 1);
 
         if (!categoryToActiveWithinAYear.hasOwnProperty(d.item_raw)) {
