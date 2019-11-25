@@ -24,8 +24,7 @@ function DTS(props) {
     const brushDateFormatter = d3.timeFormat("%x");
     const dollarFormatter = d => d3.format("$,.3s")(d).replace(/G/, "B");
     const dateFormatter = d3.timeFormat("%a, %b %d, %Y");
-    const lineColors = ["#00c3c2", "#2E7070", "#4CABAC", "#76D2D3"]
-    const parseDate = d3.timeParse("%-m/%-d/%y");
+    const lineColors = ["#00c3c2", "#2E7070", "#4CABAC", "#76D2D3"];
     const parseDateYMD = d3.timeParse("%Y-%m-%d");
     const bisectDate = d3.bisector(d => d.date).left;
 
@@ -88,10 +87,8 @@ function DTS(props) {
       optionsDict = {};
 
       data = _data;
-
       data.forEach(d => {
-        d.date = new Date(d.date);
-        //d.date = parseDate(d.date);
+        d.date = new Date(d.date +'T00:00:00'); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
@@ -745,6 +742,10 @@ function DTS(props) {
         .call(zoom).on("wheel.zoom", null);
 
       function getMouseOverDataPoint(data, context) {
+
+
+console.log(data);
+
         let x0 = x.invert(d3.mouse(context)[0]); // Date at mouse position
         let y0 = y.invert(d3.mouse(context)[1]);
 
