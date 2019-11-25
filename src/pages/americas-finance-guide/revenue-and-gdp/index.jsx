@@ -30,7 +30,6 @@ function RevenueAndGdpPage(props) {
                 description='In 2019, the government collected $3.5 trillion in federal revenue'
                 excerpt='Federal revenue consists mostly of individual, corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.'
                 keywords={[`revenue, federal revenue, U.S. revenue, gdp, receipts, income taxes, corporate taxes`]}
-                socialMediaText='How does federal revenue compare to spending and the size of the economy? Download the .CSV data files from Your Guide to America’s Finances and perform your own analysis! #YourGuide #DataLab #OpenGov'
             />
 
             <Default>
