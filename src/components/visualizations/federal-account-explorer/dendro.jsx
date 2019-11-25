@@ -12,6 +12,7 @@ function Dendro(props) {
     const dendroData17 = props.fy17;
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
+    const vizReset = props.reset;
     const tooltip = tooltipModule();
 
     function CreateDendro(newData){
@@ -351,6 +352,7 @@ function Dendro(props) {
       }
 
       function change() {
+        d3.selectAll('#svg-dendrogram').remove();
         zoomListener.scale(1);
         toggleAll(root);
         toggle(root);
@@ -359,7 +361,7 @@ function Dendro(props) {
         zoomListener.scale(1);
       }
 
-      d3.select('#button1').on('click', change);
+//      d3.select('#button1').on('click', change);
 
       // A recursive helper function for performing some setup by walking through all nodes
       function visit(parent, visitFn, childrenFn) {
@@ -393,7 +395,7 @@ function Dendro(props) {
           return 0;
         });
       }
-
+      
       // Sort the tree initially incase the JSON isn't in a sorted order.
       sortTree();
 
@@ -484,7 +486,6 @@ function Dendro(props) {
         //   category: 'Federal Account Explorer - Click Node',
         //   action: d.name
         // });
-
         resetToCenter();
       }
 
@@ -508,13 +509,24 @@ function Dendro(props) {
     CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
+      const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+      const Quarter = $('input[name="Quarter"]:checked').val();
+
+
+      // Handle Reset Button Click //
+      // reset to default of FY19 and Q1 //
+      d3.select('#resetBtn').on('click', function() {
+        d3.selectAll('#svg-dendrogram').remove();
+        $('#contactChoice7').prop('checked', true); // 2019 Data
+        $('#contactChoice3').prop('checked', true); // Q1
+        CreateDendro(dendroData19.filter((d) => d.reporting_period_end == '2018-12-31'));
+      });
+
       let data = [];
       $("input[type='radio']").change(() => {
-        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
         if (FiscalYear === 'fy17') {
           d3.selectAll('#svg-dendrogram').remove();
-          const Quarter = $('input[name="Quarter"]:checked').val();
-          if (Quarter == '12-31'){
+          if (Quarter == '12-31') {
             const viewerWidth = document.body.clientWidth;
             const viewerHeight = 300;
             d3.select('#tree-container').append('html')
