@@ -4,7 +4,7 @@ import ControlBar from '../../components/control-bar/control-bar';
 import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
-import ShareMenu from '../../components/share-menu/share-menu';
+import Share from '../../components/share/share';
 import ToolLayout from '../../components/layouts/tool/tool';
 import * as d3 from "d3v4";
 
@@ -19,7 +19,7 @@ export default class DTSPage extends React.Component {
   componentDidMount() {
       d3.csv(`/data-lab-data/dts/dts.csv?t=${Date.now()}`, (dataArray) => {
         this.setState({ dtsData: dataArray });
-      });
+      } );
   }
 
   render = () => <>
@@ -57,11 +57,9 @@ export default class DTSPage extends React.Component {
             <Grid item className='header-updated-when' />
             <Grid item xs={1}>
               <ControlBar>
-                <ShareMenu location={this.props.location}
-                  siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='dts'
+                <Share location={this.props.location}
                   title='Check out this analysis on Data Lab'
                   text='Check out this site https://datalab.usaspending.gov/dts.html'
-                  facebook='' reddit='' linkedin='' tumblr='' email=''
                 />
               </ControlBar>
             </Grid>

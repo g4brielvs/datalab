@@ -1,10 +1,14 @@
 @import '../../styles/variables.scss';
 
 $silver: #ccc;
+.share-container {
+  display: flex;
+  justify-content: flex-end;
+}
 
 .new-share {
-    display: inline-block;
-    margin-left: 5%;
+    display: flex;
+    margin-left: $margin-20;
     cursor: pointer;
     position: relative;
   }
@@ -101,9 +105,15 @@ $silver: #ccc;
     li {
       text-align: left;
     }
-    a {
+    a, button {
       color: inherit;
       text-decoration: none;
+    }
+
+    .share-link {
+      border: none;
+      padding: 0;
+      background-color: transparent;
     }
   }
   
@@ -124,7 +134,7 @@ $silver: #ccc;
 
 .popup .popuptext {
     visibility: hidden;
-    width: 135px;
+    width: 8rem;
     background-color: #fff;
     border: 1px $silver solid;
     border-radius: 6px;

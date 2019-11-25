@@ -2,16 +2,14 @@ import styles from './faq.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Accordion from '../../accordion/accordion';
 import Default from '../default/default';
 import { Grid } from '@material-ui/core';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 import PageHeader from '../../headers/page';
-import ShareMenu from "../../share-menu/share-menu"
-import ControlBar from "../../control-bar/control-bar"
+import Share from "../../share/share"
 
 const FaqLayout = (props) => {
-  let header, content;
+  let header;
 
   if (!props.isCustomHeader) {
     header =
@@ -25,7 +23,7 @@ const FaqLayout = (props) => {
         : ''}
         <Grid container>
           <Grid item xs={12} sm={11} className={styles.share}>
-            <ShareMenu location={props.location}/>
+            <Share location={props.location}/>
           </Grid>
         </Grid>
         <Grid container justify='center'>

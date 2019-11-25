@@ -59,8 +59,8 @@ function SpendingAndGdpPage(props) {
                         <Share 
                             location={props.location}
                             title="Data Lab - Explore Deficit – U.S. Treasury"
-                            text="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
-                            twitter='#DataLab #Treasury #DataTransparency #USAspending'
+                            text="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis."
+                            twitter='#DataLab #OpenGov'
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
