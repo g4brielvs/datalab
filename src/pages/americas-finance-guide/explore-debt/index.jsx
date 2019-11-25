@@ -131,7 +131,7 @@ function ExploreDebtPage(props) {
                     <div className="afg__download--div">
                         <div className="afg__download--heading">Download Source Data</div>
                         <ul>
-                            <li><a href="../../libs/assets/ffg/data/explore_federal_debt.csv" download>explore_federal_debt.csv</a></li>
+                            <li><a href="/americas-finance-guide/afgData/explore_federal_debt.csv" download="explore_federal_debt.csv">explore_federal_debt.csv</a></li>
                         </ul>
                     </div>
                     </Accordion>
