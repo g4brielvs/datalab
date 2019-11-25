@@ -107,6 +107,14 @@ function RevenueAndGdpPage(props) {
                             </div>
                         </div> {/* end facts sidebar intro-hidden */}
 
+                        <section class="accordion sidebar intro-hidden">
+                            <Accordion title="Who owns the federal government's debt?">
+                            <div class="accordion__content">
+                                <p>Most of the federal government's debt is owned by federal trust funds and domestic investors in the United States. Foreign investors, including other governments, also own part of the debt.</p>
+                            </div>
+                            </Accordion>
+                        </section>
+
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the sources of government revenue?</h1>
                             <a id="tour-continue" className="tour__link" href="./categories.html">Discover<i className="fas fa-chevron-right"></i></a>
