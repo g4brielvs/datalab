@@ -605,27 +605,27 @@ function Dendro(props) {
           <div className='viz-actions'>
             <form id='DendroRadio'>
               <div className='select-wrapper1'>
-                <input type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
-                <label htmlFor="contactChoice1">FY 17 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 17 </label>
 
-                <input type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
-                <label htmlFor="contactChoice">FY 18 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
+                <label className='dendro-input-1' htmlFor="contactChoice">FY 18 </label>
 
-                <input type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
-                <label htmlFor="contactChoice1">FY 19 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 19 </label>
               </div>
               <div className="select-wrapper2">
-                <input type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
-                <label htmlFor="contactChoice3">Q1</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
+                <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
 
-                <input type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
-                <label htmlFor="contactChoice4">Q2</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
+                <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
 
-                <input type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
-                <label htmlFor="contactChoice5">Q3</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
+                <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
 
-                <input type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
-                <label htmlFor="contactChoice6">Q4</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
+                <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
               </div>
             </form>
           </div>
