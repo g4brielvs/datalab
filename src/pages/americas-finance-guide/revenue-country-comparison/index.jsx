@@ -1,17 +1,23 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/assets/ffg/nav/nav.css'
+import '../../../libs/ffg/src/globalSass/countryCommon.scss'
+// import '../../../libs/ffg/src/revenue/countries/countries.scss'
+// import '../../../libs/ffg/src/revenue/countries/selectCountry.scss'
+// import '../../../libs/ffg/src/revenue/countries/sortButton.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
 import HeaderOnly from "../../../components/layouts/header-only/header-only"
-import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
 function RevenueCountryComparisonPage(props) {
     return (
@@ -33,15 +39,15 @@ function RevenueCountryComparisonPage(props) {
 
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
                         <li><a href="./categories.html">Revenue Categories</a></li>
                         <li><a href="./trends.html">Federal Revenue Trends</a></li>
-                        <li><a href="./country-comparison">Country Comparison</a></li>
+                        <li><a href="./revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -63,12 +69,12 @@ function RevenueCountryComparisonPage(props) {
                         </p>
                             <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                         </div>
-                        <a className="chapter-link chapter-link--spending" href="../spending/">
+                        <a className="chapter-link chapter-link--spending" href="./spending-and-gdp">
                             <div className="chapter-link__text-block">
                                 <div className="chapter-link__learn-more">Learn more about</div>
                                 Federal Spending
                             </div>
-                            <i className="fa fa-angle-right"></i>
+                            <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" />
                         </a>
                     </div>
 
