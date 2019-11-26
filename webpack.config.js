@@ -73,6 +73,33 @@ const moduleRules = [
 
 module.exports = [ {
     entry: {
+        intro: './src/libs/ffg/src/revenue/intro/index.js',
+        // categories: './citizens-guide/src/revenue/categories/index.js',
+        // trends: './citizens-guide/src/revenue/trends/index.js',
+        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/revenue/',
+        publicPath: '/static/americas-finance-guide/revenue/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         // categories: './citizens-guide/src/spending/categories/index.js',
         // countryComparison: './citizens-guide/src/spending/countries/index.js',
         intro: './src/libs/ffg/src/spending/intro/index.js',
@@ -100,10 +127,10 @@ module.exports = [ {
     }
  }, {
     entry: {
-        intro: './src/libs/ffg/src/revenue/intro/index.js',
-        // categories: './citizens-guide/src/revenue/categories/index.js',
-        // trends: './citizens-guide/src/revenue/trends/index.js',
-        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+        intro: './src/libs/ffg/src/debt/intro/index.js',
+        // trends: './citizens-guide/src/debt/trends/index.js',
+        // analysis: './citizens-guide/src/debt/analysis/index.js',
+        // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
     devtool: devtool,
     devServer: devServer,
@@ -119,35 +146,10 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/static/americas-finance-guide/revenue/',
-        publicPath: '/static/americas-finance-guide/revenue/'
+        path: __dirname + '/static/americas-finance-guide/debt/',
+        publicPath: '/static/americas-finance-guide/debt/'
     },
     module: {
         rules: moduleRules
-    }
-}, {
-    entry: [
-        // './src/libs/ffg/src/globalSass/cg.scss',
-        './src/libs/ffg/src/globalSass/chapterIntroCommon.scss',
-        './src/libs/ffg/src/globalSass/countryCommon.scss',
-        './src/libs/ffg/src/globalSass/trendsCommon.scss',
-        // './src/libs/ffg/src/globalSass/normalize.scss',
-        './src/libs/ffg/src/bigPicture/scss/bp.scss',
-        './src/libs/ffg/src/deficit/trends/deficit-trends.scss',
-        './src/libs/ffg/src/revenue/categories/revenue-categories.scss',
-        './src/libs/ffg/src/spending/categories/spending-categories.scss',
-        './src/libs/ffg/src/debt/trends/debt-trends.scss',
-        './src/libs/ffg/src/debt/analysis/debt-analysis.scss'
-    ],
-    optimization: {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    },
-    output: {
-        path: __dirname + '/public/assets/ffg/css/',
-        publicPath: '/public/assets/ffg/css/'
-    },
-    mode: mode,
-    module: {
-        rules: cssRules
     }
 }];

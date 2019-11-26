@@ -7,7 +7,6 @@ import { setDotsPerRow } from "./dotConstants";
 import { layersInit, resetLayers } from "./manageLayers";
 import DebtData from '../../../../assets/ffg/data/explore_federal_debt.csv';
 import { findAmountInCsv } from '../../../src/utils';
-import Mapping from '../../../../_data/object_mapping.yml';
 
 const config = {
     anecdoteName: 'anecdote-debt.svg',

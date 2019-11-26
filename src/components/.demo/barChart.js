@@ -30,7 +30,6 @@ class BarChart extends Component {
   }
 
   render(){
-    console.log(this.props.id);
     return <div></div>
   }
 }

@@ -30,7 +30,6 @@ function SpendingAndGdpPage(props) {
                 description='In 2019, the U.S. government spent $4.4 trillion.'
                 excerpt='Where does all the money go? Most government spending is concentrated on programs that ensure the health and well-being of the people of the United States. Explore how spending compares to the size of the economy or to federal revenue.'
                 keywords={[`federal spending, outlays, U.S. spending, U.S. revenue, gross domestic product, GDP, deficit, debt, mandatory spending, discretionary spending`]}
-                socialMediaText='How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov'
             />
 
             <Default>
@@ -61,7 +60,7 @@ function SpendingAndGdpPage(props) {
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
-            <button className="info-box-trigger" data-box-id="per-individual">
+                            <button className="info-box-trigger" data-box-id="per-individual">
                             <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         </button>
                     </h1>
@@ -113,7 +112,7 @@ function SpendingAndGdpPage(props) {
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
                             <a className="tour__link" href="./categories.html">Discover<i className="fas fa-chevron-right"></i></a>
                         </section>
-                    </div>
+                    </div> {/* end viz-wrapper */}
 
                     <div className="info-box" id="per-individual">
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
@@ -129,7 +128,7 @@ function SpendingAndGdpPage(props) {
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal spending. </p>
                     </div>
-                </div>
+                </div> {/* end "ffg-wrapper spending-intro" */}
 
                 <section className="hwcta">
                     <Accordion title="Data Sources and Methodology">

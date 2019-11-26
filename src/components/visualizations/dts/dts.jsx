@@ -149,7 +149,6 @@ function DTS(props) {
       allToSpending["fytd"] = transposeKVToArray("fytd");
 
       todayAllCategorySpending = allToSpending["today"].slice(-1) ? allToSpending["today"].slice(-1)[0] : '';
-      //console.log('reminder ^')
 
       drawChart();
     }

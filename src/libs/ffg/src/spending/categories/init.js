@@ -85,7 +85,6 @@ function changeDataType(dataType, dataController){
 }
 
 function spendingIndexClickFunctions() {
-    //console.log('in spendingIndexClickFunctions');
     d3.select('#filter-by-name')
         .on('input', function () {
             const v = this.value.toLowerCase(),

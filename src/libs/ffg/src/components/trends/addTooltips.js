@@ -112,7 +112,6 @@ function showTooltip(containerOffset, globals) {
         // Check if tooltip will extend past bottom edge of svg.
         if (distanceToBottomEdge < 0) {
             // Move the tooltip to show above the cursor.
-            console.log('yes')
             finalOffset.y = finalOffset.y - (height + 50);
         }
 
