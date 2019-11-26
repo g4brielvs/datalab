@@ -1,104 +1,103 @@
 @import '../../styles/variables.scss';
 
-$darkGrey: #666666;
-$mdGrey: #555555;
-$lightGrey: #eee;
-$greyBlack: #979797;
-
-body, h1, h2, h3, h4, p, li {
-  font-family: 'Source Sans Pro';
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+li {
+	font-family: 'Source Sans Pro';
 }
 
 #TOC {
-  margin-top: $margin-30;
-  margin-bottom: $margin-100;
+	margin-top: $margin-30;
+	margin-bottom: $margin-100;
 
-  .tile {
-    padding-top: 1rem;
-  }
+	.tile {
+		padding-top: 1rem;
+	}
 
-  .number h2 {
-    color: $darkGrey;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 50px;
-    margin: 0.1em 0 0.3em;
-    text-align: left;
-  }
+	.number {
+		color: $font-body-copy;
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 50px;
+		margin: 0.1em 0 0.3em;
+		text-align: left;
+	}
 
-  .subtitle {
-    color: $mdGrey;
-    font-weight: bold;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    max-width: 200px;
-    line-height: 17px;
-    text-align: left;
-  }
+	.subtitle {
+		color: $font-title;
+		font-weight: bold;
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		max-width: 200px;
+		line-height: 17px;
+		text-align: left;
+	}
 
-  .section {
-    color: $mdGrey;
-    font-size: 1.125rem;
-    font-weight: 300;
-    font-weight: 300;
-    line-height: 58px;
-    text-align: left;
-  }
+	.section {
+		color: $font-title;
+		font-size: 1.125rem;
+		font-weight: 300;
+		font-weight: 300;
+		line-height: 58px;
+		text-align: left;
+	}
 }
 
 @media (min-width: $desktop-xl) {
-  #TOC {
-    margin-top: $margin-75;
+	#TOC {
+		margin-top: $margin-75;
 
-    .tile:not(:last-child) {
-      border-right: 1px solid $lightGrey;
-    }
-
-    .tile:not(:first-child) {
-      padding: 1rem 2rem 2rem;
-    }
-  }
-
+		.tile:not(:last-child) {
+			border-right: 1px solid $font-lightGrey;
+		}
+	}
 }
 
-@media (min-width: $phone) and (max-width: $desktop-xl) {
-  #TOC {
-    margin: 0 auto;
-    margin-top: $margin-30;
-    margin-bottom: $margin-100;
+@media (min-width: $phone + 1) and (max-width: $desktop-xl) {
+	#TOC {
+		margin: 0 auto;
+		margin-top: $margin-30;
+		margin-bottom: $margin-100;
 
-    .story-page {
-      max-width: 768px;
-    }
+		.tile:nth-child(1),
+		.tile:nth-child(2) {
+      border-bottom: $font-lightGrey solid 1px;
+      padding-bottom: 32px;
+		}
 
-    .tile {
-      padding: 1rem 2rem 2rem;
-    }
+		.tile:nth-child(odd) {
+			border-right: 1px solid $font-lightGrey;
+		}
 
-    .tile:nth-child(1), .tile:nth-child(2) {
-      border-bottom: $lightGrey solid 1px;
-    }
-
-    .tile:nth-child(odd) {
-      border-right: 1px solid $lightGrey;
-    }
-
-  }
+		.tile:last-child {
+			border-right: none;
+		}
+	}
 }
 
-@media (max-width: $phone - 1) {
-  #TOC {
-    margin-top: $margin-25;
+@media (max-width: $tablet) {
+	#TOC .a {
+		width: 100%;
+	}
+}
 
-    .subtitle {
-      display: none;
-    }
-    .number h2 {
-      font-size: 1.5rem;
-      line-height: 3.125rem;
-    }
-    .tile {
-      padding: 0;
-    }
-  }
+@media (max-width: $phone) {
+	#TOC {
+		margin-top: $margin-25;
+
+		.subtitle {
+			display: none;
+		}
+		.number {
+			font-size: 1.5rem;
+			line-height: 3.125rem;
+		}
+		.tile {
+			padding: 0;
+		}
+	}
 }
