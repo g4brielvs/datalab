@@ -127,6 +127,32 @@ module.exports = [ {
     }
  }, {
     entry: {
+        // countryComparison: './citizens-guide/src/deficit/countries/index.js',
+        intro: './src/libs/ffg/src/deficit/intro/index.js',
+        // trends: './citizens-guide/src/deficit/trends/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/deficit/',
+        publicPath: '/static/americas-finance-guide/deficit/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
         // trends: './citizens-guide/src/debt/trends/index.js',
         // analysis: './citizens-guide/src/debt/analysis/index.js',
