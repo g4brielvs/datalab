@@ -99,7 +99,7 @@ function ExploreDebtPage(props) {
 
                         <section className="accordion sidebar intro-hidden">
                             <Accordion title="Who owns the federal government's debt?">
-                                <div className="accordion__content">
+                                <div>
                                     <p>Most of the federal government's debt is owned by federal trust funds and domestic investors in the United States. Foreign investors, including other governments, also own part of the debt.</p>
                                 </div>
                             </Accordion>

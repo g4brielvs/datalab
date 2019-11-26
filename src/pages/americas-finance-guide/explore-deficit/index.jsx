@@ -95,7 +95,7 @@ function ExploreDeficitPage(props) {
 
                         <section className="accordion sidebar intro-hidden">
                             <Accordion title="How else does the government finance a deficit?">
-                                <div className="accordion__content">
+                                <div>
                                     <p>The government can also use operating cash, which is available from an account at the Federal Reserve, to pay for deficit spending. This would be similar to an individual using their debit card to pay for purchases.</p>
                                 </div>
                             </Accordion>
