@@ -80,7 +80,7 @@ ul {
 
 @mixin h1-heading {
   font-family: Source Sans Pro;
-  font-size: 56px;
+  font-size: 3.5rem;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -91,7 +91,7 @@ ul {
 
 @mixin h2-subheading {
   font-family: Source Sans Pro;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -102,7 +102,7 @@ ul {
 
 @mixin h3-subheading {
   font-family: Source Sans Pro;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -113,7 +113,7 @@ ul {
 
 @mixin h4-subheading {
   font-family: Source Sans Pro;
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
