@@ -8,7 +8,6 @@ import { layersInit, resetLayers } from "./manageLayers";
 import '../../matchesPolyfill';
 import DeficitData from '../../../../assets/ffg/data/explore_federal_deficit.csv';
 import { findAmountInCsv } from '../../../src/utils';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 const config = {
     anecdoteName: 'anecdote-deficit.svg',
