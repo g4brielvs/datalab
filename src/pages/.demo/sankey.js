@@ -187,7 +187,6 @@ class SankeyDemo extends Component {
         node.sourceLinks = [];
         node.targetLinks = [];
       });
-      console.log(links);
       links.forEach((link) => {
         let source = link.source;
         let target = link.target;
