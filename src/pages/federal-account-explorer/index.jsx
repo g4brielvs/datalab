@@ -13,14 +13,15 @@ import Accordion from "../../components/accordion/accordion";
 import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
-import ControlBar from "../../components/control-bar/control-bar"
-import StoryLayout from "../../components/layouts/story/story"
+import ControlBar from "../../components/control-bar/control-bar";
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){
     super(props);
   }
+
   render() {
+
     return <>
              <ToolLayout title='Federal Account Explorer'
                          introSentence='Did you know that the government has almost 2,000 federal spending accounts?'
@@ -37,18 +38,20 @@ class FederalAccountExplorerPage extends Component {
                <Accordion
                  title="Instructions">
                  <ul>
-                   <li>xxx</li>
-                   <li>xxx</li>
-                   <li>xxx</li>
+                   <li>On the first branch, click any agency to reveal how that agency is organized into sub-agencies.</li>
+                   <li>On the second branch, click any sub-agency to reveal that sub-agency's federal accounts.</li>
+                   <li>On the third branch, click any any federal account to go to its Federal Account Profile on USAspending.gov. There, you will find an account description, how much money flowed in and out of the account in a fiscal year, and more.</li>
+                   <li>Click and drag the visualization to re-center.</li>
+                   <li>Use the reset button at the top left corner to reset the visualization.</li>
                  </ul>
                </Accordion>
 
                <ControlBar>
-                 <Reset />
+                 <Reset id='resetBtn'/>
                  <Share location={this.props.location}/>
                </ControlBar>
 
-               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data} />
+               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
 
              </ToolLayout>
            </>;

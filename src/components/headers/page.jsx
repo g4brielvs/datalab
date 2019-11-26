@@ -75,8 +75,12 @@ class PageHeader extends React.Component {
     this.setState({showMobileMenu: !this.state.showMobileMenu});
   };
 
-  handleItemClick = e => {
+  handleItemHover = e => {
     this.setState({ activeItem: e.target.innerText });
+    // shim for datalab express as we do not need it currently
+    if (e.target.innerText == "DataLab Express ") {
+      this.setState({ activeItem: '' });
+    }
   };
 
   render() {
@@ -102,16 +106,16 @@ class PageHeader extends React.Component {
                 <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className={styles.ulNav} id={styles.burgerMenu}>
-                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                <li className={styles.item} onMouseOver={this.handleItemHover}>
                   <a href='#' className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className={styles.item}>
+                <li className={styles.item} onMouseOver={this.handleItemHover}>
                   <a href='#' className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                <li className={styles.item} onMouseOver={this.handleItemHover}>
                   <a href='#' className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></a>
                 </li>
-                <li className={styles.item} onMouseOver={this.handleItemClick}>
+                <li className={styles.item} onMouseOver={this.handleItemHover}>
                   <a href='#' className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></a>
                 </li>
                 <li className={styles.item}>

@@ -35,7 +35,7 @@ export default class ToolLayout extends React.Component {
         {
           ffg: [
             {header: 'Overview', name: "America's Finance Guide", link: '#'},
-            {header: 'Revenue', name: 'Revenue and GDP', link: '#'},
+            {header: 'Revenue', name: 'Revenue and GDP', link: '/americas-finance-guide/revenue-and-gdp'},
             {header: 'Revenue', name: 'Revenue Categories', link: '#'},
             {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
             {header: 'Revenue', name: 'Country Comparison', link: '#'},
@@ -43,10 +43,10 @@ export default class ToolLayout extends React.Component {
             {header: 'Spending', name: 'Spending Categories', link: '#'},
             {header: 'Spending', name: 'Federal Spending Trends', link: '#'},
             {header: 'Spending', name: 'Country Comparison', link: '#'},
-            {header: 'Deficit', name: 'Explore Deficit', link: '#'},
+            {header: 'Deficit', name: 'Explore Deficit', link: '/americas-finance-guide/explore-deficit'},
             {header: 'Deficit', name: 'Federal Deficit Trends', link: '#'},
             {header: 'Deficit', name: 'Country Comparison', link: '#'},
-            {header: 'Debt', name: 'Explore Debt', link: '#'},
+            {header: 'Debt', name: 'Explore Debt', link: '/americas-finance-guide/explore-debt'},
             {header: 'Debt', name: 'Federal Debt Trends', link: '#'},
             {header: 'Debt', name: 'Federal Debt Analysis', link: '#'},
             {header: 'Debt', name: 'Country Comparison', link: '#'},
@@ -77,7 +77,7 @@ export default class ToolLayout extends React.Component {
         <p className={styles.p} dangerouslySetInnerHTML={{ __html: this.props.contextStatement }}></p>
       </section>
 
-      <main className={styles.main}>
+      <div className={styles.main}>
         <article>
           <section className={styles.childrenSection}>
             {this.props.children}
@@ -93,7 +93,7 @@ export default class ToolLayout extends React.Component {
             </Grid>
           </section>
         </article>
-      </main>
+      </div>
       <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
       <MoreAnalyses />
     </div>
