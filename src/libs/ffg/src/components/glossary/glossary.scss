@@ -28,7 +28,7 @@
     width: 140px;
     height: 40px;
     margin: 0;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 16px;
     border: 0;
     border-radius: 0;
@@ -130,7 +130,7 @@
 #cg-definition-wrapper p {
     color: white;
     line-height: 1.5;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
 }
 
@@ -142,7 +142,7 @@
 .cg-glossary-sidebar {
     background-color: #205493;
     color: #fff;
-    font-size: 14px;
+    font-size: 0.875rem;
     width: 100%;
     height: 100%;
     box-sizing:border-box;
@@ -184,7 +184,7 @@
 .cg-glossary-search-bar input.search-field {
     position: absolute;
     left: 0;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 17px;
     color: #555;
     padding: 10px 25px 10px 10px;
@@ -222,7 +222,7 @@
 }
 
 .cg-group-title {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 26px;
     font-weight: 600;
     margin: 0;
@@ -238,7 +238,7 @@ button.cg-glossary-link {
     outline: 0;
     padding: 0;
     text-align: left;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 18px;
     color: #fff;
     width: 100%;
@@ -281,7 +281,7 @@ button.cg-glossary-link:focus {
     text-align: left;
     padding: 5px 5px 5px 0;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 0.9375rem;
     line-height: 18px;
     font-weight: 600;
     color: white;
@@ -292,7 +292,7 @@ button.cg-glossary-link:focus {
 }
 
 .cg-glossary-term {
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 31px;
     font-weight: 600;
     margin: 0 20px 0 0;
@@ -322,7 +322,7 @@ button.cg-glossary-link:focus {
 }
 
 .cg-glossary-resources-title {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 26px;
     font-weight: 600;
     margin: 0;
