@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
@@ -7,7 +8,6 @@ import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
 import HeaderOnly from "../../../components/layouts/header-only/header-only"
-import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
@@ -19,7 +19,8 @@ function ExploreDeficitPage(props) {
     return (
         <>
             <Helmet>
-                <script defer src="/assets/ffg/deficit/intro.js"></script>
+                <script defer src="/americas-finance-guide/deficit/intro.js"></script>
+                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
