@@ -6,7 +6,7 @@ import Accordion from "../../components/accordion/accordion";
 import StoryHeading from "../../components/section-elements/story-heading/story-heading";
 import Downloads from "../../components/section-elements/downloads/downloads";
 import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
-import ShareMenu from '../../components/share-menu/share-menu';
+import Share from '../../components/share/share';
 import ControlBar from "../../components/control-bar/control-bar"
 
 import loadable from '@loadable/component';
@@ -31,11 +31,11 @@ const Institutions = (props) => {
       </Accordion>
 
       <ControlBar>
-        <ShareMenu siteUrl='https://datalab-dev.usaspending.gov/' pageUrl='colleges-and-universities'
-                   location={props.location}
+        <Share location={props.location}
                    title='Check out this analysis on Data Lab'
-                   text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-                   facebook='' reddit='' linkedin='' tumblr='' email=''/>
+                   text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+                   twitter='#DataLab #Treasury #DataTransparency #USAspending'
+                   />
       </ControlBar>
       <div>
 	      <Mapbox data={GeoDataMapbox}/>
