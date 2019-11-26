@@ -23,6 +23,15 @@ p {
   }
 }
 
+
+.header-hero {
+  margin-top: $margin-50;
+  padding-bottom: $margin-30;
+  > * {
+    text-align: center;
+  }
+}
+
 #banner {
   p {
     margin-bottom: 25px;
@@ -57,3 +66,17 @@ p {
     padding-top: $margin-30;
   }
 }
+
+@media screen and (min-width: $desktop-xl) {
+  .header-hero {
+    padding-bottom: $margin-75;
+  }
+}
+
+@media (max-width: $phone - 1) {
+  .header-hero {
+    margin-top: $margin-30;
+    padding-bottom: $margin-25;
+  }
+}
+

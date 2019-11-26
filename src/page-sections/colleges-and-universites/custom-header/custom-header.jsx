@@ -1,11 +1,9 @@
 import React from 'react';
 import customHeaderStyles from './custom-header.module.scss';
-import storyStyles from '../../../components/layouts/story/story.module.scss';
 import { Hidden } from '@material-ui/core';
 
 const CustomHeader = (props) => (
-  <div className={storyStyles.header}>
-
+  <>
     <Hidden mdDown>
       <div className={customHeaderStyles.bannerImage}
            role='image'
@@ -14,7 +12,7 @@ const CustomHeader = (props) => (
     </Hidden>
 
     <Hidden lgUp>
-      <section className={storyStyles.headerHero}>
+      <section className={customHeaderStyles.headerHero}>
         <div id={customHeaderStyles.banner}>
           <p className={customHeaderStyles.subtext}>
             {props.subtext}
@@ -28,7 +26,7 @@ const CustomHeader = (props) => (
         </div>
       </section>
     </Hidden>
-  </div>
+  </>
 );
 
 export default CustomHeader;
