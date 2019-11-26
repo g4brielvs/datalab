@@ -1,13 +1,13 @@
 import React from 'react';
-import './custom-header.scss';
+import customHeaderStyles from './custom-header.module.scss';
 import storyStyles from '../../../components/layouts/story/story.module.scss';
 import { Hidden } from '@material-ui/core';
 
 const CustomHeader = (props) => (
-  <div className='header container-fluid'>
+  <div className={storyStyles.header}>
 
     <Hidden mdDown>
-      <div className='header-banner--image'
+      <div className={customHeaderStyles.bannerImage}
            role='image'
            aria-label="Explore The Federal Investment In Your Alma Mater">
       </div>
@@ -15,14 +15,14 @@ const CustomHeader = (props) => (
 
     <Hidden lgUp>
       <section className={storyStyles.headerHero}>
-        <div id='header__banner'>
-          <p className='header__subtext'>
+        <div id={customHeaderStyles.banner}>
+          <p className={customHeaderStyles.subtext}>
             {props.subtext}
           </p>
-          <p className='header__subblurb'>
+          <p className={customHeaderStyles.subblurb}>
             {props.subblurb}
           </p>
-          <p className='header__blurb'>
+          <p className={customHeaderStyles.blurb}>
             {props.blurb.map(item => item)}
           </p>
         </div>

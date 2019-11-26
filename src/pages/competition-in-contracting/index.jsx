@@ -1,10 +1,10 @@
-import {useStaticQuery, graphql} from "gatsby"
-import React, { Component, useState, useEffect } from "react"
+import { graphql } from "gatsby";
+import React, { Component } from "react";
 import SEO from "../../components/seo";
 import "../../styles/index.scss";
 import competitionStyles from './competition-in-contracting.module.scss';
 
-import { Grid, Hidden } from "@material-ui/core"
+import { Grid, Hidden } from "@material-ui/core";
 /* components */
 import Accordion from "../../components/accordion/accordion";
 import Barchart from '../../components/visualizations/horizontal-barchart/barchart';

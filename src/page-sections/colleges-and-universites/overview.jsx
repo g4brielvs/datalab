@@ -3,7 +3,6 @@ import '../../components/share-menu/share-menu.module.scss';
 import storyHeadingStyles from "../../components/section-elements/story-heading/story-heading.module.scss"
 import React from 'react';
 
-import Downloads from '../../components/section-elements/downloads/downloads';
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
 import ShareMenu from '../../components/share-menu/share-menu';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
@@ -35,10 +34,6 @@ const Overview = (props) => {
         <InvestmentOverview/>
       </section>
 
-      <Downloads
-        href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
-        date={'March 2019'}
-      />
     </>
   );
 };
