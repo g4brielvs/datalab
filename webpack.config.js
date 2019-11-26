@@ -76,7 +76,7 @@ module.exports = [ {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
         // categories: './citizens-guide/src/revenue/categories/index.js',
         // trends: './citizens-guide/src/revenue/trends/index.js',
-        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+        countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
     devtool: devtool,
     devServer: devServer,
