@@ -53,6 +53,12 @@ $darkGrey: #666666;
   width: 100%;
 }
 
+@media screen and (max-width: $tablet) {
+  .tile:global(.MuiGrid-item) {
+    margin-top: 1rem;
+  }
+}
+
 @media screen and (max-width: $phone - 1) {
   .tile {
     border-bottom: 1px solid #ddd;

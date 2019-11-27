@@ -4,24 +4,21 @@ $darkGrey: #666666;
 $mdGrey: #555555;
 $greyBlack: #979797;
 
-#custom__TOC {
+#toc {
   margin-top: 22rem;
-  border-top: none;
+  padding-top: 2rem;
+  border-top: $darkGrey 1px solid;
 
   a {
     text-decoration: none;
   }
 
-  .toc__tile {
+  .tile {
     padding-top: 1rem;
     padding: 1rem 2rem 0 !important;
   }
 
-  .toc__tile:not(:last-child) {
-    border-right: 1px solid #eeeeee;
-  }
-
-  .toc__number {
+  .number {
     color: $darkGrey;
     font-size: 3rem;
     font-weight: 600;
@@ -29,14 +26,14 @@ $greyBlack: #979797;
     margin: 0.1em 0 0.3em;
   }
 
-  .toc__subtext {
+  .subtext {
     color: $cuRed;
     font-size: 0.875rem;
     font-weight: 300;
     line-height: 18px;
   }
 
-  .toc__subblurb {
+  .subblurb {
     color: $mdGrey;
     font-weight: bold;
     font-size: 0.875rem;
@@ -45,7 +42,7 @@ $greyBlack: #979797;
     line-height: 17px;
   }
 
-  .toc__blurb {
+  .blurb {
     color: $mdGrey;
     font-size: 0.875rem;
     font-weight: 300;
@@ -54,21 +51,32 @@ $greyBlack: #979797;
   }
 }
 
-@media (max-width: $desktop - 1) {
-  #custom__TOC {
+@media screen and (min-width: $desktop-xl) {
+  .tile:not(:last-child) {
+    border-right: #eee 2px solid;
+  }
+}
+
+@media screen and (max-width: $desktop - 1) {
+  #toc {
     margin-top: 30px;
   }
 }
 
-@media (max-width: $tablet - 1) {
-  #custom__TOC {
+@media screen and (max-width: $tablet - 1) {
+  #toc {
+  }
+
+  #toc {
     margin-bottom: 25px;
+  }
+
+}
+
+@media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
+  .tile:nth-child(3), .tile:first-child {
+    border-right: #eee 2px solid;
   }
 }
 
-@media (min-width: $desktop) {
-  #custom__TOC {
-    border-top: 1px solid;
-  }
-}
 

@@ -1,5 +1,4 @@
 import styles from './search.module.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
-import overrides from './mui-override-search';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -52,7 +51,6 @@ export default class SearchPanel extends React.Component {
   }
 
   render = () => {
-    const theme = () => createMuiTheme(overrides);
     return (
       <form>
         <OutlinedInput
@@ -74,24 +72,22 @@ export default class SearchPanel extends React.Component {
               : ''
           }
         />
-        <MuiThemeProvider theme={theme()}>
-          <List aria-label={'List of ' + this.props.listDescription}
-            className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
-          >
-            {
-              this.filteredList.map(i =>
-                <ListItem
-                  key={i.id}
-                  button
-                  divider
-                  className={styles.listItem}
-                  onClick={() => this.selectItem(i.id)}
-                >
-                  <ListItemText primary={i.heading} secondary={i.subheading} />
-                </ListItem>
-              )}
-          </List>
-        </MuiThemeProvider>
+        <List aria-label={'List of ' + this.props.listDescription}
+          className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
+        >
+          {
+            this.filteredList.map(i =>
+              <ListItem
+                key={i.id}
+                button
+                divider
+                className={styles.listItem}
+                onClick={() => this.selectItem(i.id)}
+              >
+                <ListItemText primary={i.heading} secondary={i.subheading} />
+              </ListItem>
+            )}
+        </List>
       </form>
     )
   }
