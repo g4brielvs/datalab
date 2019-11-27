@@ -43,7 +43,7 @@ class InvestmentOverview extends React.Component {
 
     const texthelperAid = {
       color: '#FFFEFD',
-      fontSize: '28px',
+      fontSize: '1.75rem',
       lineHeight: '50px',
       margin: '0',
       paddingLeft: '.25rem',
@@ -53,7 +53,7 @@ class InvestmentOverview extends React.Component {
 
     const texthelperGrants = {
       color: '#FFFEFD',
-      fontSize: '28px',
+      fontSize: '1.75rem',
       lineHeight: '50px',
       margin: '0',
       paddingLeft: '.15rem',
@@ -63,7 +63,7 @@ class InvestmentOverview extends React.Component {
 
     const texthelperContracts = {
       color: '#FFFEFD',
-      fontSize: '28px',
+      fontSize: '1.75rem',
       lineHeight: '50px',
       margin: '0',
       paddingLeft: '.25rem',

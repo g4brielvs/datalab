@@ -39,6 +39,7 @@
 .heading-red {
 	color: $cuRed;
 	font-weight: 400;
+	font-size: inherit;
 }
 
 @media (max-width: $desktop-xl - 1) {
