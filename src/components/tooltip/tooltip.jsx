@@ -31,7 +31,7 @@ function tooltipModule(){
     }
   }
 
-  function draw(tooltipId, title, information, disclaimers) {
+  function draw(tooltipId, title, information, disclaimers, customHTML) {
     d3
       .select(`#${tooltipId}`)
       .transition()
@@ -63,12 +63,17 @@ function tooltipModule(){
 
     const leftPosition = getLeftPosition(tooltipId);
     const topPosition = getTopPosition(tooltipId);
+    let tooltipContent = customHTML
+    if(!tooltipContent){
+      tooltipContent = toolTipHtml(title, information, disclaimers);
+    }
 
     d3
       .select(`#${tooltipId}`)
-      .html(toolTipHtml(title, information, disclaimers))
+      .html(tooltipContent)
       .style("left", leftPosition)
       .style("top", topPosition);
+
   }
 
   function remove(tooltipId) {

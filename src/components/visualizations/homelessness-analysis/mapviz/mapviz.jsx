@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"
 import * as d3 from 'd3v3';
-import d3Tip from 'd3-tip';
-d3.tip = d3Tip;
 
 import ControlBar from "../../../control-bar/control-bar"
 import Reset from "../../../reset/reset"
 import Share from "../../../share/share"
 import dataSource from '../utils/data-module';
+import tooltipModule from "../../../../components/tooltip/tooltip"
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -15,6 +14,7 @@ export default function Mapviz(props) {
   const {mem} = dataSource;
   const us = mem.us;
   const tableData = mem.pop;
+  let Tooltip;
 
   const absWidth = 1024;
   const absHeight = 575;
@@ -68,29 +68,7 @@ export default function Mapviz(props) {
       .attr('viewBox', '0 0 950 575')
       .attr('preserveAspectRatio', 'xMidYMid meet');
 
-    const tip = d3.tip()
-      .attr('class', 'homeless-analysis d3-tip')
-      .style('background', '#ffffff')
-      .style('color', '#333')
-      .style('border', 'solid 1px #BFBCBC')
-      .style('padding', '25px')
-      .style('width', '300px')
-      .offset([-10, -10])
-      .html((d) => `<p style="border-bottom:1px solid #898C90; font-size: 18px; margin:0;`
-        + ` padding-bottom:15px; font-weight: bold; color:#555555">`
-        + `${d.properties.coc_number}: ${d.properties.COCNAME}</p><br>` +
-        `<p style="color: #0071BC; margin: 0; padding-bottom:0; font-size: 20px; line-height: 22px">`
-        + `Total Homeless: ${getValue(d)}</p><br>` +
-        `<ul style="list-style-type: circle; margin:0; padding:0 0 0 15px">` +
-        `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
-        + `Sheltered Homeless: ${getSheltered(d)}</li>` +
-        `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
-        + `Unsheltered Homeless: ${getUnsheltered(d)}</li></ul><br>` +
-        `<p style="font-size: 16px; margin-top:0; padding-top:0; margin-bottom:0; font-style: italic">`
-        + ` Double click to zoom in/zoom out</p>`);
-
     mapSvg.append('circle').attr('id', 'tipfollowscursor_1');
-    mapSvg.call(tip);
 
     g = mapSvg.append('g')
       .attr('class', 'counties')
@@ -106,15 +84,11 @@ export default function Mapviz(props) {
 
     // todo - Add in functionality for the click function which includes updating
     // the tables in the 'Federal Spending on Homelessness by Region' section
-    g.on('mouseover', (d) => {
-      const target = d3.select('#tipfollowscursor_1')
-        .attr('cx', d3.event.offsetX)
-        .attr('cy', d3.event.offsetY - 30)
-        .node();
-      tip.show(d, target);
-    })
-      .on('mouseout', tip.hide)
+    g.on("mouseover", handleMouseOver)
+      .on("mousemove", handleMouseMove)
+      .on("mouseout", handleMouseOut)
       .on('dblclick', setZoom)
+      .style('fill', getColor)
       // .on("click", (d) => {
       //   BarChart(d);
       //   createCoCTable(d);
@@ -124,7 +98,6 @@ export default function Mapviz(props) {
       //   p21ClickedP1(d);
       // })
 
-      .style('fill', getColor);
   }
 
   function setZoom(d) {
@@ -177,6 +150,32 @@ export default function Mapviz(props) {
       .duration(750)
       .attr('transform', `translate(${width / 2},${height / 2})scale(${k})translate(${-x},${-y})`)
       .style('stroke-width', `${0.25 / k}px`);
+  }
+
+  function handleMouseOver(d) {
+    const html = `<p style="border-bottom:1px solid #898C90; font-size: 18px; margin:0;`
+      + ` padding-bottom:15px; font-weight: bold; color:#555555">`
+      + `${d.properties.coc_number}: ${d.properties.COCNAME}</p><br>` +
+      `<p style="color: #0071BC; margin: 0; padding-bottom:0; font-size: 20px; line-height: 22px">`
+      + `Total Homeless: ${getValue(d)}</p><br>` +
+      `<ul style="list-style-type: circle; margin:0; padding:0 0 0 15px">` +
+      `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
+      + `Sheltered Homeless: ${getSheltered(d)}</li>` +
+      `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
+      + `Unsheltered Homeless: ${getUnsheltered(d)}</li></ul><br>` +
+      `<p style="font-size: 16px; margin-top:0; padding-top:0; margin-bottom:0; font-style: italic">`
+      + ` Double click to zoom in/zoom out</p>`;
+    Tooltip.draw("tooltipMapViz", null, null, null, html);
+    d3.select(this).style("fill", "#D334BA");
+  }
+
+  function handleMouseOut() {
+    Tooltip.remove("tooltipMapViz");
+    d3.select(this).style('fill', getColor);
+  }
+
+  function handleMouseMove() {
+    Tooltip.move("tooltipMapViz");
   }
 
   function getColor(d) {
@@ -498,6 +497,7 @@ export default function Mapviz(props) {
   }
 
   useEffect(() => {
+    Tooltip = tooltipModule();
     GenMap();
   });
 
@@ -509,6 +509,7 @@ export default function Mapviz(props) {
         }}/>
         <Share location={props.location}/>
       </ControlBar>
+      <div id="tooltipMapViz" className="tooltip-module" />
       <div className="viz-container homeless-analysis">
         <div id="container" height="100%" width="100%"/>
       </div>
