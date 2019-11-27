@@ -48,7 +48,6 @@ function Mapbox(props) {
 			}
 
 			function renderAllSchools() {
-
 				let geoandname = data.features.map(function (ele) {
 					return {
 						coord: ele.geometry,
@@ -58,7 +57,7 @@ function Mapbox(props) {
 						yearType: ele.properties.INST_TYPE_2,
 						state: ele.properties.State,
 						county: ele.properties.COUNTY,
-						numStudents: numberWithCommas(ele.properties.Total),
+						numStudents: numberWithCommas(ele.properties.Total)
 					};
 				});
 
@@ -113,15 +112,15 @@ function Mapbox(props) {
 				});
 			};
 
-			$('#map-table-trigger').click(function () {
-				mapDiv.hide(); // hide map
-				almaTable.show(); // show table
-			});
+			// $('#map-table-trigger').click(function () {
+			// 	mapDiv.hide(); // hide map
+			// 	almaTable.show(); // show table
+			// });
 
-			$('#map-chart-trigger').click(function () {
-				mapDiv.show();
-				almaTable.hide();
-			});
+			// $('#map-chart-trigger').click(function () {
+			// 	mapDiv.show();
+			// 	almaTable.hide();
+			// });
 
 			$('#refresh-div').click(function () {
 				map.flyTo({
@@ -275,23 +274,28 @@ function Mapbox(props) {
 
 					let tooltipHtml = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${fedInvest}</p></div>`;
 
-
-					// Ensure that if the map is zoomed out such that multiple
-					// copies of the feature are visible, the popup appears
-					// over the copy being pointed to.
+					// Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
 					while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
 						coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 					}
 
-					// Populate the popup and set its coordinates
-					// based on the feature found.
+					// Populate the popup and set its coordinates based on the feature found.
 					tooltip.setLngLat(coordinates)
 						.setHTML(tooltipHtml)
-						.addTo(map);
+						.addTo(map)
+						;
 				});
 
 				// duplicate with "click" for mobile register
 				map.on('click', 'unclustered-point', function (e) {
+
+
+
+					console.log('point');
+					console.log(JSON.parse(JSON.stringify(e.features[0])));
+
+
+
 					// Change the cursor style as a UI indicator.
 					map.getCanvas().style.cursor = 'pointer';
 
@@ -321,6 +325,14 @@ function Mapbox(props) {
 				});
 
 				map.on('click', 'schools', function (e) {
+
+
+
+					console.log('schools');
+					console.log(JSON.parse(JSON.stringify(e)));
+
+
+
 					let features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
 					let clusterId = features[0].properties.cluster_id;
 					map.getSource('schools').getClusterExpansionZoom(clusterId, function (err, zoom) {

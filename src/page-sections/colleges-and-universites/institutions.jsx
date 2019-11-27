@@ -57,7 +57,7 @@ const Institutions = (props) => {
       <Grid item>
         <VizDetails
           showDetails={getClickedDetails}
-          details={currentDetails}
+          details={{}}
           ref={detailPanelRef}
         />
       </Grid>
