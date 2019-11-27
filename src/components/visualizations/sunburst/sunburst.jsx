@@ -196,13 +196,12 @@ export default class Sunburst extends React.Component {
 
     this.centerGroup = this.svg.append('svg:text').attr('id', 'tab');
 
-    if (d.depth === 0) {
+    if (d.depth === 0) { // center
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
       this.props.showDetails(null); // hide details panel
 
-    } else if (d.depth === 1) {
-      // category
+    } else if (d.depth === 1) { // category
       this.setCenterTextLines('center-heading', 'Category', labelFontSize, '0');
       this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);

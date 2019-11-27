@@ -60,13 +60,13 @@ export default class VizDetailPanel extends React.Component {
       let rowsFrag = [];
       if (table.rows) {
         Object.keys(table.rows).forEach((rowLabel, i) => {
-          rowsFrag.push(<tr key={'detail-row-' + i}>
+          rowsFrag.push(<tr key={'viz-detail-row-' + i}>
             <td>{rowLabel}</td>
             <td>{formatNumber('dollars', table.rows[rowLabel])}</td>
           </tr>);
         });
       }
-      tableFrag.push(<div className='viz-detail-table-section' key={'detail-table-' + i}><table><thead><tr>
+      tableFrag.push(<div className='viz-detail-table-section' key={'viz-detail-table-' + i}><table><thead><tr>
         <th>{table.col1Title}</th>
         <th>{table.col2Title}</th>
       </tr></thead>
@@ -80,9 +80,7 @@ export default class VizDetailPanel extends React.Component {
 
   render = () => (
     <Paper className={'details' + (this.state.expanded ? ' expanded' : '')}>
-      <IconButton className='closeButton'
-        onClick={() => this.closeDetails()}
-      >
+      <IconButton className='closeButton' onClick={() => this.closeDetails()}>
         <HighlightOffIcon />
       </IconButton>
       {this.renderDetails()}

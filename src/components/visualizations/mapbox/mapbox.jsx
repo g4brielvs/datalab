@@ -34,8 +34,8 @@ function Mapbox(props) {
 			});
 
 			// filter overlay section //
-			let mapDiv = $('#collegesMap');
-			let almaTable = $('#alma-mater-table');
+			// let mapDiv = $('#collegesMap');
+			// let almaTable = $('#alma-mater-table');
 			let listingEl = $('.map-search__list');
 			let mobileListingEl = $('.map-search__list--mobile');
 
@@ -288,14 +288,6 @@ function Mapbox(props) {
 
 				// duplicate with "click" for mobile register
 				map.on('click', 'unclustered-point', function (e) {
-
-
-
-					console.log('point');
-					console.log(JSON.parse(JSON.stringify(e.features[0])));
-
-
-
 					// Change the cursor style as a UI indicator.
 					map.getCanvas().style.cursor = 'pointer';
 
@@ -316,6 +308,8 @@ function Mapbox(props) {
 						.setHTML(tooltipHtml)
 						.addTo(map)
 						;
+
+					props.showDetails(e.features[0].properties.schoolId);
 				});
 
 
@@ -325,14 +319,6 @@ function Mapbox(props) {
 				});
 
 				map.on('click', 'schools', function (e) {
-
-
-
-					console.log('schools');
-					console.log(JSON.parse(JSON.stringify(e)));
-
-
-
 					let features = map.queryRenderedFeatures(e.point, { layers: ['clusters'] });
 					let clusterId = features[0].properties.cluster_id;
 					map.getSource('schools').getClusterExpansionZoom(clusterId, function (err, zoom) {
