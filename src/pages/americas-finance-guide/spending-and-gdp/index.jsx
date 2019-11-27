@@ -1,9 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
-// spending-intro must be below chapterIntroCommon and cg.scss for inheritance reasons
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
-// import '../../../libs/ffg/src/infoBox.js'
-// import '../../../libs/assets/ffg/nav/nav.js'
 import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
@@ -24,7 +21,7 @@ function SpendingAndGdpPage(props) {
     return (
         <>
             <Helmet>
-                <script defer src="/americas-finance-guide/intro.js"></script>
+                <script defer src="/americas-finance-guide/spending/intro.js"></script>
                 <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
@@ -33,7 +30,6 @@ function SpendingAndGdpPage(props) {
                 description='In 2019, the U.S. government spent $4.4 trillion.'
                 excerpt='Where does all the money go? Most government spending is concentrated on programs that ensure the health and well-being of the people of the United States. Explore how spending compares to the size of the economy or to federal revenue.'
                 keywords={[`federal spending, outlays, U.S. spending, U.S. revenue, gross domestic product, GDP, deficit, debt, mandatory spending, discretionary spending`]}
-                socialMediaText='How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov'
             />
 
             <Default>
@@ -43,7 +39,7 @@ function SpendingAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
+                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
                         <li><a href="./categories.html">Spending Categories</a></li>
                         <li><a href="./trends.html">Federal Spending Trends</a></li>
                         <li><a href="./country-comparison.html">Country Comparison</a></li>
@@ -58,14 +54,13 @@ function SpendingAndGdpPage(props) {
                     <ControlBar>
                         <Share 
                             location={props.location}
-                            title="Data Lab - Explore Deficit – U.S. Treasury"
-                            text="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
-                            twitter='#DataLab #Treasury #DataTransparency #USAspending'
+                            title="Data Lab - Federal Spending and GDP – U.S. Treasury"
+                            text="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
-                        <button className="info-box-trigger" data-box-id="per-individual">
+                            <button className="info-box-trigger" data-box-id="per-individual">
                             <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         </button>
                     </h1>
@@ -117,11 +112,11 @@ function SpendingAndGdpPage(props) {
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
                             <a className="tour__link" href="./categories.html">Discover<i className="fas fa-chevron-right"></i></a>
                         </section>
-                    </div>
+                    </div> {/* end viz-wrapper */}
 
                     <div className="info-box" id="per-individual">
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
-                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href="{AfgData.census_population.value}" target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
+                        <p>How much is {AfgData.current_fy_spending.value} in federal spending?  If you divide it by the U.S. population estimate in {AfgData.current_fy.value}, {AfgData.us_population.value} (<a target="_blank" href={AfgData.census_population.value} target="_blank">U.S. Census Bureau</a>), it would equate to a little more than {AfgData.spending_per_individual.value} in federal spending for every individual.</p>
                     </div>
 
                     <div className="info-box" id="gdp-info">
@@ -133,7 +128,7 @@ function SpendingAndGdpPage(props) {
                         <img src={AnecdoteSpendingSVG} alt="anecdote icon"></img>
                         <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal spending. </p>
                     </div>
-                </div>
+                </div> {/* end "ffg-wrapper spending-intro" */}
 
                 <section className="hwcta">
                     <Accordion title="Data Sources and Methodology">
@@ -141,7 +136,7 @@ function SpendingAndGdpPage(props) {
                         <div className="afg__download--div">
                             <div className="afg__download--heading">Download Source Data</div>
                             <ul>
-                                <li><a href="/americas-finance-guide/federal_spending_gdp.csv" download="federal_spending_gdp.csv">federal_spending_gdp.csv</a></li>
+                                <li><a href="/americas-finance-guide/afgData/federal_spending_gdp.csv" download="federal_spending_gdp.csv">federal_spending_gdp.csv</a></li>
                             </ul>
                         </div>
                     </Accordion>

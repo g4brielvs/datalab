@@ -351,6 +351,7 @@ function Dendro(props) {
       }
 
       function change() {
+        d3.selectAll('#svg-dendrogram').remove();
         zoomListener.scale(1);
         toggleAll(root);
         toggle(root);
@@ -358,8 +359,6 @@ function Dendro(props) {
         centerRootNode(root);
         zoomListener.scale(1);
       }
-
-      d3.select('#button1').on('click', change);
 
       // A recursive helper function for performing some setup by walking through all nodes
       function visit(parent, visitFn, childrenFn) {
@@ -393,7 +392,7 @@ function Dendro(props) {
           return 0;
         });
       }
-
+      
       // Sort the tree initially incase the JSON isn't in a sorted order.
       sortTree();
 
@@ -484,7 +483,6 @@ function Dendro(props) {
         //   category: 'Federal Account Explorer - Click Node',
         //   action: d.name
         // });
-
         resetToCenter();
       }
 
@@ -508,13 +506,24 @@ function Dendro(props) {
     CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
+      const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+      const Quarter = $('input[name="Quarter"]:checked').val();
+
+
+      // Handle Reset Button Click //
+      // reset to default of FY19 and Q1 //
+      d3.select('#resetBtn').on('click', function() {
+        d3.selectAll('#svg-dendrogram').remove();
+        $('#contactChoice7').prop('checked', true); // 2019 Data
+        $('#contactChoice3').prop('checked', true); // Q1
+        CreateDendro(dendroData19.filter((d) => d.reporting_period_end == '2018-12-31'));
+      });
+
       let data = [];
       $("input[type='radio']").change(() => {
-        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
         if (FiscalYear === 'fy17') {
           d3.selectAll('#svg-dendrogram').remove();
-          const Quarter = $('input[name="Quarter"]:checked').val();
-          if (Quarter == '12-31'){
+          if (Quarter == '12-31') {
             const viewerWidth = document.body.clientWidth;
             const viewerHeight = 300;
             d3.select('#tree-container').append('html')
@@ -593,27 +602,27 @@ function Dendro(props) {
           <div className='viz-actions'>
             <form id='DendroRadio'>
               <div className='select-wrapper1'>
-                <input type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
-                <label htmlFor="contactChoice1">FY 17 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 17 </label>
 
-                <input type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
-                <label htmlFor="contactChoice">FY 18 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
+                <label className='dendro-input-1' htmlFor="contactChoice">FY 18 </label>
 
-                <input type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
-                <label htmlFor="contactChoice1">FY 19 </label>
+                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 19 </label>
               </div>
               <div className="select-wrapper2">
-                <input type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
-                <label htmlFor="contactChoice3">Q1</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
+                <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
 
-                <input type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
-                <label htmlFor="contactChoice4">Q2</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
+                <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
 
-                <input type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
-                <label htmlFor="contactChoice5">Q3</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
+                <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
 
-                <input type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
-                <label htmlFor="contactChoice6">Q4</label>
+                <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
+                <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
               </div>
             </form>
           </div>

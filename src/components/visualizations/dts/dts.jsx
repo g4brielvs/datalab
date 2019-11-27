@@ -9,10 +9,7 @@ import List from '../../../svgs/list.svg';
 function DTS(props) {
 
   useEffect(() => {
-
     const _data = props.data;
-
-    let allOptions, optionsDict, lastDate, categorySeparatorDate;
 
     const formatMillisecond = d3.timeFormat(".%L"),
       formatSecond = d3.timeFormat(":%S"),
@@ -23,12 +20,10 @@ function DTS(props) {
       formatMonth = d3.timeFormat("%b"),
       formatYear = d3.timeFormat("%Y");
 
-    const parseTimeFormat = d3.timeFormat("%B %d, %Y");
     const brushDateFormatter = d3.timeFormat("%x");
     const dollarFormatter = d => d3.format("$,.3s")(d).replace(/G/, "B");
     const dateFormatter = d3.timeFormat("%a, %b %d, %Y");
-    const lineColors = ["#00c3c2", "#2E7070", "#4CABAC", "#76D2D3"]
-    const parseDate = d3.timeParse("%-m/%-d/%y");
+    const lineColors = ["#00c3c2", "#2E7070", "#4CABAC", "#76D2D3"];
     const parseDateYMD = d3.timeParse("%Y-%m-%d");
     const bisectDate = d3.bisector(d => d.date).left;
 
@@ -36,6 +31,7 @@ function DTS(props) {
       margin = { top: 20, right: 20, bottom: 110, left: 60 },
       margin2 = { top: 330, right: 20, bottom: 30, left: 60 };
 
+    let allOptions, optionsDict, lastDate, categorySeparatorDate;
     let data, optionsData, dateScaleValues, allToSpending, categoryToSpendingPrevFY, todayAllCategorySpending;
 
     let x = d3.scaleTime(),
@@ -52,14 +48,15 @@ function DTS(props) {
 
     const line = d3.line()
       .x(d => x(d.date))
-      .y(d => y(d.value));
+      .y(d => y(d.value))
+      ;
 
     const line2 = d3.line()
       .x(d => x2(d.date))
-      .y(d => y2(d.value));
+      .y(d => y2(d.value))
+      ;
 
-    const brush = d3.brushX()
-      .on("brush end", brushed);
+    const brush = d3.brushX().on("brush end", brushed);
 
     let width, height, height2, zoom;
 
@@ -86,19 +83,16 @@ function DTS(props) {
       dateScaleValues = [];
       allToSpending = { "today": {}, "mtd": {}, "fytd": {} };
       categoryToSpendingPrevFY = {};
-
       optionsDict = {};
 
       data = _data;
-
-      data.forEach(function (d) {
-        d.date = new Date(d.date);
-        //d.date = parseDate(d.date);
+      data.forEach(d => {
+        d.date = new Date(d.date + 'T00:00:00'); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
 
-        let lastYear = new Date();
+        const lastYear = new Date();
         lastYear.setFullYear(lastYear.getFullYear() - 1);
 
         if (!categoryToActiveWithinAYear.hasOwnProperty(d.item_raw)) {
@@ -149,7 +143,6 @@ function DTS(props) {
       allToSpending["fytd"] = transposeKVToArray("fytd");
 
       todayAllCategorySpending = allToSpending["today"].slice(-1) ? allToSpending["today"].slice(-1)[0] : '';
-      //console.log('reminder ^')
 
       drawChart();
     }
@@ -432,7 +425,8 @@ function DTS(props) {
       let rows = tbody.selectAll('tr')
         .data(tableData)
         .enter()
-        .append('tr');
+        .append('tr')
+        ;
 
       let cells = rows.selectAll('td')
         .data(function (row) {
@@ -443,7 +437,8 @@ function DTS(props) {
         })
         .enter()
         .append('td')
-        .text(d => d);
+        .text(d => d)
+        ;
     }
 
     function addOptions(sel, condensedOptions, activeOptions, inactiveOptions) {
@@ -460,7 +455,8 @@ function DTS(props) {
         .data(condensedOptions).enter()
         .append('option')
         .text(d => d)
-        .property("value", d => d);
+        .property("value", d => d)
+        ;
 
       sel.append('option').attr('disabled', 'true').text('──────────────────────────');
 
@@ -470,7 +466,8 @@ function DTS(props) {
         .data(activeOptions).enter()
         .append('option')
         .text(d => d)
-        .property("value", d => d);
+        .property("value", d => d)
+        ;
 
       sel.append('option').attr('disabled', 'true').text('──────────────────────────');
 
@@ -480,7 +477,8 @@ function DTS(props) {
         .data(inactiveOptions).enter()
         .append('option')
         .text(d => d)
-        .property("value", d => d);
+        .property("value", d => d)
+        ;
 
       sel.property("value", "All Categories");
     }
@@ -548,16 +546,12 @@ function DTS(props) {
     }
 
     function parseYYYYMMDD(dateString) {
-      var year = dateString.substring(0, 4);
-      var month = dateString.substring(4, 6);
-      var day = dateString.substring(6, 8);
-
-      return new Date(year, month - 1, day);
+      return new Date(dateString.substring(0, 4), dateString.substring(4, 6) - 1, dateString.substring(6, 8));
     }
 
     function setGraphYDomains(data) {
-      let yMax = d3.max(data, c => d3.max(c.values, d => d.value));
-      let yMin = d3.min(data, c => d3.min(c.values, d => d.value));
+      const yMax = d3.max(data, c => d3.max(c.values, d => d.value));
+      const yMin = d3.min(data, c => d3.min(c.values, d => d.value));
 
       y.domain([yMin, yMax]);
       y2.domain(y.domain());
@@ -566,14 +560,12 @@ function DTS(props) {
     function updateLines(parent, selector, data, pathClass, classesToRemove, lineFn) {
       d3.selectAll(classesToRemove).remove();
 
-      var u = d3.select(parent)
-        .selectAll(selector);
-
+      const u = d3.select(parent).selectAll(selector);
       u.data(data)
         .enter()
         .insert('path', ":first-child")
-        .attr("class", pathClass);
-      // .attr("d", d => lineFn(d.values));  don't need since called in adjustLines
+        .attr("class", pathClass)
+        ;
     }
 
     function updateGraphAndBrushLines(data) {
@@ -631,11 +623,13 @@ function DTS(props) {
 
       var focus = svg.append("g")
         .attr("class", "focus")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        ;
 
       var context = svg.append("g")
         .attr("class", "context")
-        .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+        .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")")
+        ;
 
       setGraphYDomains(data);
       x.domain([new Date(2005, 5, 9), lastDate]);
@@ -644,11 +638,13 @@ function DTS(props) {
       focus.append("g")
         .attr("class", "axis axis--x graph-x-axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
+        .call(xAxis)
+        ;
 
       focus.append("g")
         .attr("class", "axis axis--y graph-y-axis")
-        .call(yAxis);
+        .call(yAxis)
+        ;
 
       // add the X gridlines
       svg.append("g")
@@ -674,12 +670,14 @@ function DTS(props) {
         .attr("width", width)
         .attr("height", height)
         .attr("x", 0)
-        .attr("y", 0);
+        .attr("y", 0)
+        ;
 
       var lineChart = svg.append("g")
         .attr("class", "focus line-chart")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .attr("clip-path", "url(#clip)");
+        .attr("clip-path", "url(#clip)")
+        ;
 
       updateGraphAndBrushLines(data);
 
@@ -814,14 +812,11 @@ function DTS(props) {
       }
     }
 
-
-
     for (let item of sharedCategories) {
       for (let categoryName of item.categories) {
         mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
       }
     }
-
 
     function getCombinedCategory(combinedArray) {
       let result = [];
@@ -836,7 +831,6 @@ function DTS(props) {
           result.push(clonedObj);
         }
       });
-
       return result;
     }
 
@@ -846,8 +840,7 @@ function DTS(props) {
 
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
-            let cateName = mapping[key].categories[i];
-
+            const cateName = mapping[key].categories[i];
             masterMapping[key]["today"].push({
               "name": cateName,
               values: optionsDict[cateName]["today"],
@@ -874,20 +867,20 @@ function DTS(props) {
           masterMapping[key]["today"].push({
             "name": key,
             values: optionsDict[key]["today"],
-            date: new Date("1970-01-01"),
+            date: optionsDict[key]["today"][0].date,
             footnote: "",
             color: lineColors[0]
           });
           masterMapping[key]["mtd"].push({
             "name": key,
             values: optionsDict[key]["mtd"],
-            date: new Date("1970-01-01"),
+            date: optionsDict[key]["mtd"][0].date,
             footnote: "",
             color: lineColors[0]
           });
           masterMapping[key]["fytd"].push({
             "name": key,
-            values: optionsDict[key]["fytd"],
+            values: optionsDict[key]["fytd"][0].date,
             date: new Date("1970-01-01"),
             footnote: "",
             color: lineColors[0]
@@ -984,11 +977,9 @@ function DTS(props) {
     function drawChart() {
       init();
       if (data) {
-
         lastDate = data[data.length - 1].date;
 
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
-
         d3.select(".header-updated-when").text("Updated " + dateFormatter(lastDate));
 
         x = d3.scaleTime().domain(d3.extent(dateScaleValues)).range([0, width]);
@@ -998,7 +989,6 @@ function DTS(props) {
         xAxis2 = d3.axisBottom(x2).ticks(d3.timeYear.every(2));
 
         optionsDict["All Categories"] = allToSpending;
-
         createMasterMapping();
 
         allOptions = [...new Set(optionsData)];
@@ -1027,13 +1017,9 @@ function DTS(props) {
 
         d3.select('#frequency-selector').property('value', theFrequency);
         d3.select('#category-selector').property('value', theCategory);
-
         d3.select(".daily-spending-amount").text(dollarFormatter(todayAllCategorySpending.value));
 
-        // data.sort(function(a, b) { return a.date - b.date; });
-
         let graphData = getGraphData();
-
         createGraph(graphData);
         updateGraph(graphData);
 

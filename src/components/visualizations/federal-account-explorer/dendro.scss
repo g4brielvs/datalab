@@ -12,10 +12,7 @@
   }
   #tree-container{
     position: relative;
-    max-height:99%;
-    max-width:99%;
     background-color: rgba(243,246,255,0);
-    overflow: hidden;
     cursor: move;
   }
   .node {
@@ -139,6 +136,22 @@
   display:flex;
   flex-direction: column;
   width: 750px;
+}
+
+.select-wrapper1 {
+  padding-bottom: .5rem;
+
+  .dendro-input-1 {
+    padding-left: .2rem;
+    padding-right: .2rem;
+  }
+}
+
+.select-wrapper2 {
+  .dendro-input-2 {
+    padding-left: .2rem;
+    padding-right: .2rem;
+  }
 }
 
 .viz-container {

@@ -7,7 +7,7 @@ import MUIDataTable from 'mui-datatables';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 const theme = () => createMuiTheme(tableTheme);
 
-export default class dataTable extends React.Component {
+export default class DataTable extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,22 +20,30 @@ export default class dataTable extends React.Component {
     filterType: 'textField'
   };
 
-  render = () =>
-    <MuiThemeProvider theme={theme()}>
-      <MUIDataTable
-        title={this.props.title}
-        columns={this.props.columnTitles}
-        data={this.props.data}
-        options={this.options}
-      />
-    </MuiThemeProvider>
+  render = () => {
+    if (this.props.display) {
+      return (
+        <MuiThemeProvider theme={theme()}>
+          <MUIDataTable
+            title={this.props.title}
+            columns={this.props.columnTitles}
+            data={this.props.data}
+            options={this.options}
+          />
+        </MuiThemeProvider>
+      );
+    } else {
+      return <></>;
+    };
+  }
 }
 
 /*
   Notes on props:
   length of "columns" and each "data" row should match and have same order; excess data columns will not appear
 */
-dataTable.propTypes = {
+DataTable.propTypes = {
+  display: PropTypes.bool,
   title: PropTypes.string,
   columnTitles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   data: PropTypes.arrayOf(PropTypes.array).isRequired

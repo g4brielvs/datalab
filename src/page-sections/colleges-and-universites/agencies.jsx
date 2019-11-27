@@ -11,12 +11,12 @@ import SearchPanel from '../../components/chartpanels/search';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
-import ShareMenu from "../../components/share-menu/share-menu"
+import Share from "../../components/share/share"
 
 import loadable from '@loadable/component';
 const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
 
-const Agencies = () => {
+const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
     query {
       allUnivBubbleChartCsv {
@@ -159,13 +159,11 @@ const Agencies = () => {
       </ul>
     </Accordion>
 
-    <ShareMenu
-      siteUrl='https://datalab-dev.usaspending.gov/'
-      pageUrl='colleges-and-universities'
-      location=''
+    <Share
+      location={props.location}
       title='Check out this analysis on Data Lab'
-      text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-      facebook='' reddit='' linkedin='' tumblr='' email=''
+      text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+      twitter='#DataLab #Treasury #DataTransparency #USAspending'
     />
 
     <Grid container justify='center'>

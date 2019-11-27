@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import styles from './share.module.scss';
-import shareLogo from '../../images/colleges-and-universities/share.svg'
-import facebookLogo from '../../images/colleges-and-universities/facebook.svg'
-import twitterLogo from '../../images/colleges-and-universities/twitter.svg'
-import linkedinLogo from '../../images/colleges-and-universities/linkedin.svg'
-import redditLogo from '../../images/colleges-and-universities/reddit.svg'
-import emailLogo from '../../images/colleges-and-universities/email.svg'
+import shareLogo from '../../images/colleges-and-universities/share.svg';
+import facebookLogo from '../../images/colleges-and-universities/facebook.svg';
+import twitterLogo from '../../images/colleges-and-universities/twitter.svg';
+import linkedinLogo from '../../images/colleges-and-universities/linkedin.svg';
+import redditLogo from '../../images/colleges-and-universities/reddit.svg';
+import emailLogo from '../../images/colleges-and-universities/email.svg';
 
 class Share extends Component {
 
@@ -24,6 +24,8 @@ class Share extends Component {
     this.handleShareClickTwitter = this.handleShareClickTwitter.bind(this);
     this.handleShareClickLinkedin = this.handleShareClickLinkedin.bind(this);
     this.handleShareClickReddit = this.handleShareClickReddit.bind(this);
+    this.handleShareClickEmail = this.handleShareClickEmail.bind(this);
+    this.openShareWindow = this.openShareWindow.bind(this);
     this.url = this.props.location ? this.props.location.href : this.props.siteUrl + this.props.pageUrl;
     this.pathName = this.props.location ? this.props.location.pathname : this.props.pageUrl;
 
@@ -48,49 +50,63 @@ class Share extends Component {
   }
 
   handleShareClickFacebook(e) {
-    let finalUrl = `https://www.facebook.com/sharer/sharer.php?u=${this.props.siteUrl}${this.props.pageUrl}`;
-    window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+    let finalUrl = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
+    this.openShareWindow(finalUrl);
   }
 
   handleShareClickTwitter(e) {
-    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}&url=${this.url}`
-    window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+    const hashTags = this.props.twitter ? ` ${encodeURIComponent(this.props.twitter)}` : '';
+    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}${hashTags}&url=${this.url}`;
+    this.openShareWindow(finalUrl);
   }
 
   handleShareClickLinkedin(e) {
-    let finalUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${this.props.siteUrl}${this.props.pageUrl}`;
-    window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+    let finalUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${this.url}`;
+    this.openShareWindow(finalUrl);
   }
 
   handleShareClickReddit(e) {
-    let finalUrl = `http://www.reddit.com/submit?url=${this.props.siteUrl}${this.props.pageUrl}`;
-    window.open(finalUrl, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
+    let finalUrl = `http://www.reddit.com/submit?url=${this.url}`;
+    this.openShareWindow(finalUrl);
+  }
+
+  handleShareClickEmail(e){
+    const finalUrl = `mailto:?subject=${this.title}&body=${this.props.text ? this.props.text + '%0D%0A%0D%0A' : ''}Check out this site ${this.url}`;
+    window.location.href = finalUrl;
+  }
+
+  openShareWindow(url){
+    window.open(url, '_blank', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0');
   }
 
   render() {
+
+    // there is an article i read regarding using svgs
+    // we shouldn't be importing them as images! we should find a better way...
+    const imageDimensions = { height: '1.25rem', width: '1.25rem' };
     const images = [
       {
         src: shareLogo
       },
       {
         src: facebookLogo,
-        style: { height: '15px', width: '15px' }
+        style: imageDimensions
       },
       {
         src: twitterLogo,
-        style: { height: '15px', width: '15px' }
+        style: imageDimensions
       },
       {
         src: redditLogo,
-        style: { height: '15px', width: '15px' }
+        style: imageDimensions
       },
       {
         src: linkedinLogo,
-        style: { height: '15px', width: '15px' }
+        style: imageDimensions
       },
       {
         src: emailLogo,
-        style: { height: '15px', width: '15px' }
+        style: imageDimensions
       },
     ];
 
@@ -98,6 +114,7 @@ class Share extends Component {
 
     // TODO, use data-id's to dynamically see if "facebook" or "twitter".. etc..
     return (
+      <div className={styles.shareContainer}>
         <div className={`${styles.popup} ${styles.newShare}`}>
           <button className={styles.vizShareIcon} aria-hidden="true" onClick={this.handleShow}>
             <img src={images[0].src} />
@@ -107,39 +124,44 @@ class Share extends Component {
             <div className={styles.shareButtons}>
               <ul>
                 <li>                  
-                  <a href="#" onClick={this.handleShareClick} title="Share on Facebook" data-id="1">
+                  <button className={styles.shareLink} onClick={this.handleShareClickFacebook}
+                    title="Share on Facebook" data-id="1">
                     <img src={images[1].src} style={images[1].style} className={styles.iconFacebook} />
                     <span className={styles.shareButtonText}>Facebook</span>
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href='#' onClick={this.handleShareClickTwitter} title="Share on Twitter" data-id='2'>
+                  <button className={styles.shareLink} onClick={this.handleShareClickTwitter}
+                    title="Share on Twitter" data-id='2'>
                     <img src={images[2].src} style={images[2].style} className={styles.iconTwitter} />
                     <span className={styles.shareButtonText}>Twitter</span>
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href='#' onClick={this.handleShareClickReddit} title="Share on Reddit" data-id='3'>
+                  <button className={styles.shareLink} onClick={this.handleShareClickReddit}
+                    title="Share on Reddit" data-id='3'>
                     <img src={images[3].src} style={images[3].style} className={styles.iconReddit} />
                     <span className={styles.shareButtonText}>Reddit</span>
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href='#' onClick={this.handleShareClickLinkedin} title="Share on LinkedIn" data-id='4'>
+                  <button className={styles.shareLink} onClick={this.handleShareClickLinkedin}
+                    title="Share on LinkedIn" data-id='4'>
                     <img src={images[4].src} style={images[4].style} className={styles.iconLinkedin} />
                     <span className={styles.shareButtonText}>Linkedin</span>
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href={`mailto:?subject=${this.title}&body=${this.props.text ? this.props.text + '%0D%0A%0D%0A' : ''}Check out this site ${this.url}`} title="Share via Email" data-id='5'>
+                  <button className={styles.shareLink} onClick={this.handleShareClickEmail} title="Share via Email" data-id='5'>
                     <img src={images[5].src} style={images[5].style} className={styles.iconEnvelope} />
                     <span className={styles.shareButtonText}>Email</span>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
           </span>
         </div>
+      </div>
     );
   }
 }

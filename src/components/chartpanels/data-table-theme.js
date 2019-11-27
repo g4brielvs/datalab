@@ -4,7 +4,8 @@ export default {
       fixedHeader: {
         textTransform: 'uppercase',
         fontSize: '1.0625rem',
-        fontWeight: 700
+        fontWeight: 700,
+        zIndex: 'auto'
       }
     },
     MUIDataTableBodyCell: {

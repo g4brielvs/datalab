@@ -1,6 +1,5 @@
 import React from "react"
 import "../../styles/index.scss"
-import '../../components/share-menu/share-menu.module.scss'
 
 /* components */
 import ControlBar from "../../components/control-bar/control-bar"
@@ -16,7 +15,6 @@ function What(props) {
       <ControlBar>
         <Reset />
         <Share siteUrl='https://datalab-dev.usaspending.gov/federal-employees' pageUrl='federal-employees'
-               twitter='#DataLab #Treasury #DataTransparency #USAspending'
                facebook='' reddit='' linkedin='' tumblr='' email=''/>
       </ControlBar>
       <BarChart sectionId={props.sectionId} dataSource={props.dataSource}/>
