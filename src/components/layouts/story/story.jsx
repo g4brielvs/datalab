@@ -93,9 +93,12 @@ const StoryLayout = (props) => {
         {header}
         {toc}
         {props.children}
-        <HwctaLink
-          className={styles.hwcta}
-          url={props.hwctaLink || '#'} />
+
+        <div className={styles.hwcta}>
+          <HwctaLink
+            url={props.hwctaLink || '#'} />
+        </div>
+
         <MoreAnalyses />
       </div>
 
