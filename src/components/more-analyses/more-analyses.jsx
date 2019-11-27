@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
 import moreAnalysesStyles from './more-analyses.module.scss';
-import  './more-analyses-mui-override.scss';
 import federal from "../../images/more-analyses/federal.jpg"
 import workers from "../../images/more-analyses/workers.jpg"
 import budget from "../../images/more-analyses/budget.jpg"

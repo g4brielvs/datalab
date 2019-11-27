@@ -51,7 +51,15 @@ body, h1, h2, h3, h4, p, li {
 	}
 }
 
-@media (min-width: $phone + 1) and (max-width: $desktop-xl) {
+@media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
+	#TOC {
+		.tile:nth-child(odd) {
+			border-right: 1px solid $font-lightGrey;
+		}
+	}
+}
+
+@media (min-width: $phone) and (max-width: $desktop-xl - 1) {
 	#TOC {
 		margin: 0 auto;
 		margin-top: $margin-30;
@@ -59,12 +67,8 @@ body, h1, h2, h3, h4, p, li {
 
 		.tile:nth-child(1),
 		.tile:nth-child(2) {
-      border-bottom: $font-lightGrey solid 1px;
-      padding-bottom: 32px;
-		}
-
-		.tile:nth-child(odd) {
-			border-right: 1px solid $font-lightGrey;
+      		border-bottom: $font-lightGrey solid 1px;
+      		padding-bottom: 32px;
 		}
 
 		.tile:last-child {
@@ -73,13 +77,17 @@ body, h1, h2, h3, h4, p, li {
 	}
 }
 
-@media (max-width: $tablet) {
+@media (max-width: $tablet - 1) {
 	#TOC .a {
 		width: 100%;
 	}
+
+	#TOC .tile {
+		border-right: unset;
+	}
 }
 
-@media (max-width: $phone) {
+@media (max-width: $phone - 1) {
 	#TOC {
 		margin-top: $margin-25;
 
