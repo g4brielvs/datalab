@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
 import * as d3 from 'd3v3';
+import styles from './mapviz.module.scss';
 
 import ControlBar from "../../../control-bar/control-bar"
 import Reset from "../../../reset/reset"
 import Share from "../../../share/share"
 import dataSource from '../utils/data-module';
 import tooltipModule from "../../../../components/tooltip/tooltip"
+import Downloads from "../../../section-elements/downloads/downloads"
+const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv');
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -502,7 +505,7 @@ export default function Mapviz(props) {
   });
 
 
-  return (<>
+  return (<div>
       <ControlBar>
         <Reset _resetClick={function(){
           setZoom(null);
@@ -513,6 +516,17 @@ export default function Mapviz(props) {
       <div className="viz-container homeless-analysis">
         <div id="container" height="100%" width="100%"/>
       </div>
-    </>
+      <div className={styles.homelessPanelOneInfo}>
+        <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
+          Care area.</p>
+        <p>** This map reflects the most up to date HUD map available; however, some Continuum of Care areas have merged
+          together in 2017 since this map was updated.</p>
+        <p>See our section on How We Conducted This Analysis for more information.</p>
+      </div>
+      <Downloads
+        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
+        date={'March 2019'}
+      />
+    </div>
   )
 }
