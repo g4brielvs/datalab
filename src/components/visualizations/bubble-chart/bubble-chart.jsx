@@ -399,8 +399,8 @@ export default class BubbleChart extends Component {
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
       this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
-      this.calculatedWidth = window.innerWidth * this.widthPercentage;
-      this.width = window.innerWidth * this.widthPercentage;
+      this.calculatedWidth = 900;
+      this.width = 900;
       this.diameter = this.width;
     }
 

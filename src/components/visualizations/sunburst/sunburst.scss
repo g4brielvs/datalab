@@ -1,7 +1,15 @@
 @import '../../../styles/variables.scss';
 
 #sunburst {
-  margin: 0 auto;
+
+}
+
+#sunburst svg {
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 #sunburst path {
