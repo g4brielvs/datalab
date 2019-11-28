@@ -1,20 +1,21 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
-import Accordion from '../../components/accordion/accordion';
+import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
+import Accordion from '../../../components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import Downloads from '../../components/section-elements/downloads/downloads';
+import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../components/chartpanels/search';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import VizControlPanel from '../../components/chartpanels/viz-control';
-import VizDetails from '../../components/chartpanels/viz-detail';
-import Share from "../../components/share/share"
+import SearchPanel from '../../../components/chartpanels/search';
+import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import VizControlPanel from '../../../components/chartpanels/viz-control';
+import VizDetails from '../../../components/chartpanels/viz-detail';
+import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
-const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
+import RadialLegend from "../../../components/visualizations/radial-legend/radial-legend"
+const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -180,11 +181,18 @@ const Agencies = (props) => {
         </Hidden>
       </Grid>
       <Grid item>
-        <BubbleChart
-          items={_data.allUnivBubbleChartCsv.nodes}
-          showDetails={getClickedDetails}
-          ref={chartRef}
-        />
+        <Grid container>
+          <Grid item xs={1}>
+            <RadialLegend/>
+          </Grid>
+          <Grid item xs={10}>
+            <BubbleChart
+              items={_data.allUnivBubbleChartCsv.nodes}
+              showDetails={getClickedDetails}
+              ref={chartRef}
+            />
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
         <VizDetails

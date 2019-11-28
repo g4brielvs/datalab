@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Agencies from '../../page-sections/colleges-and-universites/agencies';
+import Agencies from '../../page-sections/colleges-and-universites/agencies/agencies';
 import Categories from '../../page-sections/colleges-and-universites/categories';
 import CustomHeader from '../../page-sections/colleges-and-universites/custom-header/custom-header';
 import CustomToc from '../../page-sections/colleges-and-universites/custom-toc/custom-toc';

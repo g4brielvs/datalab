@@ -1,5 +1,6 @@
 svg#chart {
-  position: absolute;
+  width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   overflow: hidden;
@@ -47,9 +48,9 @@ svg#chart {
   fill: none;
 }
 
-#agency-bubbleChart {
-  height: 700px;
-  width: 700px;
+#bubbleChartContainer{
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   position: relative;
   display: flex;

@@ -1,0 +1,42 @@
+#agency-legend_colorKey {
+  position: relative;
+  left: -100px;
+  padding: 0;
+  overflow: visible;
+  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
+  transition: left 1000ms;
+}
+
+#agency-legend_colorKey.left {
+  left: -200px;
+}
+
+#agency-legend_scaleKey {
+  width: 225px;
+  height: 130px;
+  position: absolute;
+}
+
+.legend_circleKeyLabel {
+  position: absolute;
+  border-top: solid 1px #DDD;
+  width: 70px;
+  left: 65px;
+}
+
+.legend_circleKeyLabel span {
+  font-size: 10px;
+  color: #999;
+  position: absolute;
+  display: block;
+  width: 90px;
+  top: -8px;
+  left: 75px;
+}
+
+.legend_scaleKeyCircle {
+  stroke-width: 1;
+  stroke: #999;
+  stroke-dasharray: 2;
+  fill: none;
+}

@@ -22,7 +22,7 @@ export default class BubbleChart extends Component {
     this.widthPercentage = .7;
     this.margin = 20;
     this.resize = false;
-    this.maxHeight = 700;
+    this.maxHeight = 0;
 
     this.bubbleChartContainer;
     this.detailContainer;
@@ -149,16 +149,17 @@ export default class BubbleChart extends Component {
   drawBubbleChart(root) {
     const targetWidth = this.width;
     focus = root;
-    this.diameter = this.width = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
+    this.diameter = this.width;
     const classContext = this;
 
     d3.select(this.bubbleChartContainer)
-      .attr('style', "width: " + this.width + "px; height: " + this.width + "px;")
 
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
-      .attr("id", "chart")
+      .attr("viewBox", `0 0 ${targetWidth} ${targetWidth}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("width", targetWidth)
       .attr("height", targetWidth)
+      .attr("id", "chart")
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
 
@@ -397,7 +398,7 @@ export default class BubbleChart extends Component {
   componentDidMount() {
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-      this.bubbleChartContainer = document.getElementById('agency-bubbleChart');
+      this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
       this.calculatedWidth = window.innerWidth * this.widthPercentage;
       this.width = window.innerWidth * this.widthPercentage;
       this.diameter = this.width;
@@ -429,50 +430,34 @@ export default class BubbleChart extends Component {
     if (typeof window !== 'undefined') {
       const classContext = this;
       // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener("resize", function () {
-        d3.select("#agency-bubbleChart").selectAll("*").remove();
-        if (classContext.root) {
-          classContext.maxHeight = window.innerWidth * classContext.widthPercentage;
-          classContext.calculatedWidth = window.innerWidth * classContext.widthPercentage;
-          classContext.diameter = classContext.width = window.innerWidth * classContext.widthPercentage;
-          classContext.resize = true;
-          classContext.drawBubbleChart(classContext.root);
-          classContext.resize = false;
-
-          // check the state here and replay
-          const chartState = classContext.state.selectedItem;
-          if (chartState) {
-            classContext.zoom(chartState);
-          } else {
-            classContext.zoomTo([classContext.root.x, classContext.root.y, classContext.root.r * 2 + classContext.margin]);
-          }
-        }
-      });
+      // window.addEventListener("resize", function () {
+      //   d3.select("#agency-bubbleChart").selectAll("*").remove();
+      //   if (classContext.root) {
+      //     classContext.maxHeight = window.innerWidth * classContext.widthPercentage;
+      //     classContext.calculatedWidth = window.innerWidth * classContext.widthPercentage;
+      //     classContext.diameter = classContext.width = window.innerWidth * classContext.widthPercentage;
+      //     classContext.resize = true;
+      //     classContext.drawBubbleChart(classContext.root);
+      //     classContext.resize = false;
+      //
+      //     // check the state here and replay
+      //     const chartState = classContext.state.selectedItem;
+      //     if (chartState) {
+      //       classContext.zoom(chartState);
+      //     } else {
+      //       classContext.zoomTo([classContext.root.x, classContext.root.y, classContext.root.r * 2 + classContext.margin]);
+      //     }
+      //   }
+      // });
     }
   };
 
   render() {
-    return (
-      <div id="chart-area">
-        <div id="bubble-detail"></div>
-        <div id="chart-container">
-
-          <div id="agency-investments__content">
-            <div id="bubbleChartContainer" className="bubbleChartContainer">
-
-              {/*<div id='agency-legend_colorKey'>*/}
-              {/*<div className='legend_circleKeyLabel'><span>Agency</span></div>*/}
-              {/*<div className='legend_circleKeyLabel'><span>Sub-Agency</span></div>*/}
-              {/*<svg id='agency-legend_scaleKey'></svg>*/}
-              {/*</div>*/}
-
-              <div id="agency-bubbleChart"></div>
-            </div>
-
-          </div>
-        </div>
+    return (<>
+      <div id="bubble-detail"></div>
+      <div id="bubbleChartContainer" className="bubbleChartContainer">
       </div>
-    )
+    </>)
   }
 }
 
