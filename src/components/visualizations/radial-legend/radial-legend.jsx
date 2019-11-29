@@ -6,7 +6,12 @@ function RadialLegend (props) {
   useEffect(() => {
 
 
-    d3.select('#agency-legend_scaleKey').append('circle')
+    d3.select('#agency-legend_scaleKey')
+      .attr("viewBox", `0 0 200 200`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .attr('width', 200)
+      .attr('height', 200)
+      .append('circle')
       .attr('r', 25)
       .attr('class', 'legend_scaleKeyCircle')
       .attr('cx', 60)
@@ -24,8 +29,9 @@ function RadialLegend (props) {
   });
 
   return (<>
-    <svg id='agency-legend_scaleKey'>
-    </svg>
+    <div>
+      <svg id='agency-legend_scaleKey'></svg>
+    </div>
   </>);
 
 }
