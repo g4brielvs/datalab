@@ -215,7 +215,7 @@ export default class BubbleChart extends Component {
       }
       return tooltipHtml;
     });
-    
+
     d3.select(this.bubbleChartContainer)
 
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")

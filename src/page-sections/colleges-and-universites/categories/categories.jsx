@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Accordion from '../../components/accordion/accordion';
-import Downloads from '../../components/section-elements/downloads/downloads';
+import Accordion from '../../../components/accordion/accordion';
+import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../components/chartpanels/search';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import SunburstIcon from '../../images/sunburst_icon.svg';
-import VizControlPanel from '../../components/chartpanels/viz-control';
-import VizDetails from '../../components/chartpanels/viz-detail';
+import SearchPanel from '../../../components/chartpanels/search';
+import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import SunburstIcon from '../../../images/sunburst_icon.svg';
+import VizControlPanel from '../../../components/chartpanels/viz-control';
+import VizDetails from '../../../components/chartpanels/viz-detail';
 
-import formatNumber from '../../utils/number-formatter';
+import formatNumber from '../../../utils/number-formatter';
 
 import loadable from '@loadable/component';
-import DataTable from '../../components/chartpanels/data-table';
-const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
+import DataTable from '../../../components/chartpanels/data-table';
+const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
+
+import './categories.scss';
 
 const Categories = () => {
 
@@ -250,7 +252,7 @@ const Categories = () => {
         />
       </Hidden>
 
-      <Accordion title='Accordion Title'>
+      <Accordion title='Instructions'>
         <ul>
           <li>Select an investment type: contracts, grants, or research grants</li>
           <li>Hover over each section to determine the category</li>
@@ -308,17 +310,35 @@ const Categories = () => {
             </Grid>
           </form>
 
-          <Sunburst
-            display={chartView}
-            items={_data[fundingType].nodes}
-            title={titlesByType[fundingType]}
-            levels={levels}
-            leaf={leaf}
-            wedgeColors={wedgeColors}
-            centerColor={centerColor}
-            showDetails={getClickedDetails}
-            ref={chartRef}
-          />
+          <Grid container>
+            <Grid item xs={1}>
+              <Hidden mdDown>
+                <div id="legend_colorKey">
+                  <div className="legend_circleKeyLabel"><span>Program Title</span></div>
+                  <div className="legend_circleKeyLabel"><span>Grant Family</span></div>
+                  <div className="legend_circleKeyLabel"><span>2018 Federal Grants</span></div>
+                  <svg id="legend_scaleKey">
+                    <circle r="25" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                    <circle r="35" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                    <circle r="45" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                  </svg>
+                </div>
+              </Hidden>
+            </Grid>
+            <Grid item xs={10}>
+              <Sunburst
+                display={chartView}
+                items={_data[fundingType].nodes}
+                title={titlesByType[fundingType]}
+                levels={levels}
+                leaf={leaf}
+                wedgeColors={wedgeColors}
+                centerColor={centerColor}
+                showDetails={getClickedDetails}
+                ref={chartRef}
+              />
+            </Grid>
+          </Grid>
 
           <DataTable
             display={!chartView}

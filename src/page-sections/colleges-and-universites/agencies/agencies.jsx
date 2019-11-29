@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
+import './agencies.scss';
+
 import Accordion from '../../../components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../../components/section-elements/downloads/downloads';
@@ -14,7 +16,6 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
-import RadialLegend from "../../../components/visualizations/radial-legend/radial-legend"
 const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = (props) => {
@@ -151,7 +152,7 @@ const Agencies = (props) => {
       />
     </Hidden>
 
-    <Accordion title='Accordion Title'>
+    <Accordion title='Instructions'>
       <p>In this visualization sub-agencies are represented by colorful circles and grouped together by their agency symbolized by the light gray bubble</p>
       <ul>
         <li>Hover over the circle cluster or individual circle for the total investment of the agency or sub-agency</li>
@@ -184,7 +185,15 @@ const Agencies = (props) => {
         <Grid container>
           <Grid item xs={1}>
             <Hidden mdDown>
-              <RadialLegend/>
+              <div id="agency-legend_colorKey">
+                <div className="agency-legend_circleKeyLabel"><span>Agency</span></div>
+                <div className="agency-legend_circleKeyLabel"><span>Sub-Agency</span></div>
+                <svg id="agency-legend_scaleKey">
+                  <circle r="25" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                  <circle r="35" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                  <circle r="45" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                </svg>
+              </div>
             </Hidden>
           </Grid>
           <Grid item xs={10}>
