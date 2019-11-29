@@ -49,10 +49,6 @@ svg#chart {
 }
 
 #bubbleChartContainer{
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,4 +78,43 @@ circle.node--leaf.active {
 .node {
   stroke: #E6E1E1;
   fill: #EBEBEB;
+}
+
+.d3-tip {
+  pointer-events: none!important;
+  z-index: 9999!important;
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.bubble-chart-tooltip {
+  .information {
+    .key {
+      color: #881E3D;
+    }
+  }
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.466);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }

@@ -183,7 +183,9 @@ const Agencies = (props) => {
       <Grid item>
         <Grid container>
           <Grid item xs={1}>
-            <RadialLegend/>
+            <Hidden mdDown>
+              <RadialLegend/>
+            </Hidden>
           </Grid>
           <Grid item xs={10}>
             <BubbleChart

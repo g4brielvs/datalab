@@ -2,8 +2,9 @@ import './bubble-chart.scss';
 import React, { Component } from "react";
 
 import * as d3 from "d3v3";
-import * as d3Tip from "d3-tip";
 import * as _ from "lodash";
+import d3Tip from "d3-tip";
+d3.tip = d3Tip;
 
 export default class BubbleChart extends Component {
   constructor(props) {
@@ -34,7 +35,6 @@ export default class BubbleChart extends Component {
     this.recipient;
     this.root;
     this.nodes;
-    this.calculatedWidth;
     this.width;
     this.diameter;
     this.pack;
@@ -84,14 +84,14 @@ export default class BubbleChart extends Component {
     const elName = "agency_tip_" + d.name.replace(/ /g, "_");
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
-    if (!isDesktop()) {
+    if (!this.isDesktop()) {
       tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
     }
 
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
       "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
       "<div class='information'><p class='key' style='color: #881E3D;'>Total Investment</p>" +
-      "<span class='bubble-detail__agency-name'>" + this.formatCurrency(popoverData[d.name].total_investment) + "</span>" +
+      // "<span class='bubble-detail__agency-name'>" + this.formatCurrency(popoverData[d.name].total_investment) + "</span>" +
       "</div></div>";
     return tooltipHtml;
   }
@@ -100,7 +100,7 @@ export default class BubbleChart extends Component {
     const elName = "subagency_tip_" + d.name.replace(/ /g, "_");
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
-    if (!isDesktop()) {
+    if (!this.isDesktop()) {
       tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
     }
 
@@ -194,36 +194,35 @@ export default class BubbleChart extends Component {
   }
 
   drawBubbleChart(root) {
-    const targetWidth = this.width;
     focus = root;
     this.diameter = this.width;
     const classContext = this;
 
     let tooltipHtml = '<div></div>';
-    this.tip = d3Tip.tip().attr('class', 'd3-tip').html(function (d) {
-      if (this.isZoomedIn(d)) {
+    this.tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
+      if (classContext.isZoomedIn(d)) {
         if (d.depth === 2) {
-          tooltipHtml = setSubagencyTooltipHtml(d);
+          tooltipHtml = classContext.setSubagencyTooltipHtml(d);
         } else if (d.depth === 1) {
-          tooltipHtml = setAgencyTooltipHtml(d);
+          tooltipHtml = classContext.setAgencyTooltipHtml(d);
         }
       } else {
         if (d.depth === 2) {
-          tooltipHtml = setAgencyTooltipHtml(d.parent);
+          tooltipHtml = classContext.setAgencyTooltipHtml(d.parent);
         } else if (d.depth === 1) {
-          tooltipHtml = setAgencyTooltipHtml(d);
+          tooltipHtml = classContext.setAgencyTooltipHtml(d);
         }
       }
       return tooltipHtml;
     });
-
+    
     d3.select(this.bubbleChartContainer)
 
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
-      .attr("viewBox", `0 0 ${targetWidth} ${targetWidth}`)
+      .attr("viewBox", `0 0 ${this.width} ${this.width}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
-      .attr("width", targetWidth)
-      .attr("height", targetWidth)
+      .attr("width", this.width)
+      .attr("height", this.width)
       .attr("id", "chart")
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
@@ -250,11 +249,11 @@ export default class BubbleChart extends Component {
       .on("click", this.click)
       .on("mouseover", function (d) {
         if (!classContext.isTablet()) {
-          this.tip.show(d);
+          classContext.tip.show(d, this);
         }
       })
       .on("mouseout", function (d) {
-        this.tip.hide(d);
+        classContext.tip.hide(d);
       })
 
     this.bubbleSvg.selectAll("text")
@@ -286,9 +285,11 @@ export default class BubbleChart extends Component {
       .on("mouseover", function (d) {
         const elName = d.name.replace(/ /g,"_");
         if (!classContext.isTablet()) {
-          this.tip.show(d);
+          classContext.tip.show(d, this);
         }
       })
+      .call(this.tip);
+
 
     this.node = this.bubbleSvg.selectAll("circle,text");
   }
@@ -464,7 +465,6 @@ export default class BubbleChart extends Component {
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
       this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
-      this.calculatedWidth = 900;
       this.width = 900;
       this.diameter = this.width;
     }
