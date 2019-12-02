@@ -14,38 +14,6 @@ import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
-
-  // {
-  //   'header': {
-  //     'title': 'Institution',
-  //     'itemName': 'Central College',
-  //     'label': 'Public, 2-year',
-  //     'subItemName': null,
-  //     'totalLabel': 'Total $ Received',
-  //     'totalValue': 1100000
-  //   },
-  //   'tables': [
-  //     {
-  //       'col1Title': 'Funding Investment Type',
-  //       'col2Title': null,
-  //       'rows': {
-  //         'Contracts': 35000,
-  //         'Grants': 590200,
-  //         '   Grants (Research)': 0
-  //       }
-  //     },
-  //     {
-  //       'col1Title': 'Institution (Top 5)',
-  //       'col2Title': 'Toatal Investment',
-  //       'rows': {
-  //         'UNLV': 35000,
-  //         'Baker College': 590200,
-  //         'Massachusetts General Hospital Dietetic Intership': 6954359235967253
-  //       }
-  //     }
-  //   ]
-  // }
-
   if (!GeoDataMapbox.features[0].properties.schoolId) {
     GeoDataMapbox.features.forEach(d => {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
@@ -55,6 +23,9 @@ const Institutions = (props) => {
   let schoolDetails = {};
   const getClickedDetails = id => {
     let schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
+
+debugger;
+
     schoolDetails = {
       'header': {
         'title': 'Institution',
@@ -64,7 +35,23 @@ const Institutions = (props) => {
         'totalLabel': 'Total $ Received',
         'totalValue': schoolProperties.Total_Federal_Investment
       },
-      'tables': []
+      'tables': [
+        {
+          'col1Title': 'Funding Instrument Type',
+          // 'col2Title': 'Total Investment',
+          'rows': agenciesTop5
+        },
+        {
+          'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+          'col2Title': 'Total Investment',
+          'rows': invTop5
+        },
+        {
+          'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+          'col2Title': 'Total Investment',
+          'rows': invTop5
+        }
+      ]
 
 
     }
