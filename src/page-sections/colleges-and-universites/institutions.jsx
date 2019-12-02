@@ -20,12 +20,90 @@ const Institutions = (props) => {
     });
   }
 
+  // const panelDetails = useStaticQuery(graphql`
+  //   query {
+  //     detailsCsv {
+  //       nodes {
+  //         id
+  //         Agency
+  //         Obligation
+  //         Program_Title
+  //         Recipient
+  //         Subagency
+  //         family
+  //       }
+  //     }
+  //     grants: allInvestmentSectionGrantsV2Csv {
+  //       nodes {
+  //         id
+  //         Agency
+  //         Obligation
+  //         Program_Title
+  //         Recipient
+  //         Research
+  //         Subagency
+  //         family
+  //       }
+  //     }
+  //     research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+  //       nodes {
+  //         id
+  //         Agency
+  //         Obligation
+  //         Program_Title
+  //         Recipient
+  //         Research
+  //         Subagency
+  //         family
+  //       }
+  //     }
+  //     top5Agencies: allTop5AgenciesPerInvestmentTypeV2Csv {
+  //       nodes {
+  //         source
+  //         target
+  //         value
+  //       }
+  //     }
+  //     top5InvestmentTypes: allTop5InstitutionsPerInvestmentTypeV2Csv {
+  //       nodes {
+  //         source
+  //         target
+  //         value
+  //       }
+  //     }
+  //     contractsSearch: allInvestmentSectionContractsV2Csv {
+  //       group(field: Program_Title) {
+  //         nodes {
+  //           id
+  //           family
+  //           Program_Title
+  //         }
+  //       }
+  //     }
+  //     grantsSearch: allInvestmentSectionGrantsV2Csv {
+  //       group(field: Program_Title) {
+  //         nodes {
+  //           id
+  //           family
+  //           Program_Title
+  //         }
+  //       }
+  //     }
+  //     researchSearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+  //       group(field: Program_Title) {
+  //         nodes {
+  //           id
+  //           family
+  //           Program_Title
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
+
   let schoolDetails = {};
   const getClickedDetails = id => {
     let schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
-
-debugger;
-
     schoolDetails = {
       'header': {
         'title': 'Institution',
@@ -36,24 +114,21 @@ debugger;
         'totalValue': schoolProperties.Total_Federal_Investment
       },
       'tables': [
-        {
-          'col1Title': 'Funding Instrument Type',
-          // 'col2Title': 'Total Investment',
-          'rows': agenciesTop5
-        },
-        {
-          'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-          'col2Title': 'Total Investment',
-          'rows': invTop5
-        },
-        {
-          'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-          'col2Title': 'Total Investment',
-          'rows': invTop5
-        }
+        // {
+        //   'col1Title': 'Funding Instrument Type',
+        //   'rows': agenciesTop5
+        // },
+        // {
+        //   'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+        //   'col2Title': 'Total Investment',
+        //   'rows': invTop5
+        // },
+        // {
+        //   'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+        //   'col2Title': 'Total Investment',
+        //   'rows': invTop5
+        // }
       ]
-
-
     }
     detailPanelRef.current.updateDetails(schoolDetails);
   }
