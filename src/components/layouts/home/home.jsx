@@ -34,7 +34,7 @@ const Home = ({ children }) => (
                 {header: 'Revenue', name: 'Revenue and GDP', link: '/americas-finance-guide/revenue-and-gdp'},
                 {header: 'Revenue', name: 'Revenue Categories', link: '#'},
                 {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
-                {header: 'Revenue', name: 'Country Comparison', link: '#'},
+                {header: 'Revenue', name: 'Country Comparison', link: '/americas-finance-guide/revenue-country-comparison'},
                 {header: 'Spending', name: 'Spending and GDP', link: '/americas-finance-guide/spending-and-gdp'},
                 {header: 'Spending', name: 'Spending Categories', link: '#'},
                 {header: 'Spending', name: 'Federal Spending Trends', link: '#'},
