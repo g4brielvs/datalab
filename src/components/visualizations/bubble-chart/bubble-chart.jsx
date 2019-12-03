@@ -453,7 +453,7 @@ export default class BubbleChart extends Component {
 
   render() {
     return (
-      <div id="chart-area">
+      <div id="chart-area" className={this.props.display ? '' : 'hidden'}>
         <div id="bubble-detail"></div>
         <div id="chart-container">
 
