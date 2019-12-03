@@ -35,7 +35,7 @@ export default class BubbleChart extends Component {
     this.recipient;
     this.root;
     this.nodes;
-    this.width;
+    this.width = 900;
     this.diameter;
     this.pack;
     this.tip;
@@ -460,7 +460,6 @@ export default class BubbleChart extends Component {
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
       this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
-      this.width = 900;
       this.diameter = this.width;
     }
 
