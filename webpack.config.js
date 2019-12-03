@@ -127,7 +127,7 @@ module.exports = [ {
     }
  }, {
     entry: {
-        // countryComparison: './citizens-guide/src/deficit/countries/index.js',
+        countryComparison: './src/libs/ffg/src/deficit/countries/index.js',
         intro: './src/libs/ffg/src/deficit/intro/index.js',
         // trends: './citizens-guide/src/deficit/trends/index.js'
     },
