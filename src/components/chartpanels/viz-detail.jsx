@@ -79,14 +79,14 @@ export default class VizDetailPanel extends React.Component {
   }
 
   render = () => (
-    <Paper className={'details' + (this.state.expanded ? ' expanded' : '')}>
-      <IconButton className='closeButton'
-        onClick={() => this.closeDetails()}
-      >
-        <HighlightOffIcon />
-      </IconButton>
-      {this.renderDetails()}
-    </Paper>
+    <div className='viz-details-container'>
+      <Paper className={'details' + (this.state.expanded ? ' expanded' : '')}>
+        <IconButton className='closeButton' onClick={() => this.closeDetails()}>
+          <HighlightOffIcon />
+        </IconButton>
+        {this.renderDetails()}
+      </Paper>
+    </div>
   );
 };
 

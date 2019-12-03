@@ -144,7 +144,7 @@ function Barchart(props){
       .attr("class", "xTick")
       .selectAll("text")
       .style("text-anchor", "end")
-      .style("font-size", "12px")
+      .style("font-size", "0.75rem")
       .attr("transform", `rotate(-35) translate(-295,-95)`)
       .attr("dx", "-.8em")
       .attr("pointer-events", "none");
@@ -163,7 +163,7 @@ function Barchart(props){
       .selectAll(".tick")
       .attr("class", "yTick")
       .selectAll("text")
-      .style("font-size", "12px");
+      .style("font-size", "0.75rem");
 
     // y axis checkboxes
     g
