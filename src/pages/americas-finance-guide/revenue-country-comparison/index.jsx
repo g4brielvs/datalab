@@ -2,9 +2,6 @@ import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/countryCommon.scss'
-// import '../../../libs/ffg/src/revenue/countries/countries.scss'
-// import '../../../libs/ffg/src/revenue/countries/selectCountry.scss'
-// import '../../../libs/ffg/src/revenue/countries/sortButton.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
