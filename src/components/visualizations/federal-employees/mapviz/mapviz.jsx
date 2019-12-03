@@ -107,14 +107,14 @@ export default function Mapviz(props) {
         .text(`${formatNumber(min)}`)
         .attr("transform", `translate(0, 20)`)
         .attr("text-anchor", "middle")
-        .attr("font-size", 12);
+        .attr("font-size", "0.75rem");
 
       scaleGroup
         .append("text")
         .text(`${formatNumber(max)}`)
         .attr("transform", `translate(${scaleWidth}, 20)`)
         .attr("text-anchor", "middle")
-        .attr("font-size", 12);
+        .attr("font-size", "0.75rem");
     }
   };
 

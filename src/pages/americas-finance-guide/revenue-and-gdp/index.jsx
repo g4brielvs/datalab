@@ -41,7 +41,7 @@ function RevenueAndGdpPage(props) {
                         <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
                         <li><a href="./categories.html">Revenue Categories</a></li>
                         <li><a href="./trends.html">Federal Revenue Trends</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <i className="fas fa-lg fa-angle-down menu-down"></i>
