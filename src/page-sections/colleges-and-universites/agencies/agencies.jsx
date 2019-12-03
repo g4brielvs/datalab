@@ -190,7 +190,7 @@ const Agencies = (props) => {
       <Grid item>
         <Grid container>
           <Grid item xs={1}>
-            <Hidden mdDown>
+            <Hidden smDown>
               <div id="agencies-legend-colorkey">
                 <div className={agenciesStyles.legendCirclekeyLabel}><span>Agency</span></div>
                 <div className={agenciesStyles.legendCirclekeyLabel}><span>Sub-Agency</span></div>

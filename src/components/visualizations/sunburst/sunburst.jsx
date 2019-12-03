@@ -27,7 +27,7 @@ export default class Sunburst extends React.Component {
     this.chartArray;
     this.innerRadius;
     this.maxHeight;
-    this.width;
+    this.width = 900;
     this.height;
     this.arc;
     this.radius;
@@ -304,9 +304,8 @@ export default class Sunburst extends React.Component {
   }
 
   componentDidMount() {
-      this.maxHeight = 900;
-      this.width = 900;
-      this.height = this.maxHeight;
+      this.maxHeight = this.width;
+      this.height = this.width;
 
     this.radius = Math.min(this.width, this.height) / 2;
     this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);

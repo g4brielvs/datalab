@@ -312,7 +312,7 @@ const Categories = () => {
 
           <Grid container>
             <Grid item xs={1}>
-              <Hidden mdDown>
+              <Hidden smDown>
                 <div id={categoriesStyles.legendColorkey}>
                   <div className={categoriesStyles.legendCirclekeyLabel}><span>Program Title</span></div>
                   <div className={categoriesStyles.legendCirclekeyLabel}><span>Grant Family</span></div>
