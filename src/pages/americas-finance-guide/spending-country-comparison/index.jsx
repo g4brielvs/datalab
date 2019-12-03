@@ -21,7 +21,7 @@ function SpendingCountryComparisonPage(props) {
         <>
 
             <Helmet>
-                <script defer src="/americas-finance-guide/revenue/countryComparison.js"></script>
+                <script defer src="/americas-finance-guide/spending/countryComparison.js"></script>
                 <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
