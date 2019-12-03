@@ -1,4 +1,3 @@
-import './cu.scss';
 import React from 'react';
 
 import Agencies from '../../page-sections/colleges-and-universites/agencies';
@@ -10,6 +9,7 @@ import Institutions from '../../page-sections/colleges-and-universites/instituti
 import Overview from '../../page-sections/colleges-and-universites/overview';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
+import { Grid } from "@material-ui/core";
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>
@@ -59,18 +59,31 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           ]}
       />
 
-      <div className='cu-main'>
-        <Overview location={this.props.location} />
+      <Grid container
+            justify="center">
+        <Grid item xs={10}>
+          <Overview location={this.props.location} />
+        </Grid>
 
-        <Institutions location={this.props.location} />
+        <Grid item xs={10}>
+          <Institutions location={this.props.location} />
+        </Grid>
 
-        <Agencies location={this.props.location} />
+        <Grid item xs={10}>
+          <Agencies location={this.props.location} />
+        </Grid>
 
-        <Categories location={this.props.location} />
-      </div>
+        <Grid item xs={10}>
+          <Categories location={this.props.location} />
+        </Grid>
 
-      <Footnotes footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
-        'Due to the way military academies are funded, they have not been included in this analysis.']}
-      />
+        <Grid item xs={10}>
+          <Footnotes footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
+            'Due to the way military academies are funded, they have not been included in this analysis.']}
+          />
+        </Grid>
+
+      </Grid>
+
     </StoryLayout>
 }

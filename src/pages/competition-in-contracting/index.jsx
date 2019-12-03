@@ -1,10 +1,10 @@
-import {useStaticQuery, graphql} from "gatsby"
-import React, { Component, useState, useEffect } from "react"
+import { graphql } from "gatsby";
+import React, { Component } from "react";
 import SEO from "../../components/seo";
 import "../../styles/index.scss";
 import competitionStyles from './competition-in-contracting.module.scss';
 
-import { Grid, Hidden } from "@material-ui/core"
+import { Grid, Hidden } from "@material-ui/core";
 /* components */
 import Accordion from "../../components/accordion/accordion";
 import Barchart from '../../components/visualizations/horizontal-barchart/barchart';
@@ -16,7 +16,7 @@ import numberFormatter from "../../utils/number-formatter"
 import ControlBar from "../../components/control-bar/control-bar"
 
 class CompetitionInContractingPage extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.rawData = props.data.allCicDataJson.nodes;
     this.state = {
@@ -31,21 +31,21 @@ class CompetitionInContractingPage extends Component {
     this.handleYAxisCheckboxChange = this.handleYAxisCheckboxChange.bind(this);
   }
 
-  setScaleFn(e){
-    this.setState({scale: e.currentTarget.value});
+  setScaleFn(e) {
+    this.setState({ scale: e.currentTarget.value });
   }
 
-  setUnitFn(e){
-    this.setState({unit: e.currentTarget.value});
+  setUnitFn(e) {
+    this.setState({ unit: e.currentTarget.value });
   }
 
-  resetFn(){
-    this.setState({scale: 'quantity'});
-    this.setState({unit: 'dollars'});
-    this.setState({data: JSON.parse(JSON.stringify(this.rawData))});
+  resetFn() {
+    this.setState({ scale: 'quantity' });
+    this.setState({ unit: 'dollars' });
+    this.setState({ data: JSON.parse(JSON.stringify(this.rawData)) });
   }
 
-  drawSummaryTableModule(){
+  drawSummaryTableModule() {
 
     const summaryData = this.state.data.reduce(
       (a, c) => {
@@ -92,7 +92,7 @@ class CompetitionInContractingPage extends Component {
       }
       return c;
     });
-    this.setState({data: adjustedData});
+    this.setState({ data: adjustedData });
   }
 
 
@@ -109,136 +109,136 @@ class CompetitionInContractingPage extends Component {
     const shareText = 'Data Lab – Competition in Contracting – U.S. Treasury ';
 
     return (<>
-        <ToolLayout title={pageTitle}
-                    introSentence={introSentence}
-                    contextStatement={contextSentence}
-                    sectionTitle={sectionTitle}
-                    sectionText={sectionText}
-                    hwctaLink={this.props.location.pathname + '/methodologies'}>
-          <SEO title="Competition in Contracting" keywords={[`gatsby`, `application`, `react`]}/>
-          <Accordion
-            title="Instructions">
-            <ul>
-              <li>Click the toggle to switch between raw numbers and percent for each agency</li>
-              <li>Click the toggle to switch between total dollars obligated and the number of contracting actions</li>
-              <li>Click the check box beside each agency to remove or add it to the visualization and re-scale the
-                horizontal axis.
+      <ToolLayout title={pageTitle}
+        introSentence={introSentence}
+        contextStatement={contextSentence}
+        sectionTitle={sectionTitle}
+        sectionText={sectionText}
+        hwctaLink={this.props.location.pathname + '/methodologies'}>
+        <SEO title="Competition in Contracting" keywords={[`gatsby`, `application`, `react`]} />
+        <Accordion
+          title="Instructions">
+          <ul>
+            <li>Click the toggle to switch between raw numbers and percent for each agency</li>
+            <li>Click the toggle to switch between total dollars obligated and the number of contracting actions</li>
+            <li>Click the check box beside each agency to remove or add it to the visualization and re-scale the
+              horizontal axis.
               </li>
-            </ul>
-          </Accordion>
-          <ControlBar>
-            <Reset _resetClick={this.resetFn}/>
-            <Share location={this.props.location}
-                            title={shareText}/>
-          </ControlBar>
+          </ul>
+        </Accordion>
+        <ControlBar>
+          <Reset _resetClick={this.resetFn} />
+          <Share location={this.props.location}
+            title={shareText} />
+        </ControlBar>
 
-          <div className={competitionStyles.vizContainer}>
-            <Grid container className={competitionStyles.container}>
+        <div className={competitionStyles.vizContainer}>
+          <Grid container className={competitionStyles.container}>
 
-              <Grid alignItems='stretch' container id={competitionStyles.summary}>
-                <div id={competitionStyles.tooltip}></div>
+            <Grid alignItems='stretch' container id={competitionStyles.summary}>
+              <div id={competitionStyles.tooltip}></div>
 
-                <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
-                  <Grid container alignItems='flex-end'>
-                    <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>$ COMPETED</Grid>
-                    <Grid item xs={12} id={competitionStyles.competedDollars}></Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} md={3} lg={3} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparator}`}>
-                  <Grid container alignItems='flex-end'>
-                    <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>ACTIONS COMPETED</Grid>
-                    <Grid item xs={12} id={competitionStyles.competedActions}></Grid>
-                  </Grid>
-                </Grid>
-                <Hidden mdDown>
-                  <Grid item lg={1} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparatorLg}`}></Grid>
-                  <Grid item lg={1} className={competitionStyles.summaryItem}></Grid>
-                </Hidden>
-                <Grid item xs={6} md={3} lg={3} className={competitionStyles.summaryItem}>
-                  <Grid container alignItems='flex-end'>
-                    <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>$ NOT COMPETED</Grid>
-                    <Grid item xs={12} id={competitionStyles.notCompetedDollars}></Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
-                  <Grid container alignItems='flex-end'>
-                    <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>ACTIONS NOT COMPETED</Grid>
-                    <Grid item xs={12} id={competitionStyles.notCompetedActions}></Grid>
-                  </Grid>
+              <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
+                <Grid container alignItems='flex-end'>
+                  <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>$ COMPETED</Grid>
+                  <Grid item xs={12} id={competitionStyles.competedDollars}></Grid>
                 </Grid>
               </Grid>
-
-              <div>
-                <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
-                  <svg height="15" width="15">
-                    <circle cx="7.5" cy="7.5" r="7.5"/>
-                  </svg>
-                  <label htmlFor="notCompeted" style={{ fontSize: '12px', verticalAlign: 'bottom' }}>Not
-                    Competed</label>
-                </div>
-                <div className={competitionStyles.legend} id={competitionStyles.competed}>
-                  <svg height="15" width="15">
-                    <circle cx="7.5" cy="7.5" r="7.5"/>
-                  </svg>
-                  <label htmlFor="contactChoice1" style={{ fontSize: '12px', verticalAlign: 'bottom' }}>Competed</label>
-                </div>
-                <form className={competitionStyles.barChartToolbar}>
-                  <div className={competitionStyles.selectWrapper1}>
-                    <input type="radio"
-                           id="contactChoice1"
-                           name="xAxisScale"
-                           value="quantity"
-                           onChange={this.setScaleFn}
-                           checked={this.state.scale === 'quantity'}
-                    />
-                    <label htmlFor="contactChoice1" style={{ fontSize: '12px' }}>Quantity</label>
-
-                    <input type="radio"
-                           id="contactChoice2"
-                           name="xAxisScale"
-                           value="percent"
-                           onChange={this.setScaleFn}
-                           checked={this.state.scale === 'percent'}
-                    />
-                    <label htmlFor="contactChoice2" style={{ fontSize: '12px' }}>Percent</label>
-                  </div>
-                  <div className={competitionStyles.selectWrapper2}>
-                    <input type="radio"
-                           id="contactChoice3"
-                           name="xAxisUnit"
-                           value="dollars"
-                           onChange={this.setUnitFn}
-                           checked={this.state.unit === 'dollars'}
-                    />
-                    <label htmlFor="contactChoice3" style={{ fontSize: '12px' }}>Dollars</label>
-
-                    <input type="radio"
-                           id="contactChoice4"
-                           name="xAxisUnit"
-                           value="actions"
-                           onChange={this.setUnitFn}
-                           checked={this.state.unit === 'actions'}
-                    />
-                    <label htmlFor="contactChoice4" style={{ fontSize: '12px' }}>Actions</label>
-                  </div>
-                </form>
-              </div>
-
-              <div className={competitionStyles.barChartDiv}>
-                <Barchart data={this.state.data}
-                          unit={this.state.unit}
-                          scale={this.state.scale}
-                          clickEvent={this.handleYAxisCheckboxChange}
-                          _onloadFunctions={this.drawSummaryTableModule}
-                          _svgClass={competitionStyles.svg}
-                >
-                </Barchart>
-              </div>
-
+              <Grid item xs={6} md={3} lg={3} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparator}`}>
+                <Grid container alignItems='flex-end'>
+                  <Grid item xs={12} className={competitionStyles.summaryItemCompeted}>ACTIONS COMPETED</Grid>
+                  <Grid item xs={12} id={competitionStyles.competedActions}></Grid>
+                </Grid>
+              </Grid>
+              <Hidden mdDown>
+                <Grid item lg={1} className={`${competitionStyles.summaryItem} ${competitionStyles.summaryItemSeparatorLg}`}></Grid>
+                <Grid item lg={1} className={competitionStyles.summaryItem}></Grid>
+              </Hidden>
+              <Grid item xs={6} md={3} lg={3} className={competitionStyles.summaryItem}>
+                <Grid container alignItems='flex-end'>
+                  <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>$ NOT COMPETED</Grid>
+                  <Grid item xs={12} id={competitionStyles.notCompetedDollars}></Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} md={3} lg={2} className={competitionStyles.summaryItem}>
+                <Grid container alignItems='flex-end'>
+                  <Grid item xs={12} className={competitionStyles.summaryItemNotCompeted}>ACTIONS NOT COMPETED</Grid>
+                  <Grid item xs={12} id={competitionStyles.notCompetedActions}></Grid>
+                </Grid>
+              </Grid>
             </Grid>
-          </div>
-        </ToolLayout>
-      </>
+
+            <div>
+              <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
+                <svg height="15" width="15">
+                  <circle cx="7.5" cy="7.5" r="7.5" />
+                </svg>
+                <label htmlFor="notCompeted" style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Not
+                    Competed</label>
+              </div>
+              <div className={competitionStyles.legend} id={competitionStyles.competed}>
+                <svg height="15" width="15">
+                  <circle cx="7.5" cy="7.5" r="7.5" />
+                </svg>
+                <label htmlFor="contactChoice1" style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Competed</label>
+              </div>
+              <form className={competitionStyles.barChartToolbar}>
+                <div className={competitionStyles.selectWrapper1}>
+                  <input type="radio"
+                    id="contactChoice1"
+                    name="xAxisScale"
+                    value="quantity"
+                    onChange={this.setScaleFn}
+                    checked={this.state.scale === 'quantity'}
+                  />
+                  <label htmlFor="contactChoice1" style={{ fontSize: '0.75rem' }}>Quantity</label>
+
+                  <input type="radio"
+                    id="contactChoice2"
+                    name="xAxisScale"
+                    value="percent"
+                    onChange={this.setScaleFn}
+                    checked={this.state.scale === 'percent'}
+                  />
+                  <label htmlFor="contactChoice2" style={{ fontSize: '0.75rem' }}>Percent</label>
+                </div>
+                <div className={competitionStyles.selectWrapper2}>
+                  <input type="radio"
+                    id="contactChoice3"
+                    name="xAxisUnit"
+                    value="dollars"
+                    onChange={this.setUnitFn}
+                    checked={this.state.unit === 'dollars'}
+                  />
+                  <label htmlFor="contactChoice3" style={{ fontSize: '0.75rem' }}>Dollars</label>
+
+                  <input type="radio"
+                    id="contactChoice4"
+                    name="xAxisUnit"
+                    value="actions"
+                    onChange={this.setUnitFn}
+                    checked={this.state.unit === 'actions'}
+                  />
+                  <label htmlFor="contactChoice4" style={{ fontSize: '0.75rem' }}>Actions</label>
+                </div>
+              </form>
+            </div>
+
+            <div className={competitionStyles.barChartDiv}>
+              <Barchart data={this.state.data}
+                unit={this.state.unit}
+                scale={this.state.scale}
+                clickEvent={this.handleYAxisCheckboxChange}
+                _onloadFunctions={this.drawSummaryTableModule}
+                _svgClass={competitionStyles.svg}
+              >
+              </Barchart>
+            </div>
+
+          </Grid>
+        </div>
+      </ToolLayout>
+    </>
     )
   }
 }
