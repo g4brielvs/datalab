@@ -338,27 +338,7 @@ export default class Sunburst extends React.Component {
 
     // Function calls
     this.drawChart(this.chartArray); // default chart is all grants
-
-    const context = this;
-
-    if (typeof window !== 'undefined') {
-      // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener('resize', function () {
-        // context.calculatedWidth = window.innerWidth * .7;
-        // context.width = window.innerWidth * .7;
-        //
-        // context.height = context.width;
-        // context.radius = Math.min(context.width, context.height) / 2;
-        // context.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-        // context.yScale = d3.scale.sqrt().range([0, context.radius]);
-        //
-        // const stateData = context.state.selectedItem;
-        //
-        // context.drawChart(context.chartArray);
-        //
-        // if (stateData) context.click(stateData);
-      });
-    }
+    
   }
 
   componentDidUpdate(prevProps) {
