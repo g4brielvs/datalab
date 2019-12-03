@@ -1,37 +1,38 @@
-#legend_colorKey {
+:global(#agencies-legend-colorkey) {
   position: relative;
   left: -50px;
-  margin: 50px 0 0 0;
   padding: 0;
   overflow: visible;
+  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
+  transition: left 1000ms;
 }
 
-#legend_scaleKey {
+:global(#agencies-legend-colorkey.left) {
+  left: -200px;
+}
+
+#legend-scalekey {
   width: 225px;
   height: 130px;
   position: absolute;
 }
 
-.legend_circleKeyLabel {
+.legend-circlekey-label {
   position: absolute;
   border-top: solid 1px #DDD;
   width: 70px;
   left: 65px;
 }
 
-.legend_circleKeyLabel:first-child {
-  top: 25px;
+.legend-circlekey-label:first-child {
+  top: 35px;
 }
 
-.legend_circleKeyLabel:nth-child(2) {
-  top: 36px;
-}
-
-.legend_circleKeyLabel:nth-child(3) {
+.legend-circlekey-label:nth-child(2) {
   top: 50px;
 }
 
-.legend_circleKeyLabel span {
+.legend-circlekey-label span {
   font-size: 10px;
   color: #999;
   position: absolute;
@@ -41,9 +42,10 @@
   left: 75px;
 }
 
-.legend_scaleKeyCircle {
+.legend-scalekey-circle {
   stroke-width: 1;
   stroke: #999;
   stroke-dasharray: 2;
   fill: none;
 }
+

@@ -17,7 +17,7 @@ import loadable from '@loadable/component';
 import DataTable from '../../../components/chartpanels/data-table';
 const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
 
-import './categories.scss';
+import categoriesStyles from './categories.module.scss';
 
 const Categories = () => {
 
@@ -313,14 +313,14 @@ const Categories = () => {
           <Grid container>
             <Grid item xs={1}>
               <Hidden mdDown>
-                <div id="legend_colorKey">
-                  <div className="legend_circleKeyLabel"><span>Program Title</span></div>
-                  <div className="legend_circleKeyLabel"><span>Grant Family</span></div>
-                  <div className="legend_circleKeyLabel"><span>2018 Federal Grants</span></div>
-                  <svg id="legend_scaleKey">
-                    <circle r="25" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
-                    <circle r="35" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
-                    <circle r="45" className="legend_scaleKeyCircle" cx="60" cy="65"></circle>
+                <div id={categoriesStyles.legendColorkey}>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Program Title</span></div>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Grant Family</span></div>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>2018 Federal Grants</span></div>
+                  <svg id={categoriesStyles.legendScalekey}>
+                    <circle r="25" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                    <circle r="35" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                    <circle r="45" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
                   </svg>
                 </div>
               </Hidden>

@@ -1,38 +1,37 @@
-#agency-legend_colorKey {
+#legend-colorkey {
   position: relative;
   left: -50px;
-  padding: 0;
   overflow: visible;
-  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
-  transition: left 1000ms;
+  margin: 50px 0 0 0;
+  padding: 0;
 }
 
-#agency-legend_colorKey.left {
-  left: -200px;
-}
-
-#agency-legend_scaleKey {
+#legend-scalekey {
   width: 225px;
   height: 130px;
   position: absolute;
 }
 
-.agency-legend_circleKeyLabel {
+.legend-circlekey-label {
   position: absolute;
   border-top: solid 1px #DDD;
   width: 70px;
   left: 65px;
 }
 
-.agency-legend_circleKeyLabel:first-child {
-  top: 35px;
+.legend-circlekey-label:first-child {
+  top: 25px;
 }
 
-.agency-legend_circleKeyLabel:nth-child(2) {
+.legend-circlekey-label:nth-child(2) {
+  top: 36px;
+}
+
+.legend-circlekey-label:nth-child(3) {
   top: 50px;
 }
 
-.agency-legend_circleKeyLabel span {
+.legend-circlekey-label span {
   font-size: 10px;
   color: #999;
   position: absolute;
@@ -42,10 +41,9 @@
   left: 75px;
 }
 
-.agency-legend_scaleKeyCircle {
+.legend-scalekey-circle {
   stroke-width: 1;
   stroke: #999;
   stroke-dasharray: 2;
   fill: none;
 }
-

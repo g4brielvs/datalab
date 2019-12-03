@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
-import './agencies.scss';
+import agenciesStyles from './agencies.module.scss';
 
 import Accordion from '../../../components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
@@ -16,6 +16,7 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
+import * as d3 from "d3v3"
 const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = (props) => {
@@ -134,6 +135,11 @@ const Agencies = (props) => {
     chartRef.current.clickById(id);
   }
 
+  function setLegendLeft(leftState) {
+    console.log("here");
+    d3.select('#agencies-legend-colorkey').classed("left", leftState);
+  }
+
   return (<>
     <StoryHeading
       number={'03'}
@@ -185,13 +191,13 @@ const Agencies = (props) => {
         <Grid container>
           <Grid item xs={1}>
             <Hidden mdDown>
-              <div id="agency-legend_colorKey">
-                <div className="agency-legend_circleKeyLabel"><span>Agency</span></div>
-                <div className="agency-legend_circleKeyLabel"><span>Sub-Agency</span></div>
-                <svg id="agency-legend_scaleKey">
-                  <circle r="25" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
-                  <circle r="35" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
-                  <circle r="45" className="agency-legend_scaleKeyCircle" cx="60" cy="65"></circle>
+              <div id="agencies-legend-colorkey">
+                <div className={agenciesStyles.legendCirclekeyLabel}><span>Agency</span></div>
+                <div className={agenciesStyles.legendCirclekeyLabel}><span>Sub-Agency</span></div>
+                <svg id={agenciesStyles.legendScalekey}>
+                  <circle r="25" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                  <circle r="35" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                  <circle r="45" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
                 </svg>
               </div>
             </Hidden>
@@ -200,6 +206,7 @@ const Agencies = (props) => {
             <BubbleChart
               items={_data.allUnivBubbleChartCsv.nodes}
               showDetails={getClickedDetails}
+              setLegendLeft={setLegendLeft}
               ref={chartRef}
             />
           </Grid>

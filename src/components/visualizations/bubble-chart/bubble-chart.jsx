@@ -47,7 +47,6 @@ export default class BubbleChart extends Component {
     this.formatCurrency = this.formatCurrency.bind(this);
     this.circleFill = this.circleFill.bind(this);
     this.isZoomedIn = this.isZoomedIn.bind(this);
-    this.setLegendLeft = this.setLegendLeft.bind(this);
     this.calculateTextFontSize = this.calculateTextFontSize.bind(this);
     this.isTablet = this.isTablet.bind(this);
     this.isDesktop = this.isDesktop.bind(this);
@@ -71,7 +70,7 @@ export default class BubbleChart extends Component {
         const currentState = classContext.state.selectedItem;
 
         if (!currentState || (currentState && currentState.depth !== 2)) {
-          classContext.setLegendLeft(false);
+          classContext.props.setLegendLeft(false);
           classContext.updateSelection(null);
           classContext.zoom(classContext.root);
         }
@@ -139,10 +138,6 @@ export default class BubbleChart extends Component {
       return true;
     }
     return false;
-  }
-
-  setLegendLeft(leftState) {
-    d3.select('#agency-legend_colorKey').classed("left", leftState);
   }
 
   /* Calculate text font size for bubbles before and after zoom */
@@ -377,7 +372,7 @@ export default class BubbleChart extends Component {
         d3.select(elName).classed("active", true);
 
       } else if (d.depth === 1) {
-        this.setLegendLeft(false);
+        this.props.setLegendLeft(false);
         this.updateSelection(null);
         this.props.showDetails(null); // hide details panel
 
@@ -388,7 +383,7 @@ export default class BubbleChart extends Component {
       }
     } else {
       if (d.depth === 2) {
-        this.setLegendLeft(true);
+        this.props.setLegendLeft(true);
         this.updateSelection(d.parent);
         this.props.showDetails(null); // hide details panel
 
@@ -398,7 +393,7 @@ export default class BubbleChart extends Component {
           d3.event && d3.event.stopPropagation();
         }
       } else if (d.depth === 1) {
-        this.setLegendLeft(true);
+        this.props.setLegendLeft(true);
         this.updateSelection(d);
         this.props.showDetails(null); // hide details panel
 
