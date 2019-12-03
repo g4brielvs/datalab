@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 :global(#agencies-legend-colorkey) {
   position: relative;
   left: -50px;
@@ -19,7 +21,7 @@
 
 .legend-circlekey-label {
   position: absolute;
-  border-top: solid 1px #DDD;
+  border-top: solid 1px $font-legend-label;
   width: 70px;
   left: 65px;
 }
@@ -33,8 +35,8 @@
 }
 
 .legend-circlekey-label span {
-  font-size: 10px;
-  color: #999;
+  font-size: 0.625rem;
+  color: $radial-legend;
   position: absolute;
   display: block;
   width: 90px;
@@ -44,7 +46,7 @@
 
 .legend-scalekey-circle {
   stroke-width: 1;
-  stroke: #999;
+  stroke: $radial-legend;
   stroke-dasharray: 2;
   fill: none;
 }
