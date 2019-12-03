@@ -48,7 +48,7 @@ const HeaderOnly = ({children, _containerClass, _headerClass}) => (
           {header: 'Debt', name: 'Explore Debt', link: '/americas-finance-guide/explore-debt'},
           {header: 'Debt', name: 'Federal Debt Trends', link: '#'},
           {header: 'Debt', name: 'Federal Debt Analysis', link: '#'},
-          {header: 'Debt', name: 'Country Comparison', link: '#'},
+          {header: 'Debt', name: 'Country Comparison', link: '/americas-finance-guide/debt-country-comparison'},
         ]},
         {
         resources: [
