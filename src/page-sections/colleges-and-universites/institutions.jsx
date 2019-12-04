@@ -29,7 +29,7 @@ const Institutions = (props) => {
       />
 
       <Accordion
-        title="Accordion Title">
+        title="Instructions">
         <p>Click the map to get started</p>
         <p>The number displayed on each cluster is the number of institutions in that area</p>
         <p>Click on a regional cluster to expand the area and display details for each school</p>
