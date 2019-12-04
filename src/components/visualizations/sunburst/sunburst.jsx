@@ -46,6 +46,7 @@ export default class Sunburst extends React.Component {
     this.updateCenter = this.updateCenter.bind(this);
     this.setCenterTextLines = this.setCenterTextLines.bind(this);
     this.setWrappedCenterTextLines = this.setWrappedCenterTextLines.bind(this);
+    this.showDetailsPane = this.showDetailsPane.bind(this);
     this.wordWrap = this.wordWrap.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
   }
@@ -201,7 +202,7 @@ export default class Sunburst extends React.Component {
     if (d.depth === 0) {
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-      this.props.showDetails(null); // hide details panel
+      this.showDetailsPane(null); // hide details panel
 
     } else if (d.depth === 1) {
       // category
@@ -209,7 +210,7 @@ export default class Sunburst extends React.Component {
       this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-      this.props.showDetails(null); // hide details panel
+      this.showDetailsPane(null); // hide details panel
 
     } else {
       this.setCenterTextLines('center-heading', 'Category', mediumText, '0');
@@ -217,7 +218,7 @@ export default class Sunburst extends React.Component {
       this.setCenterTextLines('center-heading', 'Sub-Category', mediumText, lineHeight * 2);
       this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
-      this.props.showDetails(d); // show details in panel
+      this.showDetailsPane(d); // show details in panel
     }
 
     /* Scale text to fit */
@@ -273,6 +274,12 @@ export default class Sunburst extends React.Component {
       .attr('dy', `${lineHeight}em`)
       .call(this.wordWrap, boundingBox)
       ;
+  }
+
+  showDetailsPane(d) {
+    if(!this.isMobile()){
+      this.props.showDetails(d);
+    }
   }
 
   wordWrap(text, maxWidth) {
