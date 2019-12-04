@@ -3,6 +3,8 @@ import React, { Component } from "react";
 
 import * as d3 from "d3v3";
 import * as _ from "lodash";
+import d3Tip from "d3-tip";
+d3.tip = d3Tip;
 
 export default class BubbleChart extends Component {
   constructor(props) {
@@ -19,10 +21,8 @@ export default class BubbleChart extends Component {
       '#88A6A0', '#80AEC4', '#C9BB7F', '#c8ac7f', '#c8ac7f', '#C99E7F', '#879BBA', '#A3D1CC', '#88A6A0', '#80AEC4', '#C9BB7F'
     ];
 
-    this.widthPercentage = .7;
     this.margin = 20;
     this.resize = false;
-    this.maxHeight = 700;
 
     this.bubbleChartContainer;
     this.detailContainer;
@@ -35,15 +35,18 @@ export default class BubbleChart extends Component {
     this.recipient;
     this.root;
     this.nodes;
-    this.calculatedWidth;
-    this.width;
+    this.width = 900;
     this.diameter;
     this.pack;
+    this.tip;
 
     this.chartInit = this.chartInit.bind(this);
+    this.setAgencyTooltipHtml = this.setAgencyTooltipHtml.bind(this);
+    this.setSubagencyTooltipHtml = this.setSubagencyTooltipHtml.bind(this);
+    this.closeTooltip = this.closeTooltip.bind(this);
+    this.formatCurrency = this.formatCurrency.bind(this);
     this.circleFill = this.circleFill.bind(this);
     this.isZoomedIn = this.isZoomedIn.bind(this);
-    this.setLegendLeft = this.setLegendLeft.bind(this);
     this.calculateTextFontSize = this.calculateTextFontSize.bind(this);
     this.isTablet = this.isTablet.bind(this);
     this.isDesktop = this.isDesktop.bind(this);
@@ -67,13 +70,56 @@ export default class BubbleChart extends Component {
         const currentState = classContext.state.selectedItem;
 
         if (!currentState || (currentState && currentState.depth !== 2)) {
-          classContext.setLegendLeft(false);
+          classContext.props.setLegendLeft(false);
           classContext.updateSelection(null);
           classContext.zoom(classContext.root);
         }
       });
 
     this.zoomTo([this.root.x, this.root.y, this.root.r * 2 + this.margin]);
+  }
+
+  setAgencyTooltipHtml(d) {
+    const elName = "agency_tip_" + d.name.replace(/ /g, "_");
+    let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
+
+    if (!this.isDesktop()) {
+      tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
+    }
+
+    tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
+      "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
+      "<div class='information'><p class='key' style='color: #881E3D;'>Total Investment</p>" +
+      // "<span class='bubble-detail__agency-name'>" + this.formatCurrency(popoverData[d.name].total_investment) + "</span>" +
+      "</div></div>";
+    return tooltipHtml;
+  }
+
+  setSubagencyTooltipHtml(d) {
+    const elName = "subagency_tip_" + d.name.replace(/ /g, "_");
+    let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
+
+    if (!this.isDesktop()) {
+      tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
+    }
+
+    tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
+      "<span class='bubble-detail__agency-name'>" + d.parent.name + "</span>" +
+      "<span class='bubble-detail__agency-label'>Sub-Agency</span>" +
+      "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
+      "<div class='information'><p class='key' style='color: #881E3D;'>Total $ of Awards</p>" +
+      "<span class='bubble-detail__agency-name'>" + this.formatCurrency(d.size) + "</span>" +
+      "</div></div>";
+    return tooltipHtml;
+  }
+
+// close tooltip
+  closeTooltip() {
+    this.tip.hide();
+  }
+
+  formatCurrency(n) {
+    return '$' + d3.format(",")(Math.round(n));
   }
 
   /* Set color for sub-agency circles */
@@ -92,10 +138,6 @@ export default class BubbleChart extends Component {
       return true;
     }
     return false;
-  }
-
-  setLegendLeft(leftState) {
-    d3.select('#agency-legend_colorKey').classed("left", leftState);
   }
 
   /* Calculate text font size for bubbles before and after zoom */
@@ -147,18 +189,36 @@ export default class BubbleChart extends Component {
   }
 
   drawBubbleChart(root) {
-    const targetWidth = this.width;
     focus = root;
-    this.diameter = this.width = this.calculatedWidth < this.maxHeight ? this.calculatedWidth : this.maxHeight;
+    this.diameter = this.width;
     const classContext = this;
 
+    let tooltipHtml = '<div></div>';
+    this.tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
+      if (classContext.isZoomedIn(d)) {
+        if (d.depth === 2) {
+          tooltipHtml = classContext.setSubagencyTooltipHtml(d);
+        } else if (d.depth === 1) {
+          tooltipHtml = classContext.setAgencyTooltipHtml(d);
+        }
+      } else {
+        if (d.depth === 2) {
+          tooltipHtml = classContext.setAgencyTooltipHtml(d.parent);
+        } else if (d.depth === 1) {
+          tooltipHtml = classContext.setAgencyTooltipHtml(d);
+        }
+      }
+      return tooltipHtml;
+    });
+
     d3.select(this.bubbleChartContainer)
-      .attr('style', "width: " + this.width + "px; height: " + this.width + "px;")
 
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
+      .attr("viewBox", `0 0 ${this.width} ${this.width}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .attr("width", this.width)
+      .attr("height", this.width)
       .attr("id", "chart")
-      .attr("width", targetWidth)
-      .attr("height", targetWidth)
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
 
@@ -184,11 +244,11 @@ export default class BubbleChart extends Component {
       .on("click", this.click)
       .on("mouseover", function (d) {
         if (!classContext.isTablet()) {
-          // tip.show(d);
+          classContext.tip.show(d, this);
         }
       })
       .on("mouseout", function (d) {
-        // tip.hide(d);
+        classContext.tip.hide(d);
       })
 
     this.bubbleSvg.selectAll("text")
@@ -218,11 +278,13 @@ export default class BubbleChart extends Component {
       .attr("text-anchor", "middle")
       .on("click", this.click)
       .on("mouseover", function (d) {
-        // const elName = d.name.replace(/ /g,"_");
+        const elName = d.name.replace(/ /g,"_");
         if (!classContext.isTablet()) {
-          // tip.show(d);
+          classContext.tip.show(d, this);
         }
       })
+      .call(this.tip);
+
 
     this.node = this.bubbleSvg.selectAll("circle,text");
   }
@@ -310,7 +372,7 @@ export default class BubbleChart extends Component {
         d3.select(elName).classed("active", true);
 
       } else if (d.depth === 1) {
-        this.setLegendLeft(false);
+        this.props.setLegendLeft(false);
         this.updateSelection(null);
         this.props.showDetails(null); // hide details panel
 
@@ -321,7 +383,7 @@ export default class BubbleChart extends Component {
       }
     } else {
       if (d.depth === 2) {
-        this.setLegendLeft(true);
+        this.props.setLegendLeft(true);
         this.updateSelection(d.parent);
         this.props.showDetails(null); // hide details panel
 
@@ -331,7 +393,7 @@ export default class BubbleChart extends Component {
           d3.event && d3.event.stopPropagation();
         }
       } else if (d.depth === 1) {
-        this.setLegendLeft(true);
+        this.props.setLegendLeft(true);
         this.updateSelection(d);
         this.props.showDetails(null); // hide details panel
 
@@ -397,9 +459,7 @@ export default class BubbleChart extends Component {
   componentDidMount() {
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-      this.bubbleChartContainer = document.getElementById('agency-bubbleChart');
-      this.calculatedWidth = window.innerWidth * this.widthPercentage;
-      this.width = window.innerWidth * this.widthPercentage;
+      this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
       this.diameter = this.width;
     }
 
@@ -425,54 +485,14 @@ export default class BubbleChart extends Component {
       });
 
     this.chartInit();
-
-    if (typeof window !== 'undefined') {
-      const classContext = this;
-      // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener("resize", function () {
-        d3.select("#agency-bubbleChart").selectAll("*").remove();
-        if (classContext.root) {
-          classContext.maxHeight = window.innerWidth * classContext.widthPercentage;
-          classContext.calculatedWidth = window.innerWidth * classContext.widthPercentage;
-          classContext.diameter = classContext.width = window.innerWidth * classContext.widthPercentage;
-          classContext.resize = true;
-          classContext.drawBubbleChart(classContext.root);
-          classContext.resize = false;
-
-          // check the state here and replay
-          const chartState = classContext.state.selectedItem;
-          if (chartState) {
-            classContext.zoom(chartState);
-          } else {
-            classContext.zoomTo([classContext.root.x, classContext.root.y, classContext.root.r * 2 + classContext.margin]);
-          }
-        }
-      });
-    }
   };
 
   render() {
-    return (
-      <div id="chart-area">
-        <div id="bubble-detail"></div>
-        <div id="chart-container">
-
-          <div id="agency-investments__content">
-            <div id="bubbleChartContainer" className="bubbleChartContainer">
-
-              {/*<div id='agency-legend_colorKey'>*/}
-              {/*<div className='legend_circleKeyLabel'><span>Agency</span></div>*/}
-              {/*<div className='legend_circleKeyLabel'><span>Sub-Agency</span></div>*/}
-              {/*<svg id='agency-legend_scaleKey'></svg>*/}
-              {/*</div>*/}
-
-              <div id="agency-bubbleChart"></div>
-            </div>
-
-          </div>
-        </div>
+    return (<>
+      <div id="bubble-detail"></div>
+      <div id="bubbleChartContainer" className="bubbleChartContainer">
       </div>
-    )
+    </>)
   }
 }
 

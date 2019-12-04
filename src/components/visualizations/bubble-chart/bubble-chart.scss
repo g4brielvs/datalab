@@ -1,66 +1,21 @@
 svg#chart {
-  position: absolute;
+  width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   overflow: hidden;
 }
 
-#agency-legend_colorKey {
-  position: relative;
-  padding: 0;
-  overflow: visible;
-  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
-  transition: left 1000ms;
-}
-
-#agency-legend_colorKey.left {
-  left: -200px;
-}
-
-#agency-legend_scaleKey {
-  width: 225px;
-  height: 130px;
-  position: absolute;
-}
-
-.legend_circleKeyLabel {
-  position: absolute;
-  border-top: solid 1px #DDD;
-  width: 70px;
-  left: 65px;
-}
-
-.legend_circleKeyLabel span {
-  font-size: 0.625rem;
-  color: #666;
-  position: absolute;
-  display: block;
-  width: 90px;
-  top: -8px;
-  left: 75px;
-}
-
-.legend_scaleKeyCircle {
-  stroke-width: 1;
-  stroke: #666;
-  stroke-dasharray: 2;
-  fill: none;
-}
-
-#agency-bubbleChart {
-  height: 700px;
-  width: 700px;
-  margin: 0 auto;
-  position: relative;
+#bubbleChartContainer{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 circle.node,  circle.node--root, text.label {
-  //cursor: zoom-in;
-  //cursor: -moz-zoom-in;
-  //cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
   cursor: pointer;
 }
 
@@ -81,4 +36,158 @@ circle.node--leaf.active {
 .node {
   stroke: #E6E1E1;
   fill: #EBEBEB;
+}
+
+.d3-tip {
+  pointer-events: none!important;
+  z-index: 9999!important;
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: #fff;
+  color: #555;
+  border-radius: 2px;
+}
+
+.bubble-chart-tooltip {
+  .information {
+    .key {
+      color: #881E3D;
+    }
+  }
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 0.625rem;
+  width: 100%;
+  line-height: 1;
+  color: #fff;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+#bubble-detail {
+  position: relative;
+}
+
+.bubble-detail {
+  position: absolute;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+  transition: right 0.5s ease-in-out;
+  z-index: 102;
+}
+
+.bubble-detail.bubble-detail--active {
+  right: 0;
+}
+
+.bubble-detail__agency-label {
+  display: block;
+  color: #666666;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.bubble-detail__agency-name {
+  display: block;
+  color: #666;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.bubble-detail__agency-name:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+.bubble-detail__close {
+  position: relative;
+  float: right;
+  font-size: 1rem;
+  font-weight: 700;
+  background: white;
+  color: #666666;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  padding: 0;
+  border: 2px solid #bbb;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  .bubble-detail__close:hover {
+    color: #ddd;
+    border-color: #ddd;
+  }
+
+  span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+.bubble-detail__table {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+}
+
+.bubble-detail__table:last-of-type {
+  margin-bottom: 0;
+}
+
+.bubble-detail__table td, .bubble-detail__table th {
+  padding: 4px 0 !important;
+}
+
+.bubble-detail__table tr td:last-child, .bubble-detail__table tr th:last-child {
+  text-align: end;
+}
+
+.bubble-detail__table tr td:last-child {
+  color: #555;
+  font-weight: 500;
+}
+
+.bubble-detail__table tr th:first-child {
+  text-align: start;
+}
+
+.bubble-detail__table tr th {
+  font-size: 0.8rem;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+.bubble-detail__table tr td {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f3f3f3 !important;
+  color: #555;
+  padding: 0.35rem 0 !important;
+  font-weight: 300;
 }

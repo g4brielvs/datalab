@@ -24,10 +24,12 @@ const Institutions = (props) => {
       />
 
       <Accordion
-        title="Accordion Title">
-        <p>I am an accordion with lots to say.</p>
-        <p>I have several paragraphs...</p>
-        <p>I have several paragraphs...</p>
+        title="Instructions">
+        <p>Click the map to get started</p>
+        <p>The number displayed on each cluster is the number of institutions in that area</p>
+        <p>Click on a regional cluster to expand the area and display details for each school</p>
+        <p>Use the zoom in and zoom out keys to adjust the map view</p>
+        <p>For a specific search, use the search tool to type in the school by name</p>
       </Accordion>
 
       <ControlBar>
