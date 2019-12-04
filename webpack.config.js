@@ -78,9 +78,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    optimization: {
-        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    },
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
