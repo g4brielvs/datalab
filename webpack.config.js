@@ -178,7 +178,7 @@ module.exports = [ {
 }, {
     entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
-        // trends: './citizens-guide/src/debt/trends/index.js',
+        trends: './src/libs/ffg/src/debt/trends/index.js',
         // analysis: './citizens-guide/src/debt/analysis/index.js',
         // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
