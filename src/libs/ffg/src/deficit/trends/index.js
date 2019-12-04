@@ -1,4 +1,4 @@
-import initTabs from '../../../components/tabs/tabs';
+import initTabs from '../../components/tabs/tabs';
 
 const tabContainer = '#surplusComponent',
     config = {

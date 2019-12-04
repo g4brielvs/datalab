@@ -69,15 +69,15 @@ function DeficitTrendsPage(props) {
                             <div className="accordion__content">
                                 <div id="surplusComponent">
                                     <div className="deficit--surplus__component--content deficit--surplus__surplus">
-                                        <img className="deficit__tabs-image" src="/assets/ffg/deficit/surplus.svg" alt="" role="presentation"></img>
+                                        <img className="deficit__tabs-image" src="/americas-finance-guide/images/surplus.svg" alt="" role="presentation"></img>
                                         A surplus occurs when the government collects more money than it spends. The last surplus for the federal government was in {AfgData.last_surplus.value}.
                                     </div>
                                     <div className="deficit--surplus__component--content deficit--surplus__balanced">
-                                        <img className="deficit__tabs-image" src="/assets/ffg/deficit/balanceBudget.svg" alt="" role="presentation"></img>
+                                        <img className="deficit__tabs-image" src="/americas-finance-guide/images/balanceBudget.svg" alt="" role="presentation"></img>
                                         A balanced budget occurs when the amount the government spends equals the amount the government collects. Sometimes the term balanced budget is used more broadly to refer to instances where there is no deficit.
                                     </div>
                                     <div className="deficit--surplus__component--content deficit--surplus__deficit">
-                                        <img className="deficit__tabs-image" src="/assets/ffg/deficit/deficit.svg" alt="" role="presentation"></img>
+                                        <img className="deficit__tabs-image" src="/americas-finance-guide/images/deficit.svg" alt="" role="presentation"></img>
                                         A deficit occurs when the government spends more money than it collects. The federal government has run deficits for the last {AfgData.consecutive_deficits.value} years.
                                     </div>
                                 </div>
