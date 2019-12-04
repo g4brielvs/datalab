@@ -59,7 +59,7 @@ const StoryLayout = (props) => {
                 {header: 'Overview', name: "America's Finance Guide", link: '#'},
                 {header: 'Revenue', name: 'Revenue and GDP', link: '/americas-finance-guide/revenue-and-gdp'},
                 {header: 'Revenue', name: 'Revenue Categories', link: '#'},
-                {header: 'Revenue', name: 'Federal Revenue Trends', link: '#'},
+                {header: 'Revenue', name: 'Federal Revenue Trends', link: '/americas-finance-guide/revenue-trends'},
                 {header: 'Revenue', name: 'Country Comparison', link: '/americas-finance-guide/revenue-country-comparison'},
                 {header: 'Spending', name: 'Spending and GDP', link: '/americas-finance-guide/spending-and-gdp'},
                 {header: 'Spending', name: 'Spending Categories', link: '#'},
