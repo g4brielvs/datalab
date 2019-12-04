@@ -6,7 +6,6 @@ import colors from '../../globalSass/colors.scss';
 import { trendMobile } from '../../components/trendsMobile';
 import { manualThresholds } from './manualThresholds';
 import CategoryData from '../../../../assets/ffg/data/federal_revenue_trends.csv';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 // IE shim
 if (!Element.prototype.matches) {
