@@ -27,7 +27,7 @@ export default class Sunburst extends React.Component {
     this.chartArray;
     this.innerRadius;
     this.maxHeight;
-    this.width;
+    this.width = 900;
     this.height;
     this.arc;
     this.radius;
@@ -129,6 +129,8 @@ export default class Sunburst extends React.Component {
 
     this.svg = d3.select('#sunburst')
       .append('svg')
+      .attr("viewBox", `0 0 ${this.width} ${this.height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
       .attr('width', this.width)
       .attr('height', this.height)
       .append('g')
@@ -302,11 +304,8 @@ export default class Sunburst extends React.Component {
   }
 
   componentDidMount() {
-    if (typeof document !== 'undefined') {
-      this.maxHeight = document.body.clientWidth * .7;
-      this.width = document.body.clientWidth * .7;
-      this.height = this.maxHeight;
-    }
+      this.maxHeight = this.width;
+      this.height = this.width;
 
     this.radius = Math.min(this.width, this.height) / 2;
     this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
@@ -339,27 +338,7 @@ export default class Sunburst extends React.Component {
 
     // Function calls
     this.drawChart(this.chartArray); // default chart is all grants
-
-    const context = this;
-
-    if (typeof window !== 'undefined') {
-      // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener('resize', function () {
-        context.calculatedWidth = window.innerWidth * .7;
-        context.width = window.innerWidth * .7;
-
-        context.height = context.width;
-        context.radius = Math.min(context.width, context.height) / 2;
-        context.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-        context.yScale = d3.scale.sqrt().range([0, context.radius]);
-
-        const stateData = context.state.selectedItem;
-
-        context.drawChart(context.chartArray);
-
-        if (stateData) context.click(stateData);
-      });
-    }
+    
   }
 
   componentDidUpdate(prevProps) {
