@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 
@@ -6,13 +6,18 @@ import Accordion from "../../components/accordion/accordion";
 import StoryHeading from "../../components/section-elements/story-heading/story-heading";
 import Downloads from "../../components/section-elements/downloads/downloads";
 import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
+import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
 import Share from '../../components/share/share';
-import ControlBar from "../../components/control-bar/control-bar"
+import ControlBar from "../../components/control-bar/control-bar";
+import DataTable from "../../components/chartpanels/data-table";
+import formatNumber from "../../utils/number-formatter";
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
+
+  const tableColumnTitles = ['Institution', 'Type', 'Contracts', 'Grants', 'Student Aid', 'Total $ Received'];
 
   return (
     <>
@@ -24,7 +29,7 @@ const Institutions = (props) => {
       />
 
       <Accordion
-        title="Instructions">
+        title="Accordion Title">
         <p>Click the map to get started</p>
         <p>The number displayed on each cluster is the number of institutions in that area</p>
         <p>Click on a regional cluster to expand the area and display details for each school</p>
@@ -34,13 +39,27 @@ const Institutions = (props) => {
 
       <ControlBar>
         <Share location={props.location}
-                   title='Check out this analysis on Data Lab'
-                   text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-                   twitter='#DataLab #Treasury #DataTransparency #USAspending'
-                   />
+               title='Check out this analysis on Data Lab'
+               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+               twitter='#DataLab #Treasury #DataTransparency #USAspending'
+        />
       </ControlBar>
       <div>
-	      <Mapbox data={GeoDataMapbox}/>
+	<Mapbox data={GeoDataMapbox}/>
+        <DataTable
+          data={dataTableData.map(x => {
+            return [
+              x.Recipient,
+              x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
+              formatNumber('dollars', x.contracts),
+              formatNumber('dollars', x.grants),
+              formatNumber('dollars', x.student_aid),
+              formatNumber('dollars', x.Total_Federal_Investment),
+            ];
+          })}
+          columnTitles={tableColumnTitles}
+          display={true} // for now, left panel for map isn't finished.
+        />
       </div>
       
       <Downloads
