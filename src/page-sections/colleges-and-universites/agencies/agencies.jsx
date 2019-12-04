@@ -136,7 +136,6 @@ const Agencies = (props) => {
   }
 
   function setLegendLeft(leftState) {
-    console.log("here");
     d3.select('#agencies-legend-colorkey').classed("left", leftState);
   }
 
