@@ -55,8 +55,8 @@ class Share extends Component {
   }
 
   handleShareClickTwitter(e) {
-    const hashTags = this.props.twitter ? ` ${encodeURIComponent(this.props.twitter)}` : '';
-    let finalUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.props.text || this.title)}${hashTags}&url=${this.url}`;
+    const twitterText = encodeURIComponent(this.props.twitter || this.props.text || this.title);
+    let finalUrl = `https://twitter.com/intent/tweet?text=${twitterText}&url=${this.url}`;
     this.openShareWindow(finalUrl);
   }
 
