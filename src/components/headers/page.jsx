@@ -30,7 +30,6 @@ class PageHeader extends React.Component {
     // homepage listener...
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
-        console.log(window.pageYOffset);
         let isSticky = window.pageYOffset > 135;        
         this.setState({ isSticky: isSticky });
       });
@@ -87,7 +86,6 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    console.log(this.state);
     
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
