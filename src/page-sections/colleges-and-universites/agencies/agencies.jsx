@@ -16,10 +16,10 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
-import DataTable from "../../components/chartpanels/data-table"
-import formatNumber from "../../utils/number-formatter"
+import DataTable from "../../../components/chartpanels/data-table"
+import formatNumber from "../../../utils/number-formatter"
 import * as d3 from "d3v3"
-const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
+const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
