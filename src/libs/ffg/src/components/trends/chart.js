@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+// import 'babel-polyfill';
 import { select, selectAll } from 'd3-selection';
 import { scaleLinear } from 'd3-scale';
 import { min, max, range } from 'd3-array';
