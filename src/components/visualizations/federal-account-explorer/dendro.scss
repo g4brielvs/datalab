@@ -1,161 +1,164 @@
 .dendrogram {
-	& p.subheading {
-		font-size: 1.75rem;
-		color: #525252;
-		font-style: italic;
-	}
-	#container {
-		position: relative;
-		background-color: inherit;
-		font-family: inherit;
-		width: 99%;
-	}
-	#tree-container {
-		position: relative;
-		background-color: rgba(243, 246, 255, 0);
-		cursor: move;
-	}
-	.node {
-		cursor: pointer;
-		stroke: none;
-		fill: black;
-	}
-	.overlay {
-		background-color: inherit;
-		pointer-events: all;
-	}
-	button {
-		padding: 10px 20px;
-	}
-	.node circle {
-		fill: #f3f6ff;
-		stroke: steelblue;
-		stroke-width: 1.5px;
-	}
-	.node text {
-		font-size: 0.75rem;
-		color: black;
-	}
-	.link {
-		fill: none;
-		stroke: #848482;
-		opacity: 0.3;
-		stroke-width: 1.5px;
-	}
-	.templink {
-		fill: none;
-		stroke: red;
-		stroke-width: 3px;
-	}
-	.ghostCircle.show {
-		display: block;
-	}
-	.ghostCircle,
-	.activeDrag .ghostCircle {
-		display: none;
-	}
-	#button_holder {
-		position: sticky;
-		height: 47px;
-		width: 265px;
-		/*margin-left: 40px;*/
-		padding-bottom: 20px;
-		vertical-align: middle;
-	}
-	.button {
-		border: 1px solid #0071bc;
-		background: #ffffff;
-		padding: 12.5px 25px;
-		border-radius: 1px;
-		color: #0071bc;
-		font-size: 0.9375rem;
-		font-family: inherit;
-		text-decoration: none;
-		vertical-align: middle;
-		width: 180px;
-		line-height: 0;
-	}
-	.button:hover {
-		border-top-color: #0071bc;
-		background: #0071bc;
-		color: #ffffff;
-	}
-	.button:active {
-		border-top-color: #0071bc;
-		background: #0071bc;
-	}
-	#tite_text {
-		width: 800px;
-	}
-	#tite_text > p.headline {
-		position: relative;
-		margin-left: 40px;
-		margin-top: 30px;
-		font-size: 2em;
-	}
-	#tite_text > p.body_text {
-		position: relative;
-		margin-left: 40px;
-		margin-top: -15px;
-		font-size: 1.1em;
-	}
+  & p.subheading {
+    font-size: 1.75rem;
+    color: #525252;
+    font-style: italic;
+  }
+  #container {
+    position: relative;
+    background-color: inherit;
+    font-family: inherit;
+    width: 99%;
+  }
+  #tree-container {
+    position: relative;
+    background-color: rgba(243, 246, 255, 0);
+    cursor: move;
+  }
+  .node {
+    cursor: pointer;
+    stroke: none;
+    fill: black;
+  }
+  .overlay {
+    overflow: visible;
+    position: relative;
+    background-color: inherit;
+    pointer-events: all;
+  }
+  button {
+    padding: 10px 20px;
+  }
+  .node circle {
+    fill: #f3f6ff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+  .node text {
+    overflow: visible;
+    font-size: .75rem;
+    color: black;
+  }
+  .link {
+    fill: none;
+    stroke: #848482;
+    opacity: 0.3;
+    stroke-width: 1.5px;
+  }
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+  .ghostCircle.show {
+    display: block;
+  }
+  .ghostCircle,
+  .activeDrag .ghostCircle {
+    display: none;
+  }
+  #button_holder {
+    position: sticky;
+    height: 47px;
+    width: 265px;
+    /*margin-left: 40px;*/
+    padding-bottom: 20px;
+    vertical-align: middle;
+  }
+  .button {
+    border: 1px solid #0071bc;
+    background: #ffffff;
+    padding: 12.5px 25px;
+    border-radius: 1px;
+    color: #0071bc;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 180px;
+    line-height: 0;
+  }
+  .button:hover {
+    border-top-color: #0071bc;
+    background: #0071bc;
+    color: #ffffff;
+  }
+  .button:active {
+    border-top-color: #0071bc;
+    background: #0071bc;
+  }
+  #tite_text {
+    width: 800px;
+  }
+  #tite_text > p.headline {
+    position: relative;
+    margin-left: 40px;
+    margin-top: 30px;
+    font-size: 2em;
+  }
+  #tite_text > p.body_text {
+    position: relative;
+    margin-left: 40px;
+    margin-top: -15px;
+    font-size: 1.1em;
+  }
 
-	/* Tooltip container*/
-	div.tooltip {
-		position: absolute;
-		text-align: center;
-		height: auto;
-		padding: 3px;
-		background: #6e747e;
-		color: white;
-		border: 0px;
-		border-radius: 4px;
-		pointer-events: none;
-	}
-	text.hover {
-		color: #0071bc;
-		font-weight: bold;
-	}
+  /* Tooltip container*/
+  div.tooltip {
+    position: absolute;
+    text-align: center;
+    height: auto;
+    padding: 3px;
+    background: #6e747e;
+    color: white;
+    border: 0px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  text.hover {
+    color: #0071bc;
+    font-weight: bold;
+  }
 }
 
 .dendrogram-hover-name {
-	border-bottom: 1px solid #898c90;
-	font-size: 0.875rem;
-	color: #000;
-	font-weight: bolder;
+  border-bottom: 1px solid #898c90;
+  font-size: 0.875rem;
+  color: #000;
+  font-weight: bolder;
 }
 
 .dendrogram-hover-style {
-	color: #000;
-	font-size: 0.75rem;
-	font-style: italic;
-	margin: 0;
+  color: #000;
+  font-size: 0.75rem;
+  font-style: italic;
+  margin: 0;
 }
 
 .viz-actions > #DendroRadio {
-	display: flex;
-	flex-direction: column;
-	width: 750px;
+  display: flex;
+  flex-direction: column;
+  width: 750px;
 }
 
 .select-wrapper1 {
-	padding-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
 
-	.dendro-input-1 {
-		padding-left: 0.2rem;
-		padding-right: 0.2rem;
-	}
+  .dendro-input-1 {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
 }
 
 .select-wrapper2 {
-	.dendro-input-2 {
-		padding-left: 0.2rem;
-		padding-right: 0.2rem;
-	}
+  .dendro-input-2 {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
 }
 
 .viz-container {
-	padding: 25px;
-	height: 90%;
-	overflow: hidden;
+  padding: 25px;
+  height: 90%;
+  overflow: hidden;
 }

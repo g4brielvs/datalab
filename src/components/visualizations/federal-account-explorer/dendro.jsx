@@ -30,8 +30,8 @@ function Dendro(props) {
       const duration = 750;
 
       // size of the diagram
-      const viewerWidth = document.body.clientWidth;
-      const viewerHeight = 800;
+      const svgWidth = window.innerWidth;
+      const svgHeight = 800;
 
       let svgGroup;
 
@@ -44,9 +44,9 @@ function Dendro(props) {
 
       // define the baseSvg, attaching a class for styling and the zoomListener
       const baseSvg = d3.select('#tree-container').append('svg')
-            .attr('width', viewerWidth)
-            .attr('height', viewerHeight)
-            .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
+            .attr('width', svgWidth)
+            .attr('height', svgHeight)
+            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
             .attr('id', 'svg-dendrogram')
             .attr('class', 'overlay')
             .call(zoomListener);
@@ -84,8 +84,8 @@ function Dendro(props) {
 
       function centerRootNode(source) {
         const scale = zoomListener.scale();
-        const x = (-source.y0 * scale) + (viewerWidth / 4);
-        const y = (-source.x0 * scale) + (viewerHeight / 2);
+        const x = (-source.y0 * scale) + (svgWidth / 4);
+        const y = (-source.x0 * scale) + (svgHeight / 2);
         d3.select('g').transition()
           .duration(duration)
           .attr('transform', `translate(${x},${y})scale(${scale})`);
@@ -95,7 +95,7 @@ function Dendro(props) {
       }
 
       let tree = d3.layout.tree()
-          .size([viewerHeight, viewerWidth]);
+          .size([svgWidth, svgHeight]);
 
       // define a d3 diagonal projection for use by the node paths later on.
       const diagonal = d3.svg.diagonal()
@@ -139,7 +139,7 @@ function Dendro(props) {
 
         childCount(0, root);
         const newHeight = d3.max(levelWidth) * 26; // 26 pixels per line
-        tree = tree.size([newHeight, viewerWidth]);
+        tree = tree.size([newHeight, svgWidth]);
 
         // Compute the new tree layout.
         const nodes = tree.nodes(root).reverse();
@@ -410,8 +410,8 @@ function Dendro(props) {
           const scale = zoomListener.scale();
           let x = -source.y0;
           let y = -source.x0;
-          x = (x * scale) + (viewerWidth / 4.2);
-          y = (y * scale) + (viewerHeight / 2);
+          x = (x * scale) + (svgWidth / 20); // 4.2 default - set it now to max it can go to the end of container
+          y = (y * scale) + (svgHeight / 2);
           d3.select('g').transition()
             .duration(duration)
             .attr('transform', `translate(${x},${y})scale(${scale})`);
@@ -422,8 +422,8 @@ function Dendro(props) {
           const scale = zoomListener.scale();
           let x = -source.y0;
           let y = -source.x0;
-          x = (x * scale) + (viewerWidth / 3);
-          y = (y * scale) + (viewerHeight / 2);
+          x = (x * scale) + (svgWidth / 3);
+          y = (y * scale) + (svgHeight / 2);
           d3.select('g').transition()
             .duration(duration)
             .attr('transform', `translate(${x},${y})scale(${scale})`);
@@ -486,7 +486,7 @@ function Dendro(props) {
         resetToCenter();
       }
 
-      root.x0 = viewerHeight / 2;
+      root.x0 = svgHeight / 2;
       root.y0 = 0;
 
       // Layout the tree initially and center on the root node.
@@ -508,7 +508,6 @@ function Dendro(props) {
     $(document).ready(() => {
       const FiscalYear = $('input[name="FiscalYear"]:checked').val();
       const Quarter = $('input[name="Quarter"]:checked').val();
-
 
       // Handle Reset Button Click //
       // reset to default of FY19 and Q1 //
@@ -580,7 +579,7 @@ function Dendro(props) {
 	    data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
 	    CreateDendro(data);
 	  } else {
-            const viewerWidth = document.body.clientWidth;
+            const viewerWidth = window.innerWidth;
             const viewerHeight = 300;
             d3.select('#tree-container').append('html')
               .attr('width', viewerWidth)
