@@ -192,7 +192,7 @@ const Agencies = (props) => {
       location={props.location}
       title='Check out this analysis on Data Lab'
       text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-      twitter='#DataLab #Treasury #DataTransparency #USAspending'
+      twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
     />
 
     <Grid container justify='center'>
