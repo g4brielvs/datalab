@@ -127,7 +127,7 @@ module.exports = [ {
         // categories: './citizens-guide/src/spending/categories/index.js',
         // countryComparison: './citizens-guide/src/spending/countries/index.js',
         intro: './src/libs/ffg/src/spending/intro/index.js',
-        // trends: './citizens-guide/src/spending/trends/index.js'
+        trends: './src/libs/ffg/src/spending/trends/index.js'
     },
     devtool: devtool,
     devServer: devServer,
