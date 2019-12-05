@@ -8,7 +8,6 @@ import { manualThresholds } from './manualThresholds';
 import { trendMobile } from '../../components/trendsMobile';
 import colors from '../../globalSass/colors.scss';
 import CategoryData from '../../../../assets/ffg/data/federal_spending_trends.csv';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 // IE shim
 if (!Element.prototype.matches) {
