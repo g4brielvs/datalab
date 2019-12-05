@@ -73,9 +73,33 @@ const moduleRules = [
 
 module.exports = [ {
     entry: {
+        tabs: './src/libs/ffg/src/components/tabs/tabs.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/components/tabs/',
+        publicPath: '/static/americas-finance-guide/components/tabs/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
         // categories: './citizens-guide/src/revenue/categories/index.js',
-        // trends: './citizens-guide/src/revenue/trends/index.js',
+        trends: './src/libs/ffg/src/revenue/trends/index.js',
         countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
     devtool: devtool,
@@ -129,7 +153,7 @@ module.exports = [ {
     entry: {
         // countryComparison: './citizens-guide/src/deficit/countries/index.js',
         intro: './src/libs/ffg/src/deficit/intro/index.js',
-        // trends: './citizens-guide/src/deficit/trends/index.js'
+        trends: './src/libs/ffg/src/deficit/trends/index.js'
     },
     devtool: devtool,
     devServer: devServer,
@@ -154,7 +178,7 @@ module.exports = [ {
 }, {
     entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
-        // trends: './citizens-guide/src/debt/trends/index.js',
+        trends: './src/libs/ffg/src/debt/trends/index.js',
         // analysis: './citizens-guide/src/debt/analysis/index.js',
         // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
