@@ -56,7 +56,7 @@ const StoryLayout = (props) => {
               ]},
               {
               ffg: [
-                {header: 'Overview', name: "America's Finance Guide", link: '#'},
+                {header: 'Overview', name: "America's Finance Guide", link: '/americas-finance-guide/overview'},
                 {header: 'Revenue', name: 'Revenue and GDP', link: '/americas-finance-guide/revenue-and-gdp'},
                 {header: 'Revenue', name: 'Revenue Categories', link: '#'},
                 {header: 'Revenue', name: 'Federal Revenue Trends', link: '/americas-finance-guide/revenue-trends'},
