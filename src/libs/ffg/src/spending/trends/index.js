@@ -63,6 +63,8 @@ function renderChart(data) {
 
     let container;
 
+        console.log('isMobileDevice()', isMobileDevice());
+
     if (isMobileDevice()) {
         container = d3.select('#viz');
         container.selectAll('*').remove();
