@@ -30,7 +30,7 @@ class PageHeader extends React.Component {
     // homepage listener...
     if (this.props.isHome == true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.scrollY > 135;
+        let isSticky = window.pageYOffset > 135;        
         this.setState({ isSticky: isSticky });
       });
     }
@@ -68,7 +68,7 @@ class PageHeader extends React.Component {
 
   handleMouseLeave = e => {
     e.stopPropagation();
-    this.setState({ activeItem: '' });
+    this.setState({ activeItem: ' ' });
   };
 
   burgerClick = () =>  {
@@ -76,10 +76,13 @@ class PageHeader extends React.Component {
   };
 
   handleItemHover = e => {
+    if (!e.target.innerText) {
+      return this.setState({activeItem: ' '});
+    }
     this.setState({ activeItem: e.target.innerText });
     // shim for datalab express as we do not need it currently
-    if (e.target.innerText == "DataLab Express ") {
-      this.setState({ activeItem: '' });
+    if (e.target.innerText.toString().trim() === "DataLab Express") {
+      this.setState({ activeItem: ' ' });
     }
   };
 
@@ -107,19 +110,19 @@ class PageHeader extends React.Component {
               </span>
               <ul className={styles.ulNav} id={styles.burgerMenu}>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item}>
-                  <a href='#' className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </a>
+                  <button className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
                 </li>
               </ul>
             </nav>
