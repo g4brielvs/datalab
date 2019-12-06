@@ -14,7 +14,7 @@ import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingTrendsPage(props) {
     return (
@@ -35,21 +35,21 @@ function SpendingTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav classNameName="chapter-nav chapter-nav--spending">
-                    <ul classNameName="chapter-nav__primary-list">
-                        <li classNameName="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} classNameName="fas fa-chevron-left"/> Overview</a></li>
+                <nav className="chapter-nav chapter-nav--spending">
+                    <ul className="chapter-nav__primary-list">
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./spending-and-gdp">Spending and GDP</a></li>
                         <li><a href="./spending-categories">Spending Categories</a></li>
                         <li><a href="./spending-trends">Federal Spending Trends</a></li>
                         <li><a href="./spending-country-comparison">Country Comparison</a></li>
                     </ul>
-                    <button classNameName="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} classNameName="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} classNameName="fas fa-lg fa-angle-up menu-up"/>
+                    <button className="chapter-nav-trigger">
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
-                <div classNameName="ffg-wrapper">
+                <div className="ffg-wrapper">
                     <ControlBar>
                         <Share 
                             location={props.location}
@@ -87,7 +87,7 @@ function SpendingTrendsPage(props) {
                             </div>
 
                             <div id="show-hide">
-                                <button id="activate-show-hide">Filter <i className='fa fa-sliders-h'></i></button>
+                                <button id="activate-show-hide">Filter <FontAwesomeIcon icon={faSlidersH} className="fa fa-sliders-h"/></button>
                                 <div id="show-hide-tray">
                                     <div className='show-hide__buttons'>
                                         <div className='show-hide__buttons--left'>
