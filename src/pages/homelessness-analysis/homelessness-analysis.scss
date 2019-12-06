@@ -1,4 +1,90 @@
+@import '../../styles/variables';
 $homelessAnalysisPurple: rgb(96, 70, 126);
+
+#p2_2 {
+	height: 330px;
+}
+
+#p2_2_legend {
+	height: 65px;
+}
+
+#p2_2_legend_key {
+	height: 15px;
+	width: 18%;
+	float: left;
+}
+
+#p2_2_key {
+	height: 15px;
+	// width: 10px;
+	width:100%;
+	padding-left:15%;
+	border-radius:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#p2_2_key_value {
+	height: 10px;
+	width:100%;
+	text-align: center;
+}
+
+#p2_4_legend_key {
+	height: 15px;
+	width: 18%;
+	float: left;
+}
+
+#p2_4_key {
+	height: 15px;
+	width:100%;
+	padding-left:15%;
+	border-radius:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#p2_4_key_value {
+	height: 10px;
+	width:100%;
+	text-align: center;
+}
+
+#p2_2_legend_key {
+	height: 15px;
+	width: 18%;
+	float: left;
+}
+
+#p2_2_key {
+	height: 15px;
+	width:100%;
+	padding-left:15%;
+	border-radius:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#p2_2_key_value {
+	height: 10px;
+	width:100%;
+	text-align: center;
+
+}
+
+#p2_2_key_value p {
+	font-size: 0.7rem;
+	line-height: 1 rem;
+	color: #000;
+}
+
+#p2_4_key_value p {
+	font-size: 0.7rem;
+	line-height: 1.5rem;
+	color: #000;
+}
 
 .homeless-analysis-header-callout {
 	color: $homelessAnalysisPurple;
@@ -18,6 +104,22 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homelessness-subheading2 {
 	font-size: 1rem;
 	margin-top: 10px;
+	margin-bottom: $margin-30;
+}
+
+.homelessness-container2 {
+	margin-top: $margin-10;
+	border-top: 1px solid #CCC;
+	margin-bottom: -$margin-10;
+}
+
+.homelessness-container2--left {
+	padding-right: $margin-10;
+}
+
+.homelessness-container2--right {
+	padding-left: $margin-10;
+	border-left: 1px solid #CCC;
 }
 
 #homelessnessPage .col-lg-10 {
@@ -980,4 +1082,19 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 	max-height: 500px;
 	width: auto;
 	height: auto;
+}
+
+@media screen and (min-width: $desktop-xl){
+	.homelessness-subheading2 {
+		margin-bottom: $margin-20;
+	}
+}
+
+@media screen and (max-width: $tablet - 1){
+	.homelessness-subheading2 {
+		margin-bottom: $margin-15;
+	}
+	.homelessness-container2 {
+		border: none;
+	}
 }
