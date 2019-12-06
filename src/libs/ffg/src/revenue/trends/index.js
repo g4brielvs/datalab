@@ -6,7 +6,6 @@ import colors from '../../globalSass/colors.scss';
 import { trendMobile } from '../../components/trendsMobile';
 import { manualThresholds } from './manualThresholds';
 import CategoryData from '../../../../assets/ffg/data/federal_revenue_trends.csv';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 // IE shim
 if (!Element.prototype.matches) {
@@ -42,6 +41,9 @@ function sortByLatestYear(a, b) {
 }
 
 function init() {
+    container = establishContainer(930, null, accessibilityAttrs);
+    console.log('container: ', container);
+    console.log('isMobileDevice: ', isMobileDevice());
     if (isMobileDevice()) {
         container = d3.select('#viz').append('div').classed('trend-mobile', true);
         trendMobile(data.sort(sortByLatestYear), container, config);
