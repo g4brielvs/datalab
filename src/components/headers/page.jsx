@@ -3,13 +3,14 @@ import styles from "./page.module.scss";
 
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
+import TagLineMobile from '../../svgs/logo-tablet-mobile.svg';
+
 import Arrow from '../../svgs/arrow.svg';
 import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
@@ -26,6 +27,13 @@ class PageHeader extends React.Component {
   };
 
   componentDidMount() {
+
+
+    // if we're NOT on the homepage...
+    // always set to true!
+    if (this.props.isHome == false) {
+      this.setState({ isSticky: true });
+    }
 
     // homepage listener...
     if (this.props.isHome == true) {
@@ -47,6 +55,7 @@ class PageHeader extends React.Component {
       });
     }
 
+
     // not on homepage...
     if (this.props.isHome == false) {
       document.addEventListener('scroll', () => {
@@ -59,11 +68,6 @@ class PageHeader extends React.Component {
       });
     }
 
-    // if we're NOT on the homepage...
-    // always set to true!
-    if (this.props.isHome == false) {
-      this.setState({ isSticky: true });
-    }
   };
 
   handleMouseLeave = e => {
@@ -86,24 +90,35 @@ class PageHeader extends React.Component {
     }
   };
 
+  tagLineCheck = (isSticky, isMobile) => {
+    if (isSticky) {
+      if (isMobile) {
+        return(<TagLineMobile/>);
+      }
+      return(<NoTagLine/>);
+    } else {
+      if (isMobile) {
+        return(<TagLineMobile/>);
+      }
+      return(<TagLine/>);
+    }
+  };
+
   render() {
 
     let isSticky = this.state.isSticky;
+    let isMobile = window.innerWidth < 495 ? true : false; // 495 arbitrary value when position absolute hits
     
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
         <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
           <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
             <a href="/">
-              <div className={styles.logoContainer}>
-                {isSticky ? (
-                  <NoTagLine />
-                ) : (
-                  <TagLine />
-                )}
+              <div>
+                {this.tagLineCheck(isSticky, isMobile)}
               </div>
             </a>
-
+            
             <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
               <span className={styles.toggle} onClick={this.burgerClick}>
                 <FontAwesomeIcon icon={faBars} />
