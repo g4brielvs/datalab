@@ -12,12 +12,16 @@
     top: 140px;
   }
 
+  // mobile sub-header
+  .sub {
+    top: 135px;
+  }
+
   .nav {
     position: absolute;
     padding: 0;
     padding-right: 2rem;
     right: 0;
-    margin: 0;
     width: auto;
     border-top: none;
 
@@ -101,9 +105,13 @@
 }
 
 // "super mobile" version 
-@media screen and (max-width: 490px) {
-  .logo-wrapper {
-    justify-content: flex-start;
+@media screen and (max-width: 495px) {
+  .main.tight {
+    height: 60px;
+  }
+
+  .sub {
+    top: 100px;
   }
 }
 

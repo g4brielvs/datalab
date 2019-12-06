@@ -107,15 +107,14 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    let isMobile = window.innerWidth < 475 ? true : false; // 475 arbitrary value...
-    let isTablet = window.innerWidth < 900 ? true : false; // burger toggle value...
+    let isMobile = window.innerWidth < 495 ? true : false; // 495 arbitrary value when position absolute hits
     
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
         <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
           <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
             <a href="/">
-              <div className={`${isSticky ? styles.logoContainerSticky : ``}`}>
+              <div>
                 {this.tagLineCheck(isSticky, isMobile)}
               </div>
             </a>
