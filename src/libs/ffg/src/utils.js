@@ -70,6 +70,8 @@ export function establishContainer(height, width, accessibilityAttrs) {
         svg.attr('aria-describedby', 'svgMainDesc');
     }
     
+    console.log('svg', svg);
+    
     return svg;
 }
 
