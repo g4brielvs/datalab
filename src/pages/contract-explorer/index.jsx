@@ -4,7 +4,8 @@ import Accordion from '../../components/accordion/accordion';
 import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
-import Share from '../../components/share/share'
+import Share from '../../components/share/share';
+import SunburstContainer from "../../containers/sunburst-vega-container/sunburst-vega-container";
 import ToolLayout from '../../components/layouts/tool/tool';
 import ControlBar from "../../components/control-bar/control-bar"
 
@@ -35,11 +36,30 @@ export default class ContractExplorerPage extends Component {
 					<li>To find a specific agency or contractor by name, type the name into the search bar.</li>
 				</ul>
 			</Accordion>
-			<ControlBar>
-				<Reset />
-			  <Share location={this.props.location} />
-			</ControlBar>
+      <ControlBar>
+        <Reset />
+        <Share location={this.props.location} />
+      </ControlBar>
+			<Grid container justify='flex-end'>
+				<Grid item><Reset /></Grid>
+				<Grid item><Share location={this.props.location} /></Grid>
+			</Grid>
+
+			<Grid
+				container
+				spacing = {4}>
+
+				<Grid item xs={6} sm={12} >
+
+				</Grid>
+
+				<Grid item xs={6} sm={12}>
+          <SunburstContainer />
+				</Grid>
+			</Grid>
 		</ToolLayout>
 	</>
 
 }
+
+

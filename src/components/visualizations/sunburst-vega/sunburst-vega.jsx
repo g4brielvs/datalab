@@ -2,6 +2,9 @@
 import React from 'react';
 import { Vega } from 'react-vega';
 import sunburstSpec from './utils/sunburst-spec';
+
+import './sunburst-vega.scss';
+
 import transformData from './utils/transformData.js';
 
 export default class Sunburst extends React.Component {
@@ -89,8 +92,6 @@ export default class Sunburst extends React.Component {
     });
 
     return filtered;
-
-    // console.log(this.state.data);
   }
 
 
