@@ -40,10 +40,6 @@ export default class ContractExplorerPage extends Component {
         <Reset />
         <Share location={this.props.location} />
       </ControlBar>
-			<Grid container justify='flex-end'>
-				<Grid item><Reset /></Grid>
-				<Grid item><Share location={this.props.location} /></Grid>
-			</Grid>
 
 			<Grid
 				container
