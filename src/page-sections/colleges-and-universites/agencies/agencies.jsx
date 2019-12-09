@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from "react"
 import { graphql, useStaticQuery } from 'gatsby';
 
 import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
@@ -16,6 +16,8 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
+import DataTable from "../../../components/chartpanels/data-table"
+import formatNumber from "../../../utils/number-formatter"
 import * as d3 from "d3v3"
 const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
@@ -51,10 +53,30 @@ const Agencies = (props) => {
           value
         }
       }
+      allCuBubbleChartTableV2Csv {
+        nodes {
+          Recipient
+          agency
+          subagency
+          family
+          type
+          obligation
+        }
+      }
     }
   `);
 
-  const switchView = view => alert('switch to ' + view + ' mode');
+  const tableColumnTitles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
+  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
+
+  const [chartView, isChartView] = useState(true);
+  const switchView = view => {
+    if (view === 'chart') {
+      isChartView(true);
+    } else {
+      isChartView(false);
+    }
+  }
 
   const detailPanelRef = React.createRef();
   let currentDetails = {};
@@ -170,7 +192,7 @@ const Agencies = (props) => {
       location={props.location}
       title='Check out this analysis on Data Lab'
       text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-      twitter='#DataLab #Treasury #DataTransparency #USAspending'
+      twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
     />
 
     <Grid container justify='center'>
@@ -203,10 +225,17 @@ const Agencies = (props) => {
           </Grid>
           <Grid item xs={10}>
             <BubbleChart
+              display={chartView}
               items={_data.allUnivBubbleChartCsv.nodes}
               showDetails={getClickedDetails}
               setLegendLeft={setLegendLeft}
               ref={chartRef}
+            />
+
+            <DataTable
+              display={!chartView}
+              columnTitles={tableColumnTitles}
+              data={tableData}
             />
           </Grid>
         </Grid>

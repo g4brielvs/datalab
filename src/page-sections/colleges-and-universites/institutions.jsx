@@ -39,10 +39,10 @@ const Institutions = (props) => {
 
       <ControlBar>
         <Share location={props.location}
-               title='Check out this analysis on Data Lab'
-               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-               twitter='#DataLab #Treasury #DataTransparency #USAspending'
-        />
+                   title='Check out this analysis on Data Lab'
+                   text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+                   twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+                   />
       </ControlBar>
       <div>
 	<Mapbox data={GeoDataMapbox}/>
