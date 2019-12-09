@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss'; 
+
 @media screen and (max-width: 958px) {
   .toggle {
     display: flex;
@@ -104,8 +106,20 @@
   }
 }
 
+@media screen and (max-width: 949) {
+  .sub {
+    top: 130px;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .sub {
+    top: 90px;
+  }
+}
+
 // "super mobile" version 
-@media screen and (max-width: 495px) {
+@media screen and (max-width: $phone) {
   .main.tight {
     height: 60px;
   }
