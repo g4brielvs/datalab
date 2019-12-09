@@ -111,7 +111,6 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    console.log(this.state.isMobileTag);
 
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
@@ -149,7 +148,7 @@ class PageHeader extends React.Component {
           </div>
         </div>
 
-        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome == true ? `` : `${this.state.skinnySub}px`}}>
+        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome === true ? `` : `${this.state.skinnySub}px`}}>
           <Dropdown activeItem={this.state.activeItem}
                     mouseHandle={this.handleMouseLeave}
                     data={this.props.megamenuItems} />
