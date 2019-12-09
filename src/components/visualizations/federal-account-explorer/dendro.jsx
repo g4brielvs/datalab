@@ -30,7 +30,7 @@ function Dendro(props) {
       const duration = 750;
 
       // size of the diagram
-      const svgWidth = window.innerWidth;
+      const svgWidth = document.body.clientWidth;
       const svgHeight = 800;
 
       let svgGroup;
