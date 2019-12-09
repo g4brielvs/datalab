@@ -12,7 +12,7 @@ export default class Toc extends React.Component {
     <section id={styles.TOC}>
       <Grid container justify='space-around'>
         {this.props.sections.map((item, key) =>
-          <Grid key={key} className={`${styles.tile}`} xs={12} md={6} xl>
+          <Grid item key={key} className={`${styles.tile}`} xs={12} md={6} xl>
             <Grid container justify='center'>
               <Grid item className={styles.a}>
                 <a href={`#section-${item.section}`}>
