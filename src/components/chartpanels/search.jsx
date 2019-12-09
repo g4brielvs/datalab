@@ -1,4 +1,5 @@
 import styles from './search.module.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import vizStyles from './viz-control.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -52,7 +53,7 @@ export default class SearchPanel extends React.Component {
 
   render = () => {
     return (
-      <form>
+      <div className={vizStyles.container}>
         <OutlinedInput
           placeholder={'Search ' + this.props.listDescription}
           variant='outlined'
@@ -88,7 +89,7 @@ export default class SearchPanel extends React.Component {
               </ListItem>
             )}
         </List>
-      </form>
+      </div>
     )
   }
 }

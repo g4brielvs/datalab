@@ -275,7 +275,7 @@ const Categories = () => {
           </Hidden>
         </Grid>
         <Grid item>
-          <form id='sunburstRadio'>
+          <div id='sunburstRadio'>
             <Grid container>
               <Grid item>
                 <input type='radio'
@@ -308,7 +308,7 @@ const Categories = () => {
                 <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
               </Grid>
             </Grid>
-          </form>
+          </div>
 
           <Grid container>
             <Grid item xs={1}>
