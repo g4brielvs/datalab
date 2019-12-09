@@ -17,6 +17,7 @@ class PageHeader extends React.Component {
     super(props);
     this.state = {
       isSticky: false,
+      isMobileTag: false,
       top: 0,
       skinnyTop: 29,
       skinnySub: 80,
@@ -28,6 +29,9 @@ class PageHeader extends React.Component {
 
   componentDidMount() {
 
+    // check for mobile when window is avail...
+    const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
+    this.setState({isMobileTag: isMobile});
 
     // if we're NOT on the homepage...
     // always set to true!
@@ -90,14 +94,14 @@ class PageHeader extends React.Component {
     }
   };
 
-  tagLineCheck = (isSticky, isMobile) => {
+  tagLineCheck = (isSticky) => {
     if (isSticky) {
-      if (isMobile) {
+      if (this.state.isMobileTag) {
         return(<TagLineMobile/>);
       }
       return(<NoTagLine/>);
     } else {
-      if (isMobile) {
+      if (this.state.isMobileTag) {
         return(<TagLineMobile/>);
       }
       return(<TagLine/>);
@@ -107,15 +111,15 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    let isMobile = window.innerWidth < 475 ? true : false; // 475 arbitrary value when position absolute hits
-    
+    console.log(this.state.isMobileTag);
+
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
         <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
           <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
             <a href="/">
               <div>
-                {this.tagLineCheck(isSticky, isMobile)}
+                {this.tagLineCheck(isSticky, this.state.isMobileTag)}
               </div>
             </a>
             

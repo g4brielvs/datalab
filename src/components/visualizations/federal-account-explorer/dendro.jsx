@@ -579,7 +579,7 @@ function Dendro(props) {
 	    data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
 	    CreateDendro(data);
 	  } else {
-            const viewerWidth = window.innerWidth;
+            const viewerWidth = document.body.clientWidth;
             const viewerHeight = 300;
             d3.select('#tree-container').append('html')
               .attr('width', viewerWidth)
