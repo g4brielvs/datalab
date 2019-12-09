@@ -31,12 +31,12 @@ class PageHeader extends React.Component {
 
     // if we're NOT on the homepage...
     // always set to true!
-    if (this.props.isHome == false) {
+    if (this.props.isHome === false) {
       this.setState({ isSticky: true });
     }
 
     // homepage listener...
-    if (this.props.isHome == true) {
+    if (this.props.isHome === true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.pageYOffset > 135;        
         this.setState({ isSticky: isSticky });
@@ -44,7 +44,7 @@ class PageHeader extends React.Component {
     }
 
     // not on homepage..
-    if (this.props.isHome == false) {
+    if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
         const max = 29;
         let skinnyTop = max - window.pageYOffset;
@@ -57,7 +57,7 @@ class PageHeader extends React.Component {
 
 
     // not on homepage...
-    if (this.props.isHome == false) {
+    if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
         const max = 80;
         let skinnySub = max - window.pageYOffset;
