@@ -107,7 +107,7 @@ class PageHeader extends React.Component {
   render() {
 
     let isSticky = this.state.isSticky;
-    let isMobile = window.innerWidth < 495 ? true : false; // 495 arbitrary value when position absolute hits
+    let isMobile = window.innerWidth < 475 ? true : false; // 475 arbitrary value when position absolute hits
     
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
