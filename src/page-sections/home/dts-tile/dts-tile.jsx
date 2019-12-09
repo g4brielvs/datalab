@@ -31,13 +31,15 @@ function DtsTile(props) {
     data = _data.allRecent30Csv.nodes;
     redraw();
 
-    window.addEventListener('resize', function () {
-      if (debounce) {
-        clearTimeout(debounce);
-      }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', function() {
+        if (debounce) {
+          clearTimeout(debounce);
+        }
 
-      debounce = setTimeout(redraw, 100);
-    });
+        debounce = setTimeout(redraw, 100);
+      });
+    }
 
   });
 

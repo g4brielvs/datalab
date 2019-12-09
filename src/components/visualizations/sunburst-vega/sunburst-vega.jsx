@@ -99,8 +99,13 @@ export default class Sunburst extends React.Component {
 
   render() {
     const { data, spec } = this.state;
-    return (
-      <Vega data={data} spec={spec} signalListeners={this.signalListeners} />
-    )
+    if (typeof window !== 'undefined') {
+      return (
+        <Vega data={data} spec={spec} signalListeners={this.signalListeners} />
+      )
+    } else  {
+      return <div></div>
+    }
+
   }
 }
