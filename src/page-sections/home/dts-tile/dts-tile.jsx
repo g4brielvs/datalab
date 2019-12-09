@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from "gatsby"
-import "./dts-tile.scss"
-import "./landing-dts.scss"
-import { graphql, useStaticQuery } from "gatsby"
-import * as d3 from 'd3v4'
-
+import { Link } from "gatsby";
+import "./dts-tile.scss";
+import "./landing-dts.scss";
+import { graphql, useStaticQuery } from "gatsby";
+import * as d3 from 'd3v4';
 
 function DtsTile(props) {
 
@@ -27,17 +26,21 @@ function DtsTile(props) {
   };
 
   useEffect(() => {
-    // Update the document title using the browser API
-    data = _data.allRecent30Csv.nodes;
-    redraw();
 
-    window.addEventListener('resize', function () {
-      if (debounce) {
-        clearTimeout(debounce);
-      }
-
-      debounce = setTimeout(redraw, 100);
+    d3.csv('/data-lab-data/dts/recent.csv', tileData => {
+      data = tileData;
+      redraw();
     });
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', function() {
+        if (debounce) {
+          clearTimeout(debounce);
+        }
+
+        debounce = setTimeout(redraw, 100);
+      });
+    }
 
   });
 

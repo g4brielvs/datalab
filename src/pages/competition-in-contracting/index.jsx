@@ -182,7 +182,7 @@ class CompetitionInContractingPage extends Component {
                 </svg>
                 <label htmlFor="contactChoice1" style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Competed</label>
               </div>
-              <form className={competitionStyles.barChartToolbar}>
+              <div className={competitionStyles.barChartToolbar}>
                 <div className={competitionStyles.selectWrapper1}>
                   <input type="radio"
                     id="contactChoice1"
@@ -221,7 +221,7 @@ class CompetitionInContractingPage extends Component {
                   />
                   <label htmlFor="contactChoice4" style={{ fontSize: '0.75rem' }}>Actions</label>
                 </div>
-              </form>
+              </div>
             </div>
 
             <div className={competitionStyles.barChartDiv}>

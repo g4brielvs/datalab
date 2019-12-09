@@ -506,9 +506,6 @@ function Dendro(props) {
     CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
-      const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-      const Quarter = $('input[name="Quarter"]:checked').val();
-
       // Handle Reset Button Click //
       // reset to default of FY19 and Q1 //
       d3.select('#resetBtn').on('click', function() {
@@ -520,6 +517,8 @@ function Dendro(props) {
 
       let data = [];
       $("input[type='radio']").change(() => {
+        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+        const Quarter = $('input[name="Quarter"]:checked').val();
         if (FiscalYear === 'fy17') {
           d3.selectAll('#svg-dendrogram').remove();
           if (Quarter == '12-31') {
@@ -548,7 +547,6 @@ function Dendro(props) {
         } else if (FiscalYear === 'fy18') {
 
           d3.selectAll('#svg-dendrogram').remove();
-          const Quarter = $('input[name="Quarter"]:checked').val();
           if (Quarter == '12-31') {
 
             data = dendroData18.filter((d) => d.reporting_period_end == '2017-12-31');
@@ -566,7 +564,6 @@ function Dendro(props) {
           }             
         }else if (FiscalYear === 'fy19'){
           d3.selectAll('#svg-dendrogram').remove();
-          const Quarter = $('input[name="Quarter"]:checked').val();
           if (Quarter == '12-31') {
             data = dendroData19.filter((d) => d.reporting_period_end == '2018-12-31');
             CreateDendro(data);
@@ -599,7 +596,7 @@ function Dendro(props) {
       <div className='viz-bkgd'>
         <div className='mask'>
           <div className='viz-actions'>
-            <form id='DendroRadio'>
+            <div id='DendroRadio'>
               <div className='select-wrapper1'>
                 <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
                 <label className='dendro-input-1' htmlFor="contactChoice1">FY 17 </label>
@@ -623,7 +620,7 @@ function Dendro(props) {
                 <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
                 <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>

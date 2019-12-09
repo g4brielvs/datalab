@@ -21,6 +21,18 @@ exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
         ],
       },
     });
+
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /vega-embed/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+
   };
   
   actions.setWebpackConfig({
