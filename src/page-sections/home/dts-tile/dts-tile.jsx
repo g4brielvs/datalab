@@ -91,7 +91,7 @@ function DtsTile(props) {
     setSvg();
 
     x.domain(d3.extent(data, function (d) { return new Date(d.date); }));
-    y.domain([0, d3.max(data, function (d) { return d.Totals; })]);
+    y.domain([0, d3.max(data, function (d) { return d.Totals * 1.5; })]); // multiply by 1.5 to lower domain for new data range
 
     let lastEntry = data[data.length - 1];
     let lastDate = new Date(lastEntry.date);
@@ -136,17 +136,6 @@ function DtsTile(props) {
     d3.select(".dtsm-dollars").text(dollarFormatter(lastValue));
     d3.select(".side-dts__date").text("Updated " + dateFormatter(lastDate));
   }
-
-  const _data = useStaticQuery(graphql`
-    query dtsQuery {
-      allRecent30Csv {
-        nodes {
-          date
-          Totals
-        }
-      }
-    }
-  `)
 
   return (
     <>
