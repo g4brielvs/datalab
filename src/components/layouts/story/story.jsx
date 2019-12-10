@@ -6,7 +6,7 @@ import Default from '../default/default';
 import { Grid } from '@material-ui/core';
 import HwctaLink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
-import {StorypageHeader} from '../../headers/headers';
+import { StorypageHeader } from '../../headers/headers';
 
 import Toc from '../../toc/toc';
 
