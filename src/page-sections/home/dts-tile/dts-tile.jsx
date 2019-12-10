@@ -27,7 +27,7 @@ function DtsTile(props) {
 
   useEffect(() => {
 
-    d3.csv('/data-lab-data/dts/recent.csv', tileData => {
+    d3.csv('/data-lab-data/dts/recent_30.csv', tileData => {
       data = tileData;
       redraw();
     });
