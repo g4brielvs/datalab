@@ -58,7 +58,7 @@ const Institutions = (props) => {
             ];
           })}
           columnTitles={tableColumnTitles}
-          display={true} // for now, left panel for map isn't finished.
+          display={false} // for now, left panel for map isn't finished.
         />
       </div>
       
