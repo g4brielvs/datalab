@@ -144,7 +144,7 @@ function OverviewPage(props) {
                             </div>
 
                             <div className="chapter__chart">
-                                <img src="/assets/ffg/bp/revenue/revenue-graph-outline.svg" alt="Federal revenue has increased over the past five years. Annual revenue was $3.25 trillion, $3.27 trillion, $3.31 trillion $3.33 trillion and $3.5 trillion for the years 2015 to 2019 respectively. "></img>
+                                <img src="/americas-finance-guide/images/revenue-graph-outline.svg" alt="Federal revenue has increased over the past five years. Annual revenue was $3.25 trillion, $3.27 trillion, $3.31 trillion $3.33 trillion and $3.5 trillion for the years 2015 to 2019 respectively. "></img>
                                 <p className="chapter__chart--reference">Data used throughout this site is provided by the <a href={AfgData.overview_mts.value} target="_blank" rel="noopener noreferrer">U.S. Department of the Treasury</a> and refers to Fiscal Year {AfgData.current_fy.value}.</p>
                             </div>
                         </div>
@@ -227,7 +227,7 @@ function OverviewPage(props) {
                                 </a>
                             </div>
                             <div className="chapter__chart">
-                                <img src="/assets/ffg/bp/spending/spending-graph-outline.svg" alt="Federal spending has increased steadily over the past five years. Annual spending was $3.69 trillion, $3.85 trillion, $3.98 trillion $4.11 trillion, and $4.4 trillion for the years 2015 to 2019 respectively."></img>
+                                <img src="/americas-finance-guide/images/spending-graph-outline.svg" alt="Federal spending has increased steadily over the past five years. Annual spending was $3.69 trillion, $3.85 trillion, $3.98 trillion $4.11 trillion, and $4.4 trillion for the years 2015 to 2019 respectively."></img>
                                 <p className="chapter__chart--reference">Data used throughout this site is provided by the <a href={AfgData.overview_mts.value} target="_blank" rel="noopener noreferrer">U.S. Department of the Treasury</a> and refers to Fiscal Year {AfgData.current_fy.value}</p>
                             </div>
                         </div>
@@ -312,7 +312,7 @@ function OverviewPage(props) {
                                 </a>
                             </div>
                             <div className="chapter__chart">
-                                <img src="/assets/ffg/bp/deficit/deficit-graph-outline.svg" alt="Since the government spent $4.4 trillion in 2019 and collected $3.5 trillion, the deficit for the year was $984 billion."></img>
+                                <img src="/americas-finance-guide/images/deficit-graph-outline.svg" alt="Since the government spent $4.4 trillion in 2019 and collected $3.5 trillion, the deficit for the year was $984 billion."></img>
                                 <p className="chapter__chart--reference">Data used throughout this site is provided by the <a href={AfgData.overview_mts.value} target="_blank" rel="noopener noreferrer">U.S. Department of the Treasury</a> and refers to Fiscal Year {AfgData.current_fy.value}</p>
                             </div>
                         </div>
@@ -388,7 +388,7 @@ function OverviewPage(props) {
                                 </a>
                             </div>
                             <div className="chapter__chart">
-                                <img src="/assets/ffg/bp/debt/debt-graph-outline.svg" alt="Federal debt has increased over the past five years. Federal debt was $18.2 trillion, $19.6 trillion, $20.2 trillion, $21.5 trillion and $22.7 trillion at the end of the years 2015 to 2019 respectively."></img>
+                                <img src="/americas-finance-guide/images/debt-graph-outline.svg" alt="Federal debt has increased over the past five years. Federal debt was $18.2 trillion, $19.6 trillion, $20.2 trillion, $21.5 trillion and $22.7 trillion at the end of the years 2015 to 2019 respectively."></img>
                                 <p className="chapter__chart--reference">Data used throughout this site is provided by the <a href={AfgData.overview_mspd.value} rel="noopener noreferrer" target="_blank">U.S. Department of the Treasury</a> and refers to Fiscal Year {AfgData.current_fy.value}</p>
                             </div>
                         </div>
