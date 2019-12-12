@@ -30,15 +30,15 @@ class Dropdown extends React.Component {
         {activeItem === "Analyses" &&
           <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
             <section className={`${styles.section} ${styles.analyses}`}>
-              <h4 className={styles.title}>Topical Analyses</h4>
+              <h4 className={styles.sectionTitle}>Topical Analyses</h4>
               <ul className={`${styles.ul} ${styles.ulAnalyses}`}>{this.returnActiveList(this.state.data[0].analyses.slice(0, 3))}</ul>
             </section>
             <section className={`${styles.section} ${styles.analyses}`}>
-              <h4 className={styles.title}>Contract Analyses</h4>
+              <h4 className={styles.sectionTitle}>Contract Analyses</h4>
               <ul className={`${styles.ul} ${styles.ulAnalyses}`}>{this.returnActiveList(this.state.data[0].analyses.slice(3, 6))}</ul>
             </section>
             <section className={`${styles.section} ${styles.analyses}`}>
-              <h4 className={styles.title}>Financial Data Visualizations</h4>
+              <h4 className={styles.sectionTitle}>Financial Data Visualizations</h4>
               <ul className={`${styles.ul} ${styles.ulAnalyses}`}>{this.returnActiveList(this.state.data[0].analyses.slice(6, 9))}</ul>
             </section>
           </div>
@@ -55,23 +55,23 @@ class Dropdown extends React.Component {
           activeItem === "America's Finance Guide" &&
           <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
             <section className={styles.section}>
-              <h4 className={styles.title}>Overview</h4>
+              <h4 className={styles.sectionTitle}>Overview</h4>
               <ul className={styles.ulFfg}>{this.returnActiveList(this.state.data[2].ffg.slice(0, 1))}</ul>
             </section>
             <section className={styles.section}>
-              <h4 className={styles.title}>Revenue</h4>
+              <h4 className={styles.sectionTitle}>Revenue</h4>
               <ul className={styles.ulFfg}>{this.returnActiveList(this.state.data[2].ffg.slice(1, 5))}</ul>
             </section>
             <section className={styles.section}>
-              <h4 className={styles.title}>Spending</h4>
+              <h4 className={styles.sectionTitle}>Spending</h4>
               <ul className={styles.ulFfg}>{this.returnActiveList(this.state.data[2].ffg.slice(5, 9))}</ul>
             </section>
             <section className={styles.section}>
-              <h4 className={styles.title}>Deficit</h4>
+              <h4 className={styles.sectionTitle}>Deficit</h4>
               <ul className={styles.ulFfg}>{this.returnActiveList(this.state.data[2].ffg.slice(9, 12))}</ul>
             </section>
             <section className={styles.section}>
-              <h4 className={styles.title}>Debt</h4>
+              <h4 className={styles.sectionTitle}>Debt</h4>
               <ul className={styles.ulFfg}>{this.returnActiveList(this.state.data[2].ffg.slice(12, 16))}</ul>
             </section>
           </div>
