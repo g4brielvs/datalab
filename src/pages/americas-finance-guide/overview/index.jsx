@@ -16,6 +16,11 @@ import BpToc from '../../../components/bpToc/bpToc'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
+import AnecdoteDebtSVG from '../../../libs/assets/ffg/icons/anecdote-debt.svg';
+import AnecdoteDeficitSVG from '../../../libs/assets/ffg/icons/anecdote-deficit.svg';
+import AnecdoteRevenueSVG from '../../../libs/assets/ffg/icons/anecdote-revenue.svg';
+import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
+
 
 function OverviewPage(props) {
     return (
@@ -80,7 +85,7 @@ function OverviewPage(props) {
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
                                         <button className="anecdote__trigger">
-                                            <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_revenue_short.value} is equal to</span>
+                                        <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser"> Show me what {AfgData.current_fy_revenue_short.value} is equal to</span>
                                         </button>
                                     </div>
 
@@ -166,7 +171,9 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"> <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_spending_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger">
+                                            <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
+                                            <span className="anecdote__teaser"> Show me what {AfgData.current_fy_spending_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
@@ -257,7 +264,9 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"><FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_deficit_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger">
+                                        <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
+                                        <span className="anecdote__teaser"> Show me what {AfgData.current_fy_deficit_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
@@ -335,7 +344,9 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"><FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_debt_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger">
+                                        <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
+                                        <span className="anecdote__teaser"> Show me what {AfgData.current_fy_debt_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
