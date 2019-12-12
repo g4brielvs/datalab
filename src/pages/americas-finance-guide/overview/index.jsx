@@ -137,7 +137,7 @@ function OverviewPage(props) {
                                     </Accordion>
                                 </section>
 
-                                <a className="link-button chapter__cta" href="revenue/">
+                                <a className="link-button chapter__cta" href="/americas-finance-guide/revenue-and-gdp">
                                     <div className="link-button__text--block">
                                         <div className="link-button__text--top">Learn more about</div>
                                         <div className="link-button__text--bottom">Federal Revenue</div>
@@ -223,7 +223,7 @@ function OverviewPage(props) {
                                     </Accordion>
                                 </section>
 
-                                <a className="link-button chapter__cta" href="spending/">
+                                <a className="link-button chapter__cta" href="/americas-finance-guide/spending-and-gdp">
                                     <div className="link-button__text--block">
                                         <div className="link-button__text--top">Learn more about</div>
                                         <div className="link-button__text--bottom">Federal Spending</div>
@@ -310,7 +310,7 @@ function OverviewPage(props) {
                                     </Accordion>
                                 </section>
 
-                                <a className="link-button chapter__cta" href="deficit/">
+                                <a className="link-button chapter__cta" href="/americas-finance-guide/explore-deficit">
                                     <div className="link-button__text--block">
                                         <div className="link-button__text--top">Learn more about</div>
                                         <div className="link-button__text--bottom">Federal Deficit</div>
@@ -388,7 +388,7 @@ function OverviewPage(props) {
                                     </Accordion>
                                 </section>
 
-                                <a className="link-button chapter__cta" href="debt/">
+                                <a className="link-button chapter__cta" href="/americas-finance-guide/explore-debt">
                                     <div className="link-button__text--block">
                                         <div className="link-button__text--top">Learn more about</div>
                                         <div className="link-button__text--bottom">Federal Debt</div>
