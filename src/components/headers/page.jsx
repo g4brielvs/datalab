@@ -50,7 +50,7 @@ class PageHeader extends React.Component {
     // not on homepage..
     if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
-        const max = 29;
+        const max = 26;
         let skinnyTop = max - window.pageYOffset;
         if (window.pageYOffset > max) {
           skinnyTop = 0;
