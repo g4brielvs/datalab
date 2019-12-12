@@ -8,7 +8,9 @@ import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar";
-import DendroContainer from "../../containers/dendro-container/dendro-container";
+
+import loadable from '@loadable/component';
+const DendroContainer = loadable(() => import("../../containers/dendro-container/dendro-container"));
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){

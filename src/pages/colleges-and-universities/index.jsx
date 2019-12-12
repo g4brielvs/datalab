@@ -1,15 +1,17 @@
 import React from 'react';
 
-import Agencies from '../../page-sections/colleges-and-universites/agencies/agencies';
-import Categories from '../../page-sections/colleges-and-universites/categories/categories';
 import CustomHeader from '../../page-sections/colleges-and-universites/custom-header/custom-header';
 import CustomToc from '../../page-sections/colleges-and-universites/custom-toc/custom-toc';
 import Footnotes from '../../components/footnotes/footnotes';
-import Institutions from '../../page-sections/colleges-and-universites/institutions';
 import Overview from '../../page-sections/colleges-and-universites/overview';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
 import { Grid } from "@material-ui/core";
+import loadable from "@loadable/component";
+
+const Agencies = loadable(() => import('../../page-sections/colleges-and-universites/agencies/agencies'));
+const Categories = loadable(() => import('../../page-sections/colleges-and-universites/categories/categories'));
+const Institutions = loadable(() => import('../../page-sections/colleges-and-universites/institutions'));
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>

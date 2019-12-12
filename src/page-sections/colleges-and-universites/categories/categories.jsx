@@ -5,7 +5,6 @@ import Accordion from '../../../components/accordion/accordion';
 import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/search';
 import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
 import SunburstIcon from '../../../images/sunburst_icon.svg';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
@@ -16,6 +15,7 @@ import formatNumber from '../../../utils/number-formatter';
 import loadable from '@loadable/component';
 import DataTable from '../../../components/chartpanels/data-table';
 const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
+const SearchPanel = loadable(() => import('../../../components/chartpanels/search'));
 
 import categoriesStyles from './categories.module.scss';
 

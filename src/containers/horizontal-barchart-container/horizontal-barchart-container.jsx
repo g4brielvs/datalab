@@ -29,11 +29,11 @@ const HorizontalBarChartContainer = (props) => {
         `);
 
         return  <Barchart data={data}
-           unit={this.props.unit}
-           scale={this.props.scale}
-           clickEvent={this.props.clickEvent}
-           _onloadFunctions={this.props.onloadFunctions}
-           _svgClass={this.props.svgClass}>
+           unit={props.unit}
+           scale={props.scale}
+           clickEvent={props.clickEvent}
+           _onloadFunctions={props.onloadFunctions}
+           _svgClass={props.svgClass}>
         </Barchart>
 }
 

@@ -1,4 +1,4 @@
-import React, {useState}  from "react"
+import React, { useState }  from "react";
 import { graphql, useStaticQuery } from 'gatsby';
 
 import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
@@ -9,17 +9,18 @@ import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/search';
 import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
 import VizDetails from '../../../components/chartpanels/viz-detail';
-import Share from "../../../components/share/share"
+import Share from "../../../components/share/share";
 
 import loadable from '@loadable/component';
-import DataTable from "../../../components/chartpanels/data-table"
-import formatNumber from "../../../utils/number-formatter"
-import * as d3 from "d3v3"
+import DataTable from "../../../components/chartpanels/data-table";
+import formatNumber from "../../../utils/number-formatter";
+import * as d3 from "d3v3";
 const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
+const SearchPanel = loadable(() => import('../../../components/chartpanels/search'));
+
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
