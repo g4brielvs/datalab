@@ -125,10 +125,11 @@ function OverviewPage(props) {
                                 <p className="chapter__paragraph--tightened">The federal government collects revenue from a variety of sources, including individual income taxes, payroll taxes, corporate income taxes, and excise taxes. It also collects revenue from services like admission to national parks and customs duties.</p>
 
                                 <section className="accordion">
-                                    <h1 className="accordion__heading">What makes federal revenue increase or decrease?</h1>
-                                    <div className="accordion__content">
-                                        <p>The majority of federal revenue comes from individual and corporate income taxes as well as social insurance taxes. When individuals and corporations earn more money, they pay more in taxes, and thus federal revenue increases. Alternatively, if they make the same amount, but tax rates increase, the federal revenue will also increase. Decreases in federal revenue are largely due to either individuals or corporations making less money or a decrease in tax rates.</p>
-                                    </div>
+                                    <Accordion title="What makes federal revenue increase or decrease?">
+                                        <div className="accordion__content">
+                                            <p>The majority of federal revenue comes from individual and corporate income taxes as well as social insurance taxes. When individuals and corporations earn more money, they pay more in taxes, and thus federal revenue increases. Alternatively, if they make the same amount, but tax rates increase, the federal revenue will also increase. Decreases in federal revenue are largely due to either individuals or corporations making less money or a decrease in tax rates.</p>
+                                        </div>
+                                    </Accordion>
                                 </section>
 
                                 <a className="link-button chapter__cta" href="revenue/">
@@ -208,10 +209,11 @@ function OverviewPage(props) {
                                 <p className="chapter__paragraph--tightened">The federal government funds a variety of programs and services that support the American public. The federal government also spends money on interest it has incurred on outstanding federal debt, including Treasury notes and bonds.</p>
 
                                 <section className="accordion">
-                                    <h1 className="accordion__heading">Who controls government spending anyway?</h1>
-                                    <div className="accordion__content">
-                                        <p>Government spending can be broken down into two categories: mandatory and discretionary. Mandatory spending is determined by previous law and includes spending for programs like Social Security and Medicare. Discretionary spending is determined by the President and Congress each year in the budget and appropriations process. First, the President puts together a budget proposal and sends it to Congress. Then, the House and Senate both draft budget resolutions. Congress can change funding levels, as well as add or eliminate programs, taxes, and other sources of revenue. Once the budget resolutions have been finalized in the House and Senate, Congress reconciles the differences and votes on a final budget. The discretionary spending levels in the budget are divided among the twelve Appropriations Subcommittees, who then draft bills providing funding levels for the Departments, bureaus and agencies within their jurisdiction. After the House and Senate agree to a final funding level for each bill, they are sent to the President for approval or veto.</p>
-                                    </div>
+                                    <Accordion title="Who controls government spending anyway?">
+                                        <div className="accordion__content">
+                                            <p>Government spending can be broken down into two categories: mandatory and discretionary. Mandatory spending is determined by previous law and includes spending for programs like Social Security and Medicare. Discretionary spending is determined by the President and Congress each year in the budget and appropriations process. First, the President puts together a budget proposal and sends it to Congress. Then, the House and Senate both draft budget resolutions. Congress can change funding levels, as well as add or eliminate programs, taxes, and other sources of revenue. Once the budget resolutions have been finalized in the House and Senate, Congress reconciles the differences and votes on a final budget. The discretionary spending levels in the budget are divided among the twelve Appropriations Subcommittees, who then draft bills providing funding levels for the Departments, bureaus and agencies within their jurisdiction. After the House and Senate agree to a final funding level for each bill, they are sent to the President for approval or veto.</p>
+                                        </div>
+                                    </Accordion>
                                 </section>
 
                                 <a className="link-button chapter__cta" href="spending/">
@@ -292,10 +294,11 @@ function OverviewPage(props) {
                                 <p className="chapter__paragraph--tightened">A deficit occurs when money going out exceeds the money coming in. In {AfgData.current_fy.value}, the federal government spent more than it collected.</p>
 
                                 <section className="accordion">
-                                    <h1 className="accordion__heading">What happens when there is a surplus?</h1>
-                                    <div className="accordion__content">
-                                        <p>A surplus occurs when the government collects more money than it spends. The last federal surplus occurred in {AfgData.last_surplus.value}. The government primarily uses surpluses to reduce the federal debt.</p>
-                                    </div>
+                                    <Accordion title="What happens when there is a surplus?">
+                                        <div className="accordion__content">
+                                            <p>A surplus occurs when the government collects more money than it spends. The last federal surplus occurred in {AfgData.last_surplus.value}. The government primarily uses surpluses to reduce the federal debt.</p>
+                                        </div>
+                                    </Accordion>
                                 </section>
 
                                 <a className="link-button chapter__cta" href="deficit/">
@@ -367,10 +370,11 @@ function OverviewPage(props) {
                                 <p className="chapter__paragraph--tightened">Are federal debt and deficit the same thing? No, but they do affect one another.</p>
 
                                 <section className="accordion">
-                                    <h1 className="accordion__heading">Why can’t the government just print more money?</h1>
-                                    <div className="accordion__content">
-                                        <p>It can, and does. While the Department of the Treasury prints actual dollars, “printing money” is also a term that is sometimes used to describe a means of <a href={AfgData.monetary_policy.value} rel="noopener noreferrer" target="_blank">monetary policy</a>, which is conducted by the Federal Reserve. Monetary policy involves controlling the supply of money and the cost of borrowing. The Federal Reserve uses monetary policy to promote maximum employment, stable prices, and moderate long-term interest rates on the behalf of the Congress. The federal government uses fiscal policy, or the control of taxation and government spending, to promote economic activity.</p>
-                                    </div>
+                                    <Accordion title="Why can’t the government just print more money?">
+                                        <div className="accordion__content">
+                                            <p>It can, and does. While the Department of the Treasury prints actual dollars, “printing money” is also a term that is sometimes used to describe a means of <a href={AfgData.monetary_policy.value} rel="noopener noreferrer" target="_blank">monetary policy</a>, which is conducted by the Federal Reserve. Monetary policy involves controlling the supply of money and the cost of borrowing. The Federal Reserve uses monetary policy to promote maximum employment, stable prices, and moderate long-term interest rates on the behalf of the Congress. The federal government uses fiscal policy, or the control of taxation and government spending, to promote economic activity.</p>
+                                        </div>
+                                    </Accordion>
                                 </section>
 
                                 <a className="link-button chapter__cta" href="debt/">
