@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet';
 import BpToc from '../../../components/bpToc/bpToc'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
 
 function OverviewPage(props) {
     return (
@@ -61,7 +61,7 @@ function OverviewPage(props) {
                             </div>
                         </div>
                         <div className="bp-header__scroll scroll-to">
-                            <a href="#revenue-chapter"><i className="fa fa-angle-down"></i></a>
+                            <a href="#revenue-chapter"><FontAwesomeIcon icon={faAngleDown} className="fa fa-chevron-down"/></a>
                         </div>
                     </div>
                 </header>
@@ -80,7 +80,7 @@ function OverviewPage(props) {
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
                                         <button className="anecdote__trigger">
-                                            <i className="fas fa-street-view"></i> <span className="anecdote__teaser">Show me what {AfgData.current_fy_revenue_short.value} is equal to</span>
+                                            <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_revenue_short.value} is equal to</span>
                                         </button>
                                     </div>
 
@@ -118,7 +118,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="revenue/">Go Explore Revenue <i className="fa fa-angle-right"></i></a>
+                                        <a className="anecdote__cta link-button" href="revenue/">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -138,7 +138,7 @@ function OverviewPage(props) {
                                         <div className="link-button__text--bottom">Federal Revenue</div>
                                     </div>
                                     <div className="link-button__icon--block">
-                                        <i className="fa fa-angle-right"></i>
+                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
                                     </div>
                                 </a>
                             </div>
@@ -166,7 +166,7 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"><i className="fas fa-street-view"></i> <span className="anecdote__teaser">Show me what {AfgData.current_fy_spending_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger"> <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_spending_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
@@ -202,7 +202,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="spending/">Go Explore Spending <i className="fa fa-angle-right"></i></a>
+                                        <a className="anecdote__cta link-button" href="spending/">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -222,7 +222,7 @@ function OverviewPage(props) {
                                         <div className="link-button__text--bottom">Federal Spending</div>
                                     </div>
                                     <div className="link-button__icon--block">
-                                        <i className="fa fa-angle-right"></i>
+                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
                                     </div>
                                 </a>
                             </div>
@@ -239,7 +239,7 @@ function OverviewPage(props) {
                         How did federal revenue and spending affect the <span className="chapter__divider--text-deficit">deficit</span> and federal <span className="chapter__divider--text-debt">debt</span> in {AfgData.current_fy.value}?
                     </h1>
                     <div className="deficit-debt-heading__arrow-container scroll-to">
-                        <a href="#deficit-chapter"><i className="fa fa-angle-down"></i></a>
+                        <a href="#deficit-chapter"><FontAwesomeIcon icon={faAngleDown} className="fa fa-angle-down"/></a>
                     </div>
                 </section>
 
@@ -257,7 +257,7 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"><i className="fas fa-street-view"></i> <span className="anecdote__teaser">Show me what {AfgData.current_fy_deficit_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger"><FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_deficit_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
@@ -287,7 +287,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="deficit/">Go Explore Deficit <i className="fa fa-angle-right"></i></a>
+                                        <a className="anecdote__cta link-button" href="deficit/">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -307,7 +307,7 @@ function OverviewPage(props) {
                                         <div className="link-button__text--bottom">Federal Deficit</div>
                                     </div>
                                     <div className="link-button__icon--block">
-                                        <i className="fa fa-angle-right"></i>
+                                    <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
                                     </div>
                                 </a>
                             </div>
@@ -335,7 +335,7 @@ function OverviewPage(props) {
                                 <section className="anecdote">
                                     {/* <!-- controls --> */}
                                     <div className="anecdote__controls">
-                                        <button className="anecdote__trigger"><i className="fas fa-street-view"></i> <span className="anecdote__teaser">Show me what {AfgData.current_fy_debt_short.value} is equal to</span></button>
+                                        <button className="anecdote__trigger"><FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser">Show me what {AfgData.current_fy_debt_short.value} is equal to</span></button>
                                     </div>
 
                                     {/* <!-- contents --> */}
@@ -362,7 +362,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="debt/">Go Explore Debt <i className="fa fa-angle-right"></i></a>
+                                        <a className="anecdote__cta link-button" href="debt/">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -383,7 +383,7 @@ function OverviewPage(props) {
                                         <div className="link-button__text--bottom">Federal Debt</div>
                                     </div>
                                     <div className="link-button__icon--block">
-                                        <i className="fa fa-angle-right"></i>
+                                    <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
                                     </div>
                                 </a>
                             </div>
