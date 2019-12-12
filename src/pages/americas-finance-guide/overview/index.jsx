@@ -16,11 +16,6 @@ import BpToc from '../../../components/bpToc/bpToc'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
-import AnecdoteDebtSVG from '../../../libs/assets/ffg/icons/anecdote-debt.svg';
-import AnecdoteDeficitSVG from '../../../libs/assets/ffg/icons/anecdote-deficit.svg';
-import AnecdoteRevenueSVG from '../../../libs/assets/ffg/icons/anecdote-revenue.svg';
-import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
-
 
 function OverviewPage(props) {
     return (
@@ -99,24 +94,24 @@ function OverviewPage(props) {
                                                 <div className="anecdote__panes">
                                                     <div className="anecdote__pane">
                                                         <p>Federal government revenue equates to about <strong>{AfgData.revenue_second.value} of revenue per second</strong>.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/revenue/revenue-1-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/revenue-1-outline.svg" alt=""></img>
                                                         <p>In the time it takes you to read this statement, that’s <strong>roughly {AfgData.revenue_during_read.value} in revenue</strong>.</p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_revenue.value} is the same amount as <strong>{AfgData.number_of_salaries.value}</strong> individuals each receiving a salary of <strong>{AfgData.individual_salary.value} per year</strong></p>
-                                                        <img className="anecdote__illustration" src="/assets/ffg/bp/revenue/revenue-2-outline.svg" alt=""></img>
+                                                        <img className="anecdote__illustration" src="/americas-finance-guide/images/revenue-2-outline.svg" alt=""></img>
                                                         <p><strong>(roughly equal to the average annual salary of {AfgData.salary_job_type.value})</strong>.</p>
                                                         <p className="source">Source - <a href={AfgData.bls_occ_employment.value} rel="noopener noreferrer" target="_blank">Bureau of Labor Statistics</a></p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_revenue.value} equates to the average U.S. household contributing <strong>{AfgData.household_contribution.value} per month</strong>.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/revenue/revenue-4-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/revenue-4-outline.svg" alt=""></img>
                                                         <p>That is roughly equal to the cost of <strong>renting a {AfgData.household_contribution_type.value}</strong> in {AfgData.household_contribution_city.value}.</p>
                                                         <p className="source">Source - <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development</a> & <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_revenue.value} equates to the <strong>revenue of the top {AfgData.sp_companies.value} companies</strong> in the S&P 500.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/revenue/revenue-5-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/revenue-5-outline.svg" alt=""></img>
                                                         <p className="source">Figures based on {AfgData.sp_year.value} 10-K reports for S&P 500 Companies</p>
                                                     </div>
                                                 </div>
@@ -186,23 +181,23 @@ function OverviewPage(props) {
                                                 <div className="anecdote__panes">
                                                         <div className="anecdote__pane">
                                                             <p>Federal government spending equates to about <strong>{AfgData.spending_second.value}</strong> per second.</p>
-                                                            <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/spending/spending-1-outline.svg" alt=""></img>
+                                                            <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/spending-1-outline.svg" alt=""></img>
                                                             <p>In just 10 seconds, that's <strong>{AfgData.spending_ten_seconds.value} in spending.</strong></p>
                                                         </div>
                                                         <div className="anecdote__pane">
                                                             <p>{AfgData.current_fy_spending.value} is equivalent to a little more than <strong>{AfgData.spending_per_individual.value}</strong> in spending <strong>per U.S. individual</strong>.</p>
-                                                            <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/spending/spending-2-outline.svg" alt=""></img>
+                                                            <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/spending-2-outline.svg" alt=""></img>
                                                             <p className="source">Source - <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                         </div>
                                                         <div className="anecdote__pane">
                                                             <p>{AfgData.current_fy_spending.value} equates to the average household spending <strong>{AfgData.household_spending_month.value}</strong> per month.</p>
-                                                            <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/spending/spending-3-outline.svg" alt=""></img>
+                                                            <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/spending-3-outline.svg" alt=""></img>
                                                             <p>That is roughly equal <strong>to renting a {AfgData.household_spending_type.value}</strong> in {AfgData.household_spending_city.value}.</p>
                                                             <p className="source">Source - <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development</a> & <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                         </div>
                                                         <div className="anecdote__pane">
                                                             <p>{AfgData.current_fy_spending.value} is equivalent to building a new <strong>four-lane road from Washington D.C. to San Francisco and back...{AfgData.dc_sf_trips.value} times!</strong> (That's {AfgData.dc_sf_miles.value} miles of roadway!)</p>
-                                                            <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/spending/spending-4-outline.svg" alt=""></img>
+                                                            <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/spending-4-outline.svg" alt=""></img>
                                                             <p className="source">Source - <a href={AfgData.artba_road_cost.value} rel="noopener noreferrer" target="_blank">American Road & Transportation Builders Association</a></p>
                                                         </div>
                                                     </div>
@@ -279,18 +274,18 @@ function OverviewPage(props) {
                                                 <div className="anecdote__panes">
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_deficit.value} is almost <strong>{AfgData.times_cc_debt.value} times the amount of credit card debt Americans created in {AfgData.current_fy.value}</strong> ({AfgData.cc_debt_total.value}).</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/deficit/deficit-1-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/deficit-1-outline.svg" alt=""></img>
                                                         <p className="source">Source - <a href={AfgData.frbny_microecon.value} rel="noopener noreferrer" target="_blank">Federal Reserve Bank of New York</a></p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_deficit.value} breaks down to about <strong>{AfgData.deficit_per_household.value} of deficit spending</strong> per household in {AfgData.current_fy.value}.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/deficit/deficit-2-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/deficit-2-outline.svg" alt=""></img>
                                                         <p>In {AfgData.current_fy.value}, there were an estimated <strong>{AfgData.us_households.value} households</strong> in the United States.</p>
                                                         <p className="source">Source - <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_deficit.value} equates to <strong>{AfgData.deficit_minute.value}</strong> in deficit spending <strong>every minute</strong> for an entire year.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/deficit/deficit-3-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/deficit-3-outline.svg" alt=""></img>
                                                     </div>
                                                 </div>
                                             </div>
@@ -359,13 +354,13 @@ function OverviewPage(props) {
                                                 <div className="anecdote__panes">
                                                     <div className="anecdote__pane">
                                                         <p>If the federal debt was split evenly among households, <strong>your household's share</strong> would be roughly <strong>{AfgData.household_share_debt.value}</strong>.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/debt/debt-2-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/debt-2-outline.svg" alt=""></img>
                                                         <p>That is about equal to the <strong>median home price in {AfgData.share_debt_city.value}</strong> ({AfgData.share_debt_city_price.value}).</p>
                                                         <p className="source">Source - <a href={AfgData.census_median_home.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                     </div>
                                                     <div className="anecdote__pane">
                                                         <p>{AfgData.current_fy_debt.value} equates to a little less than <strong>{AfgData.debt_per_individual.value}</strong> per individual in the U.S.</p>
-                                                        <img role="presentation" className="anecdote__illustration" src="/assets/ffg/bp/debt/debt-3-outline.svg" alt=""></img>
+                                                        <img role="presentation" className="anecdote__illustration" src="/americas-finance-guide/images/debt-3-outline.svg" alt=""></img>
                                                         <p>That is equal to the <strong>average salary of {AfgData.debt_average_salary_type.value}</strong>.</p>
                                                         <p className="source">Source - <a href={AfgData.bls_occ_employment .value} rel="noopener noreferrer" target="_blank">Bureau of Labor Statistics</a> & <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">U.S. Census Bureau</a></p>
                                                     </div>
@@ -430,7 +425,7 @@ function OverviewPage(props) {
                     <h1 className="about-us__heading">Americans asked. We listened.</h1>
                     <p className="about-us__main-copy"><em>Your Guide to America's Finances</em> is a re-invention of the <a href={AfgData.citizens_guide_link.value} rel="noopener noreferrer" target="_blank">Citizen’s Guide to the Financial Report of the U.S. Government</a>. This site was created in response to the public’s desire to learn more about the financial picture of the United States. Where does the money come from? Where does it go? What are the trends over time, and how does the U.S. compare to other countries?  This guide was created to make federal financial information open and accessible to all - reflecting the very principles that our founding fathers set forth when the United States was formed.</p>
                     <p className="about-us__source"><strong>Your Guide to America's Finances</strong> is brought to you by the U.S. Department of the Treasury</p>
-                    <img src="/assets/ffg/bp/treasury-seal.svg" className="about-us__logo" alt="U.S. Treasury Logo"></img>
+                    <img src="/americas-finance-guide/images/treasury-seal.svg" className="about-us__logo" alt="U.S. Treasury Logo"></img>
                 </div>
 
 
