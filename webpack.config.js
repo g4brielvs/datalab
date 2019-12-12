@@ -97,7 +97,7 @@ module.exports = [ {
     }
 }, {
     entry: {
-        tabs: './src/libs/ffg/src/bigPicture/index.js'
+        overview: './src/libs/ffg/src/bigPicture/index.js'
     },
     devtool: devtool,
     devServer: devServer,
