@@ -7,7 +7,7 @@ import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import { HeadOnly } from "../../../components/headers/headers"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -33,14 +33,14 @@ function RevenueAndGdpPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
+                <HeadOnly></HeadOnly>
 
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
                         <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
-                        <li><a href="./categories.html">Revenue Categories</a></li>
-                        <li><a href="./trends.html">Federal Revenue Trends</a></li>
+                        <li><a href="./revenue-categories">Revenue Categories</a></li>
+                        <li><a href="./revenue-trends">Federal Revenue Trends</a></li>
                         <li><a href="./revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">

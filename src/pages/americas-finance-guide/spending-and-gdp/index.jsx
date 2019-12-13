@@ -7,7 +7,7 @@ import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import { HeadOnly } from "../../../components/headers/headers"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -33,16 +33,16 @@ function SpendingAndGdpPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
+                <HeadOnly></HeadOnly>
 
                 {/* we need to figure out how to use this nav with the main nav; design people are working on it */}
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
                         <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./categories.html">Spending Categories</a></li>
-                        <li><a href="./trends.html">Federal Spending Trends</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./spending-categories">Spending Categories</a></li>
+                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
+                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <i className="fas fa-lg fa-angle-down menu-down"></i>

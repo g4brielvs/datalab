@@ -38,9 +38,9 @@ function ExploreDebtPage(props) {
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
                         <li><a href="./explore-debt">Explore Debt</a></li>
-                        <li><a href="./trends.html">Federal Debt Trends</a></li>
-                        <li><a href="./analysis.html">Federal Debt Analysis</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./debt-trends">Federal Debt Trends</a></li>
+                        <li><a href="./debt-analysis">Federal Debt Analysis</a></li>
+                        <li><a href="./debt-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <i className="fas fa-lg fa-angle-down menu-down"></i>

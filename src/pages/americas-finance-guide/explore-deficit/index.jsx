@@ -7,7 +7,7 @@ import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import { HeadOnly } from "../../../components/headers/headers"
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
@@ -31,14 +31,14 @@ function ExploreDeficitPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
+                <HeadOnly></HeadOnly>
 
                 <nav className="chapter-nav chapter-nav--deficit">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
                         <li><a href="./explore-deficit">Explore Deficit</a></li>
-                        <li><a href="./trends.html">Federal Deficit Trends</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./deficit-trends">Federal Deficit Trends</a></li>
+                        <li><a href="./deficit-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <i className="fas fa-lg fa-angle-down menu-down"></i>
