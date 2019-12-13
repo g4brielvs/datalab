@@ -427,12 +427,7 @@ function OverviewPage(props) {
                     <p className="about-us__source"><strong>Your Guide to America's Finances</strong> is brought to you by the U.S. Department of the Treasury</p>
                     <img src="/americas-finance-guide/images/treasury-seal.svg" className="about-us__logo" alt="U.S. Treasury Logo"></img>
                 </div>
-
-
-
             </Default>
-
-
         </>
     )
 }
