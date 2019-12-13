@@ -8,6 +8,7 @@ import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
 import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import GenericHeader from "../../../components/headers/genericHeader"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -32,8 +33,8 @@ function ExploreDebtPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+                <GenericHeader></GenericHeader>
+                
                 <nav className="chapter-nav chapter-nav--debt">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
