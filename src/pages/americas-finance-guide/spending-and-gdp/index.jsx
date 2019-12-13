@@ -17,6 +17,9 @@ import { Helmet } from 'react-helmet';
 import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+
 function SpendingAndGdpPage(props) {
     return (
         <>
@@ -38,15 +41,15 @@ function SpendingAndGdpPage(props) {
                 {/* we need to figure out how to use this nav with the main nav; design people are working on it */}
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./spending-and-gdp">Spending and GDP</a></li>
                         <li><a href="./spending-categories">Spending Categories</a></li>
                         <li><a href="./spending-trends">Federal Spending Trends</a></li>
                         <li><a href="./spending-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -69,7 +72,7 @@ function SpendingAndGdpPage(props) {
                         <div id="viz"></div>
 
                         <div className="intro-math intro-hidden">
-                            <i className="fas fa-reply intro-math__icon"></i>{AfgData.dot_number_spending.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_spending.value}</strong>
+                            <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_spending.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_spending.value}</strong>
                         </div>
 
                         <div id="copy" className="intro-hidden">
@@ -110,7 +113,7 @@ function SpendingAndGdpPage(props) {
 
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
-                            <a className="tour__link" href="./spending-categories">Discover<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="./spending-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 

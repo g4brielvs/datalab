@@ -17,6 +17,9 @@ import { Helmet } from 'react-helmet';
 import AnecdoteRevenueSVG from '../../../libs/assets/ffg/icons/anecdote-revenue.svg';
 import DefinitionSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+
 function RevenueAndGdpPage(props) {
     return (
         <>
@@ -37,15 +40,15 @@ function RevenueAndGdpPage(props) {
 
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
                         <li><a href="./revenue-categories">Revenue Categories</a></li>
                         <li><a href="./revenue-trends">Federal Revenue Trends</a></li>
                         <li><a href="./revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -68,7 +71,7 @@ function RevenueAndGdpPage(props) {
                         <div id="viz"></div>
 
                         <div className="intro-math intro-hidden">
-                            <i className="fas fa-reply intro-math__icon"></i>{AfgData.dot_number_revenue.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_revenue.value}</strong>
+                        <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_revenue.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_revenue.value}</strong>
                         </div>
 
                         <div id="copy" className="intro-hidden">
@@ -117,7 +120,7 @@ function RevenueAndGdpPage(props) {
 
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the sources of government revenue?</h1>
-                            <a id="tour-continue" className="tour__link" href="./revenue-categories">Discover<i className="fas fa-chevron-right"></i></a>
+                            <a id="tour-continue" className="tour__link" href="./revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
 
                         <div className="info-box" id="per-individual">
