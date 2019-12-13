@@ -56,7 +56,7 @@ function SpendingAndGdpPage(props) {
                             location={props.location}
                             title="Data Lab - Federal Spending and GDP – U.S. Treasury"
                             twitter="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
-                            />
+                            facebook='' reddit='' linkedin='' tumblr='' email=''/>
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.

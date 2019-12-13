@@ -53,7 +53,7 @@ function ExploreDebtPage(props) {
                         <Share  
                             location={props.location}
                             title="Data Lab - Explore Federal Debt – U.S. Treasury"
-                            text="How much is the federal debt? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
+                            twitter="How much is the federal debt? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
                

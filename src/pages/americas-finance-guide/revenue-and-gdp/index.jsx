@@ -54,7 +54,7 @@ function RevenueAndGdpPage(props) {
                         <Share 
                             location={props.location}
                             title='Data Lab - Federal Revenue and GDP – U.S. Treasury'
-                            text='How does federal revenue compare to spending and the size of the economy? Download the .CSV data files from Your Guide to America’s Finances and perform your own analysis! #YourGuide #DataLab #OpenGov'
+                            twitter='How does federal revenue compare to spending and the size of the economy? Download the .CSV data files from Your Guide to America’s Finances and perform your own analysis! #YourGuide #DataLab #OpenGov'
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
@@ -107,9 +107,9 @@ function RevenueAndGdpPage(props) {
                             </div>
                         </div> {/* end facts sidebar intro-hidden */}
 
-                        <section class="accordion sidebar intro-hidden">
+                        <section className="accordion sidebar intro-hidden">
                             <Accordion title="Who owns the federal government's debt?">
-                            <div class="accordion__content">
+                            <div className="accordion__content">
                                 <p>Most of the federal government's debt is owned by federal trust funds and domestic investors in the United States. Foreign investors, including other governments, also own part of the debt.</p>
                             </div>
                             </Accordion>

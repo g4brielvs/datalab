@@ -53,7 +53,7 @@ function RevenueCountryComparisonPage(props) {
                         <Share 
                             location={props.location}
                             title='Data Lab - Revenue Country Comparison – U.S. Treasury'
-                            text='How does U.S. federal revenue compare to other countries? Check out the visualizations from Your Guide to America’s Finances to find out. #YourGuide #DataLab #OpenGov'
+                            twitter='How does U.S. federal revenue compare to other countries? Check out the visualizations from Your Guide to America’s Finances to find out. #YourGuide #DataLab #OpenGov'
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
 
