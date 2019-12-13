@@ -31,11 +31,13 @@ export default class Table extends React.Component {
     return false;
   }
   render() {
-    return (
-      <>
-        <table id={this.props.idName} />
-      </>
-    );
+    if (this.props.display) {
+      return (
+        <>
+          <table id={this.props.idName}/>
+        </>
+      )
+    }
   }
 
 }
