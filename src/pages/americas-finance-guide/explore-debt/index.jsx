@@ -110,7 +110,7 @@ function ExploreDebtPage(props) {
                                 <h1>How has the federal debt changed over time?</h1>
                                 <p>When you are done here, we encourage you to explore trends in the federal debt since {AfgData.debt_trend_start.value}.</p>
                             </div>
-                            <a className="tour__link" href="trends.html">Explore<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="./debt-trends">Explore<i className="fas fa-chevron-right"></i></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 
