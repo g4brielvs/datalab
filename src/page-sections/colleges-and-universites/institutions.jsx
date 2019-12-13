@@ -1,7 +1,6 @@
+import React from "react";
+import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
-import styles from './c&u.module.scss';
-import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
 
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar'
@@ -110,7 +109,7 @@ const Institutions = (props) => {
 
   const detailPanelRef = React.createRef();
 
-  const tableColumnTitles = ['Institution', 'Type', 'Contracts', 'Grants', 'Student Aid', 'Total $ Received'];
+  const tableColumnTitles = [{title: 'Institution'}, {title: 'Type'}, {title: 'Contracts'}, {title: 'Grants'}, {title: 'Student Aid'}, {title: 'Total $ Received'}];
 
   return (<>
     <StoryHeading
@@ -156,6 +155,7 @@ const Institutions = (props) => {
             })}
             columnTitles={tableColumnTitles}
             display={false} // for now, left panel for map isn't finished.
+            idName={'institutionsTable'}
           />
         </div>
       </Grid>
@@ -175,4 +175,6 @@ const Institutions = (props) => {
   </>);
 };
 
+
 export default Institutions;
+

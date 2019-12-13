@@ -340,12 +340,12 @@ const Categories = () => {
             </Grid>
           </Grid>
 
-          <DataTable
-            display={!chartView}
-            title={titlesByType[fundingType].categoryLabel + 's'}
-            columnTitles={tableColumnTitles}
-            data={tableData[fundingType]}
-          />
+          {/*<DataTable*/}
+            {/*display={!chartView}*/}
+            {/*title={titlesByType[fundingType].categoryLabel + 's'}*/}
+            {/*columnTitles={tableColumnTitles}*/}
+            {/*data={tableData[fundingType]}*/}
+          {/*/>*/}
 
         </Grid>
         <Grid item>

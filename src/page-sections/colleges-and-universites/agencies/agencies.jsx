@@ -66,8 +66,9 @@ const Agencies = (props) => {
     }
   `);
 
-  const tableColumnTitles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
+  const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
   const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
+
 
   const [chartView, isChartView] = useState(true);
   const switchView = view => {
@@ -234,6 +235,7 @@ const Agencies = (props) => {
 
             <DataTable
               display={!chartView}
+              idName={'agenciesTable'}
               columnTitles={tableColumnTitles}
               data={tableData}
             />
