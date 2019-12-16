@@ -7,7 +7,7 @@ import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import { HeadOnly } from "../../../components/headers/headers"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -15,6 +15,9 @@ import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 
 import AnecdoteDebtSVG from '../../../libs/assets/ffg/icons/anecdote-debt.svg';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
 
 function ExploreDebtPage(props) {
     return (
@@ -32,19 +35,19 @@ function ExploreDebtPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+                <HeadOnly></HeadOnly>
+                
                 <nav className="chapter-nav chapter-nav--debt">
                     <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./explore-debt">Explore Debt</a></li>
-                        <li><a href="./trends.html">Federal Debt Trends</a></li>
-                        <li><a href="./analysis.html">Federal Debt Analysis</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./debt-trends">Federal Debt Trends</a></li>
+                        <li><a href="./debt-analysis">Federal Debt Analysis</a></li>
+                        <li><a href="./debt-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -53,7 +56,7 @@ function ExploreDebtPage(props) {
                         <Share  
                             location={props.location}
                             title="Data Lab - Explore Federal Debt – U.S. Treasury"
-                            text="How much is the federal debt? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
+                            twitter="How much is the federal debt? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
                             facebook='' reddit='' linkedin='' tumblr='' email='' />
                     </ControlBar>
                
@@ -72,7 +75,7 @@ function ExploreDebtPage(props) {
                         <div id="viz"></div>
 
                         <div className="intro-math intro-hidden">
-                            <i className="fas fa-reply intro-math__icon"></i>{AfgData.dot_number_debt.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_debt.value}</strong>
+                            <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_debt.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_debt.value}</strong>
                         </div>
 
                         <div className="facts sidebar debt-intro intro-hidden">
@@ -110,7 +113,7 @@ function ExploreDebtPage(props) {
                                 <h1>How has the federal debt changed over time?</h1>
                                 <p>When you are done here, we encourage you to explore trends in the federal debt since {AfgData.debt_trend_start.value}.</p>
                             </div>
-                            <a className="tour__link" href="trends.html">Explore<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="./debt-trends">Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 
@@ -136,7 +139,6 @@ function ExploreDebtPage(props) {
                     </div>
                     </Accordion>
                 </section>
-
             </Default>
         </>
     )

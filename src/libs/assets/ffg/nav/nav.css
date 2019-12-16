@@ -4,6 +4,8 @@
     width: 100%;
     min-height: 3.5rem;
     box-sizing: border-box;
+    /* adding this to get out from under the datalab nav; */
+    margin-top: 3rem;
 }
 
 .chapter-nav__overview i {

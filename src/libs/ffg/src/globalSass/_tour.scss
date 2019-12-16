@@ -24,6 +24,7 @@
         &:hover {
             background: lighten($tour-button, 5)
         }
+
     }
 
     .tour__link.tour__link--disabled {
@@ -37,8 +38,7 @@
         }
     }
 
-    i {
-        font-size: 0.75rem;
+    .fa-angle-right {
         margin-left: 0.75rem;
     }
 
