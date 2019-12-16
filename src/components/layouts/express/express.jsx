@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './tool.module.scss';
+import styles from './express.module.scss';
 
-import Grid from '@material-ui/core/Grid';
 import Default from '../default/default';
+import GenericHeader from '../../headers/genericHeader';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
-import { ToolpageHeader } from '../../headers/headers';
 
-export default class ToolLayout extends React.Component {
-  render = () => <Default>
-    <ToolpageHeader />
-    <div className={styles.toolPage}>
+export default class ExpressLayout extends React.Component {
+  render = () => <Default className={styles.expressTemplate}>
+    <GenericHeader />
+    <main>
+      <header className={styles.header}>{this.props.title}</header>
+      {/* <div className={styles.toolPage}>
       <header className={styles.header}>
         <Grid container justify='space-between'>
           <Grid item className={styles.title}>{this.props.title}</Grid>
@@ -39,19 +40,20 @@ export default class ToolLayout extends React.Component {
           </section>
         </article>
       </div>
-      <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
-      <MoreAnalyses />
-    </div>
+    </div> */}
+    </main>
+    <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
+    <MoreAnalyses />
   </Default>
 }
 
 
-ToolLayout.propTypes = {
+ExpressLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  introSentence: PropTypes.string.isRequired,
-  contextStatement: PropTypes.string,
-  sectionTitle: PropTypes.string,
-  sectionText: PropTypes.string,
-  hwctaLink: PropTypes.string
+  // introSentence: PropTypes.string.isRequired,
+  // contextStatement: PropTypes.string,
+  // sectionTitle: PropTypes.string,
+  // sectionText: PropTypes.string,
+  // hwctaLink: PropTypes.string,
 }
