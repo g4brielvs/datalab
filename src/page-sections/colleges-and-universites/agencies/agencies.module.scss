@@ -9,8 +9,8 @@
   transition: left 1000ms;
 }
 
-:global(#agencies-legend-colorkey.left) {
-  left: -200px;
+:global(.hidden) {
+  display: none;
 }
 
 #legend-scalekey {

@@ -16,7 +16,7 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
-import DataTable from "../../../components/chartpanels/data-table"
+import DataTable from "../../../components/table/data-table"
 import formatNumber from "../../../utils/number-formatter"
 import * as d3 from "d3v3"
 const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
@@ -68,7 +68,6 @@ const Agencies = (props) => {
 
   const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
   const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
-
 
   const [chartView, isChartView] = useState(true);
   const switchView = view => {

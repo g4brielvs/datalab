@@ -2,10 +2,14 @@ import React from "react";
 import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 
-import Accordion from '../../components/accordion/accordion';
-import ControlBar from '../../components/control-bar/control-bar'
+import Accordion from "../../components/accordion/accordion";
+import StoryHeading from "../../components/section-elements/story-heading/story-heading";
+import Downloads from "../../components/section-elements/downloads/downloads";
+import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
+import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
+import Share from '../../components/share/share';
+import ControlBar from "../../components/control-bar/control-bar";
 import DataTable from "../../components/chartpanels/data-table";
-import Downloads from '../../components/section-elements/downloads/downloads';
 import formatNumber from "../../utils/number-formatter";
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';

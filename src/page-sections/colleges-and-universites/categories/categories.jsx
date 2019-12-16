@@ -14,7 +14,7 @@ import VizDetails from '../../../components/chartpanels/viz-detail';
 import formatNumber from '../../../utils/number-formatter';
 
 import loadable from '@loadable/component';
-import DataTable from '../../../components/chartpanels/data-table';
+import DataTable from '../../../components/table/data-table';
 const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
 
 import categoriesStyles from './categories.module.scss';
