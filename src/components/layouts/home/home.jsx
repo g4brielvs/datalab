@@ -8,7 +8,7 @@ import homeTemplateStyles from "./home.module.scss";
 const Home = ({ children }) => (
       <>
         <Default>
-          <PageHeader
+          <HomepageHeader
             headerItems={['Analyses', 'DataLab Express',  "America's Finance Guide", 'Resources', 'Glossary']}
             megamenuItems={[
               {
