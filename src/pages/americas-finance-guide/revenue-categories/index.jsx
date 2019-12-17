@@ -74,16 +74,16 @@ function RevenueCategoriesPage(props) {
                                 </div>
                                 <div className='bar-controls__right'>
                                     <div className='bar-controls__right--div'>
-                                        <input type="text" placeholder='Search by a term...' id="filter-by-name">
-                                        <i id='filter-by-name-icon' className='fa fa-search spending__search--icon'></i></input>
+                                        <input type="text" placeholder='Search by a term...' id="filter-by-name"></input>
+                                        <i id='filter-by-name-icon' className='fa fa-search spending__search--icon'></i>
                                     </div>
-                                </div>
+                                 </div>
                             </div>
-
+                        
                             <hr></hr>
                             <div id="viz"></div>
                             <hr className='categories__show-more'></hr>
-                                <div id="show-more-container" className='categories__show-more'>
+                            <div id="show-more-container" className='categories__show-more'>
                                 <button id="show-more-button" className="chart__show-more">Show More</button>
                             </div>
                         </div>
