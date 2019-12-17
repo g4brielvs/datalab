@@ -2,7 +2,7 @@ import React from 'react';
 import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
 import storyHeadingStyles from "../../../components/section-elements/story-heading/story-heading.module.scss";
 import defaultImage from '../../../images/default-image.jpg';
-
+import Grid from '@material-ui/core/Grid';
 
 export default class SectionTwo extends React.Component {
   constructor(props) {
@@ -26,9 +26,12 @@ More than 130 people die every day in the US due to an opioid related overdose. 
 `}
         />
 
-        <section id='section-two-viz'>
-          <img src={defaultImage}/>
-        </section>
+        <Grid container justify='center'>
+          <section id='section-two-viz'>
+            <img src={defaultImage}/>
+          </section>
+        </Grid>
+
 
       </>
     ); // end return
