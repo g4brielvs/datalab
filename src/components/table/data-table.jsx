@@ -5,6 +5,7 @@ import 'react-virtualized/styles.css';
 import Paginator from './Paginator';
 import { getRows } from './utils';
 import './data-table.scss';
+import { Grid } from "@material-ui/core";
 
 const count = 100000
 const rows = getRows(count)
@@ -57,29 +58,33 @@ export default class DataTable extends React.Component {
 
     if (this.props.display) {
       return (<>
-        <Table
-          width={this.defaultWidth}
-          height={height}
-          headerHeight={20}
-          rowHeight={30}
-          rowCount={rowCount}
-          rowGetter={({index}) => this.props.data[index]}
-          rows={this.state.data}
-          scrollToIndex={scrollToIndex}
-          scrollToAlignment='start'>
-          {this.props.columnTitles.map((item, key) => {
-            const columnWidth = this.defaultWidth / this.props.columnTitles.length;
-            return (
-              <Column label={item.title} dataKey={key} width={columnWidth} />
-            )
-          })
-          }
-        </Table>
-        <Paginator
-          pageCount={pageCount}
-          currentPage={page}
-          onPageChange={this.handlePageChange}
-        />
+        <Grid container justify='centered'>
+          <Grid item xs={10}>
+            <Table
+              width={this.defaultWidth}
+              height={height}
+              headerHeight={20}
+              rowHeight={30}
+              rowCount={rowCount}
+              rowGetter={({index}) => this.props.data[index]}
+              rows={this.state.data}
+              scrollToIndex={scrollToIndex}
+              scrollToAlignment='start'>
+              {this.props.columnTitles.map((item, key) => {
+                const columnWidth = this.defaultWidth / this.props.columnTitles.length;
+                return (
+                  <Column label={item.title} dataKey={key} width={columnWidth} />
+                )
+              })
+              }
+            </Table>
+            <Paginator
+              pageCount={pageCount}
+              currentPage={page}
+              onPageChange={this.handlePageChange}
+            />
+        </Grid>
+        </Grid>
       </>);
     } else {
       return null;

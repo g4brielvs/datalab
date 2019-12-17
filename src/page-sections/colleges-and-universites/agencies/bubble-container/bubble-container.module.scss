@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+
+:global(#agencies-legend-colorkey) {
+  position: relative;
+  left: -50px;
+  padding: 0;
+  overflow: visible;
+  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
+  transition: left 1000ms;
+}
+
+:global(.hidden) {
+  display: none;
+}
+
+#legend-scalekey {
+  width: 225px;
+  height: 130px;
+  position: absolute;
+}
+
+.legend-circlekey-label {
+  position: absolute;
+  border-top: solid 1px $font-legend-label;
+  width: 70px;
+  left: 65px;
+}
+
+.legend-circlekey-label:first-child {
+  top: 35px;
+}
+
+.legend-circlekey-label:nth-child(2) {
+  top: 50px;
+}
+
+.legend-circlekey-label span {
+  font-size: 0.625rem;
+  color: $radial-legend;
+  position: absolute;
+  display: block;
+  width: 90px;
+  top: -8px;
+  left: 75px;
+}
+
+.legend-scalekey-circle {
+  stroke-width: 1;
+  stroke: $radial-legend;
+  stroke-dasharray: 2;
+  fill: none;
+}
+

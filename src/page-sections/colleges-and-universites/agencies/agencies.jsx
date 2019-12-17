@@ -202,8 +202,7 @@ const Agencies = (props) => {
             searchList={searchList}
             listDescription='Agencies'
             onSelect={searchItemSelected}
-            switchView={switchView}
-          >
+            switchView={switchView} >
             <BubbleChartOutlinedIcon />
           </VizControlPanel>
         </Hidden>
