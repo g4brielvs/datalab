@@ -7,10 +7,13 @@ import GenericHeader from '../../headers/genericHeader';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 
+import logo from '../../../images/logos/express.png';
+
 export default class ExpressLayout extends React.Component {
   render = () => <Default className={styles.expressTemplate}>
     <GenericHeader />
-    <main>
+    <main className={styles.page}>
+      <img src={logo} alt='Datalab Express logo' />
       <header className={styles.header}>{this.props.title}</header>
       {/* <div className={styles.toolPage}>
       <header className={styles.header}>

@@ -16,7 +16,7 @@ export default class ExpressModule extends React.Component {
         {this.props.subtitle}
       </Grid>
       <Grid item>
-        {this.props.text}
+        {this.props.description}
       </Grid>
     </Grid>
 
@@ -24,9 +24,9 @@ export default class ExpressModule extends React.Component {
   </>
 }
 
-ExpressModule.PropTypes = {
+ExpressModule.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired
 }
