@@ -122,7 +122,7 @@ module.exports = [ {
 }, {
     entry: {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
-        // categories: './citizens-guide/src/revenue/categories/index.js',
+        categories: './src/libs/ffg/src/revenue/categories/index.js',
         trends: './src/libs/ffg/src/revenue/trends/index.js',
         countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
