@@ -2,10 +2,10 @@ import React from 'react';
 import './opioid-crisis.module.scss';
 
 import SectionOne from '../../page-sections/opioid-crisis/sectionOne/sectionOne';
-// import SectionTwo from '../../page-sections/opioid-crisis/sectionOne';
-// import SectionThree from '../../page-sections/opioid-crisis/sectionOne';
-// import SectionFour from '../../page-sections/opioid-crisis/sectionOne';
-// import SectionFive from '../../page-sections/opioid-crisis/sectionOne';
+import SectionTwo from '../../page-sections/opioid-crisis/sectionTwo/sectionTwo';
+import SectionThree from '../../page-sections/opioid-crisis/sectionThree/sectionThree';
+import SectionFour from '../../page-sections/opioid-crisis/sectionFour/sectionFour';
+import SectionFive from '../../page-sections/opioid-crisis/sectionFive/sectionFive';
 
 import { CustomHeaderBanner, CustomTocHeader } from '../../components/headers/customHeader';
 import SEO from '../../components/seo';
@@ -78,6 +78,18 @@ export default class OpioidCrisisPage extends React.Component {
       <Grid container justify='center'>
         <Grid item xs={10}>
           <SectionOne/>
+        </Grid>
+        <Grid item xs={10}>
+          <SectionTwo/>
+        </Grid>
+        <Grid item xs={10}>
+          <SectionThree/>
+        </Grid>
+        <Grid item xs={10}>
+          <SectionFour/>
+        </Grid>
+        <Grid item xs={10}>
+          <SectionFive/>
         </Grid>
       </Grid>
 
