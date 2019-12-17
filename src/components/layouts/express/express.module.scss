@@ -5,6 +5,17 @@
 }
 
 .header {
+  text-align: center;
+  border-bottom: #666666 1px solid;
+  padding-bottom: 100px;
+}
+
+.logo {
+  margin: 25px auto 50px;
+  width: 200px;
+}
+
+.title {
   text-align: center;  
   text-transform: uppercase;
   font-size: 1rem;
@@ -13,7 +24,10 @@
   line-height: 1.25rem;
 }
 
-.logo {
-  width: 200px;
-  margin: 25px auto 50px;
+.topic {
+  width: 75%;
+  margin: auto;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
 }

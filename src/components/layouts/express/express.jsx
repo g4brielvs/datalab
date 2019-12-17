@@ -16,8 +16,13 @@ export default class ExpressLayout extends React.Component {
       <main className={styles.page}>
         <div className={styles.header}>
           <img src={logo} alt='Datalab Express logo' className={styles.logo} />
-          <header>{this.props.title}</header>
+          <header className={styles.title}>{this.props.title}</header>
+          <p className={styles.topic}>{this.props.topic}</p>
         </div>
+
+        <section className={styles.childrenSection}>
+          {this.props.children}
+        </section>
         {/* <div className={styles.toolPage}>
       <header className={styles.header}>
         <Grid container justify='space-between'>
@@ -53,11 +58,10 @@ export default class ExpressLayout extends React.Component {
     </Default>
 }
 
-
 ExpressLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  // introSentence: PropTypes.string.isRequired,
+  topic: PropTypes.string.isRequired
   // contextStatement: PropTypes.string,
   // sectionTitle: PropTypes.string,
   // sectionText: PropTypes.string,
