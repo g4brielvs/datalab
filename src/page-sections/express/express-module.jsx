@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './express-module.module.scss';
+
 import { Grid } from '@material-ui/core';
 
 export default class ExpressModule extends React.Component {
@@ -7,21 +9,24 @@ export default class ExpressModule extends React.Component {
     super(props);
   }
 
-  render = () => <>
-    <Grid container>
-      <Grid item>
-        {this.props.title}
+  render = () =>
+    <div className={styles.module}>
+      <Grid container>
+        <Grid item xs={12} lg={5}>
+          <div className={styles.title}>
+            {this.props.title}
+          </div>
+          <div className={styles.subtitle}>
+            {this.props.subtitle}
+          </div>
+        </Grid>
+        <Grid item xs={12} lg={7}>
+          <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+        </Grid>
       </Grid>
-      <Grid item>
-        {this.props.subtitle}
-      </Grid>
-      <Grid item>
-        {this.props.description}
-      </Grid>
-    </Grid>
 
-    {this.props.children}
-  </>
+      {this.props.children}
+    </div>
 }
 
 ExpressModule.propTypes = {
