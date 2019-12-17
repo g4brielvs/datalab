@@ -10,12 +10,15 @@ import MoreAnalyses from '../../more-analyses/more-analyses';
 import logo from '../../../images/logos/express.png';
 
 export default class ExpressLayout extends React.Component {
-  render = () => <Default className={styles.expressTemplate}>
-    <GenericHeader />
-    <main className={styles.page}>
-      <img src={logo} alt='Datalab Express logo' />
-      <header className={styles.header}>{this.props.title}</header>
-      {/* <div className={styles.toolPage}>
+  render = () =>
+    <Default>
+      <GenericHeader isHome={false} />
+      <main className={styles.page}>
+        <div className={styles.header}>
+          <img src={logo} alt='Datalab Express logo' className={styles.logo} />
+          <header>{this.props.title}</header>
+        </div>
+        {/* <div className={styles.toolPage}>
       <header className={styles.header}>
         <Grid container justify='space-between'>
           <Grid item className={styles.title}>{this.props.title}</Grid>
@@ -44,10 +47,10 @@ export default class ExpressLayout extends React.Component {
         </article>
       </div>
     </div> */}
-    </main>
-    <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
-    <MoreAnalyses />
-  </Default>
+      </main>
+      <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
+      <MoreAnalyses />
+    </Default>
 }
 
 
