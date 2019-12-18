@@ -1,13 +1,14 @@
 @import '../../../styles/index.scss';
 
 .page {
-  margin: 100px auto 75px;
+  margin: 110px auto 0;
+  max-width: 1140px;
 }
 
 .header {
   text-align: center;
   border-bottom: #666666 1px solid;
-  padding-bottom: 100px;
+  padding-bottom: 135px;
 }
 
 .logo {
@@ -19,15 +20,20 @@
   text-align: center;  
   text-transform: uppercase;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: $semibold;
   letter-spacing: 0.175rem;
   line-height: 1.25rem;
+  margin-bottom: 50px;
 }
 
 .topic {
   width: 75%;
   margin: auto;
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: $bold;
   line-height: 1;
+}
+
+.hwcta {
+	margin: 75px 8.33%;
 }

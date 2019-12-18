@@ -13,17 +13,18 @@ export default class ExpressLayout extends React.Component {
   render = () =>
     <Default>
       <GenericHeader isHome={false} />
-      <main className={styles.page}>
-        <div className={styles.header}>
-          <img src={logo} alt='Datalab Express logo' className={styles.logo} />
-          <header className={styles.title}>{this.props.title}</header>
-          <p className={styles.topic}>{this.props.topic}</p>
-        </div>
+      <div className={styles.page}>
+        <main>
+          <div className={styles.header}>
+            <img src={logo} alt='Datalab Express logo' className={styles.logo} />
+            <header className={styles.title}>{this.props.title}</header>
+            <p className={styles.topic}>{this.props.topic}</p>
+          </div>
 
-        <section className={styles.childrenSection}>
-          {this.props.children}
-        </section>
-        {/* <div className={styles.toolPage}>
+          <section className={styles.childrenSection}>
+            {this.props.children}
+          </section>
+          {/* <div className={styles.toolPage}>
       <header className={styles.header}>
         <Grid container justify='space-between'>
           <Grid item className={styles.title}>{this.props.title}</Grid>
@@ -52,18 +53,16 @@ export default class ExpressLayout extends React.Component {
         </article>
       </div>
     </div> */}
-      </main>
-      <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} _noOffset='true' />
-      <MoreAnalyses />
+        </main>
+        <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} />
+        <MoreAnalyses />
+      </div>
     </Default>
 }
 
 ExpressLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  topic: PropTypes.string.isRequired
-  // contextStatement: PropTypes.string,
-  // sectionTitle: PropTypes.string,
-  // sectionText: PropTypes.string,
-  // hwctaLink: PropTypes.string,
+  topic: PropTypes.string.isRequired,
+  hwctaLink: PropTypes.string
 }
