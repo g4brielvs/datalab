@@ -20,7 +20,7 @@ export default class ExpressSection extends React.Component {
           <div className={styles.subtitle2}>{this.props.subtitle2}</div>
         </Grid>
         <Grid item xs={12} lg={7}>
-          <div dangerouslySetInnerHTML={{ __html: this.props.description }}></div>
+          <div dangerouslySetInnerHTML={{ __html: this.props.description }} className='description'></div>
         </Grid>
       </Grid>
 

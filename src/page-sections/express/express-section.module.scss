@@ -1,8 +1,7 @@
 @import '../../styles/index.scss';
 
 .section {
-  width: 75%;
-  margin: 90px auto auto;
+  margin: 90px 95px auto;
   padding-bottom: 115px;
 
   .title {
@@ -28,10 +27,6 @@
     font-weight: 700;
   }
 
-  .description {
-
-  }
-
   .viztitle {
     margin-top: 35px;
     margin-bottom: 25px;
@@ -47,6 +42,22 @@
 
     .viztitle {
       margin-top: 135px;
+    }
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  .section {
+    width: 95%;
+    margin: 30px auto auto;
+    padding-bottom: 95px;
+
+    .description {
+
+    }
+
+    .viztitle {
+      margin-top: 35px;
     }
   }
 }
