@@ -21,38 +21,8 @@ export default class ExpressLayout extends React.Component {
             <p className={styles.topic}>{this.props.topic}</p>
           </div>
 
-          <section className={styles.childrenSection}>
-            {this.props.children}
-          </section>
-          {/* <div className={styles.toolPage}>
-      <header className={styles.header}>
-        <Grid container justify='space-between'>
-          <Grid item className={styles.title}>{this.props.title}</Grid>
-        </Grid>
-      </header>
-      <section>
-        <p className={styles.intro} dangerouslySetInnerHTML={{ __html: this.props.introSentence }}></p>
-        <p className={styles.p} dangerouslySetInnerHTML={{ __html: this.props.contextStatement }}></p>
-      </section>
+          {this.props.children}
 
-      <div className={styles.main}>
-        <article>
-          <section className={styles.childrenSection}>
-            {this.props.children}
-          </section>
-          <section className={styles.followUp}>
-            <Grid container>
-              <Grid item xs={12} sm={4} lg={5}>
-                <div className={styles.bodyIntro} dangerouslySetInnerHTML={{ __html: this.props.sectionTitle }}></div>
-              </Grid>
-              <Grid item xs={12} sm={8} lg={7}>
-                <div dangerouslySetInnerHTML={{ __html: this.props.sectionText }}></div>
-              </Grid>
-            </Grid>
-          </section>
-        </article>
-      </div>
-    </div> */}
         </main>
         <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} />
         <MoreAnalyses />

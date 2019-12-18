@@ -10,7 +10,7 @@ export default class ExpressSection extends React.Component {
   }
 
   render = () =>
-    <div className={styles.section}>
+    <section className={styles.section}>
       <Grid container>
         <Grid item xs={12} lg={5}>
           <div className={styles.title}>
@@ -26,7 +26,7 @@ export default class ExpressSection extends React.Component {
 
       <div className={styles.viztitle}>{this.props.viztitle}</div>
       {this.props.children}
-    </div>
+    </section>
 }
 
 ExpressSection.propTypes = {
