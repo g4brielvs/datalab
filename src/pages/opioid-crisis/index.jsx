@@ -7,7 +7,7 @@ import SectionThree from '../../page-sections/opioid-crisis/sectionThree/section
 import SectionFour from '../../page-sections/opioid-crisis/sectionFour/sectionFour';
 import SectionFive from '../../page-sections/opioid-crisis/sectionFive/sectionFive';
 
-import { CustomHeaderBanner, CustomTocHeader } from '../../components/headers/customHeader';
+import { CustomHeaderBanner, CustomTocHeaderOpioid } from '../../components/headers/customHeader';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
 import { Grid } from "@material-ui/core";
@@ -38,8 +38,7 @@ export default class OpioidCrisisPage extends React.Component {
       {/*           'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']} */}
       {/* /> */}
 
-      <CustomTocHeader
-        page={'opioid'}
+      <CustomTocHeaderOpioid
         colors={primaryColors}
         sections={
           [{
