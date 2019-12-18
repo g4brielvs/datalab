@@ -377,7 +377,7 @@ export default class Sunburst extends React.Component {
 
   render() {
     return (
-      <div id='chart-area' className={this.props.display ? '' : 'hidden'}>
+      <div id='chart-area'>
         <div id='chart-container'>
           <div id='investment-sunburst'>
             <div id='investment-sunburst-viz'>

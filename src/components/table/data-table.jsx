@@ -14,7 +14,6 @@ export default class DataTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisplayed: this.props.display,
       data: props.data,
       page: 1,
       perPage: 10,
@@ -27,10 +26,9 @@ export default class DataTable extends React.Component {
     this.handlePageChange = this.handlePageChange.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
-      this.defaultWidth = document.getElementById('chart-area');
+      this.defaultWidth = document.getElementById('chart-area').clientWidth;
     }
 
-    console.log(this.defaultWidth);
   }
 
   handleRowsScroll({ stopIndex }) {
@@ -56,39 +54,35 @@ export default class DataTable extends React.Component {
     const rowCount = this.props.data.length;
     const pageCount = Math.ceil(rowCount / perPage);
 
-    if (this.props.display) {
-      return (<>
-        <Grid container justify='centered'>
-          <Grid item xs={10}>
-            <Table
-              width={this.defaultWidth}
-              height={height}
-              headerHeight={20}
-              rowHeight={30}
-              rowCount={rowCount}
-              rowGetter={({index}) => this.props.data[index]}
-              rows={this.state.data}
-              scrollToIndex={scrollToIndex}
-              scrollToAlignment='start'>
-              {this.props.columnTitles.map((item, key) => {
-                const columnWidth = this.defaultWidth / this.props.columnTitles.length;
-                return (
-                  <Column label={item.title} dataKey={key} width={columnWidth} />
-                )
-              })
-              }
-            </Table>
-            <Paginator
-              pageCount={pageCount}
-              currentPage={page}
-              onPageChange={this.handlePageChange}
-            />
+    return (<>
+      <Grid container justify='center'>
+        <Grid item xs={10}>
+          <Table
+            width={this.defaultWidth}
+            height={height}
+            headerHeight={20}
+            rowHeight={30}
+            rowCount={rowCount}
+            rowGetter={({index}) => this.props.data[index]}
+            rows={this.state.data}
+            scrollToIndex={scrollToIndex}
+            scrollToAlignment='start'>
+            {this.props.columnTitles.map((item, key) => {
+              const columnWidth = this.defaultWidth / this.props.columnTitles.length;
+              return (
+                <Column label={item.title} dataKey={key} width={columnWidth} />
+              )
+            })
+            }
+          </Table>
+          <Paginator
+            pageCount={pageCount}
+            currentPage={page}
+            onPageChange={this.handlePageChange}
+          />
         </Grid>
-        </Grid>
-      </>);
-    } else {
-      return null;
-    }
+      </Grid>
+    </>);
   }
 
 }

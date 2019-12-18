@@ -9,15 +9,11 @@ import SearchPanel from '../../../components/chartpanels/search';
 import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
 import SunburstIcon from '../../../images/sunburst_icon.svg';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
-import VizDetails from '../../../components/chartpanels/viz-detail';
+import TableContainer from "./table-container";
 
 import formatNumber from '../../../utils/number-formatter';
 
-import loadable from '@loadable/component';
-import DataTable from '../../../components/table/data-table';
-const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
-
-import categoriesStyles from './categories.module.scss';
+import CategoriesVizContainer from "./viz-container/viz-container";
 
 const Categories = () => {
 
@@ -52,11 +48,6 @@ const Categories = () => {
       centerText: 'Total FY2018 Research Grants Funding'
     }
   }
-
-  const levels = ['family', 'Program_Title'];
-  const leaf = { name: 'Recipient', size: 'Obligation' };
-  const wedgeColors = ['#881e3d', '#daa200', '#D25d15', '#082344', '#004c40'];
-  const centerColor = 'rgba(0, 0, 0, 0)';
 
   const _data = useStaticQuery(graphql`
     query {
@@ -93,20 +84,6 @@ const Categories = () => {
           Research
           Subagency
           family
-        }
-      }
-      top5Agencies: allTop5AgenciesPerInvestmentTypeV2Csv {
-        nodes {
-          source
-          target
-          value
-        }
-      }
-      top5InvestmentTypes: allTop5InstitutionsPerInvestmentTypeV2Csv {
-        nodes {
-          source
-          target
-          value
         }
       }
       contractsSearch: allInvestmentSectionContractsV2Csv {
@@ -172,7 +149,7 @@ const Categories = () => {
       .sort(searchSort)
   };
 
-  const tableColumnTitles = ['Family', 'Program Title', 'Agency', 'Subagency', 'Recipient', 'Obligation'];
+  const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
   const tableData = {
     contracts: _data.contracts.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)]),
@@ -184,55 +161,6 @@ const Categories = () => {
 
   const chartRef = React.createRef();
   const searchItemSelected = id => chartRef.current.clickById(id);
-
-  const detailPanelRef = React.createRef();
-  let currentDetails = {};
-  const getClickedDetails = d => {
-    if (!d) {
-      detailPanelRef.current && detailPanelRef.current.closeDetails();
-    } else {
-
-      const agenciesTop5 = {};
-      _data.top5Agencies.nodes
-        .filter(i => i.source === d.name)
-        .forEach(j => {
-          agenciesTop5[j.target] = j.value;
-        })
-        ;
-
-      const invTop5 = {};
-      _data.top5InvestmentTypes.nodes
-        .filter(i => i.source === d.name)
-        .forEach(j => {
-          invTop5[j.target] = j.value;
-        })
-        ;
-
-      currentDetails = {
-        'header': {
-          'title': 'Category',
-          'itemName': d.parent.name,
-          'label': 'Sub-Category',
-          'subItemName': d.name,
-          'totalLabel': 'Total $ of Funding',
-          'totalValue': d.value
-        },
-        'tables': [
-          {
-            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 5 ? ' (Top 5)' : ''),
-            'col2Title': 'Total Investment',
-            'rows': agenciesTop5
-          },
-          {
-            'col1Title': 'Institution' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-            'col2Title': 'Total Investment',
-            'rows': invTop5
-          }
-        ]
-      };
-      detailPanelRef.current.updateDetails(currentDetails);
-    }
-  };
 
   return (
     <>
@@ -309,53 +237,22 @@ const Categories = () => {
               </Grid>
             </Grid>
           </div>
-
-          <Grid container>
-            <Grid item xs={1}>
-              <Hidden smDown>
-                <div id={categoriesStyles.legendColorkey}>
-                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Program Title</span></div>
-                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Grant Family</span></div>
-                  <div className={categoriesStyles.legendCirclekeyLabel}><span>2018 Federal Grants</span></div>
-                  <svg id={categoriesStyles.legendScalekey}>
-                    <circle r="25" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                    <circle r="35" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                    <circle r="45" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                  </svg>
-                </div>
-              </Hidden>
-            </Grid>
-            <Grid item xs={10}>
-              <Sunburst
-                display={chartView}
-                items={_data[fundingType].nodes}
-                title={titlesByType[fundingType]}
-                levels={levels}
-                leaf={leaf}
-                wedgeColors={wedgeColors}
-                centerColor={centerColor}
-                showDetails={getClickedDetails}
-                ref={chartRef}
-              />
-            </Grid>
-          </Grid>
-
-          {/*<DataTable*/}
-            {/*display={!chartView}*/}
-            {/*title={titlesByType[fundingType].categoryLabel + 's'}*/}
-            {/*columnTitles={tableColumnTitles}*/}
-            {/*data={tableData[fundingType]}*/}
-          {/*/>*/}
-
-        </Grid>
-        <Grid item>
-          <VizDetails
-            showDetails={getClickedDetails}
-            details={currentDetails}
-            ref={detailPanelRef}
+          <CategoriesVizContainer
+            display={chartView}
+            items={_data[fundingType].nodes}
+            title={titlesByType[fundingType]}
+            chartRef={chartRef}
           />
+          <TableContainer
+            fundingType={fundingType}
+            display={!chartView}
+            title={titlesByType[fundingType].categoryLabel + 's'}
+            columnTitles={tableColumnTitles}
+            data={tableData[fundingType]}
+          />
+
         </Grid>
-      </Grid >
+      </Grid>
 
       <Downloads
         href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
