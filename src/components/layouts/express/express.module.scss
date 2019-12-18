@@ -37,3 +37,13 @@
 .hwcta {
 	margin: 0 8.33% 75px;
 }
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .page {
+    margin-top: 105px;
+  }
+  
+  .header {
+    padding-bottom: 125px;
+  }
+}

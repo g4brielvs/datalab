@@ -34,6 +34,19 @@
 
   .viztitle {
     margin-top: 35px;
+    margin-bottom: 25px;
     font-size: 2em;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .section {
+    width: 95%;
+    margin: 65px auto auto;
+    padding-bottom: 95px;
+
+    .viztitle {
+      margin-top: 135px;
+    }
   }
 }
