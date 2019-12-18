@@ -149,11 +149,8 @@ export default class Sunburst extends React.Component {
       .attr('fill', d => this.getWedgeColor(d))
       // .on('mouseover', hover)
       .on('click', this.click)
-      .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim())
-      ;
-    if (this.props.display) {
+      .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim());
       this.click(data[0]); // simulate clicking center to reset zoom
-    };
   }
 
   click(d) {
@@ -370,9 +367,7 @@ export default class Sunburst extends React.Component {
       this.drawChart(this.chartArray);
     }
 
-    if (this.props.display && !prevProps.display) {
-      this.updateCenter(this.chartArray[0]); // fill in center in case data set switched while showing table
-    }
+    this.updateCenter(this.chartArray[0]); // fill in center in case data set switched while showing table
   }
 
   render() {

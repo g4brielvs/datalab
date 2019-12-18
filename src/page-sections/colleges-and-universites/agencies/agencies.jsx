@@ -46,10 +46,11 @@ const Agencies = (props) => {
     }
   });
 
+  const chartRef = React.createRef();
+
   const searchItemSelected = id => {
     chartRef.current.clickById(id);
   }
-
 
 
   return (<>
@@ -100,7 +101,8 @@ const Agencies = (props) => {
       </Grid>
       <VizContainer
         display={chartView}
-        data = {_data.allUnivBubbleChartCsv.nodes} />
+        data = {_data.allUnivBubbleChartCsv.nodes}
+        chartRef = {chartRef} />
       <TableContainer
         display={!chartView} />
     </Grid>

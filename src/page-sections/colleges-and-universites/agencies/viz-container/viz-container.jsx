@@ -108,8 +108,6 @@ const AgenciesBubbleContainer = (props) => {
     }
   }
 
-  const chartRef = React.createRef();
-
   if(props.display) {
     return (<>
       <Grid container>
@@ -133,7 +131,7 @@ const AgenciesBubbleContainer = (props) => {
                 items={props.data}
                 showDetails={getClickedDetails}
                 setLegendLeft={setLegendLeft}
-                ref={chartRef}
+                ref={props.chartRef}
               />
             </Grid>
             <Grid item>
