@@ -19,15 +19,16 @@ p, ul, li, span {
   font-size: 1rem;
 }
 
+a:-webkit-any-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 ul {
   max-height: none;
   overflow-y: inherit;
   border: none;
   background-color: inherit;
-}
-
-a, a:visited {
-  text-decoration: none;
 }
 
 .hidden {
