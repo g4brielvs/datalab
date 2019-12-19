@@ -68,14 +68,14 @@ function RevenueCategoriesPage(props) {
                                 <div className='bar-controls__left'>
                                     Sort by:
                                     <div className='bar-controls__left--button-div'>
-                                        <button id="sort-amount" className="active">Amount <i className="fas fa-sort-amount-down"></i></button>
-                                        <button id="sort-name">Name <i className="fas fa-sort-alpha-down"></i></button>
+                                        <button id="sort-amount" className="active">Amount <FontAwesomeIcon icon={faSortAmountDown} className="fas fa-sort-amount-down"/></button>
+                                        <button id="sort-name">Name <FontAwesomeIcon icon={faSortAlphaDown} className="fas fa-sort-alpha-down"/></button>
                                     </div>
                                 </div>
                                 <div className='bar-controls__right'>
                                     <div className='bar-controls__right--div'>
                                         <input type="text" placeholder='Search by a term...' id="filter-by-name"></input>
-                                        <i id='filter-by-name-icon' className='fa fa-search spending__search--icon'></i>
+                                        <FontAwesomeIcon icon={faSearch} id='filter-by-name-icon' className="fa fa-search spending__search--icon"/>
                                     </div>
                                  </div>
                             </div>
