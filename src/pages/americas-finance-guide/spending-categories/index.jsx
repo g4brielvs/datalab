@@ -60,93 +60,98 @@ function SpendingCategoriesPage(props) {
 
                     <h1>Federal Spending by Category and Agency</h1>
                     <div id="viz-wrapper">
-                        <h2 class="chart-title">
-                            <div id="spending-chart-toggle" class="spending-chart-toggle clearfix" data-active="function">
-                                <span class="spending-chart-toggle__label spending-chart-toggle__label--categories" >Category</span>
-                                <button id="toggle-spending-data-type" class="toggle-control">
-                                    <div class="toggle-control__background">
-                                        <div class="toggle-control__dot"></div>
+                        <h2 className="chart-title">
+                            <div id="spending-chart-toggle" className="spending-chart-toggle clearfix" data-active="function">
+                                <span className="spending-chart-toggle__label spending-chart-toggle__label--categories" >Category</span>
+                                <button id="toggle-spending-data-type" className="toggle-control">
+                                    <div className="toggle-control__background">
+                                        <div className="toggle-control__dot"></div>
                                     </div>
                                 </button>
-                                <span class="spending-chart-toggle__label spending-chart-toggle__label--agency">Agency</span>
+                                <span className="spending-chart-toggle__label spending-chart-toggle__label--agency">Agency</span>
                             </div>
                         </h2>
 
                         <div id='viz-chart-container'>
                             <div id="bar-controls">
-                                <div class='bar-controls__left'>
+                                <div className='bar-controls__left'>
                                     Sort by:
-                                    <div class='bar-controls__left--button-div'>
-                                        <button id="sort-amount" class="active">Amount <i class="fas fa-sort-amount-down"></i></button>
-                                        <button id="sort-name">Name <i class="fas fa-sort-alpha-down"></i></button>
+                                    <div className='bar-controls__left--button-div'>
+                                        <button id="sort-amount" className="active">Amount <i className="fas fa-sort-amount-down"></i></button>
+                                        <button id="sort-name">Name <i className="fas fa-sort-alpha-down"></i></button>
                                     </div>
                                 </div>
-                                <div class='bar-controls__right'>
-                                    <div class='bar-controls__right--div'>
+                                <div className='bar-controls__right'>
+                                    <div className='bar-controls__right--div'>
                                         <input type="text" placeholder='Search by a term...' id="filter-by-name"></input>
-                                        <i id='filter-by-name-icon' class='fa fa-search spending__search--icon'></i>
+                                        <i id='filter-by-name-icon' className='fa fa-search spending__search--icon'></i>
                                     </div>
                                 </div>
                             </div>
 
                             <hr></hr>
                             <div id="viz"></div>
-                            <hr class='categories__show-more'></hr>
-                            <div id="show-more-container" class='categories__show-more'>
-                                <button id="show-more-button" class="chart__show-more">Show More</button>
+                            <hr className='categories__show-more'></hr>
+                            <div id="show-more-container" className='categories__show-more'>
+                                <button id="show-more-button" className="chart__show-more">Show More</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="poc-content" id="income-facts">
+                    <div className="poc-content" id="income-facts">
                         <p>In this section, you can explore federal spending either by category or by agency. Curious to find out more? Dive deeper to see spending details by subcategory and other options.</p>
 
-                        <section class="accordion">
-                            <h1 class="accordion__heading">What does the government buy?</h1>
-                            <div class="accordion__content">
-                                <p>Well, a lot. The government buys a variety of products and services used to serve the public &mdash; everything from military aircraft, construction and highway maintenance equipment, buildings, and livestock, to research, education, and training. These purchases are classified by Object Classes, a classification system that describes the types of goods and services purchased by the government.</p>
-                                <p>Our partner site, <a href='{{site.data.object_mapping.usaspending_home.value}}' rel="noopener noreferrer" target="_blank">USASpending.gov</a> allows visitors to explore federal spending by the types of items and services purchased by the federal government. Go explore federal spending by <a href='{{site.data.object_mapping.usaspending_object_class.value}}' rel="noopener noreferrer" target="_blank">Object Class</a>.</p>
-                            </div>
+                        <section className="accordion">
+                            <Accordion title="What does the government buy?" className="accordion__heading">
+                                <div className="accordion__content">
+                                    <p>Well, a lot. The government buys a variety of products and services used to serve the public &mdash; everything from military aircraft, construction and highway maintenance equipment, buildings, and livestock, to research, education, and training. These purchases are classified by Object Classes, a classification system that describes the types of goods and services purchased by the government.</p>
+                                    <p>Our partner site, <a href={AfgData.usaspending_home.value} rel="noopener noreferrer" target="_blank">USASpending.gov</a> allows visitors to explore federal spending by the types of items and services purchased by the federal government. Go explore federal spending by <a href={AfgData.usaspending_object_class.value} rel="noopener noreferrer" target="_blank">Object Class</a>.</p>
+                                </div>
+                            </Accordion>
                         </section>
 
-                        <section class="accordion">
-                            <h1 class="accordion__heading">What are mandatory and discretionary spending?</h1>
-                            <div class="accordion__content">
-                                <p>The difference between mandatory and discretionary spending relates to whether spending is dictated by prior law or voted on in the annual appropriations process. Programs like Social Security, Medicare, and various income security programs, are based on laws previously established that dictate the money budgeted for spending each year, which is why spending for those programs is referred to as mandatory.</p>
-                                <p>Discretionary spending is money formally approved by the President and voted on by Congress during the appropriations process each year. Generally, a majority of the discretionary spending is budgeted towards national defense. The rest of discretionary spending is budgeted to other federal agency programs ranging from transportation, education, housing, social service programs, as well as science and environmental organizations.</p>
-                            </div>
+                        <section className="accordion">
+                            <Accordion title="What are mandatory and discretionary spending?" className="accordion__heading">
+                                <div className="accordion__content">
+                                    <p>The difference between mandatory and discretionary spending relates to whether spending is dictated by prior law or voted on in the annual appropriations process. Programs like Social Security, Medicare, and various income security programs, are based on laws previously established that dictate the money budgeted for spending each year, which is why spending for those programs is referred to as mandatory.</p>
+                                    <p>Discretionary spending is money formally approved by the President and voted on by Congress during the appropriations process each year. Generally, a majority of the discretionary spending is budgeted towards national defense. The rest of discretionary spending is budgeted to other federal agency programs ranging from transportation, education, housing, social service programs, as well as science and environmental organizations.</p>
+                                </div>
+                            </Accordion>
                         </section>
 
-                        <section class="accordion">
-                            <h1 class="accordion__heading">What does the future of Social Security and Medicare look like?</h1>
-                            <div class="accordion__content">
-                                <p>Each year, the Social Security and Medicare Boards of Trustees publish their <a href="{{site.data.object_mapping.trustees_report.value}}" rel="noopener noreferrer" target="_blank">Annual Report</a> on the financial status of Social Security and Medicare. The Boards’ projections indicate that spending will continue to increase. As the average age of Americans increases, more funding is needed to support entitlement programs like Social Security, Medicare, and retirement and disability services for both military and civil servants. In {{site.data.object_mapping.trustees_fy.value}}, the cost of the Social Security and Medicare programs was {{site.data.object_mapping.ss_med_cost.value}}.</p>
-                                <p>The majority of Social Security and Medicare funding comes from tax revenue and interest on trust fund reserves. For {{site.data.object_mapping.trustees_fy.value}}, income for these programs was {{site.data.object_mapping.ss_med_income.value}}. However, costs are expected to exceed revenue starting in {{site.data.object_mapping.med_deficit_year.value}} for Medicare Part A and {{site.data.object_mapping.ss_deficit_year.value}} for Social Security, and will require the federal government to begin drawing down trust fund balances in order to continue paying full benefits. While Medicare Parts B and D are largely funded by general revenues and beneficiary premiums, the Boards project that Medicare Part A trust fund will be depleted by {{site.data.object_mapping.med_deplete_year.value}} and the Social Security trust fund will be depleted by {{site.data.object_mapping.ss_deplete_year.value}}.</p>
-                            </div>
+                        <section className="accordion">
+                            <Accordion title="What does the future of Social Security and Medicare look like?" className="accordion__heading">
+                                <div className="accordion__content">
+                                    <p>Each year, the Social Security and Medicare Boards of Trustees publish their <a href={AfgData.trustees_report.value} rel="noopener noreferrer" target="_blank">Annual Report</a> on the financial status of Social Security and Medicare. The Boards’ projections indicate that spending will continue to increase. As the average age of Americans increases, more funding is needed to support entitlement programs like Social Security, Medicare, and retirement and disability services for both military and civil servants. In {AfgData.trustees_fy.value}, the cost of the Social Security and Medicare programs was {AfgData.ss_med_cost.value}.</p>
+                                    <p>The majority of Social Security and Medicare funding comes from tax revenue and interest on trust fund reserves. For {AfgData.trustees_fy.value}, income for these programs was {AfgData.ss_med_income.value}. However, costs are expected to exceed revenue starting in {AfgData.med_deficit_year.value} for Medicare Part A and {AfgData.ss_deficit_year.value} for Social Security, and will require the federal government to begin drawing down trust fund balances in order to continue paying full benefits. While Medicare Parts B and D are largely funded by general revenues and beneficiary premiums, the Boards project that Medicare Part A trust fund will be depleted by {AfgData.med_deplete_year.value} and the Social Security trust fund will be depleted by {AfgData.ss_deplete_year.value}.</p>
+                                </div>
+                            </Accordion>
                         </section>
 
-                        <section class="tour">
-                            <div class="tour__part-one">
+                        <section className="tour">
+                            <div className="tour__part-one">
                                 <h1>How has federal spending changed over time?</h1>
-                                <p>When you are done here we encourage you to explore trends in government spending over the past {{site.data.object_mapping.number_trend_years.value}} years.</p>
+                                <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                             </div>
-                            <a class="tour__link" href="trends.html">Continue<i class="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="./spending-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
                         </section>
                     </div>
 
-                    <section class="hwcta">
-                        <p>
-                            This visualization was created using the <a href="{{site.data.object_mapping.current_mts.value}}" rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States. Some categories from the MTS have been renamed in order to be more easily understood.
-                        </p>
-                        <p>
-                            The Social Security and Medicare Boards of Trustees publish their <a href="{{site.data.object_mapping.trustees_report.value}}" rel="noopener noreferrer" target="_blank">Annual Report</a> in April for the prior Fiscal Year. For example, the 2019 Annual Report contains financial information for the 2018 Fiscal Year. Based on information available at the time of publication, it is believed that the 2019 Annual Report will be available in Fiscal Year 2020.
-                        </p>
-                        <div class="afg__download--div">
-                            <div class="afg__download--heading">Download Source Data</div>
-                            <ul>
-                                <li><a href="../../../assets/ffg/data/federal_spending_categories.csv" download>federal_spending_categories.csv</a></li>
-                            </ul>
-                        </div>
+                    <section className="hwcta">
+                        <Accordion title="Data Sources and Methodology">
+                            <p>
+                                This visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States. Some categories from the MTS have been renamed in order to be more easily understood.
+                            </p>
+                            <p>
+                                The Social Security and Medicare Boards of Trustees publish their <a href={AfgData.trustees_report.value} rel="noopener noreferrer" target="_blank">Annual Report</a> in April for the prior Fiscal Year. For example, the 2019 Annual Report contains financial information for the 2018 Fiscal Year. Based on information available at the time of publication, it is believed that the 2019 Annual Report will be available in Fiscal Year 2020.
+                            </p>
+                            <div className="afg__download--div">
+                                <div className="afg__download--heading">Download Source Data</div>
+                                <ul>
+                                    <li><a href="/americas-finance-guide/afgData/federal_spending_categories.csv" download="federal_spending_categories.csv">federal_spending_categories.csv</a></li>
+                                </ul>
+                            </div>
+                        </Accordion>
                     </section>
                 </div>
             </Default>
