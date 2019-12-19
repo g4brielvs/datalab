@@ -63,7 +63,7 @@ export default class DataTable extends React.Component {
 
     if(sortBy) {
       sortedList = _.sortBy(list, item => item[sortBy]);
-      console.log(sortedList);
+
       if (sortDirection === SortDirection.DESC) {
         sortedList = sortedList.reverse();
       }

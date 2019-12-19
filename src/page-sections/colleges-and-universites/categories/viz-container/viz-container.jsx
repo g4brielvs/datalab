@@ -84,8 +84,6 @@ const CategoriesVizContainer = (props) => {
     }
   };
 
-console.log(props);
-
 if(props.display) {
   return (<>
     <Grid container>
