@@ -14,7 +14,7 @@ import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSearch, faSortAlphaDown, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
 
 function RevenueCategoriesPage(props) {
     return (
