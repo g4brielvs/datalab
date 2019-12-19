@@ -3,19 +3,21 @@ import styles from "./page.module.scss";
 
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
+import TagLineMobile from '../../svgs/logo-tablet-mobile.svg';
+
 import Arrow from '../../svgs/arrow.svg';
 import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class PageHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isSticky: false,
+      isMobileTag: false,
       top: 0,
       skinnyTop: 29,
       skinnySub: 80,
@@ -27,18 +29,28 @@ class PageHeader extends React.Component {
 
   componentDidMount() {
 
+    // check for mobile when window is avail...
+    const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
+    this.setState({isMobileTag: isMobile});
+
+    // if we're NOT on the homepage...
+    // always set to true!
+    if (this.props.isHome === false) {
+      this.setState({ isSticky: true });
+    }
+
     // homepage listener...
-    if (this.props.isHome == true) {
+    if (this.props.isHome === true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.scrollY > 135;
+        let isSticky = window.pageYOffset > 135;        
         this.setState({ isSticky: isSticky });
       });
     }
 
     // not on homepage..
-    if (this.props.isHome == false) {
+    if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
-        const max = 29;
+        const max = 26;
         let skinnyTop = max - window.pageYOffset;
         if (window.pageYOffset > max) {
           skinnyTop = 0;
@@ -47,8 +59,9 @@ class PageHeader extends React.Component {
       });
     }
 
+
     // not on homepage...
-    if (this.props.isHome == false) {
+    if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
         const max = 80;
         let skinnySub = max - window.pageYOffset;
@@ -59,16 +72,11 @@ class PageHeader extends React.Component {
       });
     }
 
-    // if we're NOT on the homepage...
-    // always set to true!
-    if (this.props.isHome == false) {
-      this.setState({ isSticky: true });
-    }
   };
 
   handleMouseLeave = e => {
     e.stopPropagation();
-    this.setState({ activeItem: '' });
+    this.setState({ activeItem: ' ' });
   };
 
   burgerClick = () =>  {
@@ -76,50 +84,63 @@ class PageHeader extends React.Component {
   };
 
   handleItemHover = e => {
+    if (!e.target.innerText) {
+      return this.setState({activeItem: ' '});
+    }
     this.setState({ activeItem: e.target.innerText });
     // shim for datalab express as we do not need it currently
-    if (e.target.innerText == "DataLab Express ") {
-      this.setState({ activeItem: '' });
+    if (e.target.innerText.toString().trim() === "DataLab Express") {
+      this.setState({ activeItem: ' ' });
+    }
+  };
+
+  tagLineCheck = (isSticky) => {
+    if (isSticky) {
+      if (this.state.isMobileTag) {
+        return(<TagLineMobile/>);
+      }
+      return(<NoTagLine/>);
+    } else {
+      if (this.state.isMobileTag) {
+        return(<TagLineMobile/>);
+      }
+      return(<TagLine/>);
     }
   };
 
   render() {
 
     let isSticky = this.state.isSticky;
-    
+
     return (
       <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
         <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
           <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
             <a href="/">
-              <div className={styles.logoContainer}>
-                {isSticky ? (
-                  <NoTagLine />
-                ) : (
-                  <TagLine />
-                )}
+              <div>
+                {this.tagLineCheck(isSticky, this.state.isMobileTag)}
               </div>
             </a>
-
+            
             <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
               <span className={styles.toggle} onClick={this.burgerClick}>
                 <FontAwesomeIcon icon={faBars} />
               </span>
               <ul className={styles.ulNav} id={styles.burgerMenu}>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <a href='#' className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></a>
+                  <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
                 </li>
                 <li className={styles.item}>
-                  <a href='#' className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </a>
+                  <button className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
                 </li>
               </ul>
             </nav>
@@ -127,7 +148,7 @@ class PageHeader extends React.Component {
           </div>
         </div>
 
-        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome == true ? `` : `${this.state.skinnySub}px`}}>
+        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome === true ? `` : `${this.state.skinnySub}px`}}>
           <Dropdown activeItem={this.state.activeItem}
                     mouseHandle={this.handleMouseLeave}
                     data={this.props.megamenuItems} />

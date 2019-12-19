@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss'; 
+
 @media screen and (max-width: 958px) {
   .toggle {
     display: flex;
@@ -12,12 +14,16 @@
     top: 140px;
   }
 
+  // mobile sub-header
+  .sub {
+    top: 135px;
+  }
+
   .nav {
     position: absolute;
     padding: 0;
     padding-right: 2rem;
     right: 0;
-    margin: 0;
     width: auto;
     border-top: none;
 
@@ -100,10 +106,26 @@
   }
 }
 
+@media screen and (max-width: 949px) {
+  .sub {
+    top: 130px;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .sub {
+    top: 90px;
+  }
+}
+
 // "super mobile" version 
-@media screen and (max-width: 490px) {
-  .logo-wrapper {
-    justify-content: flex-start;
+@media screen and (max-width: $phone) {
+  .main.tight {
+    height: 60px;
+  }
+
+  .sub {
+    top: 100px;
   }
 }
 

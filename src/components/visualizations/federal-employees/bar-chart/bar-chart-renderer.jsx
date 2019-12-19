@@ -74,7 +74,7 @@ const BarChartRenderer = {
       ],
       {
         orientation: "horizontal",
-        fontSize: 16,
+        fontSize: "1rem",
         shape: "rect",
         spacing: 150,
         borderWidth: 2,
@@ -126,7 +126,7 @@ const BarChartRenderer = {
       .append("text")
       .attr("y", 6)
       .attr("dy", "0.71em")
-      .attr("font-size", "14")
+      .attr("font-size", "0.875rem")
       .attr("font-family", "Source Sans Pro")
       .attr("font-weight", "700")
       .attr("text-anchor", "start")

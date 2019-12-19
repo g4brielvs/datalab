@@ -27,7 +27,7 @@ export default class Sunburst extends React.Component {
     this.chartArray;
     this.innerRadius;
     this.maxHeight;
-    this.width;
+    this.width = 900;
     this.height;
     this.arc;
     this.radius;
@@ -46,6 +46,7 @@ export default class Sunburst extends React.Component {
     this.updateCenter = this.updateCenter.bind(this);
     this.setCenterTextLines = this.setCenterTextLines.bind(this);
     this.setWrappedCenterTextLines = this.setWrappedCenterTextLines.bind(this);
+    this.showDetailsPane = this.showDetailsPane.bind(this);
     this.wordWrap = this.wordWrap.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
   }
@@ -129,6 +130,8 @@ export default class Sunburst extends React.Component {
 
     this.svg = d3.select('#sunburst')
       .append('svg')
+      .attr("viewBox", `0 0 ${this.width} ${this.height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
       .attr('width', this.width)
       .attr('height', this.height)
       .append('g')
@@ -199,14 +202,14 @@ export default class Sunburst extends React.Component {
     if (d.depth === 0) { // center
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-      this.props.showDetails(null); // hide details panel
+      this.showDetailsPane(null); // hide details panel
 
     } else if (d.depth === 1) { // category
       this.setCenterTextLines('center-heading', 'Category', labelFontSize, '0');
       this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
-      this.props.showDetails(null); // hide details panel
+      this.showDetailsPane(null); // hide details panel
 
     } else {
       this.setCenterTextLines('center-heading', 'Category', mediumText, '0');
@@ -214,7 +217,7 @@ export default class Sunburst extends React.Component {
       this.setCenterTextLines('center-heading', 'Sub-Category', mediumText, lineHeight * 2);
       this.setWrappedCenterTextLines('center-title', d.name, largeText, lineHeight, this.innerRadius * wordWrapRatio);
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), exLargeText, lineHeight * 2);
-      this.props.showDetails(d); // show details in panel
+      this.showDetailsPane(d); // show details in panel
     }
 
     /* Scale text to fit */
@@ -272,6 +275,12 @@ export default class Sunburst extends React.Component {
       ;
   }
 
+  showDetailsPane(d) {
+    if(!this.isMobile()){
+      this.props.showDetails(d);
+    }
+  }
+
   wordWrap(text, maxWidth) {
     var words = text.text().split(/\s+/).reverse(),
       word,
@@ -301,11 +310,8 @@ export default class Sunburst extends React.Component {
   }
 
   componentDidMount() {
-    if (typeof document !== 'undefined') {
-      this.maxHeight = document.body.clientWidth * .7;
-      this.width = document.body.clientWidth * .7;
-      this.height = this.maxHeight;
-    }
+      this.maxHeight = this.width;
+      this.height = this.width;
 
     this.radius = Math.min(this.width, this.height) / 2;
     this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
@@ -338,27 +344,7 @@ export default class Sunburst extends React.Component {
 
     // Function calls
     this.drawChart(this.chartArray); // default chart is all grants
-
-    const context = this;
-
-    if (typeof window !== 'undefined') {
-      // Redraw based on the new size whenever the browser window is resized.
-      window.addEventListener('resize', function () {
-        context.calculatedWidth = window.innerWidth * .7;
-        context.width = window.innerWidth * .7;
-
-        context.height = context.width;
-        context.radius = Math.min(context.width, context.height) / 2;
-        context.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
-        context.yScale = d3.scale.sqrt().range([0, context.radius]);
-
-        const stateData = context.state.selectedItem;
-
-        context.drawChart(context.chartArray);
-
-        if (stateData) context.click(stateData);
-      });
-    }
+    
   }
 
   componentDidUpdate(prevProps) {

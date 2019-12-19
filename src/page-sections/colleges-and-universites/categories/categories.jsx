@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Accordion from '../../components/accordion/accordion';
-import Downloads from '../../components/section-elements/downloads/downloads';
+import Accordion from '../../../components/accordion/accordion';
+import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../components/chartpanels/search';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import SunburstIcon from '../../images/sunburst_icon.svg';
-import VizControlPanel from '../../components/chartpanels/viz-control';
-import VizDetails from '../../components/chartpanels/viz-detail';
+import SearchPanel from '../../../components/chartpanels/search';
+import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import SunburstIcon from '../../../images/sunburst_icon.svg';
+import VizControlPanel from '../../../components/chartpanels/viz-control';
+import VizDetails from '../../../components/chartpanels/viz-detail';
 
-import formatNumber from '../../utils/number-formatter';
+import formatNumber from '../../../utils/number-formatter';
 
 import loadable from '@loadable/component';
-import DataTable from '../../components/chartpanels/data-table';
-const Sunburst = loadable(() => import('../../components/visualizations/sunburst/sunburst'));
+import DataTable from '../../../components/chartpanels/data-table';
+const Sunburst = loadable(() => import('../../../components/visualizations/sunburst/sunburst'));
+
+import categoriesStyles from './categories.module.scss';
 
 const Categories = () => {
 
@@ -250,7 +252,7 @@ const Categories = () => {
         />
       </Hidden>
 
-      <Accordion title='Accordion Title'>
+      <Accordion title='Instructions'>
         <ul>
           <li>Select an investment type: contracts, grants, or research grants</li>
           <li>Hover over each section to determine the category</li>
@@ -273,7 +275,7 @@ const Categories = () => {
           </Hidden>
         </Grid>
         <Grid item>
-          <form id='sunburstRadio'>
+          <div id='sunburstRadio'>
             <Grid container>
               <Grid item>
                 <input type='radio'
@@ -306,19 +308,37 @@ const Categories = () => {
                 <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
               </Grid>
             </Grid>
-          </form>
+          </div>
 
-          <Sunburst
-            display={chartView}
-            items={_data[fundingType].nodes}
-            title={titlesByType[fundingType]}
-            levels={levels}
-            leaf={leaf}
-            wedgeColors={wedgeColors}
-            centerColor={centerColor}
-            showDetails={getClickedDetails}
-            ref={chartRef}
-          />
+          <Grid container>
+            <Grid item xs={1}>
+              <Hidden smDown>
+                <div id={categoriesStyles.legendColorkey}>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Program Title</span></div>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>Grant Family</span></div>
+                  <div className={categoriesStyles.legendCirclekeyLabel}><span>2018 Federal Grants</span></div>
+                  <svg id={categoriesStyles.legendScalekey}>
+                    <circle r="25" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                    <circle r="35" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                    <circle r="45" className={categoriesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                  </svg>
+                </div>
+              </Hidden>
+            </Grid>
+            <Grid item xs={10}>
+              <Sunburst
+                display={chartView}
+                items={_data[fundingType].nodes}
+                title={titlesByType[fundingType]}
+                levels={levels}
+                leaf={leaf}
+                wedgeColors={wedgeColors}
+                centerColor={centerColor}
+                showDetails={getClickedDetails}
+                ref={chartRef}
+              />
+            </Grid>
+          </Grid>
 
           <DataTable
             display={!chartView}

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import { Link } from "gatsby"
-import "./dts-tile.scss"
-import "./landing-dts.scss"
-import { graphql, useStaticQuery } from "gatsby"
-import * as d3 from 'd3v4'
-
+import { Link } from "gatsby";
+import "./dts-tile.scss";
+import "./landing-dts.scss";
+import { graphql, useStaticQuery } from "gatsby";
+import * as d3 from 'd3v4';
 
 function DtsTile(props) {
 
@@ -27,17 +26,21 @@ function DtsTile(props) {
   };
 
   useEffect(() => {
-    // Update the document title using the browser API
-    data = _data.allRecent30Csv.nodes;
-    redraw();
 
-    window.addEventListener('resize', function () {
-      if (debounce) {
-        clearTimeout(debounce);
-      }
-
-      debounce = setTimeout(redraw, 100);
+    d3.csv('/data-lab-data/dts/recent_30.csv', tileData => {
+      data = tileData;
+      redraw();
     });
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', function() {
+        if (debounce) {
+          clearTimeout(debounce);
+        }
+
+        debounce = setTimeout(redraw, 100);
+      });
+    }
 
   });
 
@@ -88,7 +91,7 @@ function DtsTile(props) {
     setSvg();
 
     x.domain(d3.extent(data, function (d) { return new Date(d.date); }));
-    y.domain([0, d3.max(data, function (d) { return d.Totals; })]);
+    y.domain([0, d3.max(data, function (d) { return d.Totals * 1.5; })]); // multiply by 1.5 to lower domain for new data range
 
     let lastEntry = data[data.length - 1];
     let lastDate = new Date(lastEntry.date);
@@ -99,7 +102,7 @@ function DtsTile(props) {
       .attr("transform", "translate(-10)")
       .style("stroke", "#757575")
       .style("font-family", "Source Sans Pro")
-      .style("font-size", "11")
+      .style("font-size", "0.6875rem")
       .style("line-height", "20px")
       .style("font-weight", "100")
       .call(d3.axisLeft(y).ticks(2)
@@ -110,7 +113,7 @@ function DtsTile(props) {
       .attr("class", "dts_Xaxis")
       .attr("transform", "translate(0," + height + ")")
       .style("stroke", "#757575")
-      .style("font-size", "11")
+      .style("font-size", "0.6875rem")
       .style("font-family", "Source Sans Pro")
       .style("line-height", "20px")
       .style("font-weight", "100")
@@ -133,17 +136,6 @@ function DtsTile(props) {
     d3.select(".dtsm-dollars").text(dollarFormatter(lastValue));
     d3.select(".side-dts__date").text("Updated " + dateFormatter(lastDate));
   }
-
-  const _data = useStaticQuery(graphql`
-    query dtsQuery {
-      allRecent30Csv {
-        nodes {
-          date
-          Totals
-        }
-      }
-    }
-  `)
 
   return (
     <>

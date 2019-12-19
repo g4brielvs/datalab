@@ -76,14 +76,14 @@ module.exports = [ {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
         // categories: './citizens-guide/src/revenue/categories/index.js',
         // trends: './citizens-guide/src/revenue/trends/index.js',
-        // countryComparison: './citizens-guide/src/revenue/countries/index.js'
+        countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -108,9 +108,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -134,9 +134,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -161,9 +161,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',

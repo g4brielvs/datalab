@@ -7,7 +7,7 @@ import React from "react"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
+import { HeadOnly } from "../../../components/headers/headers"
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -16,6 +16,9 @@ import { Helmet } from 'react-helmet';
 
 import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingAndGdpPage(props) {
     return (
@@ -33,20 +36,20 @@ function SpendingAndGdpPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
+                <HeadOnly></HeadOnly>
 
                 {/* we need to figure out how to use this nav with the main nav; design people are working on it */}
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
+                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./categories.html">Spending Categories</a></li>
-                        <li><a href="./trends.html">Federal Spending Trends</a></li>
-                        <li><a href="./country-comparison.html">Country Comparison</a></li>
+                        <li><a href="./spending-categories">Spending Categories</a></li>
+                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
+                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -55,8 +58,8 @@ function SpendingAndGdpPage(props) {
                         <Share 
                             location={props.location}
                             title="Data Lab - Federal Spending and GDP – U.S. Treasury"
-                            text="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            twitter="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
+                            facebook='' reddit='' linkedin='' tumblr='' email=''/>
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government spent {AfgData.current_fy_spending.value}.
@@ -69,7 +72,7 @@ function SpendingAndGdpPage(props) {
                         <div id="viz"></div>
 
                         <div className="intro-math intro-hidden">
-                            <i className="fas fa-reply intro-math__icon"></i>{AfgData.dot_number_spending.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_spending.value}</strong>
+                            <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_spending.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_spending.value}</strong>
                         </div>
 
                         <div id="copy" className="intro-hidden">
@@ -90,7 +93,7 @@ function SpendingAndGdpPage(props) {
                                     <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government collected {AfgData.current_fy_revenue.value} in federal revenue.</h1>
                                     <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
                                     <p>
-                                        <a target="_blank" href="../revenue/">Go Explore Federal Revenue.</a>
+                                        <a href="./revenue-and-gdp">Go Explore Federal Revenue.</a>
                                     </p>
                                 </section>
 
@@ -110,7 +113,7 @@ function SpendingAndGdpPage(props) {
 
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
-                            <a className="tour__link" href="./categories.html">Discover<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="./spending-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 

@@ -9,6 +9,11 @@ import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizDetails from '../../components/chartpanels/viz-detail';
+import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
+import Share from '../../components/share/share';
+import ControlBar from "../../components/control-bar/control-bar";
+import DataTable from "../../components/chartpanels/data-table";
+import formatNumber from "../../utils/number-formatter";
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -135,6 +140,8 @@ const Institutions = (props) => {
 
   const detailPanelRef = React.createRef();
 
+  const tableColumnTitles = ['Institution', 'Type', 'Contracts', 'Grants', 'Student Aid', 'Total $ Received'];
+
   return (<>
     <StoryHeading
       number={'02'}
@@ -143,10 +150,12 @@ const Institutions = (props) => {
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
-    <Accordion title='Accordion Title'>
-      <p>I am an accordion with lots to say.</p>
-      <p>I have several paragraphs...</p>
-      <p>I have several paragraphs...</p>
+    <Accordion title="Instructions">
+      <p>Click the map to get started</p>
+      <p>The number displayed on each cluster is the number of institutions in that area</p>
+      <p>Click on a regional cluster to expand the area and display details for each school</p>
+      <p>Use the zoom in and zoom out keys to adjust the map view</p>
+      <p>For a specific search, use the search tool to type in the school by name</p>
     </Accordion>
 
     <Grid container>
@@ -156,13 +165,27 @@ const Institutions = (props) => {
             location={props.location}
             title='Check out this analysis on Data Lab'
             text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-            twitter='#DataLab #Treasury #DataTransparency #USAspending'
+            twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
           />
         </ControlBar>
         <div>
           <Mapbox
             data={GeoDataMapbox}
             showDetails={getClickedDetails}
+          />
+          <DataTable
+            data={dataTableData.map(x => {
+              return [
+                x.Recipient,
+                x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
+                formatNumber('dollars', x.contracts),
+                formatNumber('dollars', x.grants),
+                formatNumber('dollars', x.student_aid),
+                formatNumber('dollars', x.Total_Federal_Investment),
+              ];
+            })}
+            columnTitles={tableColumnTitles}
+            display={false} // for now, left panel for map isn't finished.
           />
         </div>
       </Grid>

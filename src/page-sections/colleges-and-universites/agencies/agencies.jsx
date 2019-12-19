@@ -1,20 +1,25 @@
-import React from 'react';
+import React, {useState}  from "react"
 import { graphql, useStaticQuery } from 'gatsby';
 
-import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
-import Accordion from '../../components/accordion/accordion';
+import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
+import agenciesStyles from './agencies.module.scss';
+
+import Accordion from '../../../components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import Downloads from '../../components/section-elements/downloads/downloads';
+import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../components/chartpanels/search';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import VizControlPanel from '../../components/chartpanels/viz-control';
-import VizDetails from '../../components/chartpanels/viz-detail';
-import Share from "../../components/share/share"
+import SearchPanel from '../../../components/chartpanels/search';
+import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import VizControlPanel from '../../../components/chartpanels/viz-control';
+import VizDetails from '../../../components/chartpanels/viz-detail';
+import Share from "../../../components/share/share"
 
 import loadable from '@loadable/component';
-const BubbleChart = loadable(() => import('../../components/visualizations/bubble-chart/bubble-chart'));
+import DataTable from "../../../components/chartpanels/data-table"
+import formatNumber from "../../../utils/number-formatter"
+import * as d3 from "d3v3"
+const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -48,10 +53,30 @@ const Agencies = (props) => {
           value
         }
       }
+      allCuBubbleChartTableV2Csv {
+        nodes {
+          Recipient
+          agency
+          subagency
+          family
+          type
+          obligation
+        }
+      }
     }
   `);
 
-  const switchView = view => alert('switch to ' + view + ' mode');
+  const tableColumnTitles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
+  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
+
+  const [chartView, isChartView] = useState(true);
+  const switchView = view => {
+    if (view === 'chart') {
+      isChartView(true);
+    } else {
+      isChartView(false);
+    }
+  }
 
   const detailPanelRef = React.createRef();
   let currentDetails = {};
@@ -132,6 +157,10 @@ const Agencies = (props) => {
     chartRef.current.clickById(id);
   }
 
+  function setLegendLeft(leftState) {
+    d3.select('#agencies-legend-colorkey').classed("left", leftState);
+  }
+
   return (<>
     <StoryHeading
       number={'03'}
@@ -150,7 +179,7 @@ const Agencies = (props) => {
       />
     </Hidden>
 
-    <Accordion title='Accordion Title'>
+    <Accordion title='Instructions'>
       <p>In this visualization sub-agencies are represented by colorful circles and grouped together by their agency symbolized by the light gray bubble</p>
       <ul>
         <li>Hover over the circle cluster or individual circle for the total investment of the agency or sub-agency</li>
@@ -163,7 +192,7 @@ const Agencies = (props) => {
       location={props.location}
       title='Check out this analysis on Data Lab'
       text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-      twitter='#DataLab #Treasury #DataTransparency #USAspending'
+      twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
     />
 
     <Grid container justify='center'>
@@ -180,11 +209,36 @@ const Agencies = (props) => {
         </Hidden>
       </Grid>
       <Grid item>
-        <BubbleChart
-          items={_data.allUnivBubbleChartCsv.nodes}
-          showDetails={getClickedDetails}
-          ref={chartRef}
-        />
+        <Grid container>
+          <Grid item xs={1}>
+            <Hidden smDown>
+              <div id="agencies-legend-colorkey">
+                <div className={agenciesStyles.legendCirclekeyLabel}><span>Agency</span></div>
+                <div className={agenciesStyles.legendCirclekeyLabel}><span>Sub-Agency</span></div>
+                <svg id={agenciesStyles.legendScalekey}>
+                  <circle r="25" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                  <circle r="35" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                  <circle r="45" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
+                </svg>
+              </div>
+            </Hidden>
+          </Grid>
+          <Grid item xs={10}>
+            <BubbleChart
+              display={chartView}
+              items={_data.allUnivBubbleChartCsv.nodes}
+              showDetails={getClickedDetails}
+              setLegendLeft={setLegendLeft}
+              ref={chartRef}
+            />
+
+            <DataTable
+              display={!chartView}
+              columnTitles={tableColumnTitles}
+              data={tableData}
+            />
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
         <VizDetails

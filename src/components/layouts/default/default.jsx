@@ -9,7 +9,6 @@ import SiteFooter from '../../footers/site';
 
 import '../../../styles/index.scss';
 
-
 const Default = ({ children }) => (
   <>
     <Helmet>
@@ -17,7 +16,6 @@ const Default = ({ children }) => (
     </Helmet>
 
     <OfficialBanner />
-
     {children}
 
     <PageFooter />

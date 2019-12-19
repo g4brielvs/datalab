@@ -131,7 +131,7 @@ function BarChart(props) {
   return (
     <>
       <div id="tooltip" className="tooltip-module" />
-      <form id="barChartToolbar" className={`row ${barChartStyles.toolbar}`}>
+      <div id="barChartToolbar" className={`row ${barChartStyles.toolbar}`}>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
           <Multiselector key={'Agencies'}
                          optionList={agencyOptionList}
@@ -152,7 +152,7 @@ function BarChart(props) {
                          id={'barChartStates'}
                          changeHandler={setSelectedStates} />
         </div>
-      </form>
+      </div>
       <div className={`fed-emp-bar-chart ${barChartStyles.visContainer}`}>
         <svg width="900" height="500" viewBox="0 0 900 500" id="barChartSvg" className={barChartStyles.visBarChart} />
         <svg id="barChartKey" width="600" height="16" viewBox="0 0 600 16" />

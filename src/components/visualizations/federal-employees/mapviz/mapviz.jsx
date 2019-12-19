@@ -107,14 +107,14 @@ export default function Mapviz(props) {
         .text(`${formatNumber(min)}`)
         .attr("transform", `translate(0, 20)`)
         .attr("text-anchor", "middle")
-        .attr("font-size", 12);
+        .attr("font-size", "0.75rem");
 
       scaleGroup
         .append("text")
         .text(`${formatNumber(max)}`)
         .attr("transform", `translate(${scaleWidth}, 20)`)
         .attr("text-anchor", "middle")
-        .attr("font-size", 12);
+        .attr("font-size", "0.75rem");
     }
   };
 
@@ -235,7 +235,7 @@ export default function Mapviz(props) {
         <Share location={props.location}/>
       </ControlBar>
       <div id="tooltip" className="tooltip-module" />
-      <form id="mapVizToolbar" className={`row ${barChartStyles.toolbar}`}>
+      <div id="mapVizToolbar" className={`row ${barChartStyles.toolbar}`}>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
           <Multiselector key={'mapVizAgencies'}
                          optionList={agencyOptionList}
@@ -256,7 +256,7 @@ export default function Mapviz(props) {
                          id={occupationName}
                          changeHandler={setSelectedOccupations} />
         </div>
-      </form>
+      </div>
       <div className="visContainer">
         <svg width="947" height="700" viewBox="0 0 1200 700" id="mapSvg" className={mapStyles.mapSvg}/>
       </div>
