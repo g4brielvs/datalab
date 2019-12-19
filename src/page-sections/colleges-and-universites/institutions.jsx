@@ -3,17 +3,16 @@ import React from 'react';
 
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar'
+import DataTable from "../../components/chartpanels/data-table";
 import Downloads from '../../components/section-elements/downloads/downloads';
-import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
+import formatNumber from "../../utils/number-formatter";
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizDetails from '../../components/chartpanels/viz-detail';
+
 import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
-import Share from '../../components/share/share';
-import ControlBar from "../../components/control-bar/control-bar";
-import DataTable from "../../components/chartpanels/data-table";
-import formatNumber from "../../utils/number-formatter";
+import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -25,86 +24,24 @@ const Institutions = (props) => {
     });
   }
 
-  // const panelDetails = useStaticQuery(graphql`
-  //   query {
-  //     detailsCsv {
-  //       nodes {
-  //         id
-  //         Agency
-  //         Obligation
-  //         Program_Title
-  //         Recipient
-  //         Subagency
-  //         family
-  //       }
-  //     }
-  //     grants: allInvestmentSectionGrantsV2Csv {
-  //       nodes {
-  //         id
-  //         Agency
-  //         Obligation
-  //         Program_Title
-  //         Recipient
-  //         Research
-  //         Subagency
-  //         family
-  //       }
-  //     }
-  //     research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
-  //       nodes {
-  //         id
-  //         Agency
-  //         Obligation
-  //         Program_Title
-  //         Recipient
-  //         Research
-  //         Subagency
-  //         family
-  //       }
-  //     }
-  //     top5Agencies: allTop5AgenciesPerInvestmentTypeV2Csv {
-  //       nodes {
-  //         source
-  //         target
-  //         value
-  //       }
-  //     }
-  //     top5InvestmentTypes: allTop5InstitutionsPerInvestmentTypeV2Csv {
-  //       nodes {
-  //         source
-  //         target
-  //         value
-  //       }
-  //     }
-  //     contractsSearch: allInvestmentSectionContractsV2Csv {
-  //       group(field: Program_Title) {
-  //         nodes {
-  //           id
-  //           family
-  //           Program_Title
-  //         }
-  //       }
-  //     }
-  //     grantsSearch: allInvestmentSectionGrantsV2Csv {
-  //       group(field: Program_Title) {
-  //         nodes {
-  //           id
-  //           family
-  //           Program_Title
-  //         }
-  //       }
-  //     }
-  //     researchSearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
-  //       group(field: Program_Title) {
-  //         nodes {
-  //           id
-  //           family
-  //           Program_Title
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  const panelDetails = useStaticQuery(graphql`
+    query {
+      agencies: allTop5AgenciesPerSchoolV3Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+      investments: allTop5InvestmentsPerSchoolV3Csv {
+        nodes {
+          source
+          target
+          value
+        }
+      }
+    }
+  `);
 
   let schoolDetails = {};
   const getClickedDetails = id => {
@@ -119,20 +56,26 @@ const Institutions = (props) => {
         'totalValue': schoolProperties.Total_Federal_Investment
       },
       'tables': [
-        // {
-        //   'col1Title': 'Funding Instrument Type',
-        //   'rows': agenciesTop5
-        // },
-        // {
-        //   'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-        //   'col2Title': 'Total Investment',
-        //   'rows': invTop5
-        // },
-        // {
-        //   'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-        //   'col2Title': 'Total Investment',
-        //   'rows': invTop5
-        // }
+        {
+          'col1Title': 'Funding Instrument Type',
+          'rows': {
+            'Contracts': schoolProperties.contracts_received,
+            'Grants': schoolProperties.grants_received,
+            '   Grants (Research)': schoolProperties.research_grants_received
+          }
+        },
+        {
+          'col1Title': 'Investment Categories (Top 5)',
+          'col2Title': 'Total Investment',
+          'rows': panelDetails.investments.nodes
+            .filter( n => n.source === schoolProperties.Recipient)
+            .map( r => {})
+          // },
+          // {
+          //   'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+          //   'col2Title': 'Total Investment',
+          //   'rows': invTop5
+        }
       ]
     }
     detailPanelRef.current.updateDetails(schoolDetails);
