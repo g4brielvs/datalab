@@ -23,7 +23,7 @@ const AgenciesTableContainer = (props) => {
   `);
 
   const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
-  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
+  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, parseInt(n.obligation)]);
 
   if(props.display) {
     return(<>
