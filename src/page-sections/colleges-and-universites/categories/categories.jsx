@@ -11,8 +11,6 @@ import SunburstIcon from '../../../images/sunburst_icon.svg';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
 import TableContainer from "./table-container";
 
-import formatNumber from '../../../utils/number-formatter';
-
 import CategoriesVizContainer from "./viz-container/viz-container";
 
 const Categories = () => {
@@ -149,15 +147,20 @@ const Categories = () => {
       .sort(searchSort)
   };
 
+
+  console.log(searchList);
+
   const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
   const tableData = {
     contracts: _data.contracts.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
+      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     grants: _data.grants.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
+      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     research: _data.research.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
+      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
   };
+
+  console.log(tableData);
 
   const chartRef = React.createRef();
   const searchItemSelected = id => chartRef.current.clickById(id);
