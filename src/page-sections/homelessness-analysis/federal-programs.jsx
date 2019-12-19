@@ -16,7 +16,7 @@ export default function FederalPrograms(props){
     const state = mem.states;
     const tableData = mem.pop;
     const cfdaState = mem.cfdaState;
-    const barChrt = mem.barChart;
+    let barChrt = mem.barChart;
 
     const absWidth = 1024;
     const absHeight = 575;
@@ -41,7 +41,6 @@ export default function FederalPrograms(props){
     let mapTitle, p21MapSvg, contactPanel, cocPanel, p2MatrixSvg, p21Path, m;
 
     function init() {
-      d3.select('#container2_1').append('div').attr('id', 'p2_1_title');
       d3.select('#container2_1').append('div').attr('id', 'p2_1').style('top', '150px');
       d3.select('#container2_2').append('div').attr('id', 'p2_2_legend_title');
       d3.select('#container2_2').append('div').attr('id', 'p2_2_legend');
@@ -58,10 +57,7 @@ export default function FederalPrograms(props){
       d3.select('#p2_4').append('div').attr('id', 'panel_info');
       d3.select('#p2_5').append('div').attr('id', 'panel_contact');
 
-      mapTitle = d3.select('#p2_1_title')
-        .append('div')
-        .attr('padding', '50px 0 0 0')
-        .attr('class', 'legend-header');
+      mapTitle = d3.select('#container2_title');
 
       p21MapSvg = d3.select('#panel_map')
         .append('svg')
@@ -103,6 +99,7 @@ export default function FederalPrograms(props){
       });
 
       cfdaState.sort((a, b) => b.fed_funding - a.fed_funding);
+      barChrt = barChrt.sort((x, y) => d3.descending(x.fed_funding, y.fed_funding));
 
       tableData.forEach((d) => {
         d.total_homeless = +d.total_homeless;
@@ -118,7 +115,7 @@ export default function FederalPrograms(props){
     }
 
     function makeMapTitle(d9) {
-      return mapTitle.html(`<h5>${d9.properties.coc_number}: ${d9.properties.COCNAME}</h5>`);
+      return mapTitle.html(`${d9.properties.coc_number}: ${d9.properties.COCNAME}`);
     }
 
   function MakeCoCTable(d7) {
@@ -128,7 +125,7 @@ export default function FederalPrograms(props){
       .append('div')
       .attr('width', '100%')
       .attr('id', 'p2_quad3_title')
-      .style('class', 'legend-header')
+      .attr('class', 'legend-header')
       .html(`<h5>${d7.properties.coc_number} Homeless Counts</h5>`);
 
     for (let i = 0; i < tableData.length; i++) {
@@ -157,166 +154,161 @@ export default function FederalPrograms(props){
     }
   }
 
-    function StateBarChart(d) {
-      d3.select('#panel_info > svg').remove();
-      d3.select('#p2_4_cfda_legend_title').remove();
-      d3.select('#p2_4_cfda_legend').remove();
+  function StateBarChart(d) {
+    d3.select('#panel_info > svg').remove();
+    d3.select('#p2_4_cfda_legend_title').remove();
+    d3.select('#p2_4_cfda_legend').remove();
 
-      const cfdaLegend22 = d3.select('#p2_2_legend')
-        .append('div')
-        .attr('width', '100%')
-        .attr('height', '30px')
-        .attr('id', 'p2_2_cfda_legend');
+    const cfdaLegend22 = d3.select('#p2_2_legend')
+      .append('div')
+      .attr('width', '100%')
+      .attr('height', '30px')
+      .attr('id', 'p2_2_cfda_legend');
 
-      const cfdaLegend = d3.select('#p2_4_legend')
-        .append('div')
-        .attr('width', '100%')
-        .attr('height', '30px')
-        .attr('id', 'p2_4_cfda_legend');
+    const cfdaLegend = d3.select('#p2_4_legend')
+      .append('div')
+      .attr('width', '100%')
+      .attr('height', '30px')
+      .attr('id', 'p2_4_cfda_legend');
 
-      const cfdaColor = ['#324D5C', '#2A5DA8', '#F53855', '#E37B40', '#F0CA4D'];
+    const cfdaColor = ['#324D5C', '#2A5DA8', '#F53855', '#E37B40', '#F0CA4D', '#06984E'];
 
-      const cfdaLegendKeyValues = ['Housing', 'Education', 'Employment', 'Support Services', 'Health'];
+    const cfdaLegendKeyValues = ['Housing', 'Education', 'Employment', 'Support Services', 'Health', 'Food'];
 
-      for (let i = 0; i < 5; i++) {
-        const k = cfdaLegend22.append('div')
-          .attr('id', 'p2_2_legend_key');
+    for (let i = 0; i < cfdaLegendKeyValues.length; i++) {
+      const k = cfdaLegend22.append('div')
+        .attr('id', 'p2_2_legend_key');
 
-        k.append('div')
-          .attr('id', 'p2_2_key')
-          .style('position', 'relative')
-          .append('svg')
-          .attr('height', '40px')
-          .attr('width', '53px')
-          .append('circle')
-          .attr('cx', 7)
-          .attr('cy', 7)
-          .attr('r', 7)
-          .attr('height', 20)
-          .attr('width', 20)
-          .style('fill', () => cfdaColor[i]);
+      k.append('div')
+        .attr('id', 'p2_2_key')
+        .style('position', 'relative')
+        .append('svg')
+        .attr('height', '40px')
+        .attr('width', '40px')
+        .append('circle')
+        .attr('cx', 7)
+        .attr('cy', 7)
+        .attr('r', 7)
+        .attr('height', 20)
+        .attr('width', 20)
+        .style('fill', () => cfdaColor[i]);
 
-        k.append('div')
-          .attr('id', 'p2_2_key_value')
-          .style('position', 'relative')
-          .style('color', 'blue')
-          .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
+      k.append('div')
+        .attr('id', 'p2_2_key_value')
+        .style('position', 'relative')
+        .style('color', 'blue')
+        .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
 
 
-        const l = cfdaLegend.append('div')
-          .attr('id', 'p2_4_legend_key');
+      const l = cfdaLegend.append('div')
+        .attr('id', 'p2_4_legend_key');
 
-        l.append('div')
-          .attr('id', 'p2_4_key')
-          .style('position', 'relative')
-          .append('svg')
-          .attr('height', '40px')
-          .attr('width', '53px')
-          .append('circle')
-          .attr('cx', 7)
-          .attr('cy', 7)
-          .attr('r', 7)
-          .attr('height', 20)
-          .attr('width', 20)
-          .style('fill', () => cfdaColor[i]);
+      l.append('div')
+        .attr('id', 'p2_4_key')
+        .style('position', 'relative')
+        .append('svg')
+        .attr('height', '40px')
+        .attr('width', '53px')
+        .append('circle')
+        .attr('cx', 7)
+        .attr('cy', 7)
+        .attr('r', 7)
+        .attr('height', 20)
+        .attr('width', 20)
+        .style('fill', () => cfdaColor[i]);
 
-        l.append('div')
-          .attr('id', 'p2_4_key_value')
-          .style('position', 'relative')
-          .style('color', 'blue')
-          .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
-      }
-
-      d3.select('#p2_4_legend_title')
-        .append('div')
-        .attr('id', 'p2_4_cfda_legend_title')
-        .attr('class', 'legend-header')
-        .html(`<h5>Federal Programs Serving ${getState(d)}</h5>`);
-
-      const p24MatrixSvg = d3.select('#panel_info').append('svg')
-        .attr('width', '100%')
-        .attr('height', mapHeight + margin.top + margin.bottom + 140)
-        .attr('transform', `translate(${0},${10})`);
-
-      function filterStateBarChart(cfdaStateData) {
-        return cfdaStateData.State_code === d.properties.STUSAB;
-      }
-
-      const initial = cfdaState.filter(filterStateBarChart);
-      const initialBar = initial.filter(filterCfdaAmount);
-
-      const axisMargin = 5;
-      const xWidth = document.getElementById("panel_matrix").offsetWidth - 50;
-      const barHeight = 20;
-      const barPadding = 5;
-      let labelWidth = 0;
-
-      const max = d3.max(initialBar, (da) => da.fed_funding);
-
-      const bar = p24MatrixSvg.selectAll('g')
-        .data(initialBar)
-        .enter()
-        .append('g');
-
-      bar.attr('class', 'bar')
-        .attr('cx', 0)
-        .style('fill', (db) => {
-          if (db.category === 'Housing') {
-            return '#324D5C';
-          } else if (db.category === 'Health') {
-            return '#F0CA4D';
-          } else if (db.category === 'Education') {
-            return '#2A5DA8';
-          } else if (db.category === 'Support Services') {
-            return '#E37B40';
-          } else if (db.category === 'Employment') {
-            return '#F53855';
-          }
-          return '#000000';
-        })
-        .attr('transform', (db, i) => `translate(5,${i * (barHeight + barPadding)})`)
-        .on('mouseover', handleBarChartMouseOver)
-        .on('mousemove', handleMouseMove)
-        .on('mouseout', handleMouseOut)
-        .on('click', barClick);
-
-      bar.append('text')
-        .attr('class', 'label')
-        .attr('x', 0)
-        .attr('y', barHeight / 2)
-        .attr('dy', '.35em') // vertical align middle
-        .text((dc) => getProgram(dc))
-        .each(() => {
-          labelWidth = 75;
-        });
-
-      const scale = d3.scale.linear()
-        .domain([0, max])
-        .range([0, xWidth - labelWidth]);
-
-      const p2XAxis = d3.svg.axis()
-        .scale(scale)
-        .tickSize((-p2MatrixSvg[0][0].attributes[1].nodeValue + axisMargin) - 50)
-        .tickFormat((dg) => formatNumber(dg));
-
-      bar.append('rect')
-        .attr('transform', `translate(${labelWidth},0)`)
-        .attr('margin-left', 5)
-        .attr('height', barHeight)
-        .attr('width', (de) => scale(de.fed_funding));
-
-      p24MatrixSvg.insert('g', ':first-child')
-        .attr('class', 'axisHorizontal2')
-        .attr('transform', `translate(${80},${325})`)
-        .call(p2XAxis)
-        .selectAll('text')
-        .attr('y', 10)
-        .attr('x', 0)
-        .attr('dy', '.35em')
-        .attr('transform', 'rotate(-35)')
-        .style('font-size', '12')
-        .style('text-anchor', 'end');
+      l.append('div')
+        .attr('id', 'p2_4_key_value')
+        .style('position', 'relative')
+        .style('color', 'blue')
+        .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
     }
+
+    d3.select('#p2_4_legend_title')
+      .append('div')
+      .attr('id', 'p2_4_cfda_legend_title')
+      .attr('class', 'legend-header')
+      .html(`<h5>Federal Programs Serving ${getState(d)}</h5>`);
+
+    const p24MatrixSvg = d3.select('#panel_info').append('svg')
+      .attr('width', '100%')
+      .attr('height', mapHeight + margin.top + margin.bottom + 140)
+      .attr('transform', `translate(${0},${10})`);
+
+    function filterStateBarChart(cfdaStateData) {
+      return cfdaStateData.pop_state_code === d.properties.STUSAB;
+    }
+
+    const initial = cfdaState.filter(filterStateBarChart);
+    const initialBar = initial.filter(filterCfdaAmount);
+
+    const axisMargin = 5;
+    const xWidth = document.getElementById("panel_matrix").offsetWidth - 50;
+    const barHeight = 20;
+    const barPadding = 5;
+    let labelWidth = 0;
+
+    const max = d3.max(initialBar, (da) => da.fed_funding);
+
+    const bar = p24MatrixSvg.selectAll('g')
+      .data(initialBar)
+      .enter()
+      .append('g');
+
+    bar.attr('class', 'bar')
+      .attr('cx', 0)
+      .style('fill', (db) => {
+        if (db.category === 'Housing') { return '#324D5C'; }
+        else if (db.category === 'Health') { return '#F0CA4D'; }
+        else if (db.category === 'Education') { return '#2A5DA8'; }
+        else if (db.category === 'Support Services') { return '#E37B40'; }
+        else if (db.category === 'Employment') { return '#F53855'; }
+        else if (db.category === 'Food') { return '#06984E'; }
+        return '#000000';
+      })
+      .attr('transform', (db, i) => `translate(5,${i * (barHeight + barPadding)})`)
+      .on('mouseover', handleBarChartMouseOver)
+      .on('mousemove', handleMouseMove)
+      .on('mouseout', handleMouseOut)
+      .on('click', barClick);
+
+    bar.append('text')
+      .attr('class', 'label')
+      .attr('x', 0)
+      .attr('y', barHeight / 2)
+      .attr('dy', '.35em') // vertical align middle
+      .text((dc) => getProgram(dc))
+      .each(() => {
+        labelWidth = 75;
+      });
+
+    const scale = d3.scale.linear()
+      .domain([0, max])
+      .range([0, xWidth - labelWidth]);
+
+    const p2XAxis = d3.svg.axis()
+      .scale(scale)
+      .tickSize((-p2MatrixSvg[0][0].attributes[1].nodeValue + axisMargin) - 50)
+      .tickFormat((dg) => formatNumber(dg));
+
+    bar.append('rect')
+      .attr('transform', `translate(${labelWidth},0)`)
+      .attr('margin-left', 5)
+      .attr('height', barHeight)
+      .attr('width', (de) => scale(de.fed_funding));
+
+    p24MatrixSvg.insert('g', ':first-child')
+      .attr('class', 'axisHorizontal2')
+      .attr('transform', `translate(${80},${325})`)
+      .call(p2XAxis)
+      .selectAll('text')
+      .attr('y', 10)
+      .attr('x', 0)
+      .attr('dy', '.35em')
+      .attr('transform', 'rotate(-35)')
+      .style('font-size', '12')
+      .style('text-anchor', 'end');
+  }
 
     function barClick(d) {
       window.open(d.CFDA_website);
@@ -611,7 +603,6 @@ export default function FederalPrograms(props){
       .attr('padding', '0 0 10px 0')
       .attr('id', 'p2_2_cfda_legend_title')
       .attr('class', 'h5')
-      .style('text-align', 'center')
       .attr('id', 'p2_cfda_legend_title')
       .attr('class', 'legend-header')
       .html(`<h5>Federal Programs Serving ${d.properties.coc_number}</h5>`);
@@ -644,21 +635,11 @@ export default function FederalPrograms(props){
     bar.attr('class', 'bar')
       .attr('cx', 0)
       .style('fill', (d2) => {
-        if (d2.category === 'Housing') {
-          return '#324D5C';
-        }
-        else if (d2.category === 'Health') {
-          return '#F0CA4D';
-        }
-        else if (d2.category === 'Education') {
-          return '#2A5DA8';
-        }
-        else if (d2.category === 'Support Services') {
-          return '#E37B40';
-        }
-        else if (d2.category === 'Employment') {
-          return '#F53855';
-        }
+        if (d2.category === 'Housing') { return '#324D5C'; }
+        else if (d2.category === 'Health') { return '#F0CA4D'; }
+        else if (d2.category === 'Education') { return '#2A5DA8'; }
+        else if (d2.category === 'Support Services') { return '#E37B40'; }
+        else if (d2.category === 'Employment') { return '#F53855'; }
         return "#FFF";
       })
       .attr('transform', (d4, i) => `translate(5,${i * (barHeight + barPadding)})`)
@@ -788,7 +769,7 @@ export default function FederalPrograms(props){
 
   function getProgram(d) {
     for (let i = 0; i < barChrt.length; i++) {
-      if (d.cfda_number === acr[i].cfda_number) {
+      if (acr[i] && d.cfda_number === acr[i].cfda_number) {
         return acr[i].acronym;
       }
     }
@@ -818,6 +799,7 @@ export default function FederalPrograms(props){
         <Share location={props.location}/>
       </ControlBar>
       <div id="tooltipSection2" className="tooltip-module" />
+      <h1 id='container2_title' />
       <Grid container>
         <Grid item xs={12} md={6}>
           <div id='container2_1' className='homelessness-container2 homelessness-container2--left'/>
