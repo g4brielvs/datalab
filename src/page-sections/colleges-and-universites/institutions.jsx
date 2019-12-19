@@ -9,15 +9,10 @@ import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
 import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
 import Share from '../../components/share/share';
 import ControlBar from "../../components/control-bar/control-bar";
-import DataTable from "../../components/chartpanels/data-table";
+import DataTable from "../../components/table/data-table";
 import formatNumber from "../../utils/number-formatter";
 import Grid from '@material-ui/core/Grid';
-import Share from '../../components/share/share';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
 import VizDetails from '../../components/chartpanels/viz-detail';
-
-import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
-import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -151,10 +146,10 @@ const Institutions = (props) => {
               return [
                 x.Recipient,
                 x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
-                formatNumber('dollars', x.contracts),
-                formatNumber('dollars', x.grants),
-                formatNumber('dollars', x.student_aid),
-                formatNumber('dollars', x.Total_Federal_Investment),
+                parseInt(x.contracts),
+                parseInt( x.grants),
+                parseInt(x.student_aid),
+                parseInt(x.Total_Federal_Investment),
               ];
             })}
             columnTitles={tableColumnTitles}

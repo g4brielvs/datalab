@@ -152,11 +152,11 @@ const Categories = () => {
   const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
   const tableData = {
     contracts: _data.contracts.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     grants: _data.grants.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     research: _data.research.nodes
-      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, formatNumber('dollars', n.Obligation)])
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
   };
 
   const chartRef = React.createRef();
