@@ -7,7 +7,7 @@ import SectionThree from '../../page-sections/opioid-crisis/sectionThree/section
 import SectionFour from '../../page-sections/opioid-crisis/sectionFour/sectionFour';
 import SectionFive from '../../page-sections/opioid-crisis/sectionFive/sectionFive';
 
-import { CustomHeaderBanner, CustomTocHeaderOpioid } from '../../components/headers/customHeader';
+import { CustomOpioidHeader, CustomOpioidTocHeader } from '../../components/headers/customHeader';
 import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
 import { Grid } from "@material-ui/core";
@@ -28,38 +28,45 @@ export default class OpioidCrisisPage extends React.Component {
                  hwctaLink={this.props.location.pathname + '/methodologies'}>
       <SEO title='Opioid Crisis' keywords={[`gatsby`, `application`, `react`]} />
 
-      <CustomTocHeaderOpioid
+
+      <CustomOpioidHeader
+        subtext={'opioid crisis'}
+        subblurb={['opioid crisis opioid crisis opioid crisis']}
+        blurb={['its a crisis ahh its a crisis ahh placeholder placeholder placeholder']}
+      />
+
+      <CustomOpioidTocHeader
         colors={primaryColors}
         sections={
           [{
             section: 'one',
             number: '01',
             subtext: 'The Crisis',
-            subblurb: 'HOW DOES THE OPIOID CRISIS LOOK ACROSS THE NATION?',
+            blurb: 'HOW DOES THE OPIOID CRISIS LOOK ACROSS THE NATION?',
           },
            {
              section: 'two',
              number: '02',
              subtext: 'Societal Effects',
-             subblurb: 'HOW DOES THE OPIOID CRISIS AFFECT EVERYDAY LIFE?',
+             blurb: 'HOW DOES THE OPIOID CRISIS AFFECT EVERYDAY LIFE?',
            },
            {
              section: 'three',
              number: '03',
              subtext: 'Major Players',
-             subblurb: 'WHAT ORGANIZATIONS RECIEVED THE MOST FUNDING TO FIGHT THE OPIOID CRISIS?',
+             blurb: 'WHAT ORGANIZATIONS RECIEVED THE MOST FUNDING TO FIGHT THE OPIOID CRISIS?',
            },
            {
              section: 'four',
              number: '04',
              subtext: 'A State Response',
-             subblurb: 'HOW A STATE RESPONDS TO THE OPIOID CRISIS?',
+             blurb: 'HOW A STATE RESPONDS TO THE OPIOID CRISIS?',
            },
            {
              section: 'five',
              number: '05',
              subtext: 'Mitigating and Solving?',
-             subblurb: 'WHERE TO GET TREATMENT?',
+             blurb: 'WHERE TO GET TREATMENT?',
            },
           ]}
       />

@@ -3,45 +3,29 @@ import React from 'react';
 
 import { Grid, Hidden } from '@material-ui/core';
 
-/* This file has both the banner and the table of contents for 
-  story templates. Our original 
-*/
-
 /*
-  Steps: 
-  1. Add colors to page in Object
-  2. Pass name of STORY page to prop
-  3. render specific colors for said story page in inline stylen
+  This file will contain the Banner and the Table of Contents header sections for templates.
 */
-const CustomHeaderBanner = (props) => {
-  <>
-    {/* <Hidden mdDown> */}
-    {/*   <div className={style.bannerImage} */}
-    {/*        role='image' */}
-    {/*        aria-label="Explore The Federal Investment In Your Alma Mater"> */}
-    {/*   </div> */}
-    {/* </Hidden> */}
 
-    <Hidden lgUp>
-      <section className={style.headerHero}>
-        <div id={style.banner}>
-          <p className={style.subtext}>
-            {props.subtext}
-          </p>
-          <p className={style.subblurb}>
-            {props.subblurb}
-          </p>
-          <p className={style.blurb}>
-            {props.blurb.map(item => item)}
-          </p>
-        </div>
-      </section>
-    </Hidden>
-  </>;
+const CustomOpioidHeader = (props) => {
+  return(
+    <section className={style.headerHero}>
+      <div id={style.banner}>
+        <p className={style.subtext}>
+          {props.subtext}
+        </p>
+        <p className={style.subblurb}>
+          {props.subblurb}
+        </p>
+        <p className={style.blurb}>
+          {props.blurb.map(item => item)}
+        </p>
+      </div>
+    </section>);
 };
 
 
-const CustomTocHeaderOpioid = (props) => {
+const CustomOpioidTocHeader = (props) => {
 
   return (
     <>
@@ -60,7 +44,6 @@ const CustomTocHeaderOpioid = (props) => {
                                     <Grid item xs style={{color: props.colors.opioidOrange}}>{item.subtext}</Grid>
                                   </Grid>
                                   <Hidden smDown>
-                                    <p className={style.subblurb}>{item.subblurb}</p>
                                     <p className={style.blurb}>{item.blurb}</p>
                                   </Hidden>
                                 </a>
@@ -73,6 +56,6 @@ const CustomTocHeaderOpioid = (props) => {
 };
 
 
-export {CustomTocHeaderOpioid, CustomHeaderBanner};
+export {CustomOpioidTocHeader, CustomOpioidHeader};
 
 

@@ -1,8 +1,10 @@
-import React from "react"
-import storySectionHeadingStyles from "./story-section-heading.module.scss"
+import React from "react";
+import storySectionHeadingStyles from "./story-section-heading.module.scss";
 import { Grid } from '@material-ui/core';
 
 const StorySectionHeading = (props) => {
+  const isMoreBlurb = props.blurbCont;
+
   return (
     <header>
       <section className={storySectionHeadingStyles.header}>
@@ -17,12 +19,17 @@ const StorySectionHeading = (props) => {
         <Grid container className={storySectionHeadingStyles.introContainer}>
           <Grid item xs={12} xl={5} className='intro'>{props.teaser}</Grid>
           <Grid item xs={12} xl={7}>
-            {props.blurb}
+            <p className={storySectionHeadingStyles.blurbText}>{props.blurb}</p>
+            {isMoreBlurb &&
+             <p className={storySectionHeadingStyles.blurbText}>
+               {props.blurbCont}
+             </p>
+            }
           </Grid>
         </Grid>
       </section>
     </header>
-  )
-}
+  );
+};
 
-export default StorySectionHeading
+export default StorySectionHeading;

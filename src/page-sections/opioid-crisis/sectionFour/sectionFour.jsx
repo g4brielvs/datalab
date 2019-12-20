@@ -1,5 +1,5 @@
 import React from 'react';
-import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import StorySectionHeading from '../../../components/section-elements/story-section-heading/story-section-heading';
 import storyHeadingStyles from "../../../components/section-elements/story-heading/story-heading.module.scss";
 import defaultImage from '../../../images/default-image.jpg';
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +14,7 @@ export default class SectionFour extends React.Component {
   render() {
     return(
       <>
-        <StoryHeading
+        <StorySectionHeading
           number={'04'}
           title={'A State Response'}
           teaser={['How Pennsylvania responds to ', <span key='teaser-callout' className={storyHeadingStyles.headingOrange}>the opioid crisis?</span>]}

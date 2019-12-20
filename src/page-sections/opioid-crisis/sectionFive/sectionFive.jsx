@@ -1,5 +1,5 @@
 import React from 'react';
-import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
+import StorySectionHeading from '../../../components/section-elements/story-section-heading/story-section-heading';
 import storyHeadingStyles from "../../../components/section-elements/story-heading/story-heading.module.scss";
 import defaultImage from '../../../images/default-image.jpg';
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +13,7 @@ export default class SectionFive extends React.Component {
   render() {
     return(
       <>
-        <StoryHeading
+        <StorySectionHeading
           number={'05'}
           title={'Mitigating and Solving the Crisis'}
           teaser={['Where to find ', <span key='teaser-callout' className={storyHeadingStyles.headingOrange}>treatment?</span>]}
