@@ -1,5 +1,6 @@
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 import React from 'react';
+import { useStaticQuery, graphql } from "gatsby"
 
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar'
@@ -26,14 +27,14 @@ const Institutions = (props) => {
 
   const panelDetails = useStaticQuery(graphql`
     query {
-      agencies: allTop5AgenciesPerSchoolV3Csv {
+      investments: allTop5InvestmentsPerSchoolV3Csv {
         nodes {
           source
           target
           value
         }
       }
-      investments: allTop5InvestmentsPerSchoolV3Csv {
+      agencies: allTop5AgenciesPerSchoolV3Csv {
         nodes {
           source
           target
@@ -45,7 +46,21 @@ const Institutions = (props) => {
 
   let schoolDetails = {};
   const getClickedDetails = id => {
-    let schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
+    const schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
+    const studentAid = dataTableData.find(s => s.Recipient === schoolProperties.Recipient).student_aid;
+
+    const invTop5 = {};
+    panelDetails.investments.nodes
+      .filter(node => node.source === schoolProperties.Recipient)
+      .forEach(row => { invTop5[row.target] = row.value; })
+      ;
+
+    const agencyTop5 = {};
+    panelDetails.agencies.nodes
+      .filter(node => node.source === schoolProperties.Recipient)
+      .forEach(row => { agencyTop5[row.target] = row.value; })
+      ;
+
     schoolDetails = {
       'header': {
         'title': 'Institution',
@@ -61,20 +76,19 @@ const Institutions = (props) => {
           'rows': {
             'Contracts': schoolProperties.contracts_received,
             'Grants': schoolProperties.grants_received,
-            '   Grants (Research)': schoolProperties.research_grants_received
+            '   Grants (Research)': schoolProperties.research_grants_received,
+            'Student Aid ': studentAid
           }
         },
         {
-          'col1Title': 'Investment Categories (Top 5)',
+          'col1Title': 'Investment Categories (Top&nbsp;5)',
           'col2Title': 'Total Investment',
-          'rows': panelDetails.investments.nodes
-            .filter( n => n.source === schoolProperties.Recipient)
-            .map( r => {})
-          // },
-          // {
-          //   'col1Title': 'Funding Agencies ' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-          //   'col2Title': 'Total Investment',
-          //   'rows': invTop5
+          'rows': invTop5
+        },
+        {
+          'col1Title': 'Funding Agencies (Top&nbsp;5)',
+          'col2Title': 'Total Investment',
+          'rows': agencyTop5
         }
       ]
     }

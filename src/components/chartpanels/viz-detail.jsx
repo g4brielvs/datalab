@@ -67,7 +67,7 @@ export default class VizDetailPanel extends React.Component {
         });
       }
       tableFrag.push(<div className='viz-detail-table-section' key={'viz-detail-table-' + i}><table><thead><tr>
-        <th>{table.col1Title}</th>
+        <th dangerouslySetInnerHTML={{ __html: table.col1Title }}></th>
         <th>{table.col2Title}</th>
       </tr></thead>
         <tbody>
