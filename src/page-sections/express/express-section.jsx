@@ -11,11 +11,11 @@ export default class ExpressSection extends React.Component {
 
   render = () =>
     <section className={styles.section}>
-      <Grid container>
+      <div className={styles.title}>
+        {this.props.title}
+      </div>
+      <Grid container className={styles.container}>
         <Grid item xs={12} lg={5}>
-          <div className={styles.title}>
-            {this.props.title}
-          </div>
           <div className={styles.subtitle1}>{this.props.subtitle1}</div>
           <div className={styles.subtitle2}>{this.props.subtitle2}</div>
         </Grid>

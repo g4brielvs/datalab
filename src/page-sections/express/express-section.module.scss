@@ -1,7 +1,7 @@
 @import '../../styles/index.scss';
 
 .section {
-  margin: 90px 95px auto;
+  margin: 100px 50px auto;
   padding-bottom: 115px;
 
   .title {
@@ -15,8 +15,11 @@
     display: inline;
   }
 
+  .container {
+    margin-top: 50px;
+  }
+
   .subtitle1 {
-    margin-top: 20px;
     font-size: 2.625em;
     font-weight: $semibold;
   }
@@ -28,8 +31,8 @@
   }
 
   .viztitle {
-    margin-top: 35px;
-    margin-bottom: 25px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     font-size: 2em;
   }
 }
