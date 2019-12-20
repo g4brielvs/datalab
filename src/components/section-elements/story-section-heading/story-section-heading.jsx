@@ -20,11 +20,9 @@ const StorySectionHeading = (props) => {
           <Grid item xs={12} xl={5} className='intro'>{props.teaser}</Grid>
           <Grid item xs={12} xl={7}>
             <p className={storySectionHeadingStyles.blurbText}>{props.blurb}</p>
-            {isMoreBlurb &&
-             <p className={storySectionHeadingStyles.blurbText}>
-               {props.blurbCont}
-             </p>
-            }
+            {isMoreBlurb.map((text) => {
+              return(<p className={storySectionHeadingStyles.blurbText} key='text-key'>{text}</p>);
+            })}
           </Grid>
         </Grid>
       </section>
