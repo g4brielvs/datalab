@@ -6,7 +6,6 @@ import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
-import Share from '../../components/share/share';
 
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
@@ -34,7 +33,6 @@ export default class RdInContractingPage extends React.Component {
 
         <ControlBar>
           <Reset id='resetBtn' />
-          <Share location={this.props.location} />
         </ControlBar>
 
         chart
@@ -56,7 +54,6 @@ export default class RdInContractingPage extends React.Component {
 
         <ControlBar>
           <Reset id='resetBtn' />
-          <Share location={this.props.location} />
         </ControlBar>
 
         chart
