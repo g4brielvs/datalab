@@ -47,24 +47,25 @@ const Institutions = (props) => {
   let schoolDetails = {};
   const getClickedDetails = id => {
     const schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
-    const studentAid = dataTableData.find(s => s.Recipient === schoolProperties.Recipient).student_aid;
+    const institutionName = schoolProperties.Recipient;
+    const studentAid = dataTableData.find(s => s.Recipient === institutionName).student_aid;
 
     const invTop5 = {};
     panelDetails.investments.nodes
-      .filter(node => node.source === schoolProperties.Recipient)
+      .filter(node => node.source === institutionName)
       .forEach(row => { invTop5[row.target] = row.value; })
       ;
 
     const agencyTop5 = {};
     panelDetails.agencies.nodes
-      .filter(node => node.source === schoolProperties.Recipient)
+      .filter(node => node.source === institutionName)
       .forEach(row => { agencyTop5[row.target] = row.value; })
       ;
 
     schoolDetails = {
       'header': {
         'title': 'Institution',
-        'itemName': schoolProperties.Recipient,
+        'itemName': institutionName,
         'label': schoolProperties.INST_TYPE_1 + schoolProperties.INST_TYPE_2,
         'subItemName': null,
         'totalLabel': 'Total $ Received',
