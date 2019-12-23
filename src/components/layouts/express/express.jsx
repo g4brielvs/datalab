@@ -24,7 +24,10 @@ export default class ExpressLayout extends React.Component {
           {this.props.children}
 
         </main>
-        <HWCTALink url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta} />
+        <HWCTALink
+          url={this.props.hwctaLink || '#'} _mainClass={styles.hwcta}
+          fillColor='#1302d9'
+        />
         <MoreAnalyses />
       </div>
     </Default>
