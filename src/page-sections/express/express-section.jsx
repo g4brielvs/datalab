@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './express-section.module.scss';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 
 export default class ExpressSection extends React.Component {
   constructor(props) {
@@ -15,16 +15,18 @@ export default class ExpressSection extends React.Component {
         {this.props.title}
       </div>
       <Grid container className={styles.container}>
-        <Grid item xs={12} lg={5}>
+        <Grid item xs={12} xl={5}>
           <div className={styles.subtitle1}>{this.props.subtitle1}</div>
           <div className={styles.subtitle2}>{this.props.subtitle2}</div>
         </Grid>
-        <Grid item xs={12} lg={7}>
-          <div dangerouslySetInnerHTML={{ __html: this.props.description }} className='description'></div>
+        <Grid item xs={12} xl={7}>
+          <div dangerouslySetInnerHTML={{ __html: this.props.description }} className={styles.description}></div>
         </Grid>
       </Grid>
 
-      <div className={styles.viztitle}>{this.props.viztitle}</div>
+      <Hidden lgDown>
+        <div className={styles.viztitle}>{this.props.viztitle}</div>
+      </Hidden>
       {this.props.children}
     </section>
 }

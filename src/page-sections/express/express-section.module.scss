@@ -27,7 +27,7 @@
   .subtitle2 {
     font-size: 2.625em;
     color: #1302D9;
-    font-weight: 700;
+    font-weight: $bold;
   }
 
   .viztitle {
@@ -37,14 +37,19 @@
   }
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1) {
+@media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
   .section {
-    width: 95%;
-    margin: 65px auto auto;
+    width: 90%;
+    margin: 100px auto auto;
     padding-bottom: 95px;
+    text-align: center;
 
     .viztitle {
       margin-top: 135px;
+    }
+
+    .description {
+      padding-bottom: 14px;
     }
   }
 }
@@ -52,8 +57,18 @@
 @media (max-width: $tablet - 1) {
   .section {
     width: 95%;
-    margin: 30px auto auto;
+    margin: 50px auto auto;
     padding-bottom: 95px;
+    
+    .subtitle1 {
+      font-size: 1rem;
+    }
+  
+    .subtitle2 {
+      font-size: 1rem;
+      font-weight: $semibold;
+      color: inherit;
+    }
 
     .description {
       max-height: 6em;
