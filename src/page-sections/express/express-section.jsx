@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './express-section.module.scss';
 
 import { Grid, Hidden } from '@material-ui/core';
+import ReadMore from '../../components/read-more/read-more';
 
 export default class ExpressSection extends React.Component {
   constructor(props) {
@@ -20,7 +21,14 @@ export default class ExpressSection extends React.Component {
           <div className={styles.subtitle2}>{this.props.subtitle2}</div>
         </Grid>
         <Grid item xs={12} xl={7}>
-          <div dangerouslySetInnerHTML={{ __html: this.props.description }} className={styles.description}></div>
+          <Hidden xsDown>
+            <div dangerouslySetInnerHTML={{ __html: this.props.description }} className='description'></div>
+          </Hidden>
+          <Hidden smUp>
+            <ReadMore collapsedHeight='6rem' className={styles.description}>
+              {this.props.description}
+            </ReadMore>
+          </Hidden>
         </Grid>
       </Grid>
 
