@@ -258,13 +258,14 @@ export default function FederalPrograms(props){
     bar.attr('class', 'bar')
       .attr('cx', 0)
       .style('fill', (db) => {
-        if (db.category === 'Housing') { return '#324D5C'; }
-        else if (db.category === 'Health') { return '#F0CA4D'; }
-        else if (db.category === 'Education') { return '#2A5DA8'; }
-        else if (db.category === 'Support Services') { return '#E37B40'; }
-        else if (db.category === 'Employment') { return '#F53855'; }
-        else if (db.category === 'Food') { return '#06984E'; }
-        return '#000000';
+        const curCategory = db.category;
+        const noColorFound = '#000';
+        let matchIdx, fillColor;
+        matchIdx = cfdaLegendKeyValues.findIndex(d => d === curCategory);
+        if(matchIdx >= 0){
+          fillColor = cfdaColor[matchIdx];
+        }
+        return fillColor || noColorFound;
       })
       .attr('transform', (db, i) => `translate(5,${i * (barHeight + barPadding)})`)
       .on('mouseover', handleBarChartMouseOver)
@@ -335,22 +336,29 @@ export default function FederalPrograms(props){
     }
 
     function makeInfographic(d) {
-      d3.select('#imagebox').remove();
-
-      d3.select('#picture')
-        .append('img')
-        .attr('id', 'imagebox')
-        .style('width', '100%')
-        .style('height', 'auto')
-        .attr('width', w2)
-        .attr('height', h2)
-        .attr('src', getInfographic(d));
+      d3.selectAll('.homeless-fact-cluster img').remove();
+      const svgPath = "/images/homelessness/clusters/Cluster-" + d;
+      const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
+      const selectedInforgraphicItem = inforgraphicData.filter(item => item.cluster_final === d);
+      d3.select('#cluster-beds #count-img-container').append('img').attr('src', svgPath + '/Bed.svg').attr('alt', clusterAltText[0].beds);
+      d3.select('#cluster-circles').append('img').attr('src', svgPath + '/Circles.svg').attr('alt', clusterAltText[0].funding);
+      d3.select('#cluster-rent').append('img').attr('src', svgPath + '/Rent.svg').attr('alt', clusterAltText[0].rent);
+      d3.selectAll('.cluster-people').append('img').attr('src', svgPath + '/People.svg').attr('alt', clusterAltText[0].homelessness);
+      d3.selectAll('.cluster-population').append('img').attr('src', svgPath + '/Total-Population.svg').attr('alt', clusterAltText[0].total_population);
+      d3.select('#cluster-land-area').append('img').attr('src', svgPath + '/Land-Area.svg').attr('alt', clusterAltText[0].land_area);
+      d3.select('#cluster-income').append('img').attr('src', svgPath + '/Income.svg').attr('alt', clusterAltText[0].income);
+      d3.select('#cluster-key').append('img').attr('src', svgPath + '/Key.svg').attr('alt', '');
+      d3.selectAll('.cluster-density').append('img').attr('src', svgPath + '/Density.svg').attr('alt', clusterAltText[0].density);
+      d3.select('#cluster-rent-as-income').append('img').attr('src', svgPath + '/Rent-as-Income.svg').attr('alt', clusterAltText[0].rent_as_income);
+      d3.select('#cluster-number').text(d);d3.select('#cluster-beds-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_beds));
+      d3.selectAll('.cluster-people-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_homeless));
+      d3.select('#cluster-circles h2').style('color', clusterColors[d - 1]);
     }
 
     function makeCoCTableTitle(d) {
-      const textColor = color(d.cluster_final);
-      return `<p className="cocTabTitleCluster" style=color:white;background:${textColor}>Cluster ${d.cluster}: </p>` +
-        `<p className="cocTabTitleCity">${d.coc_name}</p>`;
+      const textColor = clusterColors[d.cluster_final - 1];
+      return `<p class="cocTabTitleCluster" style=color:white;background:${textColor}>Cluster ${d.cluster_final}: </p>` +
+        `<p class="cocTabTitleCity">${d.coc_name}</p>`;
     }
 
     function makeCoCTableFund(d) {
@@ -358,7 +366,7 @@ export default function FederalPrograms(props){
         + `FEDERAL FUNDING FOR THE CONTINUUM OF CARE PROGRAM:</th></tr>` +
         `<tr><td className="fundingAmount">${formatNumber(d.CoC_program_funding)}</td></tr>` +
         `<tr><th className="fundingTitle">FEDERAL FUNDING FOR OTHER HOMELESSNESS PROGRAMS:</th></tr>` +
-        `<tr><td className="fundingAmount">${formatNumber(d.other_fed_funding)}</td></tr></table>`;
+        `<tr><td className="fundingAmount">${formatNumber(d.Other_program_funding)}</td></tr></table>`;
     }
 
     function makeCoCTableInfoCol1(d) {
@@ -382,7 +390,9 @@ export default function FederalPrograms(props){
         `<tr><th className="fundingTitle">RENT: MEDIAN GROSS</th></tr>` +
         `<tr><td className="infoAmount">${formatNumber(d.weighted_estimate_median_gross_rent)}</td></tr>` +
         `<tr><th className="fundingTitle">RENT AS A PERCENT OF INCOME:</th></tr>` +
-        `<tr><td className="infoAmount">${percentFormat(d.rent_pct_income)}</td></tr></table>`;
+        `<tr><td class="infoAmount">${percentFormat(d.rent_pct_income)}</td></tr>` +
+        `<tr><th class="fundingTitle">LAND AREA: PER SQ. MILES:</th></tr>` +
+        `<tr><td class="infoAmount">${OtherformatNumber(d.land_area)}</td></tr></table>`;
     }
 
     function makeCoCTableInfoCol3(d) {

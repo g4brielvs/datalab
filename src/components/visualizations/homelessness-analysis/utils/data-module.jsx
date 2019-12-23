@@ -3,7 +3,7 @@ const cfdaStateData = require('../../../../unstructured-data/homelessness-analys
 const barChart = require('../../../../unstructured-data/homelessness-analysis/2019CoCCFDAfunding_v3.csv');
 const stateList = require('../../../../unstructured-data/homelessness-analysis/State_crosswalk.csv');
 const acronyms = require('../../../../unstructured-data/homelessness-analysis/cfda_acronyms.csv');
-const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv');
+const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
 
 const DataModule = {
   mem: { us: map,
