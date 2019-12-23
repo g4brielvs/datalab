@@ -599,13 +599,13 @@ function Dendro(props) {
             <div id='DendroRadio'>
               <div className='select-wrapper1'>
                 <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 17 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
 
                 <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
-                <label className='dendro-input-1' htmlFor="contactChoice">FY 18 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
 
                 <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 19 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
               </div>
               <div className="select-wrapper2">
                 <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
