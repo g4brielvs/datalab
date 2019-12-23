@@ -20,6 +20,17 @@ import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
+
+  // check required data properties/format to fail "gracefully"
+  if (!GeoDataMapbox.features
+    || !Array.isArray(GeoDataMapbox.features)
+    || !GeoDataMapbox.features[0].id
+    || !GeoDataMapbox.features[0].properties
+    || !GeoDataMapbox.features[0].properties.Recipient
+  ) {
+    return <div>Cannot display this information; error in data file format.</div>;
+  }
+
   if (!GeoDataMapbox.features[0].properties.schoolId) {
     GeoDataMapbox.features.forEach(d => {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
@@ -48,24 +59,25 @@ const Institutions = (props) => {
   let schoolDetails = {};
   const getClickedDetails = id => {
     const schoolProperties = GeoDataMapbox.features.find(s => s.id === id).properties;
-    const studentAid = dataTableData.find(s => s.Recipient === schoolProperties.Recipient).student_aid;
+    const institutionName = schoolProperties.Recipient;
+    const studentAid = dataTableData.find(s => s.Recipient === institutionName).student_aid;
 
     const invTop5 = {};
     panelDetails.investments.nodes
-      .filter(node => node.source === schoolProperties.Recipient)
+      .filter(node => node.source === institutionName)
       .forEach(row => { invTop5[row.target] = row.value; })
       ;
 
     const agencyTop5 = {};
     panelDetails.agencies.nodes
-      .filter(node => node.source === schoolProperties.Recipient)
+      .filter(node => node.source === institutionName)
       .forEach(row => { agencyTop5[row.target] = row.value; })
       ;
 
     schoolDetails = {
       'header': {
         'title': 'Institution',
-        'itemName': schoolProperties.Recipient,
+        'itemName': institutionName,
         'label': schoolProperties.INST_TYPE_1 + schoolProperties.INST_TYPE_2,
         'subItemName': null,
         'totalLabel': 'Total $ Received',
