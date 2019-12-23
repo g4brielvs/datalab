@@ -14,6 +14,7 @@ import VizControlPanel from '../../../components/chartpanels/viz-control';
 import Share from "../../../components/share/share";
 import VizContainer from "./viz-container/viz-container";
 import TableContainer from "./table-container";
+import * as _ from 'lodash';
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -26,10 +27,22 @@ const Agencies = (props) => {
           obligation
         }
       }
-      }`
+      allCuBubbleChartTableV2Csv {
+        nodes {
+          id
+          Recipient
+          agency
+          subagency
+          family
+          type
+          obligation
+        }
+      }
+    }`
   )
 
   const [chartView, isChartView] = useState(true);
+
   const switchView = view => {
     if (view === 'chart') {
       isChartView(true);
@@ -49,9 +62,39 @@ const Agencies = (props) => {
   const chartRef = React.createRef();
 
   const searchItemSelected = id => {
-    chartRef.current.clickById(id);
+    filterTableData(id);
+    if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
   }
 
+  const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
+  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, parseInt(n.obligation)]);
+
+  const [filteredTableData, setFilteredData] = useState(tableData);
+  const tableRef = React.createRef();
+
+  function filterTableData(id) {
+    let tmpData = [];
+    let itemList;
+
+    itemList = searchList.find(function(el){
+      return el.id === id;
+    });
+
+    let obj = _.filter(tableData, {1: itemList.heading, 2:itemList.subheading});
+    if(obj && obj.length > 0) {
+      tmpData.push(obj);
+    }
+
+    tmpData = _.flatten(tmpData);
+
+    updateTableData(tmpData);
+  }
+
+  function updateTableData(data) {
+    console.log('****');
+    setFilteredData(data);
+    if (tableRef && tableRef.current) { tableRef.current; }
+  }
 
   return (<>
     <StoryHeading
@@ -104,7 +147,10 @@ const Agencies = (props) => {
         data = {_data.allUnivBubbleChartCsv.nodes}
         chartRef = {chartRef} />
       <TableContainer
-        display={!chartView} />
+        display={!chartView}
+        tableColumnTitles = {tableColumnTitles}
+        tableData = {filteredTableData}
+        tableRef = {tableRef} />
     </Grid>
 
     <Downloads

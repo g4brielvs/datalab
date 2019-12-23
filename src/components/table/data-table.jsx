@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import {Column, Table, SortDirection} from 'react-virtualized';
 import 'react-virtualized/styles.css';
 import Paginator from './Paginator';
-import { getRows } from './utils';
 import './data-table.scss';
 import { Grid } from "@material-ui/core";
 import * as _ from "lodash";
 
-const count = 100000
-const rows = getRows(count)
-
 export default class DataTable extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
       list: props.data,
       page: 1,
@@ -27,6 +23,7 @@ export default class DataTable extends React.Component {
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this._sort = this._sort.bind(this);
+    this.updateData = this.updateData(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
       this.defaultWidth = document.getElementById('chart-area').clientWidth;
@@ -46,6 +43,10 @@ export default class DataTable extends React.Component {
       const scrollToIndex = (page - 1) * prevState.perPage
       return { page, scrollToIndex }
     })
+  }
+
+  updateData(list) {
+    this.setState({list: list});
   }
 
   _sort({sortBy, sortDirection}) {
