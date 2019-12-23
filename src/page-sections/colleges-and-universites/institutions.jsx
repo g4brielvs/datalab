@@ -19,6 +19,17 @@ import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
+
+  // check required data properties/format to fail "gracefully"
+  if (!GeoDataMapbox.features
+    || !Array.isArray(GeoDataMapbox.features)
+    || !GeoDataMapbox.features[0].id
+    || !GeoDataMapbox.features[0].properties
+    || !GeoDataMapbox.features[0].properties.Recipient
+  ) {
+    return <div>Cannot display this information; error in data file format.</div>;
+  }
+
   if (!GeoDataMapbox.features[0].properties.schoolId) {
     GeoDataMapbox.features.forEach(d => {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
