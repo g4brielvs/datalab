@@ -1,4 +1,5 @@
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
+import styles from './c&u.module.scss';
 import React from 'react';
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -81,12 +82,12 @@ const Institutions = (props) => {
           }
         },
         {
-          'col1Title': 'Investment Categories (Top&nbsp;5)',
+          'col1Title': <>Investment Categories <div className={styles.top5Div}>(Top 5)</div></>,
           'col2Title': 'Total Investment',
           'rows': invTop5
         },
         {
-          'col1Title': 'Funding Agencies (Top&nbsp;5)',
+          'col1Title': <>Funding Agencies <div className={styles.top5Div}>(Top 5)</div></>,
           'col2Title': 'Total Investment',
           'rows': agencyTop5
         }
