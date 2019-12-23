@@ -3,9 +3,7 @@ import StorySectionHeading from '../../../components/section-elements/story-sect
 import storyHeadingStyles from "../../../components/section-elements/story-heading/story-heading.module.scss";
 import defaultImage from '../../../images/default-image.jpg';
 import Grid from '@material-ui/core/Grid';
-import storySectionHeadingStyles
-  from "../../../components/section-elements/story-section-heading/story-section-heading.module.scss"
-
+import storySectionHeadingStyles from "../../../components/section-elements/story-section-heading/story-section-heading.module.scss";
 
 export default class SectionFour extends React.Component {
   constructor(props) {
