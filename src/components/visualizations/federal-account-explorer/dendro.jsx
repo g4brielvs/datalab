@@ -82,7 +82,7 @@ function Dendro(props) {
         });
       });
 
-      function centerRootNode(source, pageLoad) {
+      function centerRootNode(source) {
         const scale = zoomListener.scale();
         const x = (-source.y0 * scale) + (svgWidth / 4);
         const y = (-source.x0 * scale) + (svgHeight / 2);
