@@ -171,7 +171,7 @@ export default function FederalPrograms(props){
       .attr('height', '30px')
       .attr('id', 'p2_4_cfda_legend');
 
-    const cfdaColor = ['#324D5C', '#2A5DA8', '#F53855', '#E37B40', '#F0CA4D', '#06984E'];
+    const cfdaColor = ['#544E89', '#BD10E0', '#04BCDD', '#F89206', '#06984E', '#F6E904'];
 
     const cfdaLegendKeyValues = ['Housing', 'Education', 'Employment', 'Support Services', 'Health', 'Food'];
 
@@ -191,6 +191,7 @@ export default function FederalPrograms(props){
         .attr('r', 7)
         .attr('height', 20)
         .attr('width', 20)
+        .attr('transform', `translate(17,0)`)
         .style('fill', () => cfdaColor[i]);
 
       k.append('div')
@@ -215,6 +216,7 @@ export default function FederalPrograms(props){
         .attr('r', 7)
         .attr('height', 20)
         .attr('width', 20)
+        .attr('transform', `translate(17,0)`)
         .style('fill', () => cfdaColor[i]);
 
       l.append('div')
