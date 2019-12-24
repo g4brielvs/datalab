@@ -1,0 +1,132 @@
+[
+  {
+    "source": "Department of Agriculture",
+    "target": "National Institute of Food and Agriculture",
+    "value": 5305936
+  },
+  {
+    "source": "Department of Agriculture",
+    "target": "Rural Housing Service",
+    "value": 219027
+  },
+  {
+    "source": "Department of Agriculture",
+    "target": "Rural Utilities Service",
+    "value": 8135898
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Agency for Healthcare Research and Quality",
+    "value": 2791969
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Centers for Disease Control and Prevention",
+    "value": 68691459.2
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Centers for Medicare and Medicaid Services",
+    "value": 5296262
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Food and Drug Administration",
+    "value": 38403.2
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Health Resources and Services Administration",
+    "value": 24045205.84
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Indian Health Service",
+    "value": 54169.2
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "National Institutes of Health",
+    "value": 8526316.68
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Office of Assistant Secretary for Health",
+    "value": 8053261
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Office of the Assistant Secretary for Administration",
+    "value": 1143433.68
+  },
+  {
+    "source": "Department of Health and Human Services",
+    "target": "Substance Abuse and Mental Health Services Administration",
+    "value": 2593957314
+  },
+  {
+    "source": "Department of Homeland Security",
+    "target": "Office of the Under Secretary for Science and Technology",
+    "value": 378056.37
+  },
+  {
+    "source": "Department of Homeland Security",
+    "target": "U.S. Customs and Border Protection",
+    "value": 7236.48
+  },
+  {
+    "source": "Department of Homeland Security",
+    "target": "U.S. Immigration and Customs Enforcement",
+    "value": 8797.75
+  },
+  {
+    "source": "Department of Justice",
+    "target": "Drug Enforcement Administration",
+    "value": 225809.81
+  },
+  {
+    "source": "Department of Justice",
+    "target": "Federal Bureau of Investigation",
+    "value": 15000
+  },
+  {
+    "source": "Department of Justice",
+    "target": "Office of Justice Programs",
+    "value": 239900728.5
+  },
+  {
+    "source": "Department of Justice",
+    "target": "Offices, Boards and Divisions",
+    "value": 66268.25
+  },
+  {
+    "source": "Department of Justice",
+    "target": "U.S. Marshals Service",
+    "value": 18262.73
+  },
+  {
+    "source": "Department of State",
+    "target": "Agency: Department of State",
+    "value": 4000000
+  },
+  {
+    "source": "Department of the Interior",
+    "target": "National Park Service",
+    "value": 25112.06
+  },
+  {
+    "source": "Executive Office of the President",
+    "target": "Office of the National Drug Control Policy",
+    "value": 5500000
+  },
+  {
+    "source": "Institute of Museum and Library Services",
+    "target": "Agency: Institute of Museum and Library Services",
+    "value": 249714
+  },
+  {
+    "source": "National Science Foundation",
+    "target": "Agency: National Science Foundation",
+    "value": 256977
+  }
+]

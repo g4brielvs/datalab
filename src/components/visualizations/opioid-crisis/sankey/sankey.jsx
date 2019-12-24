@@ -2,6 +2,8 @@ import React from 'react';
 import { Sankey } from 'react-vis';
 
 import leftData from '../../../../unstructured-data/opioid-crisis/sankeyLeft.json';
+import leftDataTest from '../../../../unstructured-data/opioid-crisis/sankeyLeftTest.json';
+
 
 /*
   We are going to do numerical mappings to the strings
@@ -14,6 +16,7 @@ export default class CrisisSankey extends React.Component {
     super(props);
     this.state = {
       leftData: leftData,
+      leftDataTest: leftDataTest,
       rightData: null,
     };
   }
@@ -23,7 +26,7 @@ export default class CrisisSankey extends React.Component {
   }
 
   render() {
-    const leftData = this.state.leftData;
+    const leftData = this.state.leftDataTest; // set back to 'leftData' when done (note!
 
     const some = Array.from(new Set(leftData.map(x => x.source)));
     const more = Array.from(new Set(leftData.map(x => x.target)));
@@ -40,7 +43,7 @@ export default class CrisisSankey extends React.Component {
         links={links}
         height={600}
         width={1200}
-        nodePadding={10}
+        nodePadding={13}
       />
     );
   };
