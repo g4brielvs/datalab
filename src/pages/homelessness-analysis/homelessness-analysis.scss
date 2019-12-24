@@ -791,15 +791,9 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		text-align: center;
 	}
 
-	#p2_2_key_value p {
+	#p2_2_key_value p, #p2_4_key_value p {
 		font-size: 0.7rem;
-		line-height: 1 rem;
-		color: #000;
-	}
-
-	#p2_4_key_value p {
-		font-size: 0.7rem;
-		line-height: 1.5rem;
+		line-height: 1rem;
 		color: #000;
 	}
 
