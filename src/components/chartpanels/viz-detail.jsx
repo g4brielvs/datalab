@@ -60,14 +60,14 @@ export default class VizDetailPanel extends React.Component {
       let rowsFrag = [];
       if (table.rows) {
         Object.keys(table.rows).forEach((rowLabel, i) => {
-          rowsFrag.push(<tr key={'detail-row-' + i}>
+          rowsFrag.push(<tr key={'viz-detail-row-' + i}>
             <td>{rowLabel}</td>
             <td>{formatNumber('dollars', table.rows[rowLabel])}</td>
           </tr>);
         });
       }
-      tableFrag.push(<div className='viz-detail-table-section' key={'detail-table-' + i}><table><thead><tr>
-        <th>{table.col1Title}</th>
+      tableFrag.push(<div className='viz-detail-table-section' key={'viz-detail-table-' + i}><table><thead><tr>
+        <th>{table.col1Title }</th>
         <th>{table.col2Title}</th>
       </tr></thead>
         <tbody>

@@ -56,6 +56,7 @@ export default class SearchPanel extends React.Component {
       <div className={vizStyles.container}>
         <OutlinedInput
           placeholder={'Search ' + this.props.listDescription}
+          inputProps={{title: 'Search ' + this.props.listDescription}}
           variant='outlined'
           fullWidth
           onFocus={this.onFocus}
