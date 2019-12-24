@@ -490,7 +490,6 @@ function Dendro(props) {
       root.y0 = 0;
 
       // Layout the tree initially and center on the root node.
-      const initialLoad = true;
       toggleAll(root);
       toggle(root);
       update(root);
