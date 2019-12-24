@@ -13,8 +13,9 @@ function Dendro(props) {
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
     const tooltip = tooltipModule();
+    const pageLoad = true;
 
-    function CreateDendro(newData){
+    function CreateDendro(newData, pageLoad){
 
       newData.forEach((d) => {
         d.Obligation = +d.Obligation;
@@ -82,7 +83,7 @@ function Dendro(props) {
         });
       });
 
-      function centerRootNode(source) {
+      function centerRootNode(source, pageLoad) {
         const scale = zoomListener.scale();
         const x = (-source.y0 * scale) + (svgWidth / 4);
         const y = (-source.x0 * scale) + (svgHeight / 2);
@@ -490,20 +491,32 @@ function Dendro(props) {
       root.y0 = 0;
 
       // Layout the tree initially and center on the root node.
+      const initialLoad = true;
       toggleAll(root);
       toggle(root);
       update(root);
-      centerRootNode(root);
+      centerRootNode(root, pageLoad);
 
       function resetToCenter() {
+        return;
         var theSvg = document.getElementById("svg-dendrogram");
-        theSvg.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, clientX: 1, clientY: 1, view: window }));
-        theSvg.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
-        theSvg.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
+        const event = document.createEvent('MouseEvent');
+        event.initMouseEvent('mousedown', true, true, window, 0, 0,
+          0, 1, 1, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
+        event.initMouseEvent('mousemove', true, true, window, 0, 0,
+          0, 2, 2, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
+        event.initMouseEvent('mouseup', true, true, window, 0, 0,
+          0, 2, 2, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
       }
     }
 
-    CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
+    CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'), pageLoad);
 
     $(document).ready(() => {
       // Handle Reset Button Click //
