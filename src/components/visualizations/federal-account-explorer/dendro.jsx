@@ -13,9 +13,8 @@ function Dendro(props) {
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
     const tooltip = tooltipModule();
-    const pageLoad = true;
 
-    function CreateDendro(newData, pageLoad){
+    function CreateDendro(newData){
 
       newData.forEach((d) => {
         d.Obligation = +d.Obligation;
@@ -495,10 +494,9 @@ function Dendro(props) {
       toggleAll(root);
       toggle(root);
       update(root);
-      centerRootNode(root, pageLoad);
+      centerRootNode(root);
 
       function resetToCenter() {
-        return;
         var theSvg = document.getElementById("svg-dendrogram");
         const event = document.createEvent('MouseEvent');
         event.initMouseEvent('mousedown', true, true, window, 0, 0,
@@ -516,7 +514,7 @@ function Dendro(props) {
       }
     }
 
-    CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'), pageLoad);
+    CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
       // Handle Reset Button Click //
