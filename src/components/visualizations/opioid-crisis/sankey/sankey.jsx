@@ -1,8 +1,10 @@
 import React from 'react';
 import { Sankey } from 'react-vis';
+import styles from './sankey.module.scss';
 
 import leftData from '../../../../unstructured-data/opioid-crisis/sankeyLeft.json';
 import leftDataTest from '../../../../unstructured-data/opioid-crisis/sankeyLeftTest.json';
+import rightDataTest from '../../../../unstructured-data/opioid-crisis/sankeyRightTest.json';
 
 
 /*
@@ -17,34 +19,63 @@ export default class CrisisSankey extends React.Component {
     this.state = {
       leftData: leftData,
       leftDataTest: leftDataTest,
+      rightDataTest: rightDataTest,
       rightData: null,
     };
   }
 
   componentDidMount() {
-
+    
   }
 
   render() {
     const leftData = this.state.leftDataTest; // set back to 'leftData' when done (note!
+    const rightData = this.state.rightDataTest; 
 
-    const some = Array.from(new Set(leftData.map(x => x.source)));
-    const more = Array.from(new Set(leftData.map(x => x.target)));
-    let concat = some.concat(more);
-    let nodes = concat.map(x => {
+    const someLeft = Array.from(new Set(leftData.map(x => x.source)));
+    const moreLeft = Array.from(new Set(leftData.map(x => x.target)));
+    let concat = someLeft.concat(moreLeft);
+    let nodesLeft = concat.map(x => {
       return {'id': x};
     });
-    const links = leftData; // the whole thing is the "links" array
+    const linksLeft = leftData; // the whole thing is the "links" array
 
+    const someRight = Array.from(new Set(rightData.map(x => x.source)));
+    const moreRight = Array.from(new Set(rightData.map(x => x.target)));
+    let c = someRight.concat(moreRight);
+    let nodesRight = c.map(x => {
+      return {'id': x};
+    });
+
+    const linksRight = rightData;
 
     return(
-      <Sankey
-        nodes={nodes}
-        links={links}
-        height={600}
-        width={1200}
-        nodePadding={13}
-      />
+      <div className={styles.sankeyContainer}>
+        <Sankey
+          nodes={nodesLeft}
+          links={linksLeft}
+          height={600}
+          width={700}
+          nodePadding={13}
+          hideLabels={false}
+          onValueClick={(datapoint, event) => console.log('whatever we just clicked a node' + datapoint + event)}
+          onLinkClick={(data) => console.log(data)}
+          onLinkMouseOver={(data) => console.log(data)}
+        />
+
+        <Sankey
+          nodes={nodesRight}
+          links={linksRight}
+          height={600}
+          width={700}
+          nodePadding={13}
+          hideLabels={false}
+          onValueClick={(datapoint, event) => console.log('whatever we just clicked a node' + datapoint + event)}
+          onLinkClick={(data) => console.log(data)}
+          onLinkMouseOver={(data) => console.log(data)}
+        />
+
+      </div>
     );
   };
 
