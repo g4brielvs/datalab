@@ -8,7 +8,7 @@ import { Grid } from "@material-ui/core";
 const Downloads = (props) => {
   function exportToJsonFile(jsonData) {
     const dataStr = JSON.stringify(jsonData);
-    const dataBlob = new Blob([dataStr], {type:"text/plain;charset=utf-8"});
+    const dataBlob = new Blob([dataStr], {type:"application/json"});
     const dataUri = URL.createObjectURL(dataBlob);
     const exportFileDefaultName = 'data.json';
 
