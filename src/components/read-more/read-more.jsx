@@ -24,13 +24,12 @@ export default class ReadMore extends React.Component {
     const baseClass = className + ' ' + className + '--' + (this.state.isOpen ? 'open' : 'closed');
     return (
       <div className={className + '__wrapper'}>
-        <div
-          className={baseClass}
-          style={inlineStyle}
-          dangerouslySetInnerHTML={{ __html: this.props.children }}
-        ></div>
+        <div className={baseClass} style={inlineStyle}>
+          {this.props.children}
+        </div>
         <button
           className={styles.button}
+          style={{color: this.props.toggleColor}}
           onClick={() => { this.toggleReadMore() }}
         >
           {this.state.isOpen ? this.props.collapseText : this.props.expandText}
@@ -41,8 +40,10 @@ export default class ReadMore extends React.Component {
 }
 
 ReadMore.propTypes = {
+  children: PropTypes.node.isRequired,
   expandText: PropTypes.string,
   collapseText: PropTypes.string,
+  toggleColor: PropTypes.color,
   collapsedHeight: PropTypes.string,
   animation: PropTypes.string
 }

@@ -17,15 +17,14 @@ export default class ExpressSection extends React.Component {
       </div>
       <Grid container className={styles.container}>
         <Grid item xs={12} xl={5}>
-          <div className={styles.subtitle1}>{this.props.subtitle1}</div>
-          <div className={styles.subtitle2}>{this.props.subtitle2}</div>
+          <div className={styles.subtitle}>{this.props.subtitle}</div>
         </Grid>
         <Grid item xs={12} xl={7}>
           <Hidden xsDown>
-            <div dangerouslySetInnerHTML={{ __html: this.props.description }} className='description'></div>
+            <div className={styles.description}>{this.props.description}</div>
           </Hidden>
           <Hidden smUp>
-            <ReadMore collapsedHeight='6rem' className={styles.description}>
+            <ReadMore toggleColor='#1302D9' className={styles.description}>
               {this.props.description}
             </ReadMore>
           </Hidden>
@@ -42,8 +41,7 @@ export default class ExpressSection extends React.Component {
 ExpressSection.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
-  subtitle1: PropTypes.string.isRequired,
-  subtitle2: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  subtitle: PropTypes.node.isRequired,
+  description: PropTypes.node.isRequired,
   viztitle: PropTypes.string
 }
