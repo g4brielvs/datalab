@@ -2,7 +2,7 @@
 
 .section {
   margin: 100px 50px auto;
-  padding-bottom: 115px;
+  padding-bottom: 50px;
 
   .title {
     text-transform: uppercase;
@@ -19,15 +19,9 @@
     margin-top: 50px;
   }
 
-  .subtitle1 {
+  .subtitle {
     font-size: 2.625em;
     font-weight: $semibold;
-  }
-
-  .subtitle2 {
-    font-size: 2.625em;
-    color: #1302d9;
-    font-weight: $bold;
   }
 
   .viztitle {
@@ -41,7 +35,7 @@
   .section {
     width: 90%;
     margin: 100px auto auto;
-    padding-bottom: 95px;
+    padding-bottom: 0;
     text-align: center;
 
     .viztitle {
@@ -58,13 +52,9 @@
   .section {
     width: 95%;
     margin: 50px auto auto;
-    padding-bottom: 95px;
+    padding-bottom: 0;
 
-    .subtitle1 {
-      font-size: 1rem;
-    }
-
-    .subtitle2 {
+    .subtitle {
       font-size: 1rem;
       font-weight: $semibold;
       color: inherit;
