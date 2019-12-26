@@ -43,7 +43,7 @@ ReadMore.propTypes = {
   children: PropTypes.node.isRequired,
   expandText: PropTypes.string,
   collapseText: PropTypes.string,
-  toggleColor: PropTypes.color,
+  toggleColor: PropTypes.string,
   collapsedHeight: PropTypes.string,
   animation: PropTypes.string
 }
