@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Sources = props => {
-  const fillColor = props.fillColor || '#881E3D';
-
+const Sources = ({fillColor}) => {
   return (
     <svg width="91px" height="91px" viewBox="0 0 91 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <defs>
         <polygon id="hwcta-path-1" points="0.0290929878 0.0161973995 27.4234527 0.0161973995 27.4234527 35.4210943 0.0290929878 35.4210943"></polygon>
         <polygon id="hwcta-path-3" points="0 38 44 38 44 0 0 0"></polygon>
       </defs>
-      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-424.000000, -5720.000000)">
           <g transform="translate(426.000000, 5722.000000)">
             <g transform="translate(25.000000, 25.000000)">
@@ -37,7 +35,7 @@ const Sources = props => {
               <path d="M22,12 C22,12.5523336 21.5522742,13 21.0000383,13 C20.4477258,13 20,12.5523336 20,12 C20,11.4476664 20.4477258,11 21.0000383,11 C21.5522742,11 22,11.4476664 22,12" fill={fillColor} mask="url(#hwcta-mask-4)"></path>
               <path d="M17,11 C17,11.5523336 16.5522742,12 16.0000383,12 C15.4477258,12 15,11.5523336 15,11 C15,10.4477429 15.4477258,10 16.0000383,10 C16.5522742,10 17,10.4477429 17,11" fill={fillColor} mask="url(#hwcta-mask-4)"></path>
             </g>
-            <circle stroke={fillColor} stroke-width="3" cx="43.5" cy="43.5" r="43.5"></circle>
+            <circle stroke={fillColor} strokeWidth="3" cx="43.5" cy="43.5" r="43.5"></circle>
           </g>
         </g>
       </g>
@@ -46,7 +44,7 @@ const Sources = props => {
 }
 
 Sources.propTypes = {
-  fillColor: PropTypes.string
+  fillColor: PropTypes.string.isRequired
 }
 
 export default Sources;

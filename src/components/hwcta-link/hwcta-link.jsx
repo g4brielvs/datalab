@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import hwctaLinkStyles from './hwcta-link.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import Sources from '../logos/sources';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Grid, Hidden } from '@material-ui/core'
+import Sources from '../logos/sources';
 
 const HWCTALink = (props) => {
   return (
@@ -30,6 +32,14 @@ const HWCTALink = (props) => {
       </a>
     </div>
   )
+}
+
+HWCTALink.propTypes = {
+  fillColor: PropTypes.string
+}
+
+HWCTALink.defaultProps = {
+  fillColor: '#881E3D'
 }
 
 export default HWCTALink;
