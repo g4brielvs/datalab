@@ -8,7 +8,8 @@ import { Grid } from "@material-ui/core";
 const Downloads = (props) => {
   function exportToJsonFile(jsonData) {
     const dataStr = JSON.stringify(jsonData);
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+    const dataBlob = new Blob([dataStr], {type:"text/plain;charset=utf-8"});
+    const dataUri = URL.createObjectURL(dataBlob);
     const exportFileDefaultName = 'data.json';
 
     return (
@@ -45,11 +46,12 @@ const Downloads = (props) => {
         csvStr += lineDelimiter;
       });
 
-      return encodeURIComponent(csvStr);
+      return csvStr;
     }
 
     const csvStr = parseJSONToCSVStr(jsonData);
-    const dataUri = 'data:text/csv;charset=utf-8,'+ csvStr;
+    const dataBlob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
+    const dataUri = URL.createObjectURL(dataBlob);
     const exportFileDefaultName = 'data.csv';
 
     return (
