@@ -81,7 +81,7 @@ export default class DTSPage extends React.Component {
               </div>
             </Grid>
             <Grid item>
-              <div className='frequency-selector-label'>Frequency</div>
+              <label htmlFor="frequency-selector" className='frequency-selector-label'>Frequency</label>
               <select id='frequency-selector' className='custom-select'>
                 <option value='today'>DAILY</option>
                 <option value='mtd'>MTD</option>
@@ -89,7 +89,7 @@ export default class DTSPage extends React.Component {
               </select>
             </Grid>
             <Grid item>
-              <div className='category-select-label'>Categories</div>
+              <label htmlFor="category-selector" className='category-select-label'>Categories</label>
               <select className='custom-select custom-select-start' id='category-selector'></select>
             </Grid>
           </Grid>

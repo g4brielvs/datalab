@@ -174,14 +174,14 @@ class CompetitionInContractingPage extends Component {
                 <svg height="15" width="15">
                   <circle cx="7.5" cy="7.5" r="7.5" />
                 </svg>
-                <label htmlFor="notCompeted" style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Not
+                <label htmlFor={competitionStyles.notCompeted} style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Not
                     Competed</label>
               </div>
               <div className={competitionStyles.legend} id={competitionStyles.competed}>
                 <svg height="15" width="15">
                   <circle cx="7.5" cy="7.5" r="7.5" />
                 </svg>
-                <label htmlFor="contactChoice1" style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Competed</label>
+                <label htmlFor={competitionStyles.competed} style={{ fontSize: '0.75rem', verticalAlign: 'bottom' }}>Competed</label>
               </div>
               <div className={competitionStyles.barChartToolbar}>
                 <div className={competitionStyles.selectWrapper1}>
