@@ -36,7 +36,7 @@ export default class CrisisSankey extends React.Component {
     const moreLeft = Array.from(new Set(leftData.map(x => x.target)));
     let concat = someLeft.concat(moreLeft);
     let nodesLeft = concat.map(x => {
-      return {'id': x};
+      return {'id': x, 'color': 'orange'};
     });
     const linksLeft = leftData; // the whole thing is the "links" array
 
@@ -61,6 +61,10 @@ export default class CrisisSankey extends React.Component {
           onValueClick={(datapoint, event) => console.log('whatever we just clicked a node' + datapoint + event)}
           onLinkClick={(data) => console.log(data)}
           onLinkMouseOver={(data) => console.log(data)}
+          style={{
+            links: {opacity: 1, color: 'orange'},
+            rects: {stroke: '#dddddd', strokeWidth: 3}
+          }}
         />
 
         <Sankey
