@@ -443,7 +443,7 @@ function Sankey(props) {
 
     d3.select("#sankey-viz svg")
       .append('desc')
-      .attr('id', 'titleTest')
+      .attr('id', 'descTest')
       .text('Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. ' +
         'Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit');
 

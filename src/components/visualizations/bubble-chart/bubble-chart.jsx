@@ -235,8 +235,22 @@ export default class BubbleChart extends Component {
       .attr("width", this.width)
       .attr("height", this.width)
       .attr("id", "chart")
+      .attr('role', 'img')
+      .attr('aria-describedby', 'titleTest descTest')
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
+
+    d3.select(this.bubbleChartContainer).select('svg')
+      .append('title')
+      .attr('id', 'titleTest')
+      .text('Nam quis nulla. Integer malesuada. In in');
+
+    d3.select(this.bubbleChartContainer).select('svg')
+      .append('desc')
+      .attr('id', 'descTest')
+      .text('Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. ' +
+        'Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit');
+
 
     this.circle = this.bubbleSvg.selectAll("circle")
       .data(this.nodes)
