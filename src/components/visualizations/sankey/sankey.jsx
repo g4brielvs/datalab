@@ -429,9 +429,25 @@ function Sankey(props) {
       .attr("height", height + margin.top + margin.bottom)
       .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
       .attr("class", "sankey-viz-svg")
+      .attr('role', 'img')
+      .attr('aria-labelledby', 'titleTest descTest')
       .append("g")
       .attr("transform",
         `translate(${margin.left},${margin.top})`);
+
+    // add title
+    d3.select("#sankey-viz svg")
+      .append('title')
+      .attr('id', 'titleTest')
+      .text('Nam quis nulla. Integer malesuada. In in');
+
+    d3.select("#sankey-viz svg")
+      .append('desc')
+      .attr('id', 'titleTest')
+      .text('Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. ' +
+        'Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit');
+
+
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()
