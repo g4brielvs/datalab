@@ -6,11 +6,11 @@ import Grid from '@material-ui/core/Grid';
 import Default from '../default/default';
 import HWCTALink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
-import {ToolpageHeader} from '../../headers/headers';
+import { ToolpageHeader } from '../../headers/headers';
 
 export default class ToolLayout extends React.Component {
   render = () => <Default>
-  <ToolpageHeader />    
+    <ToolpageHeader />
     <div className={styles.toolPage}>
       <header className={styles.header}>
         <Grid container justify='space-between'>
@@ -53,7 +53,5 @@ ToolLayout.propTypes = {
   contextStatement: PropTypes.string,
   sectionTitle: PropTypes.string,
   sectionText: PropTypes.string,
-  hwctaLink: PropTypes.string,
+  hwctaLink: PropTypes.string
 }
-
-// export default ToolLayout

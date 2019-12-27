@@ -31,7 +31,7 @@
     "date-fns": "^2.1.0",
     "dotenv": "^8.1.0",
     "flexboxgrid": "^6.3.1",
-    "gatsby": "^2.9.0",
+    "gatsby": "^2.18.12",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-google-analytics": "^2.1.31",
     "gatsby-plugin-manifest": "^2.0.28",
