@@ -17,6 +17,8 @@ export default class Sunburst extends React.Component {
       info: '',
       spec: sunburstSpec,
       originalData: props.data,
+      agency: null,
+      level: null
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -29,8 +31,8 @@ export default class Sunburst extends React.Component {
   handleClick(...args){
     const item = args[1];
     const newData = item.id === 1 ? this.state.originalData : {"tree" : this.handleUpdateData(item.id)};
-    this.setState({ data: newData });
-
+    this.props.getDetails(item);
+    this.setState({ data: newData, depth: item.depth });
   }
 
   handleUpdateData(newId) {
