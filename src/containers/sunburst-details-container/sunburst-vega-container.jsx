@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import flareData from '../../unstructured-data/contract-explorer/flare.json';
 import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 import Grid from "@material-ui/core/Grid/Grid";
@@ -10,6 +10,10 @@ import Breadcrumbs from './sunburst-breadcrumbs';
 const SunburstVegaContainer = () => {
   // function to sum total contracts and find the top five contractors
 // need a data file that maps agencies to all subagencies and all recipients
+
+  useEffect(() => {
+    getDetails();
+  }, []);
 
   let breadcrumbsDefaults = {
     agency: null,
@@ -50,6 +54,8 @@ const SunburstVegaContainer = () => {
 
   function getDetails(item) {
 
+    const depth = item && item.depth ? item.depth : 0;
+
     let breadcrumbs = {
       agency: null,
       subagency: null,
@@ -63,7 +69,7 @@ const SunburstVegaContainer = () => {
       name: null
     };
 
-    switch(item.depth) {
+    switch(depth) {
       case 0:
         details.label = 'Agencies';
         details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
