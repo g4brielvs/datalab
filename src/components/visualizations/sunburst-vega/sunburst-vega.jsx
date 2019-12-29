@@ -20,12 +20,17 @@ export default class Sunburst extends React.Component {
       agency: null,
       level: null
     };
-
+    this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
     // this.handlers = { tooltip: this.handleHover };
-    this.signalListeners = { arcClick: this.handleClick };
+    this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
 
+  }
+
+  handleHover(...args) {
+    const item = args[1];
+    this.props.getDetails(item);
   }
 
   handleClick(...args){

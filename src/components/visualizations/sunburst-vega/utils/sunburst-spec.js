@@ -43,6 +43,13 @@ export default {
       "on": [
         {"events": "arc:mousedown", "update": "datum"}
       ]
+    },
+    {
+      "name": "arcHover",
+      "value": "datum",
+      "on": [
+        {"events": "arc:mouseover", "update": "datum"}
+      ]
     }
   ],
   "scales": [
@@ -63,12 +70,14 @@ export default {
     "type": "arc",
     "from": {"data": "tree"},
     "encode": {
+      "delay": "500",
+      "ease": "circle",
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
         "fill": {"signal": "datum.colorHex"},
         "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"},
-        "tooltip": {"signal": "datum.name" }
+        "tooltip": {"signal": "datum.name" },
 
       },
       "update": {
@@ -79,11 +88,6 @@ export default {
         "stroke": {"value": "white"},
         "strokeWidth": {"value": 0.5},
         "zindex": {"value": 0},
-      },
-      "hover": {
-        "stroke": {"value": "#ddd"},
-        "strokeWidth": {"value": 2},
-        "zindex": {"value": 1}
       },
     }
   }

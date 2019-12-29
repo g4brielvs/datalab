@@ -2,10 +2,11 @@ import React from "react";
 
 const SunburstBreadcrumbs = (props) => {
   return <>
-    <div>{props.items.agency}</div>
-    <div>{props.items.subagency}</div>
-    <div>{props.items.recipient}</div>
-
+    <div>
+      <span>{props.items.agency}</span>
+      <span>&nbsp;{props.items.subagency}</span>
+      <span>&nbsp;{props.items.recipient}</span>
+    </div>
   </>
 }
 
