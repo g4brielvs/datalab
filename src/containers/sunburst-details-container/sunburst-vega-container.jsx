@@ -2,14 +2,22 @@ import React, { useState, useEffect } from "react"
 import flareData from '../../unstructured-data/contract-explorer/flare.json';
 import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 import Grid from "@material-ui/core/Grid/Grid";
-import SunburstDetails from './sunburst-details';
+import SunburstDetails from './details/sunburst-details';
 import Sunburst from '../../components/visualizations/sunburst-vega/sunburst-vega';
-import Breadcrumbs from './sunburst-breadcrumbs';
+import Breadcrumbs from './breadcrumbs/sunburst-breadcrumbs';
+import Search from './sunburst-search-container';
 
 
 const SunburstVegaContainer = () => {
   // function to sum total contracts and find the top five contractors
 // need a data file that maps agencies to all subagencies and all recipients
+  const align = {
+    'padding-left': '2.125rem'
+  };
+
+  const header = {
+    'height': '2.5rem'
+  };
 
   useEffect(() => {
     getDetails();
@@ -110,10 +118,11 @@ const SunburstVegaContainer = () => {
         container
         spacing = {4}>
         <Grid item xs={12} sm={6} >
+          <Search style={header} />
           <SunburstDetails details={details} />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Breadcrumbs items={breadcrumbs} />
+        <Grid item xs={12} sm={6} style={align}>
+          <Breadcrumbs style={header} items={breadcrumbs}>&nbsp;</Breadcrumbs>
           <Sunburst data={flareData} getDetails={getDetails} />
         </Grid>
       </Grid>

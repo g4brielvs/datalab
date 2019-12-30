@@ -1,0 +1,20 @@
+@import '../../../styles/index.scss';
+
+.heading {
+  @include sectionHeading();
+}
+
+.subheading {
+  color: #666;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.text {
+  @include body-copy();
+}
+
+.total-amount {
+  @include body-copy();
+  font-size: 2rem;
+}

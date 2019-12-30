@@ -1,13 +1,9 @@
-import * as d3 from 'd3v4';
-
-// d3.interpolateArray(xScale.domain(), [d.x, d.x + d.dx])
-
 export default {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 600,
-  "height": 600,
+  "width": 500,
+  "height": 500,
   "padding": 5,
-  "autosize": "none",
+  "autosize": "fit",
 
   "data": [
   {
