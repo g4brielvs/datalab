@@ -7,7 +7,7 @@ const SunburstSearchContainer = (props) => {
   }
 
   return <>
-    <input type="text" value="Department of Defense" style={widthStyle} />
+    <input type="text" value="Search Placeholder" style={widthStyle} />
   </>
 }
 

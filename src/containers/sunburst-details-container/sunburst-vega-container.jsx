@@ -117,11 +117,11 @@ const SunburstVegaContainer = () => {
       <Grid
         container
         spacing = {4}>
-        <Grid item xs={12} sm={6} >
+        <Grid item sm={12} md={6} >
           <Search style={header} />
           <SunburstDetails details={details} />
         </Grid>
-        <Grid item xs={12} sm={6} style={align}>
+        <Grid item sm={12} md={6} style={align}>
           <Breadcrumbs style={header} items={breadcrumbs}>&nbsp;</Breadcrumbs>
           <Sunburst data={flareData} getDetails={getDetails} />
         </Grid>
