@@ -243,13 +243,14 @@ export default class BubbleChart extends Component {
     d3.select(this.bubbleChartContainer).select('svg')
       .append('title')
       .attr('id', 'titleTest')
-      .text('Nam quis nulla. Integer malesuada. In in');
+      .text('The quick brown fox jumped over the lazy dog 1.');
 
     d3.select(this.bubbleChartContainer).select('svg')
       .append('desc')
       .attr('id', 'descTest')
-      .text('Nam quis nulla. Integer malesuada. In in enim a arcu imperdiet malesuada. ' +
-        'Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis quis, sem. Phasellus rhoncus. Aenean id metus id velit');
+      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
+        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
+        'The quick brown fox jumped over the lazy dog 5.');
 
 
     this.circle = this.bubbleSvg.selectAll("circle")
