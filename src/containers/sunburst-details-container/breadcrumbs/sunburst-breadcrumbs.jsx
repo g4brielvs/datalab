@@ -1,5 +1,6 @@
 import React from "react";
 import style from './sunburst-breadcrumbs.module.scss';
+import PropTypes from "prop-types";
 
 const SunburstBreadcrumbs = (props) => {
 
@@ -19,3 +20,7 @@ const SunburstBreadcrumbs = (props) => {
 }
 
 export default SunburstBreadcrumbs;
+
+SunburstBreadcrumbs.propTypes = {
+  items: PropTypes.object
+};

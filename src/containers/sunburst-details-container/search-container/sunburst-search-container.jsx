@@ -2,9 +2,10 @@ import React from "react";
 
 const SunburstSearchContainer = (props) => {
   const widthStyle = {
-    width: '100%',
+    width: '90%',
     'margin-bottom': '1rem',
-    border: '1px solid #ccc'
+    border: '1px solid #ccc',
+    height: '40px'
   }
 
   return <>

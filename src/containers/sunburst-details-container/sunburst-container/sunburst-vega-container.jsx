@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react"
-import flareData from '../../unstructured-data/contract-explorer/flare.json';
+import flareData from '../../../unstructured-data/contract-explorer/flare.json';
 import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 import Grid from "@material-ui/core/Grid/Grid";
-import SunburstDetails from './details/sunburst-details';
-import Sunburst from '../../components/visualizations/sunburst-vega/sunburst-vega';
-import Breadcrumbs from './breadcrumbs/sunburst-breadcrumbs';
-import Search from './sunburst-search-container';
+import SunburstDetails from '../details/sunburst-details';
+import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';
+import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
+import Search from '../search-container/sunburst-search-container';
+import styles from './sunburst-vega-container.module.scss';
+import PropTypes from "prop-types"
+import ToolLayout from "../../../components/layouts/tool/tool"
 
 
 const SunburstVegaContainer = () => {
-  // function to sum total contracts and find the top five contractors
-// need a data file that maps agencies to all subagencies and all recipients
-  const align = {
-    'padding-left': '2.125rem'
-  };
-
-  const header = {
-    'height': '2.5rem'
-  };
 
   useEffect(() => {
     getDetails();
@@ -40,21 +34,16 @@ const SunburstVegaContainer = () => {
   const [details, setDetails] = useState(detailDefaults);
 
   function getTop5(items, type) {
-
-    // get all unique values of the key
+    // get all unique values of the item type
     let unique = [...new Set(items.map(item => item[type]))];
-
     let summedItems = [];
-
-    // items => (1) agencys, (2) agency, subagency, or (3) agency, sub, and recipient
 
     for (let i = 0; i < unique.length; i++) {
       summedItems.push({
         name: unique[i],
         type: type,
         obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.obligation || 0), 0)
-      })
-
+      });
     }
 
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
@@ -114,22 +103,37 @@ const SunburstVegaContainer = () => {
   }
 
   return <>
-      <Grid
-        container
-        spacing = {4}>
-        <Grid item sm={12} md={6} >
-          <Search style={header} />
-          <SunburstDetails details={details} />
-        </Grid>
-        <Grid item sm={12} md={6} style={align}>
-          <Breadcrumbs style={header} items={breadcrumbs}>&nbsp;</Breadcrumbs>
-          <Sunburst data={flareData} getDetails={getDetails} />
-        </Grid>
+    <Grid
+      container
+      spacing = {4}>
+      <Grid item sm={12} md={6}>
+        <Search className={styles.header} />
       </Grid>
-    </>
+      <Grid item
+            sm={12}
+            md={6}
+            className={styles.breadcrumbsContainer}>
+        <Breadcrumbs className={styles.header} items={breadcrumbs}>&nbsp;</Breadcrumbs>
+      </Grid>
+    </Grid>
+    <Grid
+      container
+      spacing = {4}
+      className = {styles.sunburstVegaContainer}>
+      <Grid item sm={12} md={6}>
+        <SunburstDetails details={details} />
+      </Grid>
+      <Grid item sm={12} md={6}>
+        <Sunburst data={flareData} getDetails={getDetails} />
+        <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients.
+          Sub-awards are not included.</div>
+      </Grid>
+    </Grid>
+  </>
 }
 
 export default SunburstVegaContainer;
+
 
 
 

@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid/Grid";
 import styles from './sunburst-details.module.scss';
 import formatNumber from 'src/utils/number-formatter';
+import PropTypes from "prop-types";
 
 const SunburstDetails = (props) => {
 
@@ -19,7 +20,7 @@ const SunburstDetails = (props) => {
       </Grid>
       {props.details.top5.map((item) => {
         return(
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6} className={styles.listItem}>
             <div className={styles.text}>{item.name}</div>
             <div className={styles.heading}>{formatNumber('dollars', item.obligation)}</div>
           </Grid>
@@ -29,4 +30,10 @@ const SunburstDetails = (props) => {
   </>
 }
 
-export default SunburstDetails
+export default SunburstDetails;
+
+SunburstDetails.propTypes = {
+  name: PropTypes.string.isRequired,
+  details: PropTypes.object.isRequired,
+  label: PropTypes.string
+};
