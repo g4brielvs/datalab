@@ -19,7 +19,7 @@ const SunburstDetails = (props) => {
       </Grid>
       {props.details.top5.map((item) => {
         return(
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6}>
             <div className={styles.text}>{item.name}</div>
             <div className={styles.heading}>{formatNumber('dollars', item.obligation)}</div>
           </Grid>

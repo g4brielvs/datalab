@@ -73,7 +73,7 @@ export default {
         "y": {"signal": "height / 2"},
         "fill": {"signal": "datum.colorHex"},
         "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"},
-        "tooltip": {"signal": "datum.name" },
+        "tooltip": {"signal": "datum.depth <=1 ? (datum.depth === 0 ? 'Click to reset' : 'Click to view agency') : (datum.depth == 2 ? 'Click to view subagency' : 'Click to view contractor')" },
 
       },
       "update": {
