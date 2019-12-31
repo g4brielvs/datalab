@@ -14,7 +14,6 @@ import ToolLayout from "../../components/layouts/tool/tool";
 import * as d3 from "d3v3"
 import numberFormatter from "../../utils/number-formatter"
 import ControlBar from "../../components/control-bar/control-bar"
-import Downloads from "../../components/section-elements/downloads/downloads"
 
 class CompetitionInContractingPage extends Component {
   constructor(props) {
@@ -234,10 +233,6 @@ class CompetitionInContractingPage extends Component {
                 _svgClass={competitionStyles.svg}
               >
               </Barchart>
-              <Downloads
-                data={this.rawData}
-                isJSON={true}
-              />
             </div>
 
           </Grid>
