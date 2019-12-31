@@ -7,8 +7,6 @@ import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-
 import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
 import Search from '../search-container/sunburst-search-container';
 import styles from './sunburst-vega-container.module.scss';
-import PropTypes from "prop-types"
-import ToolLayout from "../../../components/layouts/tool/tool"
 
 
 const SunburstVegaContainer = () => {

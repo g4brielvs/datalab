@@ -9,7 +9,6 @@ import ControlBar from "../../components/control-bar/control-bar";
 
 import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
-import './contract-explorer.scss';
 
 const SunburstDetailsContainer = loadable(() => import('../../containers/sunburst-details-container/sunburst-container/sunburst-vega-container'),
   {
