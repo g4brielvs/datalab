@@ -33,13 +33,18 @@
 
 @media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
   .section {
-    width: 90%;
+    width: 95%;
     margin: 100px auto auto;
     padding-bottom: 0;
     text-align: center;
 
+    .container {
+      margin-top: 20px;
+    }
+
     .viztitle {
-      margin-top: 135px;
+      text-align: left;
+      margin-top: -10px;
     }
 
     .description {
@@ -54,6 +59,10 @@
     margin: 50px auto auto;
     padding-bottom: 0;
 
+    .container {
+      margin-top: 20px;
+    }
+
     .subtitle {
       font-size: 1rem;
       font-weight: $semibold;
@@ -61,7 +70,7 @@
     }
 
     .viztitle {
-      margin-top: 35px;
+      margin-top: -10px;
     }
   }
 }

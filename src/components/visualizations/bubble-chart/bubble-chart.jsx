@@ -206,10 +206,9 @@ export default class BubbleChart extends Component {
   }
 
   drawBubbleChart(root) {
-    focus = root;
+    this.focused = root;
     this.diameter = this.width;
     const classContext = this;
-
     let tooltipHtml = '<div></div>';
     this.tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
       if (classContext.isZoomedIn(d)) {

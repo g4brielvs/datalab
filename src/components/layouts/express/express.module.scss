@@ -2,7 +2,7 @@
 
 .page {
   margin: 110px auto 0;
-  max-width: 1140px;
+  max-width: $desktop-xl-mcw;
 }
 
 .header {
@@ -12,7 +12,7 @@
 }
 
 .logo {
-  margin: 25px auto 45px;
+  margin: 25px auto 35px;
   width: 200px;
 }
 
@@ -23,7 +23,7 @@
   font-weight: $semibold;
   letter-spacing: 0.175rem;
   line-height: 1.25rem;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .topic {
@@ -46,6 +46,14 @@
     padding-bottom: 150px;
   }
 
+  .logo {
+    margin-bottom: 50px;
+  }
+
+  .title {
+    margin-bottom: 45px;
+  }
+  
   .hwcta {
     margin-top: 75px;
   }
@@ -63,12 +71,12 @@
   }
 
   .logo {
-    margin-top: 15px;
-    margin-bottom: 30px;
+    margin-top: 5px;
+    margin-bottom: 20px;
   }
 
   .title {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: left;
   }
 
