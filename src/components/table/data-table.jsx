@@ -78,8 +78,8 @@ export default class DataTable extends React.Component {
   render() {
     const { page, perPage, scrollToIndex, sortedList, list, sortBy, sortDirection } = this.state;
 
-    const rowHeight = 40
-    const height = rowHeight * (perPage - 2);
+    const rowHeight = 32
+    const height = rowHeight * perPage;
     const rowCount = list.length;
     const pageCount = Math.ceil(rowCount / perPage);
     const currentlist = sortedList ? sortedList : list;

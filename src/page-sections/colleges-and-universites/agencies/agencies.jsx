@@ -91,7 +91,6 @@ const Agencies = (props) => {
   }
 
   function updateTableData(data) {
-    console.log('****');
     setFilteredData(data);
     if (tableRef && tableRef.current) { tableRef.current.updateTableData(data); }
   }
