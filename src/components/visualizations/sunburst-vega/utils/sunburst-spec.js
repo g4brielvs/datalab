@@ -1,13 +1,9 @@
-import * as d3 from 'd3v4';
-
-// d3.interpolateArray(xScale.domain(), [d.x, d.x + d.dx])
-
 export default {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 600,
-  "height": 600,
+  "width": 500,
+  "height": 500,
   "padding": 5,
-  "autosize": "none",
+  "autosize": "fit",
 
   "data": [
   {
@@ -43,6 +39,13 @@ export default {
       "on": [
         {"events": "arc:mousedown", "update": "datum"}
       ]
+    },
+    {
+      "name": "arcHover",
+      "value": "datum",
+      "on": [
+        {"events": "arc:mouseover", "update": "datum"}
+      ]
     }
   ],
   "scales": [
@@ -63,12 +66,14 @@ export default {
     "type": "arc",
     "from": {"data": "tree"},
     "encode": {
+      "delay": "500",
+      "ease": "circle",
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
         "fill": {"signal": "datum.colorHex"},
         "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"},
-        "tooltip": {"signal": "datum.name" }
+        "tooltip": {"signal": "datum.depth <=1 ? (datum.depth === 0 ? 'Click to reset' : 'Click to view agency') : (datum.depth == 2 ? 'Click to view subagency' : 'Click to view contractor')" },
 
       },
       "update": {
@@ -79,11 +84,6 @@ export default {
         "stroke": {"value": "white"},
         "strokeWidth": {"value": 0.5},
         "zindex": {"value": 0},
-      },
-      "hover": {
-        "stroke": {"value": "#ddd"},
-        "strokeWidth": {"value": 2},
-        "zindex": {"value": 1}
       },
     }
   }

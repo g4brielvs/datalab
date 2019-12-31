@@ -31,9 +31,7 @@ export default class ExpressSection extends React.Component {
         </Grid>
       </Grid>
 
-      <Hidden lgDown>
-        <div className={styles.viztitle}>{this.props.viztitle}</div>
-      </Hidden>
+      <div className={styles.viztitle}>{this.props.viztitle}</div>
       {this.props.children}
     </section>
 }

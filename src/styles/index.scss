@@ -43,6 +43,12 @@ ul {
   font-weight: bold;
 }
 
+@mixin sectionHeading {
+  font-size: 1.17em;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
 @mixin homepageTitle {
   text-align: left;
   color: #2272CE;
