@@ -23,7 +23,7 @@ export default class DataTable extends React.Component {
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this._sort = this._sort.bind(this);
-    this.updateData = this.updateData(this);
+    this.updateTableData = this.updateTableData.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
       this.defaultWidth = document.getElementById('chart-area').clientWidth;
@@ -45,7 +45,8 @@ export default class DataTable extends React.Component {
     })
   }
 
-  updateData(list) {
+  updateTableData(list) {
+    console.log('test');
     this.setState({list: list});
   }
 

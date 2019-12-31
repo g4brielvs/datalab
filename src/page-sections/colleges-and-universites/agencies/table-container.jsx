@@ -5,6 +5,8 @@ import DataTable from "../../../components/table/data-table";
 
 const AgenciesTableContainer = (props) => {
 
+  const [tableData, setTableData] = useState(props.tableData);
+
   if(props.display) {
     return(<>
       <Grid item>
@@ -13,7 +15,7 @@ const AgenciesTableContainer = (props) => {
             <DataTable
               idName={'agenciesTable'}
               columnTitles={props.tableColumnTitles}
-              data={props.tableData}
+              data={tableData}
               ref={props.tableRef}
             />
           </Grid>
