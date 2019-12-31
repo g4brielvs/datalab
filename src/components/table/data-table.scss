@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .show {
   display: block;
 }
@@ -8,4 +10,18 @@
 
 .ReactVirtualized__Table__Grid {
   overflow: hidden !important;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.primary {
+  text-decoration: underline;
+}
+
+.ReactVirtualized__Table {
+  @include body-copy();
+}
+
+.ReactVirtualized__Table__row, .ReactVirtualized__Table__headerRow {
+  height: 4rem !important;
+  border-bottom: 1px solid #eeeeee;
 }

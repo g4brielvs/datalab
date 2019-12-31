@@ -26,7 +26,7 @@ export default class DataTable extends React.Component {
     this.updateTableData = this.updateTableData.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
-      this.defaultWidth = document.getElementById('chart-area').clientWidth;
+      // this.defaultWidth = document.getElementById('chart-area').clientWidth;
     }
 
   }
@@ -78,7 +78,7 @@ export default class DataTable extends React.Component {
   render() {
     const { page, perPage, scrollToIndex, sortedList, list, sortBy, sortDirection } = this.state;
 
-    const rowHeight = 32
+    const rowHeight = 64
     const height = rowHeight * perPage;
     const rowCount = list.length;
     const pageCount = Math.ceil(rowCount / perPage);
@@ -92,7 +92,7 @@ export default class DataTable extends React.Component {
             width={this.defaultWidth}
             height={height}
             headerHeight={20}
-            rowHeight={30}
+            rowHeight={rowHeight}
             rowCount={rowCount}
             rowGetter={({index}) => currentlist[index]}
             scrollToIndex={scrollToIndex}

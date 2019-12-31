@@ -1,11 +1,9 @@
-import React, { useState } from "react"
+import React from "react";
 import Grid from "@material-ui/core/Grid/Grid";
 import DataTable from "../../../components/table/data-table";
 
 
 const AgenciesTableContainer = (props) => {
-
-  const [tableData, setTableData] = useState(props.tableData);
 
   if(props.display) {
     return(<>
@@ -15,7 +13,7 @@ const AgenciesTableContainer = (props) => {
             <DataTable
               idName={'agenciesTable'}
               columnTitles={props.tableColumnTitles}
-              data={tableData}
+              data={props.tableData}
               ref={props.tableRef}
             />
           </Grid>
