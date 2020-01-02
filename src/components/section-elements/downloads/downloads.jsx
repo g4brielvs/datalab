@@ -7,6 +7,10 @@ import { Grid } from "@material-ui/core";
 
 const Downloads = (props) => {
   function exportToJsonFile(jsonData) {
+    if(typeof Blob === 'undefined'){
+      return <></>;
+    }
+
     const dataStr = JSON.stringify(jsonData);
     const dataBlob = new Blob([dataStr], {type:"application/json"});
     const dataUri = URL.createObjectURL(dataBlob);
@@ -23,6 +27,10 @@ const Downloads = (props) => {
 
   // Leaving this in just in case we MUST export to a csv file (will talk with Yaw and Andrea when they return), my only reason against JSON to CSV is we lose precision at >15 decimal places.
   function exportJSONToCsvFile(jsonData) {
+    if(typeof Blob === 'undefined'){
+      return <></>;
+    }
+
     function parseJSONToCSVStr(jsonData) {
       if(jsonData.length === 0) {
         return '';
