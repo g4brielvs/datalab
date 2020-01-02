@@ -1,18 +1,41 @@
 [
   {
+    "source": "National Institute of Food and Agriculture",
+    "target": "Medical Care",
+    "value": 4308950
+  },
+  {
+    "source": "National Institute of Food and Agriculture",
+    "target": "Jobs",
+    "value": 996986
+  },
+  {
+    "source": "Rural Housing Service",
+    "target": "First Responders",
+    "value": 219027
+  },
+  {
+    "source": "Rural Utilities Service",
+    "target": "Medical Care",
+    "value": 8135898
+  },
+  {
     "source": "Agency for Healthcare Research and Quality",
     "target": "Medical Care",
-    "value": 2791969
+    "value": 2791969,
+    "color": "#ddddd"
   },
   {
     "source": "Centers for Disease Control and Prevention",
     "target": "First Responders",
-    "value": 11819790.2
+    "value": 11819790.2,
+    "color": "#ddddd"
   },
   {
     "source": "Centers for Disease Control and Prevention",
     "target": "Medical Care",
-    "value": 56871669
+    "value": 56871669,
+    "color": "#ddddd"
   },
   {
     "source": "Centers for Medicare and Medicaid Services",
@@ -23,31 +46,6 @@
     "source": "Centers for Medicare and Medicaid Services",
     "target": "Medical Care",
     "value": 4799054
-  },
-  {
-    "source": "Department of State",
-    "target": "First Responders",
-    "value": 4000000
-  },
-  {
-    "source": "Drug Enforcement Administration",
-    "target": "First Responders",
-    "value": 192809.81
-  },
-  {
-    "source": "Drug Enforcement Administration",
-    "target": "Medical Care",
-    "value": 33000
-  },
-  {
-    "source": "Federal Bureau of Investigation",
-    "target": "Medical Care",
-    "value": 15000
-  },
-  {
-    "source": "Food and Drug Administration",
-    "target": "Medical Care",
-    "value": 38403.2
   },
   {
     "source": "Health Resources and Services Administration",
@@ -70,21 +68,6 @@
     "value": 42175
   },
   {
-    "source": "Institute of Museum and Library Services",
-    "target": "Medical Care",
-    "value": 249714
-  },
-  {
-    "source": "National Institute of Food and Agriculture",
-    "target": "Jobs",
-    "value": 996986
-  },
-  {
-    "source": "National Institute of Food and Agriculture",
-    "target": "Medical Care",
-    "value": 4308950
-  },
-  {
     "source": "National Institutes of Health",
     "target": "First Responders",
     "value": 1007351.68
@@ -95,16 +78,6 @@
     "value": 7518965
   },
   {
-    "source": "National Park Service",
-    "target": "First Responders",
-    "value": 25112.06
-  },
-  {
-    "source": "National Science Foundation",
-    "target": "Medical Care",
-    "value": 256977
-  },
-  {
     "source": "Office of Assistant Secretary for Health",
     "target": "First Responders",
     "value": 4899889
@@ -113,6 +86,56 @@
     "source": "Office of Assistant Secretary for Health",
     "target": "Youth and Prevention",
     "value": 3153372
+  },
+  {
+    "source": "Office of the Assistant Secretary for Administration",
+    "target": "First Responders",
+    "value": 1143433.68
+  },
+  {
+    "source": "Substance Abuse and Mental Health Services Administration",
+    "target": "First Responders",
+    "value": 2492918828
+  },
+  {
+    "source": "Substance Abuse and Mental Health Services Administration",
+    "target": "Medical Care",
+    "value": 98294341
+  },
+  {
+    "source": "Substance Abuse and Mental Health Services Administration",
+    "target": "Veterans",
+    "value": 2744145
+  },
+  {
+    "source": "Office of the Under Secretary for Science and Technology",
+    "target": "Medical Care",
+    "value": 378056.37
+  },
+  {
+    "source": "U.S. Customs and Border Protection",
+    "target": "Medical Care",
+    "value": 7236.48
+  },
+  {
+    "source": "U.S. Immigration and Customs Enforcement",
+    "target": "Medical Care",
+    "value": 8797.75
+  },
+  {
+    "source": "Drug Enforcement Administration",
+    "target": "First Responders",
+    "value": 192809.81
+  },
+  {
+    "source": "Drug Enforcement Administration",
+    "target": "Medical Care",
+    "value": 33000
+  },
+  {
+    "source": "Federal Bureau of Investigation",
+    "target": "Medical Care",
+    "value": 15000
   },
   {
     "source": "Office of Justice Programs",
@@ -140,64 +163,40 @@
     "value": 15123037
   },
   {
-    "source": "Office of the Assistant Secretary for Administration",
-    "target": "First Responders",
-    "value": 1143433.68
-  },
-  {
-    "source": "Office of the National Drug Control Policy",
-    "target": "First Responders",
-    "value": 5500000
-  },
-  {
-    "source": "Office of the Under Secretary for Science and Technology",
-    "target": "Medical Care",
-    "value": 378056.37
-  },
-  {
     "source": "Offices, Boards and Divisions",
     "target": "First Responders",
     "value": 66268.25
   },
   {
-    "source": "Rural Housing Service",
-    "target": "First Responders",
-    "value": 219027
-  },
-  {
-    "source": "Rural Utilities Service",
-    "target": "Medical Care",
-    "value": 8135898
-  },
-  {
-    "source": "Substance Abuse and Mental Health Services Administration",
-    "target": "First Responders",
-    "color": "orange",
-    "value": 2492918828
-  },
-  {
-    "source": "Substance Abuse and Mental Health Services Administration",
-    "target": "Medical Care",
-    "value": 98294341
-  },
-  {
-    "source": "Substance Abuse and Mental Health Services Administration",
-    "target": "Veterans",
-    "value": 2744145
-  },
-  {
-    "source": "U.S. Customs and Border Protection",
-    "target": "Medical Care",
-    "value": 7236.48
-  },
-  {
-    "source": "U.S. Immigration and Customs Enforcement",
-    "target": "Medical Care",
-    "value": 8797.75
-  },
-  {
     "source": "U.S. Marshals Service",
     "target": "Medical Care",
     "value": 18262.73
+  },
+
+
+  {
+    "source": "Food and Drug Administration",
+    "target": "Medical Care",
+    "value": 38403.2
+  },
+  {
+    "source": "Institute of Museum and Library Services",
+    "target": "Medical Care",
+    "value": 249714
+  },
+  {
+    "source": "National Park Service",
+    "target": "First Responders",
+    "value": 25112.06
+  },
+  {
+    "source": "National Science Foundation",
+    "target": "Medical Care",
+    "value": 256977
+  },
+  {
+    "source": "Office of the National Drug Control Policy",
+    "target": "First Responders",
+    "value": 5500000
   }
 ]

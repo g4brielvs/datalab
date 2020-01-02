@@ -56,10 +56,10 @@
     "papaparse": "^5.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
+    "react-vis": "*",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-vega": "^7.1.1",
-    "react-vis": "^1.11.7",
     "typescript": "3.7.2",
     "vega": "^5.9.0",
     "vega-lite": "^4.0.0-beta.12"
@@ -94,7 +94,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "webpackBuild": "webpack"
+    "webpackBuild": "webpack",
+    "postinstall": "perl ./rename.pl"
   },
   "repository": {
     "type": "git",
