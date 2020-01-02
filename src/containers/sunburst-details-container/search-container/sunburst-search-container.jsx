@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SunburstSearchContainer = (props) => {
   const widthStyle = {
@@ -9,7 +9,7 @@ const SunburstSearchContainer = (props) => {
   }
 
   return <>
-    <input type="text" value="Search Placeholder" style={widthStyle} />
+    <input type='text' value='Search Placeholder' style={widthStyle} />
   </>
 }
 
