@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 
 import Accordion from '../../components/accordion/accordion';
-import Grid from '@material-ui/core/Grid';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
-import SunburstContainer from "../../containers/sunburst-vega-container/sunburst-vega-container";
 import ToolLayout from '../../components/layouts/tool/tool';
-import ControlBar from "../../components/control-bar/control-bar"
+import ControlBar from "../../components/control-bar/control-bar";
+
+import loadable from '@loadable/component';
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+
+const SunburstDetailsContainer = loadable(() => import('../../containers/sunburst-details-container/sunburst-container/sunburst-vega-container'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
 
 export default class ContractExplorerPage extends Component {
 	constructor(props) {
@@ -41,18 +50,8 @@ export default class ContractExplorerPage extends Component {
         <Share location={this.props.location} />
       </ControlBar>
 
-			<Grid
-				container
-				spacing = {4}>
+      <SunburstDetailsContainer />
 
-				<Grid item xs={6} sm={12} >
-
-				</Grid>
-
-				<Grid item xs={6} sm={12}>
-          <SunburstContainer />
-				</Grid>
-			</Grid>
 		</ToolLayout>
 	</>
 
