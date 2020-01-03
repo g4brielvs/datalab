@@ -9,7 +9,7 @@ import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from '../../../components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/search';
+import SearchPanel from '../../../components/chartpanels/cu/search';
 import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
 import VizDetails from '../../../components/chartpanels/viz-detail';
