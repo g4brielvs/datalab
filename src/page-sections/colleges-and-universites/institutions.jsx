@@ -1,4 +1,5 @@
 import React from "react";
+import { useStaticQuery } from 'gatsby';
 import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 
@@ -10,7 +11,6 @@ import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
 import Share from '../../components/share/share';
 import ControlBar from "../../components/control-bar/control-bar";
 import DataTable from "../../components/table/data-table";
-import formatNumber from "../../utils/number-formatter";
 import Grid from '@material-ui/core/Grid';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
