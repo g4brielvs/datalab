@@ -19,6 +19,7 @@
 
 .ReactVirtualized__Table {
   @include body-copy();
+  padding: 1rem;
 }
 
 .ReactVirtualized__Table__row, .ReactVirtualized__Table__headerRow {

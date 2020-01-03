@@ -73,7 +73,7 @@ const Agencies = (props) => {
   const tableRef = React.createRef();
 
   function filterTableData(id) {
-    let tmpData = [];
+    let data = [];
     let itemList;
 
     itemList = searchList.find(function(el){
@@ -82,12 +82,12 @@ const Agencies = (props) => {
 
     let obj = _.filter(tableData, {1: itemList.heading, 2:itemList.subheading});
     if(obj && obj.length > 0) {
-      tmpData.push(obj);
+      data.push(obj);
     }
 
-    tmpData = _.flatten(tmpData);
+    data = _.flatten(data);
 
-    updateTableData(tmpData);
+    updateTableData(data);
   }
 
   function updateTableData(data) {

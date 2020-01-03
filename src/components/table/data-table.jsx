@@ -87,7 +87,7 @@ export default class DataTable extends React.Component {
 
     return (<>
       <Grid container justify='center'>
-        <Grid item xs={10}>
+        <Grid item>
           <Table
             width={this.defaultWidth}
             height={height}
@@ -108,11 +108,13 @@ export default class DataTable extends React.Component {
             })
             }
           </Table>
-          <Paginator
-            pageCount={pageCount}
-            currentPage={page}
-            onPageChange={this.handlePageChange}
-          />
+        </Grid>
+        <Grid item xs={12}>
+            <Paginator
+              pageCount={pageCount}
+              currentPage={page}
+              onPageChange={this.handlePageChange}
+            />
         </Grid>
       </Grid>
     </>);

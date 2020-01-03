@@ -7,18 +7,12 @@ const AgenciesTableContainer = (props) => {
 
   if(props.display) {
     return(<>
-      <Grid item>
-        <Grid container>
-          <Grid item xs={10}>
-            <DataTable
-              idName={'agenciesTable'}
-              columnTitles={props.tableColumnTitles}
-              data={props.tableData}
-              ref={props.tableRef}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
+      <DataTable
+        idName={'agenciesTable'}
+        columnTitles={props.tableColumnTitles}
+        data={props.tableData}
+        ref={props.tableRef}
+      />
     </>)
   } else {
     return null;
