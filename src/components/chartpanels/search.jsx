@@ -1,11 +1,9 @@
-import styles from './search.module.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import styles from './search.module.scss';
 import vizStyles from './viz-control.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { OutlinedInput, List, ListItem, ListItemText, IconButton, MuiThemeProvider } from "@material-ui/core"
-import {createMuiTheme} from "@material-ui/core/styles";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 export default class SearchPanel extends React.Component {
@@ -63,7 +61,7 @@ export default class SearchPanel extends React.Component {
           onChange={event => this.filterSearch(event)}
           endAdornment={
             this.props.showCollapse ?
-              <InputAdornment position="end">
+              <InputAdornment position='end'>
                 <IconButton
                   aria-label='search'
                   onClick={this.toggleSearch}
