@@ -2,3 +2,12 @@
   display: flex;
   flex-direction: row;
 }
+
+.rv-xy-plot__inner {
+  stroke: red;
+  .rv-sankey__link {
+    opacity: .3;
+    stroke: red;
+    color: red;
+  };
+};
