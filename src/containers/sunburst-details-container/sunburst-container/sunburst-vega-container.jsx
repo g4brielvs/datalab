@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import Grid from '@material-ui/core/Grid/Grid';
-import SunburstDetails from '../details/sunburst-details';
-import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';
-import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
-import Search from '../search-container/sunburst-search-container';
 import styles from './sunburst-vega-container.module.scss';
+
+import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
+import Grid from '@material-ui/core/Grid/Grid';
+import Search from '../../../components/chartpanels/rd/search';
+import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';
+import SunburstDetails from '../details/sunburst-details';
 
 import flareData from '../../../unstructured-data/contract-explorer/flare.json';
 import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 
 const SunburstVegaContainer = () => {
 
-
-console.log(flareData);
-console.log(awardsData);
+// console.log(flareData);
+// console.log(awardsData);
 
 
   useEffect(() => {

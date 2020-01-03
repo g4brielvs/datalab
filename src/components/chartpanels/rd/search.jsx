@@ -92,21 +92,25 @@ export default class SearchPanel extends React.Component {
 
 /*
   Notes on props:
-  searchList is expected to be an array of {id, heading text, subheading text}
+  searchList is expected to be an array of {id, agency, subagency, recipient}
   id values are arbitrary, but must be unique within the list to indicate which is selected (expected but not enforced by SearchPanel)
   e.g. [
     {
       id: 1,
-      heading: 'R&D',
-      subheading: 'R&D'
+      agency: 'Department of Energy',
+      subagency: 'Department of Energy',
+      recipient: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
     }, {
-      id: 2,
-      heading: 'Education',
-      subheading: 'Education'
+      id: 'jadsfa',
+      agency: 'Department of Defense',
+      subagency: 'Department of the Army',
+      recipient: 'BAE SYSTEMS LAND & ARMAMENTS LP'
     }, {
-      id: 'dfsak3729',
-      heading: 'Education',
-      subheading: 'Adult Education - Basic Grants to States'
+      id: 1,
+      agency: 'Department of Energy',
+      subagency: 'Department of Energy',
+      recipient: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
+    }, {
     }
   ]
 
