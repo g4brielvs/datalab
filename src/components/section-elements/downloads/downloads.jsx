@@ -3,56 +3,19 @@ import downloadsStyles from "./downloads.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Grid } from "@material-ui/core";
+import PropTypes from "prop-types"
 
 
 const Downloads = (props) => {
   function exportToJsonFile(jsonData) {
+    if(typeof Blob === 'undefined'){
+      return <></>;
+    }
+
     const dataStr = JSON.stringify(jsonData);
     const dataBlob = new Blob([dataStr], {type:"application/json"});
     const dataUri = URL.createObjectURL(dataBlob);
     const exportFileDefaultName = 'data.json';
-
-    return (
-      <a className={downloadsStyles.data}
-         href={dataUri}
-         download={exportFileDefaultName}>
-        <FontAwesomeIcon icon={faDownload} />
-        &nbsp;Download
-      </a>)
-  }
-
-  // Leaving this in just in case we MUST export to a csv file (will talk with Yaw and Andrea when they return), my only reason against JSON to CSV is we lose precision at >15 decimal places.
-  function exportJSONToCsvFile(jsonData) {
-    function parseJSONToCSVStr(jsonData) {
-      if(jsonData.length === 0) {
-        return '';
-      }
-
-      let keys = Object.keys(jsonData[0]);
-
-      let columnDelimiter = ',';
-      let lineDelimiter = '\n';
-
-      let csvColumnHeader = keys.join(columnDelimiter);
-      let csvStr = csvColumnHeader + lineDelimiter;
-
-      jsonData.forEach(item => {
-        keys.forEach((key, index) => {
-          if( (index > 0) && (index < keys.length) ) {
-            csvStr += columnDelimiter;
-          }
-          csvStr += item[key];
-        });
-        csvStr += lineDelimiter;
-      });
-
-      return csvStr;
-    }
-
-    const csvStr = parseJSONToCSVStr(jsonData);
-    const dataBlob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
-    const dataUri = URL.createObjectURL(dataBlob);
-    const exportFileDefaultName = 'data.csv';
 
     return (
       <a className={downloadsStyles.data}
@@ -82,6 +45,12 @@ const Downloads = (props) => {
       }
     </Grid>
   )
+}
+
+Downloads.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  date: PropTypes.date,
+  href: PropTypes.string
 }
 
 export default Downloads;
