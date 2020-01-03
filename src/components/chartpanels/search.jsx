@@ -49,48 +49,45 @@ export default class SearchPanel extends React.Component {
     return true;
   }
 
-  render = () => {
-    return (
-      <div className={vizStyles.container}>
-        <OutlinedInput
-          placeholder={'Search ' + this.props.listDescription}
-          inputProps={{title: 'Search ' + this.props.listDescription}}
-          variant='outlined'
-          fullWidth
-          onFocus={this.onFocus}
-          onChange={event => this.filterSearch(event)}
-          endAdornment={
-            this.props.showCollapse ?
-              <InputAdornment position='end'>
-                <IconButton
-                  aria-label='search'
-                  onClick={this.toggleSearch}
-                >
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-              : ''
-          }
-        />
-        <List aria-label={'List of ' + this.props.listDescription}
-          className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
-        >
-          {
-            this.filteredList.map(i =>
-              <ListItem
-                key={i.id}
-                button
-                divider
-                className={styles.listItem}
-                onClick={() => this.selectItem(i.id)}
+  render = () =>
+    <div className={vizStyles.container}>
+      <OutlinedInput
+        placeholder={'Search ' + this.props.listDescription}
+        inputProps={{ title: 'Search ' + this.props.listDescription }}
+        variant='outlined'
+        fullWidth
+        onFocus={this.onFocus}
+        onChange={event => this.filterSearch(event)}
+        endAdornment={
+          this.props.showCollapse ?
+            <InputAdornment position='end'>
+              <IconButton
+                aria-label='search'
+                onClick={this.toggleSearch}
               >
-                <ListItemText primary={i.heading} secondary={i.subheading} />
-              </ListItem>
-            )}
-        </List>
-      </div>
-    )
-  }
+                <SearchIcon />
+              </IconButton>
+            </InputAdornment>
+            : ''
+        }
+      />
+      <List aria-label={'List of ' + this.props.listDescription}
+        className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
+      >
+        {
+          this.filteredList.map(i =>
+            <ListItem
+              key={i.id}
+              button
+              divider
+              className={styles.listItem}
+              onClick={() => this.selectItem(i.id)}
+            >
+              <ListItemText primary={i.heading} secondary={i.subheading} />
+            </ListItem>
+          )}
+      </List>
+    </div>
 }
 
 /*
