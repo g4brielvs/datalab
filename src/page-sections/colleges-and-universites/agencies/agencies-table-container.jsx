@@ -1,5 +1,6 @@
 import React from "react";
 import DataTable from "src/components/table/data-table";
+import PropTypes from "prop-types";
 
 
 const AgenciesTableContainer = (props) => {
@@ -20,3 +21,9 @@ const AgenciesTableContainer = (props) => {
 }
 
 export default AgenciesTableContainer;
+
+AgenciesTableContainer.propTypes =  {
+  display: PropTypes.bool.isRequired,
+  tableColumnTitles: PropTypes.array.isRequired,
+  tableData: PropTypes.object.isRequired,
+}

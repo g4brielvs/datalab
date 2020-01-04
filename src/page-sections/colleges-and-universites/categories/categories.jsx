@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Accordion from '../../../components/accordion/accordion';
-import Downloads from '../../../components/section-elements/downloads/downloads';
+import Accordion from 'src/components/accordion/accordion';
+import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/search';
-import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
-import SunburstIcon from '../../../images/sunburst_icon.svg';
-import VizControlPanel from '../../../components/chartpanels/viz-control';
-import TableContainer from "./table-container";
+import SearchPanel from 'src/components/chartpanels/search';
+import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
+import SunburstIcon from 'src/images/sunburst_icon.svg';
+import VizControlPanel from 'src/components/chartpanels/viz-control';
+import TableContainer from "./categories-table-container";
 
 import CategoriesVizContainer from "./sunburst-container/sunburst-container";
 import * as _ from "lodash"
@@ -18,6 +18,7 @@ const Categories = () => {
 
   const [chartView, isChartView] = useState(true);
   const switchView = view => {
+    updateTableData(tableData[fundingType]);
     if (view === 'chart') {
       isChartView(true);
     } else {

@@ -13,7 +13,7 @@ import StoryHeading from 'src/components/section-elements/story-heading/story-he
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import Share from "src/components/share/share";
 import VizContainer from "./bubble-chart-container/bubble-chart-container";
-import TableContainer from "./table-container";
+import TableContainer from "./agencies-table-container";
 import * as _ from 'lodash';
 
 const Agencies = (props) => {
@@ -44,6 +44,7 @@ const Agencies = (props) => {
   const [chartView, isChartView] = useState(true);
 
   const switchView = view => {
+    updateTableData(tableData);
     if (view === 'chart') {
       isChartView(true);
     } else {
