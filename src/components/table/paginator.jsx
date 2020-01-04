@@ -14,6 +14,7 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount }) => {
   const showStart = currentPage - range > 1
   const showEnd = currentPage + range < pageCount
 
+  console.log('paginator component');
   console.log(currentPage);
   console.log(pageCount);
   console.log(range);

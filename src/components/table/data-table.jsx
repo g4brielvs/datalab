@@ -28,7 +28,6 @@ export default class DataTable extends React.Component {
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
       // this.defaultWidth = document.getElementById('chart-area').clientWidth;
     }
-
   }
 
   handleRowsScroll({ stopIndex }) {

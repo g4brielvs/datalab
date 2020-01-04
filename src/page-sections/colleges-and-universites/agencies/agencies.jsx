@@ -1,18 +1,18 @@
 import React, { useState }  from "react";
 import { graphql, useStaticQuery } from 'gatsby';
 
-import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
+import storyHeadingStyles from 'src/components/section-elements/story-heading/story-heading.module.scss';
 
-import Accordion from '../../../components/accordion/accordion';
+import Accordion from 'src/components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import Downloads from '../../../components/section-elements/downloads/downloads';
+import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/search';
-import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
-import VizControlPanel from '../../../components/chartpanels/viz-control';
-import Share from "../../../components/share/share";
-import VizContainer from "./viz-container/viz-container";
+import SearchPanel from 'src/components/chartpanels/search';
+import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
+import VizControlPanel from 'src/components/chartpanels/viz-control';
+import Share from "src/components/share/share";
+import VizContainer from "./bubble-chart-container/bubble-chart-container";
 import TableContainer from "./table-container";
 import * as _ from 'lodash';
 

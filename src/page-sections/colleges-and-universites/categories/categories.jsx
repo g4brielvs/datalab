@@ -11,7 +11,8 @@ import SunburstIcon from '../../../images/sunburst_icon.svg';
 import VizControlPanel from '../../../components/chartpanels/viz-control';
 import TableContainer from "./table-container";
 
-import CategoriesVizContainer from "./viz-container/viz-container";
+import CategoriesVizContainer from "./sunburst-container/sunburst-container";
+import * as _ from "lodash"
 
 const Categories = () => {
 
@@ -27,6 +28,7 @@ const Categories = () => {
   const [fundingType, setFundingType] = useState('contracts');
   function onTypeChange(e) {
     setFundingType(e.currentTarget.value);
+    updateTableData(tableData[e.currentTarget.value]);
   };
 
   const titlesByType = {
@@ -148,22 +150,52 @@ const Categories = () => {
   };
 
 
-  console.log(searchList);
-
   const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
   const tableData = {
     contracts: _data.contracts.nodes
-      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     grants: _data.grants.nodes
-      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
     research: _data.research.nodes
-      .map(n => [n.id, n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
+      .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
   };
 
-  console.log(tableData);
+  const [filteredTableData, setFilteredData] = useState(tableData[fundingType]);
+  const tableRef = React.createRef();
+
+  function filterTableData(id) {
+    let data = [];
+    let itemList;
+
+    const searchListByType = searchList[fundingType];
+
+    itemList = searchListByType.find(function(el){
+      return el.id === id;
+    });
+
+    let obj = _.filter(tableData[fundingType], {0: itemList.heading, 1:itemList.subheading});
+
+    if(obj && obj.length > 0) {
+      data.push(obj);
+    }
+
+    data = _.flatten(data);
+    console.log(data);
+
+    updateTableData(data);
+  }
+
+  function updateTableData(data) {
+    setFilteredData(data);
+    if (tableRef && tableRef.current) { tableRef.current.updateTableData(data); }
+  }
 
   const chartRef = React.createRef();
-  const searchItemSelected = id => chartRef.current.clickById(id);
+
+  const searchItemSelected = id => {
+    filterTableData(id);
+    if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
+  }
 
   return (
     <>
@@ -251,8 +283,8 @@ const Categories = () => {
             display={!chartView}
             title={titlesByType[fundingType].categoryLabel + 's'}
             columnTitles={tableColumnTitles}
-            data={tableData[fundingType]}
-          />
+            data = {filteredTableData}
+            tableRef = {tableRef} />
 
         </Grid>
       </Grid>

@@ -3,11 +3,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import VizDetails from '../../../../components/chartpanels/viz-detail';
+import VizDetails from 'src/components/chartpanels/viz-detail';
 
-import Sunburst from "../../../../components/visualizations/sunburst/sunburst";
+import Sunburst from "src/components/visualizations/sunburst/sunburst";
 
-import categoriesStyles from './categories.module.scss';
+import categoriesStyles from './sunburst-container.module.scss';
 
 const CategoriesVizContainer = (props) => {
 

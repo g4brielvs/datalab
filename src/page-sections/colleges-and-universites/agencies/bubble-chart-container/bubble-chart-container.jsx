@@ -2,10 +2,10 @@ import React from 'react';
 import Grid from "@material-ui/core/Grid/Grid";
 import { graphql, useStaticQuery } from "gatsby";
 import { Hidden } from "@material-ui/core";
-import agenciesStyles from "./viz-container.module.scss";
+import agenciesStyles from "./bubble-chart-container.module.scss";
 import * as d3 from "d3v3";
-import BubbleChart from "../../../../components/visualizations/bubble-chart/bubble-chart.jsx";
-import VizDetails from "../../../../components/chartpanels/viz-detail";
+import BubbleChart from "src/components/visualizations/bubble-chart/bubble-chart.jsx";
+import VizDetails from "src/components/chartpanels/viz-detail";
 
 
 const AgenciesBubbleContainer = (props) => {
