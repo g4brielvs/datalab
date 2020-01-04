@@ -26,7 +26,7 @@ export default class DataTable extends React.Component {
     this.updateTableData = this.updateTableData.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
-      // this.defaultWidth = document.getElementById('chart-area').clientWidth;
+      this.defaultWidth = 1.25 * (document.getElementById('chart-area').clientWidth);
     }
   }
 
@@ -45,7 +45,6 @@ export default class DataTable extends React.Component {
   }
 
   updateTableData(list) {
-    console.log('test');
     this.setState({list: list});
   }
 
@@ -101,6 +100,7 @@ export default class DataTable extends React.Component {
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {
               const columnWidth = this.defaultWidth / this.props.columnTitles.length;
+              console.log(item);
               return (
                 <Column label={item.title} dataKey={key.toString()} width={columnWidth} />
               )
