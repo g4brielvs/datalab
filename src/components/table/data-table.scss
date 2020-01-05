@@ -26,3 +26,8 @@
   height: 4rem !important;
   border-bottom: 1px solid #eeeeee;
 }
+
+.ui.button {
+  -webkit-appearance: unset;
+  border: none;
+}
