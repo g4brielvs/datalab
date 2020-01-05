@@ -6,6 +6,7 @@ import Paginator from './Paginator';
 import './data-table.scss';
 import { Grid } from "@material-ui/core";
 import * as _ from "lodash";
+import numberFormatter from "src/utils/number-formatter"
 
 export default class DataTable extends React.Component {
   constructor(props) {
@@ -100,12 +101,15 @@ export default class DataTable extends React.Component {
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {
               const columnWidth = this.defaultWidth / this.props.columnTitles.length;
-              console.log(item);
               return (
-                <Column label={item.title} dataKey={key.toString()} width={columnWidth} />
+                <Column
+                  label={item.title}
+                  dataKey={key.toString()}
+                  width={columnWidth}
+                  cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter('dollars', cellData) : cellData }
+                />
               )
-            })
-            }
+            })}
           </Table>
         </Grid>
         <Grid item xs={12}>
@@ -120,6 +124,8 @@ export default class DataTable extends React.Component {
   }
 
 }
+
+// cellDataGetter={({ rowData }) => parseFloat(rowData.Inventory).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 
 // /*
 //   Notes on props:
