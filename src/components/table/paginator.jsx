@@ -6,26 +6,21 @@ import Grid from "@material-ui/core/Grid/Grid";
 
 const BetweenButton = () => <Button content='...' style={{ cursor: 'default' }} />
 
-const Paginator = ({ currentPage, onPageChange, range = 3, pageCount }) => {
+const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount }) => {
   const renderedPages = [...Array(range * 2 + 1).keys()]
     .map(i => currentPage - range + i)
     .filter(i => i > 0 && i <= pageCount)
 
   const showStart = currentPage - range > 1
   const showEnd = currentPage + range < pageCount
-
-  console.log('paginator component');
-  console.log(currentPage);
-  console.log(pageCount);
-  console.log(range);
-  console.log(showStart);
-  console.log(showEnd);
+  const pageStart = (currentPage - 1) * 10 + 1
+  const pageEnd = currentPage * 10 < itemCount ? currentPage * 10 : itemCount
 
   return (<>
     <Grid
       container>
       <Grid item xs={4}>
-        <div>Showing  {(currentPage - 1) * 10 + 1} to {currentPage * 10} of {pageCount} entries</div>
+        <div>Showing  {pageStart} to {pageEnd} of {itemCount} entries</div>
       </Grid>
       <Grid item xs={8}
             style={{ 'text-align': 'right' }}>

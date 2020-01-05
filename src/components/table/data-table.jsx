@@ -114,6 +114,7 @@ export default class DataTable extends React.Component {
         </Grid>
         <Grid item xs={12}>
             <Paginator
+              itemCount={list.length}
               pageCount={pageCount}
               currentPage={page}
               onPageChange={this.handlePageChange}
@@ -124,8 +125,6 @@ export default class DataTable extends React.Component {
   }
 
 }
-
-// cellDataGetter={({ rowData }) => parseFloat(rowData.Inventory).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 
 // /*
 //   Notes on props:
