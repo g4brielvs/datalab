@@ -35,6 +35,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homelessness-container2--right {
 	padding-left: $margin-10;
 	border-left: 1px solid #CCC;
+	height: 100%;
 }
 
 #homelessnessPage .col-lg-10 {
@@ -1098,6 +1099,13 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 @media screen and (min-width: $desktop-xl){
 	.homelessness-subheading2 {
 		margin-bottom: $margin-20;
+	}
+}
+
+@media screen and (min-width: $tablet) and (max-width: $desktop-xl){
+	#container2_3 {
+		margin-top: -5rem;
+		border-top: 0;
 	}
 }
 

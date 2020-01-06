@@ -128,7 +128,7 @@ export default function FederalPrograms(props){
       .append('div')
       .attr('width', '100%')
       .attr('id', 'p2_quad3_title')
-      .style('class', 'legend-header')
+      .attr('class', 'legend-header')
       .html(`<h5>${d7.properties.coc_number} Homeless Counts</h5>`);
 
     for (let i = 0; i < tableData.length; i++) {
@@ -827,7 +827,10 @@ export default function FederalPrograms(props){
           <div id='container2_4' className='homelessness-container2 homelessness-container2--right'/>
         </Grid>
       </Grid>
-      <Downloads/>
+      <Downloads
+        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
+        date={'March 2019'}
+      />
     </div>
   )
 }
