@@ -129,7 +129,7 @@ export default function FederalPrograms(props){
       .attr('width', '100%')
       .attr('id', 'p2_quad3_title')
       .attr('class', 'legend-header')
-      .html(`<h5>${d7.properties.coc_number} Homeless Counts</h5>`);
+      .html(`<h5>${d7.properties.coc_number} Homeless Population Details</h5>`);
 
     for (let i = 0; i < tableData.length; i++) {
       if (tableData[i].coc_number === d7.properties.coc_number) {
