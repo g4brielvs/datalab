@@ -16,9 +16,10 @@ export default class ExpressSection extends React.Component {
         {this.props.title}
       </div>
       <Grid container className={styles.container}>
-        <Grid item xs={12} xl={5}>
+        <Grid item xs={12} xl={4}>
           <div className={styles.subtitle}>{this.props.subtitle}</div>
         </Grid>
+        <Grid item xl={1} />
         <Grid item xs={12} xl={7}>
           <Hidden xsDown>
             <div className={styles.description}>{this.props.description}</div>

@@ -1,4 +1,4 @@
-@import "../../styles/index.scss";
+@import '../../styles/index.scss';
 
 .section {
   margin: 100px 50px auto;
@@ -10,7 +10,7 @@
     font-weight: $semibold;
     letter-spacing: 0.175rem;
     line-height: 1.25rem;
-    border-bottom: #666666 1px solid;
+    border-bottom: #ccc 1px solid;
     padding-bottom: 5px;
     display: inline;
   }
@@ -20,7 +20,7 @@
   }
 
   .subtitle {
-    font-size: 2.625em;
+    font-size: 2.625rem;
     font-weight: $semibold;
   }
 
