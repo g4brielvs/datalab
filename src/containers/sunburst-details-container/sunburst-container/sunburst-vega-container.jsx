@@ -13,34 +13,38 @@ import awardsData from 'src/data/contract-explorer/awards_contracts_FY18_v2.csv'
 
 const SunburstVegaContainer = () => {
 
-  // const awardData = useStaticQuery(graphql`
-  //   query {
-  //     allAwardsContractsFy18V2Csv {
-  //       nodes {
-  //         id
-  //         agency
-  //         subagency
-  //         recipient
-  //       }
-  //     }
-  //   }
-  // `);
+  const awardData = useStaticQuery(graphql`
+    query {
+      allAwardsContractsFy18V2Csv {
+        nodes {
+          id
+          agency
+          subagency
+          recipient
+        }
+      }
+    }
+  `);
+  // const searchList = [{
+  //   id: 1,
+  //   display: 'test'
+  // }]
+
+
+  const searchList = awardData.allAwardsContractsFy18V2Csv.nodes.map(n => {
+    return {
+      id: n.id,
+      display: n.recipient
+    }
+  });
 
 
 
 
-  // console.log(awardData);
+  // console.log(searchList);
 
 
 
-
-
-  // const searchList = awardData.allAwardsContractsFy18V2Csv.nodes.map(n => {
-  //   return {
-  //     id: n.id,
-  //     display: n.recipient
-  //   }
-  // });
 
   useEffect(() => {
     getDetails();
@@ -140,7 +144,7 @@ const SunburstVegaContainer = () => {
         <Search
           searchList={searchList}
           listDescription='Contracts and Agencies'
-        // 'initShow': PropTypes.bool,
+          initShow={true}
         // 'showCollapse': PropTypes.bool,
         // onSelect= PropTypes.func
 
