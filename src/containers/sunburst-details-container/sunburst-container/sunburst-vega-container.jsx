@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { graphql, useStaticQuery } from 'gatsby';
 import styles from './sunburst-vega-container.module.scss';
 
 import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
@@ -7,14 +8,39 @@ import Search from '../../../components/chartpanels/rd/search';
 import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';
 import SunburstDetails from '../details/sunburst-details';
 
-import flareData from '../../../unstructured-data/contract-explorer/flare.json';
-import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import flareData from 'src/unstructured-data/contract-explorer/flare.json';
+import awardsData from 'src/data/contract-explorer/awards_contracts_FY18_v2.csv';
 
 const SunburstVegaContainer = () => {
 
-// console.log(flareData);
-// console.log(awardsData);
+  // const awardData = useStaticQuery(graphql`
+  //   query {
+  //     allAwardsContractsFy18V2Csv {
+  //       nodes {
+  //         id
+  //         agency
+  //         subagency
+  //         recipient
+  //       }
+  //     }
+  //   }
+  // `);
 
+
+
+
+  // console.log(awardData);
+
+
+
+
+
+  // const searchList = awardData.allAwardsContractsFy18V2Csv.nodes.map(n => {
+  //   return {
+  //     id: n.id,
+  //     display: n.recipient
+  //   }
+  // });
 
   useEffect(() => {
     getDetails();
@@ -112,15 +138,15 @@ const SunburstVegaContainer = () => {
     >
       <Grid item sm={12} md={6}>
         <Search
-          className={styles.header}
+          searchList={searchList}
+          listDescription='Contracts and Agencies'
+        // 'initShow': PropTypes.bool,
+        // 'showCollapse': PropTypes.bool,
+        // onSelect= PropTypes.func
+
         />
       </Grid>
-      <Grid
-        item
-        sm={12}
-        md={6}
-        className={styles.breadcrumbsContainer}
-      >
+      <Grid item sm={12} md={6} className={styles.breadcrumbsContainer}>
         <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
       </Grid>
     </Grid>
@@ -133,7 +159,7 @@ const SunburstVegaContainer = () => {
         <SunburstDetails details={details} />
       </Grid>
       <Grid item sm={12} md={6}>
-        <Sunburst data={flareData} getDetails={getDetails} />
+        {/* <Sunburst data={flareData} getDetails={getDetails} /> */}
         <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients.
           Sub-awards are not included.</div>
       </Grid>

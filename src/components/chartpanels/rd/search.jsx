@@ -14,6 +14,8 @@ export default class SearchPanel extends React.Component {
       expanded: this.props.initShow
     }
     this.filteredList = this.props.searchList;
+
+    console.log(this.searchList);
   }
 
   toggleSearch = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
@@ -92,25 +94,22 @@ export default class SearchPanel extends React.Component {
 
 /*
   Notes on props:
-  searchList is expected to be an array of {id, agency, subagency, recipient}
+  searchList is expected to be an array of {id, display}
   id values are arbitrary, but must be unique within the list to indicate which is selected (expected but not enforced by SearchPanel)
+  display is a string or fragment of what exactly to display for that option
   e.g. [
     {
       id: 1,
-      agency: 'Department of Energy',
-      subagency: 'Department of Energy',
-      recipient: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
+      display: 'Department of Energy'
+    }, {
+      id: 37,
+      display: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
     }, {
       id: 'jadsfa',
-      agency: 'Department of Defense',
-      subagency: 'Department of the Army',
-      recipient: 'BAE SYSTEMS LAND & ARMAMENTS LP'
-    }, {
-      id: 1,
-      agency: 'Department of Energy',
-      subagency: 'Department of Energy',
-      recipient: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
-    }, {
+      display: 'Department of Defense'
+     }, {
+      id: -12,
+      display: 'Department of the Army'
     }
   ]
 
