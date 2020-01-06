@@ -1,0 +1,89 @@
+@import '../../../../styles/variables';
+
+#homelessnessPage {
+  .cocTabTitleCluster {
+    border-bottom: 1px solid #AAA;
+
+    span {
+      font-size: 2rem;
+    }
+
+    .cocTabTitleClusterLabel {
+      font-weight: 600;
+    }
+  }
+
+  .cell:hover{
+    fill-opacity: .75;
+    stroke-width:3;
+    stroke:#FFF;
+  }
+
+  .cell.active, .cell:active{
+    fill-opacity: .75;
+    stroke-width:3;
+    stroke:#FFF;
+  }
+
+  #cocTab {
+    margin-bottom: 0.5rem;
+  }
+
+  .cocTabFund, .cocTabInfo {
+    width: 33%;
+    vertical-align: top;
+    display: inline-block;
+
+    .fundingTitle {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .fundingAmount, .infoAmount {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+
+  .cocTabFund .fundingAmount {
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+
+  #tab_info {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #666;
+
+    button {
+      border: none;
+      background-color: transparent;
+      margin: 0;
+      padding: 0 2rem 0 0;
+
+      div * {
+        color: #F3F3F3;
+      }
+
+      &.active div * {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      .less svg, .more svg {
+        margin-bottom: -0.375rem;
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet){
+  #homelessnessPage {
+    .cocTabFund {
+      width: 99%;
+    }
+
+    .cocTabInfo {
+      width: 49%;
+    }
+  }
+}
