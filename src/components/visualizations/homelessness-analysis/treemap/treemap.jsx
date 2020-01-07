@@ -87,7 +87,7 @@ export default function Treemap(){
 
     function makeInfographic(d) {
       d3.selectAll('.homeless-fact-cluster img').remove();
-      const svgPath = "../../../../images/homelessness/Cluster-" + d;
+      const svgPath = "/images/homelessness/Cluster-" + d;
       console.log('svgPath:', svgPath);
       const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
       const selectedInfographicItem = infographicData.filter(item => item.cluster_final === d);
