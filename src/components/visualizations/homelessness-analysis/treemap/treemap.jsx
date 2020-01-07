@@ -87,7 +87,8 @@ export default function Treemap(){
 
     function makeInfographic(d) {
       d3.selectAll('.homeless-fact-cluster img').remove();
-      const svgPath = "/images/homelessness/clusters/Cluster-" + d;
+      const svgPath = "../../../../images/homelessness/Cluster-" + d;
+      console.log('svgPath:', svgPath);
       const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
       const selectedInfographicItem = infographicData.filter(item => item.cluster_final === d);
       d3.select('#cluster-beds #count-img-container').append('img').attr('src', svgPath + '/Bed.svg').attr('alt', clusterAltText[0].beds);
@@ -346,6 +347,84 @@ export default function Treemap(){
           <span>SEE MORE CoCs</span>
           <span className='more'><ChevronRightIcon/></span>
         </span>
+      </div>
+
+
+      <div className="homeless-fact-cluster flex-grid">
+        <div className="flex-grid-row">
+          <div className="col-main-left">
+            <div id="cluster-circles">
+              <h2 className="title">Facts about Cluster <span id="cluster-number"></span></h2>
+              <p className="subtitle">Federal Spending on Homelessness</p>
+            </div>
+            <div className="flex-grid-row lower-sub-left">
+              <div className="col-half">
+                <div className="cluster-people">
+                  <p className="header">Number of People Experiencing Homelessness</p>
+                  <p className="desc">People experiencing homelessness on a single night in January in this cluster</p>
+                  <p className="highlight-text cluster-people-count"></p>
+                  <p className="highlight-text people-text"> People</p>
+                </div>
+              </div>
+              <div className="col-half">
+                <div className="cluster-density">
+                  <p className="header">Population Density</p>
+                  <p className="desc">Number of people per square mile in this cluster</p>
+                </div>
+                <div className="cluster-population">
+                  <p className="header">Total Population</p>
+                  <p className="desc">Total population in this cluster</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex-grid-row-2">
+            <div className="col-sub-left">
+              <div className="cluster-people">
+                <p className="header">Number of People Experiencing Homelessness</p>
+                <p className="desc">People experiencing homelessness on a single night in January in this cluster</p>
+                <p className="highlight-text cluster-people-count"></p>
+                <p className="highlight-text people-text"> people</p>
+              </div>
+              <div className="cluster-density">
+                <p className="header">Population Density</p>
+                <p className="desc">Number of people per square mile in this cluster</p>
+              </div>
+              <div className="cluster-population">
+                <p className="header">Total Population</p>
+                <p className="desc">Total population in this cluster</p>
+              </div>
+            </div>
+            <div className="col-right">
+              <div id="cluster-key">
+                <p className="desc">KEY</p>
+              </div>
+              <div id="cluster-income">
+                <p className="header">Income</p>
+                <p className="desc">Range of 20th percentile incomes for areas within this cluster</p>
+              </div>
+              <div id="cluster-rent">
+                <p className="header">Rent</p>
+                <p className="desc">Range of median gross rents for areas within this cluster</p>
+              </div>
+              <div id="cluster-rent-as-income">
+                <p className="header">Rent as Percent of Income</p>
+                <p className="desc">Range of 20th percentile incomes to annualized rents for areas: within this
+                  cluster</p>
+              </div>
+              <div id="cluster-land-area">
+                <p className="header">Land Area</p>
+                <p className="desc">Range of land areas in square miles for areas within this cluster</p>
+              </div>
+              <div id="cluster-beds">
+                <p className="header">Beds Available</p>
+                <p className="desc">Total sheltered and permanent beds available with this cluster</p>
+                <div className="highlight-text" id="count-img-container"><span>&nbsp;beds</span><span
+                  id="cluster-beds-count"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
