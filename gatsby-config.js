@@ -5,7 +5,6 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-nprogress`,
     'gatsby-plugin-top-layout',
     'gatsby-plugin-root-import',
     {

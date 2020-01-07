@@ -1,28 +1,29 @@
 import { graphql } from "gatsby";
 import React, { Component } from "react";
-import SEO from "../../components/seo";
-import "../../styles/index.scss";
+import * as d3 from "d3v3";
+import "src/styles/index.scss";
 import competitionStyles from './competition-in-contracting.module.scss';
 
 import { Grid, Hidden } from "@material-ui/core";
 /* components */
-import Accordion from "../../components/accordion/accordion";
-import Barchart from '../../components/visualizations/horizontal-barchart/barchart';
-import Reset from '../../components/reset/reset';
-import Share from "../../components/share/share"
-import ToolLayout from "../../components/layouts/tool/tool";
-import * as d3 from "d3v3"
-import numberFormatter from "../../utils/number-formatter"
-import ControlBar from "../../components/control-bar/control-bar"
-import Downloads from "../../components/section-elements/downloads/downloads"
+import SEO from "src/components/seo";
+import Accordion from "src/components/accordion/accordion";
+import Reset from 'src/components/reset/reset';
+import Share from "src/components/share/share";
+import ToolLayout from "src/components/layouts/tool/tool";
+import numberFormatter from "src/utils/number-formatter";
+import ControlBar from "src/components/control-bar/control-bar";
+import Downloads from "src/components/section-elements/downloads/downloads";
+import Barchart from "src/components/visualizations/horizontal-barchart/barchart";
 
 class CompetitionInContractingPage extends Component {
   constructor(props) {
     super(props);
     this.rawData = props.data.allCicDataJson.nodes;
+
     this.state = {
       scale: 'quantity',
-      data: JSON.parse(JSON.stringify(this.rawData)),
+      data: this.rawData,
       unit: 'dollars'
     }
     this.setScaleFn = this.setScaleFn.bind(this);
@@ -227,17 +228,15 @@ class CompetitionInContractingPage extends Component {
 
             <div className={competitionStyles.barChartDiv}>
               <Barchart data={this.state.data}
-                unit={this.state.unit}
-                scale={this.state.scale}
-                clickEvent={this.handleYAxisCheckboxChange}
-                _onloadFunctions={this.drawSummaryTableModule}
-                _svgClass={competitionStyles.svg}
-              >
+                        unit={this.state.unit}
+                        scale={this.state.scale}
+                        clickEvent={this.handleYAxisCheckboxChange}
+                        _onloadFunctions={this.drawSummaryTableModule}
+                        _svgClass={competitionStyles.svg}>
               </Barchart>
               <Downloads
-                data={this.rawData}
-                isJSON={true}
-              />
+                data={this.state.data}
+                isJSON={true} />
             </div>
 
           </Grid>

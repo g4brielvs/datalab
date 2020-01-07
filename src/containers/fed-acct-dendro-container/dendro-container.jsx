@@ -13,4 +13,4 @@ const DendroContainer = () => {
   return <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
 }
 
-export default DendroContainer
+export default DendroContainer;
