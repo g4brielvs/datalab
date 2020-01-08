@@ -28,32 +28,33 @@ const SunburstVegaContainer = () => {
   // }]
 
 
-  const searchList = searchData.allAwardsContractsCsv.agencies.map((n, i) => {
-    return {
-      id: `a{i}`,
+  const searchList = searchData.allAwardsContractsCsv.agencies.map((n, i) => (
+    {
+      id: `a${i}`,
       display: n
     }
-  });
-  searchList.push(
-    searchData.allAwardsContractsCsv.subagencies.map((n, i) => (
-      {
-        id: `s{i}`,
-        display: n
-      }
-    ))
-  );
-  searchList.push(
-    searchData.allAwardsContractsCsv.recipients.map((n, i) => (
-      {
-        id: `r{i}`,
-        display: n
-      }
-    ))
-  );
+  ))
+    .concat(
+      searchData.allAwardsContractsCsv.subagencies.map((n, i) => (
+        {
+          id: `s${i}`,
+          display: n
+        }
+      ))
+    )
+    .concat(
+      searchData.allAwardsContractsCsv.recipients.map((n, i) => (
+        {
+          id: `r${i}`,
+          display: n
+        }
+      ))
+    );
 
 
 
 
+  // console.log(searchData);
   // console.log(searchList);
 
 
