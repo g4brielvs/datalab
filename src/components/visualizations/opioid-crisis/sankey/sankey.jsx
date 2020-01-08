@@ -2,32 +2,24 @@ import React from 'react';
 import { Sankey } from 'react-vis';
 import styles from './sankey.module.scss';
 
-import leftData from '../../../../unstructured-data/opioid-crisis/sankeyLeft.json';
-import leftDataTest from '../../../../unstructured-data/opioid-crisis/sankeyLeftTest.json';
+import leftData from '../../../../unstructured-data/opioid-crisis/sankeyLeftTest.json';
 import rightData from '../../../../unstructured-data/opioid-crisis/sankeyRightTest.json';
 
 import SankeyPopup from '../../../../components/visualizations/opioid-crisis/sankey/sankeyPopup';
 
-/*
-  We are going to do numerical mappings to the strings
-  in the data to keep the props happy in
-  'react-vis'
-*/
 export default class CrisisSankey extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       leftData: leftData,
-      leftDataTest: leftDataTest,
       rightData: rightData,
       clickedNode: '',
+      isModalOpen: false,
     };
   }
-
-  /* set the color of specific node 
-    (for testing)
-   */
-  colorSetter(node) {
+  
+  /* set the color of specific node */
+  colorSetter = (node) => {
     switch (node) {
 
     case 'Department of Agriculture':
@@ -115,8 +107,8 @@ export default class CrisisSankey extends React.Component {
   };
 
   render() {
-    console.log(this.state.clickedNode);
-    const leftData = this.state.leftDataTest; // set back to 'leftData' when done (note!
+
+    const leftData = this.state.leftData; // set back to 'leftData' when done (note!
     const rightData = this.state.rightData; 
 
     const someLeft = Array.from(new Set(leftData.map(x => x.source)));
@@ -147,6 +139,7 @@ export default class CrisisSankey extends React.Component {
           nodeWidth={20}
           onValueClick={(datapoint, event) => {
             this.setState({clickedNode: datapoint});
+            this.setState({isModalOpen: true});
           }}
           onLinkClick={(data) => console.log(data)}
           style={{
@@ -163,16 +156,17 @@ export default class CrisisSankey extends React.Component {
           nodeWidth={20}
           hideLabels={false}
           layout={0}
-          onValueClick={(datapoint, event) => {
-            this.setState({clickedNode: datapoint});
-          }}
+          /* onValueClick={(datapoint, event) => { */
+          /*   /\* this.setState({clickedNode: datapoint}); *\/ */
+          /*   /\* this.setState({isModalOpen: true}); *\/ */
+          /* }} */
           onLinkClick={(data) => console.log(data)}
           style={{
             links: { stroke: '#dddddd', opacity: .3 }
           }}
         />
 
-        <SankeyPopup clickedNode={this.state.clickedNode.name}/>
+        <SankeyPopup clickedNode={this.state.clickedNode} isOpen={this.state.isModalOpen}/>
 
       </div>
 
