@@ -181,7 +181,6 @@ const Categories = () => {
     }
 
     data = _.flatten(data);
-    console.log(data);
 
     updateTableData(data);
   }

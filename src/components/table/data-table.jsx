@@ -6,7 +6,7 @@ import Paginator from './Paginator';
 import './data-table.scss';
 import { Grid } from "@material-ui/core";
 import * as _ from "lodash";
-import numberFormatter from "src/utils/number-formatter"
+import numberFormatter from "src/utils/number-formatter";
 
 export default class DataTable extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class DataTable extends React.Component {
 
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
-    this._sort = this._sort.bind(this);
+    this.sort = this.sort.bind(this);
     this.updateTableData = this.updateTableData.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
@@ -49,7 +49,7 @@ export default class DataTable extends React.Component {
     this.setState({list: list});
   }
 
-  _sort({sortBy, sortDirection}) {
+  sort({sortBy, sortDirection}) {
     const {sortBy: prevSortBy, sortDirection: prevSortDirection} = this.state;
 
     // If list was sorted DESC by this column.
@@ -96,7 +96,7 @@ export default class DataTable extends React.Component {
             rowGetter={({index}) => currentlist[index]}
             scrollToIndex={scrollToIndex}
             scrollToAlignment='start'
-            sort={this._sort}
+            sort={this.sort}
             sortBy={sortBy}
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {
