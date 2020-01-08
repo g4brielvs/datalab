@@ -1,11 +1,20 @@
-@import '../../../styles/variables';
+@import '../../../../styles/variables';
 
-#legend-colorkey {
+:global(#agencies-legend-colorkey) {
   position: relative;
   left: -50px;
-  overflow: visible;
-  margin: 10px 0 0 0;
   padding: 0;
+  overflow: visible;
+  -webkit-transition: left 1000ms; /* For Safari 3.1 to 6.0 */
+  transition: left 1000ms;
+}
+
+:global(#agencies-legend-colorkey.left) {
+  left: -200px;
+}
+
+:global(.hidden) {
+  display: none;
 }
 
 #legend-scalekey {
@@ -22,19 +31,15 @@
 }
 
 .legend-circlekey-label:first-child {
-  top: 25px;
+  top: 35px;
 }
 
 .legend-circlekey-label:nth-child(2) {
-  top: 36px;
-}
-
-.legend-circlekey-label:nth-child(3) {
   top: 50px;
 }
 
 .legend-circlekey-label span {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: $radial-legend;
   position: absolute;
   display: block;
@@ -49,3 +54,4 @@
   stroke-dasharray: 2;
   fill: none;
 }
+
