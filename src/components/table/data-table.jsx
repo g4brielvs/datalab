@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Column, Table, SortDirection} from 'react-virtualized';
 import 'react-virtualized/styles.css';
-import Paginator from './Paginator';
+import Paginator from './paginator';
 import './data-table.scss';
 import { Grid } from "@material-ui/core";
 import * as _ from "lodash";
