@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+const maxListItems = 20;
+
 export default class SearchPanel extends React.Component {
 
   constructor(props) {
@@ -77,7 +79,7 @@ export default class SearchPanel extends React.Component {
         className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
       >
         {
-          this.filteredList.map(i =>
+          this.filteredList.slice(maxListItems).map(i =>
             <ListItem
               key={i.id}
               button
