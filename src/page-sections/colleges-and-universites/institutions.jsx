@@ -1,20 +1,18 @@
+import React from "react";
+import { useStaticQuery } from 'gatsby';
+import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
-import styles from './c&u.module.scss';
-import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
 
-import Accordion from '../../components/accordion/accordion';
-import ControlBar from '../../components/control-bar/control-bar'
-import DataTable from "../../components/chartpanels/data-table";
-import Downloads from '../../components/section-elements/downloads/downloads';
-import formatNumber from "../../utils/number-formatter";
-import Grid from '@material-ui/core/Grid';
-import Share from '../../components/share/share';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import VizDetails from '../../components/chartpanels/viz-detail';
-
-import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
+import Accordion from "../../components/accordion/accordion";
+import StoryHeading from "../../components/section-elements/story-heading/story-heading";
+import Downloads from "../../components/section-elements/downloads/downloads";
 import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
+import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
+import Share from '../../components/share/share';
+import ControlBar from "../../components/control-bar/control-bar";
+import DataTable from "../../components/table/data-table";
+import Grid from '@material-ui/core/Grid';
+import VizDetails from '../../components/chartpanels/viz-detail';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -110,7 +108,7 @@ const Institutions = (props) => {
 
   const detailPanelRef = React.createRef();
 
-  const tableColumnTitles = ['Institution', 'Type', 'Contracts', 'Grants', 'Student Aid', 'Total $ Received'];
+  const tableColumnTitles = [{title: 'Institution'}, {title: 'Type'}, {title: 'Contracts'}, {title: 'Grants'}, {title: 'Student Aid'}, {title: 'Total $ Received'}];
 
   return (<>
     <StoryHeading
@@ -148,14 +146,15 @@ const Institutions = (props) => {
               return [
                 x.Recipient,
                 x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
-                formatNumber('dollars', x.contracts),
-                formatNumber('dollars', x.grants),
-                formatNumber('dollars', x.student_aid),
-                formatNumber('dollars', x.Total_Federal_Investment),
+                parseInt(x.contracts),
+                parseInt( x.grants),
+                parseInt(x.student_aid),
+                parseInt(x.Total_Federal_Investment),
               ];
             })}
             columnTitles={tableColumnTitles}
             display={false} // for now, left panel for map isn't finished.
+            idName={'institutionsTable'}
           />
         </div>
       </Grid>
@@ -175,4 +174,6 @@ const Institutions = (props) => {
   </>);
 };
 
+
 export default Institutions;
+
