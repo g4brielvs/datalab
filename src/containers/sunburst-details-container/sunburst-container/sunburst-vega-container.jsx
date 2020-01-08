@@ -9,19 +9,16 @@ import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-
 import SunburstDetails from '../details/sunburst-details';
 
 import flareData from 'src/unstructured-data/contract-explorer/flare.json';
-import awardsData from 'src/data/contract-explorer/awards_contracts_FY18_v2.csv';
+import awardsData from 'src/data/contract-explorer/awards_contracts.csv';
 
 const SunburstVegaContainer = () => {
 
-  const awardData = useStaticQuery(graphql`
+  const searchData = useStaticQuery(graphql`
     query {
-      allAwardsContractsFy18V2Csv {
-        nodes {
-          id
-          agency
-          subagency
-          recipient
-        }
+      allAwardsContractsCsv {
+        agencies:distinct(field: agency)
+        subagencies:distinct(field: subagency)
+        recipients:distinct(field: recipient)
       }
     }
   `);
@@ -31,12 +28,28 @@ const SunburstVegaContainer = () => {
   // }]
 
 
-  const searchList = awardData.allAwardsContractsFy18V2Csv.nodes.map(n => {
+  const searchList = searchData.allAwardsContractsCsv.agencies.map((n, i) => {
     return {
-      id: n.id,
-      display: n.recipient
+      id: `a{i}`,
+      display: n
     }
   });
+  searchList.push(
+    searchData.allAwardsContractsCsv.subagencies.map((n, i) => (
+      {
+        id: `s{i}`,
+        display: n
+      }
+    ))
+  );
+  searchList.push(
+    searchData.allAwardsContractsCsv.recipients.map((n, i) => (
+      {
+        id: `r{i}`,
+        display: n
+      }
+    ))
+  );
 
 
 
@@ -143,7 +156,7 @@ const SunburstVegaContainer = () => {
       <Grid item sm={12} md={6}>
         <Search
           searchList={searchList}
-          listDescription='Contracts and Agencies'
+          listDescription='List of Contracts and Agencies'
           initShowList={true}
         // 'showCollapse': PropTypes.bool,
         // onSelect= PropTypes.func

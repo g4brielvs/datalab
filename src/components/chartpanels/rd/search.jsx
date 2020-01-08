@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
-const maxListItems = 20;
+const maxListItems = 50;
 
 export default class SearchPanel extends React.Component {
 
@@ -24,8 +24,8 @@ export default class SearchPanel extends React.Component {
 
   filterSearch(event) {
     const filter = new RegExp(event.target.value, 'i');
-    this.filteredList = this.props.searchList.filter(i =>
-      i.heading.search(filter) !== -1 || i.subheading.search(filter) !== -1
+    this.filteredList = this.props.searchList.filter(n =>
+      n.display.search(filter) !== -1
     )
     this.forceUpdate();
   }
@@ -75,11 +75,11 @@ export default class SearchPanel extends React.Component {
             : ''
         }
       />
-      <List aria-label={'List of ' + this.props.listDescription}
+      <List aria-label={this.props.listDescription}
         className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
       >
         {
-          this.filteredList.slice(maxListItems).map(i =>
+          this.filteredList.slice(0, maxListItems).map(i =>
             <ListItem
               key={i.id}
               button
@@ -87,7 +87,7 @@ export default class SearchPanel extends React.Component {
               className={styles.listItem}
               onClick={() => this.selectItem(i.id)}
             >
-              <ListItemText primary={i.heading} secondary={i.subheading} />
+              <ListItemText primary={i.display} />
             </ListItem>
           )}
       </List>
