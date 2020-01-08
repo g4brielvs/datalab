@@ -11,14 +11,14 @@ export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: this.props.initShow
+      expanded: this.props.initShowList
     }
     this.filteredList = this.props.searchList;
 
-    // console.log(this.props.searchList);
+    console.log(this.props.searchList);
   }
 
-  toggleSearch = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
+  toggleList = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
 
   filterSearch(event) {
     const filter = new RegExp(event.target.value, 'i');
@@ -65,7 +65,7 @@ export default class SearchPanel extends React.Component {
             <InputAdornment position='end'>
               <IconButton
                 aria-label='search'
-                onClick={this.toggleSearch}
+                onClick={this.toggleList}
               >
                 <SearchIcon />
               </IconButton>
@@ -113,7 +113,7 @@ export default class SearchPanel extends React.Component {
     }
   ]
 
-  initShow is true if it should be open when initialized
+  initShowList is true if it should be open when initialized
   showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
   onSelect is parent callback when an item is selected, passes back id value only
 */
@@ -121,7 +121,7 @@ export default class SearchPanel extends React.Component {
 SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
-  'initShow': PropTypes.bool,
+  'initShowList': PropTypes.bool,
   'showCollapse': PropTypes.bool,
   'onSelect': PropTypes.func
 }

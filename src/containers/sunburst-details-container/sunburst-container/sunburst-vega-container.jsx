@@ -144,7 +144,7 @@ const SunburstVegaContainer = () => {
         <Search
           searchList={searchList}
           listDescription='Contracts and Agencies'
-          initShow={true}
+          initShowList={true}
         // 'showCollapse': PropTypes.bool,
         // onSelect= PropTypes.func
 
@@ -160,7 +160,7 @@ const SunburstVegaContainer = () => {
       className={styles.sunburstVegaContainer}
     >
       <Grid item sm={12} md={6}>
-        <SunburstDetails details={details} />
+        {/* <SunburstDetails details={details} /> */}
       </Grid>
       <Grid item sm={12} md={6}>
         {/* <Sunburst data={flareData} getDetails={getDetails} /> */}
