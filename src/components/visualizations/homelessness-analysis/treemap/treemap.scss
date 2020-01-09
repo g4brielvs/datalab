@@ -1,6 +1,11 @@
 @import '../../../../styles/variables';
 
 #homelessnessPage {
+  #tree > div > svg {
+    height: 100%;
+    width: 100%;
+  }
+
   .cocTabTitleCluster {
     border-bottom: 1px solid #AAA;
 
@@ -108,20 +113,21 @@
   }
 
   .homeless-fact-cluster {
-    padding: 1rem 2rem;
+    padding-top: 1rem;
   }
 
   .homeless-fact-cluster .title, .homeless-fact-cluster .title span {
     font-family: "Source Sans Pro";
     font-weight: bold;
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin: 0;
   }
 
   .homeless-fact-cluster .subtitle {
     font-family: "Source Sans Pro";
     font-weight: 600;
     font-size: 1.5rem;
+    margin-top: 0;
     margin-bottom: 3rem;
     color: #666;
   }
@@ -138,11 +144,12 @@
     font-family: "Source Sans Pro";
     font-size: 1rem;
     clear: both;
-    margin-top: 10px;
+    padding-top: 10px;
+    margin-top: 0;
     color: #555;
   }
 
-  .homeless-fact-cluster .highlight-text {
+  .homeless-fact-cluster .highlight-text, .homeless-fact-cluster .highlight-text * {
     font-family: "Source Sans Pro";
     font-weight: 300;
     font-size: 3rem;
@@ -155,16 +162,16 @@
 
   .cluster-people .highlight-text.cluster-people-count {
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: -1rem;
   }
 
   .cluster-people .highlight-text.people-text {
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 2rem;
   }
 
   .cluster-people .header, .cluster-density .header {
-    height: 30px;
+    min-height: 30px;
   }
 
   .homeless-fact-cluster img {

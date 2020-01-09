@@ -87,7 +87,7 @@ export default function Treemap(){
 
     function makeInfographic(d) {
       d3.selectAll('.homeless-fact-cluster img').remove();
-      const svgPath = "/images/homelessness/Cluster-" + d;
+      const svgPath = "/homelessness-analysis/images/Cluster-" + d;
       console.log('svgPath:', svgPath);
       const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
       const selectedInfographicItem = infographicData.filter(item => item.cluster_final === d);
@@ -103,7 +103,7 @@ export default function Treemap(){
       d3.select('#cluster-rent-as-income').append('img').attr('src', svgPath + '/Rent-as-Income.svg').attr('alt', clusterAltText[0].rent_as_income);
       d3.select('#cluster-number').text(d);d3.select('#cluster-beds-count').text(OtherformatNumber(selectedInfographicItem[0].total_beds));
       d3.selectAll('.cluster-people-count').text(OtherformatNumber(selectedInfographicItem[0].total_homeless));
-      d3.select('#cluster-circles h2').style('color', clusterColors[d - 1]);
+      d3.select('#cluster-circles h2').style('color', clusterColors[d - 1]).select('span').style('color', clusterColors[d - 1]);
     }
 
     function makeCoCTableTitle(d) {
@@ -354,7 +354,7 @@ export default function Treemap(){
         <div className="flex-grid-row">
           <div className="col-main-left">
             <div id="cluster-circles">
-              <h2 className="title">Facts about Cluster <span id="cluster-number"></span></h2>
+              <h2 className="title">Facts about Cluster <span id="cluster-number"/></h2>
               <p className="subtitle">Federal Spending on Homelessness</p>
             </div>
             <div className="flex-grid-row lower-sub-left">
