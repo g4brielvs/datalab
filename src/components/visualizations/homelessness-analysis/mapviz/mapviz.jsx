@@ -8,7 +8,7 @@ import Share from "../../../share/share"
 import dataSource from '../utils/data-module';
 import tooltipModule from "../../../../components/tooltip/tooltip"
 import Downloads from "../../../section-elements/downloads/downloads"
-const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv');
+const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/coc_pop_value.csv');
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 

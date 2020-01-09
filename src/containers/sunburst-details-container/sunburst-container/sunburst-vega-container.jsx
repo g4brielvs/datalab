@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import flareData from '../../../unstructured-data/contract-explorer/flare.json';
-import awardsData from 'src/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
+import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 import Grid from "@material-ui/core/Grid/Grid";
 import SunburstDetails from '../details/sunburst-details';
 import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';

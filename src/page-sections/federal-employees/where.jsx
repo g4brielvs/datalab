@@ -4,7 +4,7 @@ import "../../styles/index.scss"
 /* components */
 import Mapviz from '../../components/visualizations/federal-employees/mapviz/mapviz';
 import Downloads from "../../components/section-elements/downloads/downloads"
-const employeesData = require('../../unstructured-data/federal-employees/employees.json');
+const employeesData = require('../../../static/unstructured-data/federal-employees/employees.json');
 
 function Where(props) {
 
