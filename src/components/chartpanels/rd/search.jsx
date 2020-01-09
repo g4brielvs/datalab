@@ -4,44 +4,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
 const maxListItems = 20;
+let currentValue;
 
 export default class SearchPanel extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      expanded: this.props.initShowList
+      expanded: this.props.initShowList,
+      icon: 'search'
     }
     this.filteredList = this.props.searchList;
   }
 
-  toggleList = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
+  clickIcon = () => {
+    if (this.state.icon === 'search') {
+      this.setState(prevState => ({ expanded: !prevState.expanded }));
+    } else {
+      currentValue = '';
+      this.filteredList = this.props.searchList;
+      this.forceUpdate();
+      this.setState({ icon: 'search' });
+    }
+  }
 
   filterSearch(event) {
-    const filter = new RegExp(event.target.value, 'i');
+    currentValue = event.target.value;
+    const filter = new RegExp(currentValue, 'i');
     this.filteredList = this.props.searchList.filter(n =>
       n.display.search(filter) !== -1
     )
-    // this.forceUpdate();
-    this.setState({ expanded: true });
+    this.setState({
+      expanded: true,
+      icon: currentValue ? 'clear' : 'search'
+    });
   }
 
   selectItem(id) {
     if (this.props.onSelect) {
-      if (this.props.showCollapse) {
-        this.setState({ expanded: false });
-      }
+      this.setState({ expanded: false });
       this.props.onSelect(id);
     }
   }
 
   onFocus = () => {
-    if (this.props.showCollapse) {
-      this.setState({ expanded: true });
-    }
+    this.setState({ expanded: true });
   }
 
   // detect if searchList prop changed (since it isn't in state)
@@ -55,23 +66,21 @@ export default class SearchPanel extends React.Component {
   render = () =>
     <div className={vizStyles.container}>
       <OutlinedInput
+        onFocus={this.onFocus}
+        onChange={event => this.filterSearch(event)}
         placeholder={'Search ' + this.props.listDescription}
         inputProps={{ title: 'Search ' + this.props.listDescription }}
         variant='outlined'
         fullWidth
-        onFocus={this.onFocus}
-        onChange={event => this.filterSearch(event)}
         endAdornment={
-          this.props.showCollapse ?
-            <InputAdornment position='end'>
-              <IconButton
-                aria-label='search'
-                onClick={this.toggleList}
-              >
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
-            : ''
+          <InputAdornment position='end'>
+            <IconButton
+              aria-label={this.state.icon}
+              onClick={this.clickIcon}
+            >
+              {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}
+            </IconButton>
+          </InputAdornment>
         }
       />
       <List aria-label={this.props.listDescription}
@@ -118,7 +127,6 @@ export default class SearchPanel extends React.Component {
   ]
 
   initShowList is true if the list should be open when initialized
-  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box; false if you use another method to hide list
   onSelect is parent callback when an item is selected, passes back id value only
 */
 
@@ -126,6 +134,5 @@ SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
   'listDescription': PropTypes.string.isRequired,
   'initShowList': PropTypes.bool,
-  'showCollapse': PropTypes.bool,
   'onSelect': PropTypes.func
 }

@@ -164,7 +164,7 @@ const SunburstVegaContainer = () => {
         searchList={searchList}
         listDescription='List of Contracts and Agencies'
         // initShowList={true}
-        showCollapse={true}
+        // showCollapse={true}
       // onSelect= PropTypes.func
 
       />
