@@ -85,7 +85,7 @@ function DebtTrendsPage(props) {
                                 <h1>What else is important to know about the federal debt?</h1>
                                 <p>When you are done here, continue on for a breakdown of the federal debt.</p>
                             </div>
-                            <a className="tour__link" href="debt-analysis">Continue<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="/americas-finance-guide/debt-analysis">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </aside>
 
