@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
-const maxListItems = 50;
+const maxListItems = 20;
 
 export default class SearchPanel extends React.Component {
 
@@ -16,8 +16,6 @@ export default class SearchPanel extends React.Component {
       expanded: this.props.initShowList
     }
     this.filteredList = this.props.searchList;
-
-    console.log(this.props.searchList);
   }
 
   toggleList = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
@@ -27,7 +25,8 @@ export default class SearchPanel extends React.Component {
     this.filteredList = this.props.searchList.filter(n =>
       n.display.search(filter) !== -1
     )
-    this.forceUpdate();
+    // this.forceUpdate();
+    this.setState({ expanded: true });
   }
 
   selectItem(id) {
@@ -79,17 +78,20 @@ export default class SearchPanel extends React.Component {
         className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
       >
         {
-          this.filteredList.slice(0, maxListItems).map(i =>
-            <ListItem
-              key={i.id}
-              button
-              divider
-              className={styles.listItem}
-              onClick={() => this.selectItem(i.id)}
-            >
-              <ListItemText primary={i.display} />
-            </ListItem>
-          )}
+          this.filteredList
+            .slice(0, maxListItems)
+            .map(i =>
+              <ListItem
+                key={i.id}
+                button
+                divider
+                className={styles.listItem}
+                onClick={() => this.selectItem(i.id)}
+              >
+                <ListItemText primary={i.display} />
+              </ListItem>
+            )
+        }
       </List>
     </div>
 }
@@ -115,8 +117,8 @@ export default class SearchPanel extends React.Component {
     }
   ]
 
-  initShowList is true if it should be open when initialized
-  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
+  initShowList is true if the list should be open when initialized
+  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box; false if you use another method to hide list
   onSelect is parent callback when an item is selected, passes back id value only
 */
 

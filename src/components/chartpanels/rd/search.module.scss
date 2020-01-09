@@ -15,6 +15,7 @@ $hover-background: #fbebd0;
 }
 
 .searchlist {
+	position: absolute;
 	display: none;
 	max-height: $list-height;
 	overflow-y: auto;

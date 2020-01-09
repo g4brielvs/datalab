@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styles from './sunburst-vega-container.module.scss';
 
 import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
-import Grid from '@material-ui/core/Grid/Grid';
+import { Grid, Hidden } from '@material-ui/core';
 import Search from '../../../components/chartpanels/rd/search';
 import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-vega';
 import SunburstDetails from '../details/sunburst-details';
@@ -22,11 +22,6 @@ const SunburstVegaContainer = () => {
       }
     }
   `);
-  // const searchList = [{
-  //   id: 1,
-  //   display: 'test'
-  // }]
-
 
   const searchList = searchData.allAwardsContractsCsv.agencies.map((n, i) => (
     {
@@ -49,16 +44,8 @@ const SunburstVegaContainer = () => {
           display: n
         }
       ))
-    );
-
-
-
-
-  // console.log(searchData);
-  // console.log(searchList);
-
-
-
+    )
+    ;
 
   useEffect(() => {
     getDetails();
@@ -150,39 +137,43 @@ const SunburstVegaContainer = () => {
   }
 
   return <>
-    <Grid
-      container
-      spacing={4}
-    >
-      <Grid item sm={12} md={6}>
-        <Search
-          searchList={searchList}
-          listDescription='List of Contracts and Agencies'
-          initShowList={true}
-        // 'showCollapse': PropTypes.bool,
-        // onSelect= PropTypes.func
+    <Hidden smDown>
+      <Grid container spacing={4} className={styles.sectionContainer}>
+        <Grid item md={6}>
+          <Search
+            searchList={searchList}
+            listDescription='List of Contracts and Agencies'
+            // initShowList={true}
+            showCollapse={true}
+          // onSelect= PropTypes.func
 
-        />
+          />
+          <div className={styles.sunburstDetails}>
+            <SunburstDetails details={details} />
+          </div>
+        </Grid>
+        <Grid item md={6}>
+          <Breadcrumbs className={styles.header} items={breadcrumbs} className={styles.breadcrumbsContainer} />
+          <Sunburst data={flareData} getDetails={getDetails} />
+          <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+        </Grid>
       </Grid>
-      <Grid item sm={12} md={6} className={styles.breadcrumbsContainer}>
-        <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
-      </Grid>
-    </Grid>
-    <Grid
-      container
-      spacing={4}
-      className={styles.sunburstVegaContainer}
-    >
-      <Grid item sm={12} md={6}>
-        {/* <SunburstDetails details={details} /> */}
-      </Grid>
-      <Grid item sm={12} md={6}>
-        {/* <Sunburst data={flareData} getDetails={getDetails} /> */}
-        <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients.
-          Sub-awards are not included.</div>
-      </Grid>
-    </Grid>
-  </>
+    </Hidden>
+    <Hidden mdUp>
+      <Search
+        searchList={searchList}
+        listDescription='List of Contracts and Agencies'
+        // initShowList={true}
+        showCollapse={true}
+      // onSelect= PropTypes.func
+
+      />
+      <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
+      <Sunburst data={flareData} getDetails={getDetails} />
+      <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+      <SunburstDetails details={details} />
+    </Hidden>
+  </>;
 }
 
 export default SunburstVegaContainer;

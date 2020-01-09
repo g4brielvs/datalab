@@ -1,15 +1,19 @@
 @import '../../../styles/variables';
 
-.sunburst-vega-container {
+.section-container {
+
   .header {
     height: 2.5rem
+  }
+
+  .sunburst-details {
   }
 
   .breadcrumbs-container {
     padding-left: 2.125rem
   }
 
-  .sunburst-details {
+  .sunburst-message {
     margin-top: 40px;
     height: 40px;
     font-size: 1rem;
