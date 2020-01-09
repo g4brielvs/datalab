@@ -75,7 +75,8 @@ export default class SearchPanel extends React.Component {
         endAdornment={
           <InputAdornment position='end'>
             <IconButton
-              aria-label={this.state.icon}
+       
+       aria-label={this.state.icon}
               onClick={this.clickIcon}
             >
               {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}

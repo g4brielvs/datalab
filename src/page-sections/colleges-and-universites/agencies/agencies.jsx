@@ -1,25 +1,20 @@
-import React, {useState}  from "react"
+import React, { useState }  from "react";
 import { graphql, useStaticQuery } from 'gatsby';
 
-import storyHeadingStyles from '../../../components/section-elements/story-heading/story-heading.module.scss';
-import agenciesStyles from './agencies.module.scss';
+import storyHeadingStyles from 'src/components/section-elements/story-heading/story-heading.module.scss';
 
-import Accordion from '../../../components/accordion/accordion';
+import Accordion from 'src/components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
-import Downloads from '../../../components/section-elements/downloads/downloads';
+import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from '../../../components/chartpanels/cu/search';
-import StoryHeading from '../../../components/section-elements/story-heading/story-heading';
-import VizControlPanel from '../../../components/chartpanels/viz-control';
-import VizDetails from '../../../components/chartpanels/viz-detail';
-import Share from "../../../components/share/share"
-
-import loadable from '@loadable/component';
-import DataTable from "../../../components/chartpanels/data-table"
-import formatNumber from "../../../utils/number-formatter"
-import * as d3 from "d3v3"
-const BubbleChart = loadable(() => import('../../../components/visualizations/bubble-chart/bubble-chart'));
+import SearchPanel from 'src/components/chartpanels/search';
+import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
+import VizControlPanel from 'src/components/chartpanels/viz-control';
+import Share from "src/components/share/share";
+import VizContainer from "./bubble-chart-container/bubble-chart-container";
+import TableContainer from "./agencies-table-container";
+import * as _ from 'lodash';
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -32,29 +27,9 @@ const Agencies = (props) => {
           obligation
         }
       }
-      allAgenciesRhpSummaryCsv {
-        nodes {
-          subagency
-          type
-          obligation
-        }
-      }
-      allTop5InvestmentsPerAgencyV2Csv {
-        nodes {
-          source
-          target
-          value
-        }
-      }
-      allTop5InstitutionsPerAgencyV2Csv {
-        nodes {
-          source
-          target
-          value
-        }
-      }
       allCuBubbleChartTableV2Csv {
         nodes {
+          id
           Recipient
           agency
           subagency
@@ -63,84 +38,17 @@ const Agencies = (props) => {
           obligation
         }
       }
-    }
-  `);
-
-  const tableColumnTitles = ['Recipient', 'Agency', 'SubAgency', 'Family', 'Type', 'Obligation'];
-  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, formatNumber('dollars', n.obligation)]);
+    }`
+  )
 
   const [chartView, isChartView] = useState(true);
+
   const switchView = view => {
+    updateTableData(tableData);
     if (view === 'chart') {
       isChartView(true);
     } else {
       isChartView(false);
-    }
-  }
-
-  const detailPanelRef = React.createRef();
-  let currentDetails = {};
-  const getClickedDetails = d => {
-    if (!d) {
-      detailPanelRef.current && detailPanelRef.current.closeDetails();
-    } else {
-      const summary = _data.allAgenciesRhpSummaryCsv.nodes.filter(i => i.subagency === d.name);
-      const summaryObligations = {};
-      if (summary[0].type === 'grant') {
-        parseInt(summaryObligations.grant = summary[0].obligation);
-        parseInt(summaryObligations.contract = summary[1].obligation);
-      } else {
-        parseInt(summaryObligations.grant = summary[1].obligation);
-        parseInt(summaryObligations.contract = summary[0].obligation);
-      }
-
-      const invTop5 = {};
-      _data.allTop5InvestmentsPerAgencyV2Csv.nodes
-        .filter(i => i.source === d.name)
-        .forEach(j => {
-          invTop5[j.target] = j.value;
-        })
-        ;
-
-      const instTop5 = {};
-      _data.allTop5InstitutionsPerAgencyV2Csv.nodes
-        .filter(i => i.source === d.name)
-        .forEach(j => {
-          instTop5[j.target] = j.value;
-        })
-        ;
-
-      currentDetails = {
-        'header': {
-          'title': 'Agency',
-          'itemName': d.parent.name,
-          'label': 'Sub-Agency',
-          'subItemName': d.name,
-          'totalLabel': 'Total $ of Awards',
-          'totalValue': d.size
-        },
-        'tables': [
-          {
-            'col1Title': 'Funding Instrument Type',
-            'col2Title': null,
-            'rows': {
-              'Grants': summaryObligations.grant,
-              'Contracts': summaryObligations.contract
-            }
-          },
-          {
-            'col1Title': 'Investment Categories' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
-            'col2Title': 'Total Investment',
-            'rows': invTop5
-          },
-          {
-            'col1Title': 'Institutions' + (Object.keys(instTop5).length > 5 ? ' (Top 5)' : ''),
-            'col2Title': 'Total Investment',
-            'rows': instTop5
-          }
-        ]
-      }
-      detailPanelRef.current.updateDetails(currentDetails);
     }
   }
 
@@ -153,12 +61,39 @@ const Agencies = (props) => {
   });
 
   const chartRef = React.createRef();
+
   const searchItemSelected = id => {
-    chartRef.current.clickById(id);
+    filterTableData(id);
+    if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
   }
 
-  function setLegendLeft(leftState) {
-    d3.select('#agencies-legend-colorkey').classed("left", leftState);
+  const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
+  const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, parseInt(n.obligation)]);
+
+  const [filteredTableData, setFilteredData] = useState(tableData);
+  const tableRef = React.createRef();
+
+  function filterTableData(id) {
+    let data = [];
+    let itemList;
+
+    itemList = searchList.find(function(el){
+      return el.id === id;
+    });
+
+    let obj = _.filter(tableData, {1: itemList.heading, 2:itemList.subheading});
+    if(obj && obj.length > 0) {
+      data.push(obj);
+    }
+
+    data = _.flatten(data);
+
+    updateTableData(data);
+  }
+
+  function updateTableData(data) {
+    setFilteredData(data);
+    if (tableRef && tableRef.current) { tableRef.current.updateTableData(data); }
   }
 
   return (<>
@@ -202,55 +137,24 @@ const Agencies = (props) => {
             searchList={searchList}
             listDescription='Agencies'
             onSelect={searchItemSelected}
-            switchView={switchView}
-          >
+            switchView={switchView} >
             <BubbleChartOutlinedIcon />
           </VizControlPanel>
         </Hidden>
       </Grid>
-      <Grid item>
-        <Grid container>
-          <Grid item xs={1}>
-            <Hidden smDown>
-              <div id="agencies-legend-colorkey">
-                <div className={agenciesStyles.legendCirclekeyLabel}><span>Agency</span></div>
-                <div className={agenciesStyles.legendCirclekeyLabel}><span>Sub-Agency</span></div>
-                <svg id={agenciesStyles.legendScalekey}>
-                  <circle r="25" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                  <circle r="35" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                  <circle r="45" className={agenciesStyles.legendScalekeyCircle} cx="60" cy="65"></circle>
-                </svg>
-              </div>
-            </Hidden>
-          </Grid>
-          <Grid item xs={10}>
-            <BubbleChart
-              display={chartView}
-              items={_data.allUnivBubbleChartCsv.nodes}
-              showDetails={getClickedDetails}
-              setLegendLeft={setLegendLeft}
-              ref={chartRef}
-            />
-
-            <DataTable
-              display={!chartView}
-              columnTitles={tableColumnTitles}
-              data={tableData}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item>
-        <VizDetails
-          showDetails={getClickedDetails}
-          details={currentDetails}
-          ref={detailPanelRef}
-        />
-      </Grid>
+      <VizContainer
+        display={chartView}
+        data = {_data.allUnivBubbleChartCsv.nodes}
+        chartRef = {chartRef} />
+      <TableContainer
+        display={!chartView}
+        tableColumnTitles = {tableColumnTitles}
+        tableData = {filteredTableData}
+        tableRef = {tableRef} />
     </Grid>
 
     <Downloads
-      href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+      href={'src/data/colleges-and-universities/agencies/univ_bubble_chart.csv'}
       date={'March 2019'}
     />
   </>);

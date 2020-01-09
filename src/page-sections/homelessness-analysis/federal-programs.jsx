@@ -62,7 +62,7 @@ export default function FederalPrograms(props){
       p21MapSvg = d3.select('#panel_map')
         .append('svg')
         .attr('id', 'p2_1_map')
-        .attr('width', '95%')
+        .attr('width', '100%')
         .attr('height', '350px');
 
       contactPanel = d3.select('#CoCcontact')
@@ -118,6 +118,9 @@ export default function FederalPrograms(props){
       return mapTitle.html(`${d9.properties.coc_number}: ${d9.properties.COCNAME}`);
     }
 
+  /**
+   * @return {string}
+   */
   function MakeCoCTable(d7) {
     d3.selectAll('#p2_quad3_title').remove();
 
@@ -126,30 +129,33 @@ export default function FederalPrograms(props){
       .attr('width', '100%')
       .attr('id', 'p2_quad3_title')
       .attr('class', 'legend-header')
-      .html(`<h5>${d7.properties.coc_number} Homeless Counts</h5>`);
+      .html(`<h5>${d7.properties.coc_number} Homeless Population Details</h5>`);
 
     for (let i = 0; i < tableData.length; i++) {
       if (tableData[i].coc_number === d7.properties.coc_number) {
         const tabDat = tableData[i];
 
-        return `${'<table><tr><td className="panel_text">Homeless Individuals </td><td className="panel_text2">'}`
-          + `${OtherformatNumber(tabDat.homeless_individuals)}</td></tr>` +
-          `<tr><td className="panel_text" style="border-bottom:1pt solid black">`
-          + `Homeless People in Families </td><td className="panel_text2"  style="border-bottom:1pt solid black">`
-          + `${OtherformatNumber(tabDat.homeless_people_in_families)}</td></tr>` +
-          `<tr><td className="panel_text">Total Homeless</td><td className="panel_text2">` +
-          `${OtherformatNumber(tabDat.total_homeless)}</td></tr></table>` +
-          `<table><tr><td className="panel_text">Sheltered Homeless </td><td className="panel_text2">`
-          + `${OtherformatNumber(tabDat.sheltered_homeless)}</td></tr>` +
-          `<tr><td className="panel_text" style="border-bottom:1pt solid black">` +
-          `Unsheltered Homeless </td><td className="panel_text2" style="border-bottom:1pt solid black">` +
-          `${OtherformatNumber(tabDat.unsheltered_homeless)}</td></tr>` +
-          `<tr><td className="panel_text">Total Homeless</td><td className="panel_text2">` +
-          `${OtherformatNumber(tabDat.total_homeless)}</td></tr></table>` +
-          `<table style="margin-bottom:0"><tr><td className="panel_text">Chronically Homeless `
-          + `</td><td className="panel_text2">${OtherformatNumber(tabDat.chronically_homeless)}</td></tr>` +
-          `<tr><td className="panel_text">Homeless Veterans </td><td className="panel_text2">`
-          + `${OtherformatNumber(tabDat.homeless_veterans)}</td></tr></table>`;
+        return `<table><tr><th></th><th class="table-heading">Individuals</th><th class="table-heading">Families</th><th class="table-heading">Total</th></tr>` +
+          `<tr><td class="table-heading">Sheltered</td><td>${OtherformatNumber(tabDat.sheltered_total_homeless_individuals) == 'NaN' ? 'NA' : OtherformatNumber(tabDat.sheltered_total_homeless_individuals)}</td>` +
+          `<td>${OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families)}</td>` +
+          `<td>${OtherformatNumber(tabDat.sheltered_homeless) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.sheltered_homeless)}</td></tr>` +
+          `<tr><td class="table-heading">Unsheltered</td><td>${OtherformatNumber(tabDat.unsheltered_homeless_individuals) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless_individuals)}</td>` +
+          `<td>${OtherformatNumber(tabDat.unsheltered_homeless_people_in_families) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless_people_in_families)}</td>` +
+          `<td>${OtherformatNumber(tabDat.unsheltered_homeless) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless)}</td>` +
+          `</tr><tr><td class="table-heading">Total</td><td>${OtherformatNumber(tabDat.homeless_individuals) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.homeless_individuals)}</td>` +
+          `<td>${OtherformatNumber(tabDat.homeless_people_in_families) == "NaN" ? 'NA' : OtherformatNumber(tabDat.homeless_people_in_families)}</td>` +
+          `<td>${OtherformatNumber(tabDat.total_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.total_homeless)}</td></tr></table><div class="item"><div class="header">Chronically Homeless:</div>` +
+          `<div class="value">${OtherformatNumber(tabDat.chronically_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.chronically_homeless)}</div></div><div class="item"><div class="header">Homeless Veterans:</div>` +
+          `<div class="value">${OtherformatNumber(tabDat.homeless_veterans) == "NaN" ? 'NA' : OtherformatNumber(tabDat.homeless_veterans)}</div></div><div class="item">` +
+          `<div class="header">Average number of days in Emergency Shelters, Safe Havens, or Transitional Housing:</div>` +
+          `<div class="value">${OtherformatNumber(tabDat.es_sh_th_avg_days) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.es_sh_th_avg_days)}</div></div>` +
+          `<h3 class="h3-header item">Number of people who return to homelessness within:</h3><div class="item"><div class="header">6 months</div>` +
+          `<div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_6_mths) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_6_mths)}</div></div><div class="item">` +
+          `<div class="header">12 months</div><div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort)}</div>` +
+          `</div><div class="item"><div class="header">24 months</div>` +
+          `<div class="value">${tabDat.total_persons_returns_in_24_mths_should_include_both_the_6_and_12_month_cohort === 'NA' ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_24_mths_should_include_both_the_6_and_12_month_cohort)}</div></div>` +
+          `<div class="item"><div class="header">Percentage of people who exit to permanent housing</div><div class="value">${tabDat.percent_with_successful_es_th_sh_ph_rrh_exit}</div></div>` +
+          `<div class="item"><div class="header">Percentage of those who retain their permanent housing status</div><div class="value">${tabDat.percent_with_successful_ph_retention_or_exit}</div></div>`;
       }
     }
   }
@@ -403,14 +409,7 @@ export default function FederalPrograms(props){
         `<tr><td className="infoAmount">${OtherformatNumber(d.land_area)}</td></tr>` +
         `<tr><th className="fundingTitle">PROPERTY CRIME RATE: PER 100K</th></tr>` +
         `<tr><td className="infoAmount">${OtherformatNumber(d.Property_crime_rate)}</td></tr></table>`;
-    }
-
-    function makeCoCTable(d) {
-      d3.select(".cocTab")
-        .insert("div", ":first-child")
-        .attr("class", "cocTabTitle")
-        .html(makeCoCTableTitle(d));
-    }
+    }2
 
     function makeFundingTable(d) {
       d3.select(".cocTable")
@@ -800,7 +799,7 @@ export default function FederalPrograms(props){
   })
 
   return (
-    <div className="homeless-analysis">
+    <div className="homeless-analysis federal-programs-section">
       <div className="homelessness-subheading">Federal Spending on Homelessness by Region</div>
       <div className="homelessness-subheading2">Federal grant awards by Continuum of Care Area</div>
       <Accordion
@@ -828,7 +827,10 @@ export default function FederalPrograms(props){
           <div id='container2_4' className='homelessness-container2 homelessness-container2--right'/>
         </Grid>
       </Grid>
-      <Downloads/>
+      <Downloads
+        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
+        date={'March 2019'}
+      />
     </div>
   )
 }

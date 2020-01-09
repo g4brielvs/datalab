@@ -5,13 +5,23 @@ const stateList = require('../../../../unstructured-data/homelessness-analysis/S
 const acronyms = require('../../../../unstructured-data/homelessness-analysis/cfda_acronyms.csv');
 const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
 
+const treeData = require('../../../../unstructured-data/homelessness-analysis/homeless_cluster_v3');
+const cluster = require('../../../../unstructured-data/homelessness-analysis/cluster_data_panel_3_v2.csv');
+const infographicData = require('../../../../unstructured-data/homelessness-analysis/cluster_data_svg_v3.csv');
+const altText = require('../../../../unstructured-data/homelessness-analysis/homelessness_alt_text_panel3_2019.csv');
+
 const DataModule = {
   mem: { us: map,
     cfdaState: cfdaStateData,
     barChart: barChart,
     states: stateList,
     acr: acronyms,
-    pop: cocPopulation},
+    pop: cocPopulation,
+    treeData: treeData,
+    cluster: cluster,
+    infographicData: infographicData,
+    altText: altText
+  },
 
   loadMap: (cb) => {
     cb(DataModule.mem.map);
