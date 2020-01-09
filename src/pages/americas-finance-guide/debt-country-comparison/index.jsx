@@ -39,10 +39,10 @@ function DebtCountryComparisonPage(props) {
                 <nav className="chapter-nav chapter-nav--debt">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./explore-debt">Explore Debt</a></li>
-                        <li><a href="./trends.html">Federal Debt Trends</a></li>
-                        <li><a href="./analysis.html">Federal Debt Analysis</a></li>
-                        <li><a href="./debt-country-comparison">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/explore-debt">Explore Debt</a></li>
+                        <li><a href="/americas-finance-guide/trends.html">Federal Debt Trends</a></li>
+                        <li><a href="/americas-finance-guide/analysis.html">Federal Debt Analysis</a></li>
+                        <li><a href="/americas-finance-guide/debt-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
@@ -66,7 +66,7 @@ function DebtCountryComparisonPage(props) {
                             <p>How does the United States compare to countries of similar size and gross domestic product? Explore the chart, which shows the total debt of the United States compared to {AfgData.countries_compared.value} other countries listed in the CIA World Factbook. You can compare total debt (in dollars) and debt as a percent of gross domestic product. Find a country of interest and see for yourself. For instance, while the U.S. federal debt was greater than that of China and Japan combined, it ranked {AfgData.compare_us_debt_gdp_rank.value} in debt to gross domestic product. Because the U.S. government has more money coming in and going out than any other country, it helps to compare the debt of the U.S. government to other countries based on the size of their economies. To ensure an accurate comparison, {AfgData.country_compare_year.value} debt data is used in this section, not current fiscal year data.</p>
                             <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                         </div>
-                        <a className="chapter-link chapter-link--revenue" href="./revenue-and-gdp">
+                        <a className="chapter-link chapter-link--revenue" href="/americas-finance-guide/revenue-and-gdp">
                             <div className="chapter-link__text-block">
                                 <div className="chapter-link__learn-more">Learn more about</div>
                                 Federal Revenue
