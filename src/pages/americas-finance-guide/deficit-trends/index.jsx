@@ -14,6 +14,9 @@ import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+
 function DeficitTrendsPage(props) {
     return (
         <>
@@ -41,8 +44,8 @@ function DeficitTrendsPage(props) {
                         <li><a href="./deficit-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
-                        <i className="fas fa-lg fa-angle-down menu-down"></i>
-                        <i className="fas fa-lg fa-angle-up menu-up"></i>
+                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
+                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
                     </button>
                 </nav>
 
@@ -89,7 +92,7 @@ function DeficitTrendsPage(props) {
                                 <h1>How does the deficit in the United States compare to other countries?</h1>
                                 <p>When you are done here, see how the U.S. deficit compares to other countries.</p>
                             </div>
-                            <a className="tour__link" href="./deficit-country-comparison">Continue<i className="fas fa-chevron-right"></i></a>
+                            <a className="tour__link" href="/americas-finance-guide/deficit-country-comparison">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </aside>
 
