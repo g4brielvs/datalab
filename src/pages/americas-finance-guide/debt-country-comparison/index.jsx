@@ -55,8 +55,8 @@ function DebtCountryComparisonPage(props) {
                         <Share 
                             location={props.location}
                             title='Data Lab - Debt Country Comparison – U.S. Treasury'
-                            text='How does the federal debt of the U.S. compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries.  Check out the site’s data visualizations, then download .CSV files of the data to perform your own analysis. #YourGuide #DataLab #OpenGov"'
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            twitter='How does the federal debt of the U.S. compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries.  Check out the site’s data visualizations, then download .CSV files of the data to perform your own analysis. #YourGuide #DataLab #OpenGov"'
+                            />
                     </ControlBar>
 
                     <h1>Compare the Federal Debt of the United States to Other Countries</h1>
