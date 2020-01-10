@@ -8,13 +8,12 @@ import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
 const maxListItems = 20;
-let currentValue;
 
 export default class SearchPanel extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
+      currentValue: '',
       expanded: this.props.initShowList,
       icon: 'search'
     }
@@ -25,20 +24,22 @@ export default class SearchPanel extends React.Component {
     if (this.state.icon === 'search') {
       this.setState(prevState => ({ expanded: !prevState.expanded }));
     } else {
-      currentValue = '';
       this.filteredList = this.props.searchList;
-      this.forceUpdate();
-      this.setState({ icon: 'search' });
+      this.setState({
+        currentValue: '',
+        icon: 'search'
+      });
     }
   }
 
   filterSearch(event) {
-    currentValue = event.target.value;
+    const currentValue = event.target.value;
     const filter = new RegExp(currentValue, 'i');
     this.filteredList = this.props.searchList.filter(n =>
       n.display.search(filter) !== -1
-    )
+    );
     this.setState({
+      currentValue: currentValue,
       expanded: true,
       icon: currentValue ? 'clear' : 'search'
     });
@@ -66,17 +67,17 @@ export default class SearchPanel extends React.Component {
   render = () =>
     <div className={vizStyles.container}>
       <OutlinedInput
+        value={this.state.currentValue}
         onFocus={this.onFocus}
         onChange={event => this.filterSearch(event)}
-        placeholder={'Search ' + this.props.listDescription}
+        placeholder={this.props.listDescription}
         inputProps={{ title: 'Search ' + this.props.listDescription }}
         variant='outlined'
         fullWidth
         endAdornment={
           <InputAdornment position='end'>
             <IconButton
-       
-       aria-label={this.state.icon}
+              aria-label={this.state.icon}
               onClick={this.clickIcon}
             >
               {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}
