@@ -9,6 +9,7 @@ import Sunburst from '../../../components/visualizations/sunburst-vega/sunburst-
 import SunburstDetails from '../details/sunburst-details';
 
 import flareData from 'src/unstructured-data/contract-explorer/flare.json';
+const sunData = flareData;
 import awardsData from 'src/data/contract-explorer/awards_contracts.csv';
 
 const SunburstVegaContainer = () => {
@@ -47,6 +48,15 @@ const SunburstVegaContainer = () => {
     )
     ;
 
+    // try to force redraw of sunburst (or entire container)
+  // const [, updateState] = React.useState();
+  // const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
+
+  const searchSelect = (id) => {
+    sunData.tree = flareData.tree.slice(0,50);
+    // forceUpdate();
+  }
+
   useEffect(() => {
     getDetails();
   }, []);
@@ -79,20 +89,16 @@ const SunburstVegaContainer = () => {
         obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.obligation || 0), 0)
       });
     }
-
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
   }
 
   function getDetails(item) {
-
     const depth = item && item.depth ? item.depth : 0;
-
     let breadcrumbs = {
       agency: null,
       subagency: null,
       recipient: null
     };
-
     let details = {
       label: null,
       total: null,
@@ -123,7 +129,7 @@ const SunburstVegaContainer = () => {
         details.name = item.name;
         break;
       case 3:
-        const subagency = flareData.tree.filter(node => node.id === item.parent);
+        const subagency = sunData.tree.filter(node => node.id === item.parent);
         breadcrumbs.agency = item.agency;
         breadcrumbs.subagency = subagency[0].name;
         breadcrumbs.recipient = item.name;
@@ -131,7 +137,6 @@ const SunburstVegaContainer = () => {
         details.name = item.name;
         break;
     }
-
     setBreadcrumbs(breadcrumbs);
     setDetails(details);
   }
@@ -143,10 +148,7 @@ const SunburstVegaContainer = () => {
           <Search
             searchList={searchList}
             listDescription='Search List of Contracts and Agencies'
-            // initShowList={true}
-            showCollapse={true}
-          // onSelect= PropTypes.func
-
+            onSelect={searchSelect}
           />
           <div className={styles.sunburstDetails}>
             <SunburstDetails details={details} />
@@ -154,7 +156,7 @@ const SunburstVegaContainer = () => {
         </Grid>
         <Grid item md={6}>
           <Breadcrumbs className={styles.header} items={breadcrumbs} className={styles.breadcrumbsContainer} />
-          <Sunburst data={flareData} getDetails={getDetails} />
+          <Sunburst data={sunData} getDetails={getDetails} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
         </Grid>
       </Grid>
@@ -162,14 +164,11 @@ const SunburstVegaContainer = () => {
     <Hidden mdUp>
       <Search
         searchList={searchList}
-        listDescription='List of Contracts and Agencies'
-        // initShowList={true}
-        // showCollapse={true}
-      // onSelect= PropTypes.func
-
+        listDescription='Search List of Contracts and Agencies'
+        onSelect={searchSelect}
       />
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
-      <Sunburst data={flareData} getDetails={getDetails} />
+      <Sunburst data={sunData} getDetails={getDetails} />
       <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <SunburstDetails details={details} />
     </Hidden>
