@@ -47,14 +47,14 @@ export function establishContainer(height, width, accessibilityAttrs) {
 
     let svg = viz.select('svg.main');
 
-    console.log('svg.size: ', svg.size());
-    console.log('width: ', width);
+    // console.log('svg.size: ', svg.size());
+    // console.log('width: ', width);
     
     if (svg.size() === 0) {
         height = height || 400;
         width = width || 1200;
         
-        console.log('width: ', width);
+        // console.log('width: ', width);
 
         svg = viz.append('svg')
             .classed('main', true)
