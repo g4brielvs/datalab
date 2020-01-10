@@ -3,14 +3,20 @@ import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
 import moreAnalysesStyles from './more-analyses.module.scss';
-import federal from '../../images/more-analyses/federal.jpg';
-import workers from '../../images/more-analyses/workers.jpg';
-import budget from '../../images/more-analyses/budget.jpg';
-import competition from '../../images/more-analyses/competition.jpg';
+import federal from 'src/images/more-analyses/federal.jpg';
+import workers from 'src/images/more-analyses/workers.jpg';
+import budget from 'src/images/more-analyses/budget.jpg';
+import competition from 'src/images/more-analyses/competition.jpg';
 
 export default class MoreAnalyses extends React.Component {
   constructor(props) {
     super(props);
+
+if(typeof window !== 'undefined' )
+    console.log  (window.location.pathname);
+
+
+
   }
 
   analyses = [{
@@ -33,7 +39,14 @@ export default class MoreAnalyses extends React.Component {
     imageSrc: competition,
     title: 'Competition in Contracting',
     subtitle: 'How often do federal agencies compete for contracts?'
-  }]
+  }, {
+    href: 'colleges-and-universities',
+    imageSrc: competition,
+    title: 'Competition in Contracting',
+    subtitle: 'How often do federal agencies compete for contracts?'
+  }];
+
+  // display['/federal-employees/'] = [0,];
 
   render = () =>
     <section className={moreAnalysesStyles.analyses}>
