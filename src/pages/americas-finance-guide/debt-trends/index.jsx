@@ -37,7 +37,7 @@ function DebtTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--debt">
+                 <nav className="chapter-nav chapter-nav--debt">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
                         <li><a href="./explore-debt">Explore Debt</a></li>
