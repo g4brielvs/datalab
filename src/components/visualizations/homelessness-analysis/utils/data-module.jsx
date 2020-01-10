@@ -1,14 +1,14 @@
-const map = require('../../../../unstructured-data/homelessness-analysis/2019_coc_grantee_areas_v2');
-const cfdaStateData = require('../../../../unstructured-data/homelessness-analysis/2019statecfdafunding.csv');
-const barChart = require('../../../../unstructured-data/homelessness-analysis/2019CoCCFDAfunding_v3.csv');
-const stateList = require('../../../../unstructured-data/homelessness-analysis/State_crosswalk.csv');
-const acronyms = require('../../../../unstructured-data/homelessness-analysis/cfda_acronyms.csv');
-const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
+const map = require('../../../../../static/unstructured-data/homelessness-analysis/2019_coc_grantee_areas_v2');
+const cfdaStateData = require('../../../../../static/unstructured-data/homelessness-analysis/2019statecfdafunding.csv');
+const barChart = require('../../../../../static/unstructured-data/homelessness-analysis/2019CoCCFDAfunding_v3.csv');
+const stateList = require('../../../../../static/unstructured-data/homelessness-analysis/State_crosswalk.csv');
+const acronyms = require('../../../../../static/unstructured-data/homelessness-analysis/cfda_acronyms.csv');
+const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
 
-const treeData = require('../../../../unstructured-data/homelessness-analysis/homeless_cluster_v3');
-const cluster = require('../../../../unstructured-data/homelessness-analysis/cluster_data_panel_3_v2.csv');
-const infographicData = require('../../../../unstructured-data/homelessness-analysis/cluster_data_svg_v3.csv');
-const altText = require('../../../../unstructured-data/homelessness-analysis/homelessness_alt_text_panel3_2019.csv');
+const treeData = require('../../../../../static/unstructured-data/homelessness-analysis/homeless_cluster_v3');
+const cluster = require('../../../../../static/unstructured-data/homelessness-analysis/cluster_data_panel_3_v2.csv');
+const infographicData = require('../../../../../static/unstructured-data/homelessness-analysis/cluster_data_svg_v3.csv');
+const altText = require('../../../../../static/unstructured-data/homelessness-analysis/homelessness_alt_text_panel3_2019.csv');
 
 const DataModule = {
   mem: { us: map,

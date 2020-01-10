@@ -5,9 +5,9 @@ import "../../styles/index.scss";
 import Grid from '@material-ui/core/Grid';
 
 import Dendro from '../../components/visualizations/federal-account-explorer/dendro.jsx';
-import FY17Data from '../../unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
-import FY18Data from '../../unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
-import FY19Data from '../../unstructured-data/federal-account-explorer/account_obligations_link_update_FY19Q3.csv';
+import FY17Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
+import FY18Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
+import FY19Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY19Q3.csv';
 
 import Accordion from "../../components/accordion/accordion";
 import Reset from '../../components/reset/reset';

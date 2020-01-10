@@ -6,8 +6,8 @@ import storyHeadingStyles from '../../components/section-elements/story-heading/
 import Accordion from "../../components/accordion/accordion";
 import StoryHeading from "../../components/section-elements/story-heading/story-heading";
 import Downloads from "../../components/section-elements/downloads/downloads";
-import GeoDataMapbox from '../../unstructured-data/mapbox/mapData.json';
-import dataTableData from '../../unstructured-data/mapbox/tableData.csv';
+import GeoDataMapbox from '../../../static/unstructured-data/mapbox/mapData.json';
+import dataTableData from '../../../static/unstructured-data/mapbox/tableData.csv';
 import Share from '../../components/share/share';
 import ControlBar from "../../components/control-bar/control-bar";
 import DataTable from "../../components/table/data-table";
