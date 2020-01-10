@@ -3,13 +3,17 @@ import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
 import moreAnalysesStyles from './more-analyses.module.scss';
-import federal from "../../images/more-analyses/federal.jpg"
-import workers from "../../images/more-analyses/workers.jpg"
-import budget from "../../images/more-analyses/budget.jpg"
-import competition from "../../images/more-analyses/competition.jpg"
+import federal from '../../images/more-analyses/federal.jpg';
+import workers from '../../images/more-analyses/workers.jpg';
+import budget from '../../images/more-analyses/budget.jpg';
+import competition from '../../images/more-analyses/competition.jpg';
 
-const MoreAnalyses = () => {
-  const analyses = [{
+export default class MoreAnalyses extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  analyses = [{
     href: 'federal-account-explorer',
     imageSrc: federal,
     title: 'Federal Account Explorer',
@@ -29,13 +33,13 @@ const MoreAnalyses = () => {
     imageSrc: competition,
     title: 'Competition in Contracting',
     subtitle: 'How often do federal agencies compete for contracts?'
-  },
-  ]
-  return (
+  }]
+
+  render = () =>
     <section className={moreAnalysesStyles.analyses}>
 
       <Grid item xs={12}
-            className={moreAnalysesStyles.heading}>
+        className={moreAnalysesStyles.heading}>
         <h2>
           More Analyses
         </h2>
@@ -47,35 +51,28 @@ const MoreAnalyses = () => {
         spacing={3}>
 
 
-        {analyses.map((item, index) =>
+        {this.analyses.map((item, index) =>
           <Grid item xs={12} sm={6} xl={3}
             key={'analyses__tile_' + index}
             className={`tile ${moreAnalysesStyles.tile}`}>
 
             <Link to={item.href}>
 
-                <div className={moreAnalysesStyles.text}>
-                  <h3 className={moreAnalysesStyles.title}>
-                    {item.title}
-                  </h3>
+              <div className={moreAnalysesStyles.text}>
+                <h3 className={moreAnalysesStyles.title}>
+                  {item.title}
+                </h3>
 
-                  <p className={moreAnalysesStyles.subtitle}>
-                    {item.subtitle}
-                  </p>
-                </div>
+                <p className={moreAnalysesStyles.subtitle}>
+                  {item.subtitle}
+                </p>
+              </div>
 
-                <img src={item.imageSrc} className={moreAnalysesStyles.image} />
+              <img src={item.imageSrc} className={moreAnalysesStyles.image} />
 
             </Link>
           </Grid>
         )}
-
       </Grid>
-
     </section>
-  )
 }
-
-
-export default MoreAnalyses;
-
