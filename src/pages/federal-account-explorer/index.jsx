@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SEO from "../../components/seo";
-
 import "../../styles/index.scss";
 
 import Accordion from "../../components/accordion/accordion";
@@ -10,7 +9,13 @@ import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar";
 
 import loadable from '@loadable/component';
-const DendroContainer = loadable(() => import("../../containers/dendro-container/dendro-container"));
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
+const DendroContainer = loadable(() => import("src/containers/fed-acct/fed-acct-container"),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){

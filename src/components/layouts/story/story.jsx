@@ -58,4 +58,3 @@ export default StoryLayout;
 StoryLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
-

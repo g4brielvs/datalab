@@ -8,10 +8,27 @@ import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
 import { Grid } from "@material-ui/core";
 import loadable from "@loadable/component";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
 
-const Agencies = loadable(() => import('../../page-sections/colleges-and-universities/agencies/agencies'));
-const Categories = loadable(() => import('../../page-sections/colleges-and-universities/categories/categories'));
-const Institutions = loadable(() => import('../../page-sections/colleges-and-universities/institutions'));
+const Agencies = loadable(() => import('../../page-sections/colleges-and-universities/agencies/agencies'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
+const Categories = loadable(() => import('../../page-sections/colleges-and-universities/categories/categories'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
+const Institutions = loadable(() => import('../../page-sections/colleges-and-universities/institutions'),  {
+  fallback: <div className='progress_wrapper'>
+    <CircularProgress className='progress' size={70} color='inherit' />
+  </div>
+});
 
 export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>

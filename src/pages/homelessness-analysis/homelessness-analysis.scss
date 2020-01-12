@@ -4,6 +4,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homeless-analysis-header-callout {
 	color: $homelessAnalysisPurple;
 	font-weight: 900;
+	font-size: inherit;
 }
 
 .homelessness-subheading,
@@ -35,6 +36,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homelessness-container2--right {
 	padding-left: $margin-10;
 	border-left: 1px solid #CCC;
+	height: 100%;
 }
 
 #homelessnessPage .col-lg-10 {
@@ -45,6 +47,13 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homeless-analysis {
 	font-family: Source Sans Pro;
 	background-color: #ffffff;
+
+	&.federal-programs-section h5 {
+		padding-bottom: 15px;
+		margin: 1.5rem 0;
+		font-size: 1.2rem;
+		font-weight: 600;
+	}
 
 	& p.subheading {
 		font-size: 1.75rem;
@@ -106,12 +115,14 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 	}
 
 	#coc_info table, #coc_info .item {
-		margin-left: 0.9375rem;
-		margin-right: 0.9375rem;
 		font-size: 1rem;
 		padding-bottom: 0.9375rem;
 		padding-top: 0.625rem;
 	}
+
+    #coc_info .item {
+      margin-bottom: 0.5rem;
+    }
 
 	#coc_info table, #coc_info div.item {
 		font-weight: 300;
@@ -135,6 +146,11 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		font-weight: bold;
 		color: #555;
 		text-align: center;
+	}
+
+	td {
+	  padding: 0.75em 0.75em;
+	  text-align: center;
 	}
 
 	#coc_info {
@@ -466,13 +482,6 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		height: 600px;
 	}
 
-	.legend-header h5 {
-		padding-bottom: 15px;
-		margin: 1.5rem 0;
-		font-size: 1.2rem;
-		font-weight: 600;
-	}
-
 	#container2_title  {
 		text-align: left;
 		font-size: 1.5rem;
@@ -543,9 +552,6 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		padding: 0 3em 0 0;
 	}
 
-	#p2_3 {
-		padding: 20px 30px 0 30px;
-	}
 	#p2_3 #p2_4 {
 		width: 100%;
 	}
@@ -1094,6 +1100,13 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 @media screen and (min-width: $desktop-xl){
 	.homelessness-subheading2 {
 		margin-bottom: $margin-20;
+	}
+}
+
+@media screen and (min-width: $tablet) and (max-width: $desktop-xl){
+	#container2_3 {
+		margin-top: -5rem;
+		border-top: 0;
 	}
 }
 

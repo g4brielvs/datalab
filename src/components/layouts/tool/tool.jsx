@@ -45,7 +45,6 @@ export default class ToolLayout extends React.Component {
   </Default>
 }
 
-
 ToolLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
