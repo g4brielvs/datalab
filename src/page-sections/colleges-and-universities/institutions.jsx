@@ -1,5 +1,5 @@
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
-import styles from './c&u.module.scss';
+import styles from './cu.module.scss';
 import React from 'react';
 import { useStaticQuery, graphql } from "gatsby"
 
