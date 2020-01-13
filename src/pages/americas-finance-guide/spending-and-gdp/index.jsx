@@ -42,10 +42,10 @@ function SpendingAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--spending">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./spending-categories">Spending Categories</a></li>
-                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
-                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
+                        <li><a href="/americas-finance-guide/spending-categories">Spending Categories</a></li>
+                        <li><a href="/americas-finance-guide/spending-trends">Federal Spending Trends</a></li>
+                        <li><a href="/americas-finance-guide/spending-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
@@ -113,7 +113,7 @@ function SpendingAndGdpPage(props) {
 
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the categories of federal spending?</h1>
-                            <a className="tour__link" href="./spending-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                            <a className="tour__link" href="/americas-finance-guide/spending-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 

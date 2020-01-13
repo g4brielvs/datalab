@@ -36,10 +36,16 @@ ul {
 }
 
 @mixin homepageSectionHeading {
-  font-size: 1.17em;
+  font-size: 1.17rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #aaa;
   text-transform: uppercase;
+  font-weight: bold;
+}
+
+@mixin sectionHeading {
+  font-size: 1.17em;
+  padding-bottom: 1rem;
   font-weight: bold;
 }
 

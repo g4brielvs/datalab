@@ -1,0 +1,30 @@
+@import '../../../styles/index.scss';
+
+.heading:first-child {
+  @include sectionHeading();
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  @include sectionHeading();
+}
+
+.subheading {
+  color: #666;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.text {
+  @include body-copy();
+}
+
+.total-amount {
+  @include body-copy();
+  font-size: 2rem;
+}
+
+.list-item:global(.MuiGrid-item)  {
+  padding: 0 1rem;
+}

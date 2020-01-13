@@ -206,10 +206,9 @@ export default class BubbleChart extends Component {
   }
 
   drawBubbleChart(root) {
-    focus = root;
+    this.focused = root;
     this.diameter = this.width;
     const classContext = this;
-
     let tooltipHtml = '<div></div>';
     this.tip = d3.tip().attr('class', 'd3-tip').html(function (d) {
       if (classContext.isZoomedIn(d)) {
@@ -236,8 +235,23 @@ export default class BubbleChart extends Component {
       .attr("width", this.width)
       .attr("height", this.width)
       .attr("id", "chart")
+      .attr('role', 'img')
+      .attr('aria-describedby', 'titleTest descTest')
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
+
+    d3.select(this.bubbleChartContainer).select('svg')
+      .append('title')
+      .attr('id', 'titleTest')
+      .text('The quick brown fox jumped over the lazy dog 1.');
+
+    d3.select(this.bubbleChartContainer).select('svg')
+      .append('desc')
+      .attr('id', 'descTest')
+      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
+        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
+        'The quick brown fox jumped over the lazy dog 5.');
+
 
     this.circle = this.bubbleSvg.selectAll("circle")
       .data(this.nodes)
@@ -512,7 +526,7 @@ export default class BubbleChart extends Component {
 
   render() {
     return (
-      <div id="chart-area" className={this.props.display ? '' : 'hidden'}>
+      <div id="chart-area">
         <div id="bubble-detail"></div>
         <div id="bubbleChartContainer" className="bubbleChartContainer">
         </div>

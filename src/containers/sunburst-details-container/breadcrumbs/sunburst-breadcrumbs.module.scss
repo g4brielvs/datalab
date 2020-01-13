@@ -1,0 +1,9 @@
+.breadcrumbs-container {
+  height: 3rem;
+
+  .breadcrumb:before {
+    content: '\/';
+  }
+
+}
+
