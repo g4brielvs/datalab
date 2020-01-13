@@ -32,6 +32,13 @@ $fedEmpBlue: #2272CE;
 
 .introContainer {
   margin: 0 0 $margin-50 0;
+
+  .blurbText {
+    color: #555555;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 20px;
+  }
 }
 
 @media (min-width: $desktop-xl){

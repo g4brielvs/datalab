@@ -50,11 +50,12 @@
     cursor: pointer;
     text-decoration: none;
     color: #666;
-    height: 1.4rem;
+    padding-top: 0.125rem; // 2px;
 
     &:hover {
       color: #046b99;
-      border-bottom: 3.5px solid #046b99;
+      border-bottom: 2px solid #046b99;
+      padding-bottom: 0.4375rem; // 7pxpx
     }
   }
 
@@ -67,7 +68,7 @@
     list-style: none;
     font-size: 0.8125rem;
     padding: 0;
-    margin-top: .25rem;
+    margin-top: .1rem;
 
     .item {
       font-size: 0.9375rem;

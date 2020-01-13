@@ -39,9 +39,9 @@ function ExploreDeficitPage(props) {
                 <nav className="chapter-nav chapter-nav--deficit">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./explore-deficit">Explore Deficit</a></li>
-                        <li><a href="./deficit-trends">Federal Deficit Trends</a></li>
-                        <li><a href="./deficit-country-comparison">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/explore-deficit">Explore Deficit</a></li>
+                        <li><a href="/americas-finance-guide/deficit-trends">Federal Deficit Trends</a></li>
+                        <li><a href="/americas-finance-guide/deficit-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
@@ -109,7 +109,7 @@ function ExploreDeficitPage(props) {
                                 <h1>How has the federal deficit changed over time?</h1>
                                 <p>When you are done here, we encourage you to explore trends in the federal deficit since {AfgData.deficit_trend_start.value}.</p>
                             </div>
-                            <a className="tour__link" href="deficit-trends">Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                            <a className="tour__link" href="/americas-finance-guide/deficit-trends">Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
                     </div> {/* end viz-wrapper */}
 

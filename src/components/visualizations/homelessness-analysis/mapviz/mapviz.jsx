@@ -8,7 +8,7 @@ import Share from "../../../share/share"
 import dataSource from '../utils/data-module';
 import tooltipModule from "../../../../components/tooltip/tooltip"
 import Downloads from "../../../section-elements/downloads/downloads"
-const cocPopulation = require('../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv');
+const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/coc_pop_value.csv');
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -184,60 +184,24 @@ export default function Mapviz(props) {
   function getColor(d) {
     for (let i = 0; i < tableData.length; i++) {
       if (d.properties.coc_number === tableData[i].coc_number) {
-        if (tableData[i].total_homeless <= 0) {
-          return ('#EEEEFF');
-        }
-        else if (tableData[i].total_homeless <= 200) {
-          return ('#E1E1F4');
-        }
-        else if (tableData[i].total_homeless <= 300) {
-          return ('#D6D6EA');
-        }
-        else if (tableData[i].total_homeless <= 500) {
-          return ('#D0D0F0');
-        }
-        else if (tableData[i].total_homeless <= 700) {
-          return ('#B8B8D1');
-        }
-        else if (tableData[i].total_homeless <= 1000) {
-          return ('#ACACC6');
-        }
-        else if (tableData[i].total_homeless <= 1500) {
-          return ('#9E9EBA');
-        }
-        else if (tableData[i].total_homeless <= 2000) {
-          return ('#9595AD');
-        }
-        else if (tableData[i].total_homeless <= 2500) {
-          return ('#8888A5');
-        }
-        else if (tableData[i].total_homeless <= 3000) {
-          return ('#7F7FA0');
-        }
-        else if (tableData[i].total_homeless <= 3500) {
-          return ('#72729B');
-        }
-        else if (tableData[i].total_homeless <= 4000) {
-          return ('#656593');
-        }
-        else if (tableData[i].total_homeless <= 5000) {
-          return ('#5E5D91');
-        }
-        else if (tableData[i].total_homeless <= 6000) {
-          return ('#534E89');
-        }
-        else if (tableData[i].total_homeless <= 7000) {
-          return ('#4D4484');
-        }
-        else if (tableData[i].total_homeless <= 8000) {
-          return ('#45387A');
-        }
-        else if (tableData[i].total_homeless <= 12000) {
-          return ('#392870');
-        }
-        else if (tableData[i].total_homeless <= 77000) {
-          return ('#311C66');
-        }
+        if (tableData[i].total_homeless <= 0) { return ('#EEEEFF'); }
+        else if (tableData[i].total_homeless <= 200) { return ('#E1E1F4'); }
+        else if (tableData[i].total_homeless <= 300) { return ('#D6D6EA'); }
+        else if (tableData[i].total_homeless <= 500) { return ('#D0D0F0'); }
+        else if (tableData[i].total_homeless <= 700) { return ('#B8B8D1'); }
+        else if (tableData[i].total_homeless <= 1000) { return ('#ACACC6'); }
+        else if (tableData[i].total_homeless <= 1500) { return ('#9E9EBA'); }
+        else if (tableData[i].total_homeless <= 2000) { return ('#9595AD'); }
+        else if (tableData[i].total_homeless <= 2500) { return ('#8888A5'); }
+        else if (tableData[i].total_homeless <= 3000) { return ('#7F7FA0'); }
+        else if (tableData[i].total_homeless <= 3500) { return ('#72729B'); }
+        else if (tableData[i].total_homeless <= 4000) { return ('#656593'); }
+        else if (tableData[i].total_homeless <= 5000) { return ('#5E5D91'); }
+        else if (tableData[i].total_homeless <= 6000) { return ('#534E89'); }
+        else if (tableData[i].total_homeless <= 7000) { return ('#4D4484'); }
+        else if (tableData[i].total_homeless <= 8000) { return ('#45387A'); }
+        else if (tableData[i].total_homeless <= 12000) { return ('#392870'); }
+        else if (tableData[i].total_homeless <= 80000) { return ('#311C66'); }
 
         return ('#FFAD29');
       }

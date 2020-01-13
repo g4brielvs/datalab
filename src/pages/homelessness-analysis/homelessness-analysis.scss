@@ -1,94 +1,10 @@
 @import '../../styles/variables';
 $homelessAnalysisPurple: rgb(96, 70, 126);
 
-#p2_2 {
-	height: 330px;
-}
-
-#p2_2_legend {
-	height: 65px;
-}
-
-#p2_2_legend_key {
-	height: 15px;
-	width: 18%;
-	float: left;
-}
-
-#p2_2_key {
-	height: 15px;
-	// width: 10px;
-	width:100%;
-	padding-left:15%;
-	border-radius:50%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#p2_2_key_value {
-	height: 10px;
-	width:100%;
-	text-align: center;
-}
-
-#p2_4_legend_key {
-	height: 15px;
-	width: 18%;
-	float: left;
-}
-
-#p2_4_key {
-	height: 15px;
-	width:100%;
-	padding-left:15%;
-	border-radius:50%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#p2_4_key_value {
-	height: 10px;
-	width:100%;
-	text-align: center;
-}
-
-#p2_2_legend_key {
-	height: 15px;
-	width: 18%;
-	float: left;
-}
-
-#p2_2_key {
-	height: 15px;
-	width:100%;
-	padding-left:15%;
-	border-radius:50%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#p2_2_key_value {
-	height: 10px;
-	width:100%;
-	text-align: center;
-
-}
-
-#p2_2_key_value p {
-	font-size: 0.7rem;
-	line-height: 1 rem;
-	color: #000;
-}
-
-#p2_4_key_value p {
-	font-size: 0.7rem;
-	line-height: 1.5rem;
-	color: #000;
-}
-
 .homeless-analysis-header-callout {
 	color: $homelessAnalysisPurple;
 	font-weight: 900;
+	font-size: inherit;
 }
 
 .homelessness-subheading,
@@ -120,6 +36,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homelessness-container2--right {
 	padding-left: $margin-10;
 	border-left: 1px solid #CCC;
+	height: 100%;
 }
 
 #homelessnessPage .col-lg-10 {
@@ -130,6 +47,13 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 .homeless-analysis {
 	font-family: Source Sans Pro;
 	background-color: #ffffff;
+
+	&.federal-programs-section h5 {
+		padding-bottom: 15px;
+		margin: 1.5rem 0;
+		font-size: 1.2rem;
+		font-weight: 600;
+	}
 
 	& p.subheading {
 		font-size: 1.75rem;
@@ -162,7 +86,104 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		&#right {
 			float: right;
 		}
+
 	}
+
+	#panel_coc {
+		color: #666;
+	}
+
+	#panel_coc .header {
+		text-align: left;
+		float: left;
+		width: 80%;
+	}
+
+	.h3-header {
+		clear: both;
+		text-align: left;
+		margin-top: 15px;
+	}
+
+	#coc_info .value {
+		text-align: left;
+		float: right;
+	}
+
+	#coc_info table {
+		margin-bottom: 0;
+	}
+
+	#coc_info table, #coc_info .item {
+		font-size: 1rem;
+		padding-bottom: 0.9375rem;
+		padding-top: 0.625rem;
+	}
+
+    #coc_info .item {
+      margin-bottom: 0.5rem;
+    }
+
+	#coc_info table, #coc_info div.item {
+		font-weight: 300;
+		color: #666;
+	}
+
+	#coc_info h3 {
+		margin-top: 30px;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	#coc_info td.table-heading {
+		font-weight: bold;
+		color: #555;
+		text-align: left;
+		padding-left: 30px;
+	}
+
+	#coc_info th.table-heading {
+		font-weight: bold;
+		color: #555;
+		text-align: center;
+	}
+
+	td {
+	  padding: 0.75em 0.75em;
+	  text-align: center;
+	}
+
+	#coc_info {
+		table, table td, table th {
+			border: 1px solid #aaaaaa;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			margin-bottom: 15px;
+		}
+
+		td:first-child, th:first-child {
+			border-left: none;
+		}
+
+		td:last-child, th:last-child {
+			border-right: none;
+		}
+
+		th {
+			border-top: none !important;
+		}
+
+	}
+
+	#panel_coc {
+		margin-bottom: 30px;
+	}
+
 	.modal {
 		display: none;
 		/* Hidden by default */
@@ -180,9 +201,9 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		/* Full height */
 		overflow: auto;
 		/* Enable scroll if needed */
-		background-color: rgb(0, 0, 0);
+		background-color: rgb(0,0,0);
 		/* Fallback color */
-		background-color: rgba(0, 0, 0, 0.4);
+		background-color: rgba(0,0,0,0.4);
 		/* Black w/ opacity */
 	}
 
@@ -461,8 +482,9 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		height: 600px;
 	}
 
-	.legend-header {
-		padding-bottom: 15px;
+	#container2_title  {
+		text-align: left;
+		font-size: 1.5rem;
 	}
 
 	#panel_map {
@@ -530,9 +552,6 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		padding: 0 3em 0 0;
 	}
 
-	#p2_3 {
-		padding: 20px 30px 0 30px;
-	}
 	#p2_3 #p2_4 {
 		width: 100%;
 	}
@@ -738,7 +757,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 
 	#p2_4_legend_key {
 		height: 15px;
-		width: 18%;
+		width: 15%;
 		float: left;
 	}
 
@@ -759,7 +778,7 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 
 	#p2_2_legend_key {
 		height: 15px;
-		width: 18%;
+		width: 15%;
 		float: left;
 	}
 
@@ -778,15 +797,9 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		text-align: center;
 	}
 
-	#p2_2_key_value p {
+	#p2_2_key_value p, #p2_4_key_value p {
 		font-size: 0.7rem;
-		line-height: 1 rem;
-		color: #000;
-	}
-
-	#p2_4_key_value p {
-		font-size: 0.7rem;
-		line-height: 1.5rem;
+		line-height: 1rem;
 		color: #000;
 	}
 
@@ -1090,11 +1103,24 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 	}
 }
 
-@media screen and (max-width: $tablet - 1){
-	.homelessness-subheading2 {
-		margin-bottom: $margin-15;
+@media screen and (min-width: $tablet) and (max-width: $desktop-xl){
+	#container2_3 {
+		margin-top: -5rem;
+		border-top: 0;
 	}
-	.homelessness-container2 {
-		border: none;
+}
+
+@media screen and (max-width: $tablet - 1){
+	.homeless-analysis {
+		#container2_title  {
+			text-align: left;
+			font-size: 1.2rem;
+		}
+		.homelessness-subheading2 {
+			margin-bottom: $margin-15;
+		}
+		.homelessness-container2 {
+			border: none;
+		}
 	}
 }

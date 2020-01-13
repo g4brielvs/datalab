@@ -37,10 +37,10 @@ function RevenueCountryComparisonPage(props) {
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
-                        <li><a href="./revenue-categories">Revenue Categories</a></li>
-                        <li><a href="./revenue-trends">Federal Revenue Trends</a></li>
-                        <li><a href="./revenue-country-comparison">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/revenue-and-gdp">Revenue and GDP</a></li>
+                        <li><a href="/americas-finance-guide/revenue-categories">Revenue Categories</a></li>
+                        <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
+                        <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
@@ -66,7 +66,7 @@ function RevenueCountryComparisonPage(props) {
                         </p>
                             <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                         </div>
-                        <a className="chapter-link chapter-link--spending" href="./spending-and-gdp">
+                        <a className="chapter-link chapter-link--spending" href="/americas-finance-guide/spending-and-gdp">
                             <div className="chapter-link__text-block">
                                 <div className="chapter-link__learn-more">Learn more about</div>
                                 Federal Spending
