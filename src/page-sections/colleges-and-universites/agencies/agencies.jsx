@@ -153,7 +153,7 @@ const Agencies = (props) => {
     </Grid>
 
     <Downloads
-      href={'src/data/colleges-and-universities/agencies/univ_bubble_chart.csv'}
+      href={'/data/colleges-and-universities/agencies/CU_bubble_chart_table_v2.csv'}
       date={'March 2019'}
     />
   </>);

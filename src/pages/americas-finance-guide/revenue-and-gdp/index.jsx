@@ -41,10 +41,10 @@ function RevenueAndGdpPage(props) {
                 <nav className="chapter-nav chapter-nav--revenue">
                     <ul className="chapter-nav__primary-list">
                         <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./revenue-and-gdp">Revenue and GDP</a></li>
-                        <li><a href="./revenue-categories">Revenue Categories</a></li>
-                        <li><a href="./revenue-trends">Federal Revenue Trends</a></li>
-                        <li><a href="./revenue-country-comparison">Country Comparison</a></li>
+                        <li><a href="/americas-finance-guide/revenue-and-gdp">Revenue and GDP</a></li>
+                        <li><a href="/americas-finance-guide/revenue-categories">Revenue Categories</a></li>
+                        <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
+                        <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
                     </ul>
                     <button className="chapter-nav-trigger">
                         <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
@@ -120,7 +120,7 @@ function RevenueAndGdpPage(props) {
 
                         <section className="tour sidebar intro-hidden">
                             <h1 className="tour__heading">What are the sources of government revenue?</h1>
-                            <a id="tour-continue" className="tour__link" href="./revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                            <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                         </section>
 
                         <div className="info-box" id="per-individual">

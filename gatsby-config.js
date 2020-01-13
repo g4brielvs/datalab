@@ -7,15 +7,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-top-layout',
     'gatsby-plugin-root-import',
-    {
-      resolve: 'gatsby-plugin-material-ui',
-      // If you want to use styled components you should change the injection order.
-      options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
-    },
+    'gatsby-plugin-material-ui',
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-sass",
@@ -41,12 +33,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
+        name: `datalab`,
+        path: `${__dirname}/static/data/`,
         crossOrigin: `use-credentials`,
         icon: `src/images/favicon.png`
       },
