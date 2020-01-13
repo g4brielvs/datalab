@@ -5,8 +5,10 @@ import style from './afg-nav.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 
+const navRevenueClasses = `chapter-nav chapter-nav--revenue`;
+
 const AfgNavRevenue = () => (
-    <nav className={style.chapterNav, style.chapterNavRevenue}>
+    <nav className={navRevenueClasses}>
         <ul className={style.chapterNavPrimaryList}>
             <li className={style.chapterNavOverview}><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
             <li><a href="/americas-finance-guide/revenue-and-gdp">Revenue and GDP</a></li>
