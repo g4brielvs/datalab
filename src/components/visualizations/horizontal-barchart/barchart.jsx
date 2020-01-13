@@ -112,7 +112,6 @@ function Barchart(props){
     const y = d3.scale
       .ordinal()
       .rangeRoundBands([0, height], 0.1)
-      // .padding(0.1)
       .domain(sortedData.map((d) => d.name));
 
     // z scale (color)
@@ -149,21 +148,10 @@ function Barchart(props){
       .attr("dx", "-.8em")
       .attr("pointer-events", "none");
 
-    // y axis
-    g
-      .append("g")
-      .attr("transform", `translate(-12,0)`)
-      .attr("class", "axis axis--y")
-      .call(
-        d3.svg
-          .axis()
-          .orient("left")
-          .scale(y)
-      )
-      .selectAll(".tick")
-      .attr("class", "yTick")
-      .selectAll("text")
-      .style("font-size", "0.75rem");
+
+  // .each(sortedData.map(d => d3.select(this).attr('label', `checkbox${d.id}`)))
+
+    let maxWidth = 0;
 
     // y axis checkboxes
     g
@@ -172,20 +160,32 @@ function Barchart(props){
       .attr("y", 6)
       .attr("dy", "0.71em")
       .append("foreignObject")
-      .attr("transform", "translate(-20,0)")
-      .attr("width", 22)
+      .attr('id','yAxisForeignObject')
+      .attr('width', 500)
+      .attr("transform", "translate(-500,0)")
       .attr("height", 1000)
       .append("xhtml:body")
-      .append("form")
-      .attr("id", "yAxisCheckboxes")
       .selectAll(".yAxisCheckbox")
       .data(sortedData)
       .enter()
       .append("div")
       .style("height", "21px")
+      .style('padding-top', '9px')
       .style("background", "white")
+      .style('text-align', 'right')
+      .append("label")
+      .text((d) => d.name)
+      .attr('height', '21px')
+      .attr('width', function(){
+        const curWidth = this.getBoundingClientRect().width + 30;
+        if(curWidth > maxWidth) {
+          maxWidth = curWidth;
+        }
+        return curWidth + 'px';
+      })
       .append("input")
       .attr("type", "checkbox")
+      .style('margin-left', '10px')
       .attr("checked", (d) => (d.displayed ? true : null))
       .attr("class", ".yAxisCheckbox")
       .attr("id", (d) => `checkbox${d.id}`)
@@ -194,6 +194,10 @@ function Barchart(props){
         const checked = svg.select(`#checkbox${id}`).node().checked;
         clickEvent(id, checked);
       });
+
+    g.select('#yAxisForeignObject')
+      .attr('width', (maxWidth + 25) + 'px')
+      .attr("transform", `translate(-${maxWidth + 25},0)`)
 
     const stackedDataset = d3.layout.stack()(
       keys.map((key) =>

@@ -17,20 +17,27 @@ export default class Sunburst extends React.Component {
       info: '',
       spec: sunburstSpec,
       originalData: props.data,
+      agency: null,
+      level: null
     };
-
+    this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
     // this.handlers = { tooltip: this.handleHover };
-    this.signalListeners = { arcClick: this.handleClick };
+    this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
 
+  }
+
+  handleHover(...args) {
+    const item = args[1];
+    this.props.getDetails(item);
   }
 
   handleClick(...args){
     const item = args[1];
     const newData = item.id === 1 ? this.state.originalData : {"tree" : this.handleUpdateData(item.id)};
-    this.setState({ data: newData });
-
+    this.props.getDetails(item);
+    this.setState({ data: newData, depth: item.depth });
   }
 
   handleUpdateData(newId) {

@@ -2,7 +2,13 @@ import styles from './story-heading.module.scss';
 import React from 'react';
 import { Hidden, Grid } from '@material-ui/core';
 
+
+// adding to dynamically space between paragraphs for long
+// blurbs in story template. (isMoreBlurb)
+
 const StoryHeading = (props) => {
+  const isMoreBlurb = props.blurbCont;
+
   return (
     <Grid container className={styles.heading}>
       <Grid item xs={12} xl={5}>
@@ -23,9 +29,14 @@ const StoryHeading = (props) => {
         <p className={styles.blurb}>
           {props.blurb}
         </p>
+        {isMoreBlurb &&
+         <p className={styles.blurb}>
+           {props.blurbCont}
+         </p>
+        }
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
 export default StoryHeading;

@@ -429,9 +429,25 @@ function Sankey(props) {
       .attr("height", height + margin.top + margin.bottom)
       .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
       .attr("class", "sankey-viz-svg")
+      .attr('role', 'img')
+      .attr('aria-labelledby', 'titleTest descTest')
       .append("g")
       .attr("transform",
         `translate(${margin.left},${margin.top})`);
+
+    // add title
+    d3.select("#sankey-viz svg")
+      .append('title')
+      .attr('id', 'titleTest')
+      .text('The quick brown fox jumped over the lazy dog 1.');
+
+    d3.select("#sankey-viz svg")
+      .append('desc')
+      .attr('id', 'descTest')
+      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
+        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
+        'The quick brown fox jumped over the lazy dog 5.');
+
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()

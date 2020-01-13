@@ -19419,14 +19419,13 @@ function getTransform(d3Selection) {
 
 function establishContainer(height, width, accessibilityAttrs) {
   var viz = d3.select('#viz');
-  var svg = viz.select('svg.main');
-  console.log('svg.size: ', svg.size());
-  console.log('width: ', width);
+  var svg = viz.select('svg.main'); // console.log('svg.size: ', svg.size());
+  // console.log('width: ', width);
 
   if (svg.size() === 0) {
     height = height || 400;
-    width = width || 1200;
-    console.log('width: ', width);
+    width = width || 1200; // console.log('width: ', width);
+
     svg = viz.append('svg').classed('main', true).attr('shape-rendering', 'geometricPrecision').attr('height', height).attr('width', width);
   } else if (height) {
     svg.attr('height', height);
@@ -19435,9 +19434,9 @@ function establishContainer(height, width, accessibilityAttrs) {
   if (accessibilityAttrs && Object.keys(accessibilityAttrs).length) {
     svg.append('desc').attr('id', 'svgMainDesc').text(accessibilityAttrs.desc);
     svg.attr('aria-describedby', 'svgMainDesc');
-  }
+  } // console.log('svg', svg);
 
-  console.log('svg', svg);
+
   return svg;
 }
 

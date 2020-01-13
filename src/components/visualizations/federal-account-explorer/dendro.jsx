@@ -497,9 +497,19 @@ function Dendro(props) {
 
       function resetToCenter() {
         var theSvg = document.getElementById("svg-dendrogram");
-        theSvg.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, clientX: 1, clientY: 1, view: window }));
-        theSvg.dispatchEvent(new MouseEvent("mousemove", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
-        theSvg.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, clientX: 2, clientY: 2, view: window }));
+        const event = document.createEvent('MouseEvent');
+        event.initMouseEvent('mousedown', true, true, window, 0, 0,
+          0, 1, 1, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
+        event.initMouseEvent('mousemove', true, true, window, 0, 0,
+          0, 2, 2, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
+        event.initMouseEvent('mouseup', true, true, window, 0, 0,
+          0, 2, 2, false, false, false, false,
+          0, null);
+        theSvg.dispatchEvent(event);
       }
     }
 
@@ -599,13 +609,13 @@ function Dendro(props) {
             <div id='DendroRadio'>
               <div className='select-wrapper1'>
                 <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 17 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
 
                 <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
-                <label className='dendro-input-1' htmlFor="contactChoice">FY 18 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
 
                 <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 19 </label>
+                <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
               </div>
               <div className="select-wrapper2">
                 <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />

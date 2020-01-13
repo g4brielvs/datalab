@@ -149,11 +149,8 @@ export default class Sunburst extends React.Component {
       .attr('fill', d => this.getWedgeColor(d))
       // .on('mouseover', hover)
       .on('click', this.click)
-      .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim())
-      ;
-    if (this.props.display) {
+      .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim());
       this.click(data[0]); // simulate clicking center to reset zoom
-    };
   }
 
   click(d) {
@@ -199,13 +196,12 @@ export default class Sunburst extends React.Component {
 
     this.centerGroup = this.svg.append('svg:text').attr('id', 'tab');
 
-    if (d.depth === 0) {
+    if (d.depth === 0) { // center
       this.setCenterTextLines('center-heading', this.centerTextHeading, mediumText, '0');
       this.setCenterTextLines('center-amount', this.formatNumber(d.value), largeText, lineHeight);
       this.showDetailsPane(null); // hide details panel
 
-    } else if (d.depth === 1) {
-      // category
+    } else if (d.depth === 1) { // category
       this.setCenterTextLines('center-heading', 'Category', labelFontSize, '0');
       this.setWrappedCenterTextLines('center-title', d.name, mediumText, lineHeight, boundingBox * smWordWrapRatio);
       this.setCenterTextLines('center-heading', 'Total FY2018 Funding', labelFontSize, doubleSpace);
@@ -371,14 +367,12 @@ export default class Sunburst extends React.Component {
       this.drawChart(this.chartArray);
     }
 
-    if (this.props.display && !prevProps.display) {
-      this.updateCenter(this.chartArray[0]); // fill in center in case data set switched while showing table
-    }
+    this.updateCenter(this.chartArray[0]); // fill in center in case data set switched while showing table
   }
 
   render() {
     return (
-      <div id='chart-area' className={this.props.display ? '' : 'hidden'}>
+      <div id='chart-area'>
         <div id='chart-container'>
           <div id='investment-sunburst'>
             <div id='investment-sunburst-viz'>
