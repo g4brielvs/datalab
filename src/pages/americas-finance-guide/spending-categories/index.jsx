@@ -55,7 +55,7 @@ function SpendingCategoriesPage(props) {
                             location={props.location}
                             title="Data Lab - Federal Spending Categories – U.S. Treasury"
                             twitter="Check out Your Guide to America’s Finances to search federal spending by category or by agency, then download .CSV files with the data to perform your own analysis! #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Federal Spending by Category and Agency</h1>
@@ -133,7 +133,7 @@ function SpendingCategoriesPage(props) {
                                 <h1>How has federal spending changed over time?</h1>
                                 <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                             </div>
-                            <a className="tour__link" href="./spending-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                            <a className="tour__link" href="/americas-finance-guide/spending-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
                         </section>
                     </div>
 
