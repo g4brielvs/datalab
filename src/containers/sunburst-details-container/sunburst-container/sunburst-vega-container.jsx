@@ -16,7 +16,7 @@ const SunburstVegaContainer = () => {
 
   const searchData = useStaticQuery(graphql`
     query {
-      allAwardsContracts_2Csv {
+      allAwardsContractsV2Csv {
         agencies:distinct(field: agency)
         subagencies:distinct(field: subagency)
         recipients:distinct(field: recipient)
@@ -24,14 +24,14 @@ const SunburstVegaContainer = () => {
     }
   `);
 
-  const searchList = searchData.allAwardsContractsCsv.agencies.map((n, i) => (
+  const searchList = searchData.allAwardsContractsV2Csv.agencies.map((n, i) => (
     {
       id: `a${i}`,
       display: n
     }
   ))
     .concat(
-      searchData.allAwardsContractsCsv.subagencies.map((n, i) => (
+      searchData.allAwardsContractsV2Csv.subagencies.map((n, i) => (
         {
           id: `s${i}`,
           display: n
@@ -39,7 +39,7 @@ const SunburstVegaContainer = () => {
       ))
     )
     .concat(
-      searchData.allAwardsContractsCsv.recipients.map((n, i) => (
+      searchData.allAwardsContractsV2Csv.recipients.map((n, i) => (
         {
           id: `r${i}`,
           display: n
