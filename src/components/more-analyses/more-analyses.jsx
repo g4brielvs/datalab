@@ -46,7 +46,7 @@ if(typeof window !== 'undefined' )
     subtitle: 'How often do federal agencies compete for contracts?'
   }];
 
-  // display['/federal-employees/'] = [0,];
+  display['/federal-employees/'] = [0,];
 
   render = () =>
     <section className={moreAnalysesStyles.analyses}>
