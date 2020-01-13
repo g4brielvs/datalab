@@ -45,10 +45,14 @@ export default class SearchPanel extends React.Component {
     });
   }
 
-  selectItem(id) {
+  selectItem(i) {
     if (this.props.onSelect) {
-      this.setState({ expanded: false });
-      this.props.onSelect(id);
+      this.setState({
+        currentValue: i.display,
+        expanded: false,
+        icon: 'clear'
+      });
+      this.props.onSelect(i.id);
     }
   }
 
@@ -97,7 +101,7 @@ export default class SearchPanel extends React.Component {
                 button
                 divider
                 className={styles.listItem}
-                onClick={() => this.selectItem(i.id)}
+                onClick={() => this.selectItem(i)}
               >
                 <ListItemText primary={i.display} />
               </ListItem>
