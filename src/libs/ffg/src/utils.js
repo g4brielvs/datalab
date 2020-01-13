@@ -47,9 +47,14 @@ export function establishContainer(height, width, accessibilityAttrs) {
 
     let svg = viz.select('svg.main');
 
+    // console.log('svg.size: ', svg.size());
+    // console.log('width: ', width);
+    
     if (svg.size() === 0) {
         height = height || 400;
         width = width || 1200;
+        
+        // console.log('width: ', width);
 
         svg = viz.append('svg')
             .classed('main', true)
@@ -64,6 +69,8 @@ export function establishContainer(height, width, accessibilityAttrs) {
         svg.append('desc').attr('id', 'svgMainDesc').text(accessibilityAttrs.desc);
         svg.attr('aria-describedby', 'svgMainDesc');
     }
+    
+    // console.log('svg', svg);
     
     return svg;
 }
