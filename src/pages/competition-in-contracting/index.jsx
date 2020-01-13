@@ -5,8 +5,11 @@ import "src/styles/index.scss";
 import SEO from "src/components/seo";
 import Accordion from "src/components/accordion/accordion";
 import ToolLayout from "src/components/layouts/tool/tool";
-import loadable from "@loadable/component"
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
+import loadable from "@loadable/component";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import ControlBar from "../../components/control-bar/control-bar";
+import Reset from "../../components/reset/reset";
+import Share from "../../components/share/share";
 
 const CompetitionInContractingContainer = loadable(() => import('src/containers/competition-in-contracting/competition-in-contracting-container'),
   {
@@ -18,6 +21,10 @@ const CompetitionInContractingContainer = loadable(() => import('src/containers/
 class CompetitionInContractingPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      scale: 'quantity',
+      unit: 'dollars'
+    }
   }
 
   render() {
@@ -30,6 +37,12 @@ class CompetitionInContractingPage extends Component {
       + '\t\t\t\t<p>The 1984 Competition in Contracting Act requires full and open competition while also allowing for exceptions in certain situations. '
       + 'In many cases, federal agencies will pursue competition even when an exception to the law applies, as competition may help to provide innovative '
       + 'solutions or better prices.</p>';
+    const shareText = 'Data Lab – Competition in Contracting – U.S. Treasury ';
+    const chartRef = React.createRef();
+
+    function reset() {
+      if (chartRef && chartRef.current) { chartRef.current.resetFn(); }
+    }
 
     return (<>
       <ToolLayout title={pageTitle}
@@ -49,9 +62,13 @@ class CompetitionInContractingPage extends Component {
               </li>
           </ul>
         </Accordion>
-
+        <ControlBar>
+          <Reset _resetClick={reset} />
+          <Share location={this.props.location}
+                 title={shareText} />
+        </ControlBar>
         <CompetitionInContractingContainer
-          location={this.props.location}
+          chartRef={chartRef}
         />
 
       </ToolLayout>
