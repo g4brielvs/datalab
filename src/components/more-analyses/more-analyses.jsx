@@ -60,10 +60,14 @@ export default class MoreAnalyses extends React.Component {
   }];
 
   show = { // key is current page URL frag, value is array of analyses to show
-    '/federal-employees/': [0, 4, 5, 2],
-    '/colleges-and-universities/': [5, 6, 1, 3],
-    '/dts/': [2, 0, 7, 4],
-    '/federal-account-explorer/': [6, 7, 2, 1],
+    'federal-employees': [0, 4, 5, 2],
+    'colleges-and-universities': [5, 6, 1, 3],
+    'dts': [2, 0, 7, 4],
+    'federal-account-explorer': [6, 7, 2, 1],
+    'contract-explorer': [3, 0, 2, 6],
+    'homelessness-analysis': [1, 4, 3, 7],
+    'budget-function': [0, 6, 1, 7],
+    'competition-in-contracting': [7, 5, 4, 2]
   };
 
   render = () =>
@@ -78,24 +82,25 @@ export default class MoreAnalyses extends React.Component {
         className={moreAnalysesStyles.tiles}
         spacing={3}
       >
-        {this.show[window.location.pathname].map((analysesIndex, i) =>
-          <Grid item xs={12} sm={6} xl={3}
-            key={'analyses_tile_' + i}
-            className={`tile ${moreAnalysesStyles.tile}`}
-          >
-            <Link to={this.analyses[analysesIndex].href}>
-              <div className={moreAnalysesStyles.text}>
-                <h3 className={moreAnalysesStyles.title}>
-                  {this.analyses[analysesIndex].title}
-                </h3>
-                <p className={moreAnalysesStyles.subtitle}>
-                  {this.analyses[analysesIndex].subtitle}
-                </p>
-              </div>
-              <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
-            </Link>
-          </Grid>
-        )}
+        {this.show[window.location.pathname.replace(new RegExp(/\//, 'g'), '')]
+          .map((analysesIndex, i) =>
+            <Grid item xs={12} sm={6} xl={3}
+              key={'analyses_tile_' + i}
+              className={`tile ${moreAnalysesStyles.tile}`}
+            >
+              <Link to={this.analyses[analysesIndex].href}>
+                <div className={moreAnalysesStyles.text}>
+                  <h3 className={moreAnalysesStyles.title}>
+                    {this.analyses[analysesIndex].title}
+                  </h3>
+                  <p className={moreAnalysesStyles.subtitle}>
+                    {this.analyses[analysesIndex].subtitle}
+                  </p>
+                </div>
+                <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
+              </Link>
+            </Grid>
+          )}
       </Grid>
     </section>
 }
