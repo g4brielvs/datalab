@@ -6,7 +6,7 @@ $hover-background: #fbebd0;
 
 @mixin main-text {
 	font-size: 1rem;
-	color: #4a4a4a;
+	color: $primary-grey;
 }
 
 @mixin head-text {
@@ -18,7 +18,7 @@ $hover-background: #fbebd0;
 	display: none;
 	max-height: $list-height;
 	overflow-y: auto;
-	background-color: #fff;
+	background-color: $font-white;
 	border: 1px solid $border-color;
 
 	.listItem {

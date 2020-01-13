@@ -9,7 +9,7 @@ $hover-background: #fbebd0;
   display: none;
   max-height: $list-height;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: $font-white;
   border: 1px solid $border-color;
 
   .listItem {

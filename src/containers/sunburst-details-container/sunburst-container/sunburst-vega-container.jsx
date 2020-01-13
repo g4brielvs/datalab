@@ -10,13 +10,13 @@ import SunburstDetails from '../details/sunburst-details';
 
 import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../../static/data/contract-explorer/awards_contracts.csv';
+import awardsData from '../../../../static/data/contract-explorer/awards_contracts_v2.csv';
 
 const SunburstVegaContainer = () => {
 
   const searchData = useStaticQuery(graphql`
     query {
-      allAwardsContractsCsv {
+      allAwardsContracts_2Csv {
         agencies:distinct(field: agency)
         subagencies:distinct(field: subagency)
         recipients:distinct(field: recipient)
