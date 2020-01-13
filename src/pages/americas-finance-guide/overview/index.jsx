@@ -45,7 +45,7 @@ function OverviewPage(props) {
                                     location={props.location}
                                     title="Data Lab - Your Guide to America’s Finances – U.S. Treasury"
                                     twitter="How much did the federal government collect and spend last year? Your Guide to America’s Finances has federal revenue, spending, deficit, and debt data available for .CSV download. #YourGuide #DataLab #OpenGov"
-                                    facebook='' reddit='' linkedin='' tumblr='' email='' />
+                                    />
                             </ControlBar>
                         </div>
 
