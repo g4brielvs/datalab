@@ -1,5 +1,5 @@
 import styles from './search.module.scss';
-import vizStyles from '../viz-control.module.scss';
+import vizStyles from './viz-control.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 

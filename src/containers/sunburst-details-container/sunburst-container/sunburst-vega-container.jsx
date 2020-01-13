@@ -8,9 +8,9 @@ import Search from 'src/components/chartpanels/search';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import SunburstDetails from '../details/sunburst-details';
 
-import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
+import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../static/data/contract-explorer/awards_contracts.csv';
+import awardsData from '../../../../static/data/contract-explorer/awards_contracts.csv';
 
 const SunburstVegaContainer = () => {
 
