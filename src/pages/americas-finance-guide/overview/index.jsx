@@ -118,7 +118,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="revenue/">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/revenue-and-gdp">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -204,7 +204,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="spending/">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/spending-and-gdp">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -291,7 +291,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="deficit/">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/explore-deficit">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -368,7 +368,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="debt/">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/explore-debt">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
