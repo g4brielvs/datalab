@@ -1,22 +1,20 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
-
 import moreAnalysesStyles from './more-analyses.module.scss';
+
 import federal from 'src/images/more-analyses/federal.jpg';
 import workers from 'src/images/more-analyses/workers.jpg';
 import budget from 'src/images/more-analyses/budget.jpg';
 import competition from 'src/images/more-analyses/competition.jpg';
+import cu from 'src/images/more-analyses/cu.png';
+import homeless from 'src/images/more-analyses/homeless.png';
+import dts from 'src/images/more-analyses/dts.png';
+import explorer from 'src/images/more-analyses/explorer.png';
 
 export default class MoreAnalyses extends React.Component {
   constructor(props) {
     super(props);
-
-if(typeof window !== 'undefined' )
-    console.log  (window.location.pathname);
-
-
-
   }
 
   analyses = [{
@@ -41,48 +39,60 @@ if(typeof window !== 'undefined' )
     subtitle: 'How often do federal agencies compete for contracts?'
   }, {
     href: 'colleges-and-universities',
-    imageSrc: competition,
-    title: 'Competition in Contracting',
-    subtitle: 'How often do federal agencies compete for contracts?'
+    imageSrc: cu,
+    title: 'Colleges and Universities',
+    subtitle: 'Federal investment in higher education'
+  }, {
+    href: 'homelessness-analysis',
+    imageSrc: homeless,
+    title: 'Homelessness Analysis',
+    subtitle: 'Explore federal programs that address homelessness'
+  }, {
+    href: 'dts',
+    imageSrc: dts,
+    title: 'Visualizing the Daily Treasury Statement',
+    subtitle: 'How much does the federal government spend each day?'
+  }, {
+    href: 'contract-explorer',
+    imageSrc: explorer,
+    title: 'Contract Explorer',
+    subtitle: 'Who receives federal contracts?'
   }];
 
-  display['/federal-employees/'] = [0,];
+  show = { // key is current page URL frag, value is array of analyses to show
+    '/federal-employees/': [0, 4, 5, 2],
+    '/colleges-and-universities/': [5, 6, 1, 3],
+    '/dts/': [2, 0, 7, 4],
+    '/federal-account-explorer/': [6, 7, 2, 1],
+  };
 
   render = () =>
     <section className={moreAnalysesStyles.analyses}>
-
-      <Grid item xs={12}
-        className={moreAnalysesStyles.heading}>
+      <Grid item xs={12} className={moreAnalysesStyles.heading}>
         <h2>
           More Analyses
         </h2>
       </Grid>
-
       <Grid
         container
         className={moreAnalysesStyles.tiles}
-        spacing={3}>
-
-
-        {this.analyses.map((item, index) =>
+        spacing={3}
+      >
+        {this.show[window.location.pathname].map((analysesIndex, i) =>
           <Grid item xs={12} sm={6} xl={3}
-            key={'analyses__tile_' + index}
-            className={`tile ${moreAnalysesStyles.tile}`}>
-
-            <Link to={item.href}>
-
+            key={'analyses_tile_' + i}
+            className={`tile ${moreAnalysesStyles.tile}`}
+          >
+            <Link to={this.analyses[analysesIndex].href}>
               <div className={moreAnalysesStyles.text}>
                 <h3 className={moreAnalysesStyles.title}>
-                  {item.title}
+                  {this.analyses[analysesIndex].title}
                 </h3>
-
                 <p className={moreAnalysesStyles.subtitle}>
-                  {item.subtitle}
+                  {this.analyses[analysesIndex].subtitle}
                 </p>
               </div>
-
-              <img src={item.imageSrc} className={moreAnalysesStyles.image} />
-
+              <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
             </Link>
           </Grid>
         )}
