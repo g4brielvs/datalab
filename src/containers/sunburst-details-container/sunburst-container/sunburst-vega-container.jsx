@@ -48,13 +48,13 @@ const SunburstVegaContainer = () => {
     )
     ;
 
-    // try to force redraw of sunburst (or entire container)
-  // const [, updateState] = React.useState();
-  // const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
+    // try to force redraw of sunburst (or entire container); NOT WORKING
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
 
   const searchSelect = (id) => {
-    sunData.tree = flareData.tree.slice(0,50);
-    // forceUpdate();
+    sunData.tree = flareData.tree.slice(0,50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
+    forceUpdate();
   }
 
   useEffect(() => {
