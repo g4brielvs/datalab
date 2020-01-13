@@ -3,10 +3,18 @@ import downloadsStyles from "./downloads.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Grid } from "@material-ui/core";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import Radium from 'radium';
 
 
 const Downloads = (props) => {
+
+  const inlineStyles = {
+    ':hover': {
+      color: 'red'
+    }
+  };
+
   function exportToJsonFile(jsonData) {
     if(typeof Blob === 'undefined'){
       return <></>;
@@ -38,6 +46,7 @@ const Downloads = (props) => {
         exportToJsonFile(props.data)
       :
         <a className={downloadsStyles.data}
+           style={inlineStyles}
            href={props.href}>
           <FontAwesomeIcon icon={faDownload} />
           &nbsp;Download
