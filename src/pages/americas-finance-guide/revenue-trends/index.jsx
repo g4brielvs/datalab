@@ -55,7 +55,7 @@ function RevenueTrendsPage(props) {
                             location={props.location}
                             title="Data Lab - Federal Revenue Trends – U.S. Treasury"
                             twitter="Wondering how federal revenue has changed over the years? Your Guide to America’s Finances has the .CSV data file. Download and perform your own analysis. #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Federal Revenue Trends Over Time</h1>
