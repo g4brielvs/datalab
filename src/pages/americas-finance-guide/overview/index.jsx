@@ -417,7 +417,7 @@ function OverviewPage(props) {
 
                 <div className="historical-quote">
                     <blockquote>We might hope to see the finances of the Union as <strong>clear and intelligible as a merchant's books</strong>, so that every member of Congress, and <strong>every person</strong> of any mind in the Union should be able to <strong>comprehend them</strong>, to investigate abuses, and consequently to control them.</blockquote>
-                    <img role="presentation" className="historical-quote__image" src="/assets/ffg/bp/jefferson.png" alt=""></img>
+                    <img role="presentation" className="historical-quote__image" src="/americas-finance-guide/images/jefferson.png" alt=""></img>
                     <p className="historical-quote__credit"><strong>Thomas Jefferson</strong> to Albert Gallatin, 1802<br/>(edited)</p>
                 </div>
 
