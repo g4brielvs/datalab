@@ -97,6 +97,30 @@ module.exports = [ {
     }
 }, {
     entry: {
+        overview: './src/libs/ffg/src/bigPicture/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    // optimization: {
+    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/overview/',
+        publicPath: '/static/americas-finance-guide/overview/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
         // categories: './citizens-guide/src/revenue/categories/index.js',
         trends: './src/libs/ffg/src/revenue/trends/index.js',
