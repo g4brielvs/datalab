@@ -10,34 +10,29 @@ import { useEffect } from "react";
 const AfgNav = (props) => {
     let navHtml;
     let navClasses;
+    
     function getFilename(a) {
         return a.match(/.*\/(.*)$/i).pop();
     }
 
     function setCurrentPageActive() {
         
-        var filename = getFilename(props.location.pathname);
+        var filename = props.location.pathname;
+        filename = filename.slice(24);
+        filename = filename.slice(0, -1);
 
-        filename = filename || '/americas-finance-guide/revenue-and-gdp';
-
-        console.log('filename', filename);
-
-        console.log('style.chapterNavPrimaryList', style.chapterNavPrimaryList);
+        filename = filename || 'revenue-and-gdp';
 
         var ul = document.getElementsByClassName(style.chapterNavPrimaryList);
 
-        console.log('ul', ul);
-
         if (!ul.item(0)) {
-            console.log('empty return');
             return;
         }
 
         var allSecondaryLi = ul.item(0).children,
             liLength = allSecondaryLi.length;
 
-        if(filename === '/americas-finance-guide/revenue-and-gdp'){
-            console.log('adding active');
+        if(filename === 'revenue-and-gdp'){
             allSecondaryLi.item(1).classList.add(style.active);
             return true;
         }
@@ -96,9 +91,9 @@ const AfgNav = (props) => {
         navClasses = `${style.chapterNav} ${style.chapterNavRevenue}`;
         navHtml = <>
             <li><a href="/americas-finance-guide/revenue-and-gdp">Revenue and GDP</a></li>
-        <li><a href="/americas-finance-guide/revenue-categories">Revenue Categories</a></li>
-        <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
-        <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
+            <li><a href="/americas-finance-guide/revenue-categories">Revenue Categories</a></li>
+            <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
+            <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
         </>
     }
 
