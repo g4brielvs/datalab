@@ -45,7 +45,7 @@ function OverviewPage(props) {
                                     location={props.location}
                                     title="Data Lab - Your Guide to America’s Finances – U.S. Treasury"
                                     twitter="How much did the federal government collect and spend last year? Your Guide to America’s Finances has federal revenue, spending, deficit, and debt data available for .CSV download. #YourGuide #DataLab #OpenGov"
-                                    facebook='' reddit='' linkedin='' tumblr='' email='' />
+                                    />
                             </ControlBar>
                         </div>
 
@@ -118,7 +118,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="revenue/">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/revenue-and-gdp">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -204,7 +204,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="spending/">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/spending-and-gdp">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -291,7 +291,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="deficit/">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/explore-deficit">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -368,7 +368,7 @@ function OverviewPage(props) {
                                             </div>
                                             <div className="anecdote__nav-control"></div>
                                         </div>
-                                        <a className="anecdote__cta link-button" href="debt/">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                        <a className="anecdote__cta link-button" href="/americas-finance-guide/explore-debt">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                     </div>
                                 </section>
 
@@ -417,7 +417,7 @@ function OverviewPage(props) {
 
                 <div className="historical-quote">
                     <blockquote>We might hope to see the finances of the Union as <strong>clear and intelligible as a merchant's books</strong>, so that every member of Congress, and <strong>every person</strong> of any mind in the Union should be able to <strong>comprehend them</strong>, to investigate abuses, and consequently to control them.</blockquote>
-                    <img role="presentation" className="historical-quote__image" src="/assets/ffg/bp/jefferson.png" alt=""></img>
+                    <img role="presentation" className="historical-quote__image" src="/americas-finance-guide/images/jefferson.png" alt=""></img>
                     <p className="historical-quote__credit"><strong>Thomas Jefferson</strong> to Albert Gallatin, 1802<br/>(edited)</p>
                 </div>
 
