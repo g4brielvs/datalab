@@ -29,12 +29,12 @@ export default class Sunburst extends React.Component {
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
   }
 
-  componentDidUpdate(prevProps) {
-    // console.log(this.props.data);  works: data is updated by parent, but chart won't redraw when state changed below
-    if (this.props.data !== prevProps.data) {
-      this.setState({ data: this.props.data });
-    }
-  }
+  // works: data is updated by parent, but chart won't redraw when state changed below
+  // componentDidUpdate(prevProps) { 
+  //   if (this.props.data !== prevProps.data) {
+  //     this.setState({ data: this.props.data });
+  //   }
+  // }
 
   handleHover(...args) {
     const item = args[1];
