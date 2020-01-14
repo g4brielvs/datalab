@@ -1,11 +1,11 @@
 import '../../styles/index.scss';
-import storyHeadingStyles from "../../components/section-elements/story-heading/story-heading.module.scss"
+import storyHeadingStyles from "../../components/section-elements/story-heading/story-heading.module.scss";
 import React from 'react';
 
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import ControlBar from "../../components/control-bar/control-bar"
+import ControlBar from "../../components/control-bar/control-bar";
 
 const Overview = (props) => {
   return (
@@ -23,10 +23,10 @@ const Overview = (props) => {
 
       <ControlBar>
         <Share location={props.location}
-                   title='Check out this analysis on Data Lab'
-                   text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-                   twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-                   />
+               title='Check out this analysis on Data Lab'
+               text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+               twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+        />
       </ControlBar>
 
       <section id='investment-overview'>
