@@ -1,6 +1,5 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/countryCommon.scss'
 
 import React from "react"
@@ -12,9 +11,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingCountryComparisonPage(props) {
     return (
@@ -35,19 +35,7 @@ function SpendingCountryComparisonPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--spending">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./categories.html">Spending Categories</a></li>
-                        <li><a href="./trends.html">Federal Spending Trends</a></li>
-                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="ffg-wrapper">
                     <ControlBar>

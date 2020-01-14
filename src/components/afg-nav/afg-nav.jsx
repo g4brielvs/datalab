@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const AfgNav = (props) => {
     let navHtml;
     let navClasses;
-    
+
     function getFilename(a) {
         return a.match(/.*\/(.*)$/i).pop();
     }
@@ -95,6 +95,16 @@ const AfgNav = (props) => {
             <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
             <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
         </>
+        break;
+        case 'spending': 
+        navClasses = `${style.chapterNav} ${style.chapterNavSpending}`;
+        navHtml = <>
+            <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
+            <li><a href="/americas-finance-guide/spending-categories">Spending Categories</a></li>
+            <li><a href="/americas-finance-guide/spending-trends">Federal Spending Trends</a></li>
+            <li><a href="/americas-finance-guide/spending-country-comparison">Country Comparison</a></li>
+        </>
+        break;
     }
 
     return ( 
