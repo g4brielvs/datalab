@@ -1,9 +1,10 @@
-(function () {
+function notUsed () {
     function getFilename(a) {
         return a.match(/.*\/(.*)$/i).pop();
     }
 
     function setCurrentPageActive() {
+        
         var filename = getFilename(window.location.pathname);
 
         filename = filename || 'index.html';
@@ -67,4 +68,4 @@
     if (setCurrentPageActive()) {
         initButton();
     }
-})();
+};

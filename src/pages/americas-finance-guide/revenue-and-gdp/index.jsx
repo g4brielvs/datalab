@@ -40,7 +40,7 @@ function RevenueAndGdpPage(props) {
             <Default>
                 <HeadOnly></HeadOnly>
 
-                <AfgNavRevenue></AfgNavRevenue>
+                <AfgNavRevenue location={props.location} chapter={'revenue'}></AfgNavRevenue>
 
                 <div className="ffg-wrapper revenue-intro">
                     <ControlBar>
