@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery } from 'gatsby';
 import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
@@ -15,17 +15,19 @@ import DataTable from "../../components/table/data-table";
 import Grid from '@material-ui/core/Grid';
 import VizDetails from '../../components/chartpanels/viz-detail';
 import VizControlPanel from '../../components/chartpanels/viz-control';
+import SunburstIcon from 'src/images/sunburst_icon.svg';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 const Institutions = (props) => {
 
-  let searchList = GeoDataMapbox.features.map(school => ({id: school.id, heading: school.properties.Recipient, subheading: school.properties.INST_TYPE_1}));
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features.map(school => ({id: school.id, heading: school.properties.Recipient, subheading: school.properties.INST_TYPE_1}));  
 
   function filterByClicked(clicked) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clicked.id);
-    console.log(filteredList);
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clicked);
+    setSchool(filteredList)
     return filteredList;
   };
 
@@ -117,6 +119,7 @@ const Institutions = (props) => {
   };
 
   const detailPanelRef = React.createRef();
+
   const tableColumnTitles = [{title: 'Institution'}, {title: 'Type'}, {title: 'Contracts'}, {title: 'Grants'}, {title: 'Student Aid'}, {title: 'Total $ Received'}];
 
   return (<>
@@ -152,10 +155,12 @@ const Institutions = (props) => {
              onSelect={filterByClicked}
              switchView={filterByClicked}
            >
+             <img src={SunburstIcon}/>
            </VizControlPanel>
            <Mapbox
              data={GeoDataMapbox}
              showDetails={getClickedDetails}
+             clickedSchool={clickedSchool}
            />
            {/* <DataTable */}
            {/*   data={dataTableData.map(x => { */}
