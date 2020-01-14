@@ -10,7 +10,7 @@ import SunburstDetails from '../details/sunburst-details';
 
 import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../../static/data/contract-explorer/awards_contracts_v2.csv';
+import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 
 const SunburstVegaContainer = () => {
 
@@ -23,6 +23,8 @@ const SunburstVegaContainer = () => {
       }
     }
   `);
+
+
 
   const searchList = searchData.allAwardsContractsV2Csv.agencies.map((n, i) => (
     {
