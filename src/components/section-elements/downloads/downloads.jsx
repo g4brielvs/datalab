@@ -5,13 +5,15 @@ import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import Radium from 'radium';
-
+import styles from 'src/styles/variables.scss';
 
 const Downloads = (props) => {
 
+  console.log(props);
+
   const inlineStyles = {
     ':hover': {
-      color: 'red'
+      color: `${styles.legacyBlue}`
     }
   };
 
@@ -58,8 +60,12 @@ const Downloads = (props) => {
 
 Downloads.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
-  date: PropTypes.date,
+  date: PropTypes.string,
   href: PropTypes.string
 }
 
-export default Downloads;
+const StyledDownloads = Radium(Downloads);
+
+export default StyledDownloads;
+
+
