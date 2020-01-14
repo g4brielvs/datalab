@@ -1,4 +1,8 @@
-import csvData from "../../../../../static/data/contract-explorer/awards_contracts_v2";
+/* PLEASE DO NOT DELETE this file
+  This code is used to transform the sunburst data in to code that's usable by Vega.  This should be handled on the data analyst
+  side but hasn't been rewritten yet due to the analyst backlog being long. */
+
+import csvData from "../../../../../static/data/contract-explorer/awards_contracts_v2.csv";
 
 function convertCsvToJson() {
   let id = 1, existingItem;
@@ -101,15 +105,15 @@ function convertCsvToJson() {
     "U.S. Tax Court"];
 
   csvData.forEach(function (row) {
-    Object.keys(row).forEach(function(key) {
+    Object.keys(row).forEach(function (key) {
 
-      if(key === 'subagency') {
-        existingItem = _.filter(tree, _.matches({ 'name' : row[key], 'type' : key, 'agency': row['agency']}));
+      if (key === 'subagency') {
+        existingItem = _.filter(tree, _.matches({ 'name': row[key], 'type': key, 'agency': row['agency'] }));
       } else {
-        existingItem = _.filter(tree, _.matches({ 'name' : row[key], 'type' : key}));
+        existingItem = _.filter(tree, _.matches({ 'name': row[key], 'type': key }));
       }
 
-      if(key === 'obligation') {
+      if (key === 'obligation') {
         return;
       }
 
@@ -134,14 +138,14 @@ function convertCsvToJson() {
             newObj.parent = 1;
             break;
           case 'subagency':
-            const tempSubAgencyParent = _.filter(tree, _.matches({ 'name' : row['agency'], 'type' : 'agency'}));
+            const tempSubAgencyParent = _.filter(tree, _.matches({ 'name': row['agency'], 'type': 'agency' }));
             const tempSubAgencyParentId = tempSubAgencyParent[0]['id'];
             newObj.parent = tempSubAgencyParentId;
             break;
           case 'recipient':
             newObj['size'] = parseInt(row['obligation']);
-            const tempRecipientParent = _.filter(tree, _.matches({ 'name' : row['subagency'], 'type' : 'subagency', 'agency' : row['agency']}));
-            if(tempRecipientParent && tempRecipientParent.length > 0) {
+            const tempRecipientParent = _.filter(tree, _.matches({ 'name': row['subagency'], 'type': 'subagency', 'agency': row['agency'] }));
+            if (tempRecipientParent && tempRecipientParent.length > 0) {
               const tempRecipientParentId = tempRecipientParent[0]['id'];
               newObj.parent = tempRecipientParentId;
             } else {
@@ -158,7 +162,7 @@ function convertCsvToJson() {
   });
 
   console.log(tree);
-  
+
   return tree;
 
 }
