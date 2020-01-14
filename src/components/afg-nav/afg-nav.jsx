@@ -7,7 +7,7 @@ import { faAngleLeft, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg
 import { useEffect } from "react";
 
 
-const AfgNavRevenue = (props) => {
+const AfgNav = (props) => {
     let navHtml;
     let navClasses;
     function getFilename(a) {
@@ -117,4 +117,4 @@ const AfgNavRevenue = (props) => {
 }
 
 
-export default AfgNavRevenue;
+export default AfgNav;

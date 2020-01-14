@@ -17,10 +17,10 @@ import { Helmet } from 'react-helmet';
 import AnecdoteRevenueSVG from '../../../libs/assets/ffg/icons/anecdote-revenue.svg';
 import DefinitionSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
-import AfgNavRevenue from '../../../components/afg-nav-revenue/afg-nav-revenue'
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faReply } from '@fortawesome/free-solid-svg-icons';
 
 function RevenueAndGdpPage(props) {
     return (
@@ -40,7 +40,7 @@ function RevenueAndGdpPage(props) {
             <Default>
                 <HeadOnly></HeadOnly>
 
-                <AfgNavRevenue location={props.location} chapter={'revenue'}></AfgNavRevenue>
+                <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
                 <div className="ffg-wrapper revenue-intro">
                     <ControlBar>
@@ -48,7 +48,7 @@ function RevenueAndGdpPage(props) {
                             location={props.location}
                             title='Data Lab - Federal Revenue and GDP – U.S. Treasury'
                             twitter='How does federal revenue compare to spending and the size of the economy? Download the .CSV data files from Your Guide to America’s Finances and perform your own analysis! #YourGuide #DataLab #OpenGov'
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the government collected {AfgData.current_fy_revenue.value} in revenue.
