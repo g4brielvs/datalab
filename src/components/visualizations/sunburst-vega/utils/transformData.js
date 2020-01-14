@@ -1,4 +1,4 @@
-import csvData from "../../../../../static/unstructured-data/contract-explorer/awards_contracts_v2";
+import csvData from "../../../../../static/data/contract-explorer/awards_contracts_v2";
 
 function convertCsvToJson() {
   let id = 1, existingItem;
