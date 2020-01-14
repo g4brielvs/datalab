@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby';
 import styles from './sunburst-vega-container.module.scss';
 
 import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
@@ -14,48 +13,41 @@ import awardsData from '../../../../static/unstructured-data/contract-explorer/a
 
 const SunburstVegaContainer = () => {
 
-  const searchData = useStaticQuery(graphql`
-    query {
-      allAwardsContractsV2Csv {
-        agencies:distinct(field: agency)
-        subagencies:distinct(field: subagency)
-        recipients:distinct(field: recipient)
-      }
+  // create arrays of unique agencies, subagencies and recipients with ID for search list
+  const agencies = [];
+  const subagencies = [];
+  const recipients = [];
+  awardsData.map((e, i) => {
+
+    if (agencies.findIndex(a => a.display === e.agency) === -1) {
+      agencies.push({
+        id: `a${i}`,
+        display: e.agency
+      });
     }
-  `);
 
-
-
-  const searchList = searchData.allAwardsContractsV2Csv.agencies.map((n, i) => (
-    {
-      id: `a${i}`,
-      display: n
+    if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
+      subagencies.push({
+        id: `s${i}`,
+        display: e.subagency
+      });
     }
-  ))
-    .concat(
-      searchData.allAwardsContractsV2Csv.subagencies.map((n, i) => (
-        {
-          id: `s${i}`,
-          display: n
-        }
-      ))
-    )
-    .concat(
-      searchData.allAwardsContractsV2Csv.recipients.map((n, i) => (
-        {
-          id: `r${i}`,
-          display: n
-        }
-      ))
-    )
-    ;
 
-    // try to force redraw of sunburst (or entire container); NOT WORKING
+    if (recipients.findIndex(r => r.display === e.recipient) === -1) {
+      recipients.push({
+        id: `r${i}`,
+        display: e.recipient
+      });
+    }
+  });
+  const searchList = agencies.concat(subagencies).concat(recipients);
+
+  // try to force redraw of sunburst (or entire container); NOT WORKING
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
 
   const searchSelect = (id) => {
-    sunData.tree = flareData.tree.slice(0,50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
+    sunData.tree = flareData.tree.slice(0, 50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
     forceUpdate();
   }
 
