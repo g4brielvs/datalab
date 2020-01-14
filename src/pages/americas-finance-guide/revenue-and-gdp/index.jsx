@@ -1,7 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -13,10 +12,8 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
-
 import AnecdoteRevenueSVG from '../../../libs/assets/ffg/icons/anecdote-revenue.svg';
 import DefinitionSVG from '../../../libs/assets/ffg/icons/definition.svg';
-
 import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
