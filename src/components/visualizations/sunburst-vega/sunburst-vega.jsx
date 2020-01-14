@@ -5,9 +5,11 @@ import sunburstSpec from './utils/sunburst-spec';
 
 import './sunburst-vega.scss';
 
+import transformData from './utils/transformData.js';
 export default class Sunburst extends React.Component {
   constructor(props) {
     super(props);
+    // console.log(transformData());
 
     this.state = {
       data: props.data,
