@@ -798,9 +798,9 @@ export default function FederalPrograms(props) {
     return x.fed_funding > 0;
   }
 
-  function searchSelect (id)  {
+  function searchSelect(id) {
 
-    
+
 
 
 
@@ -821,22 +821,22 @@ export default function FederalPrograms(props) {
         title="Instructions">
         <p>Click the map to get started</p>
       </Accordion>
-      <ControlBar>
-        <Share location={props.location} />
-      </ControlBar>
+      <Grid container justify='space-between'>
+        <Grid item xs={8}>
+          <Search
+            searchList={searchList}
+            initItem='CA-600'
+            listDescription='Search List of Contracts and Agencies'
+            onSelect={searchSelect}
+          />
+        </Grid>
+        <Grid item>
+          <ControlBar>
+            <Share location={props.location} />
+          </ControlBar>
+        </Grid>
+      </Grid>
       <div id="tooltipSection2" className="tooltip-module" />
-
-
-
-      <Search
-        searchList={searchList}
-        initItem='CA-600'
-        listDescription='Search List of Contracts and Agencies'
-        onSelect={searchSelect}
-      />
-
-
-
       <h1 id='container2_title' />
       <Grid container>
         <Grid item xs={12} md={6}>
@@ -858,6 +858,6 @@ export default function FederalPrograms(props) {
         href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
         date={'March 2019'}
       />
-    </div>
+    </div >
   )
 }
