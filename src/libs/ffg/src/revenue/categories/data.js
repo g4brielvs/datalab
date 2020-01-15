@@ -1,4 +1,3 @@
-// import CategoryData from '/americas-finance-guide/afgData/federal_revenue_categories.csv';
 import CategoryData from '../../../../../../static/americas-finance-guide/afgData/federal_revenue_categories.csv';
 import { min, max } from 'd3-array';
 
