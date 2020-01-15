@@ -95,7 +95,7 @@ const AfgNav = (props) => {
             <li><a href="/americas-finance-guide/revenue-trends">Federal Revenue Trends</a></li>
             <li><a href="/americas-finance-guide/revenue-country-comparison">Country Comparison</a></li>
         </>
-        break;
+            break;
         case 'spending': 
         navClasses = `${style.chapterNav} ${style.chapterNavSpending}`;
         navHtml = <>
@@ -104,7 +104,7 @@ const AfgNav = (props) => {
             <li><a href="/americas-finance-guide/spending-trends">Federal Spending Trends</a></li>
             <li><a href="/americas-finance-guide/spending-country-comparison">Country Comparison</a></li>
         </>
-        break;
+            break;
         case 'deficit': 
         navClasses = `${style.chapterNav} ${style.chapterNavDeficit}`;
         navHtml = <>
@@ -112,7 +112,18 @@ const AfgNav = (props) => {
             <li><a href="/americas-finance-guide/deficit-trends">Federal Deficit Trends</a></li>
             <li><a href="/americas-finance-guide/deficit-country-comparison">Country Comparison</a></li>
         </>
-        break;
+            break;
+        case 'debt': 
+        navClasses = `${style.chapterNav} ${style.chapterNavDebt}`;
+        navHtml = <>
+            <li><a href="/americas-finance-guide/explore-debt">Explore Debt</a></li>
+            <li><a href="/americas-finance-guide/debt-trends">Federal Debt Trends</a></li>
+            <li><a href="/americas-finance-guide/debt-analysis">Federal Debt Analysis</a></li>
+            <li><a href="/americas-finance-guide/debt-country-comparison">Country Comparison</a></li>
+        </>
+            break;
+        default:
+            break;
     }
 
     return ( 
