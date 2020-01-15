@@ -25,7 +25,6 @@ function SpendingAndGdpPage(props) {
         <>
             <Helmet>
                 <script defer src="/americas-finance-guide/spending/intro.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

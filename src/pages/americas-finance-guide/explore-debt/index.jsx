@@ -24,7 +24,6 @@ function ExploreDebtPage(props) {
         <>
             <Helmet>
                 <script defer src="/americas-finance-guide/debt/intro.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

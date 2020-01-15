@@ -22,7 +22,6 @@ function RevenueCategoriesPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/revenue-categories/index.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

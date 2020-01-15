@@ -24,7 +24,6 @@ function RevenueAndGdpPage(props) {
         <>
             <Helmet>
                 <script defer src="/americas-finance-guide/revenue/intro.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

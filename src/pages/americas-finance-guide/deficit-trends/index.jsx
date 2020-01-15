@@ -23,7 +23,6 @@ function DeficitTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/deficit/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

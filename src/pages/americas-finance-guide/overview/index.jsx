@@ -22,7 +22,6 @@ function OverviewPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/overview/index.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

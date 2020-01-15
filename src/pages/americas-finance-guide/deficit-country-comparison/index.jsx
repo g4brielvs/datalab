@@ -23,7 +23,6 @@ function DeficitCountryComparisonPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/deficit/countryComparison.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

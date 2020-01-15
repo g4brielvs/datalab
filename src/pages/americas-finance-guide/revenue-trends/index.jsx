@@ -22,7 +22,6 @@ function RevenueTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/revenue/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
