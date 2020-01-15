@@ -455,11 +455,6 @@ export default function FederalPrograms(props) {
   }
 
   function GenPanelTwo() {
-
-    // // Initialize Panel 2 info
-    // for (let y = 0; y < us.features.length; y++) {
-    //     if (us.features[y].properties.coc_number === 'CA-600') {
-    //         const la = us.features[y];
     const xyz = map2Centered;
 
     BarChart(xyz);
@@ -468,8 +463,6 @@ export default function FederalPrograms(props) {
     createCoCTable(xyz);
     makeMapTitle(xyz);
     p21ClickedP1(xyz);
-    //     }
-    // }
 
     m.selectAll('p2_1_path')
       .data(us.features)
@@ -799,13 +792,17 @@ export default function FederalPrograms(props) {
   }
 
   function searchSelect(id) {
-
-
-
-
-
-
+    const d = us.features.find(f => f.properties.coc_number === id);
+    if (d) {
+      BarChart(d);
+      StateBarChart(d);
+      createCoCTable(d);
+      makeMapTitle(d);
+      createContact(d);
+      p21Clicked(d);
+    }
   }
+
 
   useEffect(() => {
     Tooltip = tooltipModule();
