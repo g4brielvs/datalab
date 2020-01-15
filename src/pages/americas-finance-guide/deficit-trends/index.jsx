@@ -13,9 +13,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function DeficitTrendsPage(props) {
     return (
@@ -36,27 +37,15 @@ function DeficitTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--deficit">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="./explore-deficit">Explore Deficit</a></li>
-                        <li><a href="./deficit-trends">Federal Deficit Trends</a></li>
-                        <li><a href="./deficit-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
-                {/* add className here? you had to for deficit intro */}
                 <div className="ffg-wrapper">
                     <ControlBar>
                         <Share 
                             location={props.location}
                             title="Data Lab - Federal Deficit Trends – U.S. Treasury"
                             text="How has the deficit changed over the past few years? Check out #YourGuide for visualizations. #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Federal Deficit Trends Over Time</h1>

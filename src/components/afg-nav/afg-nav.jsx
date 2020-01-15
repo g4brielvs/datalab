@@ -105,6 +105,14 @@ const AfgNav = (props) => {
             <li><a href="/americas-finance-guide/spending-country-comparison">Country Comparison</a></li>
         </>
         break;
+        case 'deficit': 
+        navClasses = `${style.chapterNav} ${style.chapterNavDeficit}`;
+        navHtml = <>
+            <li><a href="/americas-finance-guide/explore-deficit">Explore Deficit</a></li>
+            <li><a href="/americas-finance-guide/deficit-trends">Federal Deficit Trends</a></li>
+            <li><a href="/americas-finance-guide/deficit-country-comparison">Country Comparison</a></li>
+        </>
+        break;
     }
 
     return ( 
