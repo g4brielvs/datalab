@@ -1,6 +1,5 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/bigPicture/scss/bp.scss'
 
 import React from "react"
@@ -15,7 +14,7 @@ import { Helmet } from 'react-helmet';
 import BpToc from '../../../components/bpToc/bpToc'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleDown, faStreetView } from '@fortawesome/free-solid-svg-icons';
 
 function OverviewPage(props) {
     return (
