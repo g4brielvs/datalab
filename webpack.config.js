@@ -122,7 +122,7 @@ module.exports = [ {
 }, {
     entry: {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
-        // categories: './citizens-guide/src/revenue/categories/index.js',
+        categories: './src/libs/ffg/src/revenue/categories/index.js',
         trends: './src/libs/ffg/src/revenue/trends/index.js',
         countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
@@ -203,8 +203,8 @@ module.exports = [ {
     entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
         trends: './src/libs/ffg/src/debt/trends/index.js',
-        // analysis: './citizens-guide/src/debt/analysis/index.js',
-        countryComparison: './src/libs/ffg/src/debt/countries/index.js',
+        analysis: './src/libs/ffg/src/debt/analysis/index.js',
+        // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
     devtool: devtool,
     devServer: devServer,

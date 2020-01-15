@@ -3,7 +3,6 @@ import { byYear } from '../data-spending';
 import { drawChart as barChart } from './bar/chart';
 import colors from '../../globalSass/colors.scss';
 import { establishContainer } from '../../utils';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 const d3 = { select, selectAll },
     chartTitle = d3.select('h2.chart-title .title-text'),
@@ -14,7 +13,7 @@ const d3 = { select, selectAll },
 
 let svg,
     config = {
-        data: byYear(Mapping.current_fy.value),
+        data: byYear('2019'),
         sectionColor: colors.colorSpendingPrimary,
         dataType: 'category',
         accessibilityAttrs : {
