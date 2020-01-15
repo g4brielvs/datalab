@@ -103,6 +103,7 @@ export default class DataTable extends React.Component {
               const columnWidth = item.width || this.defaultWidth / this.props.columnTitles.length;
               return (
                 <Column
+                  key={key}
                   label={item.title}
                   dataKey={key.toString()}
                   width={columnWidth}
