@@ -204,7 +204,7 @@ module.exports = [ {
         intro: './src/libs/ffg/src/debt/intro/index.js',
         trends: './src/libs/ffg/src/debt/trends/index.js',
         analysis: './src/libs/ffg/src/debt/analysis/index.js',
-        // countryComparison: './citizens-guide/src/debt/countries/index.js',
+        countryComparison: './src/libs/ffg/src/debt/countries/index.js',
     },
     devtool: devtool,
     devServer: devServer,
