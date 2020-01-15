@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3v3';
+import styles from './federal-programs.module.scss';
 
 import Accordion from '../../components/accordion/accordion';
 import Share from '../../components/share/share';
-import ControlBar from '../../components/control-bar/control-bar';
 import dataSource from '../../components/visualizations/homelessness-analysis/utils/data-module';
 import Downloads from '../../components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
@@ -803,7 +803,6 @@ export default function FederalPrograms(props) {
     }
   }
 
-
   useEffect(() => {
     Tooltip = tooltipModule();
     init();
@@ -819,20 +818,21 @@ export default function FederalPrograms(props) {
         <p>Click the map to get started</p>
       </Accordion>
 
-      <Hidden mdDown>
+      <Share location={props.location} />
+      <div className={styles.searchList}>
+      <Search
+        searchList={searchList}
+        initItem='CA-600'
+        listDescription='Search List of Contracts and Agencies'
+        onSelect={searchSelect}
+      />
+      </div>
+
+      {/* <Hidden mdDown>
         <Grid container justify='space-between'>
           <Grid item xs={8}>
-            <Search
-              searchList={searchList}
-              initItem='CA-600'
-              listDescription='Search List of Contracts and Agencies'
-              onSelect={searchSelect}
-            />
           </Grid>
           <Grid item>
-            <ControlBar>
-              <Share location={props.location} />
-            </ControlBar>
           </Grid>
         </Grid>
       </Hidden>
@@ -850,7 +850,7 @@ export default function FederalPrograms(props) {
             />
           </Grid>
         </Grid>
-      </Hidden>
+      </Hidden> */}
 
       <div id="tooltipSection2" className="tooltip-module" />
       <h1 id='container2_title' />

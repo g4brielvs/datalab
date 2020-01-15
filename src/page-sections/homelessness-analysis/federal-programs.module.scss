@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.search-list {
+  margin-top: 8px;
+  width: 33%;
+  height: 50px;
+}
+
+@media (min-width: $phone) and (max-width: $desktop - 1) {
+  .search-list {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: $phone) {
+  .search-list {
+    width: 66%;
+  }
+}
