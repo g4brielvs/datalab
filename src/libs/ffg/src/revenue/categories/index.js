@@ -5,7 +5,6 @@ import { initSankey, destroySankey } from "../../components/sankey/init";
 import { init as initBarGraph, initChart } from "../../spending/categories/init";
 import colors from '../../globalSass/colors.scss';
 import '../../infoBox';
-import Mapping from "../../../../_data/object_mapping.yml";
 
 const config = {
     data: [],
@@ -16,7 +15,7 @@ const config = {
         desc: 'The federal government collected $1.7 trillion in individual income taxes in 2019. That represented 49.6% of all federal revenue for the year. Social Security and Medicare taxes added another $1.2 trillion (or 34%) of total federal revenue. Corporate income taxes were the third largest source of revenue for the federal government in 2019 with $2.3 billion collected. Miscellaneous revenue, excise taxes, unemployment insurance, customs duties, estate and gift taxes, and other retirement taxes contributed the remaining $322 billion of federal revenue for 2019.'
     }
 },
-    data = getDataByYear(Mapping.current_fy.value),
+    data = getDataByYear('2019'),
     d3 = { select, selectAll },
     viz = d3.select('#viz');
 
