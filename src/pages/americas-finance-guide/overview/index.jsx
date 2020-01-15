@@ -1,7 +1,7 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/assets/ffg/nav/nav.css'
-import '../../../libs/ffg/src/bigpicture/scss/bp.scss'
+import '../../../libs/ffg/src/bigPicture/scss/bp.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
