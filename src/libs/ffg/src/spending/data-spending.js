@@ -1,4 +1,3 @@
-// import SpendingData from '/americas-finance-guide/afgData/federal_spending_categories.csv';
 import SpendingData from '../../../../../static/americas-finance-guide/afgData/federal_spending_categories.csv';
 
 import { min } from 'd3-array';

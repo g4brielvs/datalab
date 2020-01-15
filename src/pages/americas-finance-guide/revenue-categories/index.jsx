@@ -55,7 +55,7 @@ function RevenueCategoriesPage(props) {
                             location={props.location}
                             title="Data Lab - Revenue Categories – U.S. Treasury"
                             twitter="What are the federal government’s sources of revenue? Search by category with Your Guide to America’s Finances and download .CSV data files for your own analysis! #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Sources of Revenue for the Federal Government </h1>
@@ -125,7 +125,7 @@ function RevenueCategoriesPage(props) {
                                     <h1>How has government revenue changed over time?</h1>
                                     <p>When you're done here, explore the trends in federal revenue over the past {AfgData.number_trend_years.value} years.</p>
                                 </div>
-                                <a className="tour__link" href="./revenue-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                                <a className="tour__link" href="/americas-finance-guide/revenue-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
                             </section>
                         </div>
                     </div>
