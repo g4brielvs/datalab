@@ -828,30 +828,6 @@ export default function FederalPrograms(props) {
       />
       </div>
 
-      {/* <Hidden mdDown>
-        <Grid container justify='space-between'>
-          <Grid item xs={8}>
-          </Grid>
-          <Grid item>
-          </Grid>
-        </Grid>
-      </Hidden>
-      <Hidden lgUp>
-        <ControlBar>
-          <Share location={props.location} />
-        </ControlBar>
-        <Grid container justify='space-around'>
-          <Grid item xs={8} sm={4}>
-            <Search
-              searchList={searchList}
-              initItem='CA-600'
-              listDescription='Search List of Contracts and Agencies'
-              onSelect={searchSelect}
-            />
-          </Grid>
-        </Grid>
-      </Hidden> */}
-
       <div id="tooltipSection2" className="tooltip-module" />
       <h1 id='container2_title' />
       <Grid container>
