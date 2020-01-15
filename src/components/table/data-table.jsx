@@ -100,7 +100,7 @@ export default class DataTable extends React.Component {
             sortBy={sortBy}
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {
-              const columnWidth = this.defaultWidth / this.props.columnTitles.length;
+              const columnWidth = item.width || this.defaultWidth / this.props.columnTitles.length;
               return (
                 <Column
                   label={item.title}

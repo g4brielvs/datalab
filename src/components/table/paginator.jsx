@@ -23,7 +23,7 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
         <div>Showing  {pageStart} to {pageEnd} of {itemCount} entries</div>
       </Grid>
       <Grid item xs={8}
-            style={{ 'text-align': 'right' }}>
+            style={{ textAlign: 'right' }}>
         <Button.Group compact>
           {showStart && (
             [
