@@ -1,21 +1,22 @@
 @import '../../../styles/variables';
 
-.sunburst-vega-container {
-  .header {
-    height: 2.5rem
-  }
+.header {
+  height: 2.5rem
+}
 
-  .breadcrumbs-container {
-    padding-left: 2.125rem
-  }
+.sunburst-details {
+}
 
-  .sunburst-details {
-    margin-top: 40px;
-    height: 40px;
-    font-size: 1rem;
-    text-align: center;
-    color: #666666;
-  }
+.breadcrumbs-container {
+  padding-left: 2.125rem
+}
+
+.sunburst-message {
+  margin-top: 40px;
+  height: 40px;
+  font-size: 1rem;
+  text-align: center;
+  color: #666666;
 }
 
 @media (max-width: $tablet) {
