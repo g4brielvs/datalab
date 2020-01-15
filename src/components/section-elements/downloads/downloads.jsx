@@ -49,7 +49,7 @@ const Downloads = (props) => {
 
 Downloads.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
-  date: PropTypes.date,
+  date: PropTypes.string,
   href: PropTypes.string
 }
 
