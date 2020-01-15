@@ -6,7 +6,7 @@ import Share from '../../components/share/share';
 import ControlBar from '../../components/control-bar/control-bar';
 import dataSource from '../../components/visualizations/homelessness-analysis/utils/data-module';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import Search from 'src/components/chartpanels/search';
 import tooltipModule from '../../components/tooltip/tooltip';
 
@@ -821,21 +821,40 @@ export default function FederalPrograms(props) {
         title="Instructions">
         <p>Click the map to get started</p>
       </Accordion>
-      <Grid container justify='space-between'>
-        <Grid item xs={8}>
-          <Search
-            searchList={searchList}
-            initItem='CA-600'
-            listDescription='Search List of Contracts and Agencies'
-            onSelect={searchSelect}
-          />
+
+      <Hidden mdDown>
+        <Grid container justify='space-between'>
+          <Grid item xs={8}>
+            <Search
+              searchList={searchList}
+              initItem='CA-600'
+              listDescription='Search List of Contracts and Agencies'
+              onSelect={searchSelect}
+            />
+          </Grid>
+          <Grid item>
+            <ControlBar>
+              <Share location={props.location} />
+            </ControlBar>
+          </Grid>
         </Grid>
-        <Grid item>
-          <ControlBar>
-            <Share location={props.location} />
-          </ControlBar>
+      </Hidden>
+      <Hidden lgUp>
+        <ControlBar>
+          <Share location={props.location} />
+        </ControlBar>
+        <Grid container justify='space-around'>
+          <Grid item xs={8} sm={4}>
+            <Search
+              searchList={searchList}
+              initItem='CA-600'
+              listDescription='Search List of Contracts and Agencies'
+              onSelect={searchSelect}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      </Hidden>
+
       <div id="tooltipSection2" className="tooltip-module" />
       <h1 id='container2_title' />
       <Grid container>
