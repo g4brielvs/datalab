@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { graphql, useStaticQuery } from 'gatsby';
 import styles from './sunburst-vega-container.module.scss';
 
 import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
@@ -10,50 +9,45 @@ import SunburstDetails from '../details/sunburst-details';
 
 import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../../static/data/contract-explorer/awards_contracts_v2.csv';
+import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 
 const SunburstVegaContainer = () => {
 
-  const searchData = useStaticQuery(graphql`
-    query {
-      allAwardsContractsV2Csv {
-        agencies:distinct(field: agency)
-        subagencies:distinct(field: subagency)
-        recipients:distinct(field: recipient)
-      }
-    }
-  `);
+  // create arrays of unique agencies, subagencies and recipients with ID for search list
+  const agencies = [];
+  const subagencies = [];
+  const recipients = [];
+  awardsData.map((e, i) => {
 
-  const searchList = searchData.allAwardsContractsV2Csv.agencies.map((n, i) => (
-    {
-      id: `a${i}`,
-      display: n
+    if (agencies.findIndex(a => a.display === e.agency) === -1) {
+      agencies.push({
+        id: `a${i}`,
+        display: e.agency
+      });
     }
-  ))
-    .concat(
-      searchData.allAwardsContractsV2Csv.subagencies.map((n, i) => (
-        {
-          id: `s${i}`,
-          display: n
-        }
-      ))
-    )
-    .concat(
-      searchData.allAwardsContractsV2Csv.recipients.map((n, i) => (
-        {
-          id: `r${i}`,
-          display: n
-        }
-      ))
-    )
-    ;
 
-    // try to force redraw of sunburst (or entire container); NOT WORKING
+    if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
+      subagencies.push({
+        id: `s${i}`,
+        display: e.subagency
+      });
+    }
+
+    if (recipients.findIndex(r => r.display === e.recipient) === -1) {
+      recipients.push({
+        id: `r${i}`,
+        display: e.recipient
+      });
+    }
+  });
+  const searchList = agencies.concat(subagencies).concat(recipients);
+
+  // try to force redraw of sunburst (or entire container); NOT WORKING
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
 
   const searchSelect = (id) => {
-    sunData.tree = flareData.tree.slice(0,50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
+    sunData.tree = flareData.tree.slice(0, 50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
     forceUpdate();
   }
 
@@ -169,7 +163,7 @@ const SunburstVegaContainer = () => {
       />
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
       <Sunburst data={sunData} getDetails={getDetails} />
-      <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+      <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <SunburstDetails details={details} />
     </Hidden>
   </>;

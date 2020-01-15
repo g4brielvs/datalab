@@ -78,9 +78,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -91,6 +91,30 @@ module.exports = [ {
         filename: '[name].js',
         path: __dirname + '/static/americas-finance-guide/components/tabs/',
         publicPath: '/static/americas-finance-guide/components/tabs/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
+        overview: './src/libs/ffg/src/bigPicture/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/overview/',
+        publicPath: '/static/americas-finance-guide/overview/'
     },
     module: {
         rules: moduleRules
@@ -179,8 +203,8 @@ module.exports = [ {
     entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
         trends: './src/libs/ffg/src/debt/trends/index.js',
-        // analysis: './citizens-guide/src/debt/analysis/index.js',
-        countryComparison: './src/libs/ffg/src/debt/countries/index.js',
+        analysis: './src/libs/ffg/src/debt/analysis/index.js',
+        // countryComparison: './citizens-guide/src/debt/countries/index.js',
     },
     devtool: devtool,
     devServer: devServer,
