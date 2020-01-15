@@ -163,7 +163,7 @@ const SunburstVegaContainer = () => {
       />
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
       <Sunburst data={sunData} getDetails={getDetails} />
-      <div className={styles.sunburstDetails}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+      <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <SunburstDetails details={details} />
     </Hidden>
   </>;

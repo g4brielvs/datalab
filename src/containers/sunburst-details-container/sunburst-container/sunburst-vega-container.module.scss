@@ -1,25 +1,22 @@
 @import '../../../styles/variables';
 
-.section-container {
+.header {
+  height: 2.5rem
+}
 
-  .header {
-    height: 2.5rem
-  }
+.sunburst-details {
+}
 
-  .sunburst-details {
-  }
+.breadcrumbs-container {
+  padding-left: 2.125rem
+}
 
-  .breadcrumbs-container {
-    padding-left: 2.125rem
-  }
-
-  .sunburst-message {
-    margin-top: 40px;
-    height: 40px;
-    font-size: 1rem;
-    text-align: center;
-    color: #666666;
-  }
+.sunburst-message {
+  margin-top: 40px;
+  height: 40px;
+  font-size: 1rem;
+  text-align: center;
+  color: #666666;
 }
 
 @media (max-width: $tablet) {
