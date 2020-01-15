@@ -1,45 +1,29 @@
-@import '../../styles/index.scss';
+@import 'src/styles/index.scss';
 
 $list-height: 400px;
 $border-color: #eee;
 $hover-background: #fbebd0;
 
-@mixin main-text {
-	font-size: 1rem;
-	color: #4a4a4a;
-}
-
-@mixin head-text {
-	font-size: 0.8rem;
-	font-weight: 300;
-}
-
 .searchlist {
-	display: none;
-	max-height: $list-height;
-	overflow-y: auto;
-	background-color: #fff;
-	border: 1px solid $border-color;
+  position: absolute;
+  display: none;
+  max-height: $list-height;
+  overflow-y: auto;
+  background-color: $font-white;
+  border: 1px solid $border-color;
 
-	.listItem {
-		&:hover {
-			background-color: $hover-background;
-		}
+  .listItem {
+    &:hover {
+      background-color: $hover-background;
+    }
 
-		:global(.MuiTypography-root) {
-			font-family: 'Source Sans Pro', Helvetica, sans-serif;
-		}
-
-		:global(.MuiListItemText-primary) {
-			@include head-text;
-		}
-
-		:global(.MuiListItemText-secondary) {
-			@include main-text;
-		}
-	}
+    :global(.MuiTypography-root) {
+      font-family: 'Source Sans Pro', Helvetica, sans-serif;
+    }
+  }
 }
 
 .expanded {
 	display: block;
+	z-index: 1;
 }

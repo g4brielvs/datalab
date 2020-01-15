@@ -5,7 +5,7 @@ import Accordion from 'src/components/accordion/accordion';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from 'src/components/chartpanels/search';
+import SearchPanel from 'src/components/chartpanels/cu/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
