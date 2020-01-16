@@ -1,5 +1,4 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/ffg/src/bigPicture/scss/bp.scss'
 
 import React from "react"

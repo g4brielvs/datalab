@@ -1,5 +1,5 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/normalize.scss'
+import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 import '../../../libs/ffg/src/deficit/trends/deficit-trends.scss'
 
