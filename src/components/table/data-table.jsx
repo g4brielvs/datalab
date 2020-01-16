@@ -24,6 +24,7 @@ export default class DataTable extends React.Component {
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.sort = this.sort.bind(this);
+    this.updateSort = this.updateSort.bind(this);
     this.updateTableData = this.updateTableData.bind(this);
 
     if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
@@ -49,16 +50,31 @@ export default class DataTable extends React.Component {
     this.setState({list: list});
   }
 
-  sort({sortBy, sortDirection}) {
+  /**
+   * Sort function applied on clicking the table headers. This will set the state of the sortBy and sortDirection.
+   * @param sortBy - The column that is being sorted.
+   * @param sortDirection - The direction to sort the data.
+   */
+  updateSort({sortBy, sortDirection}){
     const {sortBy: prevSortBy, sortDirection: prevSortDirection} = this.state;
 
     // If list was sorted DESC by this column.
     // Rather than switch to ASC, return to "natural" order.
-    if (prevSortDirection === SortDirection.DESC) {
+    if (prevSortBy === sortBy && prevSortDirection === SortDirection.DESC) {
       sortBy = null;
       sortDirection = null;
     }
 
+    this.setState({sortBy, sortDirection});
+  }
+
+  /**
+   * Sorts the list of data seen from this.state.list. This does not set the state of any variables as this is called at the point of entry from the render function.
+   * @param sortBy - The column that is being sorted
+   * @param sortDirection - The direction to sort the data.
+   * @returns sortedList - The list of sorted data.
+   */
+  sort({sortBy, sortDirection}) {
     let {list} = this.state;
     let sortedList = list;
 
@@ -68,20 +84,24 @@ export default class DataTable extends React.Component {
       if (sortDirection === SortDirection.DESC) {
         sortedList = sortedList.reverse();
       }
-
     }
-    this.setState({sortBy, sortDirection, sortedList});
+
+    return sortedList;
   }
 
-
   render() {
-    const { page, perPage, scrollToIndex, sortedList, list, sortBy, sortDirection } = this.state;
+    const { page, perPage, scrollToIndex, list, sortBy, sortDirection } = this.state;
+
+    let currentList = list;
+
+    if(list && list.length){
+      currentList = this.sort({sortBy, sortDirection});
+    }
 
     const rowHeight = 64
     const height = rowHeight * perPage;
-    const rowCount = list.length;
+    const rowCount = currentList.length;
     const pageCount = Math.ceil(rowCount / perPage);
-    const currentlist = sortedList ? sortedList : list;
 
 
     return (<>
@@ -93,10 +113,10 @@ export default class DataTable extends React.Component {
             headerHeight={20}
             rowHeight={rowHeight}
             rowCount={rowCount}
-            rowGetter={({index}) => currentlist[index]}
+            rowGetter={({index}) => currentList[index]}
             scrollToIndex={scrollToIndex}
             scrollToAlignment='start'
-            sort={this.sort}
+            sort={this.updateSort}
             sortBy={sortBy}
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {

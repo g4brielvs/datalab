@@ -27,24 +27,24 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
         style={{ textAlign: 'right' }}>
         <Button.Group compact>
           {showStart && (
-            [
-              <Button content={1} onClick={() => onPageChange(1)} />,
+            <>
+              <Button content={1} onClick={() => onPageChange(1)} />
               <BetweenButton />
-            ]
+            </>
           )}
           {renderedPages.map((page, i) => (
             <Button
-              key={i}
+              key={`paginatorButton-${i}`}
               onClick={() => onPageChange(page)}
               content={page}
               primary={currentPage === page}
             />
           ))}
           {showEnd && (
-            [
-              <BetweenButton />,
+            <>
+              <BetweenButton />
               <Button content={pageCount} onClick={() => onPageChange(pageCount)} />
-            ]
+            </>
           )}
         </Button.Group>
       </Grid>
