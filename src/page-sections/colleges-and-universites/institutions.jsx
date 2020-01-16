@@ -15,7 +15,7 @@ import DataTable from "../../components/table/data-table";
 import Grid from '@material-ui/core/Grid';
 import VizDetails from '../../components/chartpanels/viz-detail';
 import VizControlPanel from '../../components/chartpanels/viz-control';
-import SunburstIcon from 'src/images/sunburst_icon.svg';
+import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -27,7 +27,7 @@ const Institutions = (props) => {
 
   function filterByClicked(clicked) {
     let filteredList = GeoDataMapbox.features.filter(x => x.id == clicked);
-    setSchool(filteredList)
+    setSchool(filteredList);
     return filteredList;
   };
 
@@ -155,7 +155,7 @@ const Institutions = (props) => {
              onSelect={filterByClicked}
              switchView={filterByClicked}
            >
-             <img src={SunburstIcon}/>
+             <img src={GeolocationIcon}/>
            </VizControlPanel>
            <Mapbox
              data={GeoDataMapbox}
