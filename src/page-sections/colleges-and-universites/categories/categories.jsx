@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from 'src/components/accordion/accordion';
+import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Downloads from 'src/components/section-elements/downloads/downloads';
-import Grid from '@material-ui/core/Grid';
-import { Hidden } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/cu/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
+import TableContainer from './categories-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
-import TableContainer from "./categories-table-container";
 
-import CategoriesVizContainer from "./sunburst-container/sunburst-container";
-import * as _ from "lodash"
+import * as _ from 'lodash';
 
 const Categories = () => {
 
@@ -150,7 +149,6 @@ const Categories = () => {
       .sort(searchSort)
   };
 
-
   const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
     contracts: _data.contracts.nodes
@@ -284,8 +282,8 @@ const Categories = () => {
             title={titlesByType[fundingType].categoryLabel + 's'}
             columnTitles={tableColumnTitles}
             data={filteredTableData}
-            tableRef={tableRef} />
-
+            tableRef={tableRef}
+          />
         </Grid>
       </Grid>
 
