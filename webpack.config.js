@@ -149,7 +149,7 @@ module.exports = [ {
 }, {
     entry: {
         categories: './src/libs/ffg/src/spending/categories/index.js',
-        // countryComparison: './citizens-guide/src/spending/countries/index.js',
+        countryComparison: './src/libs/ffg/src/spending/countries/index.js',
         intro: './src/libs/ffg/src/spending/intro/index.js',
         trends: './src/libs/ffg/src/spending/trends/index.js'
     },
