@@ -9,6 +9,9 @@
 @import 'buttons';
 @import 'ffgShare';
 
+.cg-wrapper {
+    //this class wraps this whole page
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     color: $text-color-paragraph;
@@ -167,4 +170,6 @@ blockquote {
     div {
         flex: 1;
     }
+}
+
 }
