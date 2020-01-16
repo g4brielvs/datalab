@@ -101,13 +101,15 @@ export default class DataTable extends React.Component {
             sortDirection={sortDirection}>
             {this.props.columnTitles.map((item, key) => {
               const columnWidth = item.width || this.defaultWidth / this.props.columnTitles.length;
+              let dataType = item.type || 'dollars';
+              dataType = dataType.toString().toLowerCase();
               return (
                 <Column
                   key={key}
                   label={item.title}
                   dataKey={key.toString()}
                   width={columnWidth}
-                  cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter('dollars', cellData) : cellData }
+                  cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter(dataType, cellData) : cellData }
                 />
               )
             })}

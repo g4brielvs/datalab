@@ -42,7 +42,55 @@ export default function Geography(props){
     if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
   }
 
-  const tableColumnTitles = [{title: 'CoC Number', width: 112.5}, {title: 'CoC Name', width: 250}, {title: 'Total Homeless', width: 100}, {title:'Sheltered Homeless', width: 100}, {title: 'Unsheltered Homeless', width: 100}, {title: 'Chronically Homeless', width: 100}, {title: 'Homeless Veterans', width: 100}, {title: 'Homeless Individuals', width: 100}, {title: 'Homeless People in Families', width: 137.5}, {title: 'Homeless Unaccompanied Youth (Under 25)', width: 150}];
+  const tableColumnTitles = [
+    {
+      title: 'CoC Number',
+      width: 112.5
+    },
+    {
+      title: 'CoC Name',
+      width: 250
+    },
+    {
+      title: 'Total Homeless',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title:'Sheltered Homeless',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title: 'Unsheltered Homeless',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title: 'Chronically Homeless',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title: 'Homeless Veterans',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title: 'Homeless Individuals',
+      width: 100,
+      type: 'number'
+    },
+    {
+      title: 'Homeless People in Families',
+      width: 137.5,
+      type: 'number'
+    },
+    {
+      title: 'Homeless Unaccompanied Youth (Under 25)',
+      width: 150,
+      type: 'number'
+    }];
   const tableData = populationData.map(n => [n.coc_number, n.coc_name, n.total_homeless, n.sheltered_homeless, n.unsheltered_homeless, n.chronically_homeless, n.homeless_veterans, n.homeless_individuals, n.homeless_people_in_families, n.total_homeless_unaccompanied_youth_under_25]);
 
   const [filteredTableData, setFilteredData] = useState(tableData);
