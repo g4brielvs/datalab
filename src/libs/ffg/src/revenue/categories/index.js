@@ -72,4 +72,6 @@ window.addEventListener('resize', function () {
     }, actualTimeout);
 });
 
-init();
+if (typeof window !== `undefined`) {
+    init();
+}
