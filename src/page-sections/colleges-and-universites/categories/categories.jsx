@@ -151,7 +151,7 @@ const Categories = () => {
   };
 
 
-  const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
+  const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
     contracts: _data.contracts.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
@@ -170,13 +170,13 @@ const Categories = () => {
 
     const searchListByType = searchList[fundingType];
 
-    itemList = searchListByType.find(function(el){
+    itemList = searchListByType.find(function (el) {
       return el.id === id;
     });
 
-    let obj = _.filter(tableData[fundingType], {0: itemList.heading, 1:itemList.subheading});
+    let obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
 
-    if(obj && obj.length > 0) {
+    if (obj && obj.length > 0) {
       data.push(obj);
     }
 
@@ -283,14 +283,18 @@ const Categories = () => {
             display={!chartView}
             title={titlesByType[fundingType].categoryLabel + 's'}
             columnTitles={tableColumnTitles}
-            data = {filteredTableData}
-            tableRef = {tableRef} />
+            data={filteredTableData}
+            tableRef={tableRef} />
 
         </Grid>
       </Grid>
 
       <Downloads
-        href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+        href={
+          fundingType === 'contracts' ?
+            '/data/colleges-and-universities/categories/investmentSectionContracts_v2.csv'
+            : '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
+        }
         date={'March 2019'}
       />
     </>
