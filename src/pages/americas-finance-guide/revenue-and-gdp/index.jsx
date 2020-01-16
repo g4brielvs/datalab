@@ -38,7 +38,7 @@ function RevenueAndGdpPage(props) {
                 <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
                 <div className="cg-wrapper chapter-intro-common-wrapper">
-                    <div className="ffg-wrapper revenue-intro">
+                    <div className="ffg-wrapper">
                         <ControlBar>
                             <Share 
                                 location={props.location}
@@ -104,7 +104,7 @@ function RevenueAndGdpPage(props) {
                                 </Accordion>
                             </section>
 
-                            <section className="tour sidebar intro-hidden">
+                            <section className="tour intro-hidden">
                                 <h1 className="tour__heading">What are the sources of government revenue?</h1>
                                 <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                             </section>
@@ -127,18 +127,19 @@ function RevenueAndGdpPage(props) {
                             </div>
                         </div> {/* end viz-wrapper  */}
                     </div> {/* end ffg-wrapper revenue-intro*/}
+
+                    <section className="hwcta">
+                        <Accordion title="Data Sources and Methodology">
+                        <p>The visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue of the United States. <GdpTemplate></GdpTemplate> The revenue-to-gross domestic product ratio is included to provide you with context for the trillions of dollars that come in to the federal government annually. Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
+                        <div className="afg__download--div">
+                            <div className="afg__download--heading">Download Source Data</div>
+                            <ul>
+                                <li><a href="/americas-finance-guide/afgData/federal_revenue_gdp.csv" download="federal_revenue_gdp.csv">federal_revenue_gdp.csv</a></li>
+                            </ul>
+                        </div>
+                        </Accordion>
+                    </section>
                 </div>
-                <section className="hwcta">
-                    <Accordion title="Data Sources and Methodology">
-                    <p>The visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue of the United States. <GdpTemplate></GdpTemplate> The revenue-to-gross domestic product ratio is included to provide you with context for the trillions of dollars that come in to the federal government annually. Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
-                    <div className="afg__download--div">
-                        <div className="afg__download--heading">Download Source Data</div>
-                        <ul>
-                            <li><a href="/americas-finance-guide/afgData/federal_revenue_gdp.csv" download="federal_revenue_gdp.csv">federal_revenue_gdp.csv</a></li>
-                        </ul>
-                    </div>
-                    </Accordion>
-                </section>
             </Default>
         </>
     )
