@@ -1,5 +1,9 @@
-import csvData from "../../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv";
+/* PLEASE DO NOT DELETE this file
+  This code is used to transform the sunburst data in to code that's usable by Vega.  This should be handled on the data analyst
+  side but hasn't been rewritten yet due to the analyst backlog being long. */
 
+  import csvData from "../../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv";
+  
 function convertCsvToJson() {
   let id = 1, existingItem;
 

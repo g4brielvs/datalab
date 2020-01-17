@@ -1,46 +1,68 @@
-import styles from './search.module.scss'; // because this overrides MUI class names and they are mixed-case with hyphens, CSS module won't work here
+import styles from './search.module.scss';
 import vizStyles from './viz-control.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { OutlinedInput, List, ListItem, ListItemText, IconButton, MuiThemeProvider } from "@material-ui/core"
-import {createMuiTheme} from "@material-ui/core/styles";
-import InputAdornment from '@material-ui/core/InputAdornment';
+import { InputAdornment, OutlinedInput, List, ListItem, ListItemText, IconButton } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 import SearchIcon from '@material-ui/icons/Search';
 
-export default class SearchPanel extends React.Component {
+const maxListItems = 20;
 
+export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
+
+    // set initItem to display value of props.initItem's id, or blank
+    let initItem = '';
+    props.initItem && (initItem = this.props.searchList.find(e => e.id === props.initItem).display);
+
     this.state = {
-      expanded: this.props.initShow
+      currentValue: initItem,
+      expanded: this.props.initShowList,
+      icon: initItem ? 'clear' : 'search'
     }
     this.filteredList = this.props.searchList;
   }
 
-  toggleSearch = () => this.setState(prevState => ({ expanded: !prevState.expanded }));
-
-  filterSearch(event) {
-    const filter = new RegExp(event.target.value, 'i');
-    this.filteredList = this.props.searchList.filter(i =>
-      i.heading.search(filter) !== -1 || i.subheading.search(filter) !== -1
-    )
-    this.forceUpdate();
+  clickIcon = () => {
+    if (this.state.icon === 'search') {
+      this.setState(prevState => ({ expanded: !prevState.expanded }));
+    } else {
+      this.filteredList = this.props.searchList;
+      this.setState({
+        currentValue: '',
+        icon: 'search'
+      });
+    }
   }
 
-  selectItem(id) {
+  filterSearch(event) {
+    const currentValue = event.target.value;
+    const filter = new RegExp(currentValue, 'i');
+    this.filteredList = this.props.searchList.filter(n =>
+      n.display.search(filter) !== -1
+    );
+    this.setState({
+      currentValue: currentValue,
+      expanded: true,
+      icon: currentValue ? 'clear' : 'search'
+    });
+  }
+
+  selectItem(i) {
     if (this.props.onSelect) {
-      if (this.props.showCollapse) {
-        this.setState({ expanded: false });
-      }
-      this.props.onSelect(id);
+      this.setState({
+        currentValue: i.display,
+        expanded: false,
+        icon: 'clear'
+      });
+      this.props.onSelect(i.id);
     }
   }
 
   onFocus = () => {
-    if (this.props.showCollapse) {
-      this.setState({ expanded: true });
-    }
+    this.setState({ expanded: true });
   }
 
   // detect if searchList prop changed (since it isn't in state)
@@ -51,79 +73,79 @@ export default class SearchPanel extends React.Component {
     return true;
   }
 
-  render = () => {
-    return (
-      <div className={vizStyles.container}>
-        <OutlinedInput
-          placeholder={'Search ' + this.props.listDescription}
-          inputProps={{title: 'Search ' + this.props.listDescription}}
-          variant='outlined'
-          fullWidth
-          onFocus={this.onFocus}
-          onChange={event => this.filterSearch(event)}
-          endAdornment={
-            this.props.showCollapse ?
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label='search'
-                  onClick={this.toggleSearch}
-                >
-                  <SearchIcon />
-                </IconButton>
-              </InputAdornment>
-              : ''
-          }
-        />
-        <List aria-label={'List of ' + this.props.listDescription}
-          className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
-        >
-          {
-            this.filteredList.map(i =>
+  render = () =>
+    <div className={vizStyles.container}>
+      <OutlinedInput
+        value={this.state.currentValue}
+        onFocus={this.onFocus}
+        onChange={event => this.filterSearch(event)}
+        placeholder={this.props.listDescription}
+        inputProps={{ title: 'Search ' + this.props.listDescription }}
+        variant='outlined'
+        fullWidth
+        endAdornment={
+          <InputAdornment position='end'>
+            <IconButton
+              aria-label={this.state.icon}
+              onClick={this.clickIcon}
+            >
+              {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+      <List aria-label={this.props.listDescription}
+        className={styles.searchlist + (this.state.expanded ? ' ' + styles.expanded : '')}
+      >
+        {
+          this.filteredList
+            .slice(0, maxListItems)
+            .map(i =>
               <ListItem
                 key={i.id}
                 button
                 divider
                 className={styles.listItem}
-                onClick={() => this.selectItem(i.id)}
+                onClick={() => this.selectItem(i)}
               >
-                <ListItemText primary={i.heading} secondary={i.subheading} />
+                <ListItemText primary={i.display} />
               </ListItem>
-            )}
-        </List>
-      </div>
-    )
-  }
+            )
+        }
+      </List>
+    </div>
 }
 
 /*
   Notes on props:
-  searchList is expected to be an array of {id, heading text, subheading text}
-  id values are arbitrary, but must be unique within the list (expected but not enforced by SearchPanel)
+  searchList is expected to be an array of {id, display}
+  id values are arbitrary, but must be unique within the list to indicate which is selected (expected but not enforced by SearchPanel)
+  display is a string or fragment of what exactly to display for that option
   e.g. [
     {
       id: 1,
-      heading: 'R&D',
-      subheading: 'R&D',
+      display: 'Department of Energy'
     }, {
-      id: 2,
-      heading: 'Education',
-      subheading: 'Education',
+      id: 37,
+      display: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
     }, {
-      id: 'dfsak3729',
-      heading: 'Education',
-      subheading: 'Adult Education - Basic Grants to States'
+      id: 'jadsfa',
+      display: 'Department of Defense'
+     }, {
+      id: -12,
+      display: 'Department of the Army'
     }
   ]
 
-  initShow is true if it should be open when initialized
-  showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
+  initItem is the default item selected (only one, optional)
+  initShowList is true if the list should be open when initialized
   onSelect is parent callback when an item is selected, passes back id value only
 */
 
 SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
+  'initItem': PropTypes.string,
   'listDescription': PropTypes.string.isRequired,
-  'initShow': PropTypes.bool,
-  'showCollapse': PropTypes.bool,
+  'initShowList': PropTypes.bool,
   'onSelect': PropTypes.func
 }

@@ -1,6 +1,4 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 
 import React from "react"
@@ -12,9 +10,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingTrendsPage(props) {
     return (
@@ -22,7 +21,6 @@ function SpendingTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/spending/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -35,92 +33,82 @@ function SpendingTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--spending">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./spending-categories">Spending Categories</a></li>
-                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
-                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
-                <div className="ffg-wrapper">
-                    <ControlBar>
-                        <Share 
-                            location={props.location}
-                            title="Data Lab - Federal Spending Trends – U.S. Treasury"
-                            twitter="How has federal spending changed over the past few years? Check out Your Guide to America’s Finances for federal spending trends and to download .CSV files of the data. #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
-                    </ControlBar>
+                <div className="cg-wrapper trends-common-wrapper">
+                    <div className="ffg-wrapper">
+                        <ControlBar>
+                            <Share 
+                                location={props.location}
+                                title="Data Lab - Federal Spending Trends – U.S. Treasury"
+                                twitter="How has federal spending changed over the past few years? Check out Your Guide to America’s Finances for federal spending trends and to download .CSV files of the data. #YourGuide #DataLab #OpenGov"
+                                facebook='' reddit='' linkedin='' tumblr='' email='' />
+                        </ControlBar>
 
-                    <h1>Federal Spending Trends Over Time</h1>
+                        <h1>Federal Spending Trends Over Time</h1>
 
-                    <div className="trend-flex">
-                        <div className="trend-copy">
-                            <div className="trend-copy__text">
-                                <p>How has spending changed over the past few years? This chart presents federal spending by category or by agency over a {AfgData.number_trend_years.value} year period. Have there been significant changes in federal spending? What impact does an increase or decrease have on spending at the subcategory level?</p>
-                                <p>You can track trends in federal spending by category or subcategory.</p>
-                            </div>
-                            <section className="tour">
-                                <div className="tour__part-one">
-                                    <h1>How does federal spending in the United States compare to other countries?</h1>
-                                    <p>When you're done here, see how federal spending by the U.S. compares to other countries.</p>
+                        <div className="trend-flex">
+                            <div className="trend-copy">
+                                <div className="trend-copy__text">
+                                    <p>How has spending changed over the past few years? This chart presents federal spending by category or by agency over a {AfgData.number_trend_years.value} year period. Have there been significant changes in federal spending? What impact does an increase or decrease have on spending at the subcategory level?</p>
+                                    <p>You can track trends in federal spending by category or subcategory.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/spending-country-comparison">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></a>
-                            </section>
+                                <section className="tour">
+                                    <div className="tour__part-one">
+                                        <h1>How does federal spending in the United States compare to other countries?</h1>
+                                        <p>When you're done here, see how federal spending by the U.S. compares to other countries.</p>
+                                    </div>
+                                    <a className="tour__link" href="/americas-finance-guide/spending-country-comparison">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></a>
+                                </section>
+                            </div>
+
+                            <div className="trend-chart">
+                                <div id="spending-chart-toggle" className="toggle-component toggle-component--spending clearfix" data-active="function">
+                                    <span className="toggle-component__label">Category</span>
+                                    <button id="toggle-spending-data-type" className="toggle-control">
+                                        <div className="toggle-control__background">
+                                            <div className="toggle-control__dot"></div>
+                                        </div>
+                                    </button>
+                                    <span className="toggle-component__label">Agency</span>
+                                </div>
+
+                                <div id="show-hide">
+                                    <button id="activate-show-hide">Filter <FontAwesomeIcon icon={faSlidersH} className="fa fa-sliders-h"/></button>
+                                    <div id="show-hide-tray">
+                                        <div className='show-hide__buttons'>
+                                            <div className='show-hide__buttons--left'>
+                                                <button id="select-all">Select All</button>
+                                                <button id="select-none">Remove All</button>
+                                            </div>
+                                            <div className='show-hide__buttons--right'>
+                                                <button id="reset-filters-button">Reset</button>
+                                                <button id="save-filters-button">Save</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="show-hide-list"></div>
+                                    </div>
+                                </div>
+
+                                <div className="hint">Click a spending category to view more</div>
+
+                                <div id="viz"></div>
+                            </div>
                         </div>
 
-                        <div className="trend-chart">
-                            <div id="spending-chart-toggle" className="toggle-component toggle-component--spending clearfix" data-active="function">
-                                <span className="toggle-component__label">Category</span>
-                                <button id="toggle-spending-data-type" className="toggle-control">
-                                    <div className="toggle-control__background">
-                                        <div className="toggle-control__dot"></div>
-                                    </div>
-                                </button>
-                                <span className="toggle-component__label">Agency</span>
-                            </div>
-
-                            <div id="show-hide">
-                                <button id="activate-show-hide">Filter <FontAwesomeIcon icon={faSlidersH} className="fa fa-sliders-h"/></button>
-                                <div id="show-hide-tray">
-                                    <div className='show-hide__buttons'>
-                                        <div className='show-hide__buttons--left'>
-                                            <button id="select-all">Select All</button>
-                                            <button id="select-none">Remove All</button>
-                                        </div>
-                                        <div className='show-hide__buttons--right'>
-                                            <button id="reset-filters-button">Reset</button>
-                                            <button id="save-filters-button">Save</button>
-                                        </div>
-                                    </div>
-
-                                    <div id="show-hide-list"></div>
+                        <section className="hwcta">
+                            <Accordion title="Data Sources and Methodology">
+                                <p>The visualization was created using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States. Some categories from the MTS have been renamed in order to be more easily understood. <a href={AfgData.bls_cpiu.value} rel="noopener noreferrer" target="_blank">The Bureau of Labor Statistics (BLS) Consumer Price Index for All Urban Consumers (CPI-U)</a> was used to adjust spending in fiscal years {AfgData.inflation_adj_years.value} for inflation. Adjusting for inflation allows users to see real, not nominal, changes in sources of spending over time.</p>
+                                <div className="afg__download--div">
+                                    <div className="afg__download--heading">Download Source Data</div>
+                                    <ul>
+                                        <li><a href="/americas-finance-guide/afgData/federal_spending_trends.csv" download="federal_spending_trends.csv">federal_spending_trends.csv</a></li>
+                                    </ul>
                                 </div>
-                            </div>
-
-                            <div className="hint">Click a spending category to view more</div>
-
-                            <div id="viz"></div>
-                        </div>
+                            </Accordion>
+                        </section>
                     </div>
-
-                    <section className="hwcta">
-                        <Accordion title="Data Sources and Methodology">
-                            <p>The visualization was created using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government spending of the United States. Some categories from the MTS have been renamed in order to be more easily understood. <a href={AfgData.bls_cpiu.value} rel="noopener noreferrer" target="_blank">The Bureau of Labor Statistics (BLS) Consumer Price Index for All Urban Consumers (CPI-U)</a> was used to adjust spending in fiscal years {AfgData.inflation_adj_years.value} for inflation. Adjusting for inflation allows users to see real, not nominal, changes in sources of spending over time.</p>
-                            <div className="afg__download--div">
-                                <div className="afg__download--heading">Download Source Data</div>
-                                <ul>
-                                    <li><a href="/americas-finance-guide/afgData/federal_spending_trends.csv" download="federal_spending_trends.csv">federal_spending_trends.csv</a></li>
-                                </ul>
-                            </div>
-                        </Accordion>
-                    </section>
                 </div>
             </Default>
         </>

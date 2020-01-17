@@ -8,9 +8,10 @@ import { Grid, Hidden } from '@material-ui/core'
 import Sources from '../logos/sources';
 
 const HWCTALink = (props) => {
+  const methodologiesUrl = props.url.replace(/\/\//g,'/');
   return (
     <div className={hwctaLinkStyles.entry + ' ' + props._mainClass}>
-      <a className={hwctaLinkStyles.link} href={props.url}>
+      <a className={hwctaLinkStyles.link} href={methodologiesUrl}>
         <Grid container className={`${hwctaLinkStyles.dataSourcesRow} row`}>
           <Hidden xsDown>
             <Grid item sm={3} md={2} className={`${hwctaLinkStyles.image} ${props._noOffset ? '' : 'col-xs-offset-1'}`}>

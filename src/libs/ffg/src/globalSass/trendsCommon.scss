@@ -3,6 +3,9 @@
 @import './trends/trendMobile.scss';
 @import './toggleControl.scss';
 
+.trends-common-wrapper {
+
+
 #viz {
     overflow-x: hidden;
     margin-top: -1rem;
@@ -62,4 +65,6 @@
     .chart-title {
         margin-top: 0;
     }
+}
+
 }

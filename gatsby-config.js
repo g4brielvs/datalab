@@ -18,6 +18,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `data`,
+        path: `${__dirname}/static/data/`
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
@@ -35,18 +42,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-react-svg', // support for svg components
       options: {
-          rule: {
-            include: /svgs/
-          }
+        rule: {
+          include: /svgs/
+        }
       }
     },
     `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/static/data/`,
-      },
-    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

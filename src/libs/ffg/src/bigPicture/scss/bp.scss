@@ -10,6 +10,9 @@
 @import '../../globalSass/_accordion.scss';
 @import '../../anecdote/anecdote.scss';
 
+.bp-wrapper {
+
+
 html {
 	font-weight: $normalWeight;
 }
@@ -26,7 +29,7 @@ html {
 
 .historical-quote {
 	padding: 3rem 1rem;
-	background: url(/assets/ffg/bp/cg-quote-image.jpg) top center no-repeat;
+	background: url('/americas-finance-guide/images/cg-quote-image.jpg') top center no-repeat;
 	background-size: cover;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
@@ -109,7 +112,7 @@ section.hwcta {
 	}
 
 	.citizens-guide__section--treasury-image {
-		background: url(/assets/ffg/bp/treasury-seal.svg) top center no-repeat;
+		background: url('/americas-finance-guide/images/treasury-seal.svg') top center no-repeat;
 		background-size: cover;
 		height: 125px;
 		width: 125px;
@@ -118,4 +121,6 @@ section.hwcta {
 
 .hidden {
 	display: none;
+}
+
 }

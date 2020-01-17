@@ -78,9 +78,9 @@ module.exports = [ {
     devtool: devtool,
     devServer: devServer,
     mode: mode,
-    // optimization: {
-    //     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    // },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -97,8 +97,32 @@ module.exports = [ {
     }
 }, {
     entry: {
+        overview: './src/libs/ffg/src/bigPicture/index.js'
+    },
+    devtool: devtool,
+    devServer: devServer,
+    mode: mode,
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
+    ],
+    output: {
+        filename: '[name].js',
+        path: __dirname + '/static/americas-finance-guide/overview/',
+        publicPath: '/static/americas-finance-guide/overview/'
+    },
+    module: {
+        rules: moduleRules
+    }
+}, {
+    entry: {
         intro: './src/libs/ffg/src/revenue/intro/index.js',
-        // categories: './citizens-guide/src/revenue/categories/index.js',
+        categories: './src/libs/ffg/src/revenue/categories/index.js',
         trends: './src/libs/ffg/src/revenue/trends/index.js',
         countryComparison: './src/libs/ffg/src/revenue/countries/index.js'
     },
@@ -124,7 +148,7 @@ module.exports = [ {
     }
 }, {
     entry: {
-        // categories: './citizens-guide/src/spending/categories/index.js',
+        categories: './src/libs/ffg/src/spending/categories/index.js',
         countryComparison: './src/libs/ffg/src/spending/countries/index.js',
         intro: './src/libs/ffg/src/spending/intro/index.js',
         trends: './src/libs/ffg/src/spending/trends/index.js'
@@ -179,7 +203,7 @@ module.exports = [ {
     entry: {
         intro: './src/libs/ffg/src/debt/intro/index.js',
         trends: './src/libs/ffg/src/debt/trends/index.js',
-        // analysis: './citizens-guide/src/debt/analysis/index.js',
+        analysis: './src/libs/ffg/src/debt/analysis/index.js',
         countryComparison: './src/libs/ffg/src/debt/countries/index.js',
     },
     devtool: devtool,
