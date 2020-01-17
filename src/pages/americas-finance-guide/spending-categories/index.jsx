@@ -1,5 +1,4 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/spending/categories/spending-categories.scss'
 
 import React from "react"
