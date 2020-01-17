@@ -7,6 +7,44 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 	font-size: inherit;
 }
 
+.homeless-map-options {
+	height: 2.5rem;
+	img {
+		margin-right: $margin-10;
+	}
+	.homeless-style {
+		margin-right: 2.5rem;
+	}
+	.hidden {
+		display: none;
+	}
+	.homeless-region-search {
+		margin-left: $margin-10;
+		height: 2.5rem;
+		width: 14rem;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		padding: $margin-10;
+	}
+
+	.homeless-region-search-icon {
+		margin-left: -2rem;
+		margin-bottom: -0.5rem;
+		cursor: text;
+	}
+	.invisible {
+		visibility: hidden;
+	}
+
+}
+
+#section-Geography .ReactVirtualized__Table__sortableHeaderColumn {
+	span {
+		font-size: 0.8rem;
+		white-space: normal;
+	}
+}
+
 .homelessness-subheading,
 .homelessness-subheading2 {
 	font-weight: 400;

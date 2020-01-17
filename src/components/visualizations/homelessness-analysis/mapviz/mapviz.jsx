@@ -2,19 +2,14 @@ import React, { useEffect, useState } from "react"
 import * as d3 from 'd3v3';
 import styles from './mapviz.module.scss';
 
-import ControlBar from "../../../control-bar/control-bar"
-import Reset from "../../../reset/reset"
-import Share from "../../../share/share"
-import dataSource from '../utils/data-module';
 import tooltipModule from "../../../../components/tooltip/tooltip"
 import Downloads from "../../../section-elements/downloads/downloads"
-const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/coc_pop_value.csv');
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
 export default function Mapviz(props) {
 
-  const {mem} = dataSource;
+  const {mem} = props.data;
   const us = mem.us;
   const tableData = mem.pop;
   let Tooltip;
@@ -27,20 +22,10 @@ export default function Mapviz(props) {
     bottom: 15,
     left: 100
   };
-  const la = us.features.filter((d) => d.properties.coc_number === 'CA-600');
-  const formatNumber = d3.format('$,.0f');
   const OtherformatNumber = d3.format(',.0f');
-  const panel2Width = absWidth - margin.left - margin.right;
-  const panel2Height = absHeight - margin.top - margin.bottom;
-  const matrixWidth = (absWidth / 1.85) - margin.left - margin.right;
-  const mapWidth = panel2Width - matrixWidth - margin.left - margin.right - 45;
-  const mapHeight = panel2Height / 3;
-  const infoWidth = panel2Width - matrixWidth - margin.left - margin.right;
-  const infoHeight = panel2Height / 3;
   const width = 1000;
   const height = 600;
   let map1Centered = null;
-  let map2Centered = la[0];
   let path, g;
 
 
@@ -91,16 +76,7 @@ export default function Mapviz(props) {
       .on("mousemove", handleMouseMove)
       .on("mouseout", handleMouseOut)
       .on('dblclick', setZoom)
-      .style('fill', getColor)
-      // .on("click", (d) => {
-      //   BarChart(d);
-      //   createCoCTable(d);
-      //   makeMapTitle(d);
-      //   StateBarChart(d);
-      //   createContact(d);
-      //   p21ClickedP1(d);
-      // })
-
+      .style('fill', getColor);
   }
 
   function setZoom(d) {
@@ -145,6 +121,8 @@ export default function Mapviz(props) {
       k = 1;
       map1Centered = null;
     }
+
+    g = d3.select('#map_container g.counties');
 
     g.selectAll('path')
       .classed('active', map1Centered && d === map1Centered);
@@ -241,21 +219,21 @@ export default function Mapviz(props) {
   }
 
   useEffect(() => {
-    Tooltip = tooltipModule();
-    GenMap();
+    if(props.display){
+      if(!d3.select('#viz_container')[0][0]){
+        Tooltip = tooltipModule();
+        GenMap();
+      } else {
+        setZoom(null);
+      }
+    }
   });
 
 
-  return (<div>
-      <ControlBar>
-        <Reset _resetClick={function(){
-          setZoom(null);
-        }}/>
-        <Share location={props.location}/>
-      </ControlBar>
+  return (<div className={props.display ? '' : 'hidden'}>
       <div id="tooltipMapViz" className="tooltip-module" />
       <div className="viz-container homeless-analysis">
-        <div id="container" height="100%" width="100%"/>
+        <div id="container"/>
       </div>
       <div className={styles.homelessPanelOneInfo}>
         <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
