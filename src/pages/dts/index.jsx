@@ -2,11 +2,13 @@ import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
 import DTS from '../../components/visualizations/dts/dts';
+import DTSHWCTA from './methodologies';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
 import ToolLayout from '../../components/layouts/tool/tool';
 import * as d3 from 'd3v4';
+import StoryLayout from "../../components/layouts/story/story"
 
 export default class DTSPage extends React.Component {
   constructor(props) {
@@ -28,6 +30,7 @@ export default class DTSPage extends React.Component {
     <ToolLayout
       title='Visualizing The Daily Treasury Statement'
       introSentence='How much does the federal government spend each day?'
+      hwctaLink={this.props.location.pathname + '/methodologies'}
     >
       <div className='dts-css'>
         <div className='dts-tt-container'>
