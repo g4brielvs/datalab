@@ -8,6 +8,7 @@
 }
 
 .country-chart {
+    // for gatsby - this max-width was changed to 805 to get the chart to draw at fullsize on desktop
     max-width: 805px;
     margin: 0 auto;
 }
@@ -52,9 +53,10 @@
 
     .country-chart {
         float: right;
-        // width: 68%;
-        width: 100%;
         box-sizing: border-box;  
+
+        // for gatsby - this was added to get the chart to render at full size when on desktop
+        width: 100%;
     }
     
     #viz {
