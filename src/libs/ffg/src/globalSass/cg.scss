@@ -8,7 +8,9 @@
 @import 'hwcta';
 @import 'buttons';
 @import 'ffgShare';
-@import 'normalize';
+
+.cg-wrapper {
+    //this class wraps this whole page
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
@@ -168,4 +170,6 @@ blockquote {
     div {
         flex: 1;
     }
+}
+
 }

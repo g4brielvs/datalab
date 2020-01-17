@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from 'src/components/accordion/accordion';
 import Downloads from 'src/components/section-elements/downloads/downloads';
+import InformationIcon from '../../../components/information-icon/Icon';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/cu/search';
@@ -12,7 +13,7 @@ import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
 
 import CategoriesVizContainer from "./sunburst-container/sunburst-container";
-import * as _ from "lodash"
+import * as _ from "lodash";
 
 const Categories = () => {
 
@@ -24,7 +25,7 @@ const Categories = () => {
     } else {
       isChartView(false);
     }
-  }
+  };
 
   const [fundingType, setFundingType] = useState('contracts');
   function onTypeChange(e) {
@@ -48,7 +49,7 @@ const Categories = () => {
       dataType: 'CFDA',
       centerText: 'Total FY2018 Research Grants Funding'
     }
-  }
+  };
 
   const _data = useStaticQuery(graphql`
     query {
@@ -195,7 +196,7 @@ const Categories = () => {
   const searchItemSelected = id => {
     filterTableData(id);
     if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
-  }
+  };
 
   return (
     <>
@@ -268,7 +269,8 @@ const Categories = () => {
                   onChange={onTypeChange}
                   checked={fundingType === 'research'}
                 />
-                <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
+                <label htmlFor='cuResearch'>&nbsp;Research Grants </label>
+                <InformationIcon/>
               </Grid>
             </Grid>
           </div>

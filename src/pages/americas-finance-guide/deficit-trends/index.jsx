@@ -1,6 +1,4 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 import '../../../libs/ffg/src/deficit/trends/deficit-trends.scss'
 
@@ -13,9 +11,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function DeficitTrendsPage(props) {
     return (
@@ -23,7 +22,6 @@ function DeficitTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/deficit/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -36,68 +34,58 @@ function DeficitTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--deficit">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><i className="fas fa-chevron-left"></i> Overview</a></li>
-                        <li><a href="./explore-deficit">Explore Deficit</a></li>
-                        <li><a href="./deficit-trends">Federal Deficit Trends</a></li>
-                        <li><a href="./deficit-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
-                {/* add className here? you had to for deficit intro */}
-                <div className="ffg-wrapper">
-                    <ControlBar>
-                        <Share 
-                            location={props.location}
-                            title="Data Lab - Federal Deficit Trends – U.S. Treasury"
-                            text="How has the deficit changed over the past few years? Check out #YourGuide for visualizations. #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
-                    </ControlBar>
+                <div className="cg-wrapper trends-common-wrapper">
+                    <div className="ffg-wrapper">
+                        <ControlBar>
+                            <Share 
+                                location={props.location}
+                                title="Data Lab - Federal Deficit Trends – U.S. Treasury"
+                                text="How has the deficit changed over the past few years? Check out #YourGuide for visualizations. #DataLab #OpenGov"
+                                />
+                        </ControlBar>
 
-                    <h1>Federal Deficit Trends Over Time</h1>
+                        <h1>Federal Deficit Trends Over Time</h1>
 
-                    <img className="deficit-trend" src="/americas-finance-guide/images/deficit-trend.svg" alt="In 2000 and 2001 the federal government experienced surpluses of $237 billion and $127 billion respectively. Since 2001, the federal government has not had another surplus. While the annual deficit did not exceed $500 billion from 2002 to 2008, the annual deficit increased substantially in response to the Great Recession with annual deficits exceeding $1 trillion from 2009 to 2012. The annual deficit declined from 2012 to 2015, falling below the $500 billion mark in 2015. Since then, however, the annual deficit has grown each year to $984 billion in 2019."></img>
+                        <img className="deficit-trend" src="/americas-finance-guide/images/deficit-trend.svg" alt="In 2000 and 2001 the federal government experienced surpluses of $237 billion and $127 billion respectively. Since 2001, the federal government has not had another surplus. While the annual deficit did not exceed $500 billion from 2002 to 2008, the annual deficit increased substantially in response to the Great Recession with annual deficits exceeding $1 trillion from 2009 to 2012. The annual deficit declined from 2012 to 2015, falling below the $500 billion mark in 2015. Since then, however, the annual deficit has grown each year to $984 billion in 2019."></img>
 
-                    <aside className="deficit-aside">
-                        <p>Since {AfgData.last_surplus.value}, the U.S. has experienced a deficit each year. Beginning in 2016, increases in spending on Social Security, health care, and interest on federal debt have outpaced the growth of federal revenue.</p>
+                        <aside className="deficit-aside">
+                            <p>Since {AfgData.last_surplus.value}, the U.S. has experienced a deficit each year. Beginning in 2016, increases in spending on Social Security, health care, and interest on federal debt have outpaced the growth of federal revenue.</p>
 
-                        <section className="accordion">
-                            <Accordion title="What does it mean when there is a surplus, balanced budget, and deficit?" className="accordion__heading">
-                                <div className="accordion__content">
-                                    <div id="surplusComponent">
-                                        <div className="deficit--surplus__component--content deficit--surplus__surplus">
-                                            <img className="deficit__tabs-image" src="/americas-finance-guide/images/surplus.svg" alt="" role="presentation"></img>
-                                            A surplus occurs when the government collects more money than it spends. The last surplus for the federal government was in {AfgData.last_surplus.value}.
-                                        </div>
-                                        <div className="deficit--surplus__component--content deficit--surplus__balanced">
-                                            <img className="deficit__tabs-image" src="/americas-finance-guide/images/balanceBudget.svg" alt="" role="presentation"></img>
-                                            A balanced budget occurs when the amount the government spends equals the amount the government collects. Sometimes the term balanced budget is used more broadly to refer to instances where there is no deficit.
-                                        </div>
-                                        <div className="deficit--surplus__component--content deficit--surplus__deficit">
-                                            <img className="deficit__tabs-image" src="/americas-finance-guide/images/deficit.svg" alt="" role="presentation"></img>
-                                            A deficit occurs when the government spends more money than it collects. The federal government has run deficits for the last {AfgData.consecutive_deficits.value} years.
+                            <section className="accordion">
+                                <Accordion title="What does it mean when there is a surplus, balanced budget, and deficit?" className="accordion__heading">
+                                    <div className="accordion__content">
+                                        <div id="surplusComponent">
+                                            <div className="deficit--surplus__component--content deficit--surplus__surplus">
+                                                <img className="deficit__tabs-image" src="/americas-finance-guide/images/surplus.svg" alt="" role="presentation"></img>
+                                                A surplus occurs when the government collects more money than it spends. The last surplus for the federal government was in {AfgData.last_surplus.value}.
+                                            </div>
+                                            <div className="deficit--surplus__component--content deficit--surplus__balanced">
+                                                <img className="deficit__tabs-image" src="/americas-finance-guide/images/balanceBudget.svg" alt="" role="presentation"></img>
+                                                A balanced budget occurs when the amount the government spends equals the amount the government collects. Sometimes the term balanced budget is used more broadly to refer to instances where there is no deficit.
+                                            </div>
+                                            <div className="deficit--surplus__component--content deficit--surplus__deficit">
+                                                <img className="deficit__tabs-image" src="/americas-finance-guide/images/deficit.svg" alt="" role="presentation"></img>
+                                                A deficit occurs when the government spends more money than it collects. The federal government has run deficits for the last {AfgData.consecutive_deficits.value} years.
+                                            </div>
                                         </div>
                                     </div>
+                                </Accordion>
+                            </section>
+
+                            <section className="tour">
+                                <div className="tour__part-one">
+                                    <h1>How does the deficit in the United States compare to other countries?</h1>
+                                    <p>When you are done here, see how the U.S. deficit compares to other countries.</p>
                                 </div>
-                            </Accordion>
-                        </section>
+                                <a className="tour__link" href="/americas-finance-guide/deficit-country-comparison">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                            </section>
+                        </aside>
 
-                        <section className="tour">
-                            <div className="tour__part-one">
-                                <h1>How does the deficit in the United States compare to other countries?</h1>
-                                <p>When you are done here, see how the U.S. deficit compares to other countries.</p>
-                            </div>
-                            <a className="tour__link" href="/americas-finance-guide/deficit-country-comparison">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
-                        </section>
-                    </aside>
+                        <div className="clearfix"></div>
 
-                    <div className="clearfix"></div>
-
+                    </div>
                 </div>
 
                 <section className="hwcta">
