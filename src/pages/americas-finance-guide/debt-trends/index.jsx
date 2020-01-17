@@ -1,5 +1,4 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/normalize.scss'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 import '../../../libs/ffg/src/debt/trends/debt-trends.scss'
 
