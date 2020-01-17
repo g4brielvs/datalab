@@ -9,8 +9,6 @@ import styleVariables from 'src/styles/variables.scss';
 
 const Downloads = (props) => {
 
-  console.log(window.location.pathname);
-
   const inlineStyles = {
     legacy: {
       ':hover': {
@@ -19,7 +17,7 @@ const Downloads = (props) => {
     },
     'colleges-and-universities': {
       ':hover': {
-        color: `${styleVariables.cuRed}`
+        color: styleVariables.cuRed
       }
     },
     'competition-in-contracting': {
