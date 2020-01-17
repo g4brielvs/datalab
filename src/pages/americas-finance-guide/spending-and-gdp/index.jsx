@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -38,7 +39,7 @@ function SpendingAndGdpPage(props) {
 
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
-                <div className="cg-wrapper chapter-intro-common-wrapper">
+                <div className="cg-wrapper chapter-intro-common-wrapper spending-intro-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
                             <Share 
@@ -89,7 +90,7 @@ function SpendingAndGdpPage(props) {
                                         <p>Why do we compare federal spending to gross domestic product? One reason is to give a reference point for the size of the federal government, as measured by the amount it spends. U.S. gross domestic product is much larger than government spending, because it includes all the economic activity of the entire nation. Government spending equates to roughly {AfgData.spending_proportion.value} of the goods produced and services provided in the United States.</p>
 
                                         <strong>What's gross domestic product?
-                            <button className="info-box-trigger" data-box-id="gdp-info">
+                                            <button className="info-box-trigger" data-box-id="gdp-info">
                                                 <img src={DefinitionSpendingSVG} alt="definition icon"></img>
                                             </button>
                                         </strong>

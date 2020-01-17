@@ -1,6 +1,7 @@
 @import '../../globalSass/colors';
+@import '../../globalSass/chapterPages';
 
-.debt-intro-wrapper {
+.revenue-intro-wrapper {
 
 
 .viz-wrapper {
@@ -8,15 +9,6 @@
 }
 
 .sidebar--hidden {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.intro-math {
-  transition: opacity 1s ease;
-}
-
-.intro-math--hidden {
   opacity: 0;
 }
 
@@ -50,7 +42,7 @@
 .facts__trigger {
   display: block;
   width: 49%;
-  border: 1px solid $color-debt-primary;
+  border: 1px solid $revenue-primary;
   text-align: center;
   margin-bottom: 2px;
   background: white;
@@ -59,7 +51,7 @@
 }
 
 .facts__trigger.facts__trigger--active {
-  background: $color-debt-primary;
+  background:$revenue-primary;
   color: white;
 }
 
@@ -138,7 +130,7 @@ aside {
     width: auto;
     max-width: none;
     margin: 0;
-    border-left: 3px solid $color-debt-primary;
+    border-left: 3px solid $revenue-primary;
     box-shadow: none;
   }
 
@@ -153,9 +145,8 @@ aside {
 
   .hwcta {
     clear: both;
-    transform: translateY(2rem);
+    padding-top: 2rem;
   }
 }
 
 }
-

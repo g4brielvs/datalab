@@ -1,22 +1,9 @@
 @import '../../globalSass/colors';
 
-.debt-intro-wrapper {
+.spending-intro-wrapper {
 
-
-.viz-wrapper {
-  position: relative;
-}
 
 .sidebar--hidden {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.intro-math {
-  transition: opacity 1s ease;
-}
-
-.intro-math--hidden {
   opacity: 0;
 }
 
@@ -50,7 +37,7 @@
 .facts__trigger {
   display: block;
   width: 49%;
-  border: 1px solid $color-debt-primary;
+  border: 1px solid $color-spending-primary;
   text-align: center;
   margin-bottom: 2px;
   background: white;
@@ -59,7 +46,7 @@
 }
 
 .facts__trigger.facts__trigger--active {
-  background: $color-debt-primary;
+  background: $color-spending-primary;
   color: white;
 }
 
@@ -138,7 +125,7 @@ aside {
     width: auto;
     max-width: none;
     margin: 0;
-    border-left: 3px solid $color-debt-primary;
+    border-left: 3px solid $color-spending-primary;
     box-shadow: none;
   }
 
@@ -158,4 +145,3 @@ aside {
 }
 
 }
-

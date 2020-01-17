@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/revenue/intro/revenue-intro.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -37,7 +38,7 @@ function RevenueAndGdpPage(props) {
 
                 <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
-                <div className="cg-wrapper chapter-intro-common-wrapper">
+                <div className="cg-wrapper chapter-intro-common-wrapper revenue-intro-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
                             <Share 

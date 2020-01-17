@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/debt/intro/debt-intro.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -37,7 +38,7 @@ function ExploreDebtPage(props) {
                 
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
-                <div className="cg-wrapper chapter-intro-common-wrapper">
+                <div className="cg-wrapper chapter-intro-common-wrapper debt-intro-wrapper">
                     <div className="ffg-wrapper debt-intro">
                         <ControlBar>
                             <Share  
