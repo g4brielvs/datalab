@@ -10,6 +10,7 @@ import SunburstDetails from '../details/sunburst-details';
 import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
 import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import Downloads from "../../../components/section-elements/downloads/downloads"
 
 const SunburstVegaContainer = () => {
 
@@ -152,6 +153,8 @@ const SunburstVegaContainer = () => {
           <Breadcrumbs className={styles.header} items={breadcrumbs} className={styles.breadcrumbsContainer} />
           <Sunburst data={sunData} getDetails={getDetails} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+          <Downloads className={styles.downloadContainer}
+            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
         </Grid>
       </Grid>
     </Hidden>
@@ -164,6 +167,8 @@ const SunburstVegaContainer = () => {
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
       <Sunburst data={sunData} getDetails={getDetails} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+      <Downloads className={styles.downloadContainer}
+                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
       <SunburstDetails details={details} />
     </Hidden>
   </>;
