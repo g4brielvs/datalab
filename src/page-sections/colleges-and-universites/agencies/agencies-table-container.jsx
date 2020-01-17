@@ -25,5 +25,5 @@ export default AgenciesTableContainer;
 AgenciesTableContainer.propTypes =  {
   display: PropTypes.bool.isRequired,
   tableColumnTitles: PropTypes.array.isRequired,
-  tableData: PropTypes.object.isRequired,
+  tableData: PropTypes.arrayOf(PropTypes.array).isRequired
 }
