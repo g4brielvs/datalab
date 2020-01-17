@@ -33,37 +33,37 @@ function OverviewPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <header>
-                    <div className="bp-header">
-                        <div className="bp-header__bg"></div>
-                        <div className="ffg-share ffg-share--big-picture">
-                            <ControlBar>
-                                <Share 
-                                    location={props.location}
-                                    title="Data Lab - Your Guide to America’s Finances – U.S. Treasury"
-                                    twitter="How much did the federal government collect and spend last year? Your Guide to America’s Finances has federal revenue, spending, deficit, and debt data available for .CSV download. #YourGuide #DataLab #OpenGov"
-                                    />
-                            </ControlBar>
-                        </div>
+                <div className="cg-wrapper bp-wrapper">
+                    <header>
+                        <div className="bp-header">
+                            <div className="bp-header__bg"></div>
+                            <div className="ffg-share ffg-share--big-picture">
+                                <ControlBar>
+                                    <Share 
+                                        location={props.location}
+                                        title="Data Lab - Your Guide to America’s Finances – U.S. Treasury"
+                                        twitter="How much did the federal government collect and spend last year? Your Guide to America’s Finances has federal revenue, spending, deficit, and debt data available for .CSV download. #YourGuide #DataLab #OpenGov"
+                                        />
+                                </ControlBar>
+                            </div>
 
-                        <div className="bp-header__main">
-                            <h3 className="bp-header__app-name">
-                                YOUR GUIDE TO AMERICA'S FINANCES
-                            </h3>
-                            <h1 className="bp-header__heading">
-                                How much money did the federal <span className="bp-header__break">government <span className="bp-header__collect-text">collect</span> and <span className="bp-header__spend-text">spend</span> in {AfgData.current_fy.value}?</span>
-                            </h1>
-                            <div className="bp-header__text">
-                                Interested in learning about the deficit or federal debt? Keep reading or <a href="#deficit-debt-heading" className="scroll-to">jump to the deficit and federal debt section</a>.
+                            <div className="bp-header__main">
+                                <h3 className="bp-header__app-name">
+                                    YOUR GUIDE TO AMERICA'S FINANCES
+                                </h3>
+                                <h1 className="bp-header__heading">
+                                    How much money did the federal <span className="bp-header__break">government <span className="bp-header__collect-text">collect</span> and <span className="bp-header__spend-text">spend</span> in {AfgData.current_fy.value}?</span>
+                                </h1>
+                                <div className="bp-header__text">
+                                    Interested in learning about the deficit or federal debt? Keep reading or <a href="#deficit-debt-heading" className="scroll-to">jump to the deficit and federal debt section</a>.
+                                </div>
+                            </div>
+                            <div className="bp-header__scroll scroll-to">
+                                <a href="#revenue-chapter"><FontAwesomeIcon icon={faAngleDown} className="fa fa-chevron-down"/></a>
                             </div>
                         </div>
-                        <div className="bp-header__scroll scroll-to">
-                            <a href="#revenue-chapter"><FontAwesomeIcon icon={faAngleDown} className="fa fa-chevron-down"/></a>
-                        </div>
-                    </div>
-                </header>
+                    </header>
 
-                <div className="cg-wrapper">
                     {/* <!-- begin REVENUE chapter --> */}
                     <section className="chapter chapter--revenue">
                         <div className="chapter-scroll-target" id="revenue-chapter"></div>
@@ -132,11 +132,11 @@ function OverviewPage(props) {
 
                                     <a className="link-button chapter__cta" href="/americas-finance-guide/revenue-and-gdp">
                                         <div className="link-button__text--block">
-                                            <div className="link-button__text--top">Learn more about</div>
-                                            <div className="link-button__text--bottom">Federal Revenue</div>
+                                            <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
+                                            <div className="link-button__text--bottom cg-learn-more-button-text">Federal Revenue</div>
                                         </div>
                                         <div className="link-button__icon--block">
-                                            <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
+                                            <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
                                     </a>
                                 </div>
@@ -218,11 +218,11 @@ function OverviewPage(props) {
 
                                     <a className="link-button chapter__cta" href="/americas-finance-guide/spending-and-gdp">
                                         <div className="link-button__text--block">
-                                            <div className="link-button__text--top">Learn more about</div>
-                                            <div className="link-button__text--bottom">Federal Spending</div>
+                                            <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
+                                            <div className="link-button__text--bottom cg-learn-more-button-text">Federal Spending</div>
                                         </div>
                                         <div className="link-button__icon--block">
-                                            <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
+                                            <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
                                     </a>
                                 </div>
@@ -305,11 +305,11 @@ function OverviewPage(props) {
 
                                     <a className="link-button chapter__cta" href="/americas-finance-guide/explore-deficit">
                                         <div className="link-button__text--block">
-                                            <div className="link-button__text--top">Learn more about</div>
-                                            <div className="link-button__text--bottom">Federal Deficit</div>
+                                            <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
+                                            <div className="link-button__text--bottom cg-learn-more-button-text">Federal Deficit</div>
                                         </div>
                                         <div className="link-button__icon--block">
-                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
                                     </a>
                                 </div>
@@ -383,11 +383,11 @@ function OverviewPage(props) {
 
                                     <a className="link-button chapter__cta" href="/americas-finance-guide/explore-debt">
                                         <div className="link-button__text--block">
-                                            <div className="link-button__text--top">Learn more about</div>
-                                            <div className="link-button__text--bottom">Federal Debt</div>
+                                            <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
+                                            <div className="link-button__text--bottom cg-learn-more-button-text">Federal Debt</div>
                                         </div>
                                         <div className="link-button__icon--block">
-                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/>
+                                        <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
                                     </a>
                                 </div>
@@ -398,33 +398,33 @@ function OverviewPage(props) {
                             </div>
                         </div>
                     </section>
-                </div>
 
-                <section className="hwcta">
-                    <p>This analysis was conducted using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending of the United States and the <a href={AfgData.mspd_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt.</p>
-                    <p>U.S. Census Bureau data was used for <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">population</a> and <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">household</a> estimates. <a href={AfgData.census_median_home.value} rel="noopener noreferrer" target="_blank">Median home price estimates</a> are also provided by the U.S. Census Bureau. Rent estimates come from the <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development (HUD)</a>. The Bureau of Labor Statistics (BLS) <a href={AfgData.bls_occ_employment.value} rel="noopener noreferrer" target="_blank">Occupational Employment Statistics</a> was used for wage estimates. Information on the amount of credit card debt added by Americans comes from the Federal Reserve Bank of New York’s <a href={AfgData.frbny_microecon.value} rel="noopener noreferrer" target="_blank">Center for Microeconomic Data</a>. The annual 10-K reports of the top S&P 500 companies were compiled in order to find the equivalent revenue from companies to match the federal government’s revenue for the year. The <a href={AfgData.artba_road_cost.value} rel="noopener noreferrer" target="_blank">American Road and Transportation Builders Association</a> provides information about the cost of building new roads derived from the cost models of different states.</p>
-                    <div className="afg__download--div">
-                        <div className="afg__download--heading">Download Source Data</div>
-                        <ul>
-                            <li><a href="/americas-finance-guide/afgData/overview_federal_revenue.csv" download="overview_federal_revenue.csv">overview_federal_revenue.csv</a></li>
-                            <li><a href="/americas-finance-guide/afgData/overview_federal_spending.csv" download="overview_federal_spending.csv">overview_federal_spending.csv</a></li>
-                            <li><a href="/americas-finance-guide/afgData/overview_federal_deficit.csv" download="overview_federal_deficit.csv">overview_federal_deficit.csv</a></li>
-                            <li><a href="/americas-finance-guide/afgData/overview_federal_debt.csv" download="overview_federal_debt.csv">overview_federal_debt.csv</a></li>
-                        </ul>
+                    <section className="hwcta">
+                        <p>This analysis was conducted using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending of the United States and the <a href={AfgData.mspd_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt.</p>
+                        <p>U.S. Census Bureau data was used for <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">population</a> and <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">household</a> estimates. <a href={AfgData.census_median_home.value} rel="noopener noreferrer" target="_blank">Median home price estimates</a> are also provided by the U.S. Census Bureau. Rent estimates come from the <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development (HUD)</a>. The Bureau of Labor Statistics (BLS) <a href={AfgData.bls_occ_employment.value} rel="noopener noreferrer" target="_blank">Occupational Employment Statistics</a> was used for wage estimates. Information on the amount of credit card debt added by Americans comes from the Federal Reserve Bank of New York’s <a href={AfgData.frbny_microecon.value} rel="noopener noreferrer" target="_blank">Center for Microeconomic Data</a>. The annual 10-K reports of the top S&P 500 companies were compiled in order to find the equivalent revenue from companies to match the federal government’s revenue for the year. The <a href={AfgData.artba_road_cost.value} rel="noopener noreferrer" target="_blank">American Road and Transportation Builders Association</a> provides information about the cost of building new roads derived from the cost models of different states.</p>
+                        <div className="afg__download--div">
+                            <div className="afg__download--heading">Download Source Data</div>
+                            <ul>
+                                <li><a href="/americas-finance-guide/afgData/overview_federal_revenue.csv" download="overview_federal_revenue.csv">overview_federal_revenue.csv</a></li>
+                                <li><a href="/americas-finance-guide/afgData/overview_federal_spending.csv" download="overview_federal_spending.csv">overview_federal_spending.csv</a></li>
+                                <li><a href="/americas-finance-guide/afgData/overview_federal_deficit.csv" download="overview_federal_deficit.csv">overview_federal_deficit.csv</a></li>
+                                <li><a href="/americas-finance-guide/afgData/overview_federal_debt.csv" download="overview_federal_debt.csv">overview_federal_debt.csv</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div className="historical-quote">
+                        <blockquote>We might hope to see the finances of the Union as <strong>clear and intelligible as a merchant's books</strong>, so that every member of Congress, and <strong>every person</strong> of any mind in the Union should be able to <strong>comprehend them</strong>, to investigate abuses, and consequently to control them.</blockquote>
+                        <img role="presentation" className="historical-quote__image" src="/americas-finance-guide/images/jefferson.png" alt=""></img>
+                        <p className="historical-quote__credit"><strong>Thomas Jefferson</strong> to Albert Gallatin, 1802<br/>(edited)</p>
                     </div>
-                </section>
 
-                <div className="historical-quote">
-                    <blockquote>We might hope to see the finances of the Union as <strong>clear and intelligible as a merchant's books</strong>, so that every member of Congress, and <strong>every person</strong> of any mind in the Union should be able to <strong>comprehend them</strong>, to investigate abuses, and consequently to control them.</blockquote>
-                    <img role="presentation" className="historical-quote__image" src="/americas-finance-guide/images/jefferson.png" alt=""></img>
-                    <p className="historical-quote__credit"><strong>Thomas Jefferson</strong> to Albert Gallatin, 1802<br/>(edited)</p>
-                </div>
-
-                <div className="about-us">
-                    <h1 className="about-us__heading">Americans asked. We listened.</h1>
-                    <p className="about-us__main-copy"><em>Your Guide to America's Finances</em> is a re-invention of the <a href={AfgData.citizens_guide_link.value} rel="noopener noreferrer" target="_blank">Citizen’s Guide to the Financial Report of the U.S. Government</a>. This site was created in response to the public’s desire to learn more about the financial picture of the United States. Where does the money come from? Where does it go? What are the trends over time, and how does the U.S. compare to other countries?  This guide was created to make federal financial information open and accessible to all - reflecting the very principles that our founding fathers set forth when the United States was formed.</p>
-                    <p className="about-us__source"><strong>Your Guide to America's Finances</strong> is brought to you by the U.S. Department of the Treasury</p>
-                    <img src="/americas-finance-guide/images/treasury-seal.svg" className="about-us__logo" alt="U.S. Treasury Logo"></img>
+                    <div className="about-us">
+                        <h1 className="about-us__heading">Americans asked. We listened.</h1>
+                        <p className="about-us__main-copy"><em>Your Guide to America's Finances</em> is a re-invention of the <a href={AfgData.citizens_guide_link.value} rel="noopener noreferrer" target="_blank">Citizen’s Guide to the Financial Report of the U.S. Government</a>. This site was created in response to the public’s desire to learn more about the financial picture of the United States. Where does the money come from? Where does it go? What are the trends over time, and how does the U.S. compare to other countries?  This guide was created to make federal financial information open and accessible to all - reflecting the very principles that our founding fathers set forth when the United States was formed.</p>
+                        <p className="about-us__source"><strong>Your Guide to America's Finances</strong> is brought to you by the U.S. Department of the Treasury</p>
+                        <img src="/americas-finance-guide/images/treasury-seal.svg" className="about-us__logo" alt="U.S. Treasury Logo"></img>
+                    </div>
                 </div>
             </Default>
         </>

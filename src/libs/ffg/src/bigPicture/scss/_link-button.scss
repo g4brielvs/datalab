@@ -3,7 +3,9 @@ button.link-button,
 div.link-button {
 	background: none;
 	text-decoration: none;
-	display: inline-block;
+    display: inline-block;
+	color: white;
+    
 
 	.link-button__text--block {
 		display: inline-block;
@@ -27,6 +29,7 @@ div.link-button {
 }
 
 a.chapter__cta {
+    // this color is being overruled by index.scss from datalab
 	color: white;
 	font-weight: 600;
 	padding: 1rem 1.3rem;
@@ -37,6 +40,6 @@ a.chapter__cta {
 	align-items: center;
 }
 
-a.chapter__cta i.fa-angle-right {
+a.chapter__cta i.fa-angle-right .fa-chevron-right {
 	margin-left: 1rem;
 }
