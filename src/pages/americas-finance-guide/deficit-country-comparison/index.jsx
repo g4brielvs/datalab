@@ -12,9 +12,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function DeficitCountryComparisonPage(props) {
     return (
@@ -22,7 +23,6 @@ function DeficitCountryComparisonPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/deficit/countryComparison.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -35,18 +35,7 @@ function DeficitCountryComparisonPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--deficit">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="/americas-finance-guide/explore-deficit">Explore Deficit</a></li>
-                        <li><a href="/americas-finance-guide/trends.html">Federal Deficit Trends</a></li>
-                        <li><a href="/americas-finance-guide/deficit-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
                 <div className="ffg-wrapper">
                     <ControlBar>
@@ -54,7 +43,7 @@ function DeficitCountryComparisonPage(props) {
                             location={props.location}
                             title='Data Lab - Deficit Country Comparison – U.S. Treasury'
                             text='How does the U.S. deficit compare with other countries? Check out Your Guide America’s Finances for data from 169 countries, then download .CSV data files to perform your own analysis. #YourGuide #DataLab #OpenGov'
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Compare the Federal Deficit of the United States to Other Countries</h1>

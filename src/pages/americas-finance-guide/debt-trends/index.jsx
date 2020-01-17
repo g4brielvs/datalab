@@ -13,9 +13,10 @@ import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function DebtTrendsPage(props) {
     return (
@@ -23,7 +24,6 @@ function DebtTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/debt/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -36,19 +36,7 @@ function DebtTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                 <nav className="chapter-nav chapter-nav--debt">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./explore-debt">Explore Debt</a></li>
-                        <li><a href="./debt-trends">Federal Debt Trends</a></li>
-                        <li><a href="./debt-analysis">Federal Debt Analysis</a></li>
-                        <li><a href="./debt-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="ffg-wrapper">
                     <ControlBar>
@@ -56,7 +44,7 @@ function DebtTrendsPage(props) {
                             location={props.location}
                             title="Data Lab - Federal Debt Trends – U.S. Treasury"
                             twitter="What is the ratio of debt to GDP? How has the debt changed over time? Your Guide to America’s Finances has data from 2000-2019 and .CSV data files available for download. #YourGuide #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>Federal Debt Trends Over Time</h1>

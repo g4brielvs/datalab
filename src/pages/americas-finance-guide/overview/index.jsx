@@ -13,7 +13,7 @@ import { Helmet } from 'react-helmet';
 import BpToc from '../../../components/bpToc/bpToc'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleDown, faStreetView } from '@fortawesome/free-solid-svg-icons';
 
 function OverviewPage(props) {
     return (
@@ -21,7 +21,6 @@ function OverviewPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/overview/index.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO

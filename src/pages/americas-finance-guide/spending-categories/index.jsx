@@ -11,9 +11,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSearch, faSortAlphaDown, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faSearch, faSortAlphaDown, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingCategoriesPage(props) {
     return (
@@ -21,7 +22,6 @@ function SpendingCategoriesPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/spending-categories/index.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -34,19 +34,7 @@ function SpendingCategoriesPage(props) {
             <Default>
                 <HeadOnly></HeadOnly>
 
-                <nav className="chapter-nav chapter-nav--spending">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./spending-categories">Spending Categories</a></li>
-                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
-                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="ffg-wrapper spending-categories">
                     <ControlBar>
