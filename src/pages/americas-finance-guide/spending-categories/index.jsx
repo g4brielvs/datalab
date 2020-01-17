@@ -35,7 +35,7 @@ function SpendingCategoriesPage(props) {
 
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
-                <div className="cg-wrapper">
+                <div className="cg-wrapper spending-categories-wrapper">
                     <div className="ffg-wrapper spending-categories">
                         <ControlBar>
                             <Share  
