@@ -19,6 +19,10 @@
   color: #666666;
 }
 
+.download-container {
+  padding-top: 2rem;
+}
+
 @media (max-width: $tablet) {
   .sunburst-vega-container {
     flex-direction: column-reverse;
