@@ -17,7 +17,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
                  hwctaLink={this.props.location.pathname + '/methodologies'}>
       <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
 
-      <CustomHeader
+        <CustomHeader
         subtext={'Federal Investment in Higher Education'}
         subblurb={['Explore the Federal Investment in your ', <br key='subblurb-linebreak' />,
           <span key='subblurb-callout' className={'header--red'}>Alma Mater</span>]}
