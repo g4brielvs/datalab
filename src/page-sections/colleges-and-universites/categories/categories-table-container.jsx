@@ -28,5 +28,5 @@ CategoriesTableContainer.propTypes =  {
   fundingType: PropTypes.string.isRequired,
   title: PropTypes.string,
   columnTitles: PropTypes.array.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.arrayOf(PropTypes.array).isRequired
 }
