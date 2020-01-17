@@ -4,6 +4,9 @@
 @import './chapterIntro/colorOverrides';
 @import './accordion';
 
+.chapter-intro-common-wrapper {
+
+
 #copy {
   text-align: left;
   margin-top: 2rem;
@@ -83,3 +86,4 @@ aside {
   }
 }
 
+}
