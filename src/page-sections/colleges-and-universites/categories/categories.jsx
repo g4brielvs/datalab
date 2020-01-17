@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Accordion from 'src/components/accordion/accordion';
+import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Downloads from 'src/components/section-elements/downloads/downloads';
-import InformationIcon from '../../../components/information-icon/Icon';
-import Grid from '@material-ui/core/Grid';
-import { Hidden } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/cu/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
+import TableContainer from './categories-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
-import TableContainer from "./categories-table-container";
 
-import CategoriesVizContainer from "./sunburst-container/sunburst-container";
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 const Categories = () => {
 
@@ -25,7 +23,7 @@ const Categories = () => {
     } else {
       isChartView(false);
     }
-  };
+  }
 
   const [fundingType, setFundingType] = useState('contracts');
   function onTypeChange(e) {
@@ -49,7 +47,7 @@ const Categories = () => {
       dataType: 'CFDA',
       centerText: 'Total FY2018 Research Grants Funding'
     }
-  };
+  }
 
   const _data = useStaticQuery(graphql`
     query {
@@ -151,8 +149,7 @@ const Categories = () => {
       .sort(searchSort)
   };
 
-
-  const tableColumnTitles = [{title: 'Family'}, {title: 'Program Title'}, {title: 'Agency'}, {title:'Subagency'}, {title: 'Recipient'}, {title: 'Obligation'}];
+  const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
     contracts: _data.contracts.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
@@ -171,13 +168,13 @@ const Categories = () => {
 
     const searchListByType = searchList[fundingType];
 
-    itemList = searchListByType.find(function(el){
+    itemList = searchListByType.find(function (el) {
       return el.id === id;
     });
 
-    let obj = _.filter(tableData[fundingType], {0: itemList.heading, 1:itemList.subheading});
+    let obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
 
-    if(obj && obj.length > 0) {
+    if (obj && obj.length > 0) {
       data.push(obj);
     }
 
@@ -196,7 +193,7 @@ const Categories = () => {
   const searchItemSelected = id => {
     filterTableData(id);
     if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
-  };
+  }
 
   return (
     <>
@@ -269,8 +266,7 @@ const Categories = () => {
                   onChange={onTypeChange}
                   checked={fundingType === 'research'}
                 />
-                <label htmlFor='cuResearch'>&nbsp;Research Grants </label>
-                <InformationIcon/>
+                <label htmlFor='cuResearch'>&nbsp;Research Grants</label>
               </Grid>
             </Grid>
           </div>
@@ -285,14 +281,19 @@ const Categories = () => {
             display={!chartView}
             title={titlesByType[fundingType].categoryLabel + 's'}
             columnTitles={tableColumnTitles}
-            data = {filteredTableData}
-            tableRef = {tableRef} />
-
+            data={filteredTableData}
+            tableRef={tableRef}
+          />
         </Grid>
       </Grid>
 
       <Downloads
-        href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+        href={
+          fundingType === 'contracts' ?
+            '/data/colleges-and-universities/categories/investmentSectionContracts_v2.csv'
+            :
+            '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
+        }
         date={'March 2019'}
       />
     </>
