@@ -10,6 +10,7 @@ export default function formatNumber(type, number) {
     case 'percent':
       return formatPercent(number);
     case 'actions':
+    case 'number':
       return formatActions(number);
     case 'dollars':
       return formatDollars(Math.round(number));
