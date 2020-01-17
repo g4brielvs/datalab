@@ -1,6 +1,5 @@
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 
 import React from "react"
@@ -12,9 +11,10 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingTrendsPage(props) {
     return (
@@ -22,7 +22,6 @@ function SpendingTrendsPage(props) {
 
             <Helmet>
                 <script defer src="/americas-finance-guide/spending/trends.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -35,19 +34,7 @@ function SpendingTrendsPage(props) {
             <Default>
                 <HeaderOnly></HeaderOnly>
 
-                <nav className="chapter-nav chapter-nav--spending">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="./spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="./spending-categories">Spending Categories</a></li>
-                        <li><a href="./spending-trends">Federal Spending Trends</a></li>
-                        <li><a href="./spending-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="ffg-wrapper">
                     <ControlBar>

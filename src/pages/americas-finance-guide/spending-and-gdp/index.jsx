@@ -1,7 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -13,19 +12,19 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import AnecdoteSpendingSVG from '../../../libs/assets/ffg/icons/anecdote-spending.svg';
 import DefinitionSpendingSVG from '../../../libs/assets/ffg/icons/definition.svg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faReply } from '@fortawesome/free-solid-svg-icons';
 
 function SpendingAndGdpPage(props) {
     return (
         <>
             <Helmet>
                 <script defer src="/americas-finance-guide/spending/intro.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -38,20 +37,7 @@ function SpendingAndGdpPage(props) {
             <Default>
                 <HeadOnly></HeadOnly>
 
-                {/* we need to figure out how to use this nav with the main nav; design people are working on it */}
-                <nav className="chapter-nav chapter-nav--spending">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="/americas-finance-guide/spending-and-gdp">Spending and GDP</a></li>
-                        <li><a href="/americas-finance-guide/spending-categories">Spending Categories</a></li>
-                        <li><a href="/americas-finance-guide/spending-trends">Federal Spending Trends</a></li>
-                        <li><a href="/americas-finance-guide/spending-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="ffg-wrapper spending-intro">
                     <ControlBar>

@@ -1,7 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/normalize.scss'
-import '../../../libs/assets/ffg/nav/nav.css'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -12,18 +11,18 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
+import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import AnecdoteDeficitSVG from '../../../libs/assets/ffg/icons/anecdote-deficit.svg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faReply } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faReply } from '@fortawesome/free-solid-svg-icons';
 
 function ExploreDeficitPage(props) {
     return (
         <>
             <Helmet>
                 <script defer src="/americas-finance-guide/deficit/intro.js"></script>
-                <script defer src="/americas-finance-guide/nav.js"></script>
             </Helmet>
 
             <SEO
@@ -36,18 +35,7 @@ function ExploreDeficitPage(props) {
             <Default>
                 <HeadOnly></HeadOnly>
 
-                <nav className="chapter-nav chapter-nav--deficit">
-                    <ul className="chapter-nav__primary-list">
-                        <li className="chapter-nav__overview"><a href="../"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
-                        <li><a href="/americas-finance-guide/explore-deficit">Explore Deficit</a></li>
-                        <li><a href="/americas-finance-guide/deficit-trends">Federal Deficit Trends</a></li>
-                        <li><a href="/americas-finance-guide/deficit-country-comparison">Country Comparison</a></li>
-                    </ul>
-                    <button className="chapter-nav-trigger">
-                        <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-                        <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
-                    </button>
-                </nav>
+                <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
                 <div className="ffg-wrapper deficit-intro">
                     <ControlBar>
@@ -55,7 +43,7 @@ function ExploreDeficitPage(props) {
                             location={props.location}
                             title="Data Lab - Explore Federal Deficit – U.S. Treasury"
                             twitter="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
-                            facebook='' reddit='' linkedin='' tumblr='' email='' />
+                            />
                     </ControlBar>
 
                     <h1>In {AfgData.current_fy.value}, the federal government spent {AfgData.current_fy_deficit.value} more than it collected, resulting in a deficit.
