@@ -10,6 +10,7 @@ import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import Breadcrumbs from './breadcrumbs/sunburst-breadcrumbs';
 import styles from './contract-explorer-container.module.scss';
+import Search from 'src/components/chartpanels/search';
 
 
 const SunburstVegaContainer = () => {
