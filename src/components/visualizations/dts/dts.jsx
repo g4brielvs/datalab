@@ -573,7 +573,6 @@ function DTS(props) {
 
     function updateGraph(data) {
       categorySeparatorDate = data.length > 1 ? data[0].date : null;
-      console.log(data);
 
       if (data[0].name === "All Categories") {
         d3.select(".dts-footnote").style("visibility", "visible");
@@ -840,7 +839,6 @@ function DTS(props) {
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
-            console.log(cateName);
             masterMapping[key]["today"].push({
               "name": cateName,
               values: optionsDict[cateName]["today"],
