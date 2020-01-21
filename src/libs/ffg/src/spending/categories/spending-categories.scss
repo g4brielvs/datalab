@@ -2,6 +2,9 @@
 @import '../../globalSass/accordion';
 @import '../../globalSass/generalVars';
 
+.spending-categories-wrapper {
+
+
 .title-text {
     font-weight: $normalWeight;
     display: inline-block;
@@ -222,4 +225,6 @@
 
 .spending-chart-toggle[data-active="agency"] .toggle-control__dot {
     transform: translateX(0.8rem)
+}
+
 }
