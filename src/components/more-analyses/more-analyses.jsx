@@ -72,8 +72,7 @@ export default class MoreAnalyses extends React.Component {
 
   showAnything = () => {
     if (typeof window !== 'undefined') {
-      const pageFrag = window.location.pathname.replace(new RegExp(/\//, 'g'), '');
-      if (this.showAnalyses = this.show[pageFrag]) {
+      if (this.showAnalyses = this.show[window.location.pathname.replace(new RegExp(/\//, 'g'), '')]) {
         return true;
       }
     }
