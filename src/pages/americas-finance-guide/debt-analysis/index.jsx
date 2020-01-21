@@ -35,7 +35,7 @@ function DebtAnalysisPage(props) {
 
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
-                <div className="cg-wrapper">
+                <div className="cg-wrapper debt-analysis-wrapper">
                     <div className="ffg-wrapper debt-analysis">
                         <ControlBar>
                             <Share  
