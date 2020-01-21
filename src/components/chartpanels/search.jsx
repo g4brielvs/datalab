@@ -12,10 +12,15 @@ const maxListItems = 20;
 export default class SearchPanel extends React.Component {
   constructor(props) {
     super(props);
+
+    // set initItem to display value of props.initItem's id, or blank
+    let initItem = '';
+    props.initItem && (initItem = this.props.searchList.find(e => e.id === props.initItem).display);
+
     this.state = {
-      currentValue: '',
+      currentValue: initItem,
       expanded: this.props.initShowList,
-      icon: 'search'
+      icon: initItem ? 'clear' : 'search'
     }
     this.filteredList = this.props.searchList;
   }
@@ -132,12 +137,14 @@ export default class SearchPanel extends React.Component {
     }
   ]
 
+  initItem is the default item selected (only one, optional)
   initShowList is true if the list should be open when initialized
   onSelect is parent callback when an item is selected, passes back id value only
 */
 
 SearchPanel.propTypes = {
   'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
+  'initItem': PropTypes.string,
   'listDescription': PropTypes.string.isRequired,
   'initShowList': PropTypes.bool,
   'onSelect': PropTypes.func

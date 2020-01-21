@@ -70,6 +70,15 @@ export default class MoreAnalyses extends React.Component {
     'competition-in-contracting': [7, 5, 4, 2]
   };
 
+  showAnything = () => {
+    if (typeof window !== 'undefined') {
+      if (this.showAnalyses = this.show[window.location.pathname.replace(new RegExp(/\//, 'g'), '')]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   render = () =>
     <section className={moreAnalysesStyles.analyses}>
       <Grid item xs={12} className={moreAnalysesStyles.heading}>
@@ -82,26 +91,25 @@ export default class MoreAnalyses extends React.Component {
         className={moreAnalysesStyles.tiles}
         spacing={3}
       >
-        {typeof window !== 'undefined' &&
-          this.show[window.location.pathname.replace(new RegExp(/\//, 'g'), '')]
-            .map((analysesIndex, i) =>
-              <Grid item xs={12} sm={6} xl={3}
-                key={'analyses_tile_' + i}
-                className={`tile ${moreAnalysesStyles.tile}`}
-              >
-                <Link to={this.analyses[analysesIndex].href}>
-                  <div className={moreAnalysesStyles.text}>
-                    <h3 className={moreAnalysesStyles.title}>
-                      {this.analyses[analysesIndex].title}
-                    </h3>
-                    <p className={moreAnalysesStyles.subtitle}>
-                      {this.analyses[analysesIndex].subtitle}
-                    </p>
-                  </div>
-                  <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
-                </Link>
-              </Grid>
-            )
+        {this.showAnything() &&
+          this.showAnalyses.map((analysesIndex, i) =>
+            <Grid item xs={12} sm={6} xl={3}
+              key={'analyses_tile_' + i}
+              className={`tile ${moreAnalysesStyles.tile}`}
+            >
+              <Link to={this.analyses[analysesIndex].href}>
+                <div className={moreAnalysesStyles.text}>
+                  <h3 className={moreAnalysesStyles.title}>
+                    {this.analyses[analysesIndex].title}
+                  </h3>
+                  <p className={moreAnalysesStyles.subtitle}>
+                    {this.analyses[analysesIndex].subtitle}
+                  </p>
+                </div>
+                <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
+              </Link>
+            </Grid>
+          )
         }
       </Grid>
     </section>

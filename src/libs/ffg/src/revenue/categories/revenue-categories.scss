@@ -1,6 +1,9 @@
 @import '../../globalSass/colors';
 @import '../../spending/categories/spending-categories';
 
+.revenue-categories-wrapper {
+
+
 #viz {
   margin-top: 0;
 }
@@ -77,4 +80,6 @@
 
 .hidden {
   display:none;
+}
+
 }
