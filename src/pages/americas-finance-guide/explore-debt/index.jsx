@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/debt/intro/debt-intro.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -37,7 +38,7 @@ function ExploreDebtPage(props) {
                 
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
-                <div className="cg-wrapper chapter-intro-common-wrapper">
+                <div className="cg-wrapper chapter-intro-common-wrapper debt-intro-wrapper">
                     <div className="ffg-wrapper debt-intro">
                         <ControlBar>
                             <Share  
@@ -95,7 +96,7 @@ function ExploreDebtPage(props) {
                                 </Accordion>
                             </section>
 
-                            <section className="tour sidebar intro-hidden">
+                            <section className="tour intro-hidden">
                                 <div className="tour__part-one">
                                     <h1>How has the federal debt changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal debt since {AfgData.debt_trend_start.value}.</p>
@@ -114,19 +115,19 @@ function ExploreDebtPage(props) {
                             <p>In this visualization, one dot represents {AfgData.dot_represents.value}.</p>
                         </div>
                     </div> {/* end ffg-wrapper debt-intro */}
-                </div>
 
-                <section className="hwcta">
-                    <Accordion title="Data Sources and Methodology">
-                    <p>This visualization was created using the <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt of the United States and the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending. <GdpTemplate></GdpTemplate> Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
-                    <div className="afg__download--div">
-                        <div className="afg__download--heading">Download Source Data</div>
-                        <ul>
-                            <li><a href="/americas-finance-guide/afgData/explore_federal_debt.csv" download="explore_federal_debt.csv">explore_federal_debt.csv</a></li>
-                        </ul>
-                    </div>
-                    </Accordion>
-                </section>
+                    <section className="hwcta">
+                        <Accordion title="Data Sources and Methodology">
+                        <p>This visualization was created using the <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt of the United States and the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending. <GdpTemplate></GdpTemplate> Throughout this page, we use the gross domestic product for the Fiscal Year, not the Calendar Year, in order to facilitate an appropriate comparison.</p>
+                        <div className="afg__download--div">
+                            <div className="afg__download--heading">Download Source Data</div>
+                            <ul>
+                                <li><a href="/americas-finance-guide/afgData/explore_federal_debt.csv" download="explore_federal_debt.csv">explore_federal_debt.csv</a></li>
+                            </ul>
+                        </div>
+                        </Accordion>
+                    </section>
+                </div>
             </Default>
         </>
     )
