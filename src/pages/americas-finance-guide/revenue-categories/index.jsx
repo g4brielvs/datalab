@@ -35,7 +35,7 @@ function RevenueCategoriesPage(props) {
 
                 <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
-                <div className="cg-wrapper">
+                <div className="cg-wrapper revenue-categories-wrapper">
                     <div className="ffg-wrapper revenue-categories">
                         <ControlBar>
                             <Share  

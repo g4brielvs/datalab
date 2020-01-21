@@ -1,5 +1,8 @@
 @import '../../globalSass/colors';
 
+.deficit-intro-wrapper {
+
+
 .viz-wrapper {
   position: relative;
 }
@@ -152,5 +155,7 @@ aside {
     clear: both;
     transform: translateY(2rem);
   }
+}
+
 }
 

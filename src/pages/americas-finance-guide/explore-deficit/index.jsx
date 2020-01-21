@@ -1,5 +1,6 @@
 import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../libs/ffg/src/deficit/intro/deficit-intro.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -36,7 +37,7 @@ function ExploreDeficitPage(props) {
 
                 <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
-                <div className="cg-wrapper chapter-intro-common-wrapper">
+                <div className="cg-wrapper chapter-intro-common-wrapper deficit-intro-wrapper">
                     <div className="ffg-wrapper deficit-intro">
                         <ControlBar>
                             <Share 
@@ -92,7 +93,7 @@ function ExploreDeficitPage(props) {
                                 </Accordion>
                             </section>
 
-                            <section className="tour sidebar intro-hidden">
+                            <section className="tour intro-hidden">
                                 <div className="tour__part-one">
                                     <h1>How has the federal deficit changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal deficit since {AfgData.deficit_trend_start.value}.</p>
@@ -111,22 +112,20 @@ function ExploreDeficitPage(props) {
                             <p>In this visualization, one dot represents {AfgData.dot_represents.value}.</p>
                         </div>
                     </div>
+
+                    <section className="hwcta">
+                        <Accordion title="Data Sources and Methodology">
+                        <p>This visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue, spending, and deficit and the <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source of federal debt.</p>
+                        <div className="afg__download--div">
+                            <div className="afg__download--heading">Download Source Data</div>
+                            <ul>
+                                <li><a href="/americas-finance-guide/afgData/explore_federal_deficit.csv" download="explore_federal_deficit.csv">explore_federal_deficit.csv</a></li>
+                            </ul>
+                        </div>
+                        </Accordion>
+                    </section>
                 </div>
-
-                <section className="hwcta">
-                    <Accordion title="Data Sources and Methodology">
-                    <p>This visualization was created using the <a href={AfgData.current_mts.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue, spending, and deficit and the <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source of federal debt.</p>
-                    <div className="afg__download--div">
-                        <div className="afg__download--heading">Download Source Data</div>
-                        <ul>
-                            <li><a href="/americas-finance-guide/afgData/explore_federal_deficit.csv" download="explore_federal_deficit.csv">explore_federal_deficit.csv</a></li>
-                        </ul>
-                    </div>
-                    </Accordion>
-                </section>
-
             </Default>
-
         </>
     )
 }
