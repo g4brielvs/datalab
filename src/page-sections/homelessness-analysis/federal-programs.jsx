@@ -1,122 +1,128 @@
-import React, {useEffect} from 'react';
-import { Grid, Hidden } from "@material-ui/core"
+import React, { useEffect } from 'react';
+import * as d3 from 'd3v3';
+import styles from './federal-programs.module.scss';
 
-import Accordion from "../../components/accordion/accordion"
-import Share from "../../components/share/share"
-import ControlBar from "../../components/control-bar/control-bar"
-import tooltipModule from "../../components/tooltip/tooltip"
-import * as d3 from "d3v3"
-import dataSource from "../../components/visualizations/homelessness-analysis/utils/data-module"
-import Downloads from "../../components/section-elements/downloads/downloads"
+import Accordion from '../../components/accordion/accordion';
+import Share from '../../components/share/share';
+import dataSource from '../../components/visualizations/homelessness-analysis/utils/data-module';
+import Downloads from '../../components/section-elements/downloads/downloads';
+import { Grid, Hidden } from '@material-ui/core';
+import Search from 'src/components/chartpanels/search';
+import tooltipModule from '../../components/tooltip/tooltip';
 
-export default function FederalPrograms(props){
-    const {mem} = dataSource;
-    const us = mem.us;
-    const acr = mem.acr;
-    const state = mem.states;
-    const tableData = mem.pop;
-    const cfdaState = mem.cfdaState;
-    let barChrt = mem.barChart;
+export default function FederalPrograms(props) {
+  const { mem } = dataSource;
+  const us = mem.us;
+  const acr = mem.acr;
+  const state = mem.states;
+  const tableData = mem.pop;
+  const cfdaState = mem.cfdaState;
+  let barChrt = mem.barChart;
 
-    const absWidth = 1024;
-    const absHeight = 575;
-    const margin = {
-      top: 100,
-      right: 50,
-      bottom: 15,
-      left: 100
-    };
-    const la = us.features.filter((d) => d.properties.coc_number === 'CA-600');
-    const formatNumber = d3.format('$,.0f');
-    const OtherformatNumber = d3.format(',.0f');
-    const panel2Width = absWidth - margin.left - margin.right;
-    const panel2Height = absHeight - margin.top - margin.bottom;
-    const matrixWidth = (absWidth / 1.85) - margin.left - margin.right;
-    const mapWidth = panel2Width - matrixWidth - margin.left - margin.right - 45;
-    const mapHeight = panel2Height / 3;
-    const infoWidth = panel2Width - matrixWidth - margin.left - margin.right;
-    const infoHeight = panel2Height / 3;
-    let map2Centered = la[0];
-    let Tooltip;
-    let mapTitle, p21MapSvg, contactPanel, cocPanel, p2MatrixSvg, p21Path, m;
+  const absWidth = 1024;
+  const absHeight = 575;
+  const margin = {
+    top: 100,
+    right: 50,
+    bottom: 15,
+    left: 100
+  };
+  const la = us.features.filter((d) => d.properties.coc_number === 'CA-600');
+  const formatNumber = d3.format('$,.0f');
+  const OtherformatNumber = d3.format(',.0f');
+  const panel2Width = absWidth - margin.left - margin.right;
+  const panel2Height = absHeight - margin.top - margin.bottom;
+  const matrixWidth = (absWidth / 1.85) - margin.left - margin.right;
+  const mapWidth = panel2Width - matrixWidth - margin.left - margin.right - 45;
+  const mapHeight = panel2Height / 3;
+  const infoWidth = panel2Width - matrixWidth - margin.left - margin.right;
+  const infoHeight = panel2Height / 3;
+  let map2Centered = la[0];
+  let Tooltip;
+  let mapTitle, p21MapSvg, contactPanel, cocPanel, p2MatrixSvg, p21Path, m;
 
-    function init() {
-      d3.select('#container2_1').append('div').attr('id', 'p2_1').style('top', '150px');
-      d3.select('#container2_2').append('div').attr('id', 'p2_2_legend_title');
-      d3.select('#container2_2').append('div').attr('id', 'p2_2_legend');
-      d3.select('#container2_2').append('div').attr('id', 'p2_2');
-      d3.select('#container2_3').append('div').attr('id', 'p2_3_title');
-      d3.select('#container2_3').append('div').attr('id', 'p2_3');
-      d3.select('#container2_4').append('div').attr('id', 'p2_4_legend_title');
-      d3.select('#container2_4').append('div').attr('id', 'p2_4_legend');
-      d3.select('#container2_4').append('div').attr('id', 'p2_4');
-      d3.select('#CoCcontact').append('div').attr('id', 'p2_5');
-      d3.select('#p2_1').append('div').attr('id', 'panel_map');
-      d3.select('#p2_2').append('div').attr('id', 'panel_matrix');
-      d3.select('#p2_3').append('div').attr('id', 'panel_coc');
-      d3.select('#p2_4').append('div').attr('id', 'panel_info');
-      d3.select('#p2_5').append('div').attr('id', 'panel_contact');
+  const searchList = us.features.map(e => ({
+    id: e.properties.coc_number,
+    display: e.properties.COCNAME
+  }));
 
-      mapTitle = d3.select('#container2_title');
+  function init() {
+    d3.select('#container2_1').append('div').attr('id', 'p2_1').style('top', '150px');
+    d3.select('#container2_2').append('div').attr('id', 'p2_2_legend_title');
+    d3.select('#container2_2').append('div').attr('id', 'p2_2_legend');
+    d3.select('#container2_2').append('div').attr('id', 'p2_2');
+    d3.select('#container2_3').append('div').attr('id', 'p2_3_title');
+    d3.select('#container2_3').append('div').attr('id', 'p2_3');
+    d3.select('#container2_4').append('div').attr('id', 'p2_4_legend_title');
+    d3.select('#container2_4').append('div').attr('id', 'p2_4_legend');
+    d3.select('#container2_4').append('div').attr('id', 'p2_4');
+    d3.select('#CoCcontact').append('div').attr('id', 'p2_5');
+    d3.select('#p2_1').append('div').attr('id', 'panel_map');
+    d3.select('#p2_2').append('div').attr('id', 'panel_matrix');
+    d3.select('#p2_3').append('div').attr('id', 'panel_coc');
+    d3.select('#p2_4').append('div').attr('id', 'panel_info');
+    d3.select('#p2_5').append('div').attr('id', 'panel_contact');
 
-      p21MapSvg = d3.select('#panel_map')
-        .append('svg')
-        .attr('id', 'p2_1_map')
-        .attr('width', '100%')
-        .attr('height', '350px');
+    mapTitle = d3.select('#container2_title');
 
-      contactPanel = d3.select('#CoCcontact')
-        .attr('width', infoWidth + margin.left + margin.right)
-        .attr('height', infoHeight + margin.top + margin.bottom);
+    p21MapSvg = d3.select('#panel_map')
+      .append('svg')
+      .attr('id', 'p2_1_map')
+      .attr('width', '100%')
+      .attr('height', '350px');
 
-      cocPanel = d3.select('#panel_coc')
-        .attr('height', infoHeight + margin.top + margin.bottom)
-        .attr('width', '95%');
+    contactPanel = d3.select('#CoCcontact')
+      .attr('width', infoWidth + margin.left + margin.right)
+      .attr('height', infoHeight + margin.top + margin.bottom);
 
-      p2MatrixSvg = d3.select('#panel_matrix').append('svg')
-        .attr('width', '100%')
-        .attr('height', mapHeight + margin.top + margin.bottom + 40);
+    cocPanel = d3.select('#panel_coc')
+      .attr('height', infoHeight + margin.top + margin.bottom)
+      .attr('width', '95%');
+
+    p2MatrixSvg = d3.select('#panel_matrix').append('svg')
+      .attr('width', '100%')
+      .attr('height', mapHeight + margin.top + margin.bottom + 40);
 
 
-      const p21Projection = d3.geo.albersUsa()
-        .translate([mapWidth / 0.9, mapHeight / 0.9]) // translate to center of screen
-        .scale([575]); // scale things down so see entire US
+    const p21Projection = d3.geo.albersUsa()
+      .translate([mapWidth / 0.9, mapHeight / 0.9]) // translate to center of screen
+      .scale([575]); // scale things down so see entire US
 
-      // Define path generator
-      p21Path = d3.geo.path() // path generator that will convert GeoJSON to SVG paths
-        .projection(p21Projection); // tell path generator to use albersUsa projection
+    // Define path generator
+    p21Path = d3.geo.path() // path generator that will convert GeoJSON to SVG paths
+      .projection(p21Projection); // tell path generator to use albersUsa projection
 
-      m = p21MapSvg.append('g');
+    m = p21MapSvg.append('g');
 
-      p21MapSvg.append('circle').attr('id', 'tipfollowscursor_2');
+    p21MapSvg.append('circle').attr('id', 'tipfollowscursor_2');
 
-      barChrt.forEach((d) => {
-        d.fed_funding = +d.fed_funding;
-      });
+    barChrt.forEach((d) => {
+      d.fed_funding = +d.fed_funding;
+    });
 
-      cfdaState.forEach((d) => {
-        d.fed_funding = +d.fed_funding;
-      });
+    cfdaState.forEach((d) => {
+      d.fed_funding = +d.fed_funding;
+    });
 
-      cfdaState.sort((a, b) => b.fed_funding - a.fed_funding);
-      barChrt = barChrt.sort((x, y) => d3.descending(x.fed_funding, y.fed_funding));
+    cfdaState.sort((a, b) => b.fed_funding - a.fed_funding);
+    barChrt = barChrt.sort((x, y) => d3.descending(x.fed_funding, y.fed_funding));
 
-      tableData.forEach((d) => {
-        d.total_homeless = +d.total_homeless;
-        d.chronically_homeless = +d.chronically_homeless;
-        d.sheltered_homeless = +d.sheltered_homeless;
-        d.unsheltered_homeless = +d.unsheltered_homeless;
-        d.homeless_individuals = +d.homeless_individuals;
-        d.homeless_veterans = +d.homeless_veterans;
-        d.homeless_people_in_families = +d.homeless_people_in_families;
-        d.homeless_unaccompanied_youth = +d.homeless_unaccompanied_youth;
-        d.amount = +d.amount;
-      });
-    }
+    tableData.forEach((d) => {
+      d.total_homeless = +d.total_homeless;
+      d.chronically_homeless = +d.chronically_homeless;
+      d.sheltered_homeless = +d.sheltered_homeless;
+      d.unsheltered_homeless = +d.unsheltered_homeless;
+      d.homeless_individuals = +d.homeless_individuals;
+      d.homeless_veterans = +d.homeless_veterans;
+      d.homeless_people_in_families = +d.homeless_people_in_families;
+      d.homeless_unaccompanied_youth = +d.homeless_unaccompanied_youth;
+      d.amount = +d.amount;
+    });
+  }
 
-    function makeMapTitle(d9) {
-      return mapTitle.html(`${d9.properties.coc_number}: ${d9.properties.COCNAME}`);
-    }
+  function makeMapTitle(d9) {
+    return mapTitle.html(`${d9.properties.coc_number}: ${d9.properties.COCNAME}`);
+  }
 
   /**
    * @return {string}
@@ -137,21 +143,21 @@ export default function FederalPrograms(props){
 
         return `<table><tr><th></th><th class="table-heading">Individuals</th><th class="table-heading">Families</th><th class="table-heading">Total</th></tr>` +
           `<tr><td class="table-heading">Sheltered</td><td>${OtherformatNumber(tabDat.sheltered_total_homeless_individuals) == 'NaN' ? 'NA' : OtherformatNumber(tabDat.sheltered_total_homeless_individuals)}</td>` +
-          `<td>${OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families)}</td>` +
-          `<td>${OtherformatNumber(tabDat.sheltered_homeless) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.sheltered_homeless)}</td></tr>` +
-          `<tr><td class="table-heading">Unsheltered</td><td>${OtherformatNumber(tabDat.unsheltered_homeless_individuals) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless_individuals)}</td>` +
-          `<td>${OtherformatNumber(tabDat.unsheltered_homeless_people_in_families) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless_people_in_families)}</td>` +
-          `<td>${OtherformatNumber(tabDat.unsheltered_homeless) == "NaN"  ? 'NA'  : OtherformatNumber(tabDat.unsheltered_homeless)}</td>` +
-          `</tr><tr><td class="table-heading">Total</td><td>${OtherformatNumber(tabDat.homeless_individuals) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.homeless_individuals)}</td>` +
+          `<td>${OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families) == "NaN" ? 'NA' : OtherformatNumber(tabDat.sheltered_total_homeless_people_in_families)}</td>` +
+          `<td>${OtherformatNumber(tabDat.sheltered_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.sheltered_homeless)}</td></tr>` +
+          `<tr><td class="table-heading">Unsheltered</td><td>${OtherformatNumber(tabDat.unsheltered_homeless_individuals) == "NaN" ? 'NA' : OtherformatNumber(tabDat.unsheltered_homeless_individuals)}</td>` +
+          `<td>${OtherformatNumber(tabDat.unsheltered_homeless_people_in_families) == "NaN" ? 'NA' : OtherformatNumber(tabDat.unsheltered_homeless_people_in_families)}</td>` +
+          `<td>${OtherformatNumber(tabDat.unsheltered_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.unsheltered_homeless)}</td>` +
+          `</tr><tr><td class="table-heading">Total</td><td>${OtherformatNumber(tabDat.homeless_individuals) == "NaN" ? 'NA' : OtherformatNumber(tabDat.homeless_individuals)}</td>` +
           `<td>${OtherformatNumber(tabDat.homeless_people_in_families) == "NaN" ? 'NA' : OtherformatNumber(tabDat.homeless_people_in_families)}</td>` +
           `<td>${OtherformatNumber(tabDat.total_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.total_homeless)}</td></tr></table><div class="item"><div class="header">Chronically Homeless:</div>` +
           `<div class="value">${OtherformatNumber(tabDat.chronically_homeless) == "NaN" ? 'NA' : OtherformatNumber(tabDat.chronically_homeless)}</div></div><div class="item"><div class="header">Homeless Veterans:</div>` +
           `<div class="value">${OtherformatNumber(tabDat.homeless_veterans) == "NaN" ? 'NA' : OtherformatNumber(tabDat.homeless_veterans)}</div></div><div class="item">` +
           `<div class="header">Average number of days in Emergency Shelters, Safe Havens, or Transitional Housing:</div>` +
-          `<div class="value">${OtherformatNumber(tabDat.es_sh_th_avg_days) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.es_sh_th_avg_days)}</div></div>` +
+          `<div class="value">${OtherformatNumber(tabDat.es_sh_th_avg_days) == "NaN" ? 'NA' : OtherformatNumber(tabDat.es_sh_th_avg_days)}</div></div>` +
           `<h3 class="h3-header item">Number of people who return to homelessness within:</h3><div class="item"><div class="header">6 months</div>` +
-          `<div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_6_mths) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_6_mths)}</div></div><div class="item">` +
-          `<div class="header">12 months</div><div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort) == "NaN"  ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort)}</div>` +
+          `<div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_6_mths) == "NaN" ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_6_mths)}</div></div><div class="item">` +
+          `<div class="header">12 months</div><div class="value">${OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort) == "NaN" ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_12_mths_should_include_the_6_month_cohort)}</div>` +
           `</div><div class="item"><div class="header">24 months</div>` +
           `<div class="value">${tabDat.total_persons_returns_in_24_mths_should_include_both_the_6_and_12_month_cohort === 'NA' ? 'NA' : OtherformatNumber(tabDat.total_persons_returns_in_24_mths_should_include_both_the_6_and_12_month_cohort)}</div></div>` +
           `<div class="item"><div class="header">Percentage of people who exit to permanent housing</div><div class="value">${tabDat.percent_with_successful_es_th_sh_ph_rrh_exit}</div></div>` +
@@ -270,7 +276,7 @@ export default function FederalPrograms(props){
         const noColorFound = '#000';
         let matchIdx, fillColor;
         matchIdx = cfdaLegendKeyValues.findIndex(d => d === curCategory);
-        if(matchIdx >= 0){
+        if (matchIdx >= 0) {
           fillColor = cfdaColor[matchIdx];
         }
         return fillColor || noColorFound;
@@ -319,174 +325,167 @@ export default function FederalPrograms(props){
       .style('text-anchor', 'end');
   }
 
-    function barClick(d) {
-      window.open(d.CFDA_website);
-    }
+  function barClick(d) {
+    window.open(d.CFDA_website);
+  }
 
-    function createContact(d) {
-      d3.select('#contact_panel').html(null);
-      d3.select('#contact_info').remove();
+  function createContact(d) {
+    d3.select('#contact_panel').html(null);
+    d3.select('#contact_info').remove();
 
-      contactPanel.append('div')
-        .attr('id', 'contact_info')
-        .attr("height", infoHeight)
-        .attr("width", infoWidth)
-        .html(makeContactTable(d));
-    }
+    contactPanel.append('div')
+      .attr('id', 'contact_info')
+      .attr("height", infoHeight)
+      .attr("width", infoWidth)
+      .html(makeContactTable(d));
+  }
 
-    function makeContactTable(df) {
-      return `<h4 style="margin-bottom:0">${df.properties.COCNAME}</h4><br>` +
-        `<p><b>Contact information for the Continuum of Care program</b>` +
-        `<br>${df.properties.CONTACT_TY}<br>` +
-        `Name: ${df.properties.FIRST_NAME} ${df.properties.LAST_NAME}<br>` +
-        `Email: ${df.properties.EMAIL_ADDR}<br>` +
-        `Phone: ${df.properties.PRIMARY_PH}</p>`;
-    }
+  function makeContactTable(df) {
+    return `<h4 style="margin-bottom:0">${df.properties.COCNAME}</h4><br>` +
+      `<p><b>Contact information for the Continuum of Care program</b>` +
+      `<br>${df.properties.CONTACT_TY}<br>` +
+      `Name: ${df.properties.FIRST_NAME} ${df.properties.LAST_NAME}<br>` +
+      `Email: ${df.properties.EMAIL_ADDR}<br>` +
+      `Phone: ${df.properties.PRIMARY_PH}</p>`;
+  }
 
-    function makeInfographic(d) {
-      d3.selectAll('.homeless-fact-cluster img').remove();
-      const svgPath = "/images/homelessness/clusters/Cluster-" + d;
-      const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
-      const selectedInforgraphicItem = inforgraphicData.filter(item => item.cluster_final === d);
-      d3.select('#cluster-beds #count-img-container').append('img').attr('src', svgPath + '/Bed.svg').attr('alt', clusterAltText[0].beds);
-      d3.select('#cluster-circles').append('img').attr('src', svgPath + '/Circles.svg').attr('alt', clusterAltText[0].funding);
-      d3.select('#cluster-rent').append('img').attr('src', svgPath + '/Rent.svg').attr('alt', clusterAltText[0].rent);
-      d3.selectAll('.cluster-people').append('img').attr('src', svgPath + '/People.svg').attr('alt', clusterAltText[0].homelessness);
-      d3.selectAll('.cluster-population').append('img').attr('src', svgPath + '/Total-Population.svg').attr('alt', clusterAltText[0].total_population);
-      d3.select('#cluster-land-area').append('img').attr('src', svgPath + '/Land-Area.svg').attr('alt', clusterAltText[0].land_area);
-      d3.select('#cluster-income').append('img').attr('src', svgPath + '/Income.svg').attr('alt', clusterAltText[0].income);
-      d3.select('#cluster-key').append('img').attr('src', svgPath + '/Key.svg').attr('alt', '');
-      d3.selectAll('.cluster-density').append('img').attr('src', svgPath + '/Density.svg').attr('alt', clusterAltText[0].density);
-      d3.select('#cluster-rent-as-income').append('img').attr('src', svgPath + '/Rent-as-Income.svg').attr('alt', clusterAltText[0].rent_as_income);
-      d3.select('#cluster-number').text(d);d3.select('#cluster-beds-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_beds));
-      d3.selectAll('.cluster-people-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_homeless));
-      d3.select('#cluster-circles h2').style('color', clusterColors[d - 1]);
-    }
+  function makeInfographic(d) {
+    d3.selectAll('.homeless-fact-cluster img').remove();
+    const svgPath = "/images/homelessness/clusters/Cluster-" + d;
+    const clusterAltText = altText.filter(item => item.cluster.indexOf(d) > -1);
+    const selectedInforgraphicItem = inforgraphicData.filter(item => item.cluster_final === d);
+    d3.select('#cluster-beds #count-img-container').append('img').attr('src', svgPath + '/Bed.svg').attr('alt', clusterAltText[0].beds);
+    d3.select('#cluster-circles').append('img').attr('src', svgPath + '/Circles.svg').attr('alt', clusterAltText[0].funding);
+    d3.select('#cluster-rent').append('img').attr('src', svgPath + '/Rent.svg').attr('alt', clusterAltText[0].rent);
+    d3.selectAll('.cluster-people').append('img').attr('src', svgPath + '/People.svg').attr('alt', clusterAltText[0].homelessness);
+    d3.selectAll('.cluster-population').append('img').attr('src', svgPath + '/Total-Population.svg').attr('alt', clusterAltText[0].total_population);
+    d3.select('#cluster-land-area').append('img').attr('src', svgPath + '/Land-Area.svg').attr('alt', clusterAltText[0].land_area);
+    d3.select('#cluster-income').append('img').attr('src', svgPath + '/Income.svg').attr('alt', clusterAltText[0].income);
+    d3.select('#cluster-key').append('img').attr('src', svgPath + '/Key.svg').attr('alt', '');
+    d3.selectAll('.cluster-density').append('img').attr('src', svgPath + '/Density.svg').attr('alt', clusterAltText[0].density);
+    d3.select('#cluster-rent-as-income').append('img').attr('src', svgPath + '/Rent-as-Income.svg').attr('alt', clusterAltText[0].rent_as_income);
+    d3.select('#cluster-number').text(d); d3.select('#cluster-beds-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_beds));
+    d3.selectAll('.cluster-people-count').text(OtherformatNumber(selectedInforgraphicItem[0].total_homeless));
+    d3.select('#cluster-circles h2').style('color', clusterColors[d - 1]);
+  }
 
-    function makeCoCTableTitle(d) {
-      const textColor = clusterColors[d.cluster_final - 1];
-      return `<p class="cocTabTitleCluster" style=color:white;background:${textColor}>Cluster ${d.cluster_final}: </p>` +
-        `<p class="cocTabTitleCity">${d.coc_name}</p>`;
-    }
+  function makeCoCTableTitle(d) {
+    const textColor = clusterColors[d.cluster_final - 1];
+    return `<p class="cocTabTitleCluster" style=color:white;background:${textColor}>Cluster ${d.cluster_final}: </p>` +
+      `<p class="cocTabTitleCity">${d.coc_name}</p>`;
+  }
 
-    function makeCoCTableFund(d) {
-      return `<table className="FundingTable"><tr><th className="fundingTitle">`
-        + `FEDERAL FUNDING FOR THE CONTINUUM OF CARE PROGRAM:</th></tr>` +
-        `<tr><td className="fundingAmount">${formatNumber(d.CoC_program_funding)}</td></tr>` +
-        `<tr><th className="fundingTitle">FEDERAL FUNDING FOR OTHER HOMELESSNESS PROGRAMS:</th></tr>` +
-        `<tr><td className="fundingAmount">${formatNumber(d.Other_program_funding)}</td></tr></table>`;
-    }
+  function makeCoCTableFund(d) {
+    return `<table className="FundingTable"><tr><th className="fundingTitle">`
+      + `FEDERAL FUNDING FOR THE CONTINUUM OF CARE PROGRAM:</th></tr>` +
+      `<tr><td className="fundingAmount">${formatNumber(d.CoC_program_funding)}</td></tr>` +
+      `<tr><th className="fundingTitle">FEDERAL FUNDING FOR OTHER HOMELESSNESS PROGRAMS:</th></tr>` +
+      `<tr><td className="fundingAmount">${formatNumber(d.Other_program_funding)}</td></tr></table>`;
+  }
 
-    function makeCoCTableInfoCol1(d) {
-      return '<table className="InfoTable">' +
-        '<tr><th className="fundingTitle">POPULATION OF HOMELESS:</th></tr>' +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.total_homeless)}</td></tr>` +
-        `<tr><th className="fundingTitle">HOMELESS THAT ARE IN FAMILIES:</th></tr>` +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.homeless_people_in_families)}</td></tr>` +
-        `<tr><th className="fundingTitle">HOMELESS THAT ARE INDIVIDUALS:</th></tr>` +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.homeless_individuals)}</td></tr>` +
-        `<tr><th className="fundingTitle">TOTAL SHELTERED AND PERMANENT BEDS AVAILABLE:</th></tr>` +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.Total_Year_Round_Beds)}</td></tr></table>`;
-    }
+  function makeCoCTableInfoCol1(d) {
+    return '<table className="InfoTable">' +
+      '<tr><th className="fundingTitle">POPULATION OF HOMELESS:</th></tr>' +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.total_homeless)}</td></tr>` +
+      `<tr><th className="fundingTitle">HOMELESS THAT ARE IN FAMILIES:</th></tr>` +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.homeless_people_in_families)}</td></tr>` +
+      `<tr><th className="fundingTitle">HOMELESS THAT ARE INDIVIDUALS:</th></tr>` +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.homeless_individuals)}</td></tr>` +
+      `<tr><th className="fundingTitle">TOTAL SHELTERED AND PERMANENT BEDS AVAILABLE:</th></tr>` +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.Total_Year_Round_Beds)}</td></tr></table>`;
+  }
 
-    function makeCoCTableInfoCol2(d) {
-      return '<table className="InfoTable">' +
-        '<tr><th className="fundingTitle">POPULATION DENSITY: PPL. PER SQ. MI.</th></tr>' +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.density)}</td></tr>` +
-        `<tr><th className="fundingTitle">INCOME AVG. FOR LOWEST 20% OF POP.:</th></tr>` +
-        `<tr><td className="infoAmount">${formatNumber(d.weighted_income)}</td></tr>` +
-        `<tr><th className="fundingTitle">RENT: MEDIAN GROSS</th></tr>` +
-        `<tr><td className="infoAmount">${formatNumber(d.weighted_estimate_median_gross_rent)}</td></tr>` +
-        `<tr><th className="fundingTitle">RENT AS A PERCENT OF INCOME:</th></tr>` +
-        `<tr><td class="infoAmount">${percentFormat(d.rent_pct_income)}</td></tr>` +
-        `<tr><th class="fundingTitle">LAND AREA: PER SQ. MILES:</th></tr>` +
-        `<tr><td class="infoAmount">${OtherformatNumber(d.land_area)}</td></tr></table>`;
-    }
+  function makeCoCTableInfoCol2(d) {
+    return '<table className="InfoTable">' +
+      '<tr><th className="fundingTitle">POPULATION DENSITY: PPL. PER SQ. MI.</th></tr>' +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.density)}</td></tr>` +
+      `<tr><th className="fundingTitle">INCOME AVG. FOR LOWEST 20% OF POP.:</th></tr>` +
+      `<tr><td className="infoAmount">${formatNumber(d.weighted_income)}</td></tr>` +
+      `<tr><th className="fundingTitle">RENT: MEDIAN GROSS</th></tr>` +
+      `<tr><td className="infoAmount">${formatNumber(d.weighted_estimate_median_gross_rent)}</td></tr>` +
+      `<tr><th className="fundingTitle">RENT AS A PERCENT OF INCOME:</th></tr>` +
+      `<tr><td class="infoAmount">${percentFormat(d.rent_pct_income)}</td></tr>` +
+      `<tr><th class="fundingTitle">LAND AREA: PER SQ. MILES:</th></tr>` +
+      `<tr><td class="infoAmount">${OtherformatNumber(d.land_area)}</td></tr></table>`;
+  }
 
-    function makeCoCTableInfoCol3(d) {
-      return '<table className="InfoTable">' +
-        '<tr><th className="fundingTitle">LAND AREA: PER SQ. MILES</th></tr>' +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.land_area)}</td></tr>` +
-        `<tr><th className="fundingTitle">PROPERTY CRIME RATE: PER 100K</th></tr>` +
-        `<tr><td className="infoAmount">${OtherformatNumber(d.Property_crime_rate)}</td></tr></table>`;
-    }2
+  function makeCoCTableInfoCol3(d) {
+    return '<table className="InfoTable">' +
+      '<tr><th className="fundingTitle">LAND AREA: PER SQ. MILES</th></tr>' +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.land_area)}</td></tr>` +
+      `<tr><th className="fundingTitle">PROPERTY CRIME RATE: PER 100K</th></tr>` +
+      `<tr><td className="infoAmount">${OtherformatNumber(d.Property_crime_rate)}</td></tr></table>`;
+  } 2
 
-    function makeFundingTable(d) {
-      d3.select(".cocTable")
-        .append("div")
-        .attr("class", "cocTabFund")
-        .html(makeCoCTableFund(d));
-    }
+  function makeFundingTable(d) {
+    d3.select(".cocTable")
+      .append("div")
+      .attr("class", "cocTabFund")
+      .html(makeCoCTableFund(d));
+  }
 
-    function makeInfoTableCol1(d) {
-      d3.select(".cocTable")
-        .append("div")
-        .attr("class", "cocTabInfo")
-        .html(makeCoCTableInfoCol1(d));
-    }
+  function makeInfoTableCol1(d) {
+    d3.select(".cocTable")
+      .append("div")
+      .attr("class", "cocTabInfo")
+      .html(makeCoCTableInfoCol1(d));
+  }
 
-    function makeInfoTableCol2(d) {
-      d3.select(".cocTable")
-        .append("div")
-        .attr("class", "cocTabInfo")
-        .html(makeCoCTableInfoCol2(d));
-    }
+  function makeInfoTableCol2(d) {
+    d3.select(".cocTable")
+      .append("div")
+      .attr("class", "cocTabInfo")
+      .html(makeCoCTableInfoCol2(d));
+  }
 
-    function makeInfoTableCol3(d) {
-      d3.select(".cocTable")
-        .append("div")
-        .attr("class", "cocTabInfo")
-        .html(makeCoCTableInfoCol3(d));
-    }
+  function makeInfoTableCol3(d) {
+    d3.select(".cocTable")
+      .append("div")
+      .attr("class", "cocTabInfo")
+      .html(makeCoCTableInfoCol3(d));
+  }
 
-    function createCoCTable(d8) {
-      d3.select('#panel_coc').html(null);
-      cocPanel.append('div')
-        .attr('id', 'coc_info')
-        .attr('height', infoHeight + margin.top + margin.bottom)
-        .attr('width', '100%')
-        .html(MakeCoCTable(d8));
-    }
+  function createCoCTable(d8) {
+    d3.select('#panel_coc').html(null);
+    cocPanel.append('div')
+      .attr('id', 'coc_info')
+      .attr('height', infoHeight + margin.top + margin.bottom)
+      .attr('width', '100%')
+      .html(MakeCoCTable(d8));
+  }
 
-    function GenPanelTwo() {
+  function GenPanelTwo() {
+    const xyz = map2Centered;
 
-      // // Initialize Panel 2 info
-      // for (let y = 0; y < us.features.length; y++) {
-      //     if (us.features[y].properties.coc_number === 'CA-600') {
-      //         const la = us.features[y];
-      const xyz = map2Centered;
+    BarChart(xyz);
+    StateBarChart(xyz);
+    createContact(xyz);
+    createCoCTable(xyz);
+    makeMapTitle(xyz);
+    p21ClickedP1(xyz);
 
-      BarChart(xyz);
-      StateBarChart(xyz);
-      createContact(xyz);
-      createCoCTable(xyz);
-      makeMapTitle(xyz);
-      p21ClickedP1(xyz);
-      //     }
-      // }
-
-      m.selectAll('p2_1_path')
-        .data(us.features)
-        .enter().append('path')
-        .attr('d', p21Path)
-        .attr('id', 'counties_mini')
-        .attr('data-coc', (d) => d.properties.coc_number)
-        .attr('data-state', (d) => d.properties.state)
-        .attr('data-name', (d) => d.properties.name)
-        .attr('d', p21Path)
-        .on('dblclick', (d) => p21Clicked(d))
-        .on('click', (d) => {
-          BarChart(d);
-          StateBarChart(d);
-          createCoCTable(d);
-          makeMapTitle(d);
-          createContact(d);
-        })
-        .style('fill', p2GetColor)
-        .on('mouseover', handleMapVizMouseOver)
-        .on('mousemove', handleMouseMove)
-        .on('mouseout', handleMouseOut);
-    } // end of GenPanelTwo
+    m.selectAll('p2_1_path')
+      .data(us.features)
+      .enter().append('path')
+      .attr('d', p21Path)
+      .attr('id', 'counties_mini')
+      .attr('data-coc', (d) => d.properties.coc_number)
+      .attr('data-state', (d) => d.properties.state)
+      .attr('data-name', (d) => d.properties.name)
+      .attr('d', p21Path)
+      .on('dblclick', (d) => p21Clicked(d))
+      .on('click', (d) => {
+        BarChart(d);
+        StateBarChart(d);
+        createCoCTable(d);
+        makeMapTitle(d);
+        createContact(d);
+      })
+      .style('fill', p2GetColor)
+      .on('mouseover', handleMapVizMouseOver)
+      .on('mousemove', handleMouseMove)
+      .on('mouseout', handleMouseOut);
+  } // end of GenPanelTwo
 
   function p21Clicked(d) {
     let x;
@@ -697,43 +696,43 @@ export default function FederalPrograms(props){
       .style('text-anchor', 'end');
   }
 
-    function p21ClickedP1(d) {
-      let k;
-      const centroid = p21Path.centroid(d);
-      const x = centroid[0];
-      const y = centroid[1];
+  function p21ClickedP1(d) {
+    let k;
+    const centroid = p21Path.centroid(d);
+    const x = centroid[0];
+    const y = centroid[1];
 
-      if (d.properties.COCNAME === 'Hawaii Balance of State CoC') {
-        k = 6.0;
-      } else if (d.properties.COCNAME === 'Alaska Balance of State CoC') {
-        k = 4.0;
-      } else if (d.properties.COCNAME === 'Maine Balance of State CoC') {
-        k = 5.0;
-      } else if (d.properties.Shape__Are <= 0.4) {
-        k = 17.0;
-      } else if (d.properties.Shape__Are > 0.4 && d.properties.Shape__Are <= 1) {
-        k = 14.0;
-      } else if (d.properties.Shape__Are > 1 && d.properties.Shape__Are <= 5) {
-        k = 12.0;
-      } else if (d.properties.Shape__Are > 5 && d.properties.Shape__Are <= 17) {
-        k = 6.0;
-      } else if (d.properties.Shape__Are > 17 && d.properties.Shape__Are <= 55) {
-        k = 3.0;
-      } else {
-        k = 2.0;
-      }
-      map2Centered = d;
-
-      m.selectAll('p2_1_path')
-        .classed('active', map2Centered && d === map2Centered);
-
-      m.transition()
-        .duration(750)
-        .attr('transform', `translate(${mapWidth / 1.35},${mapHeight / 1.1})scale(${k})translate(${-x},${-y})`)
-        .style('stroke-width', `${0.15 / k}px`);
+    if (d.properties.COCNAME === 'Hawaii Balance of State CoC') {
+      k = 6.0;
+    } else if (d.properties.COCNAME === 'Alaska Balance of State CoC') {
+      k = 4.0;
+    } else if (d.properties.COCNAME === 'Maine Balance of State CoC') {
+      k = 5.0;
+    } else if (d.properties.Shape__Are <= 0.4) {
+      k = 17.0;
+    } else if (d.properties.Shape__Are > 0.4 && d.properties.Shape__Are <= 1) {
+      k = 14.0;
+    } else if (d.properties.Shape__Are > 1 && d.properties.Shape__Are <= 5) {
+      k = 12.0;
+    } else if (d.properties.Shape__Are > 5 && d.properties.Shape__Are <= 17) {
+      k = 6.0;
+    } else if (d.properties.Shape__Are > 17 && d.properties.Shape__Are <= 55) {
+      k = 3.0;
+    } else {
+      k = 2.0;
     }
+    map2Centered = d;
 
-  function handleMapVizMouseOver(d){
+    m.selectAll('p2_1_path')
+      .classed('active', map2Centered && d === map2Centered);
+
+    m.transition()
+      .duration(750)
+      .attr('transform', `translate(${mapWidth / 1.35},${mapHeight / 1.1})scale(${k})translate(${-x},${-y})`)
+      .style('stroke-width', `${0.15 / k}px`);
+  }
+
+  function handleMapVizMouseOver(d) {
     const html = `<p style="border-bottom:1px solid #898C90; font-size: 18px; margin:0; `
       + `padding-bottom:15px; color: #555555; font-weight: bold">`
       + `${d.properties.coc_number}: ${d.properties.COCNAME}</p><br>` +
@@ -742,7 +741,7 @@ export default function FederalPrograms(props){
     Tooltip.draw("tooltipSection2", null, null, null, html);
   }
 
-  function handleBarChartMouseOver(d){
+  function handleBarChartMouseOver(d) {
     const html = `<p style="border-bottom:1px solid #898C90; font-size: 18px; margin:0; padding-bottom:15px"><b style="color:#555555">` +
       `${d.program_title}</b> [CFDA No. ${d.cfda_number}]</p><br>` +
       `<p style="color: #0071BC; margin: 0; font-size: 20px; padding:0">Federal Funding: ${formatNumber(d.fed_funding)}</p><br>` +
@@ -792,6 +791,18 @@ export default function FederalPrograms(props){
     return x.fed_funding > 0;
   }
 
+  function searchSelect(id) {
+    const d = us.features.find(f => f.properties.coc_number === id);
+    if (d) {
+      BarChart(d);
+      StateBarChart(d);
+      createCoCTable(d);
+      makeMapTitle(d);
+      createContact(d);
+      p21Clicked(d);
+    }
+  }
+
   useEffect(() => {
     Tooltip = tooltipModule();
     init();
@@ -806,31 +817,39 @@ export default function FederalPrograms(props){
         title="Instructions">
         <p>Click the map to get started</p>
       </Accordion>
-      <ControlBar>
-        <Share location={props.location}/>
-      </ControlBar>
+
+      <Share location={props.location} />
+      <div className={styles.searchList}>
+      <Search
+        searchList={searchList}
+        initItem='CA-600'
+        listDescription='Search List of Contracts and Agencies'
+        onSelect={searchSelect}
+      />
+      </div>
+
       <div id="tooltipSection2" className="tooltip-module" />
       <h1 id='container2_title' />
       <Grid container>
         <Grid item xs={12} md={6}>
-          <div id='container2_1' className='homelessness-container2 homelessness-container2--left'/>
+          <div id='container2_1' className='homelessness-container2 homelessness-container2--left' />
         </Grid>
         <Grid item xs={12} md={6}>
-          <div id='container2_2' className='homelessness-container2 homelessness-container2--right'/>
+          <div id='container2_2' className='homelessness-container2 homelessness-container2--right' />
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={12} md={6}>
-          <div id='container2_3' className='homelessness-container2 homelessness-container2--left'/>
+          <div id='container2_3' className='homelessness-container2 homelessness-container2--left' />
         </Grid>
         <Grid item xs={12} md={6}>
-          <div id='container2_4' className='homelessness-container2 homelessness-container2--right'/>
+          <div id='container2_4' className='homelessness-container2 homelessness-container2--right' />
         </Grid>
       </Grid>
       <Downloads
         href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
         date={'March 2019'}
       />
-    </div>
+    </div >
   )
 }

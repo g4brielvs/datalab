@@ -12,7 +12,7 @@ const Downloads = (props) => {
   const inlineStyles = {
     legacy: {
       ':hover': {
-        color: `${styleVariables.legacyBlue}`
+        color: styleVariables.legacyBlue
       }
     },
     'colleges-and-universities': {
@@ -22,22 +22,22 @@ const Downloads = (props) => {
     },
     'competition-in-contracting': {
       ':hover': {
-        color: `${styleVariables.dlExpressBlue}`
+        color: styleVariables.dlExpressBlue
       }
     },
     'rd-in-contracting': {
       ':hover': {
-        color: `${styleVariables.rdBlue}`
+        color: styleVariables.rdBlue
       }
     },
     'analyst-guide': {
       ':hover': {
-        color: `${styleVariables.analystGuideBlue}`
+        color: styleVariables.analystGuideBlue
       }
     },
     'student-innovators-toolbox': {
       ':hover': {
-        color: `${styleVariables.studentToolboxBlue}`
+        color: styleVariables.studentToolboxBlue
       }
     }
   };
