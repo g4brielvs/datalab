@@ -20,41 +20,49 @@ export default class MoreAnalyses extends React.Component {
   analyses = [{
     href: 'federal-account-explorer',
     imageSrc: federal,
+    altText: 'A close view of a withered copy of the Statement of the Income and Expenditures of the United States.',
     title: 'Federal Account Explorer',
     subtitle: 'Discover the federal government\'s spending accounts'
   }, {
     href: 'federal-employees',
     imageSrc: workers,
+    altText: 'National Park Service Director talking with Junior Ranger wearing a vest with 32 badges, in front of the El Pueblo De Los Angeles Historic Monument.',
     title: 'Federal Employees',
     subtitle: 'Who works in government?'
   }, {
     href: 'budget-function',
     imageSrc: budget,
+    altText: 'A close view of the back of a dollar bill focused on the Great Seal of the United States.',
     title: 'Budget Function',
     subtitle: 'Check out how federal spending is categorized'
   }, {
     href: 'competition-in-contracting',
     imageSrc: competition,
+    altText: 'Five individuals racing on an orange race track covering four lanes.',
     title: 'Competition in Contracting',
     subtitle: 'How often do federal agencies compete for contracts?'
   }, {
     href: 'colleges-and-universities',
     imageSrc: cu,
+    altText: 'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.',
     title: 'Colleges and Universities',
     subtitle: 'Federal investment in higher education'
   }, {
     href: 'homelessness-analysis',
     imageSrc: homeless,
+    altText: 'A homeless person leaning against a street pole and additional homeless people stand against a building in the far background.',
     title: 'Homelessness Analysis',
     subtitle: 'Explore federal programs that address homelessness'
   }, {
     href: 'dts',
     imageSrc: dts,
+    altText: 'Line graph of the Daily Treasury Statement with data from June 2005 through today.',
     title: 'Visualizing the Daily Treasury Statement',
     subtitle: 'How much does the federal government spend each day?'
   }, {
     href: 'contract-explorer',
     imageSrc: explorer,
+    altText: 'A picture of a microscope with a sunburst image overlaid.',
     title: 'Contract Explorer',
     subtitle: 'Who receives federal contracts?'
   }];
@@ -98,7 +106,10 @@ export default class MoreAnalyses extends React.Component {
                       {this.analyses[analysesIndex].subtitle}
                     </p>
                   </div>
-                  <img src={this.analyses[analysesIndex].imageSrc} className={moreAnalysesStyles.image} />
+                  <img
+                  src={this.analyses[analysesIndex].imageSrc}
+                  alt={this.analyses[analysesIndex].altText}
+                  className={moreAnalysesStyles.image} />
                 </Link>
               </Grid>
             )
