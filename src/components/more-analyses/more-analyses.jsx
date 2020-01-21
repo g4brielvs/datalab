@@ -109,7 +109,8 @@ export default class MoreAnalyses extends React.Component {
                   <img
                     src={this.analyses[analysesIndex].imageSrc}
                     alt={this.analyses[analysesIndex].altText}
-                    className={moreAnalysesStyles.image} />
+                    className={moreAnalysesStyles.image}
+                  />
                 </Link>
               </Grid>
             )
