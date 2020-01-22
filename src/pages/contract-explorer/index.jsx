@@ -10,7 +10,7 @@ import ControlBar from "../../components/control-bar/control-bar";
 import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
-const SunburstDetailsContainer = loadable(() => import('../../containers/sunburst-details-container/sunburst-container/sunburst-vega-container'),
+const SunburstDetailsContainer = loadable(() => import('src/containers/contract-explorer/contract-explorer-container'),
   {
     fallback: <div className='progress_wrapper'>
       <CircularProgress className='progress' size={70} color='inherit' />
