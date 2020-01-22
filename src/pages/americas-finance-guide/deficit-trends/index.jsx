@@ -36,7 +36,7 @@ function DeficitTrendsPage(props) {
 
                 <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
-                <div className="cg-wrapper trends-common-wrapper">
+                <div className="cg-wrapper trends-common-wrapper deficit-trends-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
                             <Share 

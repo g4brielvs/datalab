@@ -47,6 +47,12 @@ $darkGrey: #666666;
      margin-top: 0;
    }
 
+  &:hover {
+    .title, .subtitle {
+      text-decoration: underline;
+    }
+  }
+
 }
 
 .image {
