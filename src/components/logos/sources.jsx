@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Sources = ({fillColor}) => {
+const Sources = ({ fillColor }) => {
   return (
     <svg width="91px" height="91px" viewBox="0 0 91 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <title>Data Sources and Methodologies</title>
       <defs>
         <polygon id="hwcta-path-1" points="0.0290929878 0.0161973995 27.4234527 0.0161973995 27.4234527 35.4210943 0.0290929878 35.4210943"></polygon>
         <polygon id="hwcta-path-3" points="0 38 44 38 44 0 0 0"></polygon>

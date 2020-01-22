@@ -8,8 +8,8 @@ import { Grid, Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/cu/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
-import TableContainer from './categories-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
+import TableContainer from "./categories-table-container";
 
 import * as _ from 'lodash';
 

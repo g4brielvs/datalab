@@ -1,7 +1,8 @@
 import React from "react";
-import { useStaticQuery } from 'gatsby';
 import "../../styles/index.scss";
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
+import styles from './cu.module.scss';
+import { useStaticQuery, graphql } from "gatsby"
 
 import Accordion from "../../components/accordion/accordion";
 import StoryHeading from "../../components/section-elements/story-heading/story-heading";

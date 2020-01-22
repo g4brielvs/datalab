@@ -5,10 +5,27 @@ import fedEmpStyles from './index.module.scss';
 
 import DataModule from '../../components/visualizations/federal-employees/util/data-module';
 import StoryLayout from '../../components/layouts/story/story';
-import Who from '../../page-sections/federal-employees/who'
-import Where from '../../page-sections/federal-employees/where'
-import What from '../../page-sections/federal-employees/what'
-import StorySection from '../../components/section-elements/story-section/story-section'
+import StorySection from '../../components/section-elements/story-section/story-section';
+import loadable from "@loadable/component";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+
+const Who = loadable(() => import('src/page-sections/federal-employees/who'),  {
+  fallback: <div className='progress_wrapper'>
+    <CircularProgress className='progress' size={70} color='inherit' />
+  </div>
+});
+
+const Where = loadable(() => import('src/page-sections/federal-employees/where'),  {
+  fallback: <div className='progress_wrapper'>
+    <CircularProgress className='progress' size={70} color='inherit' />
+  </div>
+});
+
+const What = loadable(() => import('src/page-sections/federal-employees/what'),  {
+  fallback: <div className='progress_wrapper'>
+    <CircularProgress className='progress' size={70} color='inherit' />
+  </div>
+});
 
 export default class FederalEmployeesPage extends Component {
 
