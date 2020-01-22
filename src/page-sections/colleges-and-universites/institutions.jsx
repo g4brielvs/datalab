@@ -141,6 +141,10 @@ const Institutions = (props) => {
             data={GeoDataMapbox}
             showDetails={getClickedDetails}
           />
+          <Downloads
+            href={'/data/colleges-and-universities/institutions/mapData.json'}
+            date={'March 2019'}
+          />
           <DataTable
             data={dataTableData.map(x => {
               return [
@@ -168,7 +172,7 @@ const Institutions = (props) => {
       </Grid>
     </Grid>
     <Downloads
-      href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+      href={'/data/colleges-and-universities/institutions/tableData.csv'}
       date={'March 2019'}
     />
   </>);

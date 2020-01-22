@@ -14,14 +14,31 @@ import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar";
+import Downloads from "../../components/section-elements/downloads/downloads";
+
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      fiscalYearVal: 'fy19', // default fy19
+    };
   }
 
-  render() {
+  radioCheck = (event) => {
+    this.setState({
+      fiscalYearVal: event.target.value
+    });
+  };
 
+  fiscalYearCheck = () => {
+    if (this.state.fiscalYearVal === 'fy19') return '/data/federal-account-explorer/fy19.csv';
+    if (this.state.fiscalYearVal === 'fy18') return '/data/federal-account-explorer/fy18.csv';
+    if (this.state.fiscalYearVal === 'fy17') return '/data/federal-account-explorer/fy17.csv';
+    else return '';
+  };
+
+  render() {
     return <>
              <ToolLayout title='Federal Account Explorer'
                          introSentence='Did you know that the government has almost 2,000 federal spending accounts?'
@@ -51,8 +68,13 @@ class FederalAccountExplorerPage extends Component {
                  <Share location={this.props.location}/>
                </ControlBar>
 
-               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
+               <Dendro radioCheck={this.radioCheck} fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
 
+               <Downloads
+                 href={this.fiscalYearCheck()}
+                 date={'March 2019'}
+               />
+               
              </ToolLayout>
            </>;
   }
