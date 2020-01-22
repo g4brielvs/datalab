@@ -1,39 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
-import Sankey from "../../components/visualizations/sankey/sankey"
-import SEO from "../../components/seo"
-import ToolLayout from "../../components/layouts/tool/tool"
-import Accordion from "../../components/accordion/accordion"
+import SEO from "src/components/seo"
+import ToolLayout from "src/components/layouts/tool/tool"
+import Accordion from "src/components/accordion/accordion"
+import loadable from "@loadable/component"
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
 
+const BudgetFunctionContainer = loadable(() => import('src/containers/budget-function/budget-function-container'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
 
 function BudgetFunctionPage(props) {
-
-  const [year, setFiscalYear] = useState('fy19');
-
-  function onFiscalYearChange(e) {
-    setFiscalYear(e.currentTarget.value);
-  };
-
-  const fiscalYearData = {
-    'fy19': {
-      data: props.data.allSankeyV1Fy19Csv.nodes,
-      sPanel: props.data.allSankeyPanelV1Fy19Csv.nodes,
-      sTitle: props.data.allSankeyTitlesV1Fy19Csv.nodes,
-      descriptions: props.data.allDescriptionsCsv.nodes
-    },
-    'fy18': {
-      data: props.data.allSankeyV1Fy18Csv.nodes,
-      sPanel: props.data.allSankeyPanelV1Fy18Csv.nodes,
-      sTitle: props.data.allSankeyTitlesV1Fy18Csv.nodes,
-      descriptions: props.data.allDescriptionsCsv.nodes
-    },
-    'fy17': {
-      data: props.data.allSankeyFy17Csv.nodes,
-      sPanel: props.data.allSankeyPanelFy17Csv.nodes,
-      sTitle: props.data.allSankeyTitlesFy17Csv.nodes,
-      descriptions: props.data.allDescriptionsCsv.nodes
-    }
-  }
 
   return (
     <>
@@ -64,44 +44,7 @@ function BudgetFunctionPage(props) {
           </ul>
         </Accordion>
 
-        <div className="viz-actions container-fluid">
-          <div className="row">
-            <div className="col-xs-2 col-md-1">
-              <input type="radio"
-                     id="contactChoice3"
-                     name="FiscalYear"
-                     value="fy17"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy17'} />
-              <label htmlFor="contactChoice3">&nbsp;FY 17</label>
-            </div>
-            <div className="col-xs-2 col-md-1">
-              <input type="radio"
-                     id="contactChoice2"
-                     name="FiscalYear"
-                     value="fy18"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy18'} />
-              <label htmlFor="contactChoice2">&nbsp;FY 18</label>
-            </div>
-            <div className="col-xs-2 col-md-1">
-              <input type="radio"
-                     id="contactChoice1"
-                     name="FiscalYear"
-                     value="fy19"
-                     onChange={onFiscalYearChange}
-                     checked={year==='fy19'} />
-              <label htmlFor="contactChoice1">&nbsp;FY 19</label>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <div className="viz-container">
-          <Sankey data={fiscalYearData[year].data}
-                  sPanel={fiscalYearData[year].sPanel}
-                  sTitle={fiscalYearData[year].sTitle}
-                  descriptions={fiscalYearData[year].descriptions} />
-        </div>
+        <BudgetFunctionContainer />
 
       </ToolLayout>
     </>

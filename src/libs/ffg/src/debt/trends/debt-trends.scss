@@ -3,6 +3,9 @@
 @import '../../globalSass/generalVars';
 @import '../../globalSass/toggleControl';
 
+.debt-trends-wrapper {
+
+
 .trend-chart-container {
   margin-bottom: 2rem;
   position: relative;
@@ -36,4 +39,6 @@
     padding-left: 2rem;
     box-sizing: border-box;
   }
+}
+
 }

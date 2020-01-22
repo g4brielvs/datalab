@@ -6,11 +6,33 @@ import DataModule from "../../components/visualizations/federal-employees/util/d
 
 /* components */
 import StoryLayout from "../../components/layouts/story/story";
-import Geography from "../../page-sections/homelessness-analysis/geography"
-import FederalPrograms from "../../page-sections/homelessness-analysis/federal-programs"
-import ContinuumCare from "../../page-sections/homelessness-analysis/continuum-care"
-import FinalThoughts from "../../page-sections/homelessness-analysis/final-thoughts"
-import StorySection from "../../components/section-elements/story-section/story-section"
+import FinalThoughts from "../../page-sections/homelessness-analysis/final-thoughts";
+import StorySection from "../../components/section-elements/story-section/story-section";
+
+import loadable from '@loadable/component';
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+
+const Geography = loadable(() => import('src/page-sections/homelessness-analysis/geography'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
+const FederalPrograms = loadable(() => import('src/page-sections/homelessness-analysis/federal-programs'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
+const ContinuumCare = loadable(() => import('../../page-sections/homelessness-analysis/continuum-care'),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
+
 
 export default class HomelessnessPage extends Component {
 

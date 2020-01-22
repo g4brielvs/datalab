@@ -8,14 +8,12 @@ import SEO from '../../components/seo';
 import Share from '../../components/share/share';
 import ToolLayout from '../../components/layouts/tool/tool';
 import * as d3 from 'd3v4';
-import StoryLayout from "../../components/layouts/story/story"
-
 export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dtsData: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -23,7 +21,7 @@ export default class DTSPage extends React.Component {
       this.setState({ dtsData: dataArray });
     });
   }
-
+  
   render = () => <>
     <SEO title='Data Lab - Visualizing The Daily Treasury Statement - U.S. Treasury' keywords={[`application`, `demo`]} />
 
