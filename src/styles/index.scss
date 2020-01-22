@@ -19,7 +19,12 @@ p, ul, li, span {
   font-size: 1rem;
 }
 
-a:-webkit-any-link {
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:any-link {
   cursor: pointer;
   text-decoration: none;
 }
