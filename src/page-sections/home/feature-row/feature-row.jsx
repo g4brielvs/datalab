@@ -30,7 +30,7 @@ const FeatureRow = (props) => {
         <Grid item sm={12} md={6}
           className={featuredAnalysesStyles.image}
         >
-          <img src={homelessImg} alt='' />
+          <img src={homelessImg} role='presentation' />
         </Grid>
       </Grid>
     </Link>

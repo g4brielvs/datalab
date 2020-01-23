@@ -28,7 +28,7 @@ const SecondaryTile = (props) => {
           <Grid item xs={6} sm={6} md={6} lg={4} xl={4}
             className={secondaryAnalysesTileStyles.image}
           >
-            <img className='' src={props.imgSrc} alt='' />
+            <img className='' src={props.imgSrc} role='presentation' />
           </Grid>
 
           <p className={secondaryAnalysesTileStyles.text}>
