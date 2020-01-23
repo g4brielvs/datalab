@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import styles from './sunburst-vega-container.module.scss';
 
-import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
 import { Grid, Hidden } from '@material-ui/core';
-import Search from 'src/components/chartpanels/search';
-import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
-import SunburstDetails from '../details/sunburst-details';
 
-import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
-import Downloads from "../../../components/section-elements/downloads/downloads"
+import Downloads from "src/components/section-elements/downloads/downloads"
+import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
+import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import SunburstDetails from './details/sunburst-details';
+import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
+import Breadcrumbs from './breadcrumbs/sunburst-breadcrumbs';
+import styles from './contract-explorer-container.module.scss';
+import Search from 'src/components/chartpanels/search';
+
 
 const SunburstVegaContainer = () => {
 
@@ -94,6 +95,7 @@ const SunburstVegaContainer = () => {
       subagency: null,
       recipient: null
     };
+
     let details = {
       label: null,
       total: null,

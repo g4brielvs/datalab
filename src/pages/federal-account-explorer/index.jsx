@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import SEO from "../../components/seo";
 import "../../styles/index.scss";
 
-import Grid from '@material-ui/core/Grid';
-
-import Dendro from '../../components/visualizations/federal-account-explorer/dendro.jsx';
-import FY17Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
-import FY18Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
-import FY19Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY19Q3.csv';
-
 import Accordion from "../../components/accordion/accordion";
 import Reset from '../../components/reset/reset';
 import Share from "../../components/share/share";
 import ToolLayout from "../../components/layouts/tool/tool";
 import ControlBar from "../../components/control-bar/control-bar";
+
+import loadable from '@loadable/component';
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
+const DendroContainer = loadable(() => import("src/containers/fed-acct/fed-acct-container"),
+  {
+    fallback: <div className='progress_wrapper'>
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>
+  });
 
 class FederalAccountExplorerPage extends Component {
   constructor(props){
@@ -51,7 +53,7 @@ class FederalAccountExplorerPage extends Component {
                  <Share location={this.props.location}/>
                </ControlBar>
 
-               <Dendro fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
+               <DendroContainer />
 
              </ToolLayout>
            </>;

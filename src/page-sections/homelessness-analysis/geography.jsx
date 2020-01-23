@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import Mapviz from "../../components/visualizations/homelessness-analysis/mapviz/mapviz"
-import { graphql, useStaticQuery } from "gatsby"
 import * as _ from "lodash"
 
 import dataSource from '../../components/visualizations/homelessness-analysis/utils/data-module';
-import TableContainer from "../colleges-and-universites/agencies/agencies-table-container";
+import TableContainer from "../colleges-and-universities/agencies/agencies-table-container";
 import styles from "../../components/visualizations/homelessness-analysis/mapviz/mapviz.module.scss";
 import mapImg from "../../components/visualizations/homelessness-analysis/mapviz/map.svg";
 import tableImg from "../../components/visualizations/homelessness-analysis/mapviz/table.svg";

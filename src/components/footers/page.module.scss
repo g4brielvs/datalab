@@ -51,14 +51,15 @@ $col-padding: 15px;
       letter-spacing: 0.2px;
     }
 
-    a {
-      text-decoration: none;
+    a:hover {
+      text-decoration: underline;
     }
 
     .title,
     a {
       color: #2272ce;
     }
+
   }
 }
 

@@ -1,5 +1,8 @@
 @import '../../globalSass/accordion';
 
+.deficit-trends-wrapper {
+
+
 .deficit-trend {
   max-width: 100%;
 }
@@ -36,4 +39,6 @@ div.active img.deficit__tabs-image {
 img.deficit__tabs-image {
   height:0;
   width: 100%;
+}
+
 }
