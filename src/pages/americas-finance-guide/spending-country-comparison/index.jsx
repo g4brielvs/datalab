@@ -57,7 +57,7 @@ function SpendingCountryComparisonPage(props) {
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Deficit
                                 </div>
-                                <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" />
+                                <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right tour__angle-right" />
                             </a>
                         </div>
 
