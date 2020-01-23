@@ -114,19 +114,11 @@ export default class MoreAnalyses extends React.Component {
                     {this.analyses[analysesIndex].subtitle}
                   </p>
                 </div>
-<<<<<<< HEAD
-                  <img
-                    src={this.analyses[analysesIndex].imageSrc}
-                    alt={this.analyses[analysesIndex].altText}
-                    className={moreAnalysesStyles.image}
-                  />
-=======
                 <img
                   src={this.analyses[analysesIndex].imageSrc}
                   alt={this.analyses[analysesIndex].altText}
                   className={moreAnalysesStyles.image}
                 />
->>>>>>> origin/dev
               </Link>
             </Grid>
           )
