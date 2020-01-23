@@ -6,7 +6,7 @@ import Accordion from '../../components/accordion/accordion';
 import Share from '../../components/share/share';
 import dataSource from '../../components/visualizations/homelessness-analysis/utils/data-module';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import Search from 'src/components/chartpanels/search';
 import tooltipModule from '../../components/tooltip/tooltip';
 
@@ -69,28 +69,34 @@ export default function FederalPrograms(props) {
       .append('svg')
       .attr('id', 'p2_1_map')
       .attr('width', '100%')
-      .attr('height', '350px');
+      .attr('height', '350px')
+      ;
 
     contactPanel = d3.select('#CoCcontact')
       .attr('width', infoWidth + margin.left + margin.right)
-      .attr('height', infoHeight + margin.top + margin.bottom);
+      .attr('height', infoHeight + margin.top + margin.bottom)
+      ;
 
     cocPanel = d3.select('#panel_coc')
       .attr('height', infoHeight + margin.top + margin.bottom)
-      .attr('width', '95%');
+      .attr('width', '95%')
+      ;
 
     p2MatrixSvg = d3.select('#panel_matrix').append('svg')
       .attr('width', '100%')
-      .attr('height', mapHeight + margin.top + margin.bottom + 40);
+      .attr('height', mapHeight + margin.top + margin.bottom + 40)
+      ;
 
 
     const p21Projection = d3.geo.albersUsa()
       .translate([mapWidth / 0.9, mapHeight / 0.9]) // translate to center of screen
-      .scale([575]); // scale things down so see entire US
+      .scale([575]) // scale things down so see entire US
+      ;
 
     // Define path generator
     p21Path = d3.geo.path() // path generator that will convert GeoJSON to SVG paths
-      .projection(p21Projection); // tell path generator to use albersUsa projection
+      .projection(p21Projection) // tell path generator to use albersUsa projection
+      ;
 
     m = p21MapSvg.append('g');
 
@@ -135,7 +141,8 @@ export default function FederalPrograms(props) {
       .attr('width', '100%')
       .attr('id', 'p2_quad3_title')
       .attr('class', 'legend-header')
-      .html(`<h5>${d7.properties.coc_number} Homeless Population Details</h5>`);
+      .html(`<h5>${d7.properties.coc_number} Homeless Population Details</h5>`)
+      ;
 
     for (let i = 0; i < tableData.length; i++) {
       if (tableData[i].coc_number === d7.properties.coc_number) {
@@ -175,21 +182,24 @@ export default function FederalPrograms(props) {
       .append('div')
       .attr('width', '100%')
       .attr('height', '30px')
-      .attr('id', 'p2_2_cfda_legend');
+      .attr('id', 'p2_2_cfda_legend')
+      ;
 
     const cfdaLegend = d3.select('#p2_4_legend')
       .append('div')
       .attr('width', '100%')
       .attr('height', '30px')
-      .attr('id', 'p2_4_cfda_legend');
+      .attr('id', 'p2_4_cfda_legend')
+      ;
 
-    const cfdaColor = ['#544E89', '#BD10E0', '#04BCDD', '#F89206', '#06984E', '#F6E904'];
+    const cfdaColor = ['#544E89', '#BD10E0', '#04BCDD', '#F89206', '#06984E', '#F6043F'];
 
     const cfdaLegendKeyValues = ['Housing', 'Education', 'Employment', 'Support Services', 'Health', 'Food'];
 
     for (let i = 0; i < cfdaLegendKeyValues.length; i++) {
       const k = cfdaLegend22.append('div')
-        .attr('id', 'p2_2_legend_key');
+        .attr('id', 'p2_2_legend_key')
+        ;
 
       k.append('div')
         .attr('id', 'p2_2_key')
@@ -204,17 +214,19 @@ export default function FederalPrograms(props) {
         .attr('height', 20)
         .attr('width', 20)
         .attr('transform', `translate(17,0)`)
-        .style('fill', () => cfdaColor[i]);
+        .style('fill', () => cfdaColor[i])
+        ;
 
       k.append('div')
         .attr('id', 'p2_2_key_value')
         .style('position', 'relative')
         .style('color', 'blue')
-        .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
-
+        .html(`<p>${cfdaLegendKeyValues[i]}</p>`)
+        ;
 
       const l = cfdaLegend.append('div')
-        .attr('id', 'p2_4_legend_key');
+        .attr('id', 'p2_4_legend_key')
+        ;
 
       l.append('div')
         .attr('id', 'p2_4_key')
@@ -229,25 +241,29 @@ export default function FederalPrograms(props) {
         .attr('height', 20)
         .attr('width', 20)
         .attr('transform', `translate(17,0)`)
-        .style('fill', () => cfdaColor[i]);
+        .style('fill', () => cfdaColor[i])
+        ;
 
       l.append('div')
         .attr('id', 'p2_4_key_value')
         .style('position', 'relative')
         .style('color', 'blue')
-        .html(`<p>${cfdaLegendKeyValues[i]}</p>`);
+        .html(`<p>${cfdaLegendKeyValues[i]}</p>`)
+        ;
     }
 
     d3.select('#p2_4_legend_title')
       .append('div')
       .attr('id', 'p2_4_cfda_legend_title')
       .attr('class', 'legend-header')
-      .html(`<h5>Federal Programs Serving ${getState(d)}</h5>`);
+      .html(`<h5>Federal Programs Serving ${getState(d)}</h5>`)
+      ;
 
     const p24MatrixSvg = d3.select('#panel_info').append('svg')
       .attr('width', '100%')
       .attr('height', mapHeight + margin.top + margin.bottom + 140)
-      .attr('transform', `translate(${0},${10})`);
+      .attr('transform', `translate(${0},${10})`)
+      ;
 
     function filterStateBarChart(cfdaStateData) {
       return cfdaStateData.pop_state_code === d.properties.STUSAB;
@@ -267,7 +283,8 @@ export default function FederalPrograms(props) {
     const bar = p24MatrixSvg.selectAll('g')
       .data(initialBar)
       .enter()
-      .append('g');
+      .append('g')
+      ;
 
     bar.attr('class', 'bar')
       .attr('cx', 0)
@@ -285,7 +302,8 @@ export default function FederalPrograms(props) {
       .on('mouseover', handleBarChartMouseOver)
       .on('mousemove', handleMouseMove)
       .on('mouseout', handleMouseOut)
-      .on('click', barClick);
+      .on('click', barClick)
+      ;
 
     bar.append('text')
       .attr('class', 'label')
@@ -295,22 +313,26 @@ export default function FederalPrograms(props) {
       .text((dc) => getProgram(dc))
       .each(() => {
         labelWidth = 75;
-      });
+      })
+      ;
 
     const scale = d3.scale.linear()
       .domain([0, max])
-      .range([0, xWidth - labelWidth]);
+      .range([0, xWidth - labelWidth])
+      ;
 
     const p2XAxis = d3.svg.axis()
       .scale(scale)
       .tickSize((-p2MatrixSvg[0][0].attributes[1].nodeValue + axisMargin) - 50)
-      .tickFormat((dg) => formatNumber(dg));
+      .tickFormat((dg) => formatNumber(dg))
+      ;
 
     bar.append('rect')
       .attr('transform', `translate(${labelWidth},0)`)
       .attr('margin-left', 5)
       .attr('height', barHeight)
-      .attr('width', (de) => scale(de.fed_funding));
+      .attr('width', (de) => scale(de.fed_funding))
+      ;
 
     p24MatrixSvg.insert('g', ':first-child')
       .attr('class', 'axisHorizontal2')
@@ -322,7 +344,8 @@ export default function FederalPrograms(props) {
       .attr('dy', '.35em')
       .attr('transform', 'rotate(-35)')
       .style('font-size', '12')
-      .style('text-anchor', 'end');
+      .style('text-anchor', 'end')
+      ;
   }
 
   function barClick(d) {
@@ -337,7 +360,8 @@ export default function FederalPrograms(props) {
       .attr('id', 'contact_info')
       .attr("height", infoHeight)
       .attr("width", infoWidth)
-      .html(makeContactTable(d));
+      .html(makeContactTable(d))
+      ;
   }
 
   function makeContactTable(df) {
@@ -764,7 +788,6 @@ export default function FederalPrograms(props) {
         return state[i].State;
       }
     }
-
     return '';
   }
 
@@ -783,7 +806,6 @@ export default function FederalPrograms(props) {
         return acr[i].acronym;
       }
     }
-
     return '';
   }
 
@@ -820,12 +842,12 @@ export default function FederalPrograms(props) {
 
       <Share location={props.location} />
       <div className={styles.searchList}>
-      <Search
-        searchList={searchList}
-        initItem='CA-600'
-        listDescription='Search List of Contracts and Agencies'
-        onSelect={searchSelect}
-      />
+        <Search
+          searchList={searchList}
+          initItem='CA-600'
+          listDescription='Search List of Contracts and Agencies'
+          onSelect={searchSelect}
+        />
       </div>
 
       <div id="tooltipSection2" className="tooltip-module" />
@@ -851,5 +873,5 @@ export default function FederalPrograms(props) {
         date={'March 2019'}
       />
     </div >
-  )
+  );
 }
