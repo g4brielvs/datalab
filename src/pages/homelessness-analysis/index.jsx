@@ -75,9 +75,9 @@ export default class HomelessnessPage extends Component {
               as beneficiaries. These included programs that named homeless individuals as primary
               targets of services or as one of the program's target recipient groups.<span
                 className='superscript'>4</span> We found that
-          programs targeting homelessness focus either on all individuals experiencing homelessness,
-          or on a subset, such as veterans or youth. These programs provide various types of assistance,
-          which we divided into six categories: housing, food, education, employment, health, and support
+            programs targeting homelessness focus either on all individuals experiencing homelessness,
+            or on a subset, such as veterans or youth. These programs provide various types of assistance,
+            which we divided into six categories: housing, food, education, employment, health, and support
               services.</p>
           </div>,
           tagName: "federalPrograms",

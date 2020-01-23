@@ -118,35 +118,31 @@ class Share extends Component {
             <div className={styles.shareButtons}>
               <ul>
                 <li>
-                  <button className={styles.shareLink} onClick={this.handleShareClickFacebook}
-                    title="Share on Facebook" data-id="1">
+                  <button data-id="1" title="Share on Facebook" className={styles.shareLink} onClick={this.handleShareClickFacebook}>
                     <img src={images[1].src} role='presentation' style={images[1].style} className={styles.iconFacebook} />
                     <span className={styles.shareButtonText}>Facebook</span>
                   </button>
                 </li>
                 <li>
-                  <button className={styles.shareLink} onClick={this.handleShareClickTwitter}
-                    title="Share on Twitter" data-id='2'>
+                  <button data-id='2' title="Share on Twitter" className={styles.shareLink} onClick={this.handleShareClickTwitter}>
                     <img src={images[2].src} role='presentation' style={images[2].style} className={styles.iconTwitter} />
                     <span className={styles.shareButtonText}>Twitter</span>
                   </button>
                 </li>
                 <li>
-                  <button className={styles.shareLink} onClick={this.handleShareClickReddit}
-                    title="Share on Reddit" data-id='3'>
+                  <button data-id='3' title="Share on Reddit" className={styles.shareLink} onClick={this.handleShareClickReddit}>
                     <img src={images[3].src} role='presentation' style={images[3].style} className={styles.iconReddit} />
                     <span className={styles.shareButtonText}>Reddit</span>
                   </button>
                 </li>
                 <li>
-                  <button className={styles.shareLink} onClick={this.handleShareClickLinkedin}
-                    title="Share on LinkedIn" data-id='4'>
+                  <button data-id='4' title="Share on LinkedIn" className={styles.shareLink} onClick={this.handleShareClickLinkedin}>
                     <img src={images[4].src} role='presentation' style={images[4].style} className={styles.iconLinkedin} />
                     <span className={styles.shareButtonText}>Linkedin</span>
                   </button>
                 </li>
                 <li>
-                  <button className={styles.shareLink} onClick={this.handleShareClickEmail} title="Share via Email" data-id='5'>
+                  <button data-id='5' title="Share via Email" className={styles.shareLink} onClick={this.handleShareClickEmail}>
                     <img src={images[5].src} role='presentation' style={images[5].style} className={styles.iconEnvelope} />
                     <span className={styles.shareButtonText}>Email</span>
                   </button>
