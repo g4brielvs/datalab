@@ -59,8 +59,7 @@ export default class DTSPage extends React.Component {
               <ControlBar>
                 <Share location={this.props.location}
                   title='Visualizing the Daily Treasury Statement – U.S. Treasury'
-                  text='Check out this site'
-                  twitter='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury https://datalab-qat.usaspending.gov/dts.html'
+                  twitter='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury'
                 />
               </ControlBar>
             </Grid>
