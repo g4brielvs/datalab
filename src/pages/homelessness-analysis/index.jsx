@@ -33,7 +33,6 @@ const ContinuumCare = loadable(() => import('../../page-sections/homelessness-an
     </div>
   });
 
-
 export default class HomelessnessPage extends Component {
 
   sectionComponents = {
@@ -113,7 +112,7 @@ export default class HomelessnessPage extends Component {
         },
       ];
 
-    return <>
+    return (
       <div id='homelessnessPage'>
         <StoryLayout
           title={'Homelessness Analysis'}
@@ -134,9 +133,8 @@ export default class HomelessnessPage extends Component {
               )
             })
           }
-
         </StoryLayout>
       </div>
-    </>
+    )
   }
 }
