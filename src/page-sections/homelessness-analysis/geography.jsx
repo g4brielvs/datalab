@@ -12,10 +12,10 @@ import Reset from "../../components/reset/reset";
 import Share from "../../components/share/share";
 import SearchIcon from '@material-ui/icons/Search';
 
-export default function Geography(props){
+export default function Geography(props) {
 
   const [chartView, isChartView] = useState(false);
-  const {mem} = dataSource;
+  const { mem } = dataSource;
   const populationData = mem.pop;
 
   const switchView = view => {
@@ -56,7 +56,7 @@ export default function Geography(props){
       type: 'number'
     },
     {
-      title:'Sheltered Homeless',
+      title: 'Sheltered Homeless',
       width: 100,
       type: 'number'
     },
@@ -99,12 +99,12 @@ export default function Geography(props){
     let data = [];
     let itemList;
 
-    itemList = searchList.find(function(el){
+    itemList = searchList.find(function (el) {
       return el.id === id;
     });
 
-    let obj = _.filter(tableData, {1: itemList.heading, 2:itemList.subheading});
-    if(obj && obj.length > 0) {
+    let obj = _.filter(tableData, { 1: itemList.heading, 2: itemList.subheading });
+    if (obj && obj.length > 0) {
       data.push(obj);
     }
 
@@ -118,15 +118,13 @@ export default function Geography(props){
     if (tableRef && tableRef.current) { tableRef.current.updateTableData(data); }
   }
 
-  function searchData(e){
+  function searchData(e) {
     const strCap = e.currentTarget.value.toUpperCase();
     let newData;
-    if(strCap){
+    if (strCap) {
       newData = tableData.filter((d) => {
         const cocName = d[1].toUpperCase();
         const cocNum = d[0].toUpperCase();
-        if(cocName.indexOf(strCap) >= 0 || cocNum.indexOf(strCap) >= 0){
-        }
         return (cocName.indexOf(strCap) >= 0 || cocNum.indexOf(strCap) >= 0);
       });
     } else {
@@ -136,50 +134,51 @@ export default function Geography(props){
     updateTableData(newData);
   }
 
-  function searchBoxFocus(){
+  function searchBoxFocus() {
     document.getElementById('homeless-region-search').focus();
   }
 
-  function reset(){
+  function reset() {
     switchView('chart');
     document.getElementById('homeless-region-search').value = '';
   }
 
-  return (
-    <>
-      <div className="homelessness-subheading">Homeless Population by Region</div>
-      <div className="homelessness-subheading2">HUD Point-in-time Count by Continuum of Care Area</div>
-      <div className="viz-actions">
-        <div className="homeless-map-options">
-          <span className="homeless-style">View</span>
-          <img id={styles.homelessActionMap} src={mapImg} onClick={function(){ switchView('chart');}}/>
-          <img id={styles.homelessActionTable} src={tableImg} onClick={function(){ switchView('table');}}/>
-          <input type='text'
-                 id='homeless-region-search'
-                 className={`homeless-region-search ${chartView ? 'invisible' : ''}`}
-                 onInput={searchData}
-                 placeholder='Search by CoC Name'
-          />
-          <SearchIcon
-                 className={`homeless-region-search-icon ${chartView ? 'hidden' : ''}`}
-                 onClick={searchBoxFocus}/>
-        </div>
+  return (<>
+    <div className="homelessness-subheading">Homeless Population by Region</div>
+    <div className="homelessness-subheading2">HUD Point-in-time Count by Continuum of Care Area</div>
+    <div className="viz-actions">
+      <div className="homeless-map-options">
+        <span className="homeless-style">View</span>
+        <img id={styles.homelessActionMap} src={mapImg} onClick={function () { switchView('chart'); }} />
+        <img id={styles.homelessActionTable} src={tableImg} onClick={function () { switchView('table'); }} />
+        <input type='text'
+          id='homeless-region-search'
+          className={`homeless-region-search ${chartView ? 'invisible' : ''}`}
+          onInput={searchData}
+          placeholder='Search by CoC Name'
+        />
+        <SearchIcon
+          className={`homeless-region-search-icon ${chartView ? 'hidden' : ''}`}
+          onClick={searchBoxFocus}
+        />
+      </div>
 
-        <ControlBar>
-          <Reset _resetClick={reset}/>
-          <Share location={props.location}/>
-        </ControlBar>
-      </div>
-      <div id='chart-area'>
-        <Mapviz
-          display={chartView}
-          data={dataSource}/>
-        <TableContainer
-          display={!chartView}
-          tableColumnTitles = {tableColumnTitles}
-          tableData = {filteredTableData}
-          tableRef = {tableRef} />
-      </div>
-    </>
-  )
+      <ControlBar>
+        <Reset _resetClick={reset} />
+        <Share location={props.location} />
+      </ControlBar>
+    </div>
+    <div id='chart-area'>
+      <Mapviz
+        display={chartView}
+        data={dataSource}
+      />
+      <TableContainer
+        display={!chartView}
+        tableColumnTitles={tableColumnTitles}
+        tableData={filteredTableData}
+        tableRef={tableRef}
+      />
+    </div>
+  </>)
 }

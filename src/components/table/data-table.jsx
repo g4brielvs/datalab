@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Column, Table, SortDirection} from 'react-virtualized';
+import { Column, Table, SortDirection } from 'react-virtualized';
 import 'react-virtualized/styles.css';
 import Paginator from './paginator';
 import './data-table.scss';
@@ -47,7 +47,7 @@ export default class DataTable extends React.Component {
   }
 
   updateTableData(list) {
-    this.setState({list: list, scrollToIndex: 0, page: 1});
+    this.setState({ list: list, scrollToIndex: 0, page: 1 });
   }
 
   /**
@@ -55,8 +55,8 @@ export default class DataTable extends React.Component {
    * @param sortBy - The column that is being sorted.
    * @param sortDirection - The direction to sort the data.
    */
-  updateSort({sortBy, sortDirection}){
-    const {sortBy: prevSortBy, sortDirection: prevSortDirection} = this.state;
+  updateSort({ sortBy, sortDirection }) {
+    const { sortBy: prevSortBy, sortDirection: prevSortDirection } = this.state;
 
     // If list was sorted DESC by this column.
     // Rather than switch to ASC, return to "natural" order.
@@ -65,7 +65,7 @@ export default class DataTable extends React.Component {
       sortDirection = null;
     }
 
-    this.setState({sortBy, sortDirection});
+    this.setState({ sortBy, sortDirection });
   }
 
   /**
@@ -74,13 +74,12 @@ export default class DataTable extends React.Component {
    * @param sortDirection - The direction to sort the data.
    * @returns sortedList - The list of sorted data.
    */
-  sort({sortBy, sortDirection}) {
-    let {list} = this.state;
+  sort({ sortBy, sortDirection }) {
+    let { list } = this.state;
     let sortedList = list;
 
-    if(sortBy) {
+    if (sortBy) {
       sortedList = _.sortBy(list, item => item[sortBy]);
-
       if (sortDirection === SortDirection.DESC) {
         sortedList = sortedList.reverse();
       }
@@ -94,13 +93,13 @@ export default class DataTable extends React.Component {
     let currentList = list;
     let numberOfRowsVisible = Math.min(perPage, list.length);
 
-    if(list && list.length){
-      currentList = this.sort({sortBy, sortDirection});
+    if (list && list.length) {
+      currentList = this.sort({ sortBy, sortDirection });
     }
 
-    if(scrollToIndex){
+    if (scrollToIndex) {
       numberOfRowsVisible = list.length - scrollToIndex;
-      if(numberOfRowsVisible <= 0 || numberOfRowsVisible > perPage){
+      if (numberOfRowsVisible <= 0 || numberOfRowsVisible > perPage) {
         numberOfRowsVisible = perPage;
       }
     }
@@ -108,9 +107,8 @@ export default class DataTable extends React.Component {
     const rowHeight = 64
     const height = rowHeight * (numberOfRowsVisible + 1);
     const rowCount = currentList.length;
-    const pageCount = Math.ceil(rowCount / perPage);
 
-    return (<>
+    return (
       <Grid container justify='center'>
         <Grid item>
           <Table
@@ -119,7 +117,7 @@ export default class DataTable extends React.Component {
             headerHeight={rowHeight}
             rowHeight={rowHeight}
             rowCount={rowCount}
-            rowGetter={({index}) => currentList[index]}
+            rowGetter={({ index }) => currentList[index]}
             scrollToIndex={scrollToIndex}
             scrollToAlignment='start'
             sort={this.updateSort}
@@ -135,30 +133,26 @@ export default class DataTable extends React.Component {
                   label={item.title}
                   dataKey={key.toString()}
                   width={columnWidth}
-                  cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter(dataType, cellData) : cellData }
+                  cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter(dataType, cellData) : cellData}
                 />
               )
             })}
           </Table>
         </Grid>
         <Grid item xs={12}>
-            <Paginator
-              itemCount={list.length}
-              pageCount={pageCount}
-              currentPage={page}
-              onPageChange={this.handlePageChange}
-            />
+          <Paginator
+            rowCount={this.state.list.length}
+            rowsPerPage={perPage}
+            currentPage={page}
+            onPageChange={this.handlePageChange}
+          />
         </Grid>
       </Grid>
-    </>);
+    );
   }
 
 }
 
-// /*
-//   Notes on props:
-//   length of "columns" and each "data" row should match and have same order; excess data columns will not appear
-// */
 DataTable.propTypes = {
   display: PropTypes.bool,
   columnTitles: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
