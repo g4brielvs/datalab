@@ -40,7 +40,7 @@ export default function AfgAnecdote() {
 
     function addCloseIcon(anecdote) {
         anecdote.select(`.${config.controlsClass}`)
-          .append('div')
+          .append('button')
           .classed(config.closeButtonClass, true)
           .on('click', toggleVisibility)
           .html(d3.select('#anecdoteCloseButton').html())
@@ -162,7 +162,7 @@ export default function AfgAnecdote() {
     }
 
     function initNav(anecdote) {
-        const buttons = anecdote.selectAll(`.${config.navClass}`).append('div').classed(config.navButtonClass, true);
+        const buttons = anecdote.selectAll(`.${config.navClass}`).append('button').classed(config.navButtonClass, true);
 
         buttons.each(function(d, i) {
             const chevronId = (i === 0) ? '#anecdoteLeftChevron' : '#anecdoteRightChevron';
