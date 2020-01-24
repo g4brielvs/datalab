@@ -40,7 +40,9 @@
 }
 
 .anecdote__nav-control:last-child {
-	text-align: right;
+	.anecdote__nav-button {
+		float: right;
+	}
 }
 
 .anecdote__nav-contents {
@@ -56,6 +58,7 @@
 	width: 2.4rem;
 	height: 2.4rem;
 	text-align: center;
+	padding-top: 0.5rem;
 }
 
 .anecdote__contents {

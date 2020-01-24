@@ -11,6 +11,7 @@ import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
 import BpToc from '../../../components/bpToc/bpToc'
+import AfgAnecdote from '../../../libs/ffg/src/anecdote/anecdote';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleDown, faStreetView } from '@fortawesome/free-solid-svg-icons';
@@ -427,6 +428,7 @@ function OverviewPage(props) {
                     </div>
                 </div>
             </Default>
+            <AfgAnecdote/>
         </>
     )
 }
