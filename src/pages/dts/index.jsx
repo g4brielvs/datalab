@@ -13,17 +13,14 @@ export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dtsData: null,
-      updated: null
+      dtsData: null
     };
   }
 
   componentDidMount() {
     d3.csv('/data-lab-data/dts/dts.csv', dataArray => {
-      const updated = new Date(dataArray[dataArray.length - 1].date + 'T00:00:00'); // force GMT with time stamp
       this.setState({
-        dtsData: dataArray,
-        updated: updated.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+        dtsData: dataArray
       });
     });
   }
@@ -102,7 +99,7 @@ export default class DTSPage extends React.Component {
           </Grid>
 
           <DTS data={this.state.dtsData} />
-          <Downloads href={'/data-lab-data/dts/dts.csv'} date={this.state.updated} />
+          <Downloads href={'/data-lab-data/dts/dts.csv'} />
 
         </div>
       </div>
