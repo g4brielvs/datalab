@@ -140,6 +140,11 @@ export default function Geography(props){
     document.getElementById('homeless-region-search').focus();
   }
 
+  function reset(){
+    switchView('chart');
+    document.getElementById('homeless-region-search').value = '';
+  }
+
   return (
     <>
       <div className="homelessness-subheading">Homeless Population by Region</div>
@@ -161,9 +166,7 @@ export default function Geography(props){
         </div>
 
         <ControlBar>
-          <Reset _resetClick={function(){
-            switchView('chart');
-          }}/>
+          <Reset _resetClick={reset}/>
           <Share location={props.location}/>
         </ControlBar>
       </div>

@@ -2,7 +2,6 @@ import React from 'react';
 
 import ControlBar from '../../components/control-bar/control-bar';
 import DTS from '../../components/visualizations/dts/dts';
-import DTSHWCTA from './methodologies';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
@@ -59,8 +58,7 @@ export default class DTSPage extends React.Component {
             <Grid item xs={1}>
               <ControlBar>
                 <Share location={this.props.location}
-                  title='Check out this analysis on Data Lab'
-                  text='Check out this site https://datalab.usaspending.gov/dts.html'
+                  title='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury'
                 />
               </ControlBar>
             </Grid>

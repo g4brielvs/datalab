@@ -47,7 +47,7 @@ export default class DataTable extends React.Component {
   }
 
   updateTableData(list) {
-    this.setState({list: list});
+    this.setState({list: list, scrollToIndex: 0, page: 1});
   }
 
   /**
@@ -85,7 +85,6 @@ export default class DataTable extends React.Component {
         sortedList = sortedList.reverse();
       }
     }
-
     return sortedList;
   }
 
@@ -93,16 +92,23 @@ export default class DataTable extends React.Component {
     const { page, perPage, scrollToIndex, list, sortBy, sortDirection } = this.state;
 
     let currentList = list;
+    let numberOfRowsVisible = Math.min(perPage, list.length);
 
     if(list && list.length){
       currentList = this.sort({sortBy, sortDirection});
     }
 
+    if(scrollToIndex){
+      numberOfRowsVisible = list.length - scrollToIndex;
+      if(numberOfRowsVisible <= 0 || numberOfRowsVisible > perPage){
+        numberOfRowsVisible = perPage;
+      }
+    }
+
     const rowHeight = 64
-    const height = rowHeight * perPage;
+    const height = rowHeight * (numberOfRowsVisible + 1);
     const rowCount = currentList.length;
     const pageCount = Math.ceil(rowCount / perPage);
-
 
     return (<>
       <Grid container justify='center'>
@@ -110,7 +116,7 @@ export default class DataTable extends React.Component {
           <Table
             width={this.defaultWidth}
             height={height}
-            headerHeight={20}
+            headerHeight={rowHeight}
             rowHeight={rowHeight}
             rowCount={rowCount}
             rowGetter={({index}) => currentList[index]}
