@@ -30,7 +30,7 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
         aria-label='table page navigator'
         defaultActivePage={1}
         ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-        firstItem={{ content: <Icon name='angle double left' />, icon: true }}
+        firstItem={{ content: <Icon angle name='angle double left' />, icon: true }}
         lastItem={{ content: <Icon name='angle double right' />, icon: true }}
         prevItem={{ content: <Icon name='angle left' />, icon: true }}
         nextItem={{ content: <Icon name='angle right' />, icon: true }}
@@ -40,13 +40,13 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
 
 
 
-      <Grid container>
+      {/* <Grid container>
         <Grid item xs={4}>
           <div>Showing {pageStart} to {pageEnd} of {itemCount} entries</div>
         </Grid>
-        <Grid item xs={8} className='paginator'>
+        <Grid item xs={8} className='pagination'>
           <Button.Group compact>
-            <Button content='<' onClick={() => onPageChange(currentPage - 1)} disabled='false' />
+            <Button content='<' onClick={() => onPageChange(currentPage - 1)} />
             {showStart && (
               <>
                 <Button content={1} onClick={() => onPageChange(1)} />
@@ -70,7 +70,7 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
             <Button content='>' onClick={() => onPageChange(currentPage + 1)} />
           </Button.Group>
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   );
 }
