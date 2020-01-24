@@ -1,21 +1,23 @@
 import React from "react";
 import style from './sunburst-breadcrumbs.module.scss';
 import PropTypes from "prop-types";
+import BreadCrumbs from "../../../components/breadcrumbs/breadcrumbs"
 
 const SunburstBreadcrumbs = (props) => {
 
   return <>
-    <div className={style.breadcrumbsContainer}>
-      <span>{props.items.agency}&nbsp;</span>
+    <BreadCrumbs/>
+    {/*<div className={style.breadcrumbsContainer}>*/}
+      {/*<span>{props.items.agency}&nbsp;</span>*/}
 
-      {props.items.subagency &&
-        <span className={style.breadcrumb}>&nbsp;{props.items.subagency}&nbsp;</span>
-      }
+      {/*{props.items.subagency &&*/}
+        {/*<span className={style.breadcrumb}>&nbsp;{props.items.subagency}&nbsp;</span>*/}
+      {/*}*/}
 
-      {props.items.recipient &&
-        <span className={style.breadcrumb}>&nbsp;{props.items.recipient}</span>
-      }
-    </div>
+      {/*{props.items.recipient &&*/}
+        {/*<span className={style.breadcrumb}>&nbsp;{props.items.recipient}</span>*/}
+      {/*}*/}
+    {/*</div>*/}
   </>
 }
 

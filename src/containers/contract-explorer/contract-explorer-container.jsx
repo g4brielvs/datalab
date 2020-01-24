@@ -106,6 +106,15 @@ const SunburstVegaContainer = () => {
       name: null
     };
 
+    const breadcrumbTree = {
+      name: null,
+      depth: 1,
+      child: {
+        name: depth
+      }
+
+    }
+
     switch (depth) {
       case 0:
         details.label = 'Agencies';
