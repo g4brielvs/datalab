@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { select, selectAll, event } from 'd3-selection';
-import SwipeListener from 'swipe-listener';
-import '../matchesPolyfill';
+import {select, selectAll, event } from 'd3-selection';
 import {ChevronRight, ChevronLeft, Close} from "@material-ui/icons"
 
 const d3 = { select, selectAll, event },
