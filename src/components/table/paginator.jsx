@@ -4,7 +4,7 @@ const BetweenButton = () => <Button content='...' style={{ cursor: 'default' }} 
 
 
 import React from 'react';
-import { Icon, Pagination } from 'semantic-ui-react';
+import { Pagination } from 'semantic-ui-react';
 import './data-table.scss';
 
 const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount }) => {
@@ -19,59 +19,56 @@ const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount 
   const pageStart = (currentPage - 1) * 10 + 1;
   const pageEnd = currentPage * 10 < itemCount ? currentPage * 10 : itemCount;
 
+  const handlePaginationChange = (e, { activePage }) => onPageChange(activePage);
+
   return (
-
-
-    <>
-
-
-      <Pagination
-        role='navigation'
-        aria-label='table page navigator'
-        defaultActivePage={1}
-        ellipsisItem={{ content: <Icon name='ellipsis horizontal' />, icon: true }}
-        firstItem={{ content: <Icon angle name='angle double left' />, icon: true }}
-        lastItem={{ content: <Icon name='angle double right' />, icon: true }}
-        prevItem={{ content: <Icon name='angle left' />, icon: true }}
-        nextItem={{ content: <Icon name='angle right' />, icon: true }}
-        totalPages={pageEnd}
-      />
+    <Pagination
+      role='navigation'
+      aria-label='table page navigator'
+      totalPages={pageEnd}
+      defaultActivePage={1}
+      firstItem={null}
+      lastItem={null}
+      prevItem={{ content: '<', icon: true }}
+      nextItem={{ content: '>', icon: true }}
+      ellipsisItem={{ content: '...', icon: true }}
+      onPageChange={handlePaginationChange}
+    />
 
 
 
 
-      {/* <Grid container>
-        <Grid item xs={4}>
-          <div>Showing {pageStart} to {pageEnd} of {itemCount} entries</div>
-        </Grid>
-        <Grid item xs={8} className='pagination'>
-          <Button.Group compact>
-            <Button content='<' onClick={() => onPageChange(currentPage - 1)} />
-            {showStart && (
-              <>
-                <Button content={1} onClick={() => onPageChange(1)} />
-                <BetweenButton />
-              </>
-            )}
-            {renderedPages.map((page, i) => (
-              <Button
-                key={`paginatorButton-${i}`}
-                onClick={() => onPageChange(page)}
-                content={page}
-                primary={currentPage === page}
-              />
-            ))}
-            {showEnd && (
-              <>
-                <BetweenButton />
-                <Button content={pageCount} onClick={() => onPageChange(pageCount)} />
-              </>
-            )}
-            <Button content='>' onClick={() => onPageChange(currentPage + 1)} />
-          </Button.Group>
-        </Grid>
-      </Grid> */}
-    </>
+    // <Grid container>
+    //   <Grid item xs={4}>
+    //     <div>Showing {pageStart} to {pageEnd} of {itemCount} entries</div>
+    //   </Grid>
+    //   <Grid item xs={8} className='pagination'>
+    //     <Button.Group compact>
+    //       <Button content='<' onClick={() => onPageChange(currentPage - 1)} />
+    //       {showStart && (
+    //         <>
+    //           <Button content={1} onClick={() => onPageChange(1)} />
+    //           <BetweenButton />
+    //         </>
+    //       )}
+    //       {renderedPages.map((page, i) => (
+    //         <Button
+    //           key={`paginatorButton-${i}`}
+    //           onClick={() => onPageChange(page)}
+    //           content={page}
+    //           primary={currentPage === page}
+    //         />
+    //       ))}
+    //       {showEnd && (
+    //         <>
+    //           <BetweenButton />
+    //           <Button content={pageCount} onClick={() => onPageChange(pageCount)} />
+    //         </>
+    //       )}
+    //       <Button content='>' onClick={() => onPageChange(currentPage + 1)} />
+    //     </Button.Group>
+    //   </Grid>
+    // </Grid>
   );
 }
 
