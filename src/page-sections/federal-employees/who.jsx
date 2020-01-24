@@ -9,7 +9,7 @@ export default function Who(props) {
   return <>
     <h2>Spending by Agency</h2>
     <ControlBar>
-      <Share siteUrl='https://datalab.usaspending.gov/' pageUrl='federal-employees' facebook='' reddit='' linkedin='' tumblr='' email='' />
+      <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
     </ControlBar>
     <Treemap sectionId={props.sectionId} dataSource={props.dataSource} />
   </>;

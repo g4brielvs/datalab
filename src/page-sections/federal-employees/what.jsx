@@ -11,7 +11,7 @@ export default function What(props) {
     <h2>Federal Employee Bar Chart</h2>
     <ControlBar>
       <Reset />
-      <Share siteUrl='https://datalab.usaspending.gov/' pageUrl='federal-employees' facebook='' reddit='' linkedin='' tumblr='' email='' />
+      <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
     </ControlBar>
     <BarChart sectionId={props.sectionId} dataSource={props.dataSource} />
   </>;
