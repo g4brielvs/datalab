@@ -13,112 +13,6 @@ const lightColors = [
 const  b = {
   w: 125, h: 30, s: 3, t: 10, homeW: 40
 };
-var handleClick, handleHover, handleUnhover;
-
-const drawbread = (d, i) => {
-  var points = [];
-    points.push("0,0");
-    points.push(b.w + ",0");
-    points.push(b.w + b.t + "," + (b.h / 2));
-    points.push(b.w + "," + b.h);
-    points.push("0," + b.h);
-    points.push(b.t + "," + (b.h / 2));
-  return points.join(" ");
-};
-
-const getTrailHierarchy = (activeNode, colors, RArray) => {
-  let HArray = RArray || [];
-
-  if (activeNode.depth > 1) {
-    HArray.push({name: activeNode.name,
-      depth: activeNode.depth,
-      parent: activeNode.parent});
-  } else {
-    HArray.push({name: activeNode.name,
-      depth: activeNode.depth});
-  }
-
-  if(activeNode.depth > 0){
-    getTrailHierarchy(activeNode.parent, colors, HArray)
-  } else {
-    updateBreadcrumbs(colors, HArray.reverse());
-  }
-}
-
-// Update the breadcrumb trail to show the current sequence and percentage.
-const updateBreadcrumbs = (colors, root) => {
-
-  // Data join; key function combines name and depth (= position in sequence).
-  var g = d3.select("#trail")
-    .selectAll("g")
-    .data(root, d => { return d.name + d.depth; });
-
-  var entering = g.enter().append("svg:g");
-  // Add breadcrumb and label for entering nodes.
-  //var entering = g.enter().append("svg:g");
-
-  entering.append("svg:polygon")
-    .attr("points", drawbread)
-    .style("fill", d => findColor(d))
-    .style("opacity", d => { return (d.depth === 0 ? 0 : 1) })
-
-  entering.append('svg:image')
-    .attr('x', d => { return d.depth === 0 ? 10 : null })
-    .attr('y', d => { return d.depth === 0 ? 6 : null })
-    .attr('width', d => { return d.depth === 0 ? 20 : null })
-    .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
-
-  entering.append( "svg:text")
-    .attr("x", d => { return ((d.depth === 0 ? b.homeW : b.w) + b.t) / 2; })
-    .attr("y", b.h / 2)
-    .attr("dy", "0.35em" )
-    .attr("text-anchor", "middle")
-    .attr("fill", d =>
-    {
-      return (d.depth === 0 || lightColors.includes(findColor(d).toString())  ? "black" : "white")
-    })
-    .text( d => {
-      if(d.depth === 0) return '';
-      if(d.depth < 3){
-        return String(d.name);
-      }
-      return String(d.name)
-          .substring(0,4)
-          .trimRight() + "...";
-    })
-    .style("cursor", "pointer")
-    // .on("click", d => {handleHover(d); handleClick(d)});
-
-  g.attr("transform", function(d, i) {
-    var trans =  "translate(" + i * (b.w + b.s) + ", 0)";
-    var hometrans =  "translate(" + (i * (b.w + b.s) - (b.w - b.homeW)) + ", 0)";
-    return (d.depth > 0 ? hometrans : trans)
-  });
-
-  // Remove exiting nodes.
-  g.exit().remove();
-
-  // Make the breadcrumb trail visible, if it's hidden.
-  d3.select("#trail")
-    .style("visibility", "");
-
-}
-
-
-const findColor = (node) => {
-  switch (node.depth) {
-    case 0: // root
-      return "#3f88ff";
-    case 1: // agency
-      return '#DAF7A6';
-    case 2: // subagency
-      return '#FF5733';
-    case 3: // contractor
-      return '#581845';
-    default:
-      return "#62ff4a";
-  }
-}
 
 class BreadCrumbs extends Component {
   constructor(props) {
@@ -128,34 +22,99 @@ class BreadCrumbs extends Component {
       activePanelNode: {},
       staticData:{}
     };
+
+    this.updateBreadcrumbs = this.updateBreadcrumbs.bind(this);
+    this.findColor = this.findColor.bind(this);
+    this.drawbread = this.drawbread.bind(this);
   }
 
-  componentDidMount() {
+  drawbread () {
+    var points = [];
+    points.push("0,0");
+    points.push(b.w + ",0");
+    points.push(b.w + b.t + "," + (b.h / 2));
+    points.push(b.w + "," + b.h);
+    points.push("0," + b.h);
+    points.push(b.t + "," + (b.h / 2));
+    return points.join(" ");
+  };
 
-    // handleClick = this.props.handleClick;
-    // handleHover = this.props.handleHover;
-    // handleUnhover = this.props.handleUnhover;
+// Update the breadcrumb trail to show the current sequence and percentage.
+  updateBreadcrumbs (colors, items) {
+    console.log(colors);
+    console.log(items);
+    let root = items || [];
 
-    const activeNode = {
-      name: 'BAH',
-        depth: 3,
-        parent: {
-        name: 'FS',
-          depth: 2,
-          parent: {
-            name: 'Treasury',
-            depth: 1,
-            parent: {
-              name: 'home',
-              depth: 0
-            }
-          }
+    // Data join; key function combines name and depth (= position in sequence).
+    var g = d3.select("#trail")
+      .selectAll("g")
+      .data(root, d => { return d.name + d.depth; });
+
+    var entering = g.enter().append("svg:g");
+    // Add breadcrumb and label for entering nodes.
+    //var entering = g.enter().append("svg:g");
+
+    entering.append("svg:polygon")
+      .attr("points", this.drawbread)
+      .style("fill", d => this.findColor(d))
+      .style("opacity", d => { return (d.depth === 0 ? 0 : 1) })
+
+    entering.append('svg:image')
+      .attr('x', d => { return d.depth === 0 ? 10 : null })
+      .attr('y', d => { return d.depth === 0 ? 6 : null })
+      .attr('width', d => { return d.depth === 0 ? 20 : null })
+      .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
+
+    entering.append( "svg:text")
+      .attr("x", d => { return ((d.depth === 0 ? b.homeW : b.w) + b.t) / 2; })
+      .attr("y", b.h / 2)
+      .attr("dy", "0.35em" )
+      .attr("text-anchor", "middle")
+      .attr("fill", d =>
+      {
+        return (d.depth === 0 || lightColors.includes(this.findColor(d).toString())  ? "black" : "white")
+      })
+      .text( d => {
+        if(d.depth === 0) return '';
+        if(d.depth < 3){
+          return String(d.name);
         }
-      };
+        return String(d.name)
+          .substring(0,4)
+          .trimRight() + "...";
+      })
+      .style("cursor", "pointer")
+    // .on("click", d => {handleHover(d); handleClick(d)});
+
+    g.attr("transform", function(d, i) {
+      var trans =  "translate(" + i * (b.w + b.s) + ", 0)";
+      var hometrans =  "translate(" + (i * (b.w + b.s) - (b.w - b.homeW)) + ", 0)";
+      return (d.depth > 0 ? hometrans : trans)
+    });
+
+    // Remove exiting nodes.
+    g.exit().remove();
+
+    // Make the breadcrumb trail visible, if it's hidden.
+    d3.select("#trail")
+      .style("visibility", "");
+
+  }
 
 
-    getTrailHierarchy(activeNode, lightColors);
-
+  findColor (node) {
+    switch (node.depth) {
+      case 0: // root
+        return "#3f88ff";
+      case 1: // agency
+        return '#DAF7A6';
+      case 2: // subagency
+        return '#FF5733';
+      case 3: // contractor
+        return '#581845';
+      default:
+        return "#62ff4a";
+    }
   }
 
   render() {

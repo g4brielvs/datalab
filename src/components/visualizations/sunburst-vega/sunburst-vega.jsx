@@ -139,6 +139,8 @@ export default class Sunburst extends React.Component {
       }
     });
 
+    this.props.onSelect(selectedArc[0].colorHex, [selectedArc[0].name]);
+
     return filtered;
   }
 
