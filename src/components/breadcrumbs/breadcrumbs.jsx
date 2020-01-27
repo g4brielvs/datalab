@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import d3 from "d3v3";
-import homeImg from '../../../static/homelessness-analysis/images/Cluster-1/Bed.svg';
+import homeImg from '../../../static/images/home-solid.svg';
 
 const width = 600, height = 50;
 const lightColors = [
@@ -63,6 +63,9 @@ const updateBreadcrumbs = (colors, root) => {
     .style("opacity", d => { return (d.depth === 0 ? 0 : 1) })
 
   entering.append('svg:image')
+    .attr('x', d => { return d.depth === 0 ? 10 : null })
+    .attr('y', d => { return d.depth === 0 ? 6 : null })
+    .attr('width', d => { return d.depth === 0 ? 20 : null })
     .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
 
   entering.append( "svg:text")

@@ -91,13 +91,22 @@ const SunburstVegaContainer = () => {
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
   }
 
+  function createBreadcrumbTrail(agency, subagency, recipient) {
+    const trail = [];
+
+    args.forEach((item, index) => {
+      trail.push({
+        name: item,
+        depth: index
+      });
+    });
+
+    return trail;
+  }
+
   function getDetails(item) {
     const depth = item && item.depth ? item.depth : 0;
-    let breadcrumbs = {
-      agency: null,
-      subagency: null,
-      recipient: null
-    };
+    let breadcrumbs;
 
     let details = {
       label: null,
@@ -105,15 +114,6 @@ const SunburstVegaContainer = () => {
       top5: [],
       name: null
     };
-
-    const breadcrumbTree = {
-      name: null,
-      depth: 1,
-      child: {
-        name: depth
-      }
-
-    }
 
     switch (depth) {
       case 0:
@@ -123,15 +123,14 @@ const SunburstVegaContainer = () => {
         details.name = 'Contract Spending In Fiscal Year 2019';
         break;
       case 1:
-        breadcrumbs.agency = item.agency;
+        breadcrumbs = createBreadcrumbTrail(item.agency);
         details.label = 'Subagencies';
         details.total = awardsData.filter(node => node.agency === item.agency).reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(awardsData.filter(node => node.agency === item.agency), 'subagency');
         details.name = item.name;
         break;
       case 2:
-        breadcrumbs.agency = item.agency;
-        breadcrumbs.subagency = item.name;
+        breadcrumbs = createBreadcrumbTrail(item.agency, item.name);
         details.label = 'Contractors';
         details.total = awardsData.filter(node => node.agency === item.agency && node.subagency === item.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(awardsData.filter(node => node.agency === item.agency && node.subagency === item.name), 'recipient');
@@ -139,9 +138,7 @@ const SunburstVegaContainer = () => {
         break;
       case 3:
         const subagency = sunData.tree.filter(node => node.id === item.parent);
-        breadcrumbs.agency = item.agency;
-        breadcrumbs.subagency = subagency[0].name;
-        breadcrumbs.recipient = item.name;
+        breadcrumbs = createBreadcrumbTrail(item.agency, subagency[0].name, item.name);
         details.total = awardsData.filter(node => node.agency === item.agency && node.subagency === subagency[0].name && node.recipient === item.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = item.name;
         break;
