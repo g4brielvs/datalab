@@ -94,7 +94,7 @@ export default class BubbleChart extends Component {
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
       "<span class='bubble-detail__agency-name'>" + d.name + "</span>" +
       "<div class='information'><p class='key' style='color: #881E3D;'>Total Investment</p>" +
-      // "<span class='bubble-detail__agency-name'>" + this.formatCurrency(popoverData[d.name].total_investment) + "</span>" +
+      "<span class='bubble-detail__agency-name'>" + this.formatCurrency(d.value) + "</span>" +
       "</div></div>";
     return tooltipHtml;
   }
@@ -117,7 +117,7 @@ export default class BubbleChart extends Component {
     return tooltipHtml;
   }
 
-// close tooltip
+  // close tooltip
   closeTooltip() {
     this.tip.hide();
   }
@@ -309,7 +309,7 @@ export default class BubbleChart extends Component {
       .attr("text-anchor", "middle")
       .on("click", this.click)
       .on("mouseover", function (d) {
-        const elName = d.name.replace(/ /g,"_");
+        const elName = d.name.replace(/ /g, "_");
         if (!classContext.isTablet()) {
           classContext.tip.show(d, this);
         }
@@ -439,8 +439,8 @@ export default class BubbleChart extends Component {
   clickById(id) {
     let d;
 
-      // since the data passed to search panel was built from this.root.children, there will always be a match here
-      this.root.children.some(agency => {
+    // since the data passed to search panel was built from this.root.children, there will always be a match here
+    this.root.children.some(agency => {
       if (d = agency.children.find(sub => sub.id === id)) {
         this.click(d);
         return true; // don't bother searching the rest of this.root.children
@@ -449,7 +449,7 @@ export default class BubbleChart extends Component {
   }
 
   showDetailsPane(d) {
-    if(!this.isMobile()){
+    if (!this.isMobile()) {
       this.props.showDetails(d);
     }
   }
@@ -530,7 +530,7 @@ export default class BubbleChart extends Component {
         <div id="bubble-detail"></div>
         <div id="bubbleChartContainer" className="bubbleChartContainer">
         </div>
-    </div>)
+      </div>)
   }
 }
 
