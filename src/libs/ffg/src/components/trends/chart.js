@@ -197,7 +197,9 @@ export function trendDesktop(_data, container, config, drilldown) {
 
     labelYMax = Math.ceil(globals.labels.findLowestVisibleLabel());
 
-    globals.zoomTrigger.repositionButton(labelYMax);
+    if(globals.zoomTrigger){
+        globals.zoomTrigger.repositionButton(labelYMax);
+    }
 
     if (!drilldown) {
         d3.select('svg.main').attr('height', function() {

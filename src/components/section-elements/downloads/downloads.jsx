@@ -3,10 +3,58 @@ import downloadsStyles from "./downloads.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Grid } from "@material-ui/core";
-import PropTypes from "prop-types"
-
+import PropTypes from "prop-types";
+import Radium from 'radium';
+import styleVariables from 'src/styles/variables.scss';
 
 const Downloads = (props) => {
+
+  const inlineStyles = {
+    legacy: {
+      ':hover': {
+        color: styleVariables.legacyBlue
+      }
+    },
+    'colleges-and-universities': {
+      ':hover': {
+        color: styleVariables.cuRed
+      }
+    },
+    'competition-in-contracting': {
+      ':hover': {
+        color: styleVariables.dlExpressBlue
+      }
+    },
+    'rd-in-contracting': {
+      ':hover': {
+        color: styleVariables.rdBlue
+      }
+    },
+    'analyst-guide': {
+      ':hover': {
+        color: styleVariables.analystGuideBlue
+      }
+    },
+    'student-innovators-toolbox': {
+      ':hover': {
+        color: styleVariables.studentToolboxBlue
+      }
+    }
+  };
+
+  let selectedStyle = inlineStyles.legacy;
+
+  if (typeof window !== 'undefined') {
+    const pathname = window.location.pathname.replace(/\//g, "");
+    const index = Object.keys(inlineStyles).indexOf(pathname);
+
+    if(index > -1) {
+      selectedStyle = inlineStyles[pathname];
+    }
+  }
+
+
+
   function exportToJsonFile(jsonData) {
     if(typeof Blob === 'undefined'){
       return <></>;
@@ -38,6 +86,7 @@ const Downloads = (props) => {
         exportToJsonFile(props.data)
       :
         <a className={downloadsStyles.data}
+           style={selectedStyle}
            href={props.href}>
           <FontAwesomeIcon icon={faDownload} />
           &nbsp;Download
@@ -49,8 +98,12 @@ const Downloads = (props) => {
 
 Downloads.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
-  date: PropTypes.date,
+  date: PropTypes.string,
   href: PropTypes.string
 }
 
-export default Downloads;
+const StyledDownloads = Radium(Downloads);
+
+export default StyledDownloads;
+
+

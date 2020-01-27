@@ -74,7 +74,7 @@ function DTS(props) {
         date: new Date("2014-10-01"),
         footnote: "The shaded region indicates inactive or retired programs. Beginning October 1, 2014, payments previously reported under the Medicare line were expanded to three lines: Medicare and other CMS payments, Medicare Advantage - Part C&D payments, and Marketplace payments."
       }
-    ]
+    ];
 
     if (_data) loadData(_data);
 
@@ -178,15 +178,15 @@ function DTS(props) {
       brush.extent([
         [0, 0],
         [width, height2]
-      ])
+      ]);
     }
 
     function setFancyLines(selector, lineFn) {
       svg.selectAll(selector).each(function (lineSel) {
-        let d3LineSel = d3.select(this)
-        let d3LineSelData = d3LineSel.data();
+        let d3LineSel = d3.select(this);
+        let d3LineSelData = d3LineSel._groups[0][0].__data__; // .data()
 
-        if (d3LineSelData[0].values[0].date.getTime() < d3LineSelData[0].date.getTime()) {
+        if (d3LineSelData.values[0].date.getTime() < d3LineSelData.date.getTime()) {
           d3LineSel.style("stroke-dasharray", ("5, 3"));
         }
 
@@ -268,17 +268,17 @@ function DTS(props) {
       history.replaceState(null, "", theQueryString);
 
       if (numberOfDays < 32) {
-        xAxis.ticks(d3.timeDay.every(10))
+        xAxis.ticks(d3.timeDay.every(10));
       } else if (numberOfDays < 180) {
-        xAxis.ticks(d3.timeMonth.every(1))
+        xAxis.ticks(d3.timeMonth.every(1));
       } else if (numberOfDays < 500) {
-        xAxis.ticks(d3.timeMonth.every(3))
+        xAxis.ticks(d3.timeMonth.every(3));
       } else if (numberOfDays < 1400) {
-        xAxis.ticks(d3.timeMonth.every(6))
+        xAxis.ticks(d3.timeMonth.every(6));
       } else if (numberOfDays < 3650) {
-        xAxis.ticks(d3.timeYear.every(1))
+        xAxis.ticks(d3.timeYear.every(1));
       } else {
-        xAxis.ticks(d3.timeYear.every(2))
+        xAxis.ticks(d3.timeYear.every(2));
       }
 
       svg.select(".graph-x-axis").call(xAxis);
@@ -526,11 +526,9 @@ function DTS(props) {
         let categoryValue = d3.select('#category-selector').property('value');
         let frequencyValue = d3.select('#frequency-selector').property('value');
 
-        let curLastItem = optionsDict[categoryValue][frequencyValue].last();
-
         setTooltipActiveTimeframe(frequencyValue);
 
-        let amountSpentToday = optionsDict[categoryValue]['today'].last();
+        let amountSpentToday = optionsDict[categoryValue]['today'].slice(-1).pop(); // used to be .last() but... not a real function??? (get last value in array.)
 
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(amountSpentToday.date));
         d3.select(".daily-spending-amount").text(dollarFormatter(amountSpentToday.value));
@@ -581,7 +579,7 @@ function DTS(props) {
         d3.select(".dts-footnote-text").text("All Categories was created by taking Total Withdrawals (excluding transfers) and subtracting Public Debt Cash Redemp (Table III B) from it for each corresponding entry.");
       } else if (data.length > 1) {
         d3.select(".dts-footnote").style("visibility", "visible");
-        d3.select(".dts-footnote-text").text(data[0].footnote);
+        d3.select(".dts-footnote-text").text(data[1].footnote); // was [0]!
       } else {
         d3.select(".dts-footnote").style("visibility", "hidden");
         d3.select(".dts-footnote-text").text('');
@@ -868,21 +866,21 @@ function DTS(props) {
             "name": key,
             values: optionsDict[key]["today"],
             date: optionsDict[key]["today"][0].date,
-            footnote: "",
+            footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["mtd"].push({
             "name": key,
             values: optionsDict[key]["mtd"],
             date: optionsDict[key]["mtd"][0].date,
-            footnote: "",
+            footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["fytd"].push({
             "name": key,
-            values: optionsDict[key]["fytd"][0].date,
+            values: optionsDict[key]["fytd"], // optionsDict[key]["fytd"][0].date
             date: new Date("1970-01-01"),
-            footnote: "",
+            footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
         }
@@ -893,8 +891,15 @@ function DTS(props) {
       let combinedFYTD = [];
 
       let medicareGrouping = sharedCategories[1];
+      let foodGrouping = sharedCategories[0];
 
       for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
+        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
+        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
+        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      }
+
+      for (let cateName of foodGrouping.categories) { // Only get combined for the medicare grouping
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
@@ -927,6 +932,30 @@ function DTS(props) {
           color: lineColors[lineColors.length - 1]
         });
       }
+
+      for (let cateName of foodGrouping.categories) {
+        masterMapping[cateName]['today'].push({
+          name: "Combined",
+          values: combinedDailyValues,
+          date: foodGrouping.date,
+          footnote: foodGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['mtd'].push({
+          name: "Combined",
+          values: combinedMTD,
+          date: foodGrouping.date,
+          footnote: foodGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['fytd'].push({
+          name: "Combined",
+          values: combinedFYTDValues,
+          date: foodGrouping.date,
+          footnote: foodGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+      };
     }
 
     function getFiscalYear(theDate) {
@@ -1093,14 +1122,14 @@ function DTS(props) {
           d3.select('#svg-wrapper').selectAll('*').remove();
           drawChart('redraw');
         }, 300);
-      })
+      });
     }
-  })
+  });
 
   if (!props.data) {
     return <div className='progress_wrapper'>
       <CircularProgress className='progress' size={70} color='inherit' />
-    </div>
+    </div>;
   } else {
     return <>
       <div className="dts-viz-container">
@@ -1140,9 +1169,9 @@ function DTS(props) {
 
       <div className="dts-disclaimer">
         The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
-      <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+                <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
       </div>
-    </>
+    </>;
   }
 }
 

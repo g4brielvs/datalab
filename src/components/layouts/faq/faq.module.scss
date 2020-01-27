@@ -3,6 +3,9 @@
 .faq-page {
   padding-top: $margin-50;
   margin: 0 auto $margin-50;
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .header {

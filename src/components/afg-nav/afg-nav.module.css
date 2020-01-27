@@ -8,11 +8,15 @@
     margin-top: 3rem;
 }
 
-.chapter-nav__overview i {
+.chapter-nav-primary-list {
+    color: white;
+}
+
+.chapter-nav-overview i {
     margin-right: 1rem;
 }
 
-.menu-open .chapter-nav__overview {
+.menu-open .chapter-nav-overview {
     border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
@@ -28,19 +32,19 @@
     display: none;
 }
 
-.chapter-nav--revenue {
+.chapter-nav-revenue {
     background-color: #0A2F5A;
 }
 
-.chapter-nav--spending {
+.chapter-nav-spending {
     background-color: #00796B;
 }
 
-.chapter-nav--deficit {
+.chapter-nav-deficit {
     background-color: #B3532D;
 }
 
-.chapter-nav--debt {
+.chapter-nav-debt {
     background-color: #4A0072;
 }
 
@@ -101,7 +105,7 @@
         display: none;
     }
 
-    .menu-open .chapter-nav__overview {
+    .menu-open .chapter-nav-overview {
         border-bottom: none;
     }
 
@@ -120,7 +124,7 @@
         align-items: center;
     }
 
-    .chapter-nav.chapter-nav--deficit li {
+    .chapter-nav.chapter-nav-deficit li {
         width: 33%;
     }
 

@@ -1,19 +1,20 @@
 import React from 'react';
+import * as d3 from 'd3v4';
 
 import ControlBar from '../../components/control-bar/control-bar';
+import Downloads from 'src/components/section-elements/downloads/downloads';
 import DTS from '../../components/visualizations/dts/dts';
 import Grid from '@material-ui/core/Grid';
 import SEO from '../../components/seo';
 import Share from '../../components/share/share';
 import ToolLayout from '../../components/layouts/tool/tool';
-import * as d3 from 'd3v4';
 
 export default class DTSPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dtsData: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -28,6 +29,7 @@ export default class DTSPage extends React.Component {
     <ToolLayout
       title='Visualizing The Daily Treasury Statement'
       introSentence='How much does the federal government spend each day?'
+      hwctaLink={this.props.location.pathname + '/methodologies'}
     >
       <div className='dts-css'>
         <div className='dts-tt-container'>
@@ -58,8 +60,7 @@ export default class DTSPage extends React.Component {
             <Grid item xs={1}>
               <ControlBar>
                 <Share location={this.props.location}
-                  title='Check out this analysis on Data Lab'
-                  text='Check out this site https://datalab.usaspending.gov/dts.html'
+                  title='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury'
                 />
               </ControlBar>
             </Grid>
@@ -95,6 +96,7 @@ export default class DTSPage extends React.Component {
           </Grid>
 
           <DTS data={this.state.dtsData} />
+          <Downloads href={'/data-lab-data/dts/dts.csv'} />
 
         </div>
       </div>

@@ -1,5 +1,8 @@
 @import '../../globalSass/colors';
 
+.debt-intro-wrapper {
+
+
 .viz-wrapper {
   position: relative;
 }
@@ -47,7 +50,7 @@
 .facts__trigger {
   display: block;
   width: 49%;
-  border: 1px solid $color-deficit-primary;
+  border: 1px solid $color-debt-primary;
   text-align: center;
   margin-bottom: 2px;
   background: white;
@@ -56,7 +59,7 @@
 }
 
 .facts__trigger.facts__trigger--active {
-  background: $color-deficit-primary;
+  background: $color-debt-primary;
   color: white;
 }
 
@@ -135,7 +138,7 @@ aside {
     width: auto;
     max-width: none;
     margin: 0;
-    border-left: 3px solid $color-deficit-primary;
+    border-left: 3px solid $color-debt-primary;
     box-shadow: none;
   }
 
@@ -152,5 +155,7 @@ aside {
     clear: both;
     transform: translateY(2rem);
   }
+}
+
 }
 

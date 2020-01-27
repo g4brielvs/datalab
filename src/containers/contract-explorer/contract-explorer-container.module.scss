@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import '../../styles/variables';
 
 .header {
   height: 2.5rem
@@ -17,6 +17,10 @@
   font-size: 1rem;
   text-align: center;
   color: #666666;
+}
+
+.download-container {
+  padding-top: 2rem;
 }
 
 @media (max-width: $tablet) {

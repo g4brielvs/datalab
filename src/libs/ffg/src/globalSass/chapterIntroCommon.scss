@@ -4,6 +4,8 @@
 @import './chapterIntro/colorOverrides';
 @import './accordion';
 
+.chapter-intro-common-wrapper {
+
 #copy {
   text-align: left;
   margin-top: 2rem;
@@ -12,10 +14,6 @@
 .intro-hidden {
   opacity: 0;
 }
-
-// .viz-wrapper {
-//   position: relative;
-// }
 
 aside {
   section {
@@ -29,6 +27,8 @@ aside {
 
 .tour {
   max-width: 380px;
+  box-sizing: border-box;
+  width: calc(34% - 1rem);
 }
 
 #viz {
@@ -67,10 +67,6 @@ aside {
     box-shadow: none;
   }
 
-  .tour {
-    box-sizing: border-box;
-  }
-
   #compare-options {
     padding-top: 0;
     padding-right: 0;
@@ -83,3 +79,4 @@ aside {
   }
 }
 
+}

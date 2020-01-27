@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import styles from './sunburst-vega-container.module.scss';
 
-import Breadcrumbs from '../breadcrumbs/sunburst-breadcrumbs';
 import { Grid, Hidden } from '@material-ui/core';
-import Search from 'src/components/chartpanels/search';
-import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
-import SunburstDetails from '../details/sunburst-details';
 
-import flareData from '../../../../static/unstructured-data/contract-explorer/flare.json';
 const sunData = flareData;
-import awardsData from '../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import Downloads from "src/components/section-elements/downloads/downloads"
+import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
+import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import SunburstDetails from './details/sunburst-details';
+import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
+import Breadcrumbs from './breadcrumbs/sunburst-breadcrumbs';
+import styles from './contract-explorer-container.module.scss';
+import Search from 'src/components/chartpanels/search';
+
 
 const SunburstVegaContainer = () => {
 
@@ -93,6 +95,7 @@ const SunburstVegaContainer = () => {
       subagency: null,
       recipient: null
     };
+
     let details = {
       label: null,
       total: null,
@@ -152,6 +155,8 @@ const SunburstVegaContainer = () => {
           <Breadcrumbs className={styles.header} items={breadcrumbs} className={styles.breadcrumbsContainer} />
           <Sunburst data={sunData} getDetails={getDetails} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+          <Downloads className={styles.downloadContainer}
+            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
         </Grid>
       </Grid>
     </Hidden>
@@ -164,6 +169,8 @@ const SunburstVegaContainer = () => {
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
       <Sunburst data={sunData} getDetails={getDetails} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
+      <Downloads className={styles.downloadContainer}
+                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
       <SunburstDetails details={details} />
     </Hidden>
   </>;
