@@ -13,6 +13,12 @@
     100% {transform: scaleX(1)}
 }
 
+.debt-analysis-wrapper {
+    svg, button, span {
+        font-family: Source Sans Pro, sans-serif;
+    }
+}
+
 .card {
     position: relative;
     box-sizing: border-box;
@@ -71,9 +77,23 @@
     background: transparent;
     color: $color-debt-primary;
     transition: color 0.3s ease;
+    cursor: pointer;
+
+    svg {
+        vertical-align: middle;
+    }
+
+    span {
+        color: $color-debt-primary;
+        padding-left: 0.5rem;
+        vertical-align: middle;
+    }
 
     &:hover {
         color: lighten($color-debt-primary, 20%);
+        span {
+            color: lighten($color-debt-primary, 20%);
+        }
     }
 }
 
