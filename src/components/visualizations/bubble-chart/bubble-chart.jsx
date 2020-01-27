@@ -117,7 +117,6 @@ export default class BubbleChart extends Component {
     return tooltipHtml;
   }
 
-  // close tooltip
   closeTooltip() {
     this.tip.hide();
   }
