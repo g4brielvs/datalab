@@ -1,6 +1,5 @@
 @import '../../../styles/variables.scss';
-$grey: #4a4a4a;
-$cuRed: #881e3d;
+$grey: #555555;
 
 .download {
 	color: $grey;
@@ -24,7 +23,6 @@ a.data {
 
 		img {
 			filter: brightness(0.5) sepia(1);
-			// filter: invert(.5) sepia(1) saturate(75.5%) hue-rotate(322deg) brightness(42.7%);
 		}
 	}
 }
