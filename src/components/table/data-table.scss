@@ -38,6 +38,11 @@
 
   .item {
     padding: 5px 10px;
+    margin-right: 5px;
+
+    &:hover:not(.disabled) {
+      background-color: #e1f3f8;
+    }
 
     &.active {
       color: white;
@@ -46,7 +51,8 @@
     }
 
     &.disabled {
-      background-color: red;
+      opacity: .5;
+      cursor: default;
     }
   }
 
