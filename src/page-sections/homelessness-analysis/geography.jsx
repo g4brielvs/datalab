@@ -14,7 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 export default function Geography(props) {
 
-  const [chartView, isChartView] = useState(false);
+  const [chartView, isChartView] = useState(true);
   const { mem } = dataSource;
   const populationData = mem.pop;
 
