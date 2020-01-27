@@ -44,7 +44,7 @@ class Dropdown extends React.Component {
           </div>
         }
         {
-          activeItem === "DataLab Express" &&
+          activeItem === "DataLab Express" && 
           <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
             <section className={`${styles.section} ${styles.express}`}>
               <ul className={`${styles.ul} ${styles.ulExpress}`}>{this.returnActiveList(this.state.data[1].express)}</ul>
