@@ -68,11 +68,13 @@ export default class Sunburst extends React.Component {
     if (depth === 2) {
       subagencies = _.filter(flare.tree, { 'name': selectedArc[0].name, 'type': 'subagency' });
       agencyNames = _.map(subagencies, 'agency');
+      agencyNames = _.uniqBy(agencyNames);
       subAgencyIds = _.map(subagencies, 'id');
 
     } else if (depth === 3) {
       recipients = _.filter(flare.tree, { 'name': selectedArc[0].name, 'type': 'recipient' });
-      agencyNames = _.uniqBy(_.map(recipients, 'agency'));
+      agencyNames = _.map(recipients, 'agency');
+      agencyNames = _.uniqBy(agencyNames);
       recipientSubAgencyIds = _.map(recipients, 'parent');
 
     }
