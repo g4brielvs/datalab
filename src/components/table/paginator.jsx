@@ -28,7 +28,7 @@ export default class Paginator extends React.Component {
       firstItem={null}
       lastItem={null}
       prevItem={{ content: '<', icon: true, disabled: this.props.currentPage === 1 }}
-      nextItem={{ content: '>', icon: true, disabled: this.props.currentPage === this.numPages }}
+      nextItem={{ content: '>', icon: true, disabled: this.props.currentPage === this.state.numPages }}
       ellipsisItem={{ content: '...', icon: true, className: 'disabled' }}
       onPageChange={this.handlePaginationChange}
     />
