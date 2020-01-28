@@ -40,6 +40,14 @@
     padding: 5px 10px;
     margin-right: 5px;
 
+    &.icon {
+      padding: 5px 0;
+
+      svg {
+        vertical-align: middle;
+      }
+    }
+
     &:hover:not(.disabled, .active) {
       background-color: #e1f3f8;
     }
