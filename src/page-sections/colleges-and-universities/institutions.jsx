@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import '../../styles/index.scss';
