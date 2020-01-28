@@ -19,17 +19,20 @@ export default class Sunburst extends React.Component {
         side but hasn't been rewritten yet due to the analyst backlog being long. */
     // console.log(transformData());
 
+    const data = this.appendColors(props.data);
+
     this.state = {
-      data: props.data,
+      data: data,
       info: '',
       spec: sunburstSpec,
-      originalData: props.data,
+      originalData: data,
       agency: null,
       level: null
     };
     this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
+    this.appendColors = this.appendColors.bind(this);
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
   }
 
@@ -39,6 +42,24 @@ export default class Sunburst extends React.Component {
   //     this.setState({ data: this.props.data });
   //   }
   // }
+
+  appendColors(flare) {
+    let agencies = _.filter(flare.tree, { 'type': 'agency' });
+    let agenciesColors = {};
+    let colors = this.props.colors;
+    agencies = _.map(agencies, 'name');
+    agencies = _.uniqBy(agencies);
+
+    for (let i = 0; i < agencies.length; i++) {
+      agenciesColors[agencies[i]] = colors[i % colors.length];
+    }
+
+    for (let i = 0; i < flare.tree.length; i++) {
+      flare.tree[i]['colorHex'] = agenciesColors[flare.tree[i].agency];
+    }
+
+    return flare;
+  };
 
   handleHover(...args) {
     const item = args[1];
