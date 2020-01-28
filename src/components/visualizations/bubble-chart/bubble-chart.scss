@@ -6,13 +6,15 @@ svg#chart {
   overflow: hidden;
 }
 
-#bubbleChartContainer{
+#bubbleChartContainer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-circle.node,  circle.node--root, text.label {
+circle.node,
+circle.node--root,
+text.label {
   cursor: zoom-in;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
@@ -24,8 +26,8 @@ circle.node--leaf {
 }
 
 circle.node--leaf.active {
-  fill-opacity: .8;
-  stroke: #FAEBD0;
+  fill-opacity: 0.8;
+  stroke: #faebd0;
   stroke-width: 9;
 }
 
@@ -34,47 +36,34 @@ circle.node--leaf.active {
 }
 
 .node {
-  stroke: #E6E1E1;
-  fill: #EBEBEB;
-}
-
-.d3-tip {
-  pointer-events: none!important;
-  z-index: 9999!important;
-  line-height: 1;
-  font-weight: bold;
-  padding: 12px;
-  background: #fff;
-  color: #555;
-  border-radius: 2px;
+  stroke: #e6e1e1;
+  fill: #ebebeb;
 }
 
 .bubble-chart-tooltip {
+  background: #fff;
+  color: #333;
+  border: 1px solid #bfbcbc;
+  padding: 25px;
+  left: 0;
+  min-width: 325px;
+  max-width: 500px;
+  z-index: 10;
+  text-align: left;
+
   .information {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+
     .key {
-      color: #881E3D;
+      font-size: 0.875rem;
+      font-weight: normal;
+      color: #881e3d;
+      line-height: 1;
+      margin: 0;
     }
   }
-}
-
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 0.625rem;
-  width: 100%;
-  line-height: 1;
-  color: #fff;
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}
-
-/* Style northward tooltips differently */
-.d3-tip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
 }
 
 #bubble-detail {
@@ -90,7 +79,7 @@ circle.node--leaf.active {
   padding: 2rem;
   background: white;
   box-sizing: border-box;
-  box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   transition: right 0.5s ease-in-out;
   z-index: 102;
 }
@@ -161,11 +150,13 @@ circle.node--leaf.active {
   margin-bottom: 0;
 }
 
-.bubble-detail__table td, .bubble-detail__table th {
+.bubble-detail__table td,
+.bubble-detail__table th {
   padding: 4px 0 !important;
 }
 
-.bubble-detail__table tr td:last-child, .bubble-detail__table tr th:last-child {
+.bubble-detail__table tr td:last-child,
+.bubble-detail__table tr th:last-child {
   text-align: end;
 }
 

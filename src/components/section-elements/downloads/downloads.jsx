@@ -71,7 +71,7 @@ const Downloads = (props) => {
          download={exportFileDefaultName}>
         <FontAwesomeIcon icon={faDownload} />
         &nbsp;Download
-      </a>)
+      </a>);
   }
 
   return (
@@ -83,24 +83,24 @@ const Downloads = (props) => {
       className={downloadsStyles.download}>
       {props.date ? <span className={downloadsStyles.fadedModifier}>Updated as of {props.date} / </span> : ''}
       {props.isJSON ?
-        exportToJsonFile(props.data)
-      :
-        <a className={downloadsStyles.data}
-           style={selectedStyle}
-           href={props.href}>
-          <FontAwesomeIcon icon={faDownload} />
-          &nbsp;Download
-        </a>
+       exportToJsonFile(props.data)
+       :
+       <a className={downloadsStyles.data}
+          style={selectedStyle}
+          href={props.href}>
+         <FontAwesomeIcon icon={faDownload} />
+         &nbsp;Download
+       </a>
       }
     </Grid>
-  )
-}
+  );
+};
 
 Downloads.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
   date: PropTypes.string,
   href: PropTypes.string
-}
+};
 
 const StyledDownloads = Radium(Downloads);
 
