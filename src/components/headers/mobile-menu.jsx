@@ -38,8 +38,8 @@ class MobileMenu extends React.Component {
         <ul className={`${styles.mobile} ${show ? `` : styles.hidden}`}>
           <li className={styles.item} data-id='0' onClick={this.handleClick}>Analyses<span className={styles.arrow}> <Arrow/></span></li>
           <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Analyses ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
-          <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li>
-          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul>
+          {/* <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li> */}
+          {/* <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul> */}
           <li className={styles.item} data-id='2' onClick={this.handleClick}>America's Finance Guide<span className={styles.arrow}> <Arrow/></span></li>
           <ul className={`${styles.toggleList} ${this.state.clickedItem == "America's Finance Guide " ? `` : ' ' + styles.hidden}`}>
             <li className={styles.dataListLi}>

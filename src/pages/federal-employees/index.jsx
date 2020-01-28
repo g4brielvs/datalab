@@ -74,7 +74,6 @@ export default class FederalEmployeesPage extends Component {
 			contextStatement={["The U.S. Treasury’s Data Lab presents an analysis exploring federal employees using federal financial data and employment data from the Office of Personnel Management (OPM). In 2017, the 24 CFO Act Agencies employed nearly people."]}
 			sectionToc={sections}
 			hwctaLink={this.props.location.pathname + '/methodologies'}
-
 		>
 			<SEO title='Federal Employees' keywords={[`gatsby`, `application`, `react`]} />
 

@@ -7,7 +7,7 @@ import linkedinLogo from '../../images/colleges-and-universities/linkedin.svg';
 import redditLogo from '../../images/colleges-and-universities/reddit.svg';
 import emailLogo from '../../images/colleges-and-universities/email.svg';
 
-class Share extends Component {
+export default class Share extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +44,7 @@ class Share extends Component {
   }
 
   handleShareClickFacebook(e) {
-    let finalUrl = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
+    const finalUrl = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
     this.openShareWindow(finalUrl);
   }
 
@@ -55,12 +55,12 @@ class Share extends Component {
   }
 
   handleShareClickLinkedin(e) {
-    let finalUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${this.url}`;
+    const finalUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${this.url}`;
     this.openShareWindow(finalUrl);
   }
 
   handleShareClickReddit(e) {
-    let finalUrl = `http://www.reddit.com/submit?url=${this.url}`;
+    const finalUrl = `http://www.reddit.com/submit?url=${this.url}`;
     this.openShareWindow(finalUrl);
   }
 
@@ -155,5 +155,3 @@ class Share extends Component {
     );
   }
 }
-
-export default Share;
