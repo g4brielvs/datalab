@@ -77,7 +77,7 @@ export default class Sunburst extends React.Component {
 
     }
 
-    let filtered = flare.tree.filter(function (item) {
+    const filtered = flare.tree.filter(function (item) {
       if(item.id === 1) {
         return true;
       }
@@ -94,7 +94,6 @@ export default class Sunburst extends React.Component {
             return item.name === selectedArc[0].name;
 
           case 3:
-            // where all children of item.name
             return subAgencyIds.includes(item.parent);
 
         }
@@ -102,7 +101,6 @@ export default class Sunburst extends React.Component {
       } else if (depth === 3) {
         switch (item.depth) {
           case 1:
-            // get the parent agencies for all subagency ids
             return agencyNames.includes(item.name);
 
           case 2:
