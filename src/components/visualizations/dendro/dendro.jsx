@@ -13,8 +13,8 @@ function Dendro(props) {
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
     const tooltip = tooltipModule();
-
-    function CreateDendro(newData){
+    
+    function CreateDendro(newData) {
 
       newData.forEach((d) => {
         d.Obligation = +d.Obligation;
@@ -608,13 +608,13 @@ function Dendro(props) {
           <div className='viz-actions'>
             <div id='DendroRadio'>
               <div className='select-wrapper1'>
-                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17'/>
+                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17' onChange={props.radioCheck}/>
                 <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18'/>
+                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18' onChange={props.radioCheck}/>
                 <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} />
+                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} onChange={props.radioCheck}/>
                 <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
               </div>
               <div className="select-wrapper2">

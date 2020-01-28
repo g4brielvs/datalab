@@ -167,21 +167,25 @@ export default function Institutions(props) {
             showDetails={getClickedDetails}
             clickedSchool={clickedSchool}
           />
-          {/* <DataTable */}
-          {/*   data={dataTableData.map(x => { */}
-          {/*     return [ */}
-          {/*       x.Recipient, */}
-          {/*       x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2, */}
-          {/*       parseInt(x.contracts), */}
-          {/*       parseInt( x.grants), */}
-          {/*       parseInt(x.student_aid), */}
-          {/*       parseInt(x.Total_Federal_Investment), */}
-          {/*     ]; */}
-          {/*   })} */}
-          {/*   columnTitles={tableColumnTitles} */}
-          {/*   display={false} // for now, left panel for map isn't finished. */}
-          {/*   idName={'institutionsTable'} */}
-          {/* /> */}
+          <Downloads
+            href={'/data/colleges-and-universities/institutions/mapData.json'}
+            date={'March 2019'}
+          />
+          <DataTable
+            data={dataTableData.map(x => {
+              return [
+                x.Recipient,
+                x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
+                parseInt(x.contracts),
+                parseInt( x.grants),
+                parseInt(x.student_aid),
+                parseInt(x.Total_Federal_Investment),
+              ];
+            })}
+            columnTitles={tableColumnTitles}
+            display={false} // for now, left panel for map isn't finished.
+            idName={'institutionsTable'}
+          />
         </div>
       </Grid>
 
@@ -194,7 +198,7 @@ export default function Institutions(props) {
       </Grid>
     </Grid>
     <Downloads
-      href={'assets/js/colleges-and-universities/download-files/Agency_Section_Download.csv'}
+      href={'/data/colleges-and-universities/institutions/tableData.csv'}
       date={'March 2019'}
     />
   </>);
