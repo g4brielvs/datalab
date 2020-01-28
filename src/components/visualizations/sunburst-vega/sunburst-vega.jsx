@@ -19,7 +19,7 @@ export default class Sunburst extends React.Component {
         side but hasn't been rewritten yet due to the analyst backlog being long. */
     // console.log(transformData());
 
-    const data = this.appendColors(props.data);
+    const data = this.appendColors(this.props.data);
 
     this.state = {
       data: data,
@@ -29,6 +29,7 @@ export default class Sunburst extends React.Component {
       agency: null,
       level: null
     };
+
     this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
@@ -54,7 +55,9 @@ export default class Sunburst extends React.Component {
       agenciesColors[agencies[i]] = colors[i % colors.length];
     }
 
-    for (let i = 0; i < flare.tree.length; i++) {
+    flare.tree[0]['colorHex'] = '#fff';
+
+    for (let i = 1; i < flare.tree.length; i++) {
       flare.tree[i]['colorHex'] = agenciesColors[flare.tree[i].agency];
     }
 
