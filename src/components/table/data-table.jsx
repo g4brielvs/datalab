@@ -20,7 +20,6 @@ export default class DataTable extends React.Component {
     };
 
     this.defaultWidth = 1000;
-
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.sort = this.sort.bind(this);
@@ -122,7 +121,8 @@ export default class DataTable extends React.Component {
             scrollToAlignment='start'
             sort={this.updateSort}
             sortBy={sortBy}
-            sortDirection={sortDirection}>
+            sortDirection={sortDirection}
+          >
             {this.props.columnTitles.map((item, key) => {
               const columnWidth = item.width || this.defaultWidth / this.props.columnTitles.length;
               let dataType = item.type || 'dollars';
@@ -150,7 +150,6 @@ export default class DataTable extends React.Component {
       </Grid>
     );
   }
-
 }
 
 DataTable.propTypes = {

@@ -6,7 +6,15 @@ import './data-table.scss';
 export default class Paginator extends React.Component {
   constructor(props) {
     super(props);
-    this.numPages = Math.ceil(props.rowCount / this.props.rowsPerPage);
+    this.state = {
+      numPages: Math.ceil(props.rowCount / this.props.rowsPerPage)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.rowCount !== prevProps.rowCount || this.props.rowsPerPage !== prevProps.rowsPerPage) {
+      this.setState({ numPages: Math.ceil(this.props.rowCount / this.props.rowsPerPage) })
+    }
   }
 
   handlePaginationChange = (e, { activePage }) => this.props.onPageChange(activePage);
@@ -15,7 +23,7 @@ export default class Paginator extends React.Component {
     <Pagination
       role='navigation'
       aria-label='table page navigator'
-      totalPages={this.numPages}
+      totalPages={this.state.numPages}
       defaultActivePage={1}
       firstItem={null}
       lastItem={null}
@@ -24,7 +32,6 @@ export default class Paginator extends React.Component {
       ellipsisItem={{ content: '...', icon: true, className: 'disabled' }}
       onPageChange={this.handlePaginationChange}
     />
-    ;
 }
 
 Paginator.propTypes = {
