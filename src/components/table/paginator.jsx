@@ -5,6 +5,16 @@ import { ChevronRight, ChevronLeft } from '@material-ui/icons';
 import './data-table.scss';
 
 export default class Paginator extends React.Component {
+  static propTypes = {
+    rowCount: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+    currentPage: PropTypes.number,
+    onPageChange: PropTypes.func.isRequired
+  };
+  static defaultProps = {
+    currentPage: 1
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -33,15 +43,4 @@ export default class Paginator extends React.Component {
       ellipsisItem={{ content: '...', icon: true, className: 'disabled' }}
       onPageChange={this.handlePaginationChange}
     />
-}
-
-Paginator.propTypes = {
-  rowCount: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-  currentPage: PropTypes.number,
-  onPageChange: PropTypes.func.isRequired
-}
-
-Paginator.defaultProps = {
-  currentPage: 1
 }
