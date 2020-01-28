@@ -5,9 +5,10 @@
 .select-country {
     position: relative;
     transform: translate(0,39px);
+    display: inline-block;
+
     &.mobile {
         transform: none;
-        display: inline-block;
     }
 }
 
