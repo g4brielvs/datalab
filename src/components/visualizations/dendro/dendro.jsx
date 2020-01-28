@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
+
 import './dendro.scss';
+
+import { Grid } from "@material-ui/core";
 import tooltipModule from '../../../components/tooltip/tooltip';
 import tooltipStyles from '../../../components/tooltip/tooltip.module.scss';
+
 
 function Dendro(props) {
 
@@ -499,16 +504,16 @@ function Dendro(props) {
         var theSvg = document.getElementById("svg-dendrogram");
         const event = document.createEvent('MouseEvent');
         event.initMouseEvent('mousedown', true, true, window, 0, 0,
-          0, 1, 1, false, false, false, false,
-          0, null);
+                             0, 1, 1, false, false, false, false,
+                             0, null);
         theSvg.dispatchEvent(event);
         event.initMouseEvent('mousemove', true, true, window, 0, 0,
-          0, 2, 2, false, false, false, false,
-          0, null);
+                             0, 2, 2, false, false, false, false,
+                             0, null);
         theSvg.dispatchEvent(event);
         event.initMouseEvent('mouseup', true, true, window, 0, 0,
-          0, 2, 2, false, false, false, false,
-          0, null);
+                             0, 2, 2, false, false, false, false,
+                             0, null);
         theSvg.dispatchEvent(event);
       }
     }
@@ -606,31 +611,33 @@ function Dendro(props) {
       <div className='viz-bkgd'>
         <div className='mask'>
           <div className='viz-actions'>
-            <div id='DendroRadio'>
-              <div className='select-wrapper1'>
-                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17' onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
+            <Grid container>
+              <div id='DendroRadio'>
+                <div className='select-wrapper1'>
+                  <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17' onChange={props.radioCheck}/>
+                  <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18' onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
+                  <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18' onChange={props.radioCheck}/>
+                  <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
+                  <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} onChange={props.radioCheck}/>
+                  <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
+                </div>
+                <div className="select-wrapper2">
+                  <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
+                  <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
+
+                  <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
+                  <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
+
+                  <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
+                  <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
+
+                  <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
+                  <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
+                </div>
               </div>
-              <div className="select-wrapper2">
-                <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
-                <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
-                <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
-                <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
-                <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
-              </div>
-            </div>
+            </Grid>
           </div>
         </div>
       </div>
