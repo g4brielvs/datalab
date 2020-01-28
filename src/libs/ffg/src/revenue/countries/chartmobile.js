@@ -450,4 +450,6 @@ export function redrawMobile(_config, _data){
     mobileDimensions.countryColumnWidth = mobileDimensions.chartWidth - mobileDimensions.gdpColumnWidth - fontSize;
     redraw();
     d3.select('#cgCountryGraphDropShadow').attr('height', 504);
+    d3.select('.select-country').classed('mobile', true);
+    d3.select('#viz').classed('mobile', true);
 }
