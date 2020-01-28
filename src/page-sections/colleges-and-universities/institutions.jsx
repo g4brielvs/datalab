@@ -37,11 +37,11 @@ export default function Institutions(props) {
   };
 
   // check required data properties/format to fail 'gracefully'
-  if (!GeoDataMapbox.features
-    || !Array.isArray(GeoDataMapbox.features)
-    || !GeoDataMapbox.features[0].id
-    || !GeoDataMapbox.features[0].properties
-    || !GeoDataMapbox.features[0].properties.Recipient
+  if (!GeoDataMapbox.features ||
+    !Array.isArray(GeoDataMapbox.features) ||
+    !GeoDataMapbox.features[0].id ||
+    !GeoDataMapbox.features[0].properties ||
+    !GeoDataMapbox.features[0].properties.Recipient
   ) {
     return <div>Cannot display this information; error in data file format.</div>;
   };
