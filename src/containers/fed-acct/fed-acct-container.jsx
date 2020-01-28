@@ -6,7 +6,6 @@ import FY19Data from '../../../static/unstructured-data/federal-account-explorer
 import Dendro from '../../components/visualizations/dendro/dendro';
 import Downloads from "../../components/section-elements/downloads/downloads";
 
-
 class FedAcctContainer extends React.Component {
   constructor(props){
     super(props);
@@ -22,9 +21,9 @@ class FedAcctContainer extends React.Component {
   };
 
   fiscalYearCheck = () => {
-    if (this.state.fiscalYearVal === 'fy19') return '/data/federal-account-explorer/fy19.csv';
-    if (this.state.fiscalYearVal === 'fy18') return '/data/federal-account-explorer/fy18.csv';
-    if (this.state.fiscalYearVal === 'fy17') return '/data/federal-account-explorer/fy17.csv';
+    if (this.state.fiscalYearVal === 'fy19') return '/unstructured-data/federal-account-explorer/account_obligations_link_update_FY19Q3.csv';
+    if (this.state.fiscalYearVal === 'fy18') return '/unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
+    if (this.state.fiscalYearVal === 'fy17') return '/unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
     else return '';
   };
   
