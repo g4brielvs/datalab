@@ -1,55 +1,47 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Pagination } from 'semantic-ui-react';
+import { ChevronRight, ChevronLeft } from '@material-ui/icons';
 import './data-table.scss';
-import Grid from '@material-ui/core/Grid/Grid';
 
-const BetweenButton = () => <Button content='...' style={{ cursor: 'default' }} />
+export default class Paginator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      numPages: Math.ceil(props.rowCount / this.props.rowsPerPage)
+    }
+  }
 
-const Paginator = ({ currentPage, onPageChange, range = 3, pageCount, itemCount }) => {
-  const renderedPages = [...Array(range * 2 + 1)
-    .keys()]
-    .map(i => currentPage - range + i)
-    .filter(i => i > 0 && i <= pageCount)
-    ;
+  componentDidUpdate(prevProps) {
+    if (this.props.rowCount !== prevProps.rowCount || this.props.rowsPerPage !== prevProps.rowsPerPage) {
+      this.setState({ numPages: Math.ceil(this.props.rowCount / this.props.rowsPerPage) })
+    }
+  }
 
-  const showStart = currentPage - range > 1;
-  const showEnd = currentPage + range < pageCount;
-  const pageStart = (currentPage - 1) * 10 + 1;
-  const pageEnd = currentPage * 10 < itemCount ? currentPage * 10 : itemCount;
+  handlePaginationChange = (e, { activePage }) => this.props.onPageChange(activePage);
 
-  return (
-    <Grid
-      container>
-      <Grid item xs={4}>
-        <div>Showing  {pageStart} to {pageEnd} of {itemCount} entries</div>
-      </Grid>
-      <Grid item xs={8}
-        style={{ textAlign: 'right' }}>
-        <Button.Group compact>
-          {showStart && (
-            <>
-              <Button content={1} onClick={() => onPageChange(1)} />
-              <BetweenButton />
-            </>
-          )}
-          {renderedPages.map((page, i) => (
-            <Button
-              key={`paginatorButton-${i}`}
-              onClick={() => onPageChange(page)}
-              content={page}
-              primary={currentPage === page}
-            />
-          ))}
-          {showEnd && (
-            <>
-              <BetweenButton />
-              <Button content={pageCount} onClick={() => onPageChange(pageCount)} />
-            </>
-          )}
-        </Button.Group>
-      </Grid>
-    </Grid>
-  )
+  render = () =>
+    <Pagination
+      role='navigation'
+      aria-label='table page navigator'
+      totalPages={this.state.numPages}
+      defaultActivePage={1}
+      firstItem={null}
+      lastItem={null}
+      prevItem={{ content: <ChevronLeft />, icon: true, disabled: this.props.currentPage === 1 }}
+      nextItem={{ content: <ChevronRight />, icon: true, disabled: this.props.currentPage === this.state.numPages }}
+      ellipsisItem={{ content: '...', icon: true, className: 'disabled' }}
+      onPageChange={this.handlePaginationChange}
+    />
 }
 
-export default Paginator;
+Paginator.propTypes = {
+  rowCount: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
+  onPageChange: PropTypes.func.isRequired
+}
+
+Paginator.defaultProps = {
+  currentPage: 1
+}
