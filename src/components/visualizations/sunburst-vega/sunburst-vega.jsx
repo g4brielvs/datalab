@@ -2,6 +2,7 @@
 import React from 'react';
 import { Vega } from 'react-vega';
 import sunburstSpec from './utils/sunburst-spec';
+import * as _ from 'lodash';
 
 import './sunburst-vega.scss';
 
@@ -13,19 +14,26 @@ import './sunburst-vega.scss';
 export default class Sunburst extends React.Component {
   constructor(props) {
     super(props);
+    /* PLEASE DO NOT DELETE this console.log
+        This code is used to transform the sunburst data in to code that's usable by Vega.  This should be handled on the data analyst
+        side but hasn't been rewritten yet due to the analyst backlog being long. */
     // console.log(transformData());
 
+    const data = this.appendColors(this.props.data);
+
     this.state = {
-      data: props.data,
+      data: data,
       info: '',
       spec: sunburstSpec,
-      originalData: props.data,
+      originalData: data,
       agency: null,
       level: null
     };
+
     this.handleHover = this.handleHover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
+    this.appendColors = this.appendColors.bind(this);
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
   }
 
@@ -35,6 +43,26 @@ export default class Sunburst extends React.Component {
   //     this.setState({ data: this.props.data });
   //   }
   // }
+
+  appendColors(flare) {
+    let agencies = _.filter(flare.tree, { 'type': 'agency' });
+    let agenciesColors = {};
+    let colors = this.props.colors;
+    agencies = _.map(agencies, 'name');
+    agencies = _.uniqBy(agencies);
+
+    for (let i = 0; i < agencies.length; i++) {
+      agenciesColors[agencies[i]] = colors[i % colors.length];
+    }
+
+    flare.tree[0]['colorHex'] = '#fff';
+
+    for (let i = 1; i < flare.tree.length; i++) {
+      flare.tree[i]['colorHex'] = agenciesColors[flare.tree[i].agency];
+    }
+
+    return flare;
+  };
 
   handleHover(...args) {
     const item = args[1];
@@ -59,50 +87,58 @@ export default class Sunburst extends React.Component {
 
     const agencyName = selectedArc[0].agency;
     const depth = selectedArc[0].depth;
+    let recipientSubAgencyIds, recipients, subagencies, subAgencyIds, agencyNames;
 
-    let filtered = flare.tree.filter(function (item) {
+    if (depth === 2) {
+      subagencies = _.filter(flare.tree, { 'name': selectedArc[0].name, 'type': 'subagency' });
+      agencyNames = _.map(subagencies, 'agency');
+      agencyNames = _.uniqBy(agencyNames);
+      subAgencyIds = _.map(subagencies, 'id');
 
-      if (item.id == 1) {
+    } else if (depth === 3) {
+      recipients = _.filter(flare.tree, { 'name': selectedArc[0].name, 'type': 'recipient' });
+      agencyNames = _.map(recipients, 'agency');
+      agencyNames = _.uniqBy(agencyNames);
+      recipientSubAgencyIds = _.map(recipients, 'parent');
+
+    }
+
+    const filtered = flare.tree.filter(function (item) {
+      if(item.id === 1) {
         return true;
       }
 
-      switch (item.depth) {
-        case 1:
-          break;
+      if(depth === 1) {
+        return item.agency === agencyName;
 
-        case 2:
-          // if selected item is depth 3 and current item is parent
-          if (depth === 3 && item.id === selectedArc[0].parent) {
-            return true;
-          }
+      } else if (depth === 2) {
+        switch (item.depth) {
+          case 1:
+            return agencyNames.includes(item.name);
 
-          // if selected item is depth 2 and is current item
-          // else selected item is depth 2 and is not current item
-          if (depth === 2) {
-            return (item.id === newId);
-          }
+          case 2:
+            return item.name === selectedArc[0].name;
 
-          break;
-        case 3:
-          // if selected item is depth 2 and the current item is a child
-          if (depth === 2 && item.parent === newId) {
-            return true;
-          }
+          case 3:
+            return subAgencyIds.includes(item.parent);
 
-          // if selected item is depth 2 and the current item is NOT a child
-          if (depth === 2 && item.parent !== newId) {
-            return false;
-          }
+        }
 
-          // if selected item is depth 3 and the current item is not the item
-          if (depth == 3 && item.id !== newId) {
-            return false;
-          }
+      } else if (depth === 3) {
+        switch (item.depth) {
+          case 1:
+            return agencyNames.includes(item.name);
 
-          break;
+          case 2:
+            return recipientSubAgencyIds.includes(item.id);
+
+          case 3:
+            return item.name === selectedArc[0].name;
+
+        }
       }
-      return (item.id == newId || item.parent == newId || item.agency == agencyName);
     });
+
     return filtered;
   }
 
