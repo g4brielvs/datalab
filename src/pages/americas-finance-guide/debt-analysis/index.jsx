@@ -10,7 +10,8 @@ import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
 import Share from '../../../components/share/share'
 import { Helmet } from 'react-helmet';
-import AfgNav from '../../.../../../components/afg-nav/afg-nav';
+import AfgNav from '../../../components/afg-nav/afg-nav';
+import DebtCards from "../../../libs/ffg/src/debt/analysis/cards";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
@@ -79,6 +80,7 @@ function DebtAnalysisPage(props) {
                                 </div>
                             </section>
                         </div>
+                        <DebtCards/>
 
                         <section className="tour">
                             <div className="tour__part-one">
