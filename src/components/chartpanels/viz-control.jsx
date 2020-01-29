@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './viz-control.module.scss';
 
 import SearchPanel from './cu/search';
-import Search from './search2';
+import Search from '../chartpanels/search2';
 import { IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import ListIcon from '@material-ui/icons/List';
@@ -52,13 +52,24 @@ export default class VizControlPanel extends React.Component {
 
   render = () => (
     <div id='sidebar' className={styles.sidebar + (this.state.expanded ? ' ' + styles.expanded : '')}>
+      <Search>
+        {this.props.searchList.map(i =>
+          <div
+            key={i.id}
+            className={styles.listItem}
+            onClick={() => this.selectItem(i.id)}
+          >
+            {i.heading}
+            <p>{i.subheading}</p>
+          </div>
+        )}
+      </Search>
       {/* <SearchPanel
         searchList={this.props.searchList}
         listDescription={this.props.listDescription}
         initShow
         onSelect={this.props.onSelect}
       /> */}
-      <Search />
 
       <div>
         <IconButton
