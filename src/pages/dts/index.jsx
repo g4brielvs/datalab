@@ -24,82 +24,87 @@ export default class DTSPage extends React.Component {
   }
 
   render = () => <>
-    <SEO title='Data Lab - Visualizing The Daily Treasury Statement - U.S. Treasury' keywords={[`application`, `demo`]} />
+                   <SEO title='Data Lab - Visualizing The Daily Treasury Statement - U.S. Treasury' keywords={[`application`, `demo`]} />
 
-    <ToolLayout
-      title='Visualizing The Daily Treasury Statement'
-      introSentence='How much does the federal government spend each day?'
-      hwctaLink={this.props.location.pathname + '/methodologies'}
-    >
-      <div className='dts-css'>
-        <div className='dts-tt-container'>
-          <div className='dts-tt-date'></div>
-          <div className='dts-tt-hr-separator'></div>
-          <div className='dts-tt-category'></div>
-          <div className='dts-tt-timeframe dts-tt-timeframe-daily dts-tt-timeframe-active'>
-            <span className='dts-tt-timeframe-label'>DAILY</span>
-            <span className='dts-tt-daily-value'></span>
-          </div>
-          <div className='dts-tt-timeframe dts-tt-timeframe-mtd'>
-            <span className='dts-tt-timeframe-label'>MTD</span>
-            <span className='dts-tt-mtd-value'></span>
-          </div>
-          <div className='dts-tt-timeframe dts-tt-timeframe-fytd'>
-            <span className='dts-tt-timeframe-label'>FYTD</span>
-            <span className='dts-tt-fytd-value'></span>
-          </div>
-        </div>
+                   <ToolLayout
+                     title='Visualizing The Daily Treasury Statement'
+                     introSentence='How much does the federal government spend each day?'
+                     hwctaLink={this.props.location.pathname + '/methodologies'}
+                   >
+                     <div className='dts-css'>
+                       <div className='dts-tt-container'>
+                         <div className='dts-tt-date'></div>
+                         <div className='dts-tt-hr-separator'></div>
+                         <div className='dts-tt-category'></div>
+                         <div className='dts-tt-timeframe dts-tt-timeframe-daily dts-tt-timeframe-active'>
+                           <span className='dts-tt-timeframe-label'>DAILY</span>
+                           <span className='dts-tt-daily-value'></span>
+                         </div>
+                         <div className='dts-tt-timeframe dts-tt-timeframe-mtd'>
+                           <span className='dts-tt-timeframe-label'>MTD</span>
+                           <span className='dts-tt-mtd-value'></span>
+                         </div>
+                         <div className='dts-tt-timeframe dts-tt-timeframe-fytd'>
+                           <span className='dts-tt-timeframe-label'>FYTD</span>
+                           <span className='dts-tt-fytd-value'></span>
+                         </div>
+                       </div>
 
-        <div className='dts-container'>
-          {/* <div className='header-title'>Visualizing The Daily Treasury Statement</div>
-            <div className='header-subtitle'>How much does the federal government spend each day?</div> */}
-          <div className='header-line-break'></div>
-          <Grid container justify='space-between'>
-            <Grid item xs={1} />
-            <Grid item className='header-updated-when' />
-            <Grid item xs={1}>
-              <ControlBar>
-                <Share location={this.props.location}
-                  title='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury'
-                />
-              </ControlBar>
-            </Grid>
-          </Grid>
+                       <div className='dts-container'>
+                         {/* <div className='header-title'>Visualizing The Daily Treasury Statement</div>
+                            <div className='header-subtitle'>How much does the federal government spend each day?</div> */}
+                         <div className='header-line-break'></div>
+                         <Grid container justify='space-between'>
+                           <Grid item xs={1} />
+                           <Grid item className='header-updated-when' />
+                           <Grid item xs={1}>
+                             <ControlBar>
+                               <Share location={this.props.location}
+                                      title='Data Lab – Visualizing the Daily Treasury Statement – U.S. Treasury'
+                               />
+                             </ControlBar>
+                           </Grid>
+                         </Grid>
 
-          <Grid container justify='space-between' wrap='nowrap' className='top-margin'>
-            <Grid item>
-              <div className='daily-spending-subtext'>Amount Spent On</div>
-              <div className='daily-spending-amount'>$0</div>
-            </Grid>
-            <Grid item className='period-container'>
-              <div className='period-button-header'>Chart Range</div>
-              <div className='period-button-container'>
-                <div className='period-button period-button-default' data-range='30d'>30D</div>
-                <div className='period-button' data-range='90d'>90D</div>
-                <div className='period-button' data-range='1y'>1Y</div>
-                <div className='period-button' data-range='5y'>5Y</div>
-                <div className='period-button' data-range='10y'>10Y</div>
-              </div>
-            </Grid>
-            <Grid item>
-              <label htmlFor="frequency-selector" className='frequency-selector-label'>Frequency</label>
-              <select id='frequency-selector' className='custom-select'>
-                <option value='today'>DAILY</option>
-                <option value='mtd'>MTD</option>
-                <option value='fytd'>FYTD</option>
-              </select>
-            </Grid>
-            <Grid item>
-              <label htmlFor="category-selector" className='category-select-label'>Categories</label>
-              <select className='custom-select custom-select-start' id='category-selector'></select>
-            </Grid>
-          </Grid>
+                         <Grid container justify='space-around' wrap='nowrap' alignItems='center'>
 
-          <DTS data={this.state.dtsData} />
-          <Downloads href={'/data-lab-data/dts/dts.csv'} />
+                           <Grid container direction='column' wrap='nowrap'>
+                             <div className='daily-spending-subtext'>Amount Spent On</div>
+                             <div className='daily-spending-amount'>$0</div>
+                           </Grid>
 
-        </div>
-      </div>
-    </ToolLayout >
-  </>;
+                           <Grid container direction='column' wrap='nowrap' alignItems='center' className='period-container'>
+                             <div className='period-button-header'>Chart Range</div>
+                             <div className='period-button-container'>
+                               <div className='period-button period-button-default' data-range='30d'>30D</div>
+                               <div className='period-button' data-range='90d'>90D</div>
+                               <div className='period-button' data-range='1y'>1Y</div>
+                               <div className='period-button' data-range='5y'>5Y</div>
+                               <div className='period-button' data-range='10y'>10Y</div>
+                             </div>
+                           </Grid>
+
+                           <Grid container direction='column' justify='space-around' alignItems='center' wrap='nowrap'>
+                             <label htmlFor="frequency-selector" className='frequency-selector-label'>Frequency</label>
+                             <select id='frequency-selector' className='custom-select'>
+                               <option value='today'>DAILY</option>
+                               <option value='mtd'>MTD</option>
+                               <option value='fytd'>FYTD</option>
+                             </select>
+                           </Grid>
+
+                           <Grid container justify='space-around' direction='column' alignItems='center' wrap='nowrap'>
+                             <label htmlFor="category-selector" className='category-select-label'>Categories</label>
+                             <select className='custom-select custom-select-start' id='category-selector'></select>
+                           </Grid>
+
+                         </Grid>
+
+                         <DTS data={this.state.dtsData} />
+                         <Downloads href={'/data-lab-data/dts/dts.csv'} />
+
+                       </div>
+                     </div>
+                   </ToolLayout >
+                 </>;
 };
