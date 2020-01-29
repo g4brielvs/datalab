@@ -26,8 +26,7 @@ export default function Institutions(props) {
   const [clickedSchool, setSchool] = useState(null);
   let searchList = GeoDataMapbox.features.map(school => ({
     id: school.id,
-    heading: school.properties.Recipient,
-    subheading: school.properties.INST_TYPE_1
+    display: school.properties.Recipient
   }));
 
   function filterByClicked(clicked) {
