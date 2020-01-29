@@ -17,7 +17,7 @@ export default {
       {
         "type": "partition",
         "field": "size",
-        "sort": {"field": "value"},
+        "sort": {"signal": "size"},
         "as": ["a0", "r0", "a1", "r1", "depth", "children"]
       },
       {
