@@ -5,18 +5,18 @@ import storyHeadingStyles from '../../components/section-elements/story-heading/
 import styles from './cu.module.scss';
 
 import Accordion from '../../components/accordion/accordion';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import Downloads from '../../components/section-elements/downloads/downloads';
-import GeoDataMapbox from '../../../static/unstructured-data/mapbox/mapData.json';
-import dataTableData from '../../../static/unstructured-data/mapbox/tableData.csv';
-import Share from '../../components/share/share';
 import ControlBar from '../../components/control-bar/control-bar';
-import { Hidden } from '@material-ui/core';
 import DataTable from '../../components/table/data-table';
-import Grid from '@material-ui/core/Grid';
-import VizDetails from '../../components/chartpanels/viz-detail';
-import VizControlPanel from '../../components/chartpanels/viz-control';
+import Downloads from '../../components/section-elements/downloads/downloads';
 import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
+import Grid from '@material-ui/core/Grid';
+import Share from '../../components/share/share';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import VizControlPanel from '../../components/chartpanels/viz-control';
+import VizDetails from '../../components/chartpanels/viz-detail';
+
+import dataTableData from '../../../static/unstructured-data/mapbox/tableData.csv';
+import GeoDataMapbox from '../../../static/unstructured-data/mapbox/mapData.json';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
@@ -130,7 +130,7 @@ export default function Institutions(props) {
     <StoryHeading
       number={'02'}
       title={'My Alma Mater'}
-      teaser={['Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>]}
+      teaser={'Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>}
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
