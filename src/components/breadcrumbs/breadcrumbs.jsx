@@ -39,6 +39,21 @@ class BreadCrumbs extends Component {
     return points.join(" ");
   };
 
+  setOpacity (d) {
+    switch(d.depth) {
+      case 0:
+        return 0;
+      case 1:
+        return 1;
+      case 2:
+        return .7;
+      case 3:
+        return .4;
+    }
+
+    return 1;
+  };
+
 // Update the breadcrumb trail to show the current sequence and percentage.
   updateBreadcrumbs (colors, items) {
     console.log(colors);
@@ -54,17 +69,17 @@ class BreadCrumbs extends Component {
     // Add breadcrumb and label for entering nodes.
     //var entering = g.enter().append("svg:g");
 
-    entering.append("svg:polygon")
-      .attr("points", this.drawbread)
-      .style("fill", d => this.findColor(d))
-      .style("opacity", d => { return (d.depth === 0 ? 0 : 1) })
-
     entering.append('svg:image')
       .attr('x', d => { return d.depth === 0 ? 10 : null })
       .attr('y', d => { return d.depth === 0 ? 6 : null })
       .attr('width', d => { return d.depth === 0 ? 20 : null })
       .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
 
+    entering.append("svg:polygon")
+      .attr("points", this.drawbread)
+      .style("fill", colors)
+      .style("opacity", d => this.setOpacity(d))
+    
     entering.append( "svg:text")
       .attr("x", d => { return ((d.depth === 0 ? b.homeW : b.w) + b.t) / 2; })
       .attr("y", b.h / 2)
