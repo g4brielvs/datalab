@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FixedSizeList as List } from 'react-window';
-import { AutoSizer } from 'react-virtualized-auto-sizer';
+// import { FixedSizeList as List } from 'react-window';
+import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import 'react-virtualized/styles.css';
 import styles from './search2.module.scss';
 
@@ -44,26 +44,43 @@ export default class Search extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.cache = new CellMeasurerCache({
+      fixedWidth: true,
+      defaultHeight: this.props.height
+    });
   }
 
-  row = ({ index, style }) => (
-    <div style={style} className={styles.row}>
-      {this.props.searchList[index].display}
-    </div>
+  row = ({ key, index, style, parent }) => (
+    <CellMeasurer
+      key={key}
+      cache={this.cache}
+      parent={parent}
+      columnIndex={0}
+      rowIndex={index}
+    >
+      <div key={key} style={style} className={styles.row}>
+        {this.props.searchList[index].display}
+      </div>
+    </CellMeasurer>
   );
 
-  render = () => (
-    // <AutoSizer>
-    //   ({height, width}) =>
-          <List
-        rowRenderer={this.row}
-        itemCount={this.props.searchList.length}
-        itemSize={35}
-        height={height}
-        width={width}
-        className={styles.searchlist}
-      />
-      // }
-    // </AutoSizer>
-  );
+  render = () => <div>
+    <AutoSizer style={{ width: this.props.width }}>
+      {({ height }) =>
+        <List
+          width={this.props.width}
+          height={height}
+          rowRenderer={this.row}
+          rowCount={this.props.searchList.length}
+          // itemSize={35}
+          deferredMeasurementCache={this.cache}
+          rowHeight={this.cache.rowHeight}
+          className={styles.searchlist}
+        >
+          {this.row}
+        </List>
+      }
+    </AutoSizer>
+  </div>;
 }
