@@ -70,6 +70,9 @@ const SunburstVegaContainer = () => {
     name: null
   }
 
+  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
+    '#AE933D', '#D39248', '#EA8052'];
+
   const [breadcrumbs, setBreadcrumbs] = useState(breadcrumbsDefaults);
   const [details, setDetails] = useState(detailDefaults);
 
@@ -152,8 +155,8 @@ const SunburstVegaContainer = () => {
           </div>
         </Grid>
         <Grid item md={6}>
-          <Breadcrumbs className={styles.header} items={breadcrumbs} className={styles.breadcrumbsContainer} />
-          <Sunburst data={sunData} getDetails={getDetails} />
+          <Breadcrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} />
+          <Sunburst data={sunData} getDetails={getDetails} colors={colors} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
           <Downloads className={styles.downloadContainer}
             href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
@@ -167,7 +170,7 @@ const SunburstVegaContainer = () => {
         onSelect={searchSelect}
       />
       <Breadcrumbs className={styles.header} items={breadcrumbs}></Breadcrumbs>
-      <Sunburst data={sunData} getDetails={getDetails} />
+      <Sunburst data={sunData} getDetails={getDetails} colors={colors} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
                  href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
