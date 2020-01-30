@@ -24,7 +24,6 @@ class BreadCrumbs extends Component {
     };
 
     this.updateBreadcrumbs = this.updateBreadcrumbs.bind(this);
-    this.findColor = this.findColor.bind(this);
     this.drawbread = this.drawbread.bind(this);
   }
 
@@ -56,8 +55,6 @@ class BreadCrumbs extends Component {
 
 // Update the breadcrumb trail to show the current sequence and percentage.
   updateBreadcrumbs (colors, items) {
-    console.log(colors);
-    console.log(items);
     let root = items || [];
 
     // Data join; key function combines name and depth (= position in sequence).
@@ -79,16 +76,13 @@ class BreadCrumbs extends Component {
       .attr("points", this.drawbread)
       .style("fill", colors)
       .style("opacity", d => this.setOpacity(d))
-    
+
     entering.append( "svg:text")
       .attr("x", d => { return ((d.depth === 0 ? b.homeW : b.w) + b.t) / 2; })
       .attr("y", b.h / 2)
       .attr("dy", "0.35em" )
       .attr("text-anchor", "middle")
-      .attr("fill", d =>
-      {
-        return (d.depth === 0 || lightColors.includes(this.findColor(d).toString())  ? "black" : "white")
-      })
+      .attr("fill", '#fff')
       .text( d => {
         if(d.depth === 0) return '';
         if(d.depth < 3){
@@ -114,22 +108,6 @@ class BreadCrumbs extends Component {
     d3.select("#trail")
       .style("visibility", "");
 
-  }
-
-
-  findColor (node) {
-    switch (node.depth) {
-      case 0: // root
-        return "#3f88ff";
-      case 1: // agency
-        return '#DAF7A6';
-      case 2: // subagency
-        return '#FF5733';
-      case 3: // contractor
-        return '#581845';
-      default:
-        return "#62ff4a";
-    }
   }
 
   render() {
