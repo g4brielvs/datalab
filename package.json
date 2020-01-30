@@ -65,6 +65,7 @@
     "react-helmet": "^5.2.1",
     "react-vega": "^7.1.1",
     "react-virtualized": "^9.21.2",
+    "react-virtualized-auto-sizer": "^1.0.2",
     "react-window": "^1.8.5",
     "sass-loader": "^7.3.1",
     "semantic-ui-react": "^0.88.2",
