@@ -134,7 +134,7 @@ const Agencies = (props) => {
         <Hidden mdDown>
           <VizControlPanel
             searchList={searchList}
-            listDescription='Agencies'
+            listDescription='Search Agencies'
             onSelect={searchItemSelected}
             switchView={switchView} >
             <BubbleChartOutlinedIcon />

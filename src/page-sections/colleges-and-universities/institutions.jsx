@@ -155,7 +155,7 @@ export default function Institutions(props) {
         <div>
           <VizControlPanel
             searchList={searchList}
-            listDescription='Institutions'
+            listDescription='Search Institutions'
             onSelect={filterByClicked}
             switchView={filterByClicked}
           >
@@ -176,7 +176,7 @@ export default function Institutions(props) {
                 x.Recipient,
                 x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
                 parseInt(x.contracts),
-                parseInt( x.grants),
+                parseInt(x.grants),
                 parseInt(x.student_aid),
                 parseInt(x.Total_Federal_Investment),
               ];

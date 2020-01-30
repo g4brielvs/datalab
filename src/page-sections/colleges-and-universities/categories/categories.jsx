@@ -227,7 +227,7 @@ const Categories = () => {
           <Hidden mdDown>
             <VizControlPanel
               searchList={searchList[fundingType]}
-              listDescription='Categories'
+              listDescription='Search Categories'
               onSelect={searchItemSelected}
               switchView={switchView}
             >

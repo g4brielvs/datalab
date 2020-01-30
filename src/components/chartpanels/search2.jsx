@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { FixedSizeList as List } from 'react-window';
+
 import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import { InputAdornment, OutlinedInput, IconButton } from '@material-ui/core';
+import { Clear as ClearIcon, Search as SearchIcon } from '@material-ui/icons';
+
 import 'react-virtualized/styles.css';
 import styles from './search2.module.scss';
 
@@ -27,16 +30,20 @@ export default class Search extends React.Component {
       }
     ]
   
-    height & width are the size of the rendered list in px
+    height & width are the size of the rendered list in px (container CSS may also need adjustment)
     initShow is true if it should be open when initialized
-    showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
     onSelect is parent callback when an item is selected, passes back id value only
   */
   static propTypes = {
     'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
     'height': PropTypes.number,
-    'width': PropTypes.number
-  }
+    'width': PropTypes.number,
+    'initItem': PropTypes.string,
+    'listDescription': PropTypes.string.isRequired,
+    'initShowList': PropTypes.bool,
+    'onSelect': PropTypes.func
+  };
+
   static defaultProps = {
     'height': 400,
     'width': 350
@@ -45,35 +52,112 @@ export default class Search extends React.Component {
   constructor(props) {
     super(props);
 
+    // set initItem to display value of props.initItem's id, or blank
+    let initItem = '';
+    props.initItem && (initItem = this.props.searchList.find(e => e.id === props.initItem).display);
+
+    this.state = {
+      currentValue: initItem,
+      expanded: this.props.initShowList,
+      icon: initItem ? 'clear' : 'search'
+    }
+    this.filteredList = this.props.searchList;
+
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
       defaultHeight: this.props.height
     });
   }
 
+  onFocus = () => {
+    this.setState({ expanded: true });
+  }
+
+  clickIcon = () => {
+    if (this.state.icon === 'search') {
+      this.setState(prevState => ({ expanded: !prevState.expanded }));
+    } else {
+      this.filteredList = this.props.searchList;
+      this.setState({
+        currentValue: '',
+        icon: 'search'
+      });
+    }
+  }
+
+  filterSearch(event) {
+    const currentValue = event.target.value;
+    const filter = new RegExp(currentValue, 'i');
+    this.filteredList = this.props.searchList.filter(n =>
+      n.display.search(filter) !== -1
+    );
+    this.setState({
+      currentValue: currentValue,
+      expanded: true,
+      icon: currentValue ? 'clear' : 'search'
+    });
+  }
+
+  selectItem(i) {
+    this.setState({
+      currentValue: i.display,
+      expanded: false,
+      icon: 'clear'
+    });
+    if (this.props.onSelect) {
+      this.props.onSelect(i.id);
+    }
+  }
+
+  filterBoxIcon = () =>
+    <InputAdornment position='end'>
+      <IconButton
+        aria-label={this.state.icon}
+        onClick={this.clickIcon}
+      >
+        {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}
+      </IconButton>
+    </InputAdornment>
+  ;
+
   row = ({ key, index, style, parent }) => (
     <CellMeasurer
-      key={key}
+      key={'search-list' + key}
       cache={this.cache}
       parent={parent}
       columnIndex={0}
       rowIndex={index}
     >
-      <div key={key} style={style} className={styles.row}>
-        {this.props.searchList[index].display}
+      <div
+        onClick={() => this.selectItem(this.filteredList[index])}
+        style={style}
+        className={styles.row}
+      >
+        {this.filteredList[index].display}
       </div>
     </CellMeasurer>
   );
 
   render = () => <div>
+    <OutlinedInput
+      value={this.state.currentValue}
+      onChange={event => this.filterSearch(event)}
+      onFocus={this.onFocus}
+      placeholder={this.props.listDescription}
+      inputProps={{ title: 'Search ' + this.props.listDescription }}
+      variant='outlined'
+      fullWidth
+      className={styles.filterInput}
+      endAdornment={this.filterBoxIcon()}
+    />
     <AutoSizer style={{ width: this.props.width }}>
       {({ height }) =>
         <List
           width={this.props.width}
           height={height}
           rowRenderer={this.row}
-          rowCount={this.props.searchList.length}
-          // itemSize={35}
+          rowCount={this.filteredList.length}
+          itemSize={35}
           deferredMeasurementCache={this.cache}
           rowHeight={this.cache.rowHeight}
           className={styles.searchlist}

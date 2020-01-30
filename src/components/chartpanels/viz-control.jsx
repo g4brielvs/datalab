@@ -54,6 +54,7 @@ export default class VizControlPanel extends React.Component {
     <div id='sidebar' className={styles.sidebar + (this.state.expanded ? ' ' + styles.expanded : '')}>
       <Search
         searchList={this.props.searchList}
+        listDescription={this.props.listDescription}
       />
       {/* <SearchPanel
         searchList={this.props.searchList}
