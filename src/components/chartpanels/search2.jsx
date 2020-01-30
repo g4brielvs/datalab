@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FixedSizeList as List } from 'react-window';
+import { AutoSizer } from 'react-virtualized-auto-sizer';
+import 'react-virtualized/styles.css';
 import styles from './search2.module.scss';
 
 export default class Search extends React.Component {
@@ -25,15 +27,18 @@ export default class Search extends React.Component {
       }
     ]
   
+    height & width are the size of the rendered list in px
     initShow is true if it should be open when initialized
     showCollapse is simply whether to show the icon to expand/collapse to the right of the search box, don't include if you use another method to hide list
     onSelect is parent callback when an item is selected, passes back id value only
   */
   static propTypes = {
     'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
+    'height': PropTypes.number,
     'width': PropTypes.number
   }
   static defaultProps = {
+    'height': 400,
     'width': 350
   };
 
@@ -41,21 +46,24 @@ export default class Search extends React.Component {
     super(props);
   }
 
-  row = ({ index }) => (
-    <div className={styles.ListRow}>
+  row = ({ index, style }) => (
+    <div style={style} className={styles.row}>
       {this.props.searchList[index].display}
     </div>
   );
 
   render = () => (
-    <List
-      height={150}
-      itemCount={1000}
-      itemSize={35}
-      width={this.props.width}
-      className={styles.searchlist}
-    >
-      {this.row}
-    </List>
+    // <AutoSizer>
+    //   ({height, width}) =>
+          <List
+        rowRenderer={this.row}
+        itemCount={this.props.searchList.length}
+        itemSize={35}
+        height={height}
+        width={width}
+        className={styles.searchlist}
+      />
+      // }
+    // </AutoSizer>
   );
 }
