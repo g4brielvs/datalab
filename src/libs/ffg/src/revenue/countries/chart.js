@@ -260,6 +260,9 @@ function placeHeaders(config) {
             renderSortIcon(this, null, primaryColor);
         });
 
+    d3.select('.select-country').classed('mobile', null);
+    d3.select('#viz').classed('mobile', null);
+
     updateIcons();
 }
 
