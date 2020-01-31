@@ -157,7 +157,7 @@ export default class Search extends React.Component {
           height={height}
           rowRenderer={this.row}
           rowCount={this.filteredList.length}
-          itemSize={35}
+          itemSize={35} // can't tell if this does anything inside an AutoSizer
           deferredMeasurementCache={this.cache}
           rowHeight={this.cache.rowHeight}
           className={styles.searchlist}
