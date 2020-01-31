@@ -78,6 +78,11 @@ export default class Search extends React.Component {
       this.setState(prevState => ({ expanded: !prevState.expanded }));
     } else {
       this.filteredList = this.props.searchList;
+
+      // recalc row heights after filter
+      this.cache.clearAll();
+      this.listRef.recomputeRowHeights();
+
       this.setState({
         currentValue: '',
         icon: 'search'
@@ -85,12 +90,21 @@ export default class Search extends React.Component {
     }
   }
 
+  setListRef = ref => {
+    this.listRef = ref;
+  };
+
   filterSearch(event) {
     const currentValue = event.target.value;
     const filter = new RegExp(currentValue, 'i');
     this.filteredList = this.props.searchList.filter(n =>
       n.display.search(filter) !== -1
     );
+
+    // recalc row heights after filter
+    this.cache.clearAll();
+    this.listRef.recomputeRowHeights();
+
     this.setState({
       currentValue: currentValue,
       expanded: true,
@@ -118,7 +132,7 @@ export default class Search extends React.Component {
         {this.state.icon === 'search' ? <SearchIcon /> : <ClearIcon />}
       </IconButton>
     </InputAdornment>
-  ;
+    ;
 
   row = ({ key, index, style, parent }) => (
     <CellMeasurer
@@ -161,6 +175,7 @@ export default class Search extends React.Component {
           deferredMeasurementCache={this.cache}
           rowHeight={this.cache.rowHeight}
           className={styles.searchlist}
+          ref={this.setListRef}
         >
           {this.row}
         </List>
