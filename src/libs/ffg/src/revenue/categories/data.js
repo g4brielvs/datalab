@@ -55,12 +55,12 @@ function dataMapper(r) {
 }
 
 export function getDataByYear(year) {
-    console.log('getDataByYear: ', year);
+    const yearNum = Number(year);
     const categories = CategoryData.filter(r => {
-        return (r.fiscal_year === year && !r.child)
+        return (r.fiscal_year === yearNum && !r.child)
     }).map(dataMapper).sort(sortByAmount);
 
-    categories.forEach(addSubcategories, year);
+    categories.forEach(addSubcategories, yearNum);
 
     return categories;
 }
