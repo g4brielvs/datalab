@@ -55,14 +55,8 @@ export default class VizControlPanel extends React.Component {
       <Search
         searchList={this.props.searchList}
         listDescription={this.props.listDescription}
-      />
-      {/* <SearchPanel
-        searchList={this.props.searchList}
-        listDescription={this.props.listDescription}
-        initShow
         onSelect={this.props.onSelect}
-      /> */}
-
+      />
       <div>
         <IconButton
           aria-label='search'

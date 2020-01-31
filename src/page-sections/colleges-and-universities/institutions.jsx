@@ -24,13 +24,16 @@ const Mapbox = loadable(() => import('../../components/visualizations/mapbox/map
 export default function Institutions(props) {
 
   const [clickedSchool, setSchool] = useState(null);
-  let searchList = GeoDataMapbox.features.map(school => ({
-    id: school.id,
-    display: school.properties.Recipient
-  }));
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
 
-  function filterByClicked(clicked) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clicked);
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
     setSchool(filteredList);
     return filteredList;
   };
@@ -157,7 +160,6 @@ export default function Institutions(props) {
             searchList={searchList}
             listDescription='Search Institutions'
             onSelect={filterByClicked}
-            switchView={filterByClicked}
           >
             <img src={GeolocationIcon} />
           </VizControlPanel>
