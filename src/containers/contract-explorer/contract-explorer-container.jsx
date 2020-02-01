@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { Grid, Hidden } from '@material-ui/core';
 
-const sunData = flareData;
 import Downloads from "src/components/section-elements/downloads/downloads"
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
@@ -11,7 +10,7 @@ import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega'
 import BreadCrumbs from "../../components/breadcrumbs/breadcrumbs";
 import styles from './contract-explorer-container.module.scss';
 import Search from 'src/components/chartpanels/search';
-
+const sunData = flareData;
 
 const SunburstVegaContainer = () => {
 
@@ -77,6 +76,9 @@ const SunburstVegaContainer = () => {
   const [details, setDetails] = useState(detailDefaults);
   const [color, setColor] = useState('#fff');
 
+  const sunburstRef = React.createRef();
+  const breadcrumbRef = React.createRef();
+
   function getTop5(items, type) {
     // get all unique values of the item type
     let unique = [...new Set(items.map(item => item[type]))];
@@ -92,7 +94,7 @@ const SunburstVegaContainer = () => {
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
   }
 
-  function createBreadcrumbTrailOnSelection(breadcrumbItem) {
+  function updateBreadcrumbTrail(breadcrumbItem) {
     let breadcrumbs;
 
     switch(breadcrumbItem.depth) {
@@ -119,13 +121,13 @@ const SunburstVegaContainer = () => {
   function createBreadcrumbTrail(...args) {
     // need to add colors here
     const trail = [{
-      name: 'home',
+      name: null,
       depth: 0
     }];
 
     args.forEach((item, index) => {
       trail.push({
-        name: item,
+        name: item,  // abbreviation
         depth: index + 1
       });
     });
@@ -133,12 +135,16 @@ const SunburstVegaContainer = () => {
     return trail;
   }
 
-  const breadcrumbRef = React.createRef();
+  function selectBreadcrumb (d) {
+    const item = sunData.tree.filter(node => node.depth === d.depth && node.name === d.name);
 
-  function breadcrumbsSelect(breadcrumbItems) {
-    console.log(breadcrumbItems);
-    const trail = createBreadcrumbTrailOnSelection(breadcrumbItems);
-    // console.log(trail);
+    console.log(item);
+
+    if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateViz(item[0]); }
+  }
+
+  function updateBreadcrumbs(breadcrumbItems) {
+    const trail = updateBreadcrumbTrail(breadcrumbItems);
     if (breadcrumbRef && breadcrumbRef.current) { breadcrumbRef.current.updateBreadcrumbs(breadcrumbItems.colorHex, trail); }
   }
 
@@ -203,8 +209,8 @@ const SunburstVegaContainer = () => {
           </div>
         </Grid>
         <Grid item md={6}>
-          <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} ref={breadcrumbRef} />
-          <Sunburst data={sunData} getDetails={getDetails} onSelect={breadcrumbsSelect} colors={colors}  />
+          <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} ref={breadcrumbRef} onSelect={selectBreadcrumb} />
+          <Sunburst data={sunData} getDetails={getDetails} onSelect={updateBreadcrumbs} colors={colors} ref={sunburstRef} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
           <Downloads className={styles.downloadContainer}
             href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
@@ -217,8 +223,8 @@ const SunburstVegaContainer = () => {
         listDescription='Search List of Contracts and Agencies'
         onSelect={searchSelect}
       />
-      <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} ref={breadcrumbRef} />
-      <Sunburst data={sunData} getDetails={getDetails} colors={colors} />
+      <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} ref={breadcrumbRef} onSelect={selectBreadcrumb} />
+      <Sunburst data={sunData} getDetails={getDetails} colors={colors} ref={sunburstRef} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
                  href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />

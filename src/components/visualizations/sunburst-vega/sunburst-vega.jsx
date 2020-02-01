@@ -34,6 +34,7 @@ export default class Sunburst extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleUpdateData = this.handleUpdateData.bind(this);
     this.appendColors = this.appendColors.bind(this);
+    this.updateViz = this.updateViz.bind(this);
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
   }
 
@@ -71,6 +72,10 @@ export default class Sunburst extends React.Component {
 
   handleClick(...args) {
     const item = args[1];
+    this.updateViz(item);
+  }
+
+  updateViz(item) {
     const newData = item.id === 1 ? this.state.originalData : { "tree": this.handleUpdateData(item.id) };
     this.props.getDetails(item);
     this.setState({ data: newData, depth: item.depth });

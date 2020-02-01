@@ -93,7 +93,7 @@ class BreadCrumbs extends Component {
           .trimRight() + "...";
       })
       .style("cursor", "pointer")
-    // .on("click", d => {handleHover(d); handleClick(d)});
+      .on("click", d => this.props.onSelect(d));
 
     g.attr("transform", function(d, i) {
       var trans =  "translate(" + i * (b.w + b.s) + ", 0)";
