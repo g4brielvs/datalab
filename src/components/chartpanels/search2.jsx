@@ -64,12 +64,26 @@ export default class Search extends React.Component {
       expanded: this.props.initShowList,
       icon: initItem ? 'clear' : 'search'
     }
-    this.filteredList = this.props.searchList;
 
+    this.filteredList = this.props.searchList;
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
       defaultHeight: this.props.height
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.searchList !== this.props.searchList) {
+      this.filteredList = this.props.searchList;
+      this.setState({
+        currentValue: '',
+        icon: 'search'
+      });
+    }
+
+    // recalc row heights in case filtered list changes (filter or parent update)
+    this.cache.clearAll();
+    this.listRef.recomputeRowHeights();
   }
 
   onFocus = () => {
@@ -81,10 +95,6 @@ export default class Search extends React.Component {
       this.setState(prevState => ({ expanded: !prevState.expanded }));
     } else {
       this.filteredList = this.props.searchList;
-
-      // recalc row heights after filter
-      this.cache.clearAll();
-      this.listRef.recomputeRowHeights();
 
       this.setState({
         currentValue: '',
@@ -105,10 +115,6 @@ export default class Search extends React.Component {
         n.filterText.search(filter) !== -1 :
         n.display.search(filter) !== -1
     );
-
-    // recalc row heights after filter
-    this.cache.clearAll();
-    this.listRef.recomputeRowHeights();
 
     this.setState({
       currentValue: currentValue,

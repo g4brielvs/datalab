@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import styles from './categories.module.scss';
 
 import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
@@ -123,25 +124,29 @@ const Categories = () => {
     contracts: _data.contractsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort)
   };
+
+
+console.log(searchList);
+
 
   const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
@@ -235,7 +240,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuContracts'
-                  name='FundingType'
+                  name='fundingType'
                   value='contracts'
                   onChange={onTypeChange}
                   checked={fundingType === 'contracts'}
@@ -245,7 +250,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuGrants'
-                  name='FundingType'
+                  name='fundingType'
                   value='grants'
                   onChange={onTypeChange}
                   checked={fundingType === 'grants'}
@@ -255,7 +260,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuResearch'
-                  name='FundingType'
+                  name='fundingType'
                   value='research'
                   onChange={onTypeChange}
                   checked={fundingType === 'research'}
