@@ -66,10 +66,6 @@ export default class Search extends React.Component {
     }
     this.filteredList = this.props.searchList;
 
-
-console.log(this.filteredList);
-
-
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
       defaultHeight: this.props.height
@@ -104,13 +100,11 @@ console.log(this.filteredList);
   filterSearch(event) {
     const currentValue = event.target.value;
     const filter = new RegExp(currentValue, 'i');
-    this.filteredList = this.props.searchList.filter(n => {
-      if (n.filterText) {
-        n.filterText.search(filter) !== -1
-      } else {
+    this.filteredList = this.props.searchList.filter(n =>
+      n.filterText ?
+        n.filterText.search(filter) !== -1 :
         n.display.search(filter) !== -1
-      }
-    });
+    );
 
     // recalc row heights after filter
     this.cache.clearAll();
@@ -125,7 +119,6 @@ console.log(this.filteredList);
 
   selectItem(i) {
     this.setState({
-      currentValue: i.display,
       expanded: false,
       icon: 'clear'
     });
@@ -182,7 +175,7 @@ console.log(this.filteredList);
           height={height}
           rowRenderer={this.row}
           rowCount={this.filteredList.length}
-          itemSize={35} // can't tell if this does anything inside an AutoSizer
+          // itemSize={35} // can't tell if this does anything inside an AutoSizer
           deferredMeasurementCache={this.cache}
           rowHeight={this.cache.rowHeight}
           className={styles.searchlist}
