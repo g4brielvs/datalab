@@ -117,7 +117,7 @@ const Categories = () => {
     }
   `);
 
-  const searchSort = (a, b) => { a.filterText > b.filterText };
+  const searchSort = (a, b) => a.filterText > b.filterText;
 
   // due to how GraphQL groups, we only want the first of each unique group
   const searchList = {
@@ -143,11 +143,7 @@ const Categories = () => {
       }))
       .sort(searchSort)
   };
-
-
-console.log(searchList);
-
-
+  
   const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
     contracts: _data.contracts.nodes
