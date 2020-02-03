@@ -56,21 +56,22 @@ class BreadCrumbs extends Component {
 // Update the breadcrumb trail to show the current sequence and percentage.
   updateBreadcrumbs (colors, items) {
     let root = items || [];
-    
+
     // Data join; key function combines name and depth (= position in sequence).
     var g = d3.select("#trail")
       .selectAll("g")
       .data(root, d => { return d.name + d.depth; });
 
-    var entering = g.enter().append("svg:g");
     // Add breadcrumb and label for entering nodes.
-    //var entering = g.enter().append("svg:g");
+    var entering = g.enter().append("svg:g");
 
     entering.append('svg:image')
       .attr('x', d => { return d.depth === 0 ? 10 : null })
       .attr('y', d => { return d.depth === 0 ? 6 : null })
       .attr('width', d => { return d.depth === 0 ? 20 : null })
       .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
+      .style("cursor", "pointer")
+      .on("click", d => this.props.onSelect(d));
 
     entering.append("svg:polygon")
       .attr("points", this.drawbread)
@@ -84,7 +85,7 @@ class BreadCrumbs extends Component {
       .attr("text-anchor", "middle")
       .attr("fill", '#fff')
       .text( d => {
-        if(d.depth === 0) return '';
+        if(d.depth === 0) return '&nbsp;&nbsp;&nbsp;';
         if(d.depth < 3){
           return String(d.name);
         }

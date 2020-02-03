@@ -115,7 +115,7 @@ const SunburstVegaContainer = () => {
     }
 
     const trail = [{
-      name: null,
+      name: 'flare',
       depth: 0
     }];
 
@@ -132,11 +132,12 @@ const SunburstVegaContainer = () => {
   }
 
   function selectBreadcrumb (d) {
-    const selectedArc = sunData.tree.filter(node => node.depth === d.depth && node.name === d.name);
-    // setSelectedArc(selectedArc);
-    if (selectedArc && selectedArc.length > 0 && sunburstRef && sunburstRef.current) {
+    // if depth is 0, the item flare will be selected
+    let selectedArc = sunData.tree.filter(node => node.depth === d.depth && node.name === d.name);
+    if (sunburstRef && sunburstRef.current) {
       sunburstRef.current.updateViz(selectedArc[0]);
     }
+    setSelectedArc(selectedArc[0]);
   }
 
   const breadcrumbRef = React.createRef();
@@ -179,6 +180,7 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
+        const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
         details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency[0].name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
         break;

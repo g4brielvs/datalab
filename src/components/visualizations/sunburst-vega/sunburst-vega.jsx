@@ -23,14 +23,10 @@ export default class Sunburst extends React.Component {
 
     this.state = {
       data: data,
-      info: '',
       spec: sunburstSpec,
       originalData: data,
       selectedArc: null,
-      previousArc: null,
-      agency: null,
-      depth: null,
-      color: null
+      previousArc: null
     };
 
     this.handleHover = this.handleHover.bind(this);
@@ -78,12 +74,12 @@ export default class Sunburst extends React.Component {
     this.updateViz(item);
   }
 
-  updateViz(item) {
-    this.setState({ depth: item.depth, selectedArc: item });
-
-    const newData = item.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
-    this.props.getSelectedArc(this.state.selectedArc);
-    this.setState({ data: newData });
+  updateViz(arc) {
+    const previousArc = this.state.selectedArc;
+    this.setState({ selectedArc: arc });
+    const newData = arc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
+    this.props.getSelectedArc(arc);
+    this.setState({ data: newData, previousArc: previousArc });
   }
 
   filterSunburst() {
@@ -105,37 +101,37 @@ export default class Sunburst extends React.Component {
 
     }
 
-    const filtered = flare.tree.filter(function (item) {
-      if(item.id === 1) {
+    const filtered = flare.tree.filter(function (arc) {
+      if(arc.id === 1) {
         return true;
       }
 
       if(depth === 1) {
-        return item.agency === agency;
+        return arc.agency === agency;
 
       } else if (depth === 2) {
-        switch (item.depth) {
+        switch (arc.depth) {
           case 1:
-            return agencyNames.includes(item.name);
+            return agencyNames.includes(arc.name);
 
           case 2:
-            return item.name === name;
+            return arc.name === name;
 
           case 3:
-            return subAgencyIds.includes(item.parent);
+            return subAgencyIds.includes(arc.parent);
 
         }
 
       } else if (depth === 3) {
-        switch (item.depth) {
+        switch (arc.depth) {
           case 1:
-            return agencyNames.includes(item.name);
+            return agencyNames.includes(arc.name);
 
           case 2:
-            return recipientSubAgencyIds.includes(item.id);
+            return recipientSubAgencyIds.includes(arc.id);
 
           case 3:
-            return item.name === name;
+            return arc.name === name;
 
         }
       }
