@@ -73,6 +73,21 @@ function DTS(props) {
         categories: ["Medicare", "Medicare Advantage Part C D Payments", "Marketplace Payments", "Medicare and Other CMS Payments"],
         date: new Date("2014-10-01"),
         footnote: "The shaded region indicates inactive or retired programs. Beginning October 1, 2014, payments previously reported under the Medicare line were expanded to three lines: Medicare and other CMS payments, Medicare Advantage - Part C&D payments, and Marketplace payments."
+      },
+      {
+        categories: ['NASA', 'NASA programs'],
+        date: new Date('2020-01-13'), // jan 23 2020 data start
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
+      },
+      {
+        categories: ['Veteran Affairs programs', 'Dept of Veterans Affairs ( VA )'],
+        date: new Date('2020-01-13'),
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
+      },
+      {
+        categories: ['Veteran Benefit (EFT)', 'VA - Benefits'],
+        date: new Date('2020-01-13'),
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veteran Benefits (EFT) was renamed VA – Benefits on the Daily Treasury Statement. Withdrawals previously reported under Veteran Benefits (EFT) are now reported under VA – Benefits. Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       }
     ];
 
@@ -149,7 +164,6 @@ function DTS(props) {
 
     function init() {
       const w = 750;
-      // const w = d3.select('.dts-layout-manager').node().getBoundingClientRect().width;
 
       d3.select('#svg-wrapper').attr('width', w);
 
@@ -890,8 +904,10 @@ function DTS(props) {
       let combinedMTD = [];
       let combinedFYTD = [];
 
-      let medicareGrouping = sharedCategories[1];
       let foodGrouping = sharedCategories[0];
+      let medicareGrouping = sharedCategories[1];
+      let NASAGrouping = sharedCategories[2];
+      //let veteranGrouping = sharedCategories[3];
 
       for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
@@ -899,11 +915,23 @@ function DTS(props) {
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
-      for (let cateName of foodGrouping.categories) { // Only get combined for the medicare grouping
+      for (let cateName of foodGrouping.categories) { 
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
+
+      for (let cateName of NASAGrouping.categories) {
+        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
+        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
+        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      }
+
+      // for (let cateName of veteranGrouping.categories) {
+      //   combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
+      //   combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
+      //   combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      // }
 
       let combinedDailyValues = getCombinedCategory(combinedToday);
       let combinedMTDValues = getCombinedCategory(combinedMTD);
@@ -956,6 +984,55 @@ function DTS(props) {
           color: lineColors[lineColors.length - 1]
         });
       };
+
+      for (let cateName of NASAGrouping.categories) {
+        masterMapping[cateName]['today'].push({
+          name: "Combined",
+          values: combinedDailyValues,
+          date: foodGrouping.date,
+          footnote: NASAGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['mtd'].push({
+          name: "Combined",
+          values: combinedMTD,
+          date: foodGrouping.date,
+          footnote: NASAGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['fytd'].push({
+          name: "Combined",
+          values: combinedFYTDValues,
+          date: foodGrouping.date,
+          footnote: NASAGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+      };
+
+      // for (let cateName of veteranGrouping.categories) {
+      //   masterMapping[cateName]['today'].push({
+      //     name: "Combined",
+      //     values: combinedDailyValues,
+      //     date: veteranGrouping.date,
+      //     footnote: veteranGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      //   masterMapping[cateName]['mtd'].push({
+      //     name: "Combined",
+      //     values: combinedMTD,
+      //     date: veteranGrouping.date,
+      //     footnote: veteranGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      //   masterMapping[cateName]['fytd'].push({
+      //     name: "Combined",
+      //     values: combinedFYTDValues,
+      //     date: veteranGrouping.date,
+      //     footnote: veteranGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      // };
+
     }
 
     function getFiscalYear(theDate) {
@@ -1132,46 +1209,46 @@ function DTS(props) {
            </div>;
   } else {
     return <>
-  <div className="dts-viz-container">
-    <div className="dts-layout-manager">
-      <div className="dts-brush-date-container">
-        <div className="dts-brush-date-item">
-          <div className="dts-brush-start-date-label">From</div>
-          <div className="dts-brush-start-date">mm/dd/yy</div>
-        </div>
-        <div className="dts-brush-date-item">
-          <div className="dts-brush-end-date-label"> to</div>
-          <div className="dts-brush-end-date">mm/dd/yy</div>
-        </div>
-      </div>
-      <div className="dts-svg-wrapper">
-        <svg id="svg-wrapper" height="400"></svg>
-      </div>
-    </div>
-    <div className="viz-tsbfy-container">
-      <div className="viz-tsbfy-header">
-        <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
-        <div className="viz-tsbfy-header-view-buttons">
-          <div className="viz-tsbfy-bar-view"><Bars /></div>
-          <div className="viz-tsbfy-table-view"><List /></div>
-        </div>
-      </div>
-      <div className="svg-tsbfy-container">
-        <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
-      </div>
-    </div>
-  </div>
+             <div className="dts-viz-container">
+               <div className="dts-layout-manager">
+                 <div className="dts-brush-date-container">
+                   <div className="dts-brush-date-item">
+                     <div className="dts-brush-start-date-label">From</div>
+                     <div className="dts-brush-start-date">mm/dd/yy</div>
+                   </div>
+                   <div className="dts-brush-date-item">
+                     <div className="dts-brush-end-date-label"> to</div>
+                     <div className="dts-brush-end-date">mm/dd/yy</div>
+                   </div>
+                 </div>
+                 <div className="dts-svg-wrapper">
+                   <svg id="svg-wrapper" height="400"></svg>
+                 </div>
+               </div>
+               <div className="viz-tsbfy-container">
+                 <div className="viz-tsbfy-header">
+                   <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
+                   <div className="viz-tsbfy-header-view-buttons">
+                     <div className="viz-tsbfy-bar-view"><Bars /></div>
+                     <div className="viz-tsbfy-table-view"><List /></div>
+                   </div>
+                 </div>
+                 <div className="svg-tsbfy-container">
+                   <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
+                 </div>
+               </div>
+             </div>
 
-  <div className="dts-footnote">
-    <div className="dts-footnote-rect"></div>
-    <div className="dts-footnote-text"></div>
-  </div>
+             <div className="dts-footnote">
+               <div className="dts-footnote-rect"></div>
+               <div className="dts-footnote-text"></div>
+             </div>
 
-  <div className="dts-disclaimer">
-    The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
-    <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
-  </div>
-</>;
+             <div className="dts-disclaimer">
+               The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+               <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+             </div>
+           </>;
   }
 }
 
