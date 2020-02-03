@@ -54,6 +54,7 @@ export default class VizControlPanel extends React.Component {
       <Search
         searchList={this.props.searchList}
         listDescription={this.props.listDescription}
+        alwaysShowList
         onSelect={this.props.onSelect}
       />
       <div>

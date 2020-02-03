@@ -43,7 +43,7 @@ export default class Search extends React.Component {
     'width': PropTypes.number,
     'initItem': PropTypes.string,
     'listDescription': PropTypes.string.isRequired,
-    'initShowList': PropTypes.bool,
+    'alwaysShowList': PropTypes.bool,
     'onSelect': PropTypes.func
   };
 
@@ -61,7 +61,7 @@ export default class Search extends React.Component {
 
     this.state = {
       currentValue: initItem,
-      expanded: this.props.initShowList,
+      expanded: this.props.alwaysShowList,
       icon: initItem ? 'clear' : 'search'
     }
 
@@ -92,10 +92,11 @@ export default class Search extends React.Component {
 
   clickIcon = () => {
     if (this.state.icon === 'search') {
-      this.setState(prevState => ({ expanded: !prevState.expanded }));
+      if (!this.props.alwaysShowList) {
+        this.setState(prevState => ({ expanded: !prevState.expanded }));
+      }
     } else {
       this.filteredList = this.props.searchList;
-
       this.setState({
         currentValue: '',
         icon: 'search'
@@ -174,22 +175,23 @@ export default class Search extends React.Component {
       className={styles.filterInput}
       endAdornment={this.filterBoxIcon()}
     />
-    <AutoSizer style={{ height: this.props.height, width: this.props.width }}>
-      {({ height }) =>
-        <List
-          width={this.props.width}
-          height={height}
-          rowRenderer={this.row}
-          rowCount={this.filteredList.length}
-          // itemSize={35} // can't tell if this does anything inside an AutoSizer
-          deferredMeasurementCache={this.cache}
-          rowHeight={this.cache.rowHeight}
-          className={styles.searchlist}
-          ref={this.setListRef}
-        >
-          {this.row}
-        </List>
-      }
-    </AutoSizer>
+    <div style={{ height: this.state.expanded ? this.props.height : '0' }}>
+      <AutoSizer style={{ width: this.props.width }}>
+        {({ height }) =>
+          <List
+            width={this.props.width}
+            height={height}
+            rowRenderer={this.row}
+            rowCount={this.filteredList.length}
+            deferredMeasurementCache={this.cache}
+            rowHeight={this.cache.rowHeight}
+            className={styles.searchlist}
+            ref={this.setListRef}
+          >
+            {this.row}
+          </List>
+        }
+      </AutoSizer>
+    </div>
   </div>;
 }
