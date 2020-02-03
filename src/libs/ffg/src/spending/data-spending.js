@@ -62,7 +62,8 @@ function generateArrayByDataType(dataObj, stack) {
 }
 
 function getByYear(yyyy) {
-    return SpendingData.filter(r => r.fiscal_year === yyyy)
+    const yearNum = Number(yyyy);
+    return SpendingData.filter(r => r.fiscal_year === yearNum)
 }
 
 export function indexByYear(yyyy) {
