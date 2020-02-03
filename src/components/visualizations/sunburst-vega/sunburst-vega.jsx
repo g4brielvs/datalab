@@ -77,8 +77,8 @@ export default class Sunburst extends React.Component {
   updateViz(arc) {
     const previousArc = this.state.selectedArc;
     this.setState({ selectedArc: arc });
-    const newData = arc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
-    this.props.getSelectedArc(arc);
+    const newData = this.state.selectedArc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
+    this.props.getSelectedArc(this.state.selectedArc);
     this.setState({ data: newData, previousArc: previousArc });
   }
 

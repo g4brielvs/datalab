@@ -70,6 +70,7 @@ class BreadCrumbs extends Component {
       .attr('y', d => { return d.depth === 0 ? 6 : null })
       .attr('width', d => { return d.depth === 0 ? 20 : null })
       .attr('xlink:href', d => { return d.depth === 0 ? homeImg : null })
+      .html(d => { return d.depth === 0 ? '&nbsp;&nbsp;&nbsp;' : '' })
       .style("cursor", "pointer")
       .on("click", d => this.props.onSelect(d));
 
@@ -83,9 +84,10 @@ class BreadCrumbs extends Component {
       .attr("y", b.h / 2)
       .attr("dy", "0.35em" )
       .attr("text-anchor", "middle")
-      .attr("fill", '#fff')
+      .attr("stroke", d => { return d.depth === 0 ? 'black' : '#fff'})
+      .attr('fill', d => { return d.depth === 0 ? '' : '#fff'})
       .text( d => {
-        if(d.depth === 0) return '&nbsp;&nbsp;&nbsp;';
+        if(d.depth === 0) return '--';
         if(d.depth < 3){
           return String(d.name);
         }
