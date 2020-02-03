@@ -42,7 +42,7 @@ function DeficitCountryComparisonPage(props) {
                             <Share 
                                 location={props.location}
                                 title='Data Lab - Deficit Country Comparison – U.S. Treasury'
-                                text='How does the U.S. deficit compare with other countries? Check out Your Guide America’s Finances for data from 169 countries, then download .CSV data files to perform your own analysis. #YourGuide #DataLab #OpenGov'
+                                twitter='How does the U.S. deficit compare with other countries? Check out Your Guide America’s Finances for data from 169 countries, then download .CSV data files to perform your own analysis. #YourGuide #DataLab #OpenGov'
                                 />
                         </ControlBar>
 
