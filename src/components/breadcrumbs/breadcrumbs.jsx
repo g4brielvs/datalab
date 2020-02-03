@@ -56,7 +56,7 @@ class BreadCrumbs extends Component {
 // Update the breadcrumb trail to show the current sequence and percentage.
   updateBreadcrumbs (colors, items) {
     let root = items || [];
-
+    
     // Data join; key function combines name and depth (= position in sequence).
     var g = d3.select("#trail")
       .selectAll("g")
