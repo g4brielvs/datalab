@@ -6,7 +6,7 @@ import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
-import SearchPanel from 'src/components/chartpanels/cu/search';
+import SearchPanel from 'src/components/chartpanels/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
@@ -125,25 +125,25 @@ const Categories = () => {
       .map(n => ({
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
-        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
-        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
       .map(n => ({
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
-        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort)
   };
-  
+
   const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
     contracts: _data.contracts.nodes

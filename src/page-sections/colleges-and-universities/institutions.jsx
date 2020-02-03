@@ -156,14 +156,14 @@ export default function Institutions(props) {
           />
         </ControlBar>
         <div>
-          {/* <VizControlPanel
+          <VizControlPanel
             searchList={searchList}
             listDescription='Search Institutions'
             onSelect={filterByClicked}
             switchView={filterByClicked}
           >
             <img src={GeolocationIcon} />
-          </VizControlPanel> */}
+          </VizControlPanel>
           <Mapbox
             data={GeoDataMapbox}
             showDetails={getClickedDetails}

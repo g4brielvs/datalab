@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './viz-control.module.scss';
 
-import SearchPanel from './cu/search';
-import Search from '../chartpanels/search2';
+import Search from '../chartpanels/search';
 import { IconButton, Divider } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import ListIcon from '@material-ui/icons/List';

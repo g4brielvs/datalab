@@ -1,29 +1,30 @@
-@import 'src/styles/index.scss';
+@import "src/styles/index.scss";
 
-$list-height: 400px;
 $border-color: #eee;
 $hover-background: #fbebd0;
 
-.searchlist {
-  position: absolute;
-  display: none;
-  max-height: $list-height;
-  overflow-y: auto;
+.filter-input {
   background-color: $font-white;
+}
+
+.searchlist {
+  font-size: 1rem;
+  color: #4a4a4a;
+  background-color: $font-white;
+  cursor: pointer;
   border: 1px solid $border-color;
 
-  .listItem {
+  .row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 11px 2rem;
+
     &:hover {
       background-color: $hover-background;
-    }
-
-    :global(.MuiTypography-root) {
-      font-family: 'Source Sans Pro', Helvetica, sans-serif;
     }
   }
 }
 
 .expanded {
-	display: block;
-	z-index: 1;
+  display: block;
+  z-index: 1;
 }
