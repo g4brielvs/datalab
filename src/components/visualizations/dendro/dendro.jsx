@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
+
 import './dendro.scss';
+
+import { Grid } from "@material-ui/core";
 import tooltipModule from '../../../components/tooltip/tooltip';
 import tooltipStyles from '../../../components/tooltip/tooltip.module.scss';
+
 
 function Dendro(props) {
 
@@ -13,7 +18,7 @@ function Dendro(props) {
     const dendroData18 = props.fy18;
     const dendroData19 = props.fy19;
     const tooltip = tooltipModule();
-    
+
     function CreateDendro(newData) {
 
       newData.forEach((d) => {
@@ -44,12 +49,12 @@ function Dendro(props) {
 
       // define the baseSvg, attaching a class for styling and the zoomListener
       const baseSvg = d3.select('#tree-container').append('svg')
-            .attr('width', svgWidth)
-            .attr('height', svgHeight)
-            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
-            .attr('id', 'svg-dendrogram')
-            .attr('class', 'overlay')
-            .call(zoomListener);
+        .attr('width', svgWidth)
+        .attr('height', svgHeight)
+        .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+        .attr('id', 'svg-dendrogram')
+        .attr('class', 'overlay')
+        .call(zoomListener);
 
       baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
 
@@ -95,11 +100,11 @@ function Dendro(props) {
       }
 
       let tree = d3.layout.tree()
-          .size([svgWidth, svgHeight]);
+        .size([svgWidth, svgHeight]);
 
       // define a d3 diagonal projection for use by the node paths later on.
       const diagonal = d3.svg.diagonal()
-            .projection((d) => [d.y, d.x]);
+        .projection((d) => [d.y, d.x]);
 
       // Toggle children.
       function toggle(d) {
@@ -155,13 +160,13 @@ function Dendro(props) {
 
         // Update the nodes
         const node = svgGroup
-              .selectAll('g.node')
-              .data(nodes, (d) => {
-                if (d.id) return d.id;
-                nodeIterator += 1;
-                d.id = nodeIterator;
-                return d.id;
-              });
+          .selectAll('g.node')
+          .data(nodes, (d) => {
+            if (d.id) return d.id;
+            nodeIterator += 1;
+            d.id = nodeIterator;
+            return d.id;
+          });
 
         const formatNumber = d3.format('$,.0f');
 
@@ -169,9 +174,9 @@ function Dendro(props) {
           let total = 0;
           object._children.forEach((d) => {
             d._children.forEach((dd) => {
-              if(isNaN(dd.size)){
-                total += 0; 
-              } else{
+              if (isNaN(dd.size)) {
+                total += 0;
+              } else {
                 total += dd.size;
               }
             });
@@ -182,9 +187,9 @@ function Dendro(props) {
         function sumUpLvl2(object) {
           let total = 0;
           object._children.forEach((d) => {
-            if(isNaN(d.size)){
-              total += 0; 
-            } else{
+            if (isNaN(d.size)) {
+              total += 0;
+            } else {
               total += d.size;
             }
           });
@@ -195,9 +200,9 @@ function Dendro(props) {
           let total = 0;
           object._children.forEach((d) => {
             d._children.forEach((dd) => {
-              if(isNaN(dd.unob)){
-                total += 0; 
-              } else{
+              if (isNaN(dd.unob)) {
+                total += 0;
+              } else {
                 total += dd.unob;
               }
             });
@@ -208,9 +213,9 @@ function Dendro(props) {
         function sumUpLvl2Unob(object) {
           let total = 0;
           object._children.forEach((d) => {
-            if(isNaN(d.unob)){
-              total += 0; 
-            } else{
+            if (isNaN(d.unob)) {
+              total += 0;
+            } else {
               total += d.unob;
             }
           });
@@ -249,12 +254,12 @@ function Dendro(props) {
 
         // Enter any new nodes at the parent's previous position.
         const nodeEnter = node.enter().append('g')
-              .attr('class', 'node')
-              .attr('transform', () => `translate(${source.y0},${source.x0})`) // eslint-disable-next-line no-use-before-define
-              .on('click', click)
-              .on('mouseover', (d) => handleMouseOver(d))
-              .on('mouseout', handleMouseOut)
-              .on('mousemove', handleMouseMove);
+          .attr('class', 'node')
+          .attr('transform', () => `translate(${source.y0},${source.x0})`) // eslint-disable-next-line no-use-before-define
+          .on('click', click)
+          .on('mouseover', (d) => handleMouseOver(d))
+          .on('mouseout', handleMouseOut)
+          .on('mousemove', handleMouseMove);
 
         nodeEnter.append('circle')
           .attr('class', 'nodeCircle')
@@ -276,8 +281,8 @@ function Dendro(props) {
           .attr('alignment-baseline', (d) => (d.children || d._children ? 'baseline' : 'baseline'))
           .style('font-weight', '900')
           .text((d) =>
-                (d.children || d._children ? d.name : d.name)
-               );
+            (d.children || d._children ? d.name : d.name)
+          );
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select('circle.nodeCircle')
@@ -286,8 +291,8 @@ function Dendro(props) {
 
         // Transition nodes to their new position.
         const nodeUpdate = node.transition()
-              .duration(duration)
-              .attr('transform', (d) => `translate(${d.y},${d.x})`);
+          .duration(duration)
+          .attr('transform', (d) => `translate(${d.y},${d.x})`);
 
         // Fade the text in
         nodeUpdate.select('text')
@@ -295,9 +300,9 @@ function Dendro(props) {
 
         // Transition exiting nodes to the parent's new position.
         const nodeExit = node.exit().transition()
-              .duration(duration)
-              .attr('transform', () => `translate(${source.y},${source.x})`)
-              .remove();
+          .duration(duration)
+          .attr('transform', () => `translate(${source.y},${source.x})`)
+          .remove();
 
         nodeExit.select('circle')
           .attr('r', 0);
@@ -307,7 +312,7 @@ function Dendro(props) {
 
         // Update the links¦
         const link = svgGroup.selectAll('path.link')
-              .data(links, (d) => d.target.id);
+          .data(links, (d) => d.target.id);
 
         // Enter any new links at the parent's previous position.
         link.enter().insert('path', 'g')
@@ -392,7 +397,7 @@ function Dendro(props) {
           return 0;
         });
       }
-      
+
       // Sort the tree initially incase the JSON isn't in a sorted order.
       sortTree();
 
@@ -518,7 +523,7 @@ function Dendro(props) {
     $(document).ready(() => {
       // Handle Reset Button Click //
       // reset to default of FY19 and Q1 //
-      d3.select('#resetBtn').on('click', function() {
+      d3.select('#resetBtn').on('click', function () {
         d3.selectAll('#svg-dendrogram').remove();
         $('#contactChoice7').prop('checked', true); // 2019 Data
         $('#contactChoice3').prop('checked', true); // Q1
@@ -561,31 +566,31 @@ function Dendro(props) {
 
             data = dendroData18.filter((d) => d.reporting_period_end == '2017-12-31');
             CreateDendro(data);
-          }else if (Quarter == '03-31'){
+          } else if (Quarter == '03-31') {
 
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-03-31');
             CreateDendro(data);
-          }else if (Quarter == '06-30'){
+          } else if (Quarter == '06-30') {
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-06-30');
             CreateDendro(data);
-          }else {
+          } else {
             data = dendroData18.filter((d) => d.reporting_period_end == '2018-09-30');
             CreateDendro(data);
-          }             
-        }else if (FiscalYear === 'fy19'){
+          }
+        } else if (FiscalYear === 'fy19') {
           d3.selectAll('#svg-dendrogram').remove();
           if (Quarter == '12-31') {
             data = dendroData19.filter((d) => d.reporting_period_end == '2018-12-31');
             CreateDendro(data);
           } else if (Quarter == '03-31') {
-	    // FY19Q2 Selected
-	    data = dendroData19.filter((d) => d.reporting_period_end == '2019-03-31');
-	    CreateDendro(data);
-	  } else if (Quarter == '06-30') {
-	    // FY19Q3 Selected
-	    data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
-	    CreateDendro(data);
-	  } else {
+            // FY19Q2 Selected
+            data = dendroData19.filter((d) => d.reporting_period_end == '2019-03-31');
+            CreateDendro(data);
+          } else if (Quarter == '06-30') {
+            // FY19Q3 Selected
+            data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
+            CreateDendro(data);
+          } else {
             const viewerWidth = document.body.clientWidth;
             const viewerHeight = 300;
             d3.select('#tree-container').append('html')
@@ -594,43 +599,61 @@ function Dendro(props) {
               .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
               .attr('id', 'svg-dendrogram')
               .attr('class', 'overlay')
-              .html('<h1>We will update the Federal Account Explorer as soon as data is available</h1>');   
+              .html('<h1>We will update the Federal Account Explorer as soon as data is available</h1>');
           }
         }
       });
     });
   }); // end use Effect
 
-  return(
+  return (
     <section id='one' className='viz-section center-text'>
       <div className='viz-bkgd'>
         <div className='mask'>
           <div className='viz-actions'>
-            <div id='DendroRadio'>
-              <div className='select-wrapper1'>
-                <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17' onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
+            <Grid container>
+              <div id='DendroRadio'>
+                <div className='select-wrapper1'>
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-1' type='radio' id='contactChoice2' name="FiscalYear" value='fy17' onChange={props.radioCheck} />
+                    <label className='dendro-input-1' htmlFor="contactChoice2">FY 17 </label>
+                  </div>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18' onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-1' type='radio' id='contactChoice1' name="FiscalYear" value='fy18' onChange={props.radioCheck} />
+                    <label className='dendro-input-1' htmlFor="contactChoice1">FY 18 </label>
+                  </div>
 
-                <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} onChange={props.radioCheck}/>
-                <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-1' type='radio' id='contactChoice7' name="FiscalYear" value='fy19' defaultChecked={true} onChange={props.radioCheck} />
+                    <label className='dendro-input-1' htmlFor="contactChoice7">FY 19 </label>
+                  </div>
+                </div>
+
+                <div className="select-wrapper2">
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
+                    <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
+                  </div>
+
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31" />
+                    <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
+                  </div>
+
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30" />
+                    <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
+                  </div>
+
+                  <div className='label-wrapper'>
+                    <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30" />
+                    <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
+                  </div>
+                </div>
+
               </div>
-              <div className="select-wrapper2">
-                <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
-                <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31"/>
-                <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30"/>
-                <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
-
-                <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30"/>
-                <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
-              </div>
-            </div>
+            </Grid>
           </div>
         </div>
       </div>
