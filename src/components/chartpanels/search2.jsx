@@ -14,16 +14,19 @@ export default class Search extends React.Component {
     searchList is expected to be an array of {id, display}
     id values are arbitrary, but must be unique within the list to indicate which is selected (expected but not enforced by SearchPanel)
     display is a string or fragment of what exactly to display for that option
+    filterText is a string "equivalent" of "display" if "display" is fragment (since frags don't have a .search(); expected but not enforced by SearchPanel )
     e.g. [
       {
         id: 1,
         display: 'Department of Energy'
       }, {
         id: 37,
-        display: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
+        display: <>NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC</>
+        filterText: 'NATIONAL TECHNOLOGY & ENGINEERING SOLUTIONS OF SANDIA LLC'
       }, {
         id: 'jadsfa',
-        display: 'Department of Defense'
+        display: 'Department of Defense<div>line 2</div>'
+        filterText: 'Department of Defense--line 2'
        }, {
         id: -12,
         display: 'Department of the Army'
@@ -63,6 +66,10 @@ export default class Search extends React.Component {
     }
     this.filteredList = this.props.searchList;
 
+
+console.log(this.filteredList);
+
+
     this.cache = new CellMeasurerCache({
       fixedWidth: true,
       defaultHeight: this.props.height
@@ -97,9 +104,13 @@ export default class Search extends React.Component {
   filterSearch(event) {
     const currentValue = event.target.value;
     const filter = new RegExp(currentValue, 'i');
-    this.filteredList = this.props.searchList.filter(n =>
-      n.display.search(filter) !== -1
-    );
+    this.filteredList = this.props.searchList.filter(n => {
+      if (n.filterText) {
+        n.filterText.search(filter) !== -1
+      } else {
+        n.display.search(filter) !== -1
+      }
+    });
 
     // recalc row heights after filter
     this.cache.clearAll();

@@ -116,35 +116,29 @@ const Categories = () => {
     }
   `);
 
-  const searchSort = (a, b) => {
-    if (a.heading > b.heading) return 1;
-    if (a.heading < b.heading) return -1;
-    if (a.subheading > b.subheading) return 1;
-    if (a.subheading < b.subheading) return -1;
-    return 0;
-  };
+  const searchSort = (a, b) => { a.filterText > b.filterText };
 
   // due to how GraphQL groups, we only want the first of each unique group
   const searchList = {
     contracts: _data.contractsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <>{n.nodes[0].family}<p>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + '-' + n.nodes[0].Program_Title
       }))
       .sort(searchSort)
   };
