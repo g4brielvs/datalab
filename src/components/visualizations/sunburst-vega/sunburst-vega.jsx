@@ -35,7 +35,7 @@ export default class Sunburst extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.filterSunburst = this.filterSunburst.bind(this);
     this.appendColors = this.appendColors.bind(this);
-    this.updateViz = this.updateViz.bind(this);
+    this.updateSunburst = this.updateSunburst.bind(this);
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
@@ -70,20 +70,20 @@ export default class Sunburst extends React.Component {
 
   handleClick(...args) {
     const item = args[1];
-    this.updateViz(item);
+    this.updateSunburst(item);
   }
 
-  updateViz(arc) {
+  updateSunburst(arc) {
     const previousArc = this.state.selectedArc;
     this.setState({ selectedArc: arc });
-    const newData = this.state.selectedArc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
+    const newData = this.state.selectedArc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst(this.state.selectedArc) };
     this.props.getSelectedArc(this.state.selectedArc);
     this.setState({ data: newData, previousArc: previousArc });
   }
 
-  filterSunburst() {
+  filterSunburst(selectedArc) {
     const flare = this.state.originalData;
-    const { agency, name, depth } = this.state.selectedArc;
+    const { agency, name, depth } = selectedArc;
     let recipientSubAgencyIds, recipients, subagencies, subAgencyIds, agencyNames;
 
     if (depth === 2) {

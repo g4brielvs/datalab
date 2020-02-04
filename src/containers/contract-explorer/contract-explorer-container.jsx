@@ -13,6 +13,20 @@ import Search from 'src/components/chartpanels/search';
 const sunData = flareData;
 
 const SunburstVegaContainer = () => {
+  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
+    '#AE933D', '#D39248', '#EA8052'];
+
+  const detailDefaults = {
+    label: null,
+    total: null,
+    top5: [],
+    name: null
+  }
+
+  const [arc, setSelectedArc] = useState(null);
+  const [previousArc, setPreviousArc] = useState(null);
+  const [breadcrumbs, setBreadcrumbs] = useState(null);
+  const [details, setDetails] = useState(detailDefaults);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
   const agencies = [];
@@ -23,21 +37,21 @@ const SunburstVegaContainer = () => {
 
     if (agencies.findIndex(a => a.display === e.agency) === -1) {
       agencies.push({
-        id: `a${i}`,
+        id: `a${e.agency}`,
         display: e.agency
       });
     }
 
     if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
       subagencies.push({
-        id: `s${i}`,
+        id: `s${e.subagency}`,
         display: e.subagency
       });
     }
 
     if (recipients.findIndex(r => r.display === e.recipient) === -1) {
       recipients.push({
-        id: `r${i}`,
+        id: `r${e.recipient}`,
         display: e.recipient
       });
     }
@@ -48,31 +62,34 @@ const SunburstVegaContainer = () => {
   // const [, updateState] = React.useState();
   // const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
 
+  const sunburstRef = React.createRef();
+
   const searchSelect = (id) => {
-    sunData.tree = flareData.tree.slice(0, 50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
-    // forceUpdate();
+    const depth = id.substring(0, 1);
+    const name = id.substring(1);
+    let selectedArc;
+
+    switch(depth) {
+      case 'a':
+        selectedArc = sunData.tree.find(node => node.name === name && node.depth === 1);
+        break;
+      case 's':
+        selectedArc = sunData.tree.find(node => node.name === name && node.depth === 2);
+        break;
+      case 'r':
+        selectedArc = sunData.tree.find(node => node.name === name && node.depth === 3);
+        break;
+    }
+
+    if (sunburstRef && sunburstRef.current) {
+      sunburstRef.current.updateSunburst(selectedArc);
+    }
+    setSelectedArc(selectedArc);
   }
 
   useEffect(() => {
     getDetails();
   }, []);
-
-  const detailDefaults = {
-    label: null,
-    total: null,
-    top5: [],
-    name: null
-  }
-
-  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
-    '#AE933D', '#D39248', '#EA8052'];
-
-  const [arc, setSelectedArc] = useState(null);
-  const [previousArc, setPreviousArc] = useState(null);
-  const [breadcrumbs, setBreadcrumbs] = useState(null);
-  const [details, setDetails] = useState(detailDefaults);
-
-  const sunburstRef = React.createRef();
 
   function getTop5(items, type) {
     // get all unique values of the item type
@@ -93,23 +110,23 @@ const SunburstVegaContainer = () => {
     if (!selectedArc) { return; };
 
     const breadcrumbs = [];
-    const agency = sunData.tree.filter(node => node.name === selectedArc.agency);
+    const agency = sunData.tree.find(node => node.name === selectedArc.agency);
 
     switch(selectedArc.depth) {
       case 0:
         return;
         break;
       case 1:
-        breadcrumbs.push(agency[0]);
+        breadcrumbs.push(agency);
         break;
       case 2:
-        breadcrumbs.push(agency[0]);
+        breadcrumbs.push(agency);
         breadcrumbs.push(selectedArc);
         break;
       case 3:
-        const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
-        breadcrumbs.push(agency[0]);
-        breadcrumbs.push(subagency[0]);
+        const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
+        breadcrumbs.push(agency);
+        breadcrumbs.push(subagency);
         breadcrumbs.push(selectedArc)
         break;
     }
@@ -133,11 +150,11 @@ const SunburstVegaContainer = () => {
 
   function selectBreadcrumb (d) {
     // if depth is 0, the item flare will be selected
-    let selectedArc = sunData.tree.filter(node => node.depth === d.depth && node.name === d.name);
+    let selectedArc = sunData.tree.find(node => node.depth === d.depth && node.name === d.name);
     if (sunburstRef && sunburstRef.current) {
-      sunburstRef.current.updateViz(selectedArc[0]);
+      sunburstRef.current.updateSunburst(selectedArc);
     }
-    setSelectedArc(selectedArc[0]);
+    setSelectedArc(selectedArc);
   }
 
   const breadcrumbRef = React.createRef();
@@ -180,8 +197,8 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
-        const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency[0].name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
+        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
         // add detail here
         break;

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import Accordion from '../../components/accordion/accordion';
-import Reset from '../../components/reset/reset';
-import SEO from '../../components/seo';
-import Share from '../../components/share/share';
-import ToolLayout from '../../components/layouts/tool/tool';
-import ControlBar from "../../components/control-bar/control-bar";
+import Accordion from 'src/components/accordion/accordion';
+import SEO from 'src/components/seo';
+import Share from 'src/components/share/share';
+import ToolLayout from 'src/components/layouts/tool/tool';
+import ControlBar from "src/components/control-bar/control-bar";
 
 import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
