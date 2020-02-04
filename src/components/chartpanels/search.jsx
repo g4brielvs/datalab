@@ -34,7 +34,10 @@ export default class Search extends React.Component {
     ]
   
     height is the size of the rendered list in px (container CSS may also need adjustment; width is controlled by container)
-    initShow is true if it should be open when initialized
+    initItem is the ID of an initially-selected list item
+    listDescription is placeholder text for the input
+    if showIcon is false or missing, don't show the input decorator
+    alwaysShowList is boolean to never hide/collapse the list (eg C&U sidebar)
     onSelect is parent callback when an item is selected, passes back id value only
   */
   static propTypes = {
@@ -42,6 +45,7 @@ export default class Search extends React.Component {
     'height': PropTypes.number,
     'initItem': PropTypes.string,
     'listDescription': PropTypes.string.isRequired,
+    'showIcon': PropTypes.bool,
     'alwaysShowList': PropTypes.bool,
     'onSelect': PropTypes.func
   };
@@ -171,7 +175,7 @@ export default class Search extends React.Component {
       variant='outlined'
       fullWidth
       className={styles.filterInput}
-      endAdornment={this.filterBoxIcon()}
+      endAdornment={this.props.showIcon && this.filterBoxIcon()}
     />
     <div style={{ height: this.state.expanded ? this.props.height : '0' }}>
       <AutoSizer>

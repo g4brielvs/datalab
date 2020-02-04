@@ -108,6 +108,7 @@ const Agencies = (props) => {
       <SearchPanel
         searchList={searchList}
         listDescription='Search Agencies'
+        showIcon
         showCollapse
         onSelect={searchItemSelected}
       />

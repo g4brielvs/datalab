@@ -203,7 +203,7 @@ const Categories = () => {
         <SearchPanel
           searchList={searchList[fundingType]}
           listDescription='Search Categories'
-          showCollapse
+          showIcon
           onSelect={searchItemSelected}
         />
       </Hidden>
