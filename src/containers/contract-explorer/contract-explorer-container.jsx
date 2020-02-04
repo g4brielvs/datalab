@@ -183,6 +183,7 @@ const SunburstVegaContainer = () => {
         const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
         details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency[0].name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
+        // add detail here
         break;
     }
 

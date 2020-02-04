@@ -3,13 +3,7 @@ import d3 from "d3v3";
 import homeImg from '../../../static/images/home-solid.svg';
 
 const width = 600, height = 50;
-const lightColors = [
-  d3.rgb(255, 224, 146).toString(),
-  d3.rgb(255, 223, 156).toString(),
-  d3.rgb(255, 224, 142).toString(),
-  d3.rgb(255, 224, 137).toString(),
-  d3.rgb(255, 223, 151).toString()
-];
+
 const  b = {
   w: 125, h: 30, s: 3, t: 10, homeW: 40
 };
@@ -25,10 +19,12 @@ class BreadCrumbs extends Component {
 
     this.updateBreadcrumbs = this.updateBreadcrumbs.bind(this);
     this.drawbread = this.drawbread.bind(this);
+    this.setOpacity = this.setOpacity.bind(this);
+
   }
 
   drawbread () {
-    var points = [];
+    const points = [];
     points.push("0,0");
     points.push(b.w + ",0");
     points.push(b.w + b.t + "," + (b.h / 2));
@@ -87,11 +83,15 @@ class BreadCrumbs extends Component {
       .text( d => {
         if(d.depth === 0) return '--';
         if(d.depth < 3){
-          return String(d.name);
+          return String(d.name)    // TODO: Truncating strings temporarily; will remove after getting abbreviation data for agencies and subagencies
+            .substring(0,4)
+            .toUpperCase();
         }
         return String(d.name)
           .substring(0,4)
-          .trimRight() + "...";
+          .trimRight() + "..." +
+          String(d.name).substr(String(d.name).length-4);
+        ;
       })
       .style("cursor", "pointer")
       .on("click", d => this.props.onSelect(d));
