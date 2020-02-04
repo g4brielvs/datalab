@@ -5,6 +5,7 @@ import sunburstSpec from './utils/sunburst-spec';
 import * as _ from 'lodash';
 
 import './sunburst-vega.scss';
+import PropTypes from "prop-types"
 
 /* PLEASE DO NOT DELETE this import
   This code is used to transform the sunburst data in to code that's usable by Vega.  This should be handled on the data analyst
@@ -150,4 +151,10 @@ export default class Sunburst extends React.Component {
       return <div></div>
     }
   }
+}
+
+Sunburst.propTypes = {
+  getSelectedArc: PropTypes.func.isRequired,
+  colors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  data: PropTypes.object.isRequired
 }

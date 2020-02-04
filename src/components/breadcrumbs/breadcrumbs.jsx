@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import d3 from "d3v3";
 import homeImg from '../../../static/images/home-solid.svg';
+import PropTypes from "prop-types"
+import Sunburst from "../visualizations/sunburst-vega/sunburst-vega"
 
 const width = 600, height = 50;
 
@@ -123,3 +125,7 @@ class BreadCrumbs extends Component {
 }
 
 export default BreadCrumbs;
+
+BreadCrumbs.propTypes = {
+  onSelect: PropTypes.func.isRequired
+}
