@@ -84,7 +84,7 @@ const SunburstVegaContainer = () => {
     if (sunburstRef && sunburstRef.current) {
       sunburstRef.current.updateSunburst(selectedArc);
     }
-    setSelectedArc(selectedArc);
+    // setSelectedArc(selectedArc);
   }
 
   useEffect(() => {
