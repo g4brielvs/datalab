@@ -46,7 +46,6 @@ export default class ContractExplorerPage extends Component {
 				</ul>
 			</Accordion>
       <ControlBar>
-        <Reset />
         <Share location={this.props.location} />
       </ControlBar>
 
