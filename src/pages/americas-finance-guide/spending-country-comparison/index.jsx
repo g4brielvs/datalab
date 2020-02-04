@@ -41,8 +41,8 @@ function SpendingCountryComparisonPage(props) {
                             <Share 
                                 location={props.location}
                                 title='Data Lab - Spending Country Comparison – U.S. Treasury'
-                                text='How does U.S. federal spending compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries. #YourGuide #DataLab #OpenGov'
-                                facebook='' reddit='' linkedin='' tumblr='' email='' />
+                                twitter='How does U.S. federal spending compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries. #YourGuide #DataLab #OpenGov'
+                                />
                         </ControlBar>
 
                         <h1>Compare Federal Spending of the United States to other Countries</h1>
