@@ -128,7 +128,7 @@ export default class Search extends React.Component {
 
   selectItem(i) {
     this.setState({
-      expanded: false,
+      expanded: this.props.alwaysShowList,
       icon: 'clear'
     });
     if (this.props.onSelect) {
