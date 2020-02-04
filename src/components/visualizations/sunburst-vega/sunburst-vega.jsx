@@ -38,13 +38,6 @@ export default class Sunburst extends React.Component {
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
   }
 
-  // works: data is updated by parent, but chart won't redraw when state changed below
-  // componentDidUpdate(prevProps) { 
-  //   if (this.props.data !== prevProps.data) {
-  //     this.setState({ data: this.props.data });
-  //   }
-  // }
-
   appendColors(flare) {
     let agencies = _.filter(flare.tree, { 'type': 'agency' });
     let agenciesColors = {};
@@ -67,14 +60,14 @@ export default class Sunburst extends React.Component {
 
   handleHover(...args) {
     const item = args[1];
-    // this.props.getDetails(item);
+    this.props.getSelectedArc(item);
   }
 
   handleClick(...args) {
     const item = args[1];
     this.updateViz(item);
   }
-
+  
   updateViz(arc) {
     const previousArc = this.state.selectedArc;
     this.setState({ selectedArc: arc });
