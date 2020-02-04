@@ -26,16 +26,17 @@ export default class Sunburst extends React.Component {
       data: data,
       spec: sunburstSpec,
       originalData: data,
-      selectedArc: null,
-      previousArc: null
+      selectedArc: { name: 'flare', depth: 0 },
+      previousArc: { name: 'flare', depth: 0 }
     };
 
     this.handleHover = this.handleHover.bind(this);
+    this.handleUnhover = this.handleUnhover.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.filterSunburst = this.filterSunburst.bind(this);
     this.appendColors = this.appendColors.bind(this);
     this.updateViz = this.updateViz.bind(this);
-    this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover };
+    this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
   appendColors(flare) {
@@ -57,6 +58,10 @@ export default class Sunburst extends React.Component {
 
     return flare;
   };
+
+  handleUnhover() {
+    this.props.getSelectedArc(this.state.selectedArc);
+  }
 
   handleHover(...args) {
     const item = args[1];

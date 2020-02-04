@@ -46,6 +46,13 @@ export default {
       "on": [
         {"events": "arc:mouseover", "update": "datum"}
       ]
+    },
+    {
+      "name": "arcUnhover",
+      "value": "datum",
+      "on": [
+        {"events": "arc:mouseout", "update": "datum"}
+      ]
     }
   ],
   "scales": [
