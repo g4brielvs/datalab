@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as _ from 'lodash';
 import storyHeadingStyles from 'src/components/section-elements/story-heading/story-heading.module.scss';
@@ -10,11 +10,11 @@ import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/search';
-import Share from "src/components/share/share";
+import Share from 'src/components/share/share';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
-import TableContainer from "./agencies-table-container";
+import TableContainer from './agencies-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
-import VizContainer from "./bubble-chart-container/bubble-chart-container";
+import VizContainer from './bubble-chart-container/bubble-chart-container';
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -107,7 +107,6 @@ const Agencies = (props) => {
     <Hidden lgUp>
       <SearchPanel
         searchList={searchList}
-        width={600}
         listDescription='Search Agencies'
         showCollapse
         onSelect={searchItemSelected}
@@ -145,12 +144,14 @@ const Agencies = (props) => {
       <VizContainer
         display={chartView}
         data={_data.allUnivBubbleChartCsv.nodes}
-        chartRef={chartRef} />
+        chartRef={chartRef}
+      />
       <TableContainer
         display={!chartView}
         tableColumnTitles={tableColumnTitles}
         tableData={filteredTableData}
-        tableRef={tableRef} />
+        tableRef={tableRef}
+      />
     </Grid>
 
     <Downloads
