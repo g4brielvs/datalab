@@ -136,6 +136,7 @@
         padding: 0.25rem 0.2rem;
         border:0;
         outline:none;
+        width: calc(100% - .6rem);
         //The following is required for Safari browser as the input covers the border of the parent div
         margin-top: 1px;
     }
@@ -146,7 +147,9 @@
         top: 1px;
         color: #7B7B7B;
         cursor:text;
-        width: 0;
+        width: 1rem;
+        font-size: 1rem;
+        margin-right: -1rem;
     }
 }
 
@@ -184,6 +187,7 @@
     display: inline-block;
     min-width: 93px;
     font-weight: $normalWeight;
+    font-size: 1.5rem;
 }
 
 .spending-chart-toggle[data-active="category"] .spending-chart-toggle__label--categories {
@@ -200,6 +204,7 @@
     border: none;
     background: none;
     padding: 0;
+    margin: 0 0.5rem;
 }
 
 .toggle-control__background {
@@ -226,5 +231,4 @@
 .spending-chart-toggle[data-active="agency"] .toggle-control__dot {
     transform: translateX(0.8rem)
 }
-
 }
