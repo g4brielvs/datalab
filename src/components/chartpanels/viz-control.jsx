@@ -51,13 +51,14 @@ export default class VizControlPanel extends React.Component {
 
   render = () => (
     <div id='sidebar' className={styles.sidebar + (this.state.expanded ? ' ' + styles.expanded : '')}>
-      <Search
-        searchList={this.props.searchList}
-        listDescription={this.props.listDescription}
-        alwaysShowList
-        width={350}
-        onSelect={this.props.onSelect}
-      />
+      <div style={{ width: '350px' }}>
+        <Search
+          searchList={this.props.searchList}
+          listDescription={this.props.listDescription}
+          alwaysShowList
+          onSelect={this.props.onSelect}
+        />
+      </div>
       <div>
         <IconButton
           aria-label='search'

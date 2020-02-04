@@ -33,14 +33,13 @@ export default class Search extends React.Component {
       }
     ]
   
-    height & width are the size of the rendered list in px (container CSS may also need adjustment)
+    height is the size of the rendered list in px (container CSS may also need adjustment; width is controlled by container)
     initShow is true if it should be open when initialized
     onSelect is parent callback when an item is selected, passes back id value only
   */
   static propTypes = {
     'searchList': PropTypes.arrayOf(PropTypes.object).isRequired,
     'height': PropTypes.number,
-    'width': PropTypes.number,
     'initItem': PropTypes.string,
     'listDescription': PropTypes.string.isRequired,
     'alwaysShowList': PropTypes.bool,
@@ -175,11 +174,11 @@ export default class Search extends React.Component {
       endAdornment={this.filterBoxIcon()}
     />
     <div style={{ height: this.state.expanded ? this.props.height : '0' }}>
-      <AutoSizer style={{ width: this.props.width }}>
-        {({ height }) =>
+      <AutoSizer>
+        {({ height, width }) =>
           <List
-            width={this.props.width}
             height={height}
+            width={width}
             rowRenderer={this.row}
             rowCount={this.filteredList.length}
             deferredMeasurementCache={this.cache}
