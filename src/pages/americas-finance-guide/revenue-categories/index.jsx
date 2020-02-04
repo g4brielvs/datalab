@@ -13,14 +13,23 @@ import { Helmet } from 'react-helmet';
 import AfgNav from '../../.../../../components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faSearch, faSortAlphaDown, faSortAmountDown } from '@fortawesome/free-solid-svg-icons';
+import {
+    faAngleLeft,
+    faAngleRight,
+    faAngleDown,
+    faAngleUp,
+    faSearch,
+    faSortAlphaDown,
+    faSortAmountDown,
+    faSortAlphaUp, faSortAmountUp,
+} from "@fortawesome/free-solid-svg-icons"
 
 function RevenueCategoriesPage(props) {
     return (
         <>
 
             <Helmet>
-                <script defer src="/americas-finance-guide/revenue-categories/index.js"></script>
+                <script defer src="/americas-finance-guide/revenue/categories.js"></script>
             </Helmet>
 
             <SEO
@@ -55,8 +64,8 @@ function RevenueCategoriesPage(props) {
                                     <div className='bar-controls__left'>
                                         Sort by:
                                         <div className='bar-controls__left--button-div'>
-                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon icon={faSortAmountDown} className="fas fa-sort-amount-down"/></button>
-                                            <button id="sort-name">Name <FontAwesomeIcon icon={faSortAlphaDown} className="fas fa-sort-alpha-down"/></button>
+                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} class='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} class='svg-inline--fa fa-w-16 hidden'/></button>
                                         </div>
                                     </div>
                                     <div className='bar-controls__right'>

@@ -64,9 +64,10 @@ window.addEventListener('resize', function () {
             }
         } else {
             if (!isDesktopInd) {
-                isDesktopInd = true;
                 d3.select('#viz svg').html(null);
+                destroySankey();
                 initSankey(config);
+                isDesktopInd = true;
             }
         }
     }, actualTimeout);

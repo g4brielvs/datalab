@@ -6,11 +6,11 @@ import { findAmountInCsv } from '../../../src/utils';
 (function init(){
     const config = {
         anecdoteName: 'anecdote-spending.svg',
-        comparisonAmount: findAmountInCsv('federal revenue', SpendingData), 
+        comparisonAmount: findAmountInCsv('federal revenue', SpendingData),
         compareString: 'revenue',
-        gdpAmount: findAmountInCsv('gdp', SpendingData), 
-        gdpPercent: findAmountInCsv('federal spending percent of gdp', SpendingData) * 100, 
-        sectionAmount: findAmountInCsv('federal spending', SpendingData), 
+        gdpAmount: findAmountInCsv('gdp', SpendingData),
+        gdpPercent: findAmountInCsv('federal spending percent of gdp', SpendingData) * 100,
+        sectionAmount: findAmountInCsv('federal spending', SpendingData),
         comparisonColor: colors.revenuePrimary,
         sectionColor: colors.colorSpendingPrimary,
         accessibilityAttrs : {

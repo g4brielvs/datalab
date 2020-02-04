@@ -64,7 +64,7 @@ function doSort(name, direction) {
     }
 }
 
-function updateSortIcon(containerId, sortId, sortDefaultClass, sortReverseClass){
+function updateSortIcon(containerId, sortId){
     const isThisAlreadySortedInd = d3.select(`#${sortId}`).classed('active');
 
     let sortDir = 'default';
@@ -74,26 +74,38 @@ function updateSortIcon(containerId, sortId, sortDefaultClass, sortReverseClass)
         d3.select(`#${containerId}`).select('button.active').classed('active', false);
         d3.select(`#${sortId}`).classed('active', true);
     } else {
-        const sortIcon = d3.select(`#${sortId} i`),
-            sortDefaultInd = sortIcon.classed(sortDefaultClass);
-
-        if(sortDefaultInd){
-            sortIcon.classed(sortDefaultClass, false).classed(sortReverseClass, true);
-            sortDir = 'reverse';
-        } else {
-            sortIcon.classed(sortDefaultClass, true).classed(sortReverseClass, false);
-        }
+        const sortIcon = d3.selectAll(`#${sortId} svg`);
+        sortIcon.each(function(d,i) {
+            const isHidden = d3.select(this).classed('hidden');
+            if(i === 0 && isHidden !== true){
+                sortDir = 'reverse';
+            }
+            d3.select(this).classed('hidden', !isHidden);
+        });
     }
 
     return sortDir;
 }
 
 function resetSortingButtons(){
-    const sortNameBtn = d3.select('#sort-name i'),
-        sortAmountBtn = d3.select('#sort-amount i');
+    const sortNameBtn = d3.selectAll('#sort-name svg'),
+        sortAmountBtn = d3.selectAll('#sort-amount svg');
 
-    sortNameBtn.classed('fa-sort-alpha-up', false).classed('fa-sort-alpha-down', true);
-    sortAmountBtn.classed('fa-sort-amount-up', false).classed('fa-sort-amount-down', true);
+    sortNameBtn.each(function(d,i) {
+        if(i === 0){
+            d3.select(this).classed('hidden', null);
+        } else {
+            d3.select(this).classed('hidden', true);
+        }
+    });
+
+    sortAmountBtn.each(function(d,i) {
+        if(i === 0){
+            d3.select(this).classed('hidden', null);
+        } else {
+            d3.select(this).classed('hidden', true);
+        }
+    });
 }
 
 d3.select('#filter-by-name-icon')
@@ -105,9 +117,7 @@ d3.select('#sort-amount')
     .on('click', function () {
         const containerId = 'bar-controls',
             sortId = 'sort-amount',
-            sortDefaultClass = 'fa-sort-amount-down',
-            sortReverseClass = 'fa-sort-amount-up',
-            sortDir = updateSortIcon(containerId, sortId, sortDefaultClass, sortReverseClass);
+            sortDir = updateSortIcon(containerId, sortId);
 
         doSort('amount', sortDir);
     });
@@ -116,9 +126,7 @@ d3.select('#sort-name')
     .on('click', function () {
         const containerId = 'bar-controls',
             sortId = 'sort-name',
-            sortDefaultClass = 'fa-sort-alpha-down',
-            sortReverseClass = 'fa-sort-alpha-up',
-            sortDir = updateSortIcon(containerId, sortId, sortDefaultClass, sortReverseClass);
+            sortDir = updateSortIcon(containerId, sortId);
 
         doSort('name', sortDir);
     });

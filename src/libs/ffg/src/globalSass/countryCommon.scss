@@ -5,23 +5,21 @@
 
 #viz {
     overflow-x: hidden;
+    margin-top: -1rem;
+    &.mobile {
+        margin-top: 1rem;
+    }
 }
 
 .country-chart {
     // for gatsby - this max-width was changed to 805 to get the chart to draw at fullsize on desktop
     max-width: 805px;
+    width: 100%;
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 800px) {
-    #viz {
-        margin-top: -1rem;
-    }
-}
-
-@media only screen and (min-width: 1000px) and (max-width: 1230px) {
+@media only screen and (min-width: 1000px) and (max-width: 1229px) {
     .country-copy {
-  
       p:first-of-type {
         margin-top: 0;
       }
@@ -56,7 +54,7 @@
         box-sizing: border-box;  
 
         // for gatsby - this was added to get the chart to render at full size when on desktop
-        width: 100%;
+        max-width: 68%;
     }
     
     #viz {
