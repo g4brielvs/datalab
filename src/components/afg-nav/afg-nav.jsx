@@ -19,7 +19,10 @@ const AfgNav = (props) => {
         
         var filename = props.location.pathname;
         filename = filename.slice(24);
-        filename = filename.slice(0, -1);
+
+        if(filename.slice(-1) === '/'){
+            filename = filename.slice(0, -1);
+        }
 
         filename = filename || 'revenue-and-gdp';
 
