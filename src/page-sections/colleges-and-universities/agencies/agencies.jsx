@@ -107,7 +107,8 @@ const Agencies = (props) => {
     <Hidden lgUp>
       <SearchPanel
         searchList={searchList}
-        listDescription='Agencies'
+        width={600}
+        listDescription='Search Agencies'
         showCollapse
         onSelect={searchItemSelected}
       />

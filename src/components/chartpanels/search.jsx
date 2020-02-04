@@ -48,8 +48,7 @@ export default class Search extends React.Component {
   };
 
   static defaultProps = {
-    'height': 400,
-    'width': 350
+    'height': 400
   };
 
   constructor(props) {

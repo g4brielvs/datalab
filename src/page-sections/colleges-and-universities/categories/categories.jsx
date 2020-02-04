@@ -202,7 +202,8 @@ const Categories = () => {
       <Hidden lgUp>
         <SearchPanel
           searchList={searchList[fundingType]}
-          listDescription='Categories'
+          width={600}
+          listDescription='Search Categories'
           showCollapse
           onSelect={searchItemSelected}
         />

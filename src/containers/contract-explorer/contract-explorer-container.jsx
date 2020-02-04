@@ -147,6 +147,7 @@ const SunburstVegaContainer = () => {
         <Grid item md={6}>
           <Search
             searchList={searchList}
+            width={500}
             listDescription='Search List of Contracts and Agencies'
             onSelect={searchSelect}
           />
