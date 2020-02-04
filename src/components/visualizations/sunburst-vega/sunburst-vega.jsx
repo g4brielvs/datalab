@@ -67,7 +67,7 @@ export default class Sunburst extends React.Component {
     const item = args[1];
     this.updateViz(item);
   }
-  
+
   updateViz(arc) {
     const previousArc = this.state.selectedArc;
     this.setState({ selectedArc: arc });
