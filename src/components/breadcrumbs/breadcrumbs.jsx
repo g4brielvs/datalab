@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import d3 from "d3v3";
 import homeImg from '../../../static/images/home-solid.svg';
 import PropTypes from "prop-types"
-import Sunburst from "../visualizations/sunburst-vega/sunburst-vega"
 
 const width = 600, height = 50;
 
+// This defines the spacing for the breadcrumbs
+// w is width
+// h is height
+// s is spacing
+// t is for the tip
+// homeW is the home button width
 const  b = {
   w: 125, h: 30, s: 3, t: 10, homeW: 40
 };
@@ -48,6 +53,7 @@ class BreadCrumbs extends Component {
         return .4;
     }
 
+    console.warn(`Invalid breadcrumb, depth not found to set opacity: ${d.name}, ${d.depth}`);
     return 1;
   };
 
