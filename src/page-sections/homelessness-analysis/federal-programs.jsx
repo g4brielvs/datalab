@@ -846,6 +846,7 @@ export default function FederalPrograms(props) {
           searchList={searchList}
           initItem='CA-600'
           listDescription='Search List of Contracts and Agencies'
+          showIcon
           onSelect={searchSelect}
         />
       </div>

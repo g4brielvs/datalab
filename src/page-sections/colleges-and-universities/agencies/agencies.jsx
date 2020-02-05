@@ -1,19 +1,20 @@
-import React, { useState }  from "react";
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as _ from 'lodash';
 import storyHeadingStyles from 'src/components/section-elements/story-heading/story-heading.module.scss';
+import styles from './agencies.module.scss';
 
 import Accordion from 'src/components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
-import SearchPanel from 'src/components/chartpanels/cu/search';
-import Share from "src/components/share/share";
+import SearchPanel from 'src/components/chartpanels/search';
+import Share from 'src/components/share/share';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
-import TableContainer from "./agencies-table-container";
+import TableContainer from './agencies-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
-import VizContainer from "./bubble-chart-container/bubble-chart-container";
+import VizContainer from './bubble-chart-container/bubble-chart-container';
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -41,7 +42,6 @@ const Agencies = (props) => {
   )
 
   const [chartView, isChartView] = useState(true);
-
   const switchView = view => {
     updateTableData(tableData);
     if (view === 'chart') {
@@ -49,13 +49,13 @@ const Agencies = (props) => {
     } else {
       isChartView(false);
     }
-  }
+  };
 
   const searchList = _data.allUnivBubbleChartCsv.nodes.map(n => {
     return {
       id: n.id,
-      heading: n.agency,
-      subheading: n.subagency
+      display: <><span className={styles.searchListAgency}>{n.agency}</span><p className={styles.searchListSubagency}>{n.subagency}</p></>,
+      filterText: n.agency + n.subagency
     }
   });
 
@@ -64,9 +64,9 @@ const Agencies = (props) => {
   const searchItemSelected = id => {
     filterTableData(id);
     if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
-  }
+  };
 
-  const tableColumnTitles = [{title: 'Recipient'}, {title: 'Agency'}, {title: 'SubAgency'}, {title:'Family'}, {title: 'Type'}, {title: 'Obligation'}];
+  const tableColumnTitles = [{ title: 'Recipient' }, { title: 'Agency' }, { title: 'SubAgency' }, { title: 'Family' }, { title: 'Type' }, { title: 'Obligation' }];
   const tableData = _data.allCuBubbleChartTableV2Csv.nodes.map(n => [n.Recipient, n.agency, n.subagency, n.family, n.type, parseInt(n.obligation)]);
 
   const [filteredTableData, setFilteredData] = useState(tableData);
@@ -76,12 +76,12 @@ const Agencies = (props) => {
     let data = [];
     let itemList;
 
-    itemList = searchList.find(function(el){
+    itemList = searchList.find(function (el) {
       return el.id === id;
     });
 
-    let obj = _.filter(tableData, {1: itemList.heading, 2:itemList.subheading});
-    if(obj && obj.length > 0) {
+    let obj = _.filter(tableData, { 1: itemList.heading, 2: itemList.subheading });
+    if (obj && obj.length > 0) {
       data.push(obj);
     }
 
@@ -99,7 +99,7 @@ const Agencies = (props) => {
     <StoryHeading
       number={'03'}
       title={'AGENCY INVESTMENTS'}
-      teaser={['Connect the agency ', <span className={storyHeadingStyles.headingRed}>to the federal investment.</span>]}
+      teaser={'Connect the agency ', <span className={storyHeadingStyles.headingRed}>to the federal investment.</span>}
       blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
       and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
     />
@@ -107,7 +107,8 @@ const Agencies = (props) => {
     <Hidden lgUp>
       <SearchPanel
         searchList={searchList}
-        listDescription='Agencies'
+        listDescription='Search Agencies'
+        showIcon
         showCollapse
         onSelect={searchItemSelected}
       />
@@ -134,7 +135,7 @@ const Agencies = (props) => {
         <Hidden mdDown>
           <VizControlPanel
             searchList={searchList}
-            listDescription='Agencies'
+            listDescription='Search Agencies'
             onSelect={searchItemSelected}
             switchView={switchView} >
             <BubbleChartOutlinedIcon />
@@ -143,13 +144,15 @@ const Agencies = (props) => {
       </Grid>
       <VizContainer
         display={chartView}
-        data = {_data.allUnivBubbleChartCsv.nodes}
-        chartRef = {chartRef} />
+        data={_data.allUnivBubbleChartCsv.nodes}
+        chartRef={chartRef}
+      />
       <TableContainer
         display={!chartView}
-        tableColumnTitles = {tableColumnTitles}
-        tableData = {filteredTableData}
-        tableRef = {tableRef} />
+        tableColumnTitles={tableColumnTitles}
+        tableData={filteredTableData}
+        tableRef={tableRef}
+      />
     </Grid>
 
     <Downloads

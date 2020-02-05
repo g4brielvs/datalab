@@ -5,7 +5,7 @@ import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 import './mapbox.scss';
 import pin from '../../../images/colleges-and-universities/map-pin.png';
 
-function Mapbox(props) {
+export default function Mapbox(props) {
 
 	useEffect(() => {
 		const data = props.data; // geojson
@@ -33,113 +33,27 @@ function Mapbox(props) {
 				closeOnClick: true,
 			});
 
-			// filter overlay section //
-			// let mapDiv = $('#collegesMap');
-			// let almaTable = $('#alma-mater-table');
-			let listingEl = $('.map-search__list');
-			let mobileListingEl = $('.map-search__list--mobile');
+			function flyToClicked() {
+				let toolTip = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.Recipient}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.State}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.COUNTY}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.Total}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${props.clickedSchool[0].properties.Total_Federal_Investment}</p></div>`;
 
-			// helper function, sort json //
-			function sortByKey(array, key) {
-				return array.sort(function (a, b) {
-					let x = a[key]; let y = b[key];
-					return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-				});
-			}
-
-			function renderAllSchools() {
-				let geoandname = data.features.map(function (ele) {
-					return {
-						coord: ele.geometry,
-						name: ele.properties.Recipient,
-						fedInvest: (ele.properties.Total_Federal_Investment), // add back "format currency global"
-						instType: ele.properties.INST_TYPE_1,
-						yearType: ele.properties.INST_TYPE_2,
-						state: ele.properties.State,
-						county: ele.properties.COUNTY,
-						numStudents: numberWithCommas(ele.properties.Total)
-					};
+				map.easeTo({
+					center: props.clickedSchool[0].geometry.coordinates,
+					zoom: 12
 				});
 
-				let sortedGeoandName = sortByKey(geoandname, 'name');
-
-				// mobile search //
-				sortedGeoandName.forEach(function (ele) {
-					let mobileListitem = document.createElement('li');
-					mobileListitem.classList.add('map-search__item--mobile');
-					mobileListitem.textContent = ele.name;
-
-					mobileListingEl.append(mobileListitem);
-
-					mobileListitem.addEventListener('click', function () {
-						let that = this;
-						let mobileMatched = geoandname.filter(function (ele) {
-							return that.textContent === ele.name;
-						});
-						let mobileTooltip = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${mobileMatched[0].name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${mobileMatched[0].state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${mobileMatched[0].county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${mobileMatched[0].numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${mobileMatched[0].fedInvest}</p></div>`;
-						map.easeTo({
-							center: mobileMatched[0].coord.coordinates,
-							zoom: 12
-						});
-						tooltip.setLngLat(mobileMatched[0].coord.coordinates)
-							.setHTML(mobileTooltip)
-							.addTo(map)
-							;
-						$("#map-search-ul--mobile").hide(); // hide mobile search list
-					});
-				});
-
-				// tablet and desktop search //
-				sortedGeoandName.forEach(function (ele) {
-					let listitem = document.createElement('li');
-					listitem.classList.add('map-search__item');
-					listitem.textContent = ele.name;
-					listitem.addEventListener('click', function () {
-						let that = this;
-						let matched = geoandname.filter(function (ele) {
-							return that.textContent === ele.name;
-						});
-						let tooltipHtml = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${matched[0].name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${matched[0].state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${matched[0].county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${matched[0].numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${matched[0].fedInvest}</p></div>`;
-						map.easeTo({
-							center: matched[0].coord.coordinates,
-							zoom: 12
-						});
-						tooltip.setLngLat(matched[0].coord.coordinates)
-							.setHTML(tooltipHtml)
-							.addTo(map);
-					});
-					listingEl.append(listitem);
-				});
+				tooltip.setLngLat(props.clickedSchool[0].geometry.coordinates)
+					.setHTML(toolTip)
+					.addTo(map);
 			};
 
-			// $('#map-table-trigger').click(function () {
-			// 	mapDiv.hide(); // hide map
-			// 	almaTable.show(); // show table
-			// });
 
-			// $('#map-chart-trigger').click(function () {
-			// 	mapDiv.show();
-			// 	almaTable.hide();
-			// });
-
-			$('#refresh-div').click(function () {
-				map.flyTo({
-					center: [-80.59179687498357, 40.66995747013945],
-					zoom: 3,
-					bearing: 0,
-					speed: 1,
-					curve: 1,
-				});
-				tooltip.remove();
-				$('.map-detail').removeClass('map-detail--active');
-			});
-
-			// when the map first loads all resources!
 			map.on('load', function () {
 
-				renderAllSchools(); // populate sidebar with list of all schools
-
 				map.scrollZoom.disable(); // disable until we click on the map
+
+				if (props.clickedSchool != null) {
+					flyToClicked();
+				}
 
 				// hide on "clickout" of element
 				$(document).click(function (e) {
@@ -332,44 +246,6 @@ function Mapbox(props) {
 			});
 		}; // end function (createMapbox)
 
-		// function createInstTable() {
-		//   d3.csv('data-lab-data/CU/updated_CU_data/instutions_table_view_data_v3.csv', function(err, data) {
-
-		//     let table = d3.select('#alma-mater-table').append('table')
-		//         .attr('id', 'institution-table'); // id given to table for Datatables.js
-
-		//     let titles = ['Institution', 'Type', 'Contracts', 'Grants', 'Student Aid', 'Total $ Received'];
-
-		//     let headers = table.append('thead').append('tr')
-		// 	    .selectAll('th')
-		// 	    .data(titles).enter()
-		// 	    .append('th')
-		// 	    .text(function (d) {
-		// 	      return d;
-		// 	    })
-		//     ;
-
-		//     // concat into a "type" property
-		//     data.forEach(function(e){
-		// 	  e.type = e.INST_TYPE_1 + " /" + e.INST_TYPE_2;
-		//     });
-
-		//     $('#institution-table').dataTable({
-		// 	  data: data,
-		// 	  columns: [
-		// 	    {"data": 'Recipient'},
-		// 	    {"data": 'type'},
-		// 	    {"data": 'contracts', 'render': $.fn.dataTable.render.number(',', '.', 0, '$')},
-		// 	    {"data": 'grants', 'render': $.fn.dataTable.render.number(',', '.', 0, '$')},
-		// 	    {"data": 'student_aid', 'render': $.fn.dataTable.render.number(',', '.', 0, '$')},
-		// 	    {"data": 'Total_Federal_Investment', 'render': $.fn.dataTable.render.number(',', '.', 0, '$')}
-		// 	  ],
-		// 	  deferRender: true,
-		// 	  scrollCollapse: true,
-		// 	  scroller: true
-		//     });
-		//   });
-		// };
 
 		function filterMapSearch() {
 			$('#map-search__input').keyup(function () {
@@ -452,10 +328,7 @@ function Mapbox(props) {
 
 	return (<>
 		<div id="collegesMap"></div>
-		<div id='alma-mater-table'></div>
 		<div id="inst-panel"></div>
 	</>);
 
 };
-
-export default Mapbox;
