@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styles from './categories.module.scss';
+import * as _ from 'lodash';
 
 import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
@@ -12,7 +13,7 @@ import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
 
-import * as _ from 'lodash';
+const downloadDate = 'March 2019';
 
 const Categories = () => {
 
@@ -119,7 +120,7 @@ const Categories = () => {
 
   const searchSort = (a, b) => a.filterText > b.filterText;
 
-  // due to how GraphQL groups, we only want the first of each unique group
+  // each group includes all recipients, which we don't care about, so we only want the first of each group
   const searchList = {
     contracts: _data.contractsSearch.group
       .map(n => ({
@@ -162,19 +163,13 @@ const Categories = () => {
     let itemList;
 
     const searchListByType = searchList[fundingType];
+    itemList = searchListByType.find(el => el.id === id);
 
-    itemList = searchListByType.find(function (el) {
-      return el.id === id;
-    });
-
-    let obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
-
+    const obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
     if (obj && obj.length > 0) {
       data.push(obj);
     }
-
     data = _.flatten(data);
-
     updateTableData(data);
   }
 
@@ -187,7 +182,9 @@ const Categories = () => {
 
   const searchItemSelected = id => {
     filterTableData(id);
-    if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
+    if (chartRef && chartRef.current) {
+      chartRef.current.clickById(id);
+    }
   }
 
   return (
@@ -289,7 +286,7 @@ const Categories = () => {
             :
             '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
         }
-        date={'March 2019'}
+        date={downloadDate}
       />
     </>
   )
