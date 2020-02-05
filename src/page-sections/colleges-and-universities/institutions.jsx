@@ -143,7 +143,7 @@ const Institutions = (props) => {
             showDetails={getClickedDetails}
           />
           <Downloads
-            href={'/data/colleges-and-universities/institutions/mapData.json'}
+            href={'/data/colleges-and-universities/institutions/mapdata.json'}
             date={'March 2019'}
           />
           <DataTable
@@ -173,7 +173,7 @@ const Institutions = (props) => {
       </Grid>
     </Grid>
     <Downloads
-      href={'/data/colleges-and-universities/institutions/tableData.csv'}
+      href={'/data/colleges-and-universities/institutions/tabledata.csv'}
       date={'March 2019'}
     />
   </>);
