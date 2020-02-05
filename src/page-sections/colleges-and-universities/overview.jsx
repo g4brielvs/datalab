@@ -1,11 +1,11 @@
 import '../../styles/index.scss';
-import storyHeadingStyles from "../../components/section-elements/story-heading/story-heading.module.scss";
+import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 import React from 'react';
 
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
-import ControlBar from "../../components/control-bar/control-bar";
+import ControlBar from '../../components/control-bar/control-bar';
 
 const Overview = (props) => {
   return (
