@@ -1,40 +1,58 @@
-import React from "react";
-import "../../styles/index.scss";
+import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import '../../styles/index.scss';
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 import styles from './cu.module.scss';
-import { useStaticQuery, graphql } from "gatsby"
 
-import Accordion from "../../components/accordion/accordion";
-import StoryHeading from "../../components/section-elements/story-heading/story-heading";
-import Downloads from "../../components/section-elements/downloads/downloads";
-import GeoDataMapbox from '../../../static/unstructured-data/mapbox/mapData.json';
-import dataTableData from '../../../static/unstructured-data/mapbox/tableData.csv';
-import Share from '../../components/share/share';
-import ControlBar from "../../components/control-bar/control-bar";
-import DataTable from "../../components/table/data-table";
+import Accordion from '../../components/accordion/accordion';
+import ControlBar from '../../components/control-bar/control-bar';
+import DataTable from '../../components/table/data-table';
+import Downloads from '../../components/section-elements/downloads/downloads';
+import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
 import Grid from '@material-ui/core/Grid';
+import Share from '../../components/share/share';
+import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
+
+import dataTableData from '../../../static/unstructured-data/mapbox/tableData.csv';
+import GeoDataMapbox from '../../../static/unstructured-data/mapbox/mapData.json';
 
 import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
-const Institutions = (props) => {
+export default function Institutions(props) {
 
-  // check required data properties/format to fail "gracefully"
-  if (!GeoDataMapbox.features
-    || !Array.isArray(GeoDataMapbox.features)
-    || !GeoDataMapbox.features[0].id
-    || !GeoDataMapbox.features[0].properties
-    || !GeoDataMapbox.features[0].properties.Recipient
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
+
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
+    setSchool(filteredList);
+    return filteredList;
+  };
+
+  // check required data properties/format to fail 'gracefully'
+  if (!GeoDataMapbox.features ||
+    !Array.isArray(GeoDataMapbox.features) ||
+    !GeoDataMapbox.features[0].id ||
+    !GeoDataMapbox.features[0].properties ||
+    !GeoDataMapbox.features[0].properties.Recipient
   ) {
     return <div>Cannot display this information; error in data file format.</div>;
-  }
+  };
 
   if (!GeoDataMapbox.features[0].properties.schoolId) {
     GeoDataMapbox.features.forEach(d => {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
     });
-  }
+  };
 
   const panelDetails = useStaticQuery(graphql`
     query {
@@ -103,23 +121,23 @@ const Institutions = (props) => {
           'rows': agencyTop5
         }
       ]
-    }
+    };
     detailPanelRef.current.updateDetails(schoolDetails);
-  }
+  };
 
   const detailPanelRef = React.createRef();
 
-  const tableColumnTitles = [{title: 'Institution'}, {title: 'Type'}, {title: 'Contracts'}, {title: 'Grants'}, {title: 'Student Aid'}, {title: 'Total $ Received'}];
+  const tableColumnTitles = [{ title: 'Institution' }, { title: 'Type' }, { title: 'Contracts' }, { title: 'Grants' }, { title: 'Student Aid' }, { title: 'Total $ Received' }];
 
   return (<>
     <StoryHeading
       number={'02'}
       title={'My Alma Mater'}
-      teaser={['Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>]}
+      teaser={'Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>}
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
-    <Accordion title="Instructions">
+    <Accordion title='Instructions'>
       <p>Click the map to get started</p>
       <p>The number displayed on each cluster is the number of institutions in that area</p>
       <p>Click on a regional cluster to expand the area and display details for each school</p>
@@ -138,12 +156,21 @@ const Institutions = (props) => {
           />
         </ControlBar>
         <div>
+          <VizControlPanel
+            searchList={searchList}
+            listDescription='Search Institutions'
+            onSelect={filterByClicked}
+            switchView={filterByClicked}
+          >
+            <img src={GeolocationIcon} />
+          </VizControlPanel>
           <Mapbox
             data={GeoDataMapbox}
             showDetails={getClickedDetails}
+            clickedSchool={clickedSchool}
           />
           <Downloads
-            href={'/data/colleges-and-universities/institutions/mapData.json'}
+            href={'/data/colleges-and-universities/institutions/mapdata.json'}
             date={'March 2019'}
           />
           <DataTable
@@ -152,7 +179,7 @@ const Institutions = (props) => {
                 x.Recipient,
                 x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
                 parseInt(x.contracts),
-                parseInt( x.grants),
+                parseInt(x.grants),
                 parseInt(x.student_aid),
                 parseInt(x.Total_Federal_Investment),
               ];
@@ -173,12 +200,8 @@ const Institutions = (props) => {
       </Grid>
     </Grid>
     <Downloads
-      href={'/data/colleges-and-universities/institutions/tableData.csv'}
+      href={'/data/colleges-and-universities/institutions/tabledata.csv'}
       date={'March 2019'}
     />
   </>);
 };
-
-
-export default Institutions;
-

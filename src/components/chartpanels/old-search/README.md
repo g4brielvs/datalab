@@ -1,0 +1,1 @@
+This is the original C&U search/filter panel, which wouldn't work for large lists in React. These are being kept for comparison and history, until the new one is shown to be a complete replacement. This folder should be deleted at that time.

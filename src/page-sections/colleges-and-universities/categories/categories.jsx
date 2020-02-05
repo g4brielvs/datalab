@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import styles from './categories.module.scss';
+import * as _ from 'lodash';
 
 import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
-import SearchPanel from 'src/components/chartpanels/cu/search';
+import SearchPanel from 'src/components/chartpanels/search';
 import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
 
-import * as _ from 'lodash';
+const downloadDate = 'March 2019';
 
 const Categories = () => {
 
@@ -116,35 +118,29 @@ const Categories = () => {
     }
   `);
 
-  const searchSort = (a, b) => {
-    if (a.heading > b.heading) return 1;
-    if (a.heading < b.heading) return -1;
-    if (a.subheading > b.subheading) return 1;
-    if (a.subheading < b.subheading) return -1;
-    return 0;
-  };
+  const searchSort = (a, b) => a.filterText > b.filterText;
 
-  // due to how GraphQL groups, we only want the first of each unique group
+  // each group includes all recipients, which we don't care about, so we only want the first of each group
   const searchList = {
     contracts: _data.contractsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        heading: n.nodes[0].family,
-        subheading: n.nodes[0].Program_Title
+        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort)
   };
@@ -167,19 +163,13 @@ const Categories = () => {
     let itemList;
 
     const searchListByType = searchList[fundingType];
+    itemList = searchListByType.find(el => el.id === id);
 
-    itemList = searchListByType.find(function (el) {
-      return el.id === id;
-    });
-
-    let obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
-
+    const obj = _.filter(tableData[fundingType], { 0: itemList.heading, 1: itemList.subheading });
     if (obj && obj.length > 0) {
       data.push(obj);
     }
-
     data = _.flatten(data);
-
     updateTableData(data);
   }
 
@@ -192,7 +182,9 @@ const Categories = () => {
 
   const searchItemSelected = id => {
     filterTableData(id);
-    if (chartRef && chartRef.current) { chartRef.current.clickById(id); }
+    if (chartRef && chartRef.current) {
+      chartRef.current.clickById(id);
+    }
   }
 
   return (
@@ -207,8 +199,8 @@ const Categories = () => {
       <Hidden lgUp>
         <SearchPanel
           searchList={searchList[fundingType]}
-          listDescription='Categories'
-          showCollapse
+          listDescription='Search Categories'
+          showIcon
           onSelect={searchItemSelected}
         />
       </Hidden>
@@ -227,7 +219,7 @@ const Categories = () => {
           <Hidden mdDown>
             <VizControlPanel
               searchList={searchList[fundingType]}
-              listDescription='Categories'
+              listDescription='Search Categories'
               onSelect={searchItemSelected}
               switchView={switchView}
             >
@@ -241,7 +233,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuContracts'
-                  name='FundingType'
+                  name='fundingType'
                   value='contracts'
                   onChange={onTypeChange}
                   checked={fundingType === 'contracts'}
@@ -251,7 +243,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuGrants'
-                  name='FundingType'
+                  name='fundingType'
                   value='grants'
                   onChange={onTypeChange}
                   checked={fundingType === 'grants'}
@@ -261,7 +253,7 @@ const Categories = () => {
               <Grid item>
                 <input type='radio'
                   id='cuResearch'
-                  name='FundingType'
+                  name='fundingType'
                   value='research'
                   onChange={onTypeChange}
                   checked={fundingType === 'research'}
@@ -294,7 +286,7 @@ const Categories = () => {
             :
             '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
         }
-        date={'March 2019'}
+        date={downloadDate}
       />
     </>
   )

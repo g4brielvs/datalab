@@ -208,6 +208,7 @@ const SunburstVegaContainer = () => {
           <Search
             searchList={searchList}
             listDescription='Search List of Contracts and Agencies'
+            showIcon
             onSelect={searchSelect}
           />
           <div className={styles.sunburstDetails}>

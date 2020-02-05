@@ -9,6 +9,12 @@ import * as _ from "lodash";
 import numberFormatter from "src/utils/number-formatter";
 
 export default class DataTable extends React.Component {
+  static propTypes = {
+    display: PropTypes.bool,
+    columnTitles: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    data: PropTypes.arrayOf(PropTypes.array).isRequired
+  };
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -151,10 +157,3 @@ export default class DataTable extends React.Component {
     );
   }
 }
-
-DataTable.propTypes = {
-  display: PropTypes.bool,
-  columnTitles: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  data: PropTypes.arrayOf(PropTypes.array).isRequired
-}
-

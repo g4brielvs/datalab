@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import styles from "./styles/variables.scss"
 
 // A custom theme for this app
 const theme = createMuiTheme({
