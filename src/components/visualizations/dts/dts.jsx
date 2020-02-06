@@ -80,12 +80,12 @@ function DTS(props) {
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
       },
       {
-        categories: ['Veteran Affairs programs', 'Dept of Veterans Affairs ( VA )'],
+        categories: ['Dept of Veterans Affairs ( VA )', 'Veteran Affairs programs'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       },
       {
-        categories: ['Veteran Benefit (EFT)', 'VA - Benefits'],
+        categories: ['Veteran Benefit ( EFT )', 'VA Benefits'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veteran Benefits (EFT) was renamed VA – Benefits on the Daily Treasury Statement. Withdrawals previously reported under Veteran Benefits (EFT) are now reported under VA – Benefits. Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       }
@@ -853,6 +853,12 @@ function DTS(props) {
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
+
+            // check for undefined...
+            if (optionsDict[cateName] === undefined) {
+              return;
+            };
+
             masterMapping[key]["today"].push({
               "name": cateName,
               values: optionsDict[cateName]["today"],
@@ -907,7 +913,8 @@ function DTS(props) {
       let foodGrouping = sharedCategories[0];
       let medicareGrouping = sharedCategories[1];
       let NASAGrouping = sharedCategories[2];
-      //let veteranGrouping = sharedCategories[3];
+      let veteranGrouping = sharedCategories[3];
+//      let veteranExtraGrouping = sharedCategories[4];
 
       for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
@@ -927,7 +934,17 @@ function DTS(props) {
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
-      // for (let cateName of veteranGrouping.categories) {
+      for (let cateName of veteranGrouping.categories) {
+        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
+        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
+        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      }
+    
+      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['today']);
+      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['mtd']);
+      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['fytd']);
+
+      // for (let cateName of veteranExtraGrouping.categories) {
       //   combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
       //   combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
       //   combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
@@ -1032,6 +1049,31 @@ function DTS(props) {
       //     color: lineColors[lineColors.length - 1]
       //   });
       // };
+
+      // for (let cateName of veteranExtraGrouping.categories) {
+      //   masterMapping[cateName]['today'].push({
+      //     name: "Combined",
+      //     values: combinedDailyValues,
+      //     date: veteranExtraGrouping.date,
+      //     footnote: NASAGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      //   masterMapping[cateName]['mtd'].push({
+      //     name: "Combined",
+      //     values: combinedMTD,
+      //     date: foodGrouping.date,
+      //     footnote: veteranExtraGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      //   masterMapping[cateName]['fytd'].push({
+      //     name: "Combined",
+      //     values: combinedFYTDValues,
+      //     date: foodGrouping.date,
+      //     footnote: veteranExtraGrouping.footnote,
+      //     color: lineColors[lineColors.length - 1]
+      //   });
+      // };
+
 
     }
 
