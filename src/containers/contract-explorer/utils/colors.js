@@ -1,6 +1,8 @@
 import * as _ from "lodash"
 
-export default function appendColors(sunData, colors) {
+export default function appendColors(sunData) {
+  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
+    '#AE933D', '#D39248', '#EA8052'];
   let agencies = _.filter(sunData.tree, { 'type': 'agency' });
   const agenciesColors = {};
 

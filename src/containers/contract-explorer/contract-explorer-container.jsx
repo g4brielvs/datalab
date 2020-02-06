@@ -16,8 +16,6 @@ import findArcByName from './utils/find-by-name';
 import filterSunburst from './utils/filter';
 
 const SunburstVegaContainer = () => {
-  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
-    '#AE933D', '#D39248', '#EA8052'];
 
   const detailDefaults = {
     label: null,
@@ -39,7 +37,7 @@ const SunburstVegaContainer = () => {
   const [updatedSunData, setData] = useState(sunData);
 
   useEffect(() => {
-    setOriginalData(appendColors(flareData, colors));
+    setOriginalData(appendColors(flareData));
     getDetails();
   }, []);
 
@@ -48,7 +46,7 @@ const SunburstVegaContainer = () => {
   const subagencies = [];
   const recipients = [];
 
-  awardsData.map((e, i) => {
+  awardsData.map((e) => {
 
     if (agencies.findIndex(a => a.display === e.agency) === -1) {
       agencies.push({
@@ -73,10 +71,6 @@ const SunburstVegaContainer = () => {
   });
 
   const searchList = agencies.concat(subagencies).concat(recipients);
-
-  // try to force redraw of sunburst (or entire container); NOT WORKING
-  // const [, updateState] = React.useState();
-  // const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
 
   const sunburstRef = React.createRef();
 
@@ -109,6 +103,7 @@ const SunburstVegaContainer = () => {
         obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.obligation || 0), 0)
       });
     }
+
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
   }
 
@@ -117,6 +112,7 @@ const SunburstVegaContainer = () => {
 
     const breadcrumbs = [];
     const agency = sunData.tree.find(node => node.name === selectedArc.agency);
+    const trail = [defaultSelection];
 
     switch(selectedArc.depth) {
       case 0:
@@ -136,8 +132,6 @@ const SunburstVegaContainer = () => {
         breadcrumbs.push(selectedArc)
         break;
     }
-
-    const trail = [defaultSelection];
 
     breadcrumbs.forEach((item) => {
       trail.push({
