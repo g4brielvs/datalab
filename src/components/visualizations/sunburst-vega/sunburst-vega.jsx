@@ -34,12 +34,12 @@ export default class Sunburst extends React.Component {
   }
 
   handleUnhover() {
-    this.props.getSelectedArc(this.state.selectedArc);
+    this.props.updatePanels();
   }
 
   handleHover(...args) {
     const item = args[1];
-    this.props.getSelectedArc(item);
+    this.props.updatePanels(item);
   }
 
   handleClick(...args) {
@@ -64,7 +64,8 @@ export default class Sunburst extends React.Component {
 }
 
 Sunburst.propTypes = {
-  getSelectedArc: PropTypes.func.isRequired,
+  updatePanels: PropTypes.func.isRequired,
+  updateSunburst: PropTypes.func.isRequired,
   default: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired
 }

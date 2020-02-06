@@ -82,10 +82,7 @@ const SunburstVegaContainer = () => {
 
   const searchSelect = (id) => {
     const selectedArc = findArcById(sunData, id);
-    setSelectedArc(selectedArc);
-    // if (sunburstRef && sunburstRef.current) {
-    //   sunburstRef.current.updateSunburst(selectedArc);
-    // }
+    updateSunburst(selectedArc);
   }
 
   function updateSunburst(selectedArc) {
@@ -93,11 +90,11 @@ const SunburstVegaContainer = () => {
     const newData = selectedArc.id === 1 ? sunData : { "tree": filterSunburst(sunData, selectedArc) };
 
     if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateData(newData); }
-    
+
     setSelectedArc(selectedArc);
     setPreviousArc(previousArc);
     setData(newData);
-    // Update the sections here - ie. breadcrumbs, details,
+    updatePanels(selectedArc);
   }
 
   function getTop5(items, type) {
@@ -158,6 +155,7 @@ const SunburstVegaContainer = () => {
     // if depth is 0, the item flare will be selected
     const selectedArc = findArcByName(sunData, d);
     setSelectedArc(selectedArc);
+    updateSunburst(selectedArc);
   }
 
   const breadcrumbRef = React.createRef();
@@ -213,12 +211,12 @@ const SunburstVegaContainer = () => {
 
   // Upon arc selection, sunburst sends the arc info to the container
   // Use arc to the arc color, selected arc, update breadcrumbs and get details
-  function getSelectedArc(selectedArc) {
-    const tempPreviousArc = arc;
-    updateBreadcrumbs(selectedArc);
-    getDetails(selectedArc);
-    setPreviousArc(tempPreviousArc);
-    setSelectedArc(selectedArc);
+  function updatePanels(tempArc) {
+    if(tempArc !== arc) {
+      const item = tempArc ? tempArc : arc;
+      updateBreadcrumbs(item);
+      getDetails(item);
+    }
   }
 
   return <>
@@ -239,7 +237,7 @@ const SunburstVegaContainer = () => {
           <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} onSelect={selectBreadcrumb} ref={breadcrumbRef} />
           <Sunburst
             data={updatedSunData}
-            getSelectedArc={getSelectedArc}
+            updatePanels={updatePanels}
             updateSunburst={updateSunburst}
             default={defaultSelection}
             ref={sunburstRef} />
@@ -258,7 +256,7 @@ const SunburstVegaContainer = () => {
       <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} onSelect={selectBreadcrumb} ref={breadcrumbRef} />
       <Sunburst
         data={updatedSunData}
-        getSelectedArc={getSelectedArc}
+        updatePanels={updatePanels}
         updateSunburst={updateSunburst}
         default={defaultSelection}
         ref={sunburstRef} />
