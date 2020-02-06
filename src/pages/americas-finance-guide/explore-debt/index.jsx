@@ -96,7 +96,7 @@ function ExploreDebtPage(props) {
                                 </Accordion>
                             </section>
 
-                            <section className="tour intro-hidden">
+                            <section className="tour sidebar intro-hidden">
                                 <div className="tour__part-one">
                                     <h1>How has the federal debt changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal debt since {AfgData.debt_trend_start.value}.</p>
