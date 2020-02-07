@@ -25,7 +25,7 @@ const SunburstVegaContainer = () => {
   const [arc, setSelectedArc] = useState(null);
   const [previousArc, setPreviousArc] = useState(null);
   const [breadcrumbs, setBreadcrumbs] = useState(null);
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState({});
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
 
@@ -69,7 +69,7 @@ const SunburstVegaContainer = () => {
 
   const searchSelect = (id) => {
     const selectedArc = findArcById(sunData, id);
-    updateSunburst(selectedArc);
+    getSearchResults(selectedArc);
   }
 
   function updateSunburst(selectedArc) {
@@ -81,7 +81,6 @@ const SunburstVegaContainer = () => {
     setSelectedArc(selectedArc);
     setPreviousArc(previousArc);
     setData(newData);
-    updatePanels(selectedArc);
   }
 
   function getTop5(items, type) {
@@ -142,7 +141,7 @@ const SunburstVegaContainer = () => {
     // if depth is 0, the item flare will be selected
     const selectedArc = findArcByName(sunData, d);
     setSelectedArc(selectedArc);
-    updateSunburst(selectedArc);
+    updateAll(selectedArc);
   }
 
   const breadcrumbRef = React.createRef();
@@ -167,28 +166,41 @@ const SunburstVegaContainer = () => {
       name: null
     };
 
+
     // get the top contribution for the selection
     switch (depth) {
       case 0:
         details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        break;
       case 1:
-        details.label= `${pretext} ${selectedArc.name}`;
-        details.total = awardsData.filter(node => node.agency === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.label = `${pretext} ${selectedArc.name}`;
+        const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
+        details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(agencyAwardsData, 'agency');
+        // find all instances of the agency
+        break;
       case 2:
-        details.label= `${pretext} ${selectedArc.name}`;
-        details.total = awardsData.filter(node => node.subagency === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.label = `${pretext} ${selectedArc.name}`;
+        const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
+        details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(subagencyAwardsData, 'agency');
+
+        // find all instances of the agency
+
+        break;
 
       case 3:
-        details.label= `${pretext} ${selectedArc.name}`;
-        details.total = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.label = `${pretext} ${selectedArc.name}`;
+        const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
+        details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(recipientAwardsData, 'agency');
+        break;
+    }
 
+    updateSunburst(selectedArc);
+    updateBreadcrumbs(selectedArc);
 
-        details.label = 'Agencies';
-    details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-    details.top5 = getTop5(awardsData, 'agency');
-    details.name = 'Contract Spending In Fiscal Year 2019';
-    const agencies = sunData.filter(node => node.agency === selectedArc.agency);
-    details.total = sunData.filter(node => node.agency === selectedArc.agency).reduce((a, b) => a + (b.obligation || 0), 0);
+    setDetails(details);
 
   }
 
@@ -238,9 +250,16 @@ const SunburstVegaContainer = () => {
   function updatePanels(tempArc) {
     if(tempArc !== arc) {
       const item = tempArc ? tempArc : arc;
-      updateBreadcrumbs(item);
       getDetails(item);
+      updateBreadcrumbs(item);
     }
+  }
+
+
+  function updateAll(selectedArc) {
+    updateSunburst(selectedArc);
+    updateBreadcrumbs(selectedArc);
+    updatePanels(selectedArc);
   }
 
   return <>
