@@ -105,7 +105,7 @@ function RevenueAndGdpPage(props) {
                                 </Accordion>
                             </section>
 
-                            <section className="tour intro-hidden">
+                            <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the sources of government revenue?</h1>
                                 <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                             </section>

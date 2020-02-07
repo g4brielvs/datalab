@@ -13,6 +13,10 @@ $padding: 1.25rem;
     margin: 1rem auto;
     transition: opacity 1s ease;
 
+    > div {
+        margin-bottom: 0;
+    }
+
     ul {
         list-style-type: disc;
     }
