@@ -401,17 +401,19 @@ function OverviewPage(props) {
                     </section>
 
                     <section className="hwcta">
-                        <p>This analysis was conducted using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending of the United States and the <a href={AfgData.mspd_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt.</p>
-                        <p>U.S. Census Bureau data was used for <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">population</a> and <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">household</a> estimates. <a href={AfgData.census_median_home.value} rel="noopener noreferrer" target="_blank">Median home price estimates</a> are also provided by the U.S. Census Bureau. Rent estimates come from the <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development (HUD)</a>. The Bureau of Labor Statistics (BLS) <a href={AfgData.bls_occ_employment.value} rel="noopener noreferrer" target="_blank">Occupational Employment Statistics</a> was used for wage estimates. Information on the amount of credit card debt added by Americans comes from the Federal Reserve Bank of New York’s <a href={AfgData.frbny_microecon.value} rel="noopener noreferrer" target="_blank">Center for Microeconomic Data</a>. The annual 10-K reports of the top S&P 500 companies were compiled in order to find the equivalent revenue from companies to match the federal government’s revenue for the year. The <a href={AfgData.artba_road_cost.value} rel="noopener noreferrer" target="_blank">American Road and Transportation Builders Association</a> provides information about the cost of building new roads derived from the cost models of different states.</p>
-                        <div className="afg__download--div">
-                            <div className="afg__download--heading">Download Source Data</div>
-                            <ul>
-                                <li><a href="/americas-finance-guide/afgData/overview_federal_revenue.csv" download="overview_federal_revenue.csv">overview_federal_revenue.csv</a></li>
-                                <li><a href="/americas-finance-guide/afgData/overview_federal_spending.csv" download="overview_federal_spending.csv">overview_federal_spending.csv</a></li>
-                                <li><a href="/americas-finance-guide/afgData/overview_federal_deficit.csv" download="overview_federal_deficit.csv">overview_federal_deficit.csv</a></li>
-                                <li><a href="/americas-finance-guide/afgData/overview_federal_debt.csv" download="overview_federal_debt.csv">overview_federal_debt.csv</a></li>
-                            </ul>
-                        </div>
+                        <Accordion title="Data Sources and Methodology">
+                            <p>This analysis was conducted using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending of the United States and the <a href={AfgData.mspd_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt.</p>
+                            <p>U.S. Census Bureau data was used for <a href={AfgData.census_population.value} rel="noopener noreferrer" target="_blank">population</a> and <a href={AfgData.census_household.value} rel="noopener noreferrer" target="_blank">household</a> estimates. <a href={AfgData.census_median_home.value} rel="noopener noreferrer" target="_blank">Median home price estimates</a> are also provided by the U.S. Census Bureau. Rent estimates come from the <a href={AfgData.hud_median_rent.value} rel="noopener noreferrer" target="_blank">Department of Housing and Urban Development (HUD)</a>. The Bureau of Labor Statistics (BLS) <a href={AfgData.bls_occ_employment.value} rel="noopener noreferrer" target="_blank">Occupational Employment Statistics</a> was used for wage estimates. Information on the amount of credit card debt added by Americans comes from the Federal Reserve Bank of New York’s <a href={AfgData.frbny_microecon.value} rel="noopener noreferrer" target="_blank">Center for Microeconomic Data</a>. The annual 10-K reports of the top S&P 500 companies were compiled in order to find the equivalent revenue from companies to match the federal government’s revenue for the year. The <a href={AfgData.artba_road_cost.value} rel="noopener noreferrer" target="_blank">American Road and Transportation Builders Association</a> provides information about the cost of building new roads derived from the cost models of different states.</p>
+                            <div className="afg__download--div">
+                                <div className="afg__download--heading">Download Source Data</div>
+                                <ul>
+                                    <li><a href="/americas-finance-guide/afgData/overview_federal_revenue.csv" download="overview_federal_revenue.csv">overview_federal_revenue.csv</a></li>
+                                    <li><a href="/americas-finance-guide/afgData/overview_federal_spending.csv" download="overview_federal_spending.csv">overview_federal_spending.csv</a></li>
+                                    <li><a href="/americas-finance-guide/afgData/overview_federal_deficit.csv" download="overview_federal_deficit.csv">overview_federal_deficit.csv</a></li>
+                                    <li><a href="/americas-finance-guide/afgData/overview_federal_debt.csv" download="overview_federal_debt.csv">overview_federal_debt.csv</a></li>
+                                </ul>
+                            </div>
+                        </Accordion>
                     </section>
 
                     <div className="historical-quote">
