@@ -155,6 +155,43 @@ const SunburstVegaContainer = () => {
     setBreadcrumbs(trail);
   }
 
+  // list the agencies for the selected
+  function getSearchResults(selectedArc) {
+    const depth = selectedArc && selectedArc.depth ? selectedArc.depth : 0;
+    const pretext = 'Total Contracts Related To';
+
+    const details = {
+      label: null,
+      total: null,
+      top5: [],
+      name: null
+    };
+
+    // get the top contribution for the selection
+    switch (depth) {
+      case 0:
+        details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+      case 1:
+        details.label= `${pretext} ${selectedArc.name}`;
+        details.total = awardsData.filter(node => node.agency === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+      case 2:
+        details.label= `${pretext} ${selectedArc.name}`;
+        details.total = awardsData.filter(node => node.subagency === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+
+      case 3:
+        details.label= `${pretext} ${selectedArc.name}`;
+        details.total = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+
+
+        details.label = 'Agencies';
+    details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+    details.top5 = getTop5(awardsData, 'agency');
+    details.name = 'Contract Spending In Fiscal Year 2019';
+    const agencies = sunData.filter(node => node.agency === selectedArc.agency);
+    details.total = sunData.filter(node => node.agency === selectedArc.agency).reduce((a, b) => a + (b.obligation || 0), 0);
+
+  }
+
   function getDetails (selectedArc) {
     const depth = selectedArc && selectedArc.depth ? selectedArc.depth : 0;
 
