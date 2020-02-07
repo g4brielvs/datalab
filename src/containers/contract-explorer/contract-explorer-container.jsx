@@ -5,6 +5,7 @@ import { Grid, Hidden } from '@material-ui/core';
 import Downloads from "src/components/section-elements/downloads/downloads"
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import pscData from '../../../static/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv';
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -30,7 +31,6 @@ const SunburstVegaContainer = () => {
   const [updatedSunData, setData] = useState(sunData);
 
   useEffect(() => {
-    const details = getDetails();
     setOriginalData(appendColors(flareData));
     setDetails(details);
 
@@ -163,7 +163,7 @@ const SunburstVegaContainer = () => {
       name: null
     };
 
-
+    const header = `${pretext} ${selectedArc.name}`;
     // get the top contribution for the selection
     switch (depth) {
       case 0:
@@ -174,6 +174,7 @@ const SunburstVegaContainer = () => {
         const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
         details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(agencyAwardsData, 'agency');
+        details.label = details.top5.length > 1 ? 'Agencies' : 'Agency';
         // find all instances of the agency
         break;
       case 2:
@@ -181,6 +182,8 @@ const SunburstVegaContainer = () => {
         const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
         details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(subagencyAwardsData, 'agency');
+        details.label = details.top5.length > 1 ? 'Agencies' : 'Agency';
+
 
         // find all instances of the agency
 
@@ -191,6 +194,8 @@ const SunburstVegaContainer = () => {
         const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
         details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(recipientAwardsData, 'agency');
+        details.label = details.top5.length > 1 ? 'Agencies' : 'Agency';
+
         break;
     }
 
@@ -228,9 +233,17 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
+        // total awards for the contractor and selected agency
+        // total awards for the contractor in total
+        // list the PSC
         const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        const contractTotal = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
+        console.log(pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name));
+        // from here I need to show the psc name and the obligation in the detail card
+        // maybe I need a new card here?
+
         // add detail here
         break;
     }
