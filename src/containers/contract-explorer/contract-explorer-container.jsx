@@ -17,13 +17,6 @@ import filterSunburst from './utils/filter';
 
 const SunburstVegaContainer = () => {
 
-  const detailDefaults = {
-    label: null,
-    total: null,
-    top5: [],
-    name: null
-  }
-
   const defaultSelection = {
     name: 'flare',
     depth: 0
@@ -32,7 +25,7 @@ const SunburstVegaContainer = () => {
   const [arc, setSelectedArc] = useState(null);
   const [previousArc, setPreviousArc] = useState(null);
   const [breadcrumbs, setBreadcrumbs] = useState(null);
-  const [details, setDetails] = useState(detailDefaults);
+  const [details, setDetails] = useState(null);
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
 
