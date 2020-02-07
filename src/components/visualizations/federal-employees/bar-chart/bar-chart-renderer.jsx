@@ -1,11 +1,8 @@
-import KeyModule from "../util/key-module"
-import * as d3 from "d3v4"
-import Tooltip from "../util/tooltip"
+import * as d3 from "d3v4";
+import Tooltip from "../util/tooltip";;
 
 /* Adapted from fedscope barchart-module.js */
 const BarChartRenderer = {
-
-  keyModule: KeyModule,
 
   draw: (data, { occupationCategories }) => {
     function handleMouseOver(d) {
@@ -52,34 +49,6 @@ const BarChartRenderer = {
           return ""
       }
     }
-
-    KeyModule.draw(
-      "barChartKey",
-      [
-        {
-          name: "White Collar",
-          fillColor: "#2fbab7",
-          borderColor: "#2fbab7",
-        },
-        {
-          name: "Blue Collar",
-          fillColor: "#2272ce",
-          borderColor: "#2272ce",
-        },
-        {
-          name: "Other",
-          fillColor: "#5d6474",
-          borderColor: "#5d6474",
-        },
-      ],
-      {
-        orientation: "horizontal",
-        fontSize: "1rem",
-        shape: "rect",
-        spacing: 150,
-        borderWidth: 2,
-      },
-    )
 
     g.selectAll("*").remove()
 
