@@ -25,7 +25,7 @@ const SunburstVegaContainer = () => {
   const [arc, setSelectedArc] = useState(null);
   const [previousArc, setPreviousArc] = useState(null);
   const [breadcrumbs, setBreadcrumbs] = useState(null);
-  const [details, setDetails] = useState({});
+  const [sunburstDetails, setDetails] = useState({});
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
 
@@ -69,18 +69,14 @@ const SunburstVegaContainer = () => {
 
   const searchSelect = (id) => {
     const selectedArc = findArcById(sunData, id);
-    getSearchResults(selectedArc);
+    const details = getSearchResults(selectedArc);
+    updateAfterSearch(selectedArc, details)
   }
 
   function updateSunburst(selectedArc) {
-    const previousArc = arc;
     const newData = selectedArc.id === 1 ? sunData : { "tree": filterSunburst(sunData, selectedArc) };
-
     if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateData(newData); }
-
-    setSelectedArc(selectedArc);
-    setPreviousArc(previousArc);
-    setData(newData);
+    return newData;
   }
 
   function getTop5(items, type) {
@@ -140,7 +136,6 @@ const SunburstVegaContainer = () => {
   function selectBreadcrumb (d) {
     // if depth is 0, the item flare will be selected
     const selectedArc = findArcByName(sunData, d);
-    setSelectedArc(selectedArc);
     updateAll(selectedArc);
   }
 
@@ -151,7 +146,7 @@ const SunburstVegaContainer = () => {
     if (breadcrumbRef && breadcrumbRef.current) {
       breadcrumbRef.current.updateBreadcrumbs(selectedArc.colorHex, trail);
     }
-    setBreadcrumbs(trail);
+    return trail;
   }
 
   // list the agencies for the selected
@@ -197,10 +192,7 @@ const SunburstVegaContainer = () => {
         break;
     }
 
-    updateSunburst(selectedArc);
-    updateBreadcrumbs(selectedArc);
-
-    setDetails(details);
+    return details;
 
   }
 
@@ -241,8 +233,7 @@ const SunburstVegaContainer = () => {
         break;
     }
 
-    setDetails(details);
-
+    return details;
   }
 
   // Upon arc selection, sunburst sends the arc info to the container
@@ -250,16 +241,40 @@ const SunburstVegaContainer = () => {
   function updatePanels(tempArc) {
     if(tempArc !== arc) {
       const item = tempArc ? tempArc : arc;
-      updateBreadcrumbs(item);
-      getDetails(item);
+      const trail = updateBreadcrumbs(item);
+      const details = getDetails(item);
+
+      // set state
+      setBreadcrumbs(trail);
+      setDetails(details);
     }
   }
 
+  function updateAfterSearch(selectedArc, details) {
+    const previousArc = arc;
+    const newData = updateSunburst(selectedArc);
+    const trail = updateBreadcrumbs(selectedArc);
+
+    // set state
+    setBreadcrumbs(trail);
+    setDetails(details);
+    setSelectedArc(selectedArc);
+    setPreviousArc(previousArc);
+    setData(newData);
+  }
 
   function updateAll(selectedArc) {
-    updateBreadcrumbs(selectedArc);
-    updatePanels(selectedArc);
-    updateSunburst(selectedArc);
+    const previousArc = arc;
+    const trail = updateBreadcrumbs(selectedArc);
+    const details = getDetails(selectedArc);
+    const newData = updateSunburst(selectedArc);
+
+    // set state
+    setBreadcrumbs(trail);
+    setDetails(details);
+    setSelectedArc(selectedArc);
+    setPreviousArc(previousArc);
+    setData(newData);
   }
 
   return <>
@@ -273,7 +288,7 @@ const SunburstVegaContainer = () => {
             onSelect={searchSelect}
           />
           <div className={styles.sunburstDetails}>
-            <SunburstDetails details={details} />
+            {/*<SunburstDetails details={sunburstDetails} />*/}
           </div>
         </Grid>
         <Grid item md={6}>
@@ -306,7 +321,7 @@ const SunburstVegaContainer = () => {
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
                  href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
-      <SunburstDetails details={details} />
+      {/*<SunburstDetails details={sunburstDetails} />*/}
     </Hidden>
   </>;
 }
