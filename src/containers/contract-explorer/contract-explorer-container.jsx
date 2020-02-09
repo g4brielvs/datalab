@@ -30,8 +30,10 @@ const SunburstVegaContainer = () => {
   const [updatedSunData, setData] = useState(sunData);
 
   useEffect(() => {
+    const details = getDetails();
     setOriginalData(appendColors(flareData));
-    getDetails();
+    setDetails(details);
+
   }, []);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
@@ -240,7 +242,7 @@ const SunburstVegaContainer = () => {
   // Use arc to the arc color, selected arc, update breadcrumbs and get details
   function updatePanels(tempArc) {
     if(tempArc !== arc) {
-      const item = tempArc ? tempArc : arc;
+      const item = tempArc ? tempArc : defaultSelection;
       const trail = updateBreadcrumbs(item);
       const details = getDetails(item);
 
@@ -288,7 +290,7 @@ const SunburstVegaContainer = () => {
             onSelect={searchSelect}
           />
           <div className={styles.sunburstDetails}>
-            {/*<SunburstDetails details={sunburstDetails} />*/}
+            <SunburstDetails details={sunburstDetails} />
           </div>
         </Grid>
         <Grid item md={6}>
@@ -321,7 +323,7 @@ const SunburstVegaContainer = () => {
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
                  href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
-      {/*<SunburstDetails details={sunburstDetails} />*/}
+      <SunburstDetails details={sunburstDetails} />
     </Hidden>
   </>;
 }
