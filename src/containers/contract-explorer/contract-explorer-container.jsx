@@ -250,16 +250,16 @@ const SunburstVegaContainer = () => {
   function updatePanels(tempArc) {
     if(tempArc !== arc) {
       const item = tempArc ? tempArc : arc;
-      getDetails(item);
       updateBreadcrumbs(item);
+      getDetails(item);
     }
   }
 
 
   function updateAll(selectedArc) {
-    updateSunburst(selectedArc);
     updateBreadcrumbs(selectedArc);
     updatePanels(selectedArc);
+    updateSunburst(selectedArc);
   }
 
   return <>
@@ -281,7 +281,7 @@ const SunburstVegaContainer = () => {
           <Sunburst
             data={updatedSunData}
             updatePanels={updatePanels}
-            updateSunburst={updateSunburst}
+            updateSunburst={updateAll}
             default={defaultSelection}
             ref={sunburstRef} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
@@ -300,7 +300,7 @@ const SunburstVegaContainer = () => {
       <Sunburst
         data={updatedSunData}
         updatePanels={updatePanels}
-        updateSunburst={updateSunburst}
+        updateSunburst={updateAll}
         default={defaultSelection}
         ref={sunburstRef} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
