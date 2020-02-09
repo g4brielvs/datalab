@@ -1,22 +1,21 @@
-import * as _ from "lodash"
-
 export default function filterSunburst(sunData, selectedArc) {
   const flare = sunData;
   const { agency, name, depth } = selectedArc;
   let recipientSubAgencyIds, recipients, subagencies, subAgencyIds, agencyNames;
 
   if (depth === 2) {
-    subagencies = _.filter(flare.tree, { 'name': name, 'type': 'subagency' });
-    agencyNames = _.map(subagencies, 'agency');
-    agencyNames = _.uniqBy(agencyNames);
-    subAgencyIds = _.map(subagencies, 'id');
+    subagencies = flare.tree.filter(node => node.name === name && node.type === 'subagency');
+    agencyNames = subagencies.map(x => x.agency);
+    agencyNames = [...new Set([agencyNames])];
+    agencyNames = agencyNames.length > 0 ? agencyNames[0] : null;
+    subAgencyIds = subagencies.map(x => x.id);
 
   } else if (depth === 3) {
-    recipients = _.filter(flare.tree, { 'name': name, 'type': 'recipient' });
-    agencyNames = _.map(recipients, 'agency');
-    agencyNames = _.uniqBy(agencyNames);
-    recipientSubAgencyIds = _.map(recipients, 'parent');
-
+    recipients = flare.tree.filter(node => node.name === name && node.type === 'recipient');
+    agencyNames = recipients.map(x => x.agency);
+    agencyNames = [...new Set([agencyNames])];
+    agencyNames = agencyNames.length > 0 ? agencyNames[0] : null;
+    recipientSubAgencyIds = recipients.map(x => x.parent);
   }
 
   const filtered = flare.tree.filter(function (arc) {
