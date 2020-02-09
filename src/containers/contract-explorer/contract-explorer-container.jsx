@@ -242,7 +242,7 @@ const SunburstVegaContainer = () => {
   // Use arc to the arc color, selected arc, update breadcrumbs and get details
   function updatePanels(tempArc) {
     if(tempArc !== arc) {
-      const item = tempArc ? tempArc : defaultSelection;
+      const item = tempArc ? tempArc : arc;
       const trail = updateBreadcrumbs(item);
       const details = getDetails(item);
 
