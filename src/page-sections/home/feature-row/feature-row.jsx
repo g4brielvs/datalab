@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import featuredAnalysesStyles from './feature-row.module.scss';
-import homelessImg from '../../../images/home/homelessness.png';
 import { Grid } from '@material-ui/core';
 
 const FeatureRow = (props) => {
@@ -24,7 +23,7 @@ const FeatureRow = (props) => {
           </p>
         </Grid>
         <Grid item sm={12} md={6} className={featuredAnalysesStyles.image}>
-          <img src={homelessImg} role='presentation' />
+          <img src={props.imgSrc} role='presentation' />
         </Grid>
       </Grid>
     </Link>
