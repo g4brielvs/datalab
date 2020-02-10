@@ -80,15 +80,15 @@ function DTS(props) {
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
       },
       {
-        categories: ['Dept of Veterans Affairs ( VA )', 'Veteran Affairs programs'],
+        categories: ['Dept of Veterans Affairs ( VA )', 'Veterans Affairs programs'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       },
       {
-        categories: ['Veteran Benefit ( EFT )', 'VA Benefits'],
+        categories: ['Veterans Benefits ( EFT )', 'VA Benefits'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veteran Benefits (EFT) was renamed VA – Benefits on the Daily Treasury Statement. Withdrawals previously reported under Veteran Benefits (EFT) are now reported under VA – Benefits. Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
-      }
+      },
     ];
 
     if (_data) loadData(_data);
@@ -102,7 +102,7 @@ function DTS(props) {
 
       data = _data;
       data.forEach(d => {
-        d.date = new Date(d.date + 'T00:00:00'); // force GMT with time stamp
+        d.date = new Date(d.date); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
@@ -854,27 +854,22 @@ function DTS(props) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
 
-            // check for undefined...
-            if (optionsDict[cateName] === undefined) {
-              return;
-            };
-
             masterMapping[key]["today"].push({
-              "name": cateName,
+              name: cateName,
               values: optionsDict[cateName]["today"],
               date: mapping[key].date,
               footnote: mapping[key].footnote,
               color: lineColors[i]
             });
             masterMapping[key]["mtd"].push({
-              "name": cateName,
+              name: cateName,
               values: optionsDict[cateName]["mtd"],
               date: mapping[key].date,
               footnote: mapping[key].footnote,
               color: lineColors[i]
             });
             masterMapping[key]["fytd"].push({
-              "name": cateName,
+              name: cateName,
               values: optionsDict[cateName]["fytd"],
               date: mapping[key].date,
               footnote: mapping[key].footnote,
@@ -883,21 +878,21 @@ function DTS(props) {
           }
         } else {
           masterMapping[key]["today"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["today"],
             date: optionsDict[key]["today"][0].date,
             footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["mtd"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["mtd"],
             date: optionsDict[key]["mtd"][0].date,
             footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["fytd"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["fytd"], // optionsDict[key]["fytd"][0].date
             date: new Date("1970-01-01"),
             footnote: optionsDict[key].footnote, // ''
@@ -914,7 +909,7 @@ function DTS(props) {
       let medicareGrouping = sharedCategories[1];
       let NASAGrouping = sharedCategories[2];
       let veteranGrouping = sharedCategories[3];
-//      let veteranExtraGrouping = sharedCategories[4];
+      let veteranExtraGrouping = sharedCategories[4];
 
       for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
@@ -939,16 +934,12 @@ function DTS(props) {
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
-    
-      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['today']);
-      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['mtd']);
-      // console.log(optionsDict['Dept of Veterans Affairs ( VA )']['fytd']);
 
-      // for (let cateName of veteranExtraGrouping.categories) {
-      //   combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-      //   combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-      //   combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      // }
+      for (let cateName of veteranExtraGrouping.categories) {
+        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
+        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
+        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      }
 
       let combinedDailyValues = getCombinedCategory(combinedToday);
       let combinedMTDValues = getCombinedCategory(combinedMTD);
@@ -1026,56 +1017,55 @@ function DTS(props) {
         });
       };
 
-      // for (let cateName of veteranGrouping.categories) {
-      //   masterMapping[cateName]['today'].push({
-      //     name: "Combined",
-      //     values: combinedDailyValues,
-      //     date: veteranGrouping.date,
-      //     footnote: veteranGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      //   masterMapping[cateName]['mtd'].push({
-      //     name: "Combined",
-      //     values: combinedMTD,
-      //     date: veteranGrouping.date,
-      //     footnote: veteranGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      //   masterMapping[cateName]['fytd'].push({
-      //     name: "Combined",
-      //     values: combinedFYTDValues,
-      //     date: veteranGrouping.date,
-      //     footnote: veteranGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      // };
+      for (let cateName of veteranGrouping.categories) {
+        masterMapping[cateName]['today'].push({
+          name: "Combined",
+          values: combinedDailyValues,
+          date: veteranGrouping.date,
+          footnote: veteranGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['mtd'].push({
+          name: "Combined",
+          values: combinedMTD,
+          date: veteranGrouping.date,
+          footnote: veteranGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['fytd'].push({
+          name: "Combined",
+          values: combinedFYTDValues,
+          date: veteranGrouping.date,
+          footnote: veteranGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+      };
 
-      // for (let cateName of veteranExtraGrouping.categories) {
-      //   masterMapping[cateName]['today'].push({
-      //     name: "Combined",
-      //     values: combinedDailyValues,
-      //     date: veteranExtraGrouping.date,
-      //     footnote: NASAGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      //   masterMapping[cateName]['mtd'].push({
-      //     name: "Combined",
-      //     values: combinedMTD,
-      //     date: foodGrouping.date,
-      //     footnote: veteranExtraGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      //   masterMapping[cateName]['fytd'].push({
-      //     name: "Combined",
-      //     values: combinedFYTDValues,
-      //     date: foodGrouping.date,
-      //     footnote: veteranExtraGrouping.footnote,
-      //     color: lineColors[lineColors.length - 1]
-      //   });
-      // };
+      for (let cateName of veteranExtraGrouping.categories) {
+        masterMapping[cateName]['today'].push({
+          name: "Combined",
+          values: combinedDailyValues,
+          date: veteranExtraGrouping.date,
+          footnote: veteranExtraGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['mtd'].push({
+          name: "Combined",
+          values: combinedMTD,
+          date: foodGrouping.date,
+          footnote: veteranExtraGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+        masterMapping[cateName]['fytd'].push({
+          name: "Combined",
+          values: combinedFYTDValues,
+          date: foodGrouping.date,
+          footnote: veteranExtraGrouping.footnote,
+          color: lineColors[lineColors.length - 1]
+        });
+      };
 
-
-    }
+    };
 
     function getFiscalYear(theDate) {
       let fullYear = theDate.getFullYear();
@@ -1247,50 +1237,50 @@ function DTS(props) {
 
   if (!props.data) {
     return <div className='progress_wrapper'>
-             <CircularProgress className='progress' size={70} color='inherit' />
-           </div>;
+       <CircularProgress className='progress' size={70} color='inherit' />
+     </div>;
   } else {
     return <>
-             <div className="dts-viz-container">
-               <div className="dts-layout-manager">
-                 <div className="dts-brush-date-container">
-                   <div className="dts-brush-date-item">
-                     <div className="dts-brush-start-date-label">From</div>
-                     <div className="dts-brush-start-date">mm/dd/yy</div>
-                   </div>
-                   <div className="dts-brush-date-item">
-                     <div className="dts-brush-end-date-label"> to</div>
-                     <div className="dts-brush-end-date">mm/dd/yy</div>
-                   </div>
-                 </div>
-                 <div className="dts-svg-wrapper">
-                   <svg id="svg-wrapper" height="400"></svg>
-                 </div>
-               </div>
-               <div className="viz-tsbfy-container">
-                 <div className="viz-tsbfy-header">
-                   <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
-                   <div className="viz-tsbfy-header-view-buttons">
-                     <div className="viz-tsbfy-bar-view"><Bars /></div>
-                     <div className="viz-tsbfy-table-view"><List /></div>
-                   </div>
-                 </div>
-                 <div className="svg-tsbfy-container">
-                   <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
-                 </div>
-               </div>
-             </div>
+     <div className="dts-viz-container">
+       <div className="dts-layout-manager">
+         <div className="dts-brush-date-container">
+           <div className="dts-brush-date-item">
+             <div className="dts-brush-start-date-label">From</div>
+             <div className="dts-brush-start-date">mm/dd/yy</div>
+           </div>
+           <div className="dts-brush-date-item">
+             <div className="dts-brush-end-date-label"> to</div>
+             <div className="dts-brush-end-date">mm/dd/yy</div>
+           </div>
+         </div>
+         <div className="dts-svg-wrapper">
+           <svg id="svg-wrapper" height="400"></svg>
+         </div>
+       </div>
+       <div className="viz-tsbfy-container">
+         <div className="viz-tsbfy-header">
+           <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
+           <div className="viz-tsbfy-header-view-buttons">
+             <div className="viz-tsbfy-bar-view"><Bars /></div>
+             <div className="viz-tsbfy-table-view"><List /></div>
+           </div>
+         </div>
+         <div className="svg-tsbfy-container">
+           <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
+         </div>
+       </div>
+     </div>
 
-             <div className="dts-footnote">
-               <div className="dts-footnote-rect"></div>
-               <div className="dts-footnote-text"></div>
-             </div>
+     <div className="dts-footnote">
+       <div className="dts-footnote-rect"></div>
+       <div className="dts-footnote-text"></div>
+     </div>
 
-             <div className="dts-disclaimer">
-               The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
-               <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
-             </div>
-           </>;
+     <div className="dts-disclaimer">
+       The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+       <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+     </div>
+   </>;
   }
 }
 
