@@ -11,7 +11,7 @@
 }
 
 .visContainer > svg > g > rect:hover {
-    fill: #D334BA;
+  fill: #d334ba;
 }
 
 .formItem {
@@ -30,6 +30,28 @@
   text-align: center;
 }
 
+.legend {
+  font-size: 1rem;
+
+  .block {
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin: 3px 10px;
+    border: none;
+  }
+
+  .whiteCollar {
+    background: #2fbab7;
+  }
+  .blueCollar {
+    background: #2272ce;
+  }
+  .other {
+    background: #5d6474;
+  }
+}
+
 :global {
   .fed-emp-bar-chart {
     path.domain {
@@ -38,13 +60,6 @@
 
     .tick line {
       opacity: 0;
-    }
-
-    #barChartKey {
-      min-width: 280px;
-      height: auto;
-      width: 67%;
-      margin-left: 10%;
     }
   }
 
