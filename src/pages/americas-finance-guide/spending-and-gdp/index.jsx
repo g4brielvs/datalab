@@ -98,7 +98,7 @@ function SpendingAndGdpPage(props) {
                                 </div>
                             </div>
 
-                            <section className="tour intro-hidden">
+                            <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the categories of federal spending?</h1>
                                 <a className="tour__link" href="/americas-finance-guide/spending-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                             </section>
