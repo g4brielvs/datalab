@@ -911,31 +911,46 @@ function DTS(props) {
       let veteranGrouping = sharedCategories[3];
       let veteranExtraGrouping = sharedCategories[4];
 
-      for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
+      for (let cateName of medicareGrouping.categories) { 
+        if (optionsDict[cateName] === undefined ) {
+          return null;
+        };
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
       for (let cateName of foodGrouping.categories) { 
+        if (optionsDict[cateName] === undefined ) {
+          return null;
+        };
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
       for (let cateName of NASAGrouping.categories) {
+        if (optionsDict[cateName] === undefined ) {
+          return null;
+        };
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
       for (let cateName of veteranGrouping.categories) {
+        if (optionsDict[cateName] === undefined ) {
+          return null;
+        };
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
       }
 
       for (let cateName of veteranExtraGrouping.categories) {
+        if (optionsDict[cateName] === undefined ) {
+          return null;
+        };
         combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
         combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
         combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
