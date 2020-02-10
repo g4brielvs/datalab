@@ -1,9 +1,9 @@
 import './bubble-chart.scss';
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import * as d3 from "d3v3";
-import * as _ from "lodash";
-import d3Tip from "d3-tip";
+import * as d3 from 'd3v3';
+import * as _ from 'lodash';
+import d3Tip from 'd3-tip';
 d3.tip = d3Tip;
 
 import styleVariables from '../../../styles/variables.scss';
@@ -226,14 +226,12 @@ export default class BubbleChart extends Component {
       return tooltipHtml;
     });
 
-    // d3.select(this.bubbleChartContainer) // does this do anything?
-
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
       .attr("viewBox", `0 0 ${this.width} ${this.width}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("width", this.width)
       .attr("height", this.width)
-      .attr("id", "chart")
+      .attr("id", "bubble-chart")
       .attr('role', 'img')
       .attr('aria-describedby', 'titleTest descTest')
       .append("g")
@@ -494,11 +492,9 @@ export default class BubbleChart extends Component {
     return tempRoot;
   }
 
-
   componentDidMount() {
-
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-      this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
+      this.bubbleChartContainer = document.getElementById('bubble-chart-container');
       this.diameter = this.width;
     }
 
@@ -530,7 +526,7 @@ export default class BubbleChart extends Component {
     return (
       <div id="chart-area">
         <div id="bubble-detail"></div>
-        <div id="bubbleChartContainer" className="bubbleChartContainer">
+        <div id="bubble-chart-container" className="bubbleChartContainer">
         </div>
       </div>)
   }
