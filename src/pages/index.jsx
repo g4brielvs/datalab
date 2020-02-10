@@ -63,16 +63,6 @@ function IndexPage() {
             spacing={3}
             className={homeStyles.secondaryTiles}
           >
-            {/*<Grid item md={12} lg={6} xl={12}>*/}
-              {/*<SecondaryTile*/}
-                {/*heading={"Contract Spending Analysis"}*/}
-                {/*subheading={"How has federal contract spending changed over time?"}*/}
-                {/*href={"contract-spending"}*/}
-                {/*imgSrc={contractSpending}*/}
-                {/*body={`We explore 10 years of contract data, and provide an analysis of the*/}
-                {/*impact of short-term continuing resolutions on contract spending.`}*/}
-              {/*/>*/}
-            {/*</Grid>*/}
             <Grid item md={12} lg={6} xl={12}>
               <SecondaryTile
                 heading={"Homelessness Analysis"}
