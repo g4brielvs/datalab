@@ -22,7 +22,7 @@ const SunburstVegaContainer = () => {
     depth: 0
   }
 
-  const [arc, setSelectedArc] = useState(null);
+  const [arc, setSelectedArc] = useState(defaultSelection);
   const [previousArc, setPreviousArc] = useState(null);
   const [breadcrumbs, setBreadcrumbs] = useState(null);
   const [sunburstDetails, setDetails] = useState({});
