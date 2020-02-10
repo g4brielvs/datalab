@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import BarChartRenderer from "./bar-chart-renderer";
-import * as $ from "jquery";
-import * as d3 from "d3v4";
+import BarChartRenderer from './bar-chart-renderer';
+import * as $ from 'jquery';
+import * as d3 from 'd3v4';
 import barChartStyles from './bar-chart.module.scss';
-import Multiselector from "../../../multiselector/multiselector"
+import Multiselector from '../../../multiselector/multiselector';
+import { Grid } from '@material-ui/core';
 
 /* Extracted and adapted from fedscope.js */
 
@@ -81,7 +82,7 @@ function BarChart(props) {
     clearAll();
     const containerElem = $('#' + props.sectionId);
 
-    containerElem.find(".filter-button").click(() => {
+    containerElem.find('.filter-button').click(() => {
       filterBySelections();
     });
 
@@ -111,7 +112,7 @@ function BarChart(props) {
       });
     }
 
-    $(containerElem).find(".reset-button").click(e => {
+    $(containerElem).find('.reset-button').click(e => {
       e.preventDefault();
       setSelectedStates([]);
       setSelectedAgencies([]);
@@ -128,34 +129,46 @@ function BarChart(props) {
 
   }, [selectedStates, selectedAgencies]);
 
+  const legend = () =>
+    <Grid container className={barChartStyles.legend}>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={2}><span className={`${barChartStyles.whiteCollar} ${barChartStyles.block}`}></span>White Collar</Grid>
+      <Grid item xs={2}><span className={`${barChartStyles.blueCollar} ${barChartStyles.block}`}></span>Blue Collar</Grid>
+      <Grid item xs={2}><span className={`${barChartStyles.other} ${barChartStyles.block}`}></span>Other</Grid>
+    </Grid>
+
   return (
     <>
-      <div id="tooltip" className="tooltip-module" />
-      <div id="barChartToolbar" className={`row ${barChartStyles.toolbar}`}>
+      <div id='tooltip' className='tooltip-module' />
+      <div id='barChartToolbar' className={`row ${barChartStyles.toolbar}`}>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
-          <Multiselector key={'Agencies'}
-                         optionList={agencyOptionList}
-                         valueKey={'id'}
-                         labelKey={'name'}
-                         selectedVal={selectedAgencies}
-                         placeholder={'Agencies'}
-                         id={'barChartAgencies'}
-                         changeHandler={setSelectedAgencies} />
+          <Multiselector
+            key={'Agencies'}
+            optionList={agencyOptionList}
+            valueKey={'id'}
+            labelKey={'name'}
+            selectedVal={selectedAgencies}
+            placeholder={'Agencies'}
+            id={'barChartAgencies'}
+            changeHandler={setSelectedAgencies}
+          />
         </div>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
-          <Multiselector key={'States'}
-                         optionList={stateOptionList}
-                         valueKey={'abbreviation'}
-                         labelKey={'name'}
-                         selectedVal={selectedStates}
-                         placeholder={'States'}
-                         id={'barChartStates'}
-                         changeHandler={setSelectedStates} />
+          <Multiselector
+            key={'States'}
+            optionList={stateOptionList}
+            valueKey={'abbreviation'}
+            labelKey={'name'}
+            selectedVal={selectedStates}
+            placeholder={'States'}
+            id={'barChartStates'}
+            changeHandler={setSelectedStates}
+          />
         </div>
       </div>
       <div className={`fed-emp-bar-chart ${barChartStyles.visContainer}`}>
-        <svg width="900" height="500" viewBox="0 0 900 500" id="barChartSvg" className={barChartStyles.visBarChart} />
-        <svg id="barChartKey" width="600" height="16" viewBox="0 0 600 16" />
+        <svg width='900' height='500' viewBox='0 0 900 500' id='barChartSvg' className={barChartStyles.visBarChart} />
+        {legend()}
       </div>
     </>
   );
