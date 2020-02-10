@@ -1,9 +1,5 @@
 @import "../../../styles/variables.scss";
 
-#sunburst {
-  height: 750px;
-}
-
 #sunburst svg {
   width: 100%;
   top: 0;
@@ -42,6 +38,12 @@
 
 .cu-header__blurb {
   text-align: center;
+}
+
+@media (min-width: $desktop-xl) {
+  #sunburst {
+    height: 750px;
+  }
 }
 
 @media (min-width: $desktop) and (max-width: $desktop-xl - 1) {

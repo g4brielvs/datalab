@@ -89,7 +89,7 @@ export default class CollegesAndUniversitiesPage extends React.Component {
         </Grid>
 
         <Grid item xs={10}>
-          <Agencies location={this.props.location} />
+          {/* <Agencies location={this.props.location} /> */}
         </Grid>
 
         <Grid item xs={10}>
