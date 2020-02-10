@@ -227,7 +227,7 @@ const Categories = () => {
             </VizControlPanel>
           </Hidden>
         </Grid>
-        <Grid item>
+        <Grid item className={styles.vizContainer}>
           <div id='sunburstRadio'>
             <Grid container>
               <Grid item>
