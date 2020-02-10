@@ -26,7 +26,7 @@ class Accordion extends Component {
       <div className={this.props.containerClass ? this.props.containerClass : accordionStyles.container}>
         <div className="row">
           <div className="col-xs-12">
-            <section className={this.state.open ? `${accordionStyles.accordion} ${accordionStyles.open}` : `${accordionStyles.accordion}`} >
+            <section className={this.state.open ? `${accordionStyles.accordion} ${accordionStyles.open} accordion--open` : `${accordionStyles.accordion}`} >
               <h1 onClick={this.toggle} className={accordionStyles.heading} style={this.props.altStyleAccordion}>
                 {this.props.title}
                 <button onClick={this.toggle} className={accordionStyles.toggle}>
