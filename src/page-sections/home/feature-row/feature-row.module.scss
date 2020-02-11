@@ -64,6 +64,7 @@ $landing-title-color: #4a4a4a;
 
     img {
       width: calc(100% - 12px);
+      border-top-right-radius: 0.25rem;
       border-bottom-right-radius: 0.25rem;
       float: right;
     }

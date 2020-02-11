@@ -11,12 +11,13 @@ import FeatureRow from "src/page-sections/home/feature-row/feature-row";
 import ResourcesRow from "src/page-sections/home/resources-row/resources-row";
 
 import main from "src/images/home/collegehomepage.svg";
-import contractExplorer from "src/images/home/contract-explorer.png";
+import contractExplorer from "src/images/home/contractexplorersunburst.png";
 import homelessImg from 'src/images/home/homelessness.png';
 
 import "../styles/index.scss";
 import homeStyles from "./index.module.scss";
 import cg from "../images/home/cg-gif.gif";
+
 
 function IndexPage() {
 
