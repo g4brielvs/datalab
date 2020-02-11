@@ -12,21 +12,17 @@ $details-width: 350px;
 	z-index: 99;
 	position: absolute;
 	overflow: hidden;
-	width: $details-width;
-	right: 0;
 	text-align: left;
+	right: 0;
+	width: 0;
+	transition: width 0.5s ease-in-out;
 
 	.details {
 		padding: 2rem;
-		transform: translateX(calc(#{$details-width} + 4rem));
-
-		&.MuiPaper-root {
-			transition: transform 0.5s ease-in-out;
-		}
 	}
 
-	.expanded {
-		transform: translateX(0);
+	&.expanded {
+		width: $details-width;
 		margin: 1px;
 	}
 
