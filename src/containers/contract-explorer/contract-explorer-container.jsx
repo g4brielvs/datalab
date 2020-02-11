@@ -10,69 +10,76 @@ import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega'
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
 import styles from './contract-explorer-container.module.scss';
 import Search from 'src/components/chartpanels/search';
-const sunData = flareData;
+import appendColors from './utils/colors';
+import findArcById from './utils/find-by-id';
+import findArcByName from './utils/find-by-name';
+import filterSunburst from './utils/filter';
 
 const SunburstVegaContainer = () => {
+
+  const defaultSelection = {
+    name: 'flare',
+    depth: 0
+  }
+
+  const [arc, setSelectedArc] = useState(defaultSelection);
+  const [previousArc, setPreviousArc] = useState(null);
+  const [breadcrumbs, setBreadcrumbs] = useState(null);
+  const [sunburstDetails, setDetails] = useState({});
+  const [sunData, setOriginalData] = useState(flareData);
+  const [updatedSunData, setData] = useState(sunData);
+
+  useEffect(() => {
+    const details = getDetails();
+    setOriginalData(appendColors(flareData));
+    setDetails(details);
+
+  }, []);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
   const agencies = [];
   const subagencies = [];
   const recipients = [];
 
-  awardsData.map((e, i) => {
+  awardsData.map((e) => {
 
     if (agencies.findIndex(a => a.display === e.agency) === -1) {
       agencies.push({
-        id: `a${i}`,
+        id: `a${e.agency}`,
         display: e.agency
       });
     }
 
     if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
       subagencies.push({
-        id: `s${i}`,
+        id: `s${e.subagency}`,
         display: e.subagency
       });
     }
 
     if (recipients.findIndex(r => r.display === e.recipient) === -1) {
       recipients.push({
-        id: `r${i}`,
+        id: `r${e.recipient}`,
         display: e.recipient
       });
     }
   });
+
   const searchList = agencies.concat(subagencies).concat(recipients);
 
-  // try to force redraw of sunburst (or entire container); NOT WORKING
-  // const [, updateState] = React.useState();
-  // const forceUpdate = React.useCallback(() => updateState({ 'thing': 'one' }), ['thing', 'two']);
+  const sunburstRef = React.createRef();
 
   const searchSelect = (id) => {
-    sunData.tree = flareData.tree.slice(0, 50);  // filter data in chart (future: to selected); WORKS, BUT DOESN'T REDRAW
-    // forceUpdate();
+    const selectedArc = findArcById(sunData, id);
+    const details = getSearchResults(selectedArc);
+    updateAfterSearch(selectedArc, details)
   }
 
-  useEffect(() => {
-    getDetails();
-  }, []);
-
-  const detailDefaults = {
-    label: null,
-    total: null,
-    top5: [],
-    name: null
+  function updateSunburst(selectedArc) {
+    const newData = selectedArc.id === 1 ? sunData : { "tree": filterSunburst(sunData, selectedArc) };
+    if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateData(newData); }
+    return newData;
   }
-
-  const colors = ['#7A2149', '#61344A', '#4E4861', '#3F566E', '#3C596A', '#2F6567', '#38705F', '#517852', '#88923D',
-    '#AE933D', '#D39248', '#EA8052'];
-
-  const [arc, setSelectedArc] = useState(null);
-  const [previousArc, setPreviousArc] = useState(null);
-  const [breadcrumbs, setBreadcrumbs] = useState(null);
-  const [details, setDetails] = useState(detailDefaults);
-
-  const sunburstRef = React.createRef();
 
   function getTop5(items, type) {
     // get all unique values of the item type
@@ -86,6 +93,7 @@ const SunburstVegaContainer = () => {
         obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.obligation || 0), 0)
       });
     }
+
     return summedItems.sort((a, b) => (a.obligation < b.obligation) ? 1 : -1).slice(0, 5);
   }
 
@@ -93,31 +101,27 @@ const SunburstVegaContainer = () => {
     if (!selectedArc) { return; };
 
     const breadcrumbs = [];
-    const agency = sunData.tree.filter(node => node.name === selectedArc.agency);
+    const agency = sunData.tree.find(node => node.name === selectedArc.agency);
+    const trail = [defaultSelection];
 
     switch(selectedArc.depth) {
       case 0:
         return;
         break;
       case 1:
-        breadcrumbs.push(agency[0]);
+        breadcrumbs.push(agency);
         break;
       case 2:
-        breadcrumbs.push(agency[0]);
+        breadcrumbs.push(agency);
         breadcrumbs.push(selectedArc);
         break;
       case 3:
-        const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
-        breadcrumbs.push(agency[0]);
-        breadcrumbs.push(subagency[0]);
+        const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
+        breadcrumbs.push(agency);
+        breadcrumbs.push(subagency);
         breadcrumbs.push(selectedArc)
         break;
     }
-
-    const trail = [{
-      name: 'flare',
-      depth: 0
-    }];
 
     breadcrumbs.forEach((item) => {
       trail.push({
@@ -133,11 +137,8 @@ const SunburstVegaContainer = () => {
 
   function selectBreadcrumb (d) {
     // if depth is 0, the item flare will be selected
-    let selectedArc = sunData.tree.filter(node => node.depth === d.depth && node.name === d.name);
-    if (sunburstRef && sunburstRef.current) {
-      sunburstRef.current.updateViz(selectedArc[0]);
-    }
-    setSelectedArc(selectedArc[0]);
+    const selectedArc = findArcByName(sunData, d);
+    updateAll(selectedArc);
   }
 
   const breadcrumbRef = React.createRef();
@@ -147,7 +148,54 @@ const SunburstVegaContainer = () => {
     if (breadcrumbRef && breadcrumbRef.current) {
       breadcrumbRef.current.updateBreadcrumbs(selectedArc.colorHex, trail);
     }
-    setBreadcrumbs(trail);
+    return trail;
+  }
+
+  // list the agencies for the selected
+  function getSearchResults(selectedArc) {
+    const depth = selectedArc && selectedArc.depth ? selectedArc.depth : 0;
+    const pretext = 'Total Contracts Related To';
+
+    const details = {
+      label: null,
+      total: null,
+      top5: [],
+      name: null
+    };
+
+
+    // get the top contribution for the selection
+    switch (depth) {
+      case 0:
+        details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        break;
+      case 1:
+        details.label = `${pretext} ${selectedArc.name}`;
+        const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
+        details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(agencyAwardsData, 'agency');
+        // find all instances of the agency
+        break;
+      case 2:
+        details.label = `${pretext} ${selectedArc.name}`;
+        const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
+        details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(subagencyAwardsData, 'agency');
+
+        // find all instances of the agency
+
+        break;
+
+      case 3:
+        details.label = `${pretext} ${selectedArc.name}`;
+        const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
+        details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.top5 = getTop5(recipientAwardsData, 'agency');
+        break;
+    }
+
+    return details;
+
   }
 
   function getDetails (selectedArc) {
@@ -180,25 +228,55 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
-        const subagency = sunData.tree.filter(node => node.id === selectedArc.parent);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency[0].name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
+        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
         // add detail here
         break;
     }
 
-    setDetails(details);
-
+    return details;
   }
 
   // Upon arc selection, sunburst sends the arc info to the container
   // Use arc to the arc color, selected arc, update breadcrumbs and get details
-  function getSelectedArc(selectedArc) {
-    const tempPreviousArc = arc;
-    updateBreadcrumbs(selectedArc);
-    getDetails(selectedArc);
-    setPreviousArc(tempPreviousArc);
+  function updatePanels(tempArc) {
+    if(tempArc !== arc) {
+      const item = tempArc ? tempArc : arc;
+      const trail = updateBreadcrumbs(item);
+      const details = getDetails(item);
+
+      // set state
+      setBreadcrumbs(trail);
+      setDetails(details);
+    }
+  }
+
+  function updateAfterSearch(selectedArc, details) {
+    const previousArc = arc;
+    const newData = updateSunburst(selectedArc);
+    const trail = updateBreadcrumbs(selectedArc);
+
+    // set state
+    setBreadcrumbs(trail);
+    setDetails(details);
     setSelectedArc(selectedArc);
+    setPreviousArc(previousArc);
+    setData(newData);
+  }
+
+  function updateAll(selectedArc) {
+    const previousArc = arc;
+    const trail = updateBreadcrumbs(selectedArc);
+    const details = getDetails(selectedArc);
+    const newData = updateSunburst(selectedArc);
+
+    // set state
+    setBreadcrumbs(trail);
+    setDetails(details);
+    setSelectedArc(selectedArc);
+    setPreviousArc(previousArc);
+    setData(newData);
   }
 
   return <>
@@ -212,12 +290,17 @@ const SunburstVegaContainer = () => {
             onSelect={searchSelect}
           />
           <div className={styles.sunburstDetails}>
-            <SunburstDetails details={details} />
+            <SunburstDetails details={sunburstDetails} />
           </div>
         </Grid>
         <Grid item md={6}>
           <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} onSelect={selectBreadcrumb} ref={breadcrumbRef} />
-          <Sunburst data={sunData} getSelectedArc={getSelectedArc} colors={colors} ref={sunburstRef} />
+          <Sunburst
+            data={updatedSunData}
+            updatePanels={updatePanels}
+            updateSunburst={updateAll}
+            default={defaultSelection}
+            ref={sunburstRef} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
           <Downloads className={styles.downloadContainer}
             href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
@@ -231,11 +314,16 @@ const SunburstVegaContainer = () => {
         onSelect={searchSelect}
       />
       <BreadCrumbs className={`${styles.header} ${styles.breadcrumbsContainer}`} items={breadcrumbs} onSelect={selectBreadcrumb} ref={breadcrumbRef} />
-      <Sunburst data={sunData} getSelectedArc={getSelectedArc} colors={colors} ref={sunburstRef} />
+      <Sunburst
+        data={updatedSunData}
+        updatePanels={updatePanels}
+        updateSunburst={updateAll}
+        default={defaultSelection}
+        ref={sunburstRef} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
                  href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
-      <SunburstDetails details={details} />
+      <SunburstDetails details={sunburstDetails} />
     </Hidden>
   </>;
 }

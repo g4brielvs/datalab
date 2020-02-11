@@ -2,7 +2,6 @@
 import React from 'react';
 import { Vega } from 'react-vega';
 import sunburstSpec from './utils/sunburst-spec';
-import * as _ from 'lodash';
 
 import './sunburst-vega.scss';
 import PropTypes from "prop-types"
@@ -20,123 +19,32 @@ export default class Sunburst extends React.Component {
         side but hasn't been rewritten yet due to the analyst backlog being long. */
     // console.log(transformData());
 
-    const data = this.appendColors(this.props.data);
-
     this.state = {
-      data: data,
+      data: this.props.data,
       spec: sunburstSpec,
-      originalData: data,
-      selectedArc: { name: 'flare', depth: 0 },
-      previousArc: { name: 'flare', depth: 0 }
+      selectedArc: this.props.default,
+      previousArc: this.props.default
     };
-
-    this.handleHover = this.handleHover.bind(this);
-    this.handleUnhover = this.handleUnhover.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.filterSunburst = this.filterSunburst.bind(this);
-    this.appendColors = this.appendColors.bind(this);
-    this.updateViz = this.updateViz.bind(this);
+    
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
-  appendColors(flare) {
-    let agencies = _.filter(flare.tree, { 'type': 'agency' });
-    let agenciesColors = {};
-    let colors = this.props.colors;
-    agencies = _.map(agencies, 'name');
-    agencies = _.uniqBy(agencies);
-
-    for (let i = 0; i < agencies.length; i++) {
-      agenciesColors[agencies[i]] = colors[i % colors.length];
-    }
-
-    flare.tree[0]['colorHex'] = '#fff';
-
-    for (let i = 1; i < flare.tree.length; i++) {
-      flare.tree[i]['colorHex'] = agenciesColors[flare.tree[i].agency];
-    }
-
-    return flare;
-  };
-
-  handleUnhover() {
-    this.props.getSelectedArc(this.state.selectedArc);
+  handleUnhover = () => {
+    this.props.updatePanels();
   }
 
-  handleHover(...args) {
+  handleHover = (...args) => {
     const item = args[1];
-    this.props.getSelectedArc(item);
+    this.props.updatePanels(item);
   }
 
-  handleClick(...args) {
+  handleClick = (...args) => {
     const item = args[1];
-    this.updateViz(item);
+    this.props.updateSunburst(item);
   }
 
-  updateViz(arc) {
-    const previousArc = this.state.selectedArc;
-    this.setState({ selectedArc: arc });
-    const newData = this.state.selectedArc.id === 1 ? this.state.originalData : { "tree": this.filterSunburst() };
-    this.props.getSelectedArc(this.state.selectedArc);
-    this.setState({ data: newData, previousArc: previousArc });
-  }
-
-  filterSunburst() {
-    const flare = this.state.originalData;
-    const { agency, name, depth } = this.state.selectedArc;
-    let recipientSubAgencyIds, recipients, subagencies, subAgencyIds, agencyNames;
-
-    if (depth === 2) {
-      subagencies = _.filter(flare.tree, { 'name': name, 'type': 'subagency' });
-      agencyNames = _.map(subagencies, 'agency');
-      agencyNames = _.uniqBy(agencyNames);
-      subAgencyIds = _.map(subagencies, 'id');
-
-    } else if (depth === 3) {
-      recipients = _.filter(flare.tree, { 'name': name, 'type': 'recipient' });
-      agencyNames = _.map(recipients, 'agency');
-      agencyNames = _.uniqBy(agencyNames);
-      recipientSubAgencyIds = _.map(recipients, 'parent');
-
-    }
-
-    const filtered = flare.tree.filter(function (arc) {
-      if(arc.id === 1) {
-        return true;
-      }
-
-      if(depth === 1) {
-        return arc.agency === agency;
-
-      } else if (depth === 2) {
-        switch (arc.depth) {
-          case 1:
-            return agencyNames.includes(arc.name);
-
-          case 2:
-            return arc.name === name;
-
-          case 3:
-            return subAgencyIds.includes(arc.parent);
-
-        }
-
-      } else if (depth === 3) {
-        switch (arc.depth) {
-          case 1:
-            return agencyNames.includes(arc.name);
-
-          case 2:
-            return recipientSubAgencyIds.includes(arc.id);
-
-          case 3:
-            return arc.name === name;
-
-        }
-      }
-    });
-
-    return filtered;
+  updateData = (data) => {
+    this.setState({data: data});
   }
 
   render() {
@@ -152,7 +60,8 @@ export default class Sunburst extends React.Component {
 }
 
 Sunburst.propTypes = {
-  getSelectedArc: PropTypes.func.isRequired,
-  colors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  updatePanels: PropTypes.func.isRequired,
+  updateSunburst: PropTypes.func.isRequired,
+  default: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired
 }
