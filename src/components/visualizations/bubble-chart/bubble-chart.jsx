@@ -1,9 +1,9 @@
 import './bubble-chart.scss';
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import * as d3 from "d3v3";
-import * as _ from "lodash";
-import d3Tip from "d3-tip";
+import * as d3 from 'd3v3';
+import * as _ from 'lodash';
+import d3Tip from 'd3-tip';
 d3.tip = d3Tip;
 
 import styleVariables from '../../../styles/variables.scss';
@@ -226,30 +226,30 @@ export default class BubbleChart extends Component {
       return tooltipHtml;
     });
 
-    d3.select(this.bubbleChartContainer)
-
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
       .attr("viewBox", `0 0 ${this.width} ${this.width}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("width", this.width)
       .attr("height", this.width)
-      .attr("id", "chart")
+      .attr("id", "bubble-chart")
       .attr('role', 'img')
       .attr('aria-describedby', 'titleTest descTest')
       .append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
+      ;
 
-    d3.select(this.bubbleChartContainer).select('svg')
-      .append('title')
+    d3.select(this.bubbleChartContainer).select('svg').append('title')
       .attr('id', 'titleTest')
-      .text('The quick brown fox jumped over the lazy dog 1.');
+      .text('The quick brown fox jumped over the lazy dog 1.')
+      ;
 
     d3.select(this.bubbleChartContainer).select('svg')
       .append('desc')
       .attr('id', 'descTest')
       .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
         'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
-        'The quick brown fox jumped over the lazy dog 5.');
+        'The quick brown fox jumped over the lazy dog 5.')
+      ;
 
 
     this.circle = this.bubbleSvg.selectAll("circle")
@@ -280,6 +280,7 @@ export default class BubbleChart extends Component {
       .on("mouseout", function (d) {
         classContext.tip.hide(d);
       })
+      ;
 
     this.bubbleSvg.selectAll("text")
       .data(this.nodes)
@@ -313,8 +314,8 @@ export default class BubbleChart extends Component {
           classContext.tip.show(d, this);
         }
       })
-      .call(this.tip);
-
+      .call(this.tip)
+      ;
 
     this.node = this.bubbleSvg.selectAll("circle,text");
   }
@@ -491,11 +492,9 @@ export default class BubbleChart extends Component {
     return tempRoot;
   }
 
-
   componentDidMount() {
-
     if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-      this.bubbleChartContainer = document.getElementById('bubbleChartContainer');
+      this.bubbleChartContainer = document.getElementById('bubble-chart-container');
       this.diameter = this.width;
     }
 
@@ -527,7 +526,7 @@ export default class BubbleChart extends Component {
     return (
       <div id="chart-area">
         <div id="bubble-detail"></div>
-        <div id="bubbleChartContainer" className="bubbleChartContainer">
+        <div id="bubble-chart-container" className="bubbleChartContainer">
         </div>
       </div>)
   }

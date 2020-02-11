@@ -132,8 +132,6 @@ export default class Sunburst extends React.Component {
       .append('svg')
       .attr("viewBox", `0 0 ${this.width} ${this.height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
-      .attr('width', this.width)
-      .attr('height', this.height)
       .append('g')
       .attr('transform', 'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')')
       ;

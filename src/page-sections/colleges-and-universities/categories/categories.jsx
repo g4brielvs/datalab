@@ -214,7 +214,7 @@ const Categories = () => {
         </ul>
       </Accordion>
 
-      <Grid container>
+      <Grid container className={styles.catContainer}>
         <Grid item>
           <Hidden mdDown>
             <VizControlPanel
@@ -227,7 +227,7 @@ const Categories = () => {
             </VizControlPanel>
           </Hidden>
         </Grid>
-        <Grid item>
+        <Grid item className={styles.catContainer}>
           <div id='sunburstRadio'>
             <Grid container>
               <Grid item>
