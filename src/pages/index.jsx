@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import Home from "src/components/layouts/home/home";
 import SEO from "src/components/seo";
 import FeatureTile from "src/page-sections/home/feature-tile/feature-tile";
-import SecondaryTile from "src/page-sections/home/secondary-tile/secondary-tile";
+import SecondaryTile from "src/page-sections/home/secondary-tile/stacked-layout/secondary-tile";
 import DtsTile from "src/page-sections/home/dts-tile/dts-tile";
 import MoreAnalysesTiles from "src/page-sections/home/more-analyses-tiles/more-analyses-tiles";
 import FeatureRow from "src/page-sections/home/feature-row/feature-row";
@@ -13,7 +13,6 @@ import ResourcesRow from "src/page-sections/home/resources-row/resources-row";
 import main from "src/images/home/collegehomepage.svg";
 import contractExplorer from "src/images/home/contract-explorer.png";
 import homelessImg from 'src/images/home/homelessness.png';
-import contractSpending from "../images/home/c-o-t.png";
 
 import "../styles/index.scss";
 import homeStyles from "./index.module.scss";
