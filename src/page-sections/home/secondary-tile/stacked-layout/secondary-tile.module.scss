@@ -3,6 +3,7 @@
 
 .highlight {
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   text-align: left;
 
   .headings {
@@ -16,12 +17,14 @@
 
   .subheading {
     @include homepageSubtitle();
+    font-size: 1.5rem;
     margin-bottom: 0;
   }
 
   .text {
     @include homepageBodyCopy();
-    padding: 0 0.88rem;
+    margin-top: 0;
+    margin-left: 0;
   }
 
   .image {
