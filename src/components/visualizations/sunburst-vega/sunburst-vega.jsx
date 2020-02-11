@@ -25,29 +25,25 @@ export default class Sunburst extends React.Component {
       selectedArc: this.props.default,
       previousArc: this.props.default
     };
-
-    this.handleHover = this.handleHover.bind(this);
-    this.handleUnhover = this.handleUnhover.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.updateData = this.updateData.bind(this);
+    
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
-  handleUnhover() {
+  handleUnhover = () => {
     this.props.updatePanels();
   }
 
-  handleHover(...args) {
+  handleHover = (...args) => {
     const item = args[1];
     this.props.updatePanels(item);
   }
 
-  handleClick(...args) {
+  handleClick = (...args) => {
     const item = args[1];
     this.props.updateSunburst(item);
   }
 
-  updateData(data) {
+  updateData = (data) => {
     this.setState({data: data});
   }
 
