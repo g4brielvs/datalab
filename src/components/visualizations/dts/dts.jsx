@@ -102,7 +102,7 @@ function DTS(props) {
 
       data = _data;
       data.forEach(d => {
-        d.date = new Date(d.date); // force GMT with time stamp
+        d.date = new Date(d.date.toString().trim() + 'T00:00:00'); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
@@ -853,28 +853,29 @@ function DTS(props) {
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
-
-            masterMapping[key]["today"].push({
-              name: cateName,
-              values: optionsDict[cateName]["today"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
-            masterMapping[key]["mtd"].push({
-              name: cateName,
-              values: optionsDict[cateName]["mtd"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
-            masterMapping[key]["fytd"].push({
-              name: cateName,
-              values: optionsDict[cateName]["fytd"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
+            if(optionsDict[cateName]){
+              masterMapping[key]["today"].push({
+                name: cateName,
+                values: optionsDict[cateName]["today"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+              masterMapping[key]["mtd"].push({
+                name: cateName,
+                values: optionsDict[cateName]["mtd"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+              masterMapping[key]["fytd"].push({
+                name: cateName,
+                values: optionsDict[cateName]["fytd"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+            }
           }
         } else {
           masterMapping[key]["today"].push({
@@ -905,180 +906,48 @@ function DTS(props) {
       let combinedMTD = [];
       let combinedFYTD = [];
 
-      let foodGrouping = sharedCategories[0];
-      let medicareGrouping = sharedCategories[1];
-      let NASAGrouping = sharedCategories[2];
-      let veteranGrouping = sharedCategories[3];
-      let veteranExtraGrouping = sharedCategories[4];
-
-      for (let cateName of medicareGrouping.categories) { 
-        if (optionsDict[cateName] === undefined ) {
-          return null;
-        };
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      }
-
-      for (let cateName of foodGrouping.categories) { 
-        if (optionsDict[cateName] === undefined ) {
-          return null;
-        };
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      }
-
-      for (let cateName of NASAGrouping.categories) {
-        if (optionsDict[cateName] === undefined ) {
-          return null;
-        };
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      }
-
-      for (let cateName of veteranGrouping.categories) {
-        if (optionsDict[cateName] === undefined ) {
-          return null;
-        };
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      }
-
-      for (let cateName of veteranExtraGrouping.categories) {
-        if (optionsDict[cateName] === undefined ) {
-          return null;
-        };
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      for(let i = 0, il = sharedCategories.length; i < il; i++){
+        for(let catName of sharedCategories[i].categories){
+          if(optionsDict[catName]){
+            combinedToday.push.apply(combinedToday, optionsDict[catName]["today"]);
+            combinedMTD.push.apply(combinedMTD, optionsDict[catName]["mtd"]);
+            combinedFYTD.push.apply(combinedFYTD, optionsDict[catName]["fytd"]);
+          }
+        }
       }
 
       let combinedDailyValues = getCombinedCategory(combinedToday);
       let combinedMTDValues = getCombinedCategory(combinedMTD);
       let combinedFYTDValues = getCombinedCategory(combinedFYTD);
 
-      for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
-        masterMapping[cateName]["today"].push({
-          "name": "Combined",
-          values: combinedDailyValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]["mtd"].push({
-          "name": "Combined",
-          values: combinedMTDValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]["fytd"].push({
-          "name": "Combined",
-          values: combinedFYTDValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
+      for(let i = 0, il = sharedCategories.length; i < il; i++){
+        const curCategory = sharedCategories[i];
+        for(let catName of curCategory.categories){
+          if(optionsDict[catName]){
+            masterMapping[catName]["today"].push({
+              "name": "Combined",
+              values: combinedDailyValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+            masterMapping[catName]["mtd"].push({
+              "name": "Combined",
+              values: combinedMTDValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+            masterMapping[catName]["fytd"].push({
+              "name": "Combined",
+              values: combinedFYTDValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+          }
+        }
       }
-
-      for (let cateName of foodGrouping.categories) {
-        masterMapping[cateName]['today'].push({
-          name: "Combined",
-          values: combinedDailyValues,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['mtd'].push({
-          name: "Combined",
-          values: combinedMTD,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['fytd'].push({
-          name: "Combined",
-          values: combinedFYTDValues,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-      };
-
-      for (let cateName of NASAGrouping.categories) {
-        masterMapping[cateName]['today'].push({
-          name: "Combined",
-          values: combinedDailyValues,
-          date: foodGrouping.date,
-          footnote: NASAGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['mtd'].push({
-          name: "Combined",
-          values: combinedMTD,
-          date: foodGrouping.date,
-          footnote: NASAGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['fytd'].push({
-          name: "Combined",
-          values: combinedFYTDValues,
-          date: foodGrouping.date,
-          footnote: NASAGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-      };
-
-      for (let cateName of veteranGrouping.categories) {
-        masterMapping[cateName]['today'].push({
-          name: "Combined",
-          values: combinedDailyValues,
-          date: veteranGrouping.date,
-          footnote: veteranGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['mtd'].push({
-          name: "Combined",
-          values: combinedMTD,
-          date: veteranGrouping.date,
-          footnote: veteranGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['fytd'].push({
-          name: "Combined",
-          values: combinedFYTDValues,
-          date: veteranGrouping.date,
-          footnote: veteranGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-      };
-
-      for (let cateName of veteranExtraGrouping.categories) {
-        masterMapping[cateName]['today'].push({
-          name: "Combined",
-          values: combinedDailyValues,
-          date: veteranExtraGrouping.date,
-          footnote: veteranExtraGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['mtd'].push({
-          name: "Combined",
-          values: combinedMTD,
-          date: foodGrouping.date,
-          footnote: veteranExtraGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['fytd'].push({
-          name: "Combined",
-          values: combinedFYTDValues,
-          date: foodGrouping.date,
-          footnote: veteranExtraGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-      };
 
     };
 
