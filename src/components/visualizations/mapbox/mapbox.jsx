@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import * as $ from "jquery";
 import mapboxgl from 'mapbox-gl';
-import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 import './mapbox.scss';
+import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 import pin from '../../../images/colleges-and-universities/map-pin.png';
 import formatNumber from '../../../utils/number-formatter';
 
