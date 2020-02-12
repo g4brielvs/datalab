@@ -24,7 +24,7 @@ const FeatureRow = (props) => {
           </p>
         </Grid>
         <Grid item sm={12} md={6} className={featuredAnalysesStyles.image}>
-          <img src={props.imgSrc} role='presentation' />
+          <img src={props.imgSrc} alt={props.imgAlt} />
         </Grid>
       </Grid>
     </Link>
@@ -38,5 +38,7 @@ FeatureRow.propTypes = {
   heading: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   blurb: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired
+
 }

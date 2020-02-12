@@ -39,7 +39,7 @@ const SecondaryTile = (props) => {
             container
             spacing={3}>
             <Grid item lg={6}>
-              <img style={{width: '100%'}} src={props.imgSrc} role='presentation' />
+              <img style={{width: '100%'}} src={props.imgSrc} alt={props.imgAlt} />
             </Grid>
             <Grid item lg={6}
                   className={secondaryAnalysesTileStyles.headings}>
@@ -63,5 +63,6 @@ SecondaryTile.propTypes = {
   heading: PropTypes.string.isRequired,
   subheading: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired
 }
