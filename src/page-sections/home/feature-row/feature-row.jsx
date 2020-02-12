@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import featuredAnalysesStyles from './feature-row.module.scss';
 import { Grid } from '@material-ui/core';
+import PropTypes from "prop-types"
+import SecondaryTile from "../secondary-tile/stacked-layout/secondary-tile"
 
 const FeatureRow = (props) => {
   return (
@@ -31,3 +33,11 @@ const FeatureRow = (props) => {
 }
 
 export default FeatureRow;
+
+FeatureRow.propTypes = {
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  blurb: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired
+}

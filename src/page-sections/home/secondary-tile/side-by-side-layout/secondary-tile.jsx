@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import secondaryAnalysesTileStyles from './secondary-tile.module.scss';
+import PropTypes from "prop-types"
 
 const SecondaryTile = (props) => {
   return (
@@ -42,3 +43,11 @@ const SecondaryTile = (props) => {
 }
 
 export default SecondaryTile;
+
+SecondaryTile.propTypes = {
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  subheading: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired
+}

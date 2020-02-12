@@ -7,6 +7,8 @@ import userGuideImg from '../../../images/home/resources-user-guide-2.svg';
 import playbookImg from '../../../images/home/resources-playbook-2.svg';
 
 import resourcesRowStyles from './resources-row.module.scss';
+import PropTypes from "prop-types"
+import MoreAnalysesTiles from "../more-analyses-tiles/more-analyses-tiles"
 
 const ResourcesRow = () => {
   const resourcesItems = [

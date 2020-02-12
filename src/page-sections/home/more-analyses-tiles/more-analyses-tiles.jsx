@@ -11,6 +11,9 @@ import competition from "../../../images/more-analyses/competition.jpg"
 
 import { Grid } from "@material-ui/core"
 import moreAnalysesStyles from './more-analyses-tiles.module.scss'
+import homeStyles from "../../../pages/index.module.scss"
+import Home from "../../../components/layouts/home/home"
+import PropTypes from "prop-types"
 
 const MoreAnalysesTiles = () => {
   const analyses = [{
@@ -41,7 +44,6 @@ const MoreAnalysesTiles = () => {
       <Grid
         container
         spacing={4}>
-
           {analyses.map((item, index) =>
             <Grid item sm={12} md={6}
                   key={index}
@@ -77,4 +79,12 @@ const MoreAnalysesTiles = () => {
 
 
 export default MoreAnalysesTiles;
+
+MoreAnalysesTiles.propTypes = {
+  href: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string
+}
 
