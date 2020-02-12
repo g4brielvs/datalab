@@ -63,7 +63,7 @@ function IndexPage() {
             spacing={3}
             className={homeStyles.secondaryTiles}
           >
-            <Grid item md={12} lg={6} xl={12}>
+            <Grid item>
               <SecondaryTile
                 heading={"Homelessness Analysis"}
                 subheading={"Explore federal programs that address homelessness"}

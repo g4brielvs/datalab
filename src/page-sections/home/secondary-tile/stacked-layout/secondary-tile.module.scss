@@ -53,5 +53,12 @@
   }
 }
 
+@media screen and (max-width: $desktop-xl) {
+  .highlight {
+    border: none;
+  }
+}
+
+
 
 
