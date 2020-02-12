@@ -23,21 +23,6 @@ const Mapbox = loadable(() => import('../../components/visualizations/mapbox/map
 
 export default function Institutions(props) {
 
-  const [clickedSchool, setSchool] = useState(null);
-  let searchList = GeoDataMapbox.features
-    .map(school => ({
-      id: school.id,
-      display: school.properties.Recipient
-    }))
-    .sort((a, b) => a.display > b.display)
-    ;
-
-  function filterByClicked(clickedId) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
-    setSchool(filteredList);
-    return filteredList;
-  };
-
   // check required data properties/format to fail 'gracefully'
   if (!GeoDataMapbox.features ||
     !Array.isArray(GeoDataMapbox.features) ||
@@ -53,6 +38,21 @@ export default function Institutions(props) {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
     });
   };
+
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
+
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
+    setSchool(filteredList);
+    return filteredList;
+  }
 
   const panelDetails = useStaticQuery(graphql`
     query {
