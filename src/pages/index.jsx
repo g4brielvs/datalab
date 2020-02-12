@@ -62,8 +62,7 @@ function IndexPage() {
               href={"homelessness-analysis"}
               imgSrc={homelessImg}
               imgAlt={'A homeless person leaning against a street pole and additional homeless people stand against a building in the far background.'}
-              body={`The federal government spends about $500 billion each year on contracts. Learn more
-                  about contract recipients and what agencies receive from these contracts.`} />
+              body={`On a single night in 2018, more than 550,000 people experienced homelessness in the United States. With our visualization you can explore federal spending on programs that address homelessness and where individuals experiencing homeless are located.`} />
 
           </Grid>
         </Grid>

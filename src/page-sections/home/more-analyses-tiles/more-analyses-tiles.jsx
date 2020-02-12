@@ -16,25 +16,25 @@ const MoreAnalysesTiles = () => {
     imageSrc: federal,
     title: 'Federal Account Explorer',
     subtitle: 'Discover the federal government\'s spending accounts',
-    alt: ''
+    alt: 'A close view of a withered copy of the Statement of the Income and Expenditures of the United States.'
   }, {
     href: 'federal-employees',
     imageSrc: workers,
     title: 'Federal Employees',
     subtitle: 'Who works in government?',
-    alt: ''
+    alt: 'National Park Service Director talking with Junior Ranger wearing a vest with 32 badges, in front of the El Pueblo De Los Angeles Historic Monument.'
   }, {
     href: 'budget-function',
     imageSrc: budget,
     title: 'Budget Function',
     subtitle: 'Check out how federal spending is categorized',
-    alt: ''
+    alt: 'A close view of the back of a dollar bill focused on the Great Seal of the United States.'
   }, {
     href: 'competition-in-contracting',
     imageSrc: competition,
     title: 'Competition in Contracting',
     subtitle: 'How often do federal agencies compete for contracts?',
-    alt: ''
+    alt: 'Five individuals racing on an orange race track covering four lanes.'
   },
   ]
 
