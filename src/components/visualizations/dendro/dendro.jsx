@@ -59,7 +59,9 @@ function Dendro(props) {
       baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
 
       // Append a group which holds all nodes and which the zoom Listener can act upon.
-      svgGroup = baseSvg.append('g');
+      svgGroup = baseSvg.append('g').attr('id', function() {
+        return'dendro-viz';
+      });
 
       newData.forEach((d) => {
         // Keep this as a reference to the current level
@@ -91,7 +93,7 @@ function Dendro(props) {
         const scale = zoomListener.scale();
         const x = (-source.y0 * scale) + (svgWidth / 4);
         const y = (-source.x0 * scale) + (svgHeight / 2);
-        d3.select('g').transition()
+        d3.select('g#dendro-viz').transition()
           .duration(duration)
           .attr('transform', `translate(${x},${y})scale(${scale})`);
         zoomListener.scale(scale);
@@ -417,7 +419,7 @@ function Dendro(props) {
           let y = -source.x0;
           x = (x * scale) + (svgWidth / 20); // 4.2 default - set it now to max it can go to the end of container
           y = (y * scale) + (svgHeight / 2);
-          d3.select('g').transition()
+          d3.select('g#dendro-viz').transition()
             .duration(duration)
             .attr('transform', `translate(${x},${y})scale(${scale})`);
           zoomListener.scale(scale);
@@ -429,7 +431,7 @@ function Dendro(props) {
           let y = -source.x0;
           x = (x * scale) + (svgWidth / 3);
           y = (y * scale) + (svgHeight / 2);
-          d3.select('g').transition()
+          d3.select('g#dendro-viz').transition()
             .duration(duration)
             .attr('transform', `translate(${x},${y})scale(${scale})`);
           zoomListener.scale(scale);
