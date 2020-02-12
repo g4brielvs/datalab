@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import FeatureTile from "../feature-tile/feature-tile"
-
-import cg from "../../../images/home/cg-gif.gif"
-import federal from "../../../images/more-analyses/federal.jpg"
-import workers from "../../../images/more-analyses/workers.jpg"
-import budget from "../../../images/more-analyses/budget.jpg"
-import competition from "../../../images/more-analyses/competition.jpg"
+import federal from "src/images/more-analyses/federal.jpg"
+import workers from "src/images/more-analyses/workers.jpg"
+import budget from "src/images/more-analyses/budget.jpg"
+import competition from "src/images/more-analyses/competition.jpg"
 
 import { Grid } from "@material-ui/core"
 import moreAnalysesStyles from './more-analyses-tiles.module.scss'
-import homeStyles from "../../../pages/index.module.scss"
-import Home from "../../../components/layouts/home/home"
 import PropTypes from "prop-types"
 
 const MoreAnalysesTiles = () => {
@@ -20,22 +15,26 @@ const MoreAnalysesTiles = () => {
     href: 'federal-account-explorer',
     imageSrc: federal,
     title: 'Federal Account Explorer',
-    subtitle: 'Discover the federal government\'s spending accounts'
+    subtitle: 'Discover the federal government\'s spending accounts',
+    alt: ''
   }, {
     href: 'federal-employees',
     imageSrc: workers,
     title: 'Federal Employees',
-    subtitle: 'Who works in government?'
+    subtitle: 'Who works in government?',
+    alt: ''
   }, {
     href: 'budget-function',
     imageSrc: budget,
     title: 'Budget Function',
-    subtitle: 'Check out how federal spending is categorized'
+    subtitle: 'Check out how federal spending is categorized',
+    alt: ''
   }, {
     href: 'competition-in-contracting',
     imageSrc: competition,
     title: 'Competition in Contracting',
-    subtitle: 'How often do federal agencies compete for contracts?'
+    subtitle: 'How often do federal agencies compete for contracts?',
+    alt: ''
   },
   ]
 
@@ -62,7 +61,7 @@ const MoreAnalysesTiles = () => {
                 </div>
 
                 <div className={moreAnalysesStyles.imageContainer}>
-                  <img src={item.imageSrc} className={moreAnalysesStyles.image} />
+                  <img src={item.imageSrc} className={moreAnalysesStyles.image} alt={item.alt} />
                 </div>
 
               </Link>

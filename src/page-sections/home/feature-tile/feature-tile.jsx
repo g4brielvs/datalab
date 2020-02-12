@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from "gatsby"
+import { Link } from "gatsby";
 
 import featuredAnalysesTitleStyles from './feature-tile.module.scss';
-import PropTypes from "prop-types"
-import FeatureRow from "../feature-row/feature-row"
+import PropTypes from "prop-types";
 
 const FeatureTile = (props) => {
   return (

@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import featuredAnalysesStyles from './feature-row.module.scss';
 import { Grid } from '@material-ui/core';
-import PropTypes from "prop-types"
-import SecondaryTile from "../secondary-tile/stacked-layout/secondary-tile"
+import PropTypes from "prop-types";
 
 const FeatureRow = (props) => {
   return (

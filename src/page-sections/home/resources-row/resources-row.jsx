@@ -2,13 +2,11 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
-import apiImg from '../../../images/home/resources-api-2.svg';
-import userGuideImg from '../../../images/home/resources-user-guide-2.svg';
-import playbookImg from '../../../images/home/resources-playbook-2.svg';
+import apiImg from 'src/images/home/resources-api-2.svg';
+import userGuideImg from 'src/images/home/resources-user-guide-2.svg';
+import playbookImg from 'src/images/home/resources-playbook-2.svg';
 
 import resourcesRowStyles from './resources-row.module.scss';
-import PropTypes from "prop-types"
-import MoreAnalysesTiles from "../more-analyses-tiles/more-analyses-tiles"
 
 const ResourcesRow = () => {
   const resourcesItems = [

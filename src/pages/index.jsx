@@ -14,9 +14,9 @@ import main from "src/images/home/collegehomepage.svg";
 import contractExplorer from "src/images/home/contractexplorersunburst.png";
 import homelessImg from 'src/images/home/homelessness.png';
 
-import "../styles/index.scss";
+import "src/styles/index.scss";
 import homeStyles from "./index.module.scss";
-import cg from "../images/home/cg-gif.gif";
+import cg from "src/images/home/cg-gif.gif";
 
 
 function IndexPage() {
@@ -29,12 +29,12 @@ function IndexPage() {
         container
         spacing={3}
         justify="center"
-        className={homeStyles.featuredTileRow}
-      >
+        className={homeStyles.featuredTileRow} >
+
         <Grid
           item lg={12} xl={8}
-          className={homeStyles.featuredTile}
-        >
+          className={homeStyles.featuredTile} >
+
           <FeatureTile
             href={'americas-finance-guide'}
             imgSrc={cg}
@@ -46,48 +46,40 @@ function IndexPage() {
               changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
               dollars collected and spent by the federal government each year.`}
             mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
-              well as the deficit and debt in 2019.`
-            }
-          />
+              well as the deficit and debt in 2019.`} />
         </Grid>
-        <Grid item lg={12} xl={4}>
 
+        <Grid item lg={12} xl={4}>
           <DtsTile
             href={"dts"}
             heading={"Visualizing the Daily Treasury Statement"}
-            title={"How much does the federal government spend each day?"}
-          />
+            title={"How much does the federal government spend each day?"} />
 
-          <Grid
-            container
-            spacing={3}
-            className={homeStyles.secondaryTiles}
-          >
-            <Grid item>
-              <SecondaryTile
-                heading={"Homelessness Analysis"}
-                subheading={"Explore federal programs that address homelessness"}
-                href={"homelessness-analysis"}
-                imgSrc={homelessImg}
-                body={`The federal government spends about $500 billion each year on contracts. Learn more
-                    about contract recipients and what agencies receive from these contracts.`}
-              />
-            </Grid>
+          <Grid item>
+            <SecondaryTile
+              heading={"Homelessness Analysis"}
+              subheading={"Explore federal programs that address homelessness"}
+              href={"homelessness-analysis"}
+              imgSrc={homelessImg}
+              imgAlt={''}
+              body={`The federal government spends about $500 billion each year on contracts. Learn more
+                  about contract recipients and what agencies receive from these contracts.`} />
+
           </Grid>
         </Grid>
       </Grid>
 
+      {/* The more analyses is outside of the more analyses section on purpose */}
       <Grid item xs={12}>
         <p className={homeStyles.heading}>
           More Analyses
-          </p>
+        </p>
       </Grid>
 
       <Grid
         container
         spacing={3}
-        className={homeStyles.moreAnalysesRow}
-      >
+        className={homeStyles.moreAnalysesRow} >
 
         <Grid item lg={12} xl={6}>
           <MoreAnalysesTiles />
@@ -117,8 +109,12 @@ function IndexPage() {
           href={"contract-explorer"}
           heading={"Contract Explorer"}
           title={"Who receives federal contracts?"}
-          blurb={`Ever wonder who's getting federal contracts and what agencies are awarding them? This tool lets you explore contract-related information for FY18, including which organizations received federal contracts, contract amounts, awarding agencies and sub-agencies, and the types of goods or services contract recipients provided to the federal government.`}
+          blurb={`Ever wonder who's getting federal contracts and what agencies are awarding them? This tool lets you
+          explore contract-related information for FY18, including which organizations received federal contracts,
+          contract amounts, awarding agencies and sub-agencies, and the types of goods or services contract recipients
+          provided to the federal government.`}
           imgSrc={contractExplorer}
+          imgAlt={''}
         />
       </div>
 

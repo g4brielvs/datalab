@@ -1,9 +1,8 @@
 import React from 'react';
-import { Grid, Hidden } from "@material-ui/core"
+import { Grid, Hidden } from "@material-ui/core";
 
 import secondaryAnalysesTileStyles from './secondary-tile.module.scss';
-import PropTypes from "prop-types"
-import Sunburst from "../../../../components/visualizations/sunburst-vega/sunburst-vega"
+import PropTypes from "prop-types";
 
 const SecondaryTile = (props) => {
   return (
