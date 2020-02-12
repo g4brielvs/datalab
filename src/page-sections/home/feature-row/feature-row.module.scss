@@ -127,6 +127,14 @@ $landing-title-color: #4a4a4a;
     font-size: 1.125rem;
     width: 100%;
   }
+
+  .container {
+    flex-direction: column-reverse;
+
+    .heading {
+      margin-top: 5rem;
+    }
+  }
 }
 
 
