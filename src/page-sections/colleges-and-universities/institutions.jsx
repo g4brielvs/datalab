@@ -23,21 +23,6 @@ const Mapbox = loadable(() => import('../../components/visualizations/mapbox/map
 
 export default function Institutions(props) {
 
-  const [clickedSchool, setSchool] = useState(null);
-  let searchList = GeoDataMapbox.features
-    .map(school => ({
-      id: school.id,
-      display: school.properties.Recipient
-    }))
-    .sort((a, b) => a.display > b.display)
-    ;
-
-  function filterByClicked(clickedId) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
-    setSchool(filteredList);
-    return filteredList;
-  };
-
   // check required data properties/format to fail 'gracefully'
   if (!GeoDataMapbox.features ||
     !Array.isArray(GeoDataMapbox.features) ||
@@ -53,6 +38,31 @@ export default function Institutions(props) {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
     });
   };
+
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
+
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
+    setSchool(filteredList);
+    return filteredList;
+  };
+
+  const [chartView, isChartView] = useState(true);
+  const switchView = view => {
+    // updateTableData(tableData[fundingType]);
+    if (view === 'chart') {
+      isChartView(true);
+    } else {
+      isChartView(false);
+    }
+  }
 
   const panelDetails = useStaticQuery(graphql`
     query {
@@ -160,11 +170,12 @@ export default function Institutions(props) {
             searchList={searchList}
             listDescription='Search Institutions'
             onSelect={filterByClicked}
-            switchView={filterByClicked}
+            switchView={switchView}
           >
             <img src={GeolocationIcon} />
           </VizControlPanel>
           <Mapbox
+            display={chartView}
             data={GeoDataMapbox}
             showDetails={getClickedDetails}
             clickedSchool={clickedSchool}
@@ -174,6 +185,7 @@ export default function Institutions(props) {
             date={'March 2019'}
           />
           <DataTable
+            display={!chartView}
             data={dataTableData.map(x => {
               return [
                 x.Recipient,
