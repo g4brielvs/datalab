@@ -10,7 +10,7 @@
 
 // font override.
 .mapboxgl-map {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
 }
 
 #mapContainer {
@@ -107,9 +107,9 @@
     position: absolute;
     z-index: 20;
     display: flex;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     background-color: white;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   #map-search-btn {
@@ -119,7 +119,6 @@
     &:hover {
       cursor: pointer;
     }
-
   }
 
   #map-table-btn {
@@ -173,11 +172,11 @@
       font-size: 0.75rem;
       font-weight: 300;
       line-height: 18px;
-      margin: 0; 
+      margin: 0;
     }
 
     .inst-panel-subheading--bold {
-      color: #4A4A4A;
+      color: #4a4a4a;
       font-size: 0.75rem;
       font-weight: 600;
       line-height: 15px;
@@ -192,7 +191,7 @@
     }
 
     .inst-panel-subheading--bold--center {
-      color: #4A4A4A;
+      color: #4a4a4a;
       font-size: 0.75rem;
       font-weight: 600;
       line-height: 15px;
@@ -202,7 +201,7 @@
     #inst-panel-section {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #F2F2F2;
+      border-bottom: 1px solid #f2f2f2;
       font-size: 0.9375rem;
       line-height: 18px;
       color: #4a4a4a;
@@ -210,7 +209,7 @@
       margin-top: 1rem;
 
       &:last-child {
-	margin-bottom: 1rem;
+        margin-bottom: 1rem;
       }
 
       // child p tag class
@@ -258,51 +257,58 @@
   }
 } // end mapFilter
 
-.tooltip-float {
-  clear: both;
-  margin: 0;
-  padding: 0;
-  font-size: 0.5rem;
+.mapboxgl-popup-content {
+  width: 350px;
 
-  .tooltip-float--underline {
-    border-bottom: 1px solid #666666;
-  }
-
-  .map-tooltip-p-left-inst {
-    //	padding-right: 3em; // tab space
-    margin: 0;
-    color: #666666;
-    float: left;
-  }
-
-  .map-tooltip-p-left {
-    color: #666666;
-    margin: 0;
-    float: left;
-  }
-  
-  .map-tooltip-p-right {
-    color: #000000;
-    margin: 0;
-    float: right;
-  }
-
-  .map-tooltip-p-right-invest {
-    color: #881E3D;
-    margin: 0;
-    float: right;
-  }
-
-  .map-tooltip-p-right-students {
-    color: #000000;
-    margin: 0;
-    float: right;
-    border-bottom: 1px solid #666666;
-  }
-
-  .tooltip-hr {
+  .tooltip-float {
     clear: both;
-    width: 250px;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+
+    p {
+      font-size: 0.875rem;
+    }
+
+    .tooltip-float--underline {
+      border-bottom: 1px solid #666666;
+    }
+
+    .map-tooltip-p-left-inst {
+      //	padding-right: 3em; // tab space
+      margin: 0;
+      color: #666666;
+      float: left;
+    }
+
+    .map-tooltip-p-left {
+      color: #666666;
+      margin: 0;
+      float: left;
+    }
+
+    .map-tooltip-p-right {
+      color: #000000;
+      margin: 0;
+      float: right;
+    }
+
+    .map-tooltip-p-right-invest {
+      color: #881e3d;
+      margin: 0;
+      float: right;
+    }
+
+    .map-tooltip-p-right-students {
+      color: #000000;
+      margin: 0;
+      float: right;
+      border-bottom: 1px solid #666666;
+    }
+
+    .tooltip-hr {
+      clear: both;
+      width: 250px;
+      text-align: center;
+    }
   }
 }
