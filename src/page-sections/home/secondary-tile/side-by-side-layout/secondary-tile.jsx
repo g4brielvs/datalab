@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import secondaryAnalysesTileStyles from './secondary-tile.module.scss';
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 const SecondaryTile = (props) => {
   return (

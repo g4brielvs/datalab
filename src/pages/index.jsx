@@ -93,7 +93,7 @@ function IndexPage() {
           <MoreAnalysesTiles />
         </Grid>
 
-        <Grid item lg={12} xl={6}>
+        <Grid item lg={12} xl={6} className={homeStyles.featuredTile}>
           <FeatureTile
             href={"colleges-and-universities"}
             imgSrc={main}

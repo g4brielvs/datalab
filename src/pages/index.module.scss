@@ -31,9 +31,13 @@
   }
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $desktop-xl) {
   .more-analyses-row {
     flex-direction: column-reverse;
+
+    .featured-tile {
+      margin-bottom: $margin-45;
+    }
   }
 }
 
