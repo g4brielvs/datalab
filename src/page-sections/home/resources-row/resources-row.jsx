@@ -21,7 +21,7 @@ const ResourcesRow = () => {
       imageSrc: userGuideImg,
       altText: 'An icon of a book.',
       title: 'Analyst Guide',
-      description: 'Methods to easily navigate data from our sister site, USAspending.gov'
+      description: 'Methods to easily navigate data from our sister site, USAspending.gov.'
     }, {
       href: '/student-innovators-toolbox/',
       imageSrc: playbookImg,
