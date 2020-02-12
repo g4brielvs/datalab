@@ -8,7 +8,7 @@ import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import DataTable from '../../components/table/data-table';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
+import GeolocationIcon from '@material-ui/icons/Room';
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
@@ -162,7 +162,7 @@ export default function Institutions(props) {
             onSelect={filterByClicked}
             switchView={filterByClicked}
           >
-            <img src={GeolocationIcon} />
+            <GeolocationIcon />
           </VizControlPanel>
           <Mapbox
             data={GeoDataMapbox}
