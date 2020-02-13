@@ -148,7 +148,7 @@ export default class Sunburst extends React.Component {
       // .on('mouseover', hover)
       .on('click', this.click)
       .append('title').text(d => d.name.replace(/CFDA/i, '').replace(/PSC/i, '').trim());
-      this.click(data[0]); // simulate clicking center to reset zoom
+    this.click(data[0]); // simulate clicking center to reset zoom
   }
 
   click(d) {
@@ -271,7 +271,7 @@ export default class Sunburst extends React.Component {
   }
 
   showDetailsPane(d) {
-    if(!this.isMobile()){
+    if (!this.isMobile()) {
       this.props.showDetails(d);
     }
   }
@@ -305,8 +305,8 @@ export default class Sunburst extends React.Component {
   }
 
   componentDidMount() {
-      this.maxHeight = this.width;
-      this.height = this.width;
+    this.maxHeight = this.width;
+    this.height = this.width;
 
     this.radius = Math.min(this.width, this.height) / 2;
     this.xScale = d3.scale.linear().range([0, 2 * Math.PI]);
@@ -339,7 +339,7 @@ export default class Sunburst extends React.Component {
 
     // Function calls
     this.drawChart(this.chartArray); // default chart is all grants
-    
+
   }
 
   componentDidUpdate(prevProps) {

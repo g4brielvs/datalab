@@ -264,7 +264,7 @@ const Categories = () => {
           </div>
           <CategoriesVizContainer
             display={chartView}
-            items={_data[fundingType].nodes}
+            items={_data[fundingType].nodes.filter(i => i.Obligation > 0)}
             title={titlesByType[fundingType]}
             chartRef={chartRef}
           />
