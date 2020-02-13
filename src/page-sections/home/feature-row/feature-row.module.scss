@@ -16,10 +16,6 @@ $landing-title-color: #4a4a4a;
 
 .image {
   padding: 0 !important;
-
-  img {
-    width: 100%;
-  }
 }
 
 .heading {
@@ -39,14 +35,11 @@ $landing-title-color: #4a4a4a;
   width: calc(100% - 32px);
 }
 
-.feature-row {
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.content:global(.MuiGrid-item) {
+  padding: 24px 0 0 24px !important;
+}
 
+.feature-row {
   &:hover {
     .content {
       .heading {
@@ -59,7 +52,7 @@ $landing-title-color: #4a4a4a;
     }
   }
 }
-
+// Desktop and higher
 @media (min-width: $desktop) {
   .container {
     border: 1px solid #ddd;
@@ -79,20 +72,19 @@ $landing-title-color: #4a4a4a;
 
   .content {
     padding-bottom: 0;
-    //padding-top: $margin-15;
-    //padding-left: $margin-15;
-    //margin-right: -24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  }
 
+  .title {
+    margin-bottom: 0;
   }
 }
 
+// tablet landscape and portrait
 @media (min-width: $phone) and (max-width: $desktop - 1) {
   .content {
-    padding-top: 0 !important;
+    &:global(.MuiGrid-item) {
+      padding-top: 0 !important;
+    }
   }
 
   .heading {
@@ -106,19 +98,35 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
-  .title {
-    margin-bottom: 0;
+// Phone and tablet
+@media screen and (max-width: $desktop - 1) {
+  .container {
+    flex-direction: row-reverse;
   }
 
-  .blurb {
-    padding-left: 16px;
-    padding-rightt: 16px;
-    width: 100%;
+  .heading {
+    margin-top: 0;
+  }
+
+  .content {
+    padding-top: 0;
+    margin: 16px;
+  }
+
+  img {
+    padding: 0;
+    width: calc(100% - 16px);
   }
 }
 
+// Phone only
 @media screen and (max-width: $phone - 1) {
+  .content {
+    &:global(.MuiGrid-item) {
+      padding-left: 0 !important;
+    }
+  }
+
   .blurb {
     display: none;
   }
@@ -130,10 +138,6 @@ $landing-title-color: #4a4a4a;
 
   .container {
     flex-direction: column-reverse;
-
-    .heading {
-      margin-top: 5rem;
-    }
   }
 }
 
