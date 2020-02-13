@@ -8,6 +8,7 @@ const AgenciesTableContainer = (props) => {
   if(props.display) {
     return(<>
       <DataTable
+        display={true}
         idName={'agenciesTable'}
         columnTitles={props.tableColumnTitles}
         data={props.tableData}
