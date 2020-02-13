@@ -11,13 +11,13 @@ import resourcesRowStyles from './resources-row.module.scss';
 const ResourcesRow = () => {
   const resourcesItems = [
     {
-      href: 'http://api.usaspending.gov/',
+      href: 'https://api.usaspending.gov/',
       imageSrc: apiImg,
       altText: 'An icon of a computer monitor.',
       title: 'API Guide',
       description: 'Guidance on accessing Treasury data with open source code.'
     }, {
-      href: '/assets/analyst-guide-1-2.pdf',
+      href: '/unstructured-data/resources/analyst-guide.pdf',
       imageSrc: userGuideImg,
       altText: 'An icon of a book.',
       title: 'Analyst Guide',
