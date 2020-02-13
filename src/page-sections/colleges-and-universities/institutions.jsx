@@ -8,7 +8,7 @@ import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import DataTable from '../../components/table/data-table';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
+import GeolocationIcon from '@material-ui/icons/Room';
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
 import StoryHeading from '../../components/section-elements/story-heading/story-heading';
@@ -22,21 +22,6 @@ import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 export default function Institutions(props) {
-
-  const [clickedSchool, setSchool] = useState(null);
-  let searchList = GeoDataMapbox.features
-    .map(school => ({
-      id: school.id,
-      display: school.properties.Recipient
-    }))
-    .sort((a, b) => a.display > b.display)
-    ;
-
-  function filterByClicked(clickedId) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
-    setSchool(filteredList);
-    return filteredList;
-  };
 
   // check required data properties/format to fail 'gracefully'
   if (!GeoDataMapbox.features ||
@@ -53,6 +38,21 @@ export default function Institutions(props) {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
     });
   };
+
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
+
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
+    setSchool(filteredList);
+    return filteredList;
+  }
 
   const panelDetails = useStaticQuery(graphql`
     query {
@@ -162,7 +162,7 @@ export default function Institutions(props) {
             onSelect={filterByClicked}
             switchView={filterByClicked}
           >
-            <img src={GeolocationIcon} />
+            <GeolocationIcon />
           </VizControlPanel>
           <Mapbox
             data={GeoDataMapbox}

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import * as $ from "jquery";
 import mapboxgl from 'mapbox-gl';
-import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 import './mapbox.scss';
+import '../../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
 import pin from '../../../images/colleges-and-universities/map-pin.png';
+import formatNumber from '../../../utils/number-formatter';
 
 export default function Mapbox(props) {
 
@@ -11,12 +12,7 @@ export default function Mapbox(props) {
 		const data = props.data; // geojson
 		mapboxgl.accessToken = `${process.env.GATSBY_MAPBOX_API_KEY}`;
 
-		function numberWithCommas(x) {
-			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-
 		function createMapbox() {
-
 			var map = new mapboxgl.Map({
 				container: 'collegesMap', // container id
 				style: 'mapbox://styles/usaspending/cjvduv2b7fwlc1fnv9iyihkqo', // stylesheet location
@@ -34,7 +30,28 @@ export default function Mapbox(props) {
 			});
 
 			function flyToClicked() {
-				let toolTip = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.Recipient}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.State}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.COUNTY}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.Total}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${props.clickedSchool[0].properties.Total_Federal_Investment}</p></div>`;
+				let toolTip = `
+					<div class='tooltip-float'>
+						<p class='map-tooltip-p-left-inst'>Institution</p>
+						<p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.Recipient}</p>
+					</div>
+					<div class='tooltip-float'>
+						<p class='map-tooltip-p-left'>State</p>
+						<p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.State}</p>
+					</div>
+					<div class='tooltip-float'>
+						<p class='map-tooltip-p-left'>County</p>
+						<p class='map-tooltip-p-right'>${props.clickedSchool[0].properties.COUNTY}</p>
+					</div>
+					<div class='tooltip-float tooltip-float--underline'>
+						<p class='map-tooltip-p-left'>Number of Students </p>
+						<p class='map-tooltip-p-right'>${formatNumber('number', props.clickedSchool[0].properties.Total)}</p>
+					</div>
+					<div class='tooltip-float'>
+						<p class='map-tooltip-p-left'>Total $ Received</p>
+						<p class='map-tooltip-p-right-invest'>${formatNumber('dollars', props.clickedSchool[0].properties.Total_Federal_Investment)}</p>
+					</div>
+				`;
 
 				map.easeTo({
 					center: props.clickedSchool[0].geometry.coordinates,
@@ -182,9 +199,9 @@ export default function Mapbox(props) {
 					let coordinates = e.features[0].geometry.coordinates.slice();
 					let name = e.features[0].properties.Recipient;
 					let state = e.features[0].properties.State;
-					let fedInvest = (e.features[0].properties.Total_Federal_Investment); // add back "format currency global"
+					let fedInvest = formatNumber('dollars', e.features[0].properties.Total_Federal_Investment);
 					let county = e.features[0].properties.COUNTY;
-					let numStudents = numberWithCommas(e.features[0].properties.Total);
+					let numStudents = formatNumber('number', e.features[0].properties.Total);
 
 					let tooltipHtml = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${fedInvest}</p></div>`;
 
@@ -208,9 +225,9 @@ export default function Mapbox(props) {
 					let coordinates = e.features[0].geometry.coordinates.slice();
 					let name = e.features[0].properties.Recipient;
 					let state = e.features[0].properties.State;
-					let fedInvest = (e.features[0].properties.Total_Federal_Investment); // add back format currency global
+					let fedInvest = formatNumber('dollars', e.features[0].properties.Total_Federal_Investment);
 					let county = e.features[0].properties.COUNTY;
-					let numStudents = numberWithCommas(e.features[0].properties.Total);
+					let numStudents = formatNumber('number', e.features[0].properties.Total);
 
 					let tooltipHtml = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${fedInvest}</p></div>`;
 
