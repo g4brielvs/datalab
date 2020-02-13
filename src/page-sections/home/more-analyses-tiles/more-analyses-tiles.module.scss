@@ -37,7 +37,7 @@ $darkGrey: #666666;
 }
 
 
-@media (max-width: $tablet) {
+@media (max-width: $phone - 1) {
   .heading {
     border-bottom: 1px solid $font-body-copy;
   }

@@ -41,13 +41,13 @@
 
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: $phone - 1) {
   .text {
     display: none;
   }
 }
 
-@media (min-width: $tablet) and (max-width: $desktop) {
+@media (min-width: $phone) and (max-width: $desktop - 1) {
   .image {
     margin-right: $margin-20;
   }
@@ -57,7 +57,7 @@
   }
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $desktop - 1) {
   .highlight {
     border: none;
   }

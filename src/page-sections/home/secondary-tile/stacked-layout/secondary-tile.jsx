@@ -38,10 +38,10 @@ const SecondaryTile = (props) => {
           <Grid
             container
             spacing={3}>
-            <Grid item md={6}>
+            <Grid item sm={6}>
               <img style={{width: '100%'}} src={props.imgSrc} alt={props.imgAlt} />
             </Grid>
-            <Grid item md={6}
+            <Grid item sm={6}
                   className={secondaryAnalysesTileStyles.headings}>
               <p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
               <p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>

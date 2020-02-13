@@ -60,7 +60,7 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media screen and (min-width: $desktop) {
+@media (min-width: $desktop) {
   .container {
     border: 1px solid #ddd;
     border-radius: 0.25rem;
@@ -90,7 +90,7 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media (min-width: $phone) and (max-width: $tablet) {
+@media (min-width: $phone) and (max-width: $desktop - 1) {
   .content {
     padding-top: 0 !important;
   }
@@ -106,20 +106,19 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media (min-width: $tablet) and (max-width: $desktop) {
-  .content {
-    padding: 0 !important;
+@media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
+  .title {
+    margin-bottom: 0;
   }
 
-  .image {
-    img {
-      width: calc(100% - 16px);
-      float: right;
-    }
+  .blurb {
+    padding-left: 16px;
+    padding-rightt: 16px;
+    width: 100%;
   }
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: $phone - 1) {
   .blurb {
     display: none;
   }
