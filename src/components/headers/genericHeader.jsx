@@ -47,7 +47,7 @@ export default class GenericHeader extends React.Component {
                           },
                           {
                             resources: [
-                              { name: 'Analyst Guide', link: '/unstructured-data/resources/analyst-guide.pdf' },
+                              { name: 'Analyst Guide', link: '/analyst-guide' },
                               { name: 'API Guide', link: 'https://api.usaspending.gov/' },
                               { name: 'Data Model', link: 'https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html' },
                               { name: "Student Innovator's Toolbox", link: '/student-innovators-toolbox' },

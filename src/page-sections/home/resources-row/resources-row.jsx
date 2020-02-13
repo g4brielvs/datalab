@@ -16,7 +16,7 @@ const ResourcesRow = () => {
       title: 'API Guide',
       description: 'Guidance on accessing Treasury data with open source code.'
     }, {
-      href: '/unstructured-data/resources/analyst-guide.pdf',
+      href: '/analyst-guide',
       imageSrc: userGuideImg,
       altText: 'An icon of a book.',
       title: 'Analyst Guide',
