@@ -42,6 +42,7 @@ const MoreAnalysesTiles = () => {
     <section className={moreAnalysesStyles.moreAnalyses}>
       <Grid
         container
+        justify='space-around'
         spacing={4}>
           {analyses.map((item, index) =>
             <Grid item xs={12} sm={6}
@@ -78,12 +79,4 @@ const MoreAnalysesTiles = () => {
 
 
 export default MoreAnalysesTiles;
-
-MoreAnalysesTiles.propTypes = {
-  href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
-  imgAlt: PropTypes.string
-}
 
