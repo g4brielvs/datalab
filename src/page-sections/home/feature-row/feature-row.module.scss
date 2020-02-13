@@ -9,12 +9,12 @@ $landing-title-color: #4a4a4a;
   font-weight: bold;
 }
 
-.container {
+.container:global(.MuiGrid-container) {
   margin-left: 0 !important;
   width: 100% !important;
 }
 
-.image {
+.image:global(.MuiGrid-item) {
   padding: 0 !important;
 }
 
@@ -36,7 +36,9 @@ $landing-title-color: #4a4a4a;
 }
 
 .content:global(.MuiGrid-item) {
-  padding: 24px 0 0 24px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .feature-row {
