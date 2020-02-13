@@ -1,8 +1,9 @@
-@import '../../../styles/variables';
-@import '../../../styles/index';
+@import '../../../../styles/variables';
+@import '../../../../styles/index';
 
 .highlight {
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   text-align: left;
 
   .headings {
@@ -16,12 +17,14 @@
 
   .subheading {
     @include homepageSubtitle();
+    font-size: 1.5rem;
     margin-bottom: 0;
   }
 
   .text {
     @include homepageBodyCopy();
-    padding: 0 0.88rem;
+    margin-top: 0;
+    margin-left: 0;
   }
 
   .image {
@@ -38,17 +41,28 @@
 
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $phone - 1) {
   .text {
     display: none;
   }
 }
 
-@media (min-width: $desktop) and (max-width: $desktop-xl) {
+@media (min-width: $phone) and (max-width: $desktop - 1) {
   .image {
     margin-right: $margin-20;
   }
+
+  .heading {
+    margin-top: 0;
+  }
 }
+
+@media screen and (max-width: $desktop - 1) {
+  .highlight {
+    border: none;
+  }
+}
+
 
 
 

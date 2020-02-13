@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import secondaryAnalysesTileStyles from './secondary-tile.module.scss';
+import PropTypes from "prop-types";
 
 const SecondaryTile = (props) => {
   return (
@@ -28,7 +29,7 @@ const SecondaryTile = (props) => {
           <Grid item xs={6} sm={6} md={6} lg={4} xl={4}
             className={secondaryAnalysesTileStyles.image}
           >
-            <img className='' src={props.imgSrc} role='presentation' />
+            <img className='' src={props.imgSrc} alt={props.imgAlt} />
           </Grid>
 
           <p className={secondaryAnalysesTileStyles.text}>
@@ -42,3 +43,12 @@ const SecondaryTile = (props) => {
 }
 
 export default SecondaryTile;
+
+SecondaryTile.propTypes = {
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  subheading: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired
+}
