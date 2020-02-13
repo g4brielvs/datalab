@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SEO from '../../components/seo';
-import '../../styles/index.scss';
 import fedEmpStyles from './index.module.scss';
 
 import DataModule from '../../components/visualizations/federal-employees/util/data-module';

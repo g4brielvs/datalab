@@ -146,7 +146,7 @@ export default function Mapviz(props) {
     }
   }
 
-  function reset(){
+  function reset() {
     setSelectedAgencies([]);
     setSelectedOccupations([]);
   }
@@ -170,15 +170,15 @@ export default function Mapviz(props) {
         function filterOccupationsList() {
           if (selectedAgencies.length) {
             let currentOccupations = [];
-              selectedAgencies.forEach(agency => {
-                if(agencyOccupationIds[agency.id]){
-                  agencyOccupationIds[agency.id].forEach(occupationId => {
-                    if (!currentOccupations.includes(occupationId)) {
-                      currentOccupations.push(occupationId);
-                    }
-                  })
-                }
-              })
+            selectedAgencies.forEach(agency => {
+              if (agencyOccupationIds[agency.id]) {
+                agencyOccupationIds[agency.id].forEach(occupationId => {
+                  if (!currentOccupations.includes(occupationId)) {
+                    currentOccupations.push(occupationId);
+                  }
+                })
+              }
+            })
 
             occupationOptionList = currentOccupations.map((occupationId) => {
               return Object.values(occupationCategories).find((occupation) => {
@@ -231,34 +231,38 @@ export default function Mapviz(props) {
   return (
     <>
       <ControlBar>
-        <Reset _resetClick={reset}/>
-        <Share location={props.location}/>
+        <Reset _resetClick={reset} />
+        <Share location={props.location} />
       </ControlBar>
       <div id="tooltip" className="tooltip-module" />
       <div id="mapVizToolbar" className={`row ${barChartStyles.toolbar}`}>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
-          <Multiselector key={'mapVizAgencies'}
-                         optionList={agencyOptionList}
-                         valueKey={'id'}
-                         labelKey={'name'}
-                         selectedVal={selectedAgencies}
-                         placeholder={'Agencies'}
-                         id={'mapVizAgencies'}
-                         changeHandler={setSelectedAgencies} />
+          <Multiselector
+            key={'mapVizAgencies'}
+            optionList={agencyOptionList}
+            valueKey={'id'}
+            labelKey={'name'}
+            selectedVal={selectedAgencies}
+            placeholder={'Agencies'}
+            id={'mapVizAgencies'}
+            changeHandler={setSelectedAgencies}
+          />
         </div>
         <div className={`filter-tools ${barChartStyles.formItem}`}>
-          <Multiselector key={'mapVizOccupations'}
-                         optionList={occupationOptionList}
-                         valueKey={'id'}
-                         labelKey={'name'}
-                         selectedVal={selectedOccupations}
-                         placeholder={'Occupations'}
-                         id={occupationName}
-                         changeHandler={setSelectedOccupations} />
+          <Multiselector
+            key={'mapVizOccupations'}
+            optionList={occupationOptionList}
+            valueKey={'id'}
+            labelKey={'name'}
+            selectedVal={selectedOccupations}
+            placeholder={'Occupations'}
+            id={occupationName}
+            changeHandler={setSelectedOccupations}
+          />
         </div>
       </div>
-      <div className="visContainer">
-        <svg width="947" height="700" viewBox="0 0 1200 700" id="mapSvg" className={mapStyles.mapSvg}/>
+      <div className={mapStyles.mapContainer}>
+        <svg width="947" height="700" viewBox="0 0 1200 700" id="mapSvg" className={mapStyles.mapSvg} />
       </div>
     </>
   );
