@@ -1,4 +1,6 @@
-.visContainer {
+@import '../../../../styles/variables.scss';
+
+.barContainer {
   display: flex;
   justify-content: center;
   padding: 2vw;
@@ -10,7 +12,7 @@
   }
 }
 
-.visContainer > svg > g > rect:hover {
+.barContainer > svg > g > rect:hover {
   fill: #d334ba;
 }
 
@@ -68,5 +70,29 @@
       flex-direction: column !important;
       padding-left: 0;
     }
+  }
+}
+
+@media (min-width: $desktop) {
+  .barContainer {
+    height: 550px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .barContainer {
+    height: 420px;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .barContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: $phone) {
+  .barContainer {
+    height: 375px;
   }
 }
