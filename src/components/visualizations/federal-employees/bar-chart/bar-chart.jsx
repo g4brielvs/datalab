@@ -166,7 +166,7 @@ function BarChart(props) {
           />
         </div>
       </div>
-      <div className={`fed-emp-bar-chart ${barChartStyles.visContainer}`}>
+      <div className={`fed-emp-bar-chart ${barChartStyles.barContainer}`}>
         <svg width='900' height='500' viewBox='0 0 900 500' id='barChartSvg' className={barChartStyles.visBarChart} />
         {legend()}
       </div>

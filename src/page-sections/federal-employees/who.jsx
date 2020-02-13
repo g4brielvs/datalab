@@ -24,9 +24,6 @@ export default function Who(props) {
       <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
     </ControlBar>
     <Treemap sectionId={props.sectionId} dataSource={props.dataSource} />
-    <Downloads
-      data={downloadableData}
-      isJSON={true}
-    />
+    <Downloads data={downloadableData} isJSON={true} />
   </>;
 }
