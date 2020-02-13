@@ -44,7 +44,7 @@ const MoreAnalysesTiles = () => {
         container
         spacing={4}>
           {analyses.map((item, index) =>
-            <Grid item sm={12} md={6}
+            <Grid item xs={12} sm={6}
                   key={index}
               className={moreAnalysesStyles.tile}>
 

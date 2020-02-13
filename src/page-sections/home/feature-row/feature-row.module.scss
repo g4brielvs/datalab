@@ -60,7 +60,7 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media screen and (min-width: $desktop-xl) {
+@media screen and (min-width: $desktop) {
   .container {
     border: 1px solid #ddd;
     border-radius: 0.25rem;
@@ -78,6 +78,7 @@ $landing-title-color: #4a4a4a;
   }
 
   .content {
+    padding-bottom: 0;
     //padding-top: $margin-15;
     //padding-left: $margin-15;
     //margin-right: -24px;
@@ -89,7 +90,7 @@ $landing-title-color: #4a4a4a;
   }
 }
 
-@media (min-width: $desktop) and (max-width: $desktop-xl) {
+@media (min-width: $phone) and (max-width: $tablet) {
   .content {
     padding-top: 0 !important;
   }

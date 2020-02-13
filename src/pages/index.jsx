@@ -32,7 +32,7 @@ function IndexPage() {
         className={homeStyles.featuredTileRow} >
 
         <Grid
-          item lg={12} xl={8}
+          item md={12} lg={8}
           className={homeStyles.featuredTile} >
 
           <FeatureTile
@@ -49,7 +49,7 @@ function IndexPage() {
               well as the deficit and debt in 2019.`} />
         </Grid>
 
-        <Grid item lg={12} xl={4}>
+        <Grid item md={12} lg={4}>
           <DtsTile
             href={"dts"}
             heading={"Visualizing the Daily Treasury Statement"}
@@ -80,11 +80,11 @@ function IndexPage() {
         spacing={3}
         className={homeStyles.moreAnalysesRow} >
 
-        <Grid item lg={12} xl={6}>
+        <Grid item md={12} lg={6}>
           <MoreAnalysesTiles />
         </Grid>
 
-        <Grid item lg={12} xl={6} className={homeStyles.featuredTile}>
+        <Grid item md={12} lg={6} className={homeStyles.featuredTile}>
           <FeatureTile
             href={"colleges-and-universities"}
             imgSrc={main}

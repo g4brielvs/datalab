@@ -41,19 +41,23 @@
 
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $tablet) {
   .text {
     display: none;
   }
 }
 
-@media (min-width: $desktop) and (max-width: $desktop-xl) {
+@media (min-width: $tablet) and (max-width: $desktop) {
   .image {
     margin-right: $margin-20;
   }
+
+  .heading {
+    margin-top: 0;
+  }
 }
 
-@media screen and (max-width: $desktop-xl) {
+@media screen and (max-width: $desktop) {
   .highlight {
     border: none;
   }

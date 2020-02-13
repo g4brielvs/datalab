@@ -13,7 +13,7 @@ const SecondaryTile = (props) => {
         ga-on='click' ga-event-category='Data Lab Home Page'
         ga-event-action={'Clicked ' + props.heading}>
 
-        <Hidden lgDown>
+        <Hidden mdDown>
           <Grid
             container
             spacing={3}>
@@ -34,14 +34,14 @@ const SecondaryTile = (props) => {
               </Grid>
           </Grid>
         </Hidden>
-        <Hidden xlUp>
+        <Hidden lgUp>
           <Grid
             container
             spacing={3}>
-            <Grid item lg={6}>
+            <Grid item md={6}>
               <img style={{width: '100%'}} src={props.imgSrc} alt={props.imgAlt} />
             </Grid>
-            <Grid item lg={6}
+            <Grid item md={6}
                   className={secondaryAnalysesTileStyles.headings}>
               <p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
               <p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
