@@ -145,53 +145,34 @@ export default function Institutions(props) {
       <p>For a specific search, use the search tool to type in the school by name</p>
     </Accordion>
 
-    <Grid container>
-      <Grid item xs={12}>
-        <ControlBar>
-          <Share
-            location={props.location}
-            title='Check out this analysis on Data Lab'
-            text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-            twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-          />
-        </ControlBar>
-        <div>
-          <VizControlPanel
-            searchList={searchList}
-            listDescription='Search Institutions'
-            onSelect={filterByClicked}
-            switchView={filterByClicked}
-          >
-            <GeolocationIcon />
-          </VizControlPanel>
-          <Mapbox
-            data={GeoDataMapbox}
-            showDetails={getClickedDetails}
-            clickedSchool={clickedSchool}
-          />
-          <Downloads
-            href={'/data/colleges-and-universities/institutions/mapdata.json'}
-            date={'March 2019'}
-          />
-          <DataTable
-            data={dataTableData.map(x => {
-              return [
-                x.Recipient,
-                x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
-                parseInt(x.contracts),
-                parseInt(x.grants),
-                parseInt(x.student_aid),
-                parseInt(x.Total_Federal_Investment),
-              ];
-            })}
-            columnTitles={tableColumnTitles}
-            display={false} // for now, left panel for map isn't finished.
-            idName={'institutionsTable'}
-          />
-        </div>
-      </Grid>
+    <ControlBar>
+      <Share
+        location={props.location}
+        title='Check out this analysis on Data Lab'
+        text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+        twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+      />
+    </ControlBar>
 
-      <Grid item>
+    <Grid container>
+      <Grid item xs={1}>
+        <VizControlPanel
+          searchList={searchList}
+          listDescription='Search Institutions'
+          onSelect={filterByClicked}
+          switchView={filterByClicked}
+        >
+          <GeolocationIcon />
+        </VizControlPanel>
+      </Grid>
+      <Grid item xs={10}>
+        <Mapbox
+          data={GeoDataMapbox}
+          showDetails={getClickedDetails}
+          clickedSchool={clickedSchool}
+        />
+      </Grid>
+      <Grid item xs={1}>
         <VizDetails
           showDetails={getClickedDetails}
           details={schoolDetails}
@@ -199,6 +180,30 @@ export default function Institutions(props) {
         />
       </Grid>
     </Grid>
+
+
+
+
+    <Downloads
+      href={'/data/colleges-and-universities/institutions/mapdata.json'}
+      date={'March 2019'}
+    />
+    <DataTable
+      data={dataTableData.map(x => {
+        return [
+          x.Recipient,
+          x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
+          parseInt(x.contracts),
+          parseInt(x.grants),
+          parseInt(x.student_aid),
+          parseInt(x.Total_Federal_Investment),
+        ];
+      })}
+      columnTitles={tableColumnTitles}
+      display={false} // for now, left panel for map isn't finished.
+      idName={'institutionsTable'}
+    />
+
     <Downloads
       href={'/data/colleges-and-universities/institutions/tabledata.csv'}
       date={'March 2019'}
