@@ -53,7 +53,7 @@ const Categories = () => {
 
   const _data = useStaticQuery(graphql`
     query {
-      contracts: allInvestmentSectionContractsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+      contracts: allInvestmentSectionContractsV2Csv {
         nodes {
           id
           Agency
@@ -64,7 +64,7 @@ const Categories = () => {
           family
         }
       }
-      grants: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+      grants: allInvestmentSectionGrantsV2Csv {
         nodes {
           id
           Agency
@@ -76,7 +76,7 @@ const Categories = () => {
           family
         }
       }
-      research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}, Obligation: {regex: "/[^-]/"}}) {
+      research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         nodes {
           id
           Agency
