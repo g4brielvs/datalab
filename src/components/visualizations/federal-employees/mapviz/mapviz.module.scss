@@ -1,3 +1,5 @@
+@import '../../../../styles/variables.scss';
+
 .map-svg {
   width: 100%;
   height: auto;
@@ -7,4 +9,28 @@
   fill: none;
   stroke: #a9a9a9;
   stroke-width: 1;
+}
+
+@media (min-width: $desktop) {
+  .mapContainer {
+    height: 650px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .mapContainer {
+    height: 500px;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .mapContainer {
+    height: 400px;
+  }
+}
+
+@media (max-width: $phone) {
+  .mapContainer {
+    height: 375px;
+  }
 }
