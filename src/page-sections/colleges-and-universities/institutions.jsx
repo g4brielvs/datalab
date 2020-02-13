@@ -56,11 +56,11 @@ export default function Institutions(props) {
 
   const [chartView, isChartView] = useState(true);
   const switchView = view => {
-    // updateTableData(tableData[fundingType]);
     if (view === 'chart') {
       isChartView(true);
     } else {
       isChartView(false);
+      detailPanelRef.current && detailPanelRef.current.closeDetails(); // hide details if open
     }
   }
 
@@ -132,11 +132,10 @@ export default function Institutions(props) {
         }
       ]
     };
-    detailPanelRef.current.updateDetails(schoolDetails);
+    detailPanelRef.current && detailPanelRef.current.updateDetails(schoolDetails);
   };
 
   const detailPanelRef = React.createRef();
-
   const tableColumnTitles = [{ title: 'Institution' }, { title: 'Type' }, { title: 'Contracts' }, { title: 'Grants' }, { title: 'Student Aid' }, { title: 'Total $ Received' }];
 
   return (<>
@@ -177,6 +176,7 @@ export default function Institutions(props) {
       </Grid>
       <Grid item xs={10}>
         <Mapbox
+          display={chartView}
           data={GeoDataMapbox}
           showDetails={getClickedDetails}
           clickedSchool={clickedSchool}
@@ -191,14 +191,8 @@ export default function Institutions(props) {
       </Grid>
     </Grid>
 
-
-
-
-    <Downloads
-      href={'/data/colleges-and-universities/institutions/mapdata.json'}
-      date={'March 2019'}
-    />
     <DataTable
+      display={!chartView}
       data={dataTableData.map(x => {
         return [
           x.Recipient,
@@ -210,7 +204,6 @@ export default function Institutions(props) {
         ];
       })}
       columnTitles={tableColumnTitles}
-      display={false} // for now, left panel for map isn't finished.
       idName={'institutionsTable'}
     />
 
