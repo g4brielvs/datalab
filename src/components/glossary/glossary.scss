@@ -1,4 +1,4 @@
-@import '../../globalSass/colors.scss';
+@import '../../libs/ffg/src/globalSass/colors.scss';
 
 #afg-launch-glossary-div {
     position: fixed;
@@ -104,6 +104,25 @@
     fill: #fff;
 }
 
+#cg-glossary-term-list-div {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 743px;
+
+    .cg-glossary-term-list-div__wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: scroll;
+        margin-right: 0;
+        margin-bottom: -17px;
+        padding: 20px
+    }
+}
+
 #cg-search-button {
     position: absolute;
     right: 10px;
@@ -118,6 +137,7 @@
     text-align: left;
     width: 14px;
     height: 14px;
+    cursor: pointer;
 }
 #cg-search-button svg {
     fill: #5b616b;
@@ -270,6 +290,8 @@ button.cg-glossary-link:focus {
     width: 10px;
     opacity: .3;
     background-color: #fff;
+    height: 115px;
+    transform: translateY(0px);
 }
 
 .cg-glossary-back {
@@ -285,6 +307,7 @@ button.cg-glossary-link:focus {
     line-height: 18px;
     font-weight: 600;
     color: white;
+    cursor: pointer;
 }
 
 .cg-glossary-back__content {
@@ -308,6 +331,7 @@ button.cg-glossary-link:focus {
 
 .cg-glossary-back-button-label {
     margin-left: 24px;
+    color: #fff;
 }
 
 .cg-definition-content ul {
@@ -326,6 +350,7 @@ button.cg-glossary-link:focus {
     line-height: 26px;
     font-weight: 600;
     margin: 0;
+    color: #fff;
 }
 
 .cg-glossary-resources-text {
@@ -333,21 +358,28 @@ button.cg-glossary-link:focus {
     color: white;
 }
 
-.cg-glossary-resources-text a {
+#cgGlossaryResourcesLink {
     color: #fff;
     text-decoration: underline;
     border-radius: 0;
     outline: 0;
+
+    &:focus {
+        box-shadow: 0 0 5px 2px rgb(66, 142, 204);
+        border-radius: 1.5px;
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: none;
+    }
 }
 
-.cg-glossary-resources-text a:focus {
-    box-shadow: 0 0 5px 2px rgb(66, 142, 204);
-    border-radius: 1.5px;
-    text-decoration: none;
-}
+#afg-floating-glossary-button .button-content {
+    color: #fff;
 
-.cg-glossary-resources-text a:hover {
-    text-decoration: none;
+    .floating-glossary-icon {
+        margin-right: 10px;
+    }
 }
 
 .hidden {
