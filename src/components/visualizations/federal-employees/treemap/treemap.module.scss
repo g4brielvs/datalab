@@ -1,4 +1,30 @@
+@import '../../../../styles/variables.scss';
+
 .treemapVisualization {
   width: 100%;
   height: auto;
+}
+
+@media (min-width: $desktop) {
+  .treemapContainer {
+    height: 550px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .treemapContainer {
+    height: 420px;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .treemapContainer {
+    height: 315px;
+  }
+}
+
+@media (max-width: $phone) {
+  .treemapContainer {
+    height: 300px;
+  }
 }

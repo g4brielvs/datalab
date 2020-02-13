@@ -231,7 +231,7 @@ export default function Mapbox(props) {
 						let fedInvest = formatNumber('dollars', e.features[0].properties.Total_Federal_Investment);
 						let county = e.features[0].properties.COUNTY;
 						let numStudents = formatNumber('number', e.features[0].properties.Total);
-	
+
 						let tooltipHtml = `<div class='tooltip-float'><p class='map-tooltip-p-left-inst'>Institution</p> <p class='map-tooltip-p-right'>${name}</p></div> <div class='tooltip-float'><p class='map-tooltip-p-left'>State</p> <p class='map-tooltip-p-right'>${state}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>County</p> <p class='map-tooltip-p-right'>${county}</p></div><div class='tooltip-float tooltip-float--underline'><p class='map-tooltip-p-left'>Number of Students </p> <p class='map-tooltip-p-right'>${numStudents}</p></div><div class='tooltip-float'><p class='map-tooltip-p-left'>Total $ Received</p><p class='map-tooltip-p-right-invest'>${fedInvest}</p></div>`;
 
 						while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -245,7 +245,6 @@ export default function Mapbox(props) {
 
 						props.showDetails(e.features[0].properties.schoolId);
 					});
-
 
 					map.on('mouseleave', 'unclustered-point', function () {
 						map.getCanvas().style.cursor = '';
