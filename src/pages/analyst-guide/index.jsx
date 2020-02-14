@@ -5,7 +5,7 @@ import styles from './analyst-guide.module.scss';
 import FaqLayout from "../../components/layouts/faq/faq";
 import Downloads from '../../components/section-elements/downloads/downloads';
 import { Hidden, Grid } from '@material-ui/core';
-import Accordion from "../../components/accordion/accordion"
+import Accordion from "../../components/accordion/accordion";
 import DesktopImage from '../../images/analyst-guide/Analyst Desktop.png';
 import TabletImage from '../../images/analyst-guide/Analyst Tablet.png';
 import MobileImage from '../../images/analyst-guide/Analyst Mobile.png';
@@ -46,7 +46,7 @@ class AnalystGuidePage extends Component {
          goods and services directly to the public. For example, the Air Force uses contracts to acquire fighter jets to execute its mission, while the Federal
          Highway Administration uses grants to provide funds to states for public roads.
       </p>
-    </>
+                          </>;
     const rawContent = [
       generalQuestions,
       classifications,
@@ -55,7 +55,7 @@ class AnalystGuidePage extends Component {
       contractAwards,
       financialAssistance,
       federalAccountData
-    ]
+    ];
 
     const content = <>
       {
@@ -73,26 +73,26 @@ class AnalystGuidePage extends Component {
                       {datum.accordionTitles.map((title, key2) => {
                         return <div key={key2} className={styles.accordionTitleDiv}>
                           {title}
-                        </div>
+                               </div>;
                       })}
-                    </div>
+                                     </div>;
                   }
                   if(datum.accordionContent && datum.accordionContent.length){
                     accordionContent =  datum.accordionContent.map((content, key2) => {
                       return <>
                         {content}
-                      </>
-                    })
+                             </>;
+                    });
                   }
                   return <Accordion key={key1} title={accordionTitle} containerClass={styles.accordionContainer}>
                     {accordionContent}
-                  </Accordion>
+                         </Accordion>;
                 })
               }
-            </section>
+                   </section>;
           })
         }
-    </>
+                    </>;
 
     return <>
       <div id={styles.analystGuidePage}>
@@ -104,19 +104,19 @@ class AnalystGuidePage extends Component {
         >
           {content}
           <Hidden lgDown>
-            <Downloads/>
+            <Downloads href={'/unstructured-data/resources/analyst-guide.pdf'}/>
           </Hidden>
           <Hidden xlUp>
             <Grid container justify='center' className={styles.download}>
               <Grid item xs={12}>
-                <Downloads/>
+                <Downloads href={'/unstructured-data/resources/analyst-guide.pdf'} />
               </Grid>
             </Grid>
           </Hidden>
         </FaqLayout>
       </div>
-    </>
+           </>;
   }
 }
 
-export default AnalystGuidePage
+export default AnalystGuidePage;

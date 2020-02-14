@@ -3,11 +3,12 @@
 
 $bpHeaderColor: #111;
 
+$baseHeaderSize: 2.5rem;
 $col1: 60%;
 $col2: 40%;
 
 @mixin baseHeader() {
-  font-size: 2.5rem;
+  font-size: $baseHeaderSize;
   font-weight: $boldWeight;
   color: $bpHeaderColor;
 }
