@@ -44,10 +44,17 @@ $headerBg: rgba(255,255,255,0.9);
 }
 
 .bp-header__heading {
-    @include baseHeader();
     margin-top: 0;
     margin-bottom: 1rem;
     text-align: center;
+
+    span {
+        font-size: $baseHeaderSize;
+    }
+}
+
+.bp-header__heading, .bp-header__heading > span {
+    @include baseHeader();
 }
 
 .bp-header__scroll {
@@ -84,19 +91,16 @@ $headerBg: rgba(255,255,255,0.9);
 
 .bp-header__text {
     font-weight:400;
+    font-size: 1rem;
 }
 
 @media only screen and (min-width: 800px) {
-    .bp-header__heading {
+    .bp-header__heading, .bp-header__heading span {
         @include baseHeaderDesktop();
     }
 
     .bp-header {
         padding-top: 2rem;
-    }
-
-    .bp-header__text {
-        font-size: 1rem;
     }
 
     .bp-header__main {
