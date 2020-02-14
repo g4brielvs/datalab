@@ -38,13 +38,19 @@
     transition: opacity 1s ease;
   }
 
-  div.active img.deficit__tabs-image {
+  .accordion--open div.active img.deficit__tabs-image {
     height: auto;
   }
 
   img.deficit__tabs-image {
-    height:0;
+    height: 0;
     width: 100%;
   }
+}
 
+.deficit-trends__hwcta a {
+  color: #205493;
+  &:hover {
+    text-decoration: underline;
+  }
 }
