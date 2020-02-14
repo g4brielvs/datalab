@@ -17,24 +17,24 @@
 
 @media (min-width: $desktop-xl) {
   .cat-container {
-    height: 750px;
+    height: 800px;
   }
 }
 
 @media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
   .cat-container {
-    height: 667px;
+    height: 720px;
   }
 }
 
 @media (min-width: $tablet) and (max-width: $desktop - 1) {
   .cat-container {
-    height: 500px;
+    height: 550px;
   }
 }
 
 @media (max-width: $tablet - 1) {
   .cat-container {
-    height: 375px;
+    height: 425px;
   }
 }
