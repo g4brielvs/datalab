@@ -9,6 +9,7 @@ import Arrow from '../../svgs/arrow.svg';
 import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import MobileMenu from '../../components/headers/mobile-menu.jsx';
+import Glossary from '../glossary/glossary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -113,53 +114,56 @@ class PageHeader extends React.Component {
     let isSticky = this.state.isSticky;
 
     return (
-      <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
-        <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
-          <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
-            <a href="/">
-              <div>
-                {this.tagLineCheck(isSticky, this.state.isMobileTag)}
-              </div>
-            </a>
-            
-            <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
-              <span className={styles.toggle} onClick={this.burgerClick}>
-                <FontAwesomeIcon icon={faBars} />
-              </span>
-              <ul className={styles.ulNav} id={styles.burgerMenu}>
-                <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
-                </li>
-                {/* <li className={styles.item} onMouseOver={this.handleItemHover}> */}
-                {/*   <button className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></button> */}
-                {/* </li> */}
-                <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <button className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></button>
-                </li>
-                <li className={styles.item} onMouseOver={this.handleItemHover}>
-                  <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
-                </li>
-                <li className={styles.item}>
-                  <button className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
-                </li>
-              </ul>
-            </nav>
+      <>
+        <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
+          <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
+            <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
+              <a href="/">
+                <div>
+                  {this.tagLineCheck(isSticky, this.state.isMobileTag)}
+                </div>
+              </a>
+
+              <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
+                <span className={styles.toggle} onClick={this.burgerClick}>
+                  <FontAwesomeIcon icon={faBars} />
+                </span>
+                <ul className={styles.ulNav} id={styles.burgerMenu}>
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>
+                    <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
+                  </li>
+                  {/* <li className={styles.item} onMouseOver={this.handleItemHover}> */}
+                  {/*   <button className={styles.anchor}>DataLab Express <span className={styles.arrow}><Arrow /></span></button> */}
+                  {/* </li> */}
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>
+                    <button className={styles.anchor}>America's Finance Guide <span className={styles.arrow}><Arrow /></span></button>
+                  </li>
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>
+                    <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
+                  </li>
+                  <li className={styles.item}>
+                    <button id={styles.glossary} className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
+                  </li>
+                </ul>
+              </nav>
+
+            </div>
+          </div>
+
+          <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome === true ? `` : `${this.state.skinnySub}px`}}>
+            <Dropdown activeItem={this.state.activeItem}
+                      mouseHandle={this.handleMouseLeave}
+                      data={this.props.megamenuItems} />
+
+            { this.state.showMobileMenu
+              ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} data={this.props.megamenuItems} />
+              : <></>
+            }
 
           </div>
-        </div>
-
-        <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome === true ? `` : `${this.state.skinnySub}px`}}>
-          <Dropdown activeItem={this.state.activeItem}
-                    mouseHandle={this.handleMouseLeave}
-                    data={this.props.megamenuItems} />
-
-          { this.state.showMobileMenu
-            ? <MobileMenu showMenu={this.state.showMobileMenu} headerItems={this.props.headerItems} data={this.props.megamenuItems} />
-            : <></>
-          }
-          
-        </div>
-      </header>
+        </header>
+        <Glossary/>
+      </>
     );
   }
 };
