@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import '../../styles/index.scss';
 import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
 import styles from './cu.module.scss';
-
+import refreshLogo from '../../images/colleges-and-universities/refresh.svg';
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import DataTable from '../../components/table/data-table';
@@ -155,6 +155,10 @@ export default function Institutions(props) {
     </Accordion>
 
     <ControlBar>
+      <div className={styles.mapboxRefresh} id='refresh-btn'>
+        <img src={refreshLogo} />
+        Refresh
+      </div>
       <Share
         location={props.location}
         title='Check out this analysis on Data Lab'
