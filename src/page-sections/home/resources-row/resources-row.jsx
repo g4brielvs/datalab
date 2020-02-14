@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
-import apiImg from '../../../images/home/resources-api-2.svg';
-import userGuideImg from '../../../images/home/resources-user-guide-2.svg';
-import playbookImg from '../../../images/home/resources-playbook-2.svg';
+import apiImg from 'src/images/home/resources-api-2.svg';
+import userGuideImg from 'src/images/home/resources-user-guide-2.svg';
+import playbookImg from 'src/images/home/resources-playbook-2.svg';
 
 import resourcesRowStyles from './resources-row.module.scss';
 
@@ -21,7 +21,7 @@ const ResourcesRow = () => {
       imageSrc: userGuideImg,
       altText: 'An icon of a book.',
       title: 'Analyst Guide',
-      description: 'Methods to easily navigate data from our sister site, USAspending.gov'
+      description: 'Methods to easily navigate data from our sister site, USAspending.gov.'
     }, {
       href: '/student-innovators-toolbox/',
       imageSrc: playbookImg,

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from "gatsby"
+import { Link } from "gatsby";
 
 import featuredAnalysesTitleStyles from './feature-tile.module.scss';
+import PropTypes from "prop-types";
 
 const FeatureTile = (props) => {
   return (
@@ -38,3 +39,12 @@ const FeatureTile = (props) => {
 }
 
 export default FeatureTile;
+
+FeatureTile.propTypes = {
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  mobileBody: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired
+}
