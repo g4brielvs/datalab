@@ -6,6 +6,7 @@
 
 .accordion {
   transition: opacity 1s ease;
+  cursor: pointer;
 
   ul {
     list-style-type: disc;
@@ -18,7 +19,6 @@
   text-align: left;
   border: 1px solid #eee;
   margin: 0;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   font-weight: 600;
@@ -52,6 +52,7 @@
   border: none;
   float: right;
   width: 26px;
+  cursor: pointer;
 }
 
 .plus {
