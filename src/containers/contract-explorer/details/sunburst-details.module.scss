@@ -3,7 +3,6 @@
 .heading:first-child {
   @include sectionHeading();
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .heading {
@@ -25,6 +24,10 @@
   font-size: 2rem;
 }
 
-.list-item:global(.MuiGrid-item)  {
+.list-item:global(.MuiGrid-item) {
   padding: 0 1rem;
+}
+.list-items {
+  max-height: 300px;
+  overflow-y: auto;
 }

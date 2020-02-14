@@ -31,6 +31,7 @@ const SunburstVegaContainer = () => {
   const [updatedSunData, setData] = useState(sunData);
 
   useEffect(() => {
+    const details = getDetails();
     setOriginalData(appendColors(flareData));
     setDetails(details);
 
@@ -72,7 +73,7 @@ const SunburstVegaContainer = () => {
   const searchSelect = (id) => {
     const selectedArc = findArcById(sunData, id);
     const details = getSearchResults(selectedArc);
-    updateAfterSearch(selectedArc, details)
+    updateAfterSearch(selectedArc, details);
   }
 
   function updateSunburst(selectedArc) {
@@ -162,7 +163,9 @@ const SunburstVegaContainer = () => {
       total: null,
       top5: [],
       name: null,
-      subheading: null
+      subheading: null,
+      allItems: [],
+      type: 'search'
     };
 
     // get the top contribution for the selection
@@ -213,7 +216,9 @@ const SunburstVegaContainer = () => {
       top5: [],
       name: null,
       allItems: [],
-      contractTotal: null
+      contractTotal: null,
+      contractBySubagency: null,
+      type: 'default'
     };
 
     switch (depth) {
@@ -236,18 +241,16 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
-        // total awards for the contractor and selected agency
+        // total awards for the contractor and selected agency / subagency
         // total awards for the contractor in total
         // list the PSC
         const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
+        details.type = 'recipient';
+        details.contractBySubagencyHeading = `Contracts for ${subagency.name}`;
         details.contractTotal = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
-        console.log(pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name));
-        // from here I need to show the psc name and the obligation in the detail card
-        // maybe I need a new card here?
-
-        // add detail here
+        details.allItems = pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name);
         break;
     }
 
@@ -279,6 +282,7 @@ const SunburstVegaContainer = () => {
     setSelectedArc(selectedArc);
     setPreviousArc(previousArc);
     setData(newData);
+
   }
 
   function updateAll(selectedArc) {
