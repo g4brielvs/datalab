@@ -3,10 +3,18 @@
 .heading:first-child {
   @include sectionHeading();
   margin-top: 1rem;
+  padding-bottom: unset;
 }
 
 .heading {
   @include sectionHeading();
+  padding-bottom: unset;
+}
+
+.list-items {
+  .heading {
+    padding-bottom: 1rem;
+  }
 }
 
 .subheading {

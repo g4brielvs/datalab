@@ -247,8 +247,8 @@ const SunburstVegaContainer = () => {
         const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
         details.type = 'recipient';
         details.contractBySubagencyHeading = `Contracts for ${subagency.name}`;
-        details.contractTotal = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.contractTotal = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
         details.allItems = pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name);
         break;
