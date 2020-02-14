@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { Grid } from '@material-ui/core';
 
 import apiImg from 'src/images/home/resources-api-2.svg';
@@ -11,13 +10,13 @@ import resourcesRowStyles from './resources-row.module.scss';
 const ResourcesRow = () => {
   const resourcesItems = [
     {
-      href: 'http://api.usaspending.gov/',
+      href: 'https://api.usaspending.gov/',
       imageSrc: apiImg,
       altText: 'An icon of a computer monitor.',
       title: 'API Guide',
       description: 'Guidance on accessing Treasury data with open source code.'
     }, {
-      href: '/assets/analyst-guide-1-2.pdf',
+      href: '/analyst-guide',
       imageSrc: userGuideImg,
       altText: 'An icon of a book.',
       title: 'Analyst Guide',
@@ -53,10 +52,10 @@ const ResourcesRow = () => {
             key={index}
             className={resourcesRowStyles.tileRow}
           >
-            <Link
+            <a
               key={'landing-row__tile_' + index}
               className={resourcesRowStyles.tile}
-              to={resource.href}
+              href={resource.href}
             >
               <img src={resource.imageSrc} alt={resource.altText} className={resourcesRowStyles.svgImg} />
               <h1 className={resourcesRowStyles.title}>
@@ -65,7 +64,7 @@ const ResourcesRow = () => {
               <p className={resourcesRowStyles.description}>
                 {resource.description}
               </p>
-            </Link>
+            </a>
           </Grid>
         )}
       </Grid>
