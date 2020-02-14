@@ -155,7 +155,7 @@ export default function Institutions(props) {
     </Accordion>
 
     <ControlBar>
-      <div id={styles.mapboxRefresh}>
+      <div className={styles.mapboxRefresh} id='refresh-btn'>
         <img src={refreshLogo} />
         Refresh
       </div>

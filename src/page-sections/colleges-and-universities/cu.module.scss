@@ -2,7 +2,7 @@
   display: inline-block;
 }
 
-#mapbox-refresh {
+.mapbox-refresh {
   display: inline-block;
   width: auto;
   font-size: 1rem;
@@ -10,6 +10,6 @@
   margin-left: 20px; 
 }
 
-#mapbox-refresh:hover {
+.mapbox-refresh:hover {
   cursor: pointer;
 };
