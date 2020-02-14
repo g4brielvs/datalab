@@ -8,10 +8,11 @@ import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/search';
-import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
+import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
+import storyHeadingStyles from "src/components/section-elements/story-heading/story-heading.module.scss";
 
 const downloadDate = 'March 2019';
 
@@ -192,7 +193,7 @@ const Categories = () => {
       <StoryHeading
         number={'04'}
         title={'Investment Categories'}
-        teaser={'How was the money used?'}
+        teaser={['How was the ',<span key='04-teaser-callout' className={storyHeadingStyles.headingRed}>money</span>, ' used?']}
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 

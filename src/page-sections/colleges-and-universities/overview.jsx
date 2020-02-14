@@ -4,7 +4,7 @@ import React from 'react';
 
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
 import Share from '../../components/share/share';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import ControlBar from '../../components/control-bar/control-bar';
 
 const Overview = (props) => {

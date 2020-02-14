@@ -11,10 +11,11 @@ import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/search';
 import Share from 'src/components/share/share';
-import StoryHeading from 'src/components/section-elements/story-heading/story-heading';
+import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import TableContainer from './agencies-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import VizContainer from './bubble-chart-container/bubble-chart-container';
+import StorySection from "../../../components/section-elements/story-section/story-section"
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
@@ -71,6 +72,13 @@ const Agencies = (props) => {
 
   const [filteredTableData, setFilteredData] = useState(tableData);
   const tableRef = React.createRef();
+  const header = {
+    number: '03',
+    title: 'AGENCY INVESTMENTS',
+    teaser: ['Connect the agency ', <span className={storyHeadingStyles.headingRed}>to the federal investment.</span>],
+    blurb: `Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
+    and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`
+  }
 
   function filterTableData(id) {
     let data = [];
@@ -99,9 +107,10 @@ const Agencies = (props) => {
     <StoryHeading
       number={'03'}
       title={'AGENCY INVESTMENTS'}
-      teaser={'Connect the agency ', <span className={storyHeadingStyles.headingRed}>to the federal investment.</span>}
+      teaser={['Connect the agency ', <span key='03-teaser-callout' className={storyHeadingStyles.headingRed}>to the federal investment.</span>]}
       blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
       and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
+      key={'3'}
     />
 
     <Hidden lgUp>
@@ -159,7 +168,7 @@ const Agencies = (props) => {
       href={'/data/colleges-and-universities/agencies/CU_bubble_chart_table_v2.csv'}
       date={'March 2019'}
     />
-  </>);
+    </>);
 }
 
 export default Agencies;

@@ -11,7 +11,7 @@ import Downloads from '../../components/section-elements/downloads/downloads';
 import GeolocationIcon from '@material-ui/icons/Room';
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
@@ -142,7 +142,7 @@ export default function Institutions(props) {
     <StoryHeading
       number={'02'}
       title={'My Alma Mater'}
-      teaser={'Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>}
+      teaser={['Find how much your Alma Mater ', <span key='02-teaser-callout' className={storyHeadingStyles.headingRed}>received in federal funds.</span>]}
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
