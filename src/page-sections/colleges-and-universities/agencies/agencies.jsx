@@ -98,12 +98,12 @@ const Agencies = (props) => {
 
   return (<>
     <StoryHeading
+      bottomMargin={25}
       number={'03'}
       title={'AGENCY INVESTMENTS'}
       teaser={['Connect the agency ', <span key='03-teaser-callout' className={storyHeadingStyles.headingRed}>to the federal investment.</span>]}
       blurb={`Federal agencies are organizations in the executive branch with specific missions to serve the public, ranging from promoting the progress of science to ensuring national security. Use the chart below to discover the financial breakdown of each agency’s investment, including which colleges and universities get funds,
       and what investment vehicles they are using. In this visualization we focus on funding through grants and contracts.`}
-      key={'3'}
     />
 
     <Hidden lgUp>

@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.cu-story-heading:global(.MuiGrid-item.intro) {
+  margin-bottom: 50px !important;
+}
+
 @media (min-width: $desktop-xl) {
   .cat-container {
     height: 800px;
