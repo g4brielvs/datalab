@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import * as _ from 'lodash';
-import storyHeadingStyles from 'src/components/section-elements/story-heading/story-heading.module.scss';
+import storyHeadingStyles from 'src/components/section-elements/story-section-heading/story-section-heading.module.scss';
 import styles from './agencies.module.scss';
 
 import Accordion from 'src/components/accordion/accordion';

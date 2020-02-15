@@ -12,7 +12,7 @@ import StoryHeading from 'src/components/section-elements/story-section-heading/
 import SunburstIcon from 'src/images/sunburst_icon.svg';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
-import storyHeadingStyles from "src/components/section-elements/story-heading/story-heading.module.scss";
+import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
 
 const downloadDate = 'March 2019';
 

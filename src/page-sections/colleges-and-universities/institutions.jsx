@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import '../../styles/index.scss';
-import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
+import storyHeadingStyles from '../../components/section-elements/story-section-heading/story-section-heading.module.scss';
 import styles from './cu.module.scss';
 import refreshLogo from '../../images/colleges-and-universities/refresh.svg';
 import Accordion from '../../components/accordion/accordion';

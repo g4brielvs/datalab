@@ -1,5 +1,5 @@
 import '../../styles/index.scss';
-import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
+import storyHeadingStyles from '../../components/section-elements/story-section-heading/story-section-heading.module.scss';
 import React from 'react';
 
 import InvestmentOverview from '../../components/visualizations/investment-overview/overview.js';
