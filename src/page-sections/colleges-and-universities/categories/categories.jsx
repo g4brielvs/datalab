@@ -230,7 +230,7 @@ const Categories = () => {
         <Grid item className={styles.catContainer}>
           <div id='sunburstRadio'>
             <Grid container>
-              <Grid item>
+              <Grid item xs={2}>
                 <input type='radio'
                   id='cuContracts'
                   name='fundingType'
@@ -240,7 +240,7 @@ const Categories = () => {
                 />
                 <label htmlFor='cuContracts'>&nbsp;Contracts</label>
               </Grid>
-              <Grid item>
+              <Grid item xs={2}>
                 <input type='radio'
                   id='cuGrants'
                   name='fundingType'
@@ -250,7 +250,7 @@ const Categories = () => {
                 />
                 <label htmlFor='cuGrants'>&nbsp;Grants</label>
               </Grid>
-              <Grid item>
+              <Grid item xs={2}>
                 <input type='radio'
                   id='cuResearch'
                   name='fundingType'
