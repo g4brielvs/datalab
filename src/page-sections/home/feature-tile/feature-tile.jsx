@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const FeatureTile = (props) => {
   return (
     <Link
-      to="colleges-and-universities"
+      to={props.href}
       className="primary__link"
       ga-on="click" ga-event-category="Data Lab Home Page"
       ga-event-action={"Clicked " + props.heading}

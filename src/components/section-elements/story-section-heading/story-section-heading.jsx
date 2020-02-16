@@ -6,7 +6,8 @@ const StorySectionHeading = (props) => {
   return (
     <header>
       <section className={storySectionHeadingStyles.header}>
-        <Grid container>
+        <Grid
+          container>
           <Grid item xs={2} sm={12} xl={1} className={storySectionHeadingStyles.headerNumber}>
             <h2>{props.number}</h2>
           </Grid>
@@ -14,7 +15,7 @@ const StorySectionHeading = (props) => {
             {props.title}
           </Grid>
         </Grid>
-        <Grid container className={storySectionHeadingStyles.introContainer}>
+        <Grid container spacing={10} className={storySectionHeadingStyles.introContainer}>
           <Grid item xs={12} xl={5} className='intro'>{props.teaser}</Grid>
           <Grid item xs={12} xl={7}>
             {props.blurb}
