@@ -59,11 +59,35 @@
     padding-right: 1rem;
     background-color: #666;
 
+    #showMoreLess {
+      display: block;
+      margin: 0 auto;
+      padding: 0;
+      border: none;
+    }
+
     button {
       border: none;
+      border-right: 1px solid #fff;
       background-color: transparent;
-      margin: 0;
-      padding: 0 2rem 0 0;
+      margin: 5px 0 0 0;
+      padding: 0 1rem;
+      line-height: 0;
+      cursor: pointer;
+
+      .coc-show-less-more-buttons {
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 1.5rem;
+        background-color: #fff;
+        color: #666;
+        padding: 0.2rem 0.5rem 0.5rem 0.75rem;
+        font-weight: 600;
+
+        * {
+          color: #666;
+        }
+      }
 
       div * {
         color: #F3F3F3;

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3v3';
 import dataSource from '../utils/data-module';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './treemap.scss';
 
 export default function Treemap() {
@@ -256,12 +256,12 @@ export default function Treemap() {
           showMoreLessBtn.on('click', function () {
             showMoreButtons();
           });
-          showMoreLessLabel.html(d3.select('#showMoreButtons').html());
+          showMoreLessLabel.html(d3.select('#showMoreButtons').node().outerHTML);
         } else {
           showMoreLessBtn.on('click', function () {
             showLessButtons();
           })
-          showMoreLessLabel.html(d3.select('#showLessButtons').html());
+          showMoreLessLabel.html(d3.select('#showLessButtons').node().outerHTML);
         }
       }
 
@@ -343,19 +343,19 @@ export default function Treemap() {
   return (
     <div id='panel_3b'>
       <div id='tree' />
-      <div className='cocTab' id='cocTab' />
       <div id='tab_info'>
         <div className='tab' id='tab' />
       </div>
+      <div className='cocTab' id='cocTab' />
       <div className='hidden'>
-        <span id='showLessButtons'>
-          <span className='less'><ChevronLeftIcon /></span>
+        <div id='showLessButtons' className='coc-show-less-more-buttons'>
           <span>SEE LESS CoCs</span>
-        </span>
-        <span id='showMoreButtons'>
+          <span className='less'><ExpandLessIcon /></span>
+        </div>
+        <div id='showMoreButtons' className='coc-show-less-more-buttons'>
           <span>SEE MORE CoCs</span>
-          <span className='more'><ChevronRightIcon /></span>
-        </span>
+          <span className='more'><ExpandMoreIcon /></span>
+        </div>
       </div>
 
       <div className='homeless-fact-cluster flex-grid'>
