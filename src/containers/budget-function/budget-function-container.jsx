@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sankey from "src/components/visualizations/sankey/sankey";
 import { graphql, useStaticQuery } from "gatsby";
+import Downloads from "../../components/section-elements/downloads/downloads"
 
 function BudgetFunctionContainer() {
 
@@ -78,7 +79,13 @@ function BudgetFunctionContainer() {
   const [year, setFiscalYear] = useState('fy19');
 
   function onFiscalYearChange(e) {
-    setFiscalYear(e.currentTarget.value);
+    const year = e.currentTarget.value;
+    // let fiscalStr;
+    // setFiscalYear(year);
+    // switch(year){
+    //   case '2019':
+    //       fiscal 'static/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
+    // }
   };
 
   const fiscalYearData = {
@@ -142,6 +149,11 @@ function BudgetFunctionContainer() {
                 sTitle={fiscalYearData[year].sTitle}
                 descriptions={fiscalYearData[year].descriptions} />
       </div>
+      <Downloads
+        href={this.fiscalYearCheck()}
+        date={'March 2019'}
+      />
+
     </>
 
   )
