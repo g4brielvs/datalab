@@ -5,6 +5,7 @@ import { Grid, Hidden } from '@material-ui/core';
 import Downloads from "src/components/section-elements/downloads/downloads"
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
+import pscData from '../../../static/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv';
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -72,7 +73,7 @@ const SunburstVegaContainer = () => {
   const searchSelect = (id) => {
     const selectedArc = findArcById(sunData, id);
     const details = getSearchResults(selectedArc);
-    updateAfterSearch(selectedArc, details)
+    updateAfterSearch(selectedArc, details);
   }
 
   function updateSunburst(selectedArc) {
@@ -157,12 +158,15 @@ const SunburstVegaContainer = () => {
     const pretext = 'Total Contracts Related To';
 
     const details = {
+      heading: `${pretext} ${selectedArc.name}`,
       label: null,
       total: null,
       top5: [],
-      name: null
+      name: null,
+      subheading: null,
+      allItems: [],
+      type: 'search'
     };
-
 
     // get the top contribution for the selection
     switch (depth) {
@@ -174,6 +178,7 @@ const SunburstVegaContainer = () => {
         const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
         details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(agencyAwardsData, 'agency');
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
         // find all instances of the agency
         break;
       case 2:
@@ -181,6 +186,8 @@ const SunburstVegaContainer = () => {
         const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
         details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(subagencyAwardsData, 'agency');
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+
 
         // find all instances of the agency
 
@@ -191,6 +198,8 @@ const SunburstVegaContainer = () => {
         const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
         details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
         details.top5 = getTop5(recipientAwardsData, 'agency');
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+
         break;
     }
 
@@ -205,7 +214,11 @@ const SunburstVegaContainer = () => {
       label: null,
       total: null,
       top5: [],
-      name: null
+      name: null,
+      allItems: [],
+      contractTotal: null,
+      contractBySubagency: null,
+      type: 'default'
     };
 
     switch (depth) {
@@ -228,10 +241,16 @@ const SunburstVegaContainer = () => {
         details.name = selectedArc.name;
         break;
       case 3:
+        // total awards for the contractor and selected agency / subagency
+        // total awards for the contractor in total
+        // list the PSC
         const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.type = 'recipient';
+        details.contractBySubagencyHeading = `Contracts for ${subagency.name}`;
+        details.contractTotal = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
         details.name = selectedArc.name;
-        // add detail here
+        details.allItems = pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name);
         break;
     }
 
@@ -263,6 +282,7 @@ const SunburstVegaContainer = () => {
     setSelectedArc(selectedArc);
     setPreviousArc(previousArc);
     setData(newData);
+
   }
 
   function updateAll(selectedArc) {

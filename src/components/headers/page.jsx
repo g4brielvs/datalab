@@ -20,8 +20,8 @@ class PageHeader extends React.Component {
       isSticky: false,
       isMobileTag: false,
       top: 0,
-      skinnyTop: 29,
-      skinnySub: 80,
+      skinnyTop: 26,
+      skinnySub: 75,
       activeItem: '',
       showMobileMenu: false,
       menuData: this.props.megamenuItems,
@@ -64,7 +64,7 @@ class PageHeader extends React.Component {
     // not on homepage...
     if (this.props.isHome === false) {
       document.addEventListener('scroll', () => {
-        const max = 80;
+        const max = 75;
         let skinnySub = max - window.pageYOffset;
         if (window.pageYOffset > 51) {
           skinnySub = 50;
