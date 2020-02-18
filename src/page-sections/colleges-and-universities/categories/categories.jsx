@@ -54,7 +54,7 @@ const Categories = () => {
 
   const _data = useStaticQuery(graphql`
     query {
-      contracts: allInvestmentSectionContractsV2Csv {
+      allContracts: allInvestmentSectionContractsV2Csv {
         nodes {
           id
           Agency
@@ -65,7 +65,18 @@ const Categories = () => {
           family
         }
       }
-      grants: allInvestmentSectionGrantsV2Csv {
+      contracts: allInvestmentSectionContractsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+        nodes {
+          id
+          Agency
+          Obligation
+          Program_Title
+          Recipient
+          Subagency
+          family
+        }
+      }
+      allGrants: allInvestmentSectionGrantsV2Csv {
         nodes {
           id
           Agency
@@ -77,7 +88,18 @@ const Categories = () => {
           family
         }
       }
-      research: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
+      grants: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+        nodes {
+          id
+          Agency
+          Obligation
+          Program_Title
+          Recipient
+          Subagency
+          family
+        }
+      }
+      allResearch: allInvestmentSectionGrantsV2Csv(filter: {Research: {eq: "y"}}) {
         nodes {
           id
           Agency
@@ -85,6 +107,17 @@ const Categories = () => {
           Program_Title
           Recipient
           Research
+          Subagency
+          family
+        }
+      }
+      research: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/[^-]/"}, Research: {eq: "y"}}) {
+        nodes {
+          id
+          Agency
+          Obligation
+          Program_Title
+          Recipient
           Subagency
           family
         }
@@ -126,21 +159,30 @@ const Categories = () => {
     contracts: _data.contractsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        display: <>
+          <span className={styles.searchListFamily}>{n.nodes[0].family}</span>
+          <p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p>
+        </>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        display: <>
+          <span className={styles.searchListFamily}>{n.nodes[0].family}</span>
+          <p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p>
+        </>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
       .map(n => ({
         id: n.nodes[0].id,
-        display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
+        display: <>
+          <span className={styles.searchListFamily}>{n.nodes[0].family}</span>
+          <p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p>
+        </>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title
       }))
       .sort(searchSort)
@@ -148,11 +190,11 @@ const Categories = () => {
 
   const tableColumnTitles = [{ title: 'Family' }, { title: 'Program Title' }, { title: 'Agency' }, { title: 'Subagency' }, { title: 'Recipient' }, { title: 'Obligation' }];
   const tableData = {
-    contracts: _data.contracts.nodes
+    contracts: _data.allContracts.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
-    grants: _data.grants.nodes
+    grants: _data.allGrants.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)]),
-    research: _data.research.nodes
+    research: _data.allResearch.nodes
       .map(n => [n.family, n.Program_Title, n.Agency, n.Subagency, n.Recipient, parseInt(n.Obligation)])
   };
 
@@ -193,7 +235,7 @@ const Categories = () => {
       <StoryHeading
         number={'04'}
         title={'Investment Categories'}
-        teaser={['How was the ',<span key='04-teaser-callout' className={storyHeadingStyles.headingRed}>money</span>, ' used?']}
+        teaser={['How was the ', <span key='04-teaser-callout' className={storyHeadingStyles.headingRed}>money</span>, ' used?']}
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 
@@ -265,7 +307,7 @@ const Categories = () => {
           </div>
           <CategoriesVizContainer
             display={chartView}
-            items={_data[fundingType].nodes.filter(i => i.Obligation > 0)}
+            items={_data[fundingType].nodes}
             title={titlesByType[fundingType]}
             chartRef={chartRef}
           />
