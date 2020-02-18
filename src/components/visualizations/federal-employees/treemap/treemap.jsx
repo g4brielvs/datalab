@@ -95,7 +95,7 @@ export default function Treemap(props) {
   return (
     <>
       <div id="tooltip" className="tooltip-module" />
-      <div className="visContainer">
+      <div className={treemapStyles.treemapContainer}>
         <svg width="1200" height="700" viewBox="0 0 1200 700" id="treemapSvg" className={treemapStyles.treemapVisualization}/>
       </div>
     </>

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import '../../styles/index.scss';
-import storyHeadingStyles from '../../components/section-elements/story-heading/story-heading.module.scss';
+import storyHeadingStyles from '../../components/section-elements/story-section-heading/story-section-heading.module.scss';
 import styles from './cu.module.scss';
-
+import refreshLogo from '../../images/colleges-and-universities/refresh.svg';
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import DataTable from '../../components/table/data-table';
 import Downloads from '../../components/section-elements/downloads/downloads';
-import GeolocationIcon from '../../images/colleges-and-universities/geolocation.svg';
+import GeolocationIcon from '@material-ui/icons/Room';
 import Grid from '@material-ui/core/Grid';
 import Share from '../../components/share/share';
-import StoryHeading from '../../components/section-elements/story-heading/story-heading';
+import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import VizControlPanel from '../../components/chartpanels/viz-control';
 import VizDetails from '../../components/chartpanels/viz-detail';
 
@@ -22,21 +22,6 @@ import loadable from '@loadable/component';
 const Mapbox = loadable(() => import('../../components/visualizations/mapbox/mapbox'));
 
 export default function Institutions(props) {
-
-  const [clickedSchool, setSchool] = useState(null);
-  let searchList = GeoDataMapbox.features
-    .map(school => ({
-      id: school.id,
-      display: school.properties.Recipient
-    }))
-    .sort((a, b) => a.display > b.display)
-    ;
-
-  function filterByClicked(clickedId) {
-    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
-    setSchool(filteredList);
-    return filteredList;
-  };
 
   // check required data properties/format to fail 'gracefully'
   if (!GeoDataMapbox.features ||
@@ -53,6 +38,31 @@ export default function Institutions(props) {
       d.properties.schoolId = d.id; // add school ID to properties until source file includes it
     });
   };
+
+  const [clickedSchool, setSchool] = useState(null);
+  let searchList = GeoDataMapbox.features
+    .map(school => ({
+      id: school.id,
+      display: school.properties.Recipient
+    }))
+    .sort((a, b) => a.display > b.display)
+    ;
+
+  function filterByClicked(clickedId) {
+    let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
+    setSchool(filteredList);
+    return filteredList;
+  };
+
+  const [chartView, isChartView] = useState(true);
+  const switchView = view => {
+    if (view === 'chart') {
+      isChartView(true);
+    } else {
+      isChartView(false);
+      detailPanelRef.current && detailPanelRef.current.closeDetails(); // hide details if open
+    }
+  }
 
   const panelDetails = useStaticQuery(graphql`
     query {
@@ -122,18 +132,17 @@ export default function Institutions(props) {
         }
       ]
     };
-    detailPanelRef.current.updateDetails(schoolDetails);
+    detailPanelRef.current && detailPanelRef.current.updateDetails(schoolDetails);
   };
 
   const detailPanelRef = React.createRef();
-
   const tableColumnTitles = [{ title: 'Institution' }, { title: 'Type' }, { title: 'Contracts' }, { title: 'Grants' }, { title: 'Student Aid' }, { title: 'Total $ Received' }];
 
   return (<>
     <StoryHeading
       number={'02'}
       title={'My Alma Mater'}
-      teaser={'Find how much your Alma Mater ', <span className={storyHeadingStyles.headingRed}>received in federal funds.</span>}
+      teaser={['Find how much your Alma Mater ', <span key='02-teaser-callout' className={storyHeadingStyles.headingRed}>received in federal funds.</span>]}
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
@@ -145,53 +154,39 @@ export default function Institutions(props) {
       <p>For a specific search, use the search tool to type in the school by name</p>
     </Accordion>
 
-    <Grid container>
-      <Grid item xs={12}>
-        <ControlBar>
-          <Share
-            location={props.location}
-            title='Check out this analysis on Data Lab'
-            text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
-            twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
-          />
-        </ControlBar>
-        <div>
-          <VizControlPanel
-            searchList={searchList}
-            listDescription='Search Institutions'
-            onSelect={filterByClicked}
-            switchView={filterByClicked}
-          >
-            <img src={GeolocationIcon} />
-          </VizControlPanel>
-          <Mapbox
-            data={GeoDataMapbox}
-            showDetails={getClickedDetails}
-            clickedSchool={clickedSchool}
-          />
-          <Downloads
-            href={'/data/colleges-and-universities/institutions/mapdata.json'}
-            date={'March 2019'}
-          />
-          <DataTable
-            data={dataTableData.map(x => {
-              return [
-                x.Recipient,
-                x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
-                parseInt(x.contracts),
-                parseInt(x.grants),
-                parseInt(x.student_aid),
-                parseInt(x.Total_Federal_Investment),
-              ];
-            })}
-            columnTitles={tableColumnTitles}
-            display={false} // for now, left panel for map isn't finished.
-            idName={'institutionsTable'}
-          />
-        </div>
-      </Grid>
+    <ControlBar>
+      <div className={styles.mapboxRefresh} id='refresh-btn'>
+        <img src={refreshLogo} />
+        Refresh
+      </div>
+      <Share
+        location={props.location}
+        title='Check out this analysis on Data Lab'
+        text='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds!'
+        twitter='Did you know the federal government invested over $149 billion in higher education? Check out this analysis and discover how much your Alma Mater received in federal funds! #DataLab #Treasury #DataTransparency #USAspending'
+      />
+    </ControlBar>
 
-      <Grid item>
+    <Grid container>
+      <Grid item xs={1}>
+        <VizControlPanel
+          searchList={searchList}
+          listDescription='Search Institutions'
+          onSelect={filterByClicked}
+          switchView={switchView}
+        >
+          <GeolocationIcon />
+        </VizControlPanel>
+      </Grid>
+      <Grid item xs={10}>
+        <Mapbox
+          display={chartView}
+          data={GeoDataMapbox}
+          showDetails={getClickedDetails}
+          clickedSchool={clickedSchool}
+        />
+      </Grid>
+      <Grid item xs={1}>
         <VizDetails
           showDetails={getClickedDetails}
           details={schoolDetails}
@@ -199,6 +194,23 @@ export default function Institutions(props) {
         />
       </Grid>
     </Grid>
+
+    <DataTable
+      display={!chartView}
+      data={dataTableData.map(x => {
+        return [
+          x.Recipient,
+          x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
+          parseInt(x.contracts),
+          parseInt(x.grants),
+          parseInt(x.student_aid),
+          parseInt(x.Total_Federal_Investment),
+        ];
+      })}
+      columnTitles={tableColumnTitles}
+      idName={'institutionsTable'}
+    />
+
     <Downloads
       href={'/data/colleges-and-universities/institutions/tabledata.csv'}
       date={'March 2019'}

@@ -88,7 +88,7 @@ function DeficitTrendsPage(props) {
                     </div>
                 </div>
 
-                <section className="hwcta">
+                <section className="hwcta deficit-trends__hwcta">
                     <Accordion title="Data Sources and Methodology">
                         <p>The visualization was created using the <a href={AfgData.mts_homepage.value} rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending of the United States.</p>
                         <div className="afg__download--div">

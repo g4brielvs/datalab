@@ -8,7 +8,8 @@ import SEO from '../../components/seo';
 import StoryLayout from '../../components/layouts/story/story';
 import { Grid } from "@material-ui/core";
 import loadable from "@loadable/component";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import styles from './cu.module.scss';
 
 const Agencies = loadable(() => import('../../page-sections/colleges-and-universities/agencies/agencies'),
   {
@@ -79,24 +80,25 @@ export default class CollegesAndUniversitiesPage extends React.Component {
       />
 
       <Grid container
-            justify="center">
-        <Grid item xs={10}>
+            justify="center"
+            className={styles.cu}>
+        <Grid item xs={10} className={styles.section}>
           <Overview location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs={10} className={styles.section}>
           <Institutions location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs={10} className={styles.section}>
           <Agencies location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs={10} className={styles.section}>
           <Categories location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs={10} className={styles.section}>
           <Footnotes footnotes={['Financial obligations represent outstanding debt or regular payments to another party. A negative value obligation (de-obligation) results from a transaction that lowers the debt amount. A grant or contract has a negative obligation for a given fiscal year when it spans multiple fiscal years and the sum of the transactions for that particular fiscal year was a net reduction of the original obligation.',
             'Due to the way military academies are funded, they have not been included in this analysis.']}
           />

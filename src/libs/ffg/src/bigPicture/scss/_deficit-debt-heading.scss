@@ -34,6 +34,7 @@
 
     strong, span {
         font-weight: $heavyBoldWeight;
+        font-size: $baseHeaderSize;
     }
 }
 
@@ -50,7 +51,7 @@
         padding: 4rem 2rem 2rem;
     }
 
-    .deficit-debt-heading__heading {
+    .deficit-debt-heading__heading, .deficit-debt-heading__heading span {
         @include baseHeaderDesktop();
     }
 }

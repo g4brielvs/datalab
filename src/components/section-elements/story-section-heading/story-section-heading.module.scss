@@ -7,6 +7,7 @@ $fedEmpBlue: #2272CE;
 
 .header {
   text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 .headerNumber {
@@ -38,6 +39,77 @@ $fedEmpBlue: #2272CE;
     font-size: 1rem;
     font-weight: 300;
     line-height: 20px;
+  }
+}
+
+.heading {
+  padding: 100px 0 50px;
+}
+
+.number {
+  display: inline-block;
+  margin-right: 8.33%;
+  margin-bottom: 50px;
+  color: #666;
+  font-size: 3rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.title {
+  text-transform: uppercase;
+  color: #666;
+  font-size: 1rem;
+  letter-spacing: 2.8px;
+  line-height: 20px;
+}
+
+.teaser {
+  color: #555555;
+  font-size: 2.625rem;
+  line-height: 48px;
+  font-weight: 200;
+}
+
+.blurb {
+  color: #555555;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.heading-red {
+  color: $cuRed;
+  font-weight: 400;
+  font-size: inherit;
+}
+
+.heading-orange {
+  color: $opioidOrange;
+  font-weight: 400;
+  font-size: inherit;
+}
+
+@media (max-width: $desktop-xl - 1) {
+  .number {
+    margin-bottom: 25px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
+  .heading {
+    padding: 100px 0 30px;
+    text-align: center;
+
+    .number {
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  .heading {
+    padding: 25px 0;
   }
 }
 

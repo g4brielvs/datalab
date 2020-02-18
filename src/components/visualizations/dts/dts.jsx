@@ -73,7 +73,22 @@ function DTS(props) {
         categories: ["Medicare", "Medicare Advantage Part C D Payments", "Marketplace Payments", "Medicare and Other CMS Payments"],
         date: new Date("2014-10-01"),
         footnote: "The shaded region indicates inactive or retired programs. Beginning October 1, 2014, payments previously reported under the Medicare line were expanded to three lines: Medicare and other CMS payments, Medicare Advantage - Part C&D payments, and Marketplace payments."
-      }
+      },
+      {
+        categories: ['NASA', 'NASA programs'],
+        date: new Date('2020-01-13'), // jan 23 2020 data start
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
+      },
+      {
+        categories: ['Dept of Veterans Affairs ( VA )', 'Veterans Affairs programs'],
+        date: new Date('2020-01-13'),
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
+      },
+      {
+        categories: ['Veterans Benefits ( EFT )', 'VA Benefits'],
+        date: new Date('2020-01-13'),
+        footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veteran Benefits (EFT) was renamed VA – Benefits on the Daily Treasury Statement. Withdrawals previously reported under Veteran Benefits (EFT) are now reported under VA – Benefits. Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
+      },
     ];
 
     if (_data) loadData(_data);
@@ -87,7 +102,7 @@ function DTS(props) {
 
       data = _data;
       data.forEach(d => {
-        d.date = new Date(d.date + 'T00:00:00'); // force GMT with time stamp
+        d.date = new Date(d.date); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
@@ -149,7 +164,6 @@ function DTS(props) {
 
     function init() {
       const w = 750;
-      // const w = d3.select('.dts-layout-manager').node().getBoundingClientRect().width;
 
       d3.select('#svg-wrapper').attr('width', w);
 
@@ -839,45 +853,47 @@ function DTS(props) {
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
-            masterMapping[key]["today"].push({
-              "name": cateName,
-              values: optionsDict[cateName]["today"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
-            masterMapping[key]["mtd"].push({
-              "name": cateName,
-              values: optionsDict[cateName]["mtd"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
-            masterMapping[key]["fytd"].push({
-              "name": cateName,
-              values: optionsDict[cateName]["fytd"],
-              date: mapping[key].date,
-              footnote: mapping[key].footnote,
-              color: lineColors[i]
-            });
+            if(optionsDict[cateName]){
+              masterMapping[key]["today"].push({
+                name: cateName,
+                values: optionsDict[cateName]["today"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+              masterMapping[key]["mtd"].push({
+                name: cateName,
+                values: optionsDict[cateName]["mtd"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+              masterMapping[key]["fytd"].push({
+                name: cateName,
+                values: optionsDict[cateName]["fytd"],
+                date: mapping[key].date,
+                footnote: mapping[key].footnote,
+                color: lineColors[i]
+              });
+            }
           }
         } else {
           masterMapping[key]["today"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["today"],
             date: optionsDict[key]["today"][0].date,
             footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["mtd"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["mtd"],
             date: optionsDict[key]["mtd"][0].date,
             footnote: optionsDict[key].footnote, // ''
             color: lineColors[0]
           });
           masterMapping[key]["fytd"].push({
-            "name": key,
+            name: key,
             values: optionsDict[key]["fytd"], // optionsDict[key]["fytd"][0].date
             date: new Date("1970-01-01"),
             footnote: optionsDict[key].footnote, // ''
@@ -890,73 +906,50 @@ function DTS(props) {
       let combinedMTD = [];
       let combinedFYTD = [];
 
-      let medicareGrouping = sharedCategories[1];
-      let foodGrouping = sharedCategories[0];
-
-      for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
-      }
-
-      for (let cateName of foodGrouping.categories) { // Only get combined for the medicare grouping
-        combinedToday.push.apply(combinedToday, optionsDict[cateName]["today"]);
-        combinedMTD.push.apply(combinedMTD, optionsDict[cateName]["mtd"]);
-        combinedFYTD.push.apply(combinedFYTD, optionsDict[cateName]["fytd"]);
+      for(let i = 0, il = sharedCategories.length; i < il; i++){
+        for(let catName of sharedCategories[i].categories) {
+          if(optionsDict[catName]) {            
+            combinedToday.push.apply(combinedToday, optionsDict[catName]["today"]);
+            combinedMTD.push.apply(combinedMTD, optionsDict[catName]["mtd"]);
+            combinedFYTD.push.apply(combinedFYTD, optionsDict[catName]["fytd"]);
+          }
+        }
       }
 
       let combinedDailyValues = getCombinedCategory(combinedToday);
       let combinedMTDValues = getCombinedCategory(combinedMTD);
       let combinedFYTDValues = getCombinedCategory(combinedFYTD);
 
-      for (let cateName of medicareGrouping.categories) { // Only get combined for the medicare grouping
-        masterMapping[cateName]["today"].push({
-          "name": "Combined",
-          values: combinedDailyValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]["mtd"].push({
-          "name": "Combined",
-          values: combinedMTDValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]["fytd"].push({
-          "name": "Combined",
-          values: combinedFYTDValues,
-          date: medicareGrouping.date,
-          footnote: medicareGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
+      for(let i = 0, il = sharedCategories.length; i < il; i++){
+        const curCategory = sharedCategories[i];
+        for(let catName of curCategory.categories){
+          if(optionsDict[catName]){
+            masterMapping[catName]["today"].push({
+              "name": "Combined",
+              values: combinedDailyValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+            masterMapping[catName]["mtd"].push({
+              "name": "Combined",
+              values: combinedMTDValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+            masterMapping[catName]["fytd"].push({
+              "name": "Combined",
+              values: combinedFYTDValues,
+              date: curCategory.date,
+              footnote: curCategory.footnote,
+              color: lineColors[lineColors.length - 1]
+            });
+          }
+        }
       }
 
-      for (let cateName of foodGrouping.categories) {
-        masterMapping[cateName]['today'].push({
-          name: "Combined",
-          values: combinedDailyValues,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['mtd'].push({
-          name: "Combined",
-          values: combinedMTD,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-        masterMapping[cateName]['fytd'].push({
-          name: "Combined",
-          values: combinedFYTDValues,
-          date: foodGrouping.date,
-          footnote: foodGrouping.footnote,
-          color: lineColors[lineColors.length - 1]
-        });
-      };
-    }
+    };
 
     function getFiscalYear(theDate) {
       let fullYear = theDate.getFullYear();
@@ -1132,46 +1125,46 @@ function DTS(props) {
            </div>;
   } else {
     return <>
-  <div className="dts-viz-container">
-    <div className="dts-layout-manager">
-      <div className="dts-brush-date-container">
-        <div className="dts-brush-date-item">
-          <div className="dts-brush-start-date-label">From</div>
-          <div className="dts-brush-start-date">mm/dd/yy</div>
-        </div>
-        <div className="dts-brush-date-item">
-          <div className="dts-brush-end-date-label"> to</div>
-          <div className="dts-brush-end-date">mm/dd/yy</div>
-        </div>
-      </div>
-      <div className="dts-svg-wrapper">
-        <svg id="svg-wrapper" height="400"></svg>
-      </div>
-    </div>
-    <div className="viz-tsbfy-container">
-      <div className="viz-tsbfy-header">
-        <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
-        <div className="viz-tsbfy-header-view-buttons">
-          <div className="viz-tsbfy-bar-view"><Bars /></div>
-          <div className="viz-tsbfy-table-view"><List /></div>
-        </div>
-      </div>
-      <div className="svg-tsbfy-container">
-        <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
-      </div>
-    </div>
-  </div>
+             <div className="dts-viz-container">
+               <div className="dts-layout-manager">
+                 <div className="dts-brush-date-container">
+                   <div className="dts-brush-date-item">
+                     <div className="dts-brush-start-date-label">From</div>
+                     <div className="dts-brush-start-date">mm/dd/yy</div>
+                   </div>
+                   <div className="dts-brush-date-item">
+                     <div className="dts-brush-end-date-label"> to</div>
+                     <div className="dts-brush-end-date">mm/dd/yy</div>
+                   </div>
+                 </div>
+                 <div className="dts-svg-wrapper">
+                   <svg id="svg-wrapper" height="400"></svg>
+                 </div>
+               </div>
+               <div className="viz-tsbfy-container">
+                 <div className="viz-tsbfy-header">
+                   <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
+                   <div className="viz-tsbfy-header-view-buttons">
+                     <div className="viz-tsbfy-bar-view"><Bars /></div>
+                     <div className="viz-tsbfy-table-view"><List /></div>
+                   </div>
+                 </div>
+                 <div className="svg-tsbfy-container">
+                   <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
+                 </div>
+               </div>
+             </div>
 
-  <div className="dts-footnote">
-    <div className="dts-footnote-rect"></div>
-    <div className="dts-footnote-text"></div>
-  </div>
+             <div className="dts-footnote">
+               <div className="dts-footnote-rect"></div>
+               <div className="dts-footnote-text"></div>
+             </div>
 
-  <div className="dts-disclaimer">
-    The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
-    <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
-  </div>
-</>;
+             <div className="dts-disclaimer">
+               The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+               <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+             </div>
+           </>;
   }
 }
 

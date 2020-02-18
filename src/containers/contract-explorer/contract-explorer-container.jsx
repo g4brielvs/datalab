@@ -292,12 +292,14 @@ const SunburstVegaContainer = () => {
     const newData = updateSunburst(selectedArc);
 
     // set state
+    setData(newData);
     setBreadcrumbs(trail);
     setDetails(details);
     setSelectedArc(selectedArc);
     setPreviousArc(previousArc);
-    setData(newData);
+
   }
+
 
   return <>
     <Hidden smDown>

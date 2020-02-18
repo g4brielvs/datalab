@@ -8,6 +8,7 @@ const CategoriesTableContainer = (props) => {
   if(props.display) {
     return(<>
       <DataTable
+        display={true}
         fundingType={props.fundingType}
         title={props.title}
         columnTitles={props.columnTitles}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import featuredAnalysesStyles from './feature-row.module.scss';
-import homelessImg from '../../../images/home/homelessness.png';
 import { Grid } from '@material-ui/core';
+import PropTypes from "prop-types";
 
 const FeatureRow = (props) => {
   return (
@@ -10,9 +10,9 @@ const FeatureRow = (props) => {
       <Grid
         container
         spacing={3}
-        className={featuredAnalysesStyles.container}
-      >
-        <Grid item sm={12} md={6} className={featuredAnalysesStyles.content}>
+        className={featuredAnalysesStyles.container}>
+        <Grid item xs={12} sm={6}
+              className={featuredAnalysesStyles.content}>
           <h1 className={featuredAnalysesStyles.heading}>
             {props.heading}
           </h1>
@@ -23,8 +23,8 @@ const FeatureRow = (props) => {
             {props.blurb}
           </p>
         </Grid>
-        <Grid item sm={12} md={6} className={featuredAnalysesStyles.image}>
-          <img src={homelessImg} role='presentation' />
+        <Grid item xs={12} sm={6} className={featuredAnalysesStyles.image}>
+          <img src={props.imgSrc} alt={props.imgAlt} />
         </Grid>
       </Grid>
     </Link>
@@ -32,3 +32,13 @@ const FeatureRow = (props) => {
 }
 
 export default FeatureRow;
+
+FeatureRow.propTypes = {
+  href: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  blurb: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired
+
+}

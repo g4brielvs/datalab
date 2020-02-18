@@ -84,12 +84,17 @@ hr.horizontal_dts{
   margin-top: -5px;
 }
 
-@media only screen and (max-width: $desktop-xl) {
+@media only screen and (max-width: $desktop - 1) {
 
   .dts-module {
-    width: 80%;
+    width: 100%;
+    text-align: center;
   }
-  
+
+  .dtsm-right-column {
+    text-align: left;
+  }
+
   .dtsm-dollars {
     font-size: 1.8em;
   }
