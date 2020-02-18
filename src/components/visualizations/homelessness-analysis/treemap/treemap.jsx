@@ -36,6 +36,7 @@ export default function Treemap() {
     const w = panel3b.node().getBoundingClientRect().width;
     const h = 340;
     const clusterColors = ['#E8751A', '#280C60', '#365608', '#2F1868', '#372C7A', '#4D4D8C', '#587C13', '#5E5E96', '#789E25', '#E55C01'];
+    let selectedCoC;
 
     let root;
 
@@ -216,8 +217,7 @@ export default function Treemap() {
         d3.select('.tablinks').remove();
         const tabLinks = d3.select('#tab')
           .append('g')
-          .attr('class', 'tablinks')
-          ;
+          .attr('class', 'tablinks');
 
         tabLinks.selectAll('button')
           .data(data)
@@ -225,19 +225,24 @@ export default function Treemap() {
           .append('button')
           .attr('class', 'cocButton')
           .attr('position', 'relative')
-          .on('click', function (dA) {
+          .attr('keyIdx', (d, i) => i)
+          .on('click', function (dA, i) {
             CreateCoCTable(dA);
             d3.select('.tablinks > .cocButton.active').classed('active', null);
             d3.select(this).classed('active', true);
+            selectedCoC = i + 1;
           })
           .append('div')
           .attr('class', 'header')
           .attr('background-color', '#E8EAF5')
-          .html((dB) => makeCocTile(dB))
-          ;
+          .html((dB) => makeCocTile(dB));
 
         if (showToggle) {
           createToggle();
+          if(selectedCoC && selectedCoC){
+            // Please note that the good news is the following does NOT error out if it tries to select an nth-child that is > the available children.
+            tabLinks.selectAll(`.cocButton:nth-child(${selectedCoC})`).classed('active', true);
+          }
         }
       }
 
@@ -283,6 +288,7 @@ export default function Treemap() {
       .on('click', function (d) {
         const group = Number(d.group);
         const current = cluster.filter((dC) => (dC.cluster_final === group));
+        selectedCoC = 1;
         makeInfographic(group);
         CreateCoCTable(current[0]);
         makeSelectionPanel(current);
