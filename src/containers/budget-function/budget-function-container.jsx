@@ -77,16 +77,33 @@ function BudgetFunctionContainer() {
 `)
 
   const [year, setFiscalYear] = useState('fy19');
+  const [dataLoc, setDataLoc] = useState('/data/budget-function/sankey/2019/sankey_v1_FY19.csv')
 
   function onFiscalYearChange(e) {
     const year = e.currentTarget.value;
-    // let fiscalStr;
-    // setFiscalYear(year);
-    // switch(year){
-    //   case '2019':
-    //       fiscal 'static/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
-    // }
+    setFiscalYear(year);
+    setDataLocFunc(year);
   };
+
+  function setDataLocFunc(year){
+    console.log('year:', year);
+    let fiscalStr = '';
+    switch(year){
+      case 'fy19':
+        fiscalStr = '/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
+        break;
+      case 'fy18':
+        fiscalStr = '/data/budget-function/sankey/2018/sankey_v1_FY18.csv'
+        break;
+      case 'fy17':
+        fiscalStr = '/data/budget-function/sankey/2017/sankey_FY17.csv'
+        break;
+      default:
+        fiscalStr = '/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
+        break;
+    }
+    setDataLoc(fiscalStr);
+  }
 
   const fiscalYearData = {
     'fy19': {
@@ -150,7 +167,7 @@ function BudgetFunctionContainer() {
                 descriptions={fiscalYearData[year].descriptions} />
       </div>
       <Downloads
-        href={this.fiscalYearCheck()}
+        href={dataLoc}
         date={'March 2019'}
       />
 
