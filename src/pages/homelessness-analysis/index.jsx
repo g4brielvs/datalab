@@ -98,7 +98,7 @@ export default class HomelessnessPage extends Component {
           number: "04",
           subtext: "Final Thoughts",
           subblurb: "What are the investments used for?",
-          sectionTeaser: ["Which are the investments ", <span key='teaser-callout' className='homeless-analysis-header-callout'>used for?</span>],
+          sectionTeaser: ["What are the investments ", <span key='teaser-callout' className='homeless-analysis-header-callout'>used for?</span>],
           introBlurb: <div>As these visualizations depict, thousands of people are homeless across the United States.
            We hope that this analysis show how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
            as well as private institutions, who are working to reduce homelessness.
