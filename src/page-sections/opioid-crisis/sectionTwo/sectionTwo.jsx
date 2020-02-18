@@ -1,6 +1,6 @@
 import React from 'react';
 import StorySectionHeading from '../../../components/section-elements/story-section-heading/story-section-heading';
-import storyHeadingStyles from "../../../components/section-elements/story-heading/story-heading.module.scss";
+import storyHeadingStyles from "../../../components/section-elements/story-section-heading/story-section-heading.module.scss";
 import storySectionHeadingStyles from "../../../components/section-elements/story-section-heading/story-section-heading.module.scss";
 import defaultImage from '../../../images/default-image.jpg';
 import Grid from '@material-ui/core/Grid';

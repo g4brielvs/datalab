@@ -51,10 +51,14 @@ function HAHWCTA(props) {
       <>
         <ul>
           <li>
-            Federal grant award data from USAspending.gov
+            Federal grant award data from <a
+            href='https://beta.usaspending.gov/#/search' target='_blank'
+            rel='noopener noreferrer'>USAspending.gov</a>
           </li>
           <li>
-            PIT estimates of people experiences homelessness from HUD's 2018 PIT Data
+            PIT estimates of people experiences homelessness from HUD's 2018 <a
+            href='https://www.hudexchange.info/resource/3031/pit-and-hic-data-since-2007/' target='_blank'
+            rel='noopener noreferrer'>PIT Data</a>
           </li>
           <li>
             Area, population, median gross rent, and median income by quintile
@@ -62,8 +66,9 @@ function HAHWCTA(props) {
           </li>
           <li>
             Data on drug use, alcohol abuse, and mental health from the U.S.
-            Department of Health and Human Services’ (HHS) National Survey on
-            Drug Use and Health
+            Department of Health and Human Services’ (HHS) <a
+            href='https://www.samhsa.gov/data/report/2014-2016-nsduh-substate-region-estimates-%E2%80%93-excel-tables-and-csv-files' target='_blank'
+            rel='noopener noreferrer'>National Survey on Drug Use and Health</a>
           </li>
         </ul>
       </>

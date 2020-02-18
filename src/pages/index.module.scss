@@ -22,16 +22,22 @@
 }
 
 .more-analyses-row {
+  padding-top: $margin-45;
   padding-bottom: $margin-45;
+
 
   MainTile {
     margin-top: $margin-15;
   }
 }
 
-@media screen and (max-width: $desktop) {
+@media screen and (max-width: $desktop - 1) {
   .more-analyses-row {
     flex-direction: column-reverse;
+
+    .featured-tile {
+      margin-bottom: $margin-45;
+    }
   }
 }
 
