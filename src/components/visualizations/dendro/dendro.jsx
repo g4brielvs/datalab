@@ -59,9 +59,7 @@ function Dendro(props) {
       baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
 
       // Append a group which holds all nodes and which the zoom Listener can act upon.
-      svgGroup = baseSvg.append('g').attr('id', function () {
-        return 'dendro-viz';
-      });
+      svgGroup = baseSvg.append('g').attr('id', 'dendro-viz');
 
       newData.forEach((d) => {
         // Keep this as a reference to the current level
@@ -507,8 +505,8 @@ function Dendro(props) {
       });
 
       let data = [];
-      let FiscalYear = $('input[name="FiscalYear"]:checked').val();
-      let Quarter = $('input[name="Quarter"]:checked').val();
+      const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+      const Quarter = $('input[name="Quarter"]:checked').val();
 
       if (FiscalYear === 'fy17') {
         d3.selectAll('#svg-dendrogram').remove();

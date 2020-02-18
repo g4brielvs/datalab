@@ -11,14 +11,12 @@ class FedAcctContainer extends React.Component {
     super(props);
     this.state = {
       fiscalYearVal: 'fy19', // default fy19
-      quarterVal: '12-31' // default 12-31 quarter (1st)
     };
   };
 
   radioCheck = (event) => {
     this.setState({
       fiscalYearVal: event.target.value,
-      quarterVal: event.target.value
     });
   };
 
