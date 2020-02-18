@@ -4,7 +4,7 @@ import styles from './sunburst-details.module.scss';
 import formatNumber from 'src/utils/number-formatter';
 import PropTypes from 'prop-types';
 
-export default SunburstDetails = props => {
+const SunburstDetails = props => {
   function SubagencyTotal(props) {
     if (props.showAmount) {
       return (
@@ -61,6 +61,8 @@ export default SunburstDetails = props => {
     </Grid>
   );
 }
+
+export default SunburstDetails;
 
 SunburstDetails.propTypes = {
   name: PropTypes.string,
