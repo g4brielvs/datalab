@@ -16,6 +16,7 @@
   .facts__triggers {
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .facts__prompt {
@@ -26,6 +27,7 @@
   }
 
   .facts__trigger {
+    font-size: 1rem;
     display: block;
     width: 49%;
     border: 1px solid $revenue-primary;
@@ -34,6 +36,7 @@
     background: white;
     padding: 0.2rem;
     transition: all 0.2s ease;
+    cursor: pointer;
   }
 
   .facts__trigger.facts__trigger--active {

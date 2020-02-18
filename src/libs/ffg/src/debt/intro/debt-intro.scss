@@ -48,14 +48,7 @@
 }
 
 .facts__trigger {
-  display: block;
-  width: 49%;
   border: 1px solid $color-debt-primary;
-  text-align: center;
-  margin-bottom: 2px;
-  background: white;
-  padding: 0.5rem;
-  transition: all 0.2s ease;
 }
 
 .facts__trigger.facts__trigger--active {
