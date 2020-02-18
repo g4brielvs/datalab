@@ -496,13 +496,6 @@ function Dendro(props) {
       centerRootNode(root);
     }
 
-
-    function checkQuarterChange(year, quarter) {
-      $("input[type='radio']").change(() => {
-        
-      });
-    }
-
     $(document).ready(() => {
       // Handle Reset Button Click //
       // reset to default of FY19 and Q1 //
@@ -516,9 +509,6 @@ function Dendro(props) {
       let data = [];
       let FiscalYear = $('input[name="FiscalYear"]:checked').val();
       let Quarter = $('input[name="Quarter"]:checked').val();
-
-      console.log(Quarter);
-      console.log(FiscalYear);
 
       if (FiscalYear === 'fy17') {
         d3.selectAll('#svg-dendrogram').remove();
