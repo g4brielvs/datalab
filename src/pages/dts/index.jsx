@@ -66,41 +66,48 @@ export default class DTSPage extends React.Component {
                            </Grid>
                          </Grid>
 
-                         <Grid container justify='space-around' wrap='nowrap' alignItems='center'>
-
-                           <Grid container direction='column' wrap='nowrap'>
-                             <div className='daily-spending-subtext'>Amount Spent On</div>
-                             <div className='daily-spending-amount'>$0</div>
-                           </Grid>
-
-                           <Grid container direction='column' wrap='nowrap' alignItems='center' className='period-container'>
-                             <div className='period-button-header'>Chart Range</div>
-                             <div className='period-button-container'>
-                               <div className='period-button period-button-default' data-range='30d'>30D</div>
-                               <div className='period-button' data-range='90d'>90D</div>
-                               <div className='period-button' data-range='1y'>1Y</div>
-                               <div className='period-button' data-range='5y'>5Y</div>
-                               <div className='period-button' data-range='10y'>10Y</div>
+                         
+                         <div className='dts-controls-and-svg'>
+                           <div className='dts-header'>
+                             <div className='daily-spending-container'>
+                               <div className='daily-spending-subtext'>Amount Spent On</div>
+                               <div className='daily-spending-amount'>$0</div>
                              </div>
-                           </Grid>
 
-                           <Grid container direction='column' justify='space-around' alignItems='center' wrap='nowrap'>
-                             <label htmlFor="frequency-selector" className='frequency-selector-label'>Frequency</label>
-                             <select id='frequency-selector' className='custom-select'>
-                               <option value='today'>DAILY</option>
-                               <option value='mtd'>MTD</option>
-                               <option value='fytd'>FYTD</option>
-                             </select>
-                           </Grid>
+                             <div className='period-container'>
+                               <div className='period-button-header'>Chart Range</div>
+                               <div className='period-button-container'>
+                                 <div className='period-button period-button-default' data-range='30d'>30D</div>
+                                 <div className='period-button' data-range='90d'>90D</div>
+                                 <div className='period-button' data-range='1y'>1Y</div>
+                                 <div className='period-button' data-range='5y'>5Y</div>
+                                 <div className='period-button' data-range='10y'>10Y</div>
+                               </div>
+                             </div>
 
-                           <Grid container justify='space-around' direction='column' alignItems='center' wrap='nowrap'>
-                             <label htmlFor="category-selector" className='category-select-label'>Categories</label>
-                             <select className='custom-select custom-select-start' id='category-selector'></select>
-                           </Grid>
+                             <div className="frequency-container">
+                               <label htmlFor="frequency-selector" className='frequency-selector-label'>Frequency</label>
+                               <select id='frequency-selector' className='custom-select'>
+                                 <option value='today'>DAILY</option>
+                                 <option value='mtd'>MTD</option>
+                                 <option value='fytd'>FYTD</option>
+                               </select>
+                             </div>
 
-                         </Grid>
+                             <div className='category-container'>
+                               <label htmlFor="category-selector" className='category-select-label'>Categories</label>
+                               <select className='custom-select custom-select-start' id='category-selector'></select>
+                             </div>
+                             
+                           </div> 
+                           <DTS data={this.state.dtsData} />
+                         </div>
 
-                         <DTS data={this.state.dtsData} />
+                         <div className="dts-disclaimer">
+                           The Daily Treasury Statement (DTS) is published each day that the Federal Government is open. It provides data on the cash and debt operations of the U.S. Treasury based on reporting of the Treasury account balances by the Federal Reserve banks. For more information about the authoritative source of this dataset, please go to:
+                           <a href="https://fsapps.fiscal.treasury.gov/dts/issues" className="dts-hyperlink">https://fsapps.fiscal.treasury.gov/dts/issues</a>
+                         </div>
+
                          <Downloads href={'/data-lab-data/dts/dts.csv'} />
 
                        </div>
