@@ -86,7 +86,6 @@ function BudgetFunctionContainer() {
   };
 
   function setDataLocFunc(year){
-    console.log('year:', year);
     let fiscalStr = '';
     switch(year){
       case 'fy19':
