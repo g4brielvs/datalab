@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 const SunburstDetails = (props) => {
   function SubagencyTotal(props) {
-    console.log(props);
     if (props.showAmount) {
       return (
         <Grid item xs={12}>
