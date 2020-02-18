@@ -59,7 +59,7 @@ export default SunburstDetails = props => {
         })}
       </Grid>
     </Grid>
-  )
+  );
 }
 
 SunburstDetails.propTypes = {
