@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sankey from "src/components/visualizations/sankey/sankey";
 import { graphql, useStaticQuery } from "gatsby";
+import Downloads from "../../components/section-elements/downloads/downloads"
 
 function BudgetFunctionContainer() {
 
@@ -76,10 +77,32 @@ function BudgetFunctionContainer() {
 `)
 
   const [year, setFiscalYear] = useState('fy19');
+  const [dataLoc, setDataLoc] = useState('/data/budget-function/sankey/2019/sankey_v1_FY19.csv')
 
   function onFiscalYearChange(e) {
-    setFiscalYear(e.currentTarget.value);
+    const year = e.currentTarget.value;
+    setFiscalYear(year);
+    setDataLocFunc(year);
   };
+
+  function setDataLocFunc(year){
+    let fiscalStr = '';
+    switch(year){
+      case 'fy19':
+        fiscalStr = '/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
+        break;
+      case 'fy18':
+        fiscalStr = '/data/budget-function/sankey/2018/sankey_v1_FY18.csv'
+        break;
+      case 'fy17':
+        fiscalStr = '/data/budget-function/sankey/2017/sankey_FY17.csv'
+        break;
+      default:
+        fiscalStr = '/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
+        break;
+    }
+    setDataLoc(fiscalStr);
+  }
 
   const fiscalYearData = {
     'fy19': {
@@ -142,6 +165,11 @@ function BudgetFunctionContainer() {
                 sTitle={fiscalYearData[year].sTitle}
                 descriptions={fiscalYearData[year].descriptions} />
       </div>
+      <Downloads
+        href={dataLoc}
+        date={'March 2019'}
+      />
+
     </>
 
   )
