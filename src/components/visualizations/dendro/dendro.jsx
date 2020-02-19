@@ -59,9 +59,7 @@ function Dendro(props) {
       baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
 
       // Append a group which holds all nodes and which the zoom Listener can act upon.
-      svgGroup = baseSvg.append('g').attr('id', function() {
-        return'dendro-viz';
-      });
+      svgGroup = baseSvg.append('g').attr('id', 'dendro-viz');
 
       newData.forEach((d) => {
         // Keep this as a reference to the current level
@@ -98,7 +96,6 @@ function Dendro(props) {
           .attr('transform', `translate(${x},${y})scale(${scale})`);
         zoomListener.scale(scale);
         zoomListener.translate([x, y]);
-        resetToCenter();
       }
 
       let tree = d3.layout.tree()
@@ -244,7 +241,7 @@ function Dendro(props) {
             }, ["Click to view agencies"]);
           }
           if (d.depth === 0) {
-            tooltip.draw(tooltipStyles.tooltip, "FY17 Federal Agencies");
+            tooltip.draw(tooltipStyles.tooltip, "Federal Agencies");
           }
         }
         function handleMouseOut() {
@@ -485,12 +482,6 @@ function Dendro(props) {
           update(d);
           centerNode(d);
         }
-
-        // window.Analytics.event({
-        //   category: 'Federal Account Explorer - Click Node',
-        //   action: d.name
-        // });
-        resetToCenter();
       }
 
       root.x0 = svgHeight / 2;
@@ -501,26 +492,7 @@ function Dendro(props) {
       toggle(root);
       update(root);
       centerRootNode(root);
-
-      function resetToCenter() {
-        var theSvg = document.getElementById("svg-dendrogram");
-        const event = document.createEvent('MouseEvent');
-        event.initMouseEvent('mousedown', true, true, window, 0, 0,
-          0, 1, 1, false, false, false, false,
-          0, null);
-        theSvg.dispatchEvent(event);
-        event.initMouseEvent('mousemove', true, true, window, 0, 0,
-          0, 2, 2, false, false, false, false,
-          0, null);
-        theSvg.dispatchEvent(event);
-        event.initMouseEvent('mouseup', true, true, window, 0, 0,
-          0, 2, 2, false, false, false, false,
-          0, null);
-        theSvg.dispatchEvent(event);
-      }
     }
-
-    CreateDendro(dendroData19.filter((d) => d.reporting_period_end === '2018-12-31'));
 
     $(document).ready(() => {
       // Handle Reset Button Click //
@@ -533,78 +505,77 @@ function Dendro(props) {
       });
 
       let data = [];
-      $("input[type='radio']").change(() => {
-        const FiscalYear = $('input[name="FiscalYear"]:checked').val();
-        const Quarter = $('input[name="Quarter"]:checked').val();
-        if (FiscalYear === 'fy17') {
-          d3.selectAll('#svg-dendrogram').remove();
-          if (Quarter == '12-31') {
-            const viewerWidth = document.body.clientWidth;
-            const viewerHeight = 300;
-            d3.select('#tree-container').append('html')
-              .attr('width', viewerWidth)
-              .attr('height', viewerHeight)
-              .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
-              .attr('id', 'svg-dendrogram')
-              .attr('class', 'overlay')
-              .html("<h1>Sorry, our current schema didn't exist for FY17 Q1</h1>");
-          } else if (Quarter == '03-31') {
+      const FiscalYear = $('input[name="FiscalYear"]:checked').val();
+      const Quarter = $('input[name="Quarter"]:checked').val();
 
-            data = dendroData17.filter((d) => d.reporting_period_end == '2017-03-31');
-            CreateDendro(data);
-          } else if (Quarter == '06-30') {
+      if (FiscalYear === 'fy17') {
+        d3.selectAll('#svg-dendrogram').remove();
+        if (Quarter == '12-31') {
+          const viewerWidth = document.body.clientWidth;
+          const viewerHeight = 300;
+          d3.select('#tree-container').append('html')
+            .attr('width', viewerWidth)
+            .attr('height', viewerHeight)
+            .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
+            .attr('id', 'svg-dendrogram')
+            .attr('class', 'overlay')
+            .html("<h1>Sorry, our current schema didn't exist for FY17 Q1</h1>");
+        } else if (Quarter == '03-31') {
 
-            data = dendroData17.filter((d) => d.reporting_period_end == '2017-06-30');
-            CreateDendro(data);
-          } else {
+          data = dendroData17.filter((d) => d.reporting_period_end == '2017-03-31');
+          CreateDendro(data);
+        } else if (Quarter == '06-30') {
 
-            data = dendroData17.filter((d) => d.reporting_period_end == '2017-09-30');
-            CreateDendro(data);
-          }
-        } else if (FiscalYear === 'fy18') {
+          data = dendroData17.filter((d) => d.reporting_period_end == '2017-06-30');
+          CreateDendro(data);
+        } else {
 
-          d3.selectAll('#svg-dendrogram').remove();
-          if (Quarter == '12-31') {
-
-            data = dendroData18.filter((d) => d.reporting_period_end == '2017-12-31');
-            CreateDendro(data);
-          } else if (Quarter == '03-31') {
-
-            data = dendroData18.filter((d) => d.reporting_period_end == '2018-03-31');
-            CreateDendro(data);
-          } else if (Quarter == '06-30') {
-            data = dendroData18.filter((d) => d.reporting_period_end == '2018-06-30');
-            CreateDendro(data);
-          } else {
-            data = dendroData18.filter((d) => d.reporting_period_end == '2018-09-30');
-            CreateDendro(data);
-          }
-        } else if (FiscalYear === 'fy19') {
-          d3.selectAll('#svg-dendrogram').remove();
-          if (Quarter == '12-31') {
-            data = dendroData19.filter((d) => d.reporting_period_end == '2018-12-31');
-            CreateDendro(data);
-          } else if (Quarter == '03-31') {
-            // FY19Q2 Selected
-            data = dendroData19.filter((d) => d.reporting_period_end == '2019-03-31');
-            CreateDendro(data);
-          } else if (Quarter == '06-30') {
-            // FY19Q3 Selected
-            data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
-            CreateDendro(data);
-          } else {
-            const viewerWidth = document.body.clientWidth;
-            const viewerHeight = 300;
-            d3.select('#tree-container').append('html')
-              .attr('width', viewerWidth)
-              .attr('height', viewerHeight)
-              .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
-              .attr('id', 'svg-dendrogram')
-              .attr('class', 'overlay')
-              .html('<h1>We will update the Federal Account Explorer as soon as data is available</h1>');
-          }
+          data = dendroData17.filter((d) => d.reporting_period_end == '2017-09-30');
+          CreateDendro(data);
         }
-      });
+      } else if (FiscalYear === 'fy18') {
+
+        d3.selectAll('#svg-dendrogram').remove();
+        if (Quarter == '12-31') {
+
+          data = dendroData18.filter((d) => d.reporting_period_end == '2017-12-31');
+          CreateDendro(data);
+        } else if (Quarter == '03-31') {
+
+          data = dendroData18.filter((d) => d.reporting_period_end == '2018-03-31');
+          CreateDendro(data);
+        } else if (Quarter == '06-30') {
+          data = dendroData18.filter((d) => d.reporting_period_end == '2018-06-30');
+          CreateDendro(data);
+        } else {
+          data = dendroData18.filter((d) => d.reporting_period_end == '2018-09-30');
+          CreateDendro(data);
+        }
+      } else if (FiscalYear === 'fy19') {
+        d3.selectAll('#svg-dendrogram').remove();
+        if (Quarter == '12-31') {
+          data = dendroData19.filter((d) => d.reporting_period_end == '2018-12-31');
+          CreateDendro(data);
+        } else if (Quarter == '03-31') {
+          // FY19Q2 Selected
+          data = dendroData19.filter((d) => d.reporting_period_end == '2019-03-31');
+          CreateDendro(data);
+        } else if (Quarter == '06-30') {
+          // FY19Q3 Selected
+          data = dendroData19.filter((d) => d.reporting_period_end == '2019-06-30');
+          CreateDendro(data);
+        } else {
+          const viewerWidth = document.body.clientWidth;
+          const viewerHeight = 300;
+          d3.select('#tree-container').append('html')
+            .attr('width', viewerWidth)
+            .attr('height', viewerHeight)
+            .attr("viewBox", `0 0 ${viewerWidth} ${viewerHeight}`)
+            .attr('id', 'svg-dendrogram')
+            .attr('class', 'overlay')
+            .html('<h1>We will update the Federal Account Explorer as soon as data is available</h1>');
+        }
+      }
     });
   }); // end use Effect
 
@@ -634,22 +605,22 @@ function Dendro(props) {
 
                 <div className="select-wrapper2">
                   <div className='label-wrapper'>
-                    <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} />
+                    <input className='dendro-input-2' type="radio" id="contactChoice3" name="Quarter" value="12-31" defaultChecked={true} onChange={props.radioCheck}/>
                     <label className='dendro-input-2' htmlFor="contactChoice3">Q1</label>
                   </div>
 
                   <div className='label-wrapper'>
-                    <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31" />
+                    <input className='dendro-input-2' type="radio" id="contactChoice4" name="Quarter" value="03-31" onChange={props.radioCheck}/>
                     <label className='dendro-input-2' htmlFor="contactChoice4">Q2</label>
                   </div>
 
                   <div className='label-wrapper'>
-                    <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30" />
+                    <input className='dendro-input-2' type="radio" id="contactChoice5" name="Quarter" value="06-30" onChange={props.radioCheck}/>
                     <label className='dendro-input-2' htmlFor="contactChoice5">Q3</label>
                   </div>
 
                   <div className='label-wrapper'>
-                    <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30" />
+                    <input className='dendro-input-2' type="radio" id="contactChoice6" name="Quarter" value="09-30" onChange={props.radioCheck}/>
                     <label className='dendro-input-2' htmlFor="contactChoice6">Q4</label>
                   </div>
                 </div>
