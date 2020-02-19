@@ -65,7 +65,7 @@ const Categories = () => {
           family
         }
       }
-      contracts: allInvestmentSectionContractsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+      contracts: allInvestmentSectionContractsV2Csv(filter: {Obligation: {regex: "/^\\d/"}}) {
         nodes {
           id
           Agency
@@ -88,7 +88,7 @@ const Categories = () => {
           family
         }
       }
-      grants: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/[^-]/"}}) {
+      grants: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/^\\d/"}}) {
         nodes {
           id
           Agency
@@ -111,7 +111,7 @@ const Categories = () => {
           family
         }
       }
-      research: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/[^-]/"}, Research: {eq: "y"}}) {
+      research: allInvestmentSectionGrantsV2Csv(filter: {Obligation: {regex: "/^\\d/"}, Research: {eq: "y"}}) {
         nodes {
           id
           Agency
