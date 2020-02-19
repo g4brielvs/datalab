@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import * as d3 from 'd3v3';
 import dataSource from '../utils/data-module';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './treemap.scss';
 
 export default function Treemap() {
@@ -36,6 +36,7 @@ export default function Treemap() {
     const w = panel3b.node().getBoundingClientRect().width;
     const h = 340;
     const clusterColors = ['#E8751A', '#280C60', '#365608', '#2F1868', '#372C7A', '#4D4D8C', '#587C13', '#5E5E96', '#789E25', '#E55C01'];
+    let selectedCoC;
 
     let root;
 
@@ -216,8 +217,7 @@ export default function Treemap() {
         d3.select('.tablinks').remove();
         const tabLinks = d3.select('#tab')
           .append('g')
-          .attr('class', 'tablinks')
-          ;
+          .attr('class', 'tablinks');
 
         tabLinks.selectAll('button')
           .data(data)
@@ -225,19 +225,24 @@ export default function Treemap() {
           .append('button')
           .attr('class', 'cocButton')
           .attr('position', 'relative')
-          .on('click', function (dA) {
+          .attr('keyIdx', (d, i) => i)
+          .on('click', function (dA, i) {
             CreateCoCTable(dA);
             d3.select('.tablinks > .cocButton.active').classed('active', null);
             d3.select(this).classed('active', true);
+            selectedCoC = i + 1;
           })
           .append('div')
           .attr('class', 'header')
           .attr('background-color', '#E8EAF5')
-          .html((dB) => makeCocTile(dB))
-          ;
+          .html((dB) => makeCocTile(dB));
 
         if (showToggle) {
           createToggle();
+          if(selectedCoC && selectedCoC){
+            // Please note that the good news is the following does NOT error out if it tries to select an nth-child that is > the available children.
+            tabLinks.selectAll(`.cocButton:nth-child(${selectedCoC})`).classed('active', true);
+          }
         }
       }
 
@@ -256,12 +261,12 @@ export default function Treemap() {
           showMoreLessBtn.on('click', function () {
             showMoreButtons();
           });
-          showMoreLessLabel.html(d3.select('#showMoreButtons').html());
+          showMoreLessLabel.html(d3.select('#showMoreButtons').node().outerHTML);
         } else {
           showMoreLessBtn.on('click', function () {
             showLessButtons();
           })
-          showMoreLessLabel.html(d3.select('#showLessButtons').html());
+          showMoreLessLabel.html(d3.select('#showLessButtons').node().outerHTML);
         }
       }
 
@@ -283,6 +288,7 @@ export default function Treemap() {
       .on('click', function (d) {
         const group = Number(d.group);
         const current = cluster.filter((dC) => (dC.cluster_final === group));
+        selectedCoC = 1;
         makeInfographic(group);
         CreateCoCTable(current[0]);
         makeSelectionPanel(current);
@@ -343,19 +349,19 @@ export default function Treemap() {
   return (
     <div id='panel_3b'>
       <div id='tree' />
-      <div className='cocTab' id='cocTab' />
       <div id='tab_info'>
         <div className='tab' id='tab' />
       </div>
+      <div className='cocTab' id='cocTab' />
       <div className='hidden'>
-        <span id='showLessButtons'>
-          <span className='less'><ChevronLeftIcon /></span>
+        <div id='showLessButtons' className='coc-show-less-more-buttons'>
           <span>SEE LESS CoCs</span>
-        </span>
-        <span id='showMoreButtons'>
+          <span className='less'><ExpandLessIcon /></span>
+        </div>
+        <div id='showMoreButtons' className='coc-show-less-more-buttons'>
           <span>SEE MORE CoCs</span>
-          <span className='more'><ChevronRightIcon /></span>
-        </span>
+          <span className='more'><ExpandMoreIcon /></span>
+        </div>
       </div>
 
       <div className='homeless-fact-cluster flex-grid'>
