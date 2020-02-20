@@ -1,6 +1,6 @@
 import React from "react"
 
-import style from './afg-nav.module.css';
+import style from './afg-nav.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
@@ -56,21 +56,36 @@ const AfgNav = (props) => {
     }
 
     function toggleActiveStatus() {
+        // For IE9
+        function toggleClass(el, className){
+            var classes = el.className.split(" ");
+            var i = classes.indexOf(className);
+
+            if (i >= 0) {
+                classes.splice(i, 1);
+            }
+            else {
+                classes.push(openClass);
+            }
+
+            element.className = classes.join(" ");
+        }
+
         var element = document.getElementsByClassName(style.chapterNav).item(0),
+            toggleIcons = document.getElementsByClassName(style.chapterNavTrigger).item(0).getElementsByTagName('svg'),
+            hiddenClass = 'hidden',
             openClass = style.menuOpen;
 
         if (element.classList) { 
             element.classList.toggle(openClass);
+            for(let i = toggleIcons.length; i--;){
+                toggleIcons[i].classList.toggle(hiddenClass)
+            }
         } else {
-            // For IE9
-            var classes = element.className.split(" ");
-            var i = classes.indexOf(openClass);
-        
-            if (i >= 0) 
-                classes.splice(i, 1);
-            else 
-                classes.push(openClass);
-                element.className = classes.join(" "); 
+            toggleClass(element, openClass);
+            for(let i = toggleIcons.length; i--;){
+                toggleClass(toggleIcons[i], hiddenClass)
+            }
         }
 
     }
@@ -137,7 +152,7 @@ const AfgNav = (props) => {
         </ul>
         <button className={style.chapterNavTrigger}>
             <FontAwesomeIcon icon={faAngleDown} className="fas fa-lg fa-angle-down menu-down"/>
-            <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up"/>
+            <FontAwesomeIcon icon={faAngleUp} className="fas fa-lg fa-angle-up menu-up hidden"/>
         </button>
     </nav>
     )
