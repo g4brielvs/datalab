@@ -12,7 +12,7 @@ export default {
       accordionContent: [
         <ul className={styles.numberedList}>
           <li>
-            <a href='https://datalab.usaspending.gov/assets/analyst-guide-1-2.pdf' target='_blank' rel='noopener noreferrer'>
+            <a href='/analyst-guide' target='_blank' rel='noopener noreferrer'>
               Analyst Guide to Federal Spending Data
             </a>
           </li>
