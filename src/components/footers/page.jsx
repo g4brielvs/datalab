@@ -1,14 +1,15 @@
-import React from "react"
-import pageFooterStyles from "./page.module.scss"
+import React from "react";
+import pageFooterStyles from "./page.module.scss";
 
-import DataLab from "../logos/datalab"
-import Github from "../logos/github"
-import Dataworld from "../logos/dataworld"
-import Twitter from "../logos/twitter"
-import Facebook from "../logos/facebook"
-import LinkedIn from "../logos/linkedin"
+import DataLab from "../logos/datalab";
+import Github from "../logos/github";
+import Dataworld from "../logos/dataworld";
+import Twitter from "../logos/twitter";
+import Facebook from "../logos/facebook";
+import LinkedIn from "../logos/linkedin";
 
-/* <script>
+/* Should this be removed? I don't remember why I saved it...
+<script>
   function trackLinkClick(actionName) {
           window.Analytics.event({
               category: 'Footer - Click Link',
@@ -21,7 +22,8 @@ import LinkedIn from "../logos/linkedin"
           document.querySelector('#leave-modal .redirect-modal__link a').innerHTML = outbound;
           document.getElementById('leave-modal').style.display = 'block';
   }
-</script> */
+</script>
+*/
 
 const PageFooter = props => (
   <div className={pageFooterStyles.pageFooter}>
@@ -31,25 +33,21 @@ const PageFooter = props => (
       </div>
       <div className={pageFooterStyles.flexItem}>
         <div className={pageFooterStyles.title}>Contact Us</div>
-        <p>
-          For media inquiries or questions on Data Lab activities or operations,
-          please contact our Legislative and Public Affairs Office:
-        </p>
-        <p>E: media.relations@fiscal.treasury.gov</p>
+        <p>For general inquiries or questions on Data Lab activities or operations, please contact:</p>
+        <p><a href='mailto: usaspending.help@fiscal.treasury.gov?subject=Data Lab - Contact Us' rel="noopener noreferrer">
+          E: usaspending.help@fiscal.treasury.gov
+        </a></p>
       </div>
       <div className={pageFooterStyles.flexItem}>
         <div className={pageFooterStyles.title}>Mailing List</div>
         <p>
           To join our mailing list, send a blank email with no subject to:{" "}
-          <a href="mailto: datalab@lists.fiscal.treasury.gov">
-            datalab@lists.fiscal.treasury.gov
-          </a>
+          <a href="mailto: datalab@lists.fiscal.treasury.gov" rel="noopener noreferrer">datalab@lists.fiscal.treasury.gov</a>
         </p>
         <div className={pageFooterStyles.title}>Join the Conversation</div>
         <p>
-          Visit our&nbsp;
+          Visit our <a href='https://usaspending-help.zendesk.com/hc/en-us/community/topics' target="_blank" rel="noopener noreferrer">Community Page today.</a>
           {/* <a onclick="leaveSiteLink('https://usaspending-help.zendesk.com/hc/en-us/community/topics'); trackLinkClick('Send Feedback'); return false;" href="https://usaspending-help.zendesk.com/hc/en-us/community/topics"> */}
-          <a>Community Page today.</a>
         </p>
       </div>
       <div className={`${pageFooterStyles.flexItem} ${pageFooterStyles.socialLogos}`}>
