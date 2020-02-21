@@ -46,7 +46,7 @@ const PageFooter = props => (
         </p>
         <div className={pageFooterStyles.title}>Join the Conversation</div>
         <p>
-          Visit our <a href='https://usaspending-help.zendesk.com/hc/en-us/community/topics'>Community Page today.</a>
+          Visit our <a href='https://usaspending-help.zendesk.com/hc/en-us/community/topics' target="_blank" rel="noopener noreferrer">Community Page today.</a>
           {/* <a onclick="leaveSiteLink('https://usaspending-help.zendesk.com/hc/en-us/community/topics'); trackLinkClick('Send Feedback'); return false;" href="https://usaspending-help.zendesk.com/hc/en-us/community/topics"> */}
         </p>
       </div>
