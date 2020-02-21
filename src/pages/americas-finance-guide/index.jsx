@@ -1,17 +1,17 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/bigPicture/scss/bp.scss'
+import '../../libs/ffg/src/globalSass/cg.scss'
+import '../../libs/ffg/src/bigPicture/scss/bp.scss'
 
 import React from "react"
-import SEO from "../../../components/seo"
-import AfgData from "../../../libs/_data/object_mapping.yml"
-import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
-import Accordion from '../../../components/accordion/accordion'
-import ControlBar from '../../../components/control-bar/control-bar'
-import Share from '../../../components/share/share'
+import SEO from "../../components/seo"
+import AfgData from "../../libs/_data/object_mapping.yml"
+import Default from "../../components/layouts/default/default"
+import HeaderOnly from "../../components/layouts/header-only/header-only"
+import Accordion from '../../components/accordion/accordion'
+import ControlBar from '../../components/control-bar/control-bar'
+import Share from '../../components/share/share'
 import { Helmet } from 'react-helmet';
-import BpToc from '../../../components/bpToc/bpToc'
-import AfgAnecdote from '../../../libs/ffg/src/anecdote/anecdote';
+import BpToc from '../../components/bpToc/bpToc'
+import AfgAnecdote from '../../libs/ffg/src/anecdote/anecdote';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleDown, faStreetView } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +21,7 @@ function OverviewPage(props) {
         <>
 
             <Helmet>
-                <script defer src="/americas-finance-guide/overview/index.js"></script>
+                <script defer src="/americas-finance-guide/index.js"></script>
             </Helmet>
 
             <SEO

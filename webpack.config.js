@@ -97,7 +97,7 @@ module.exports = [ {
     }
 }, {
     entry: {
-        overview: './src/libs/ffg/src/bigPicture/index.js'
+        index: './src/libs/ffg/src/bigPicture/index.js'
     },
     devtool: devtool,
     devServer: devServer,
@@ -113,8 +113,8 @@ module.exports = [ {
     ],
     output: {
         filename: '[name].js',
-        path: __dirname + '/static/americas-finance-guide/overview/',
-        publicPath: '/static/americas-finance-guide/overview/'
+        path: __dirname + '/static/americas-finance-guide/',
+        publicPath: '/static/americas-finance-guide/'
     },
     module: {
         rules: moduleRules

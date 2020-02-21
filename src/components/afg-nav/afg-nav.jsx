@@ -147,7 +147,7 @@ const AfgNav = (props) => {
     return ( 
     <nav className={navClasses}>
         <ul className={style.chapterNavPrimaryList}>
-            <li className={style.chapterNavOverview}><a href="/americas-finance-guide/overview"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
+            <li className={style.chapterNavOverview}><a href="/americas-finance-guide"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
             {navHtml}
         </ul>
         <button className={style.chapterNavTrigger}>
