@@ -7,9 +7,9 @@ const SiteFooter = props => (
     <Hidden xsDown>
       <div>
         &copy;&nbsp;2018&nbsp;USAspending.gov |&nbsp;
-      <a href='https://www.usaspending.gov/#/about/accessibility'>Accessibility</a> |&nbsp;
-      <a href='https://www.usaspending.gov/#/about/privacy'>Privacy&nbsp;Policy</a> |&nbsp;
-      <a href='https://www.usaspending.gov/#/about/foia'>Freedom&nbsp;of&nbsp;Information&nbsp;Act</a>
+        <a href='https://www.usaspending.gov/#/about/accessibility'>Accessibility</a> |&nbsp;
+        <a href='https://www.usaspending.gov/#/about/privacy'>Privacy&nbsp;Policy</a> |&nbsp;
+        <a href='https://www.usaspending.gov/#/about/foia'>Freedom&nbsp;of&nbsp;Information&nbsp;Act</a>
       </div>
       <div>
         <b>NOTE:</b> <a href='https://beta.usaspending.gov/#/db_info'>You must click here for very important D&B information.</a>
