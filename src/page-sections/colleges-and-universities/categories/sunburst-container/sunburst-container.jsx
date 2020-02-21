@@ -69,12 +69,12 @@ const CategoriesVizContainer = (props) => {
         },
         'tables': [
           {
-            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 5 ? ' (Top 5)' : ''),
+            'col1Title': 'Funding Agencies' + (Object.keys(agenciesTop5).length > 4 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': agenciesTop5
           },
           {
-            'col1Title': 'Institution' + (Object.keys(invTop5).length > 5 ? ' (Top 5)' : ''),
+            'col1Title': 'Institution' + (Object.keys(invTop5).length > 4 ? ' (Top 5)' : ''),
             'col2Title': 'Total Investment',
             'rows': invTop5
           }

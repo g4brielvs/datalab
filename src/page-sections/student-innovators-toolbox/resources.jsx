@@ -55,28 +55,28 @@ export default {
       accordionContent: [<p>In a client-based project, students analyze a policy problem, a challenge or missed
         opportunity and – with faculty guidance – develop recommendations to address it. Hence, a client with an
         interesting problem is key to producing a successful product or analysis.</p>,
-        <p>But finding a client and a policy problem can be challenging. Here are a few tips to begin this essential
+      <p>But finding a client and a policy problem can be challenging. Here are a few tips to begin this essential
           first step of your product or analysis:</p>,
-        <div className={styles.textIndent}>
-          <p><span className={styles.bold}>Follow your interests. </span>Connect with an organization working on problems
-            you’re interested in. For example, a local homeless service organization might be an appropriate client for
-            students interested in preventing and ending homelessness or alleviating poverty. Learn about the organization’s
-            goals and current initiatives. Then, work with the client to define a suitable and manageable policy problem
+      <div className={styles.textIndent}>
+        <p><span className={styles.bold}>Follow your interests. </span>Connect with an organization working on problems
+          you’re interested in. For example, a local homeless service organization might be an appropriate client for
+          students interested in preventing and ending homelessness or alleviating poverty. Learn about the organization’s
+          goals and current initiatives. Then, work with the client to define a suitable and manageable policy problem
             or analysis that can provide value or insights to them.</p>
-          <p><span className={styles.bold}>Leverage your network. </span>Reach out to your alumni and faculty networks and
-            get an introduction to the problems and challenges their respective organizations are facing. Then, conduct
+        <p><span className={styles.bold}>Leverage your network. </span>Reach out to your alumni and faculty networks and
+          get an introduction to the problems and challenges their respective organizations are facing. Then, conduct
             initial research and identify an opportunity for a client organization.</p>
-          <p><span className={styles.bold}>Think local. </span>Consider organizations/agencies you’re familiar with.
-            These can be your high school, your city council, nonprofits in your community, or other small, public
-            organizations where you may have a connection. Most of these organizations would be happy to have students
-            completing a master’s degree to help increase understanding of the distribution of federal funds and their
+        <p><span className={styles.bold}>Think local. </span>Consider organizations/agencies you’re familiar with.
+          These can be your high school, your city council, nonprofits in your community, or other small, public
+          organizations where you may have a connection. Most of these organizations would be happy to have students
+          completing a master’s degree to help increase understanding of the distribution of federal funds and their
             impact.</p>
-          <p><span className={styles.bold}>Develop your subject matter niche. </span>Take advantage of your student
-            status and contact professionals on social media, via email or phone! Consider policy issues or topics in
-            your field of study and share interesting insights or ideas. Next, meet with them and ask if they have a
-            project that you can conduct for them to complete your master’s degree. You should bring some examples of
+        <p><span className={styles.bold}>Develop your subject matter niche. </span>Take advantage of your student
+          status and contact professionals on social media, via email or phone! Consider policy issues or topics in
+          your field of study and share interesting insights or ideas. Next, meet with them and ask if they have a
+          project that you can conduct for them to complete your master’s degree. You should bring some examples of
             project ideas that you have, too.</p>
-        </div>
+      </div>
       ]
     },
     {
@@ -99,9 +99,10 @@ export default {
       accordionContent: [<p><span className={styles.bold}>USAspending.gov Downloadable Data Sets: </span>Are you
         interested in creating a data visualization to answer questions like “How much does the federal government
         spend to combat the opioid crisis?”, or to learn how much is spent on border security, housing, or violence
-        against women? Check out our USAspending.gov database to get started!</p>,
-        <p><span className={styles.bold}>Clean Data Sets (Option 1): </span>For analysis and data visualization projects - Coming soon</p>,
-        <p><span className={styles.bold}>Raw Data Sets (Option 2): </span>For data cleaning projects - Coming soon</p>,
+        against women?
+        Check out our <a href='https://registry.opendata.aws/usaspending/' target='_blank' rel='noopener noreferrer'>USAspending.gov</a> database to get started!</p>,
+      <p><span className={styles.bold}>Clean Data Sets (Option 1): </span>For analysis and data visualization projects - Coming soon</p>,
+      <p><span className={styles.bold}>Raw Data Sets (Option 2): </span>For data cleaning projects - Coming soon</p>,
       ]
     }
   ]
