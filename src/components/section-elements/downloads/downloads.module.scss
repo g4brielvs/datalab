@@ -20,6 +20,7 @@ a.data {
 
 	&:hover {
 		color: $legacyBlue;
+		text-decoration: underline;
 
 		img {
 			filter: brightness(0.5) sepia(1);
