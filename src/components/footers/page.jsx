@@ -42,7 +42,7 @@ const PageFooter = props => (
         <div className={pageFooterStyles.title}>Mailing List</div>
         <p>
           To join our mailing list, send a blank email with no subject to:{" "}
-          <a href="mailto: datalab@lists.fiscal.treasury.gov">datalab@lists.fiscal.treasury.gov</a>
+          <a href="mailto: datalab@lists.fiscal.treasury.gov" target="_blank" rel="noopener noreferrer">datalab@lists.fiscal.treasury.gov</a>
         </p>
         <div className={pageFooterStyles.title}>Join the Conversation</div>
         <p>
