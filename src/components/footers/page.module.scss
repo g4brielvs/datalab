@@ -1,9 +1,9 @@
-@import "../../styles/index";
+@import "../../styles/variables";
 
 $col-padding: 15px;
 
 .page-footer {
-  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 
   .content {
     padding: 3rem 4rem 4rem;
@@ -11,7 +11,23 @@ $col-padding: 15px;
     justify-content: space-around;
 
     .logo {
-      padding-bottom: 3rem;
+      // padding-bottom: 3rem;
+      text-align: center;
+
+      svg {
+        width: 200px;
+      }
+    }
+
+    .social {
+      position: relative;
+      text-align: right;
+
+      .contents {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
     }
 
     .flex-item {
@@ -59,7 +75,6 @@ $col-padding: 15px;
     a {
       color: #2272ce;
     }
-
   }
 }
 
