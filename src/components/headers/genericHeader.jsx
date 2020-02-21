@@ -27,7 +27,7 @@ export default class GenericHeader extends React.Component {
                           },
                           {
                             ffg: [
-                              { header: 'Overview', name: "America's Finance Guide", link: '/americas-finance-guide/overview' },
+                              { header: 'Overview', name: "America's Finance Guide", link: '/americas-finance-guide' },
                               { header: 'Revenue', name: 'Revenue and GDP', link: '/americas-finance-guide/revenue-and-gdp' },
                               { header: 'Revenue', name: 'Revenue Categories', link: '/americas-finance-guide/revenue-categories' },
                               { header: 'Revenue', name: 'Federal Revenue Trends', link: '/americas-finance-guide/revenue-trends' },
