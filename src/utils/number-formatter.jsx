@@ -14,15 +14,21 @@ export default function formatNumber(type, number) {
       return formatActions(number);
     case 'dollars':
       return formatDollars(Math.round(number));
-    case 'dollars text':
-      return (
-        '$' + formatDollarsText(Math.round(number))
-          .replace('k', ' thousand')
-          .replace('M', ' million')
-          .replace('G', ' billion')
-          .replace('T', ' trillion')
-      );
-    default:
+      case 'dollars text':
+        return (
+          '$' + formatDollarsText(Math.round(number))
+            .replace('k', ' thousand')
+            .replace('M', ' million')
+            .replace('G', ' billion')
+            .replace('T', ' trillion')
+        );
+        case 'dollars suffix':
+          return (
+            '$' + formatDollarsText(Math.round(number))
+              .replace('k', ' T')
+              .replace('G', ' B')
+          );
+          default:
       return '';
   }
 }
