@@ -7,38 +7,56 @@ $col-padding: 15px;
 
   .content {
     padding: 3rem 0 4rem;
-    display: flex;
-    justify-content: space-around;
 
-    div + div {
-      padding: 0 $col-padding;
-      border-left: 1px solid #ccc;
+    .title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.24;
+      letter-spacing: normal;
+    }
+
+    .title,
+    a {
+      color: $legacyBlue;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
-    a,
-    .title {
-      color: #2272ce;
+    p {
+      font-size: 0.9375rem;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 1.33;
+      letter-spacing: 0.2px;
+      margin-top: 0;
+      margin-bottom: 2rem;
     }
 
-    .title {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      line-height: 1.24;
-      margin-bottom: 1em;
-      letter-spacing: normal;
+    .social .contents a {
+      padding-right: 8px;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .page-footer .content {
+    div + div {
+      padding: 0 $col-padding;
+      border-left: 1px solid #ccc;
     }
 
     .logo {
-      // padding-bottom: 3rem;
       text-align: center;
 
       svg {
         width: 200px;
       }
+    }
+
+    .title {
+      margin-bottom: 0.5rem;
     }
 
     .social {
@@ -49,39 +67,23 @@ $col-padding: 15px;
         position: absolute;
         bottom: 0;
         right: 25px;
-
-        a {
-          padding-right: 8px;
-        }
       }
     }
-
-    // .flex-item {
-    //   padding-left: $col-padding;
-    //   padding-right: $col-padding;
-    //   flex: min-content;
-    // }
-
-    // p {
-    //   font-size: 0.9375rem;
-    //   font-style: normal;
-    //   font-weight: 300;
-    //   line-height: 1.33;
-    //   letter-spacing: 0.2px;
-    // }
   }
 }
 
-// @media (max-width: $desktop - 1) {
-//   .page-footer .content {
-//     max-width: 500px;
-//     margin: 0 auto;
-//     flex-direction: column;
-//     text-align: center;
+@media (max-width: $desktop - 1) {
+  .page-footer .content {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
 
-//     .float-bottom div {
-//       width: 100%;
-//       text-align: center;
-//     }
-//   }
-// }
+    .logo {
+      padding-bottom: 2rem;
+    }
+
+    .social .title {
+      display: none;
+    }
+  }
+}

@@ -34,17 +34,19 @@ export default class PageFooter extends React.Component {
   render = () =>
     <div className={pageFooterStyles.pageFooter}>
       <Grid container className={pageFooterStyles.content}>
-        <Grid item xs={12} md={3} className={pageFooterStyles.logo}>
+        <Grid item xs={12} lg={3} className={pageFooterStyles.logo}>
           <DataLab fillColor='#666' />
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} lg={3}>
           <div className={pageFooterStyles.title}>Contact Us</div>
-          <p>For general inquiries or questions on Data Lab activities or operations, please contact:</p>
-          <p><a href='mailto: usaspending.help@fiscal.treasury.gov?subject=Data Lab - Contact Us' rel='noopener noreferrer'>
-            E: usaspending.help@fiscal.treasury.gov
-        </a></p>
+          <p>For general inquiries or questions on Data Lab activities or operations, please contact:
+            <a href='mailto: usaspending.help@fiscal.treasury.gov?subject=Data Lab - Contact Us' rel='noopener noreferrer'>
+              <br /><br />
+              E: usaspending.help@fiscal.treasury.gov
+            </a>
+          </p>
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} lg={3}>
           <div className={pageFooterStyles.title}>Mailing List</div>
           <p>
             To join our mailing list, send a blank email with no subject to:{' '}
@@ -55,7 +57,7 @@ export default class PageFooter extends React.Component {
             Visit our <a href='https://usaspending-help.zendesk.com/hc/en-us/community/topics' target='_blank' rel='noopener noreferrer'>Community Page today.</a>
           </p>
         </Grid>
-        <Grid item xs={12} md={3} className={pageFooterStyles.social}>
+        <Grid item xs={12} lg={3} className={pageFooterStyles.social}>
           <div className={pageFooterStyles.contents}>
             <div className={pageFooterStyles.title}>Connect With Us</div>
             <a><Github /></a>
