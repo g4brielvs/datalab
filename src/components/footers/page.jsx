@@ -55,7 +55,7 @@ export default class PageFooter extends React.Component {
             Visit our <a href='https://usaspending-help.zendesk.com/hc/en-us/community/topics' target='_blank' rel='noopener noreferrer'>Community Page today.</a>
           </p>
         </Grid>
-        <Grid item xs={12} md={2} className={pageFooterStyles.social}>
+        <Grid item xs={12} md={3} className={pageFooterStyles.social}>
           <div className={pageFooterStyles.contents}>
             <div className={pageFooterStyles.title}>Connect With Us</div>
             <a><Github /></a>

@@ -6,9 +6,31 @@ $col-padding: 15px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 
   .content {
-    padding: 3rem 4rem 4rem;
+    padding: 3rem 0 4rem;
     display: flex;
     justify-content: space-around;
+
+    div + div {
+      padding: 0 $col-padding;
+      border-left: 1px solid #ccc;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a,
+    .title {
+      color: #2272ce;
+    }
+
+    .title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.24;
+      margin-bottom: 1em;
+      letter-spacing: normal;
+    }
 
     .logo {
       // padding-bottom: 3rem;
@@ -26,75 +48,40 @@ $col-padding: 15px;
       .contents {
         position: absolute;
         bottom: 0;
-        right: 0;
+        right: 25px;
+
+        a {
+          padding-right: 8px;
+        }
       }
     }
 
-    .flex-item {
-      padding-left: $col-padding;
-      padding-right: $col-padding;
-      flex: min-content;
-    }
+    // .flex-item {
+    //   padding-left: $col-padding;
+    //   padding-right: $col-padding;
+    //   flex: min-content;
+    // }
 
-    .title {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      line-height: 1.24;
-      margin-bottom: 1em;
-      letter-spacing: normal;
-    }
-
-    .social-logos {
-      white-space: nowrap;
-      text-align: right;
-
-      a:not(:last-of-type) {
-        padding-right: 0.25rem;
-      }
-
-      .float-bottom {
-        height: 100%;
-        display: flex;
-        align-items: flex-end;
-      }
-    }
-
-    p {
-      font-size: 0.9375rem;
-      font-style: normal;
-      font-weight: 300;
-      line-height: 1.33;
-      letter-spacing: 0.2px;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .title,
-    a {
-      color: #2272ce;
-    }
+    // p {
+    //   font-size: 0.9375rem;
+    //   font-style: normal;
+    //   font-weight: 300;
+    //   line-height: 1.33;
+    //   letter-spacing: 0.2px;
+    // }
   }
 }
 
-// put vertical borders between items in desktop mode
-@media (min-width: $desktop) {
-  .flex-item + .flex-item {
-    border-left: 1px solid #ccc;
-  }
-}
+// @media (max-width: $desktop - 1) {
+//   .page-footer .content {
+//     max-width: 500px;
+//     margin: 0 auto;
+//     flex-direction: column;
+//     text-align: center;
 
-@media (max-width: $desktop - 1) {
-  .page-footer .content {
-    max-width: 500px;
-    margin: 0 auto;
-    flex-direction: column;
-    text-align: center;
-
-    .float-bottom div {
-      width: 100%;
-      text-align: center;
-    }
-  }
-}
+//     .float-bottom div {
+//       width: 100%;
+//       text-align: center;
+//     }
+//   }
+// }
