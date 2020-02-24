@@ -107,7 +107,7 @@ export default class HomelessnessPage extends Component {
           subblurb: "Clustering administrative regions",
           sectionTeaser: ["Which Continuum of Care areas are similar ", <span key='teaser-callout' className='homeless-analysis-header-callout'>to each other?</span>],
           introBlurb: <div>
-            While the section above allows you to compare Continuum of Care areas that are neighbors geographically, we wanted to explore if Continuum of Care areas were similar along characteristics other than geography. It may be helpful for those working in the field to know what types of funding their neighbors are receiving and to know what regions are similar to their own regardless of location. Using an unsupervised machine learning algorithm, we clustered Continuum of Care areas based on a variety of attributes, such as population, income, and the prevalence of mental illness.
+            <p>While the previous section allows you to compare Continuum of Care areas that are neighbors geographically, we wanted to explore if Continuum of Care areas were similar along characteristics other than geography.</p>
           </div>,
           tagName: "continuumCare",
         },
@@ -115,17 +115,20 @@ export default class HomelessnessPage extends Component {
           section: "Final Thoughts",
           number: "04",
           subtext: "Final Thoughts",
-          subblurb: "What are the investments used for?",
+          subblurb: "Who may find this analysis useful?",
           sectionTeaser: ["What are the investments ", <span key='teaser-callout' className='homeless-analysis-header-callout'>used for?</span>],
-          introBlurb: <div>As these visualizations depict, thousands of people are homeless across the United States.
-           We hope that this analysis show how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
-           as well as private institutions, who are working to reduce homelessness.
-           In addition, we chose to conduct this analysis because it features data from across multiple federal agencies,
-           which is all available in one dataset. <br /><br />
-            Analysts and users who have ideas for other types of analyses, whether featuring contracts or financial assistance across the federal government,
-           can use the Data Lab's Analyst Guide for guidance and hints as they use the data.<br /><br />
-            Do you want to provide feedback or ask a question? Send feedback&nbsp;
-            <a className='homelessness-link' href='https://usaspending-help.zendesk.com/hc/en-us/community/topics'>here!</a><br /></div>,
+          introBlurb: <div><p>
+              As these visualizations depict, thousands of people are homeless across the United States.
+              We hope that this analysis show how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
+              as well as private institutions, who are working to reduce homelessness.
+              In addition, we chose to conduct this analysis because it features data from across multiple federal agencies, in one dataset.
+          </p><p>
+              Analysts and users who have ideas for other types of analyses, whether featuring contracts or financial assistance across the federal government,
+              can use the Data Lab's Analyst Guide for guidance and hints as they use the data.
+          </p><p>
+              Do you want to provide feedback or ask a question? Send feedback&nbsp;
+              <a className='homelessness-link' href='https://usaspending-help.zendesk.com/hc/en-us/community/topics'>here!</a>
+            </p></div>,
           tagName: "finalThoughts",
         },
       ];
