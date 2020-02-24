@@ -11,6 +11,8 @@ import StorySection from "../../components/section-elements/story-section/story-
 
 import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import Footnotes from "../../components/footnotes/footnotes"
+import { Grid } from "@material-ui/core"
 
 const Geography = loadable(() => import('src/page-sections/homelessness-analysis/geography'),
   {
@@ -154,6 +156,20 @@ export default class HomelessnessPage extends Component {
               )
             })
           }
+
+          <Grid container justify="center">
+            <Grid item xl={10}>
+              <Footnotes footnotes={[<a href='https://www.usich.gov/resources/uploads/asset_library/2016_Budget_Fact_Sheet_on_Homelessness_Assistance.pdf' rel='noreferrer noopener' target='_blank'>United States Interagency Council on Homelessness.</a>,
+                <>The Point-in-Time (PIT) count is a count of sheltered and unsheltered homeless persons on a single night in January. HUD requires that Continuums of Care conduct an annual count of homeless persons who are sheltered in emergency shelters, transitional housing, and Safe Havens on a single night. Continuums of Care also must conduct a count of unsheltered homeless persons every other year (odd numbered years). Each count is planned, coordinated, and carried out locally. - <a href='https://www.hudexchange.info/programs/hdx/guides/pit-hic/#general-pit-guides-and-tools' rel='noreferrer noopener' target='_blank'>Department of Housing and Urban Development.</a></>,
+                <a href='https://www.hudexchange.info/programs/hdx/guides/pit-hic/#general-pit-guides-and-tools' rel='noreferrer noopener' target='_blank'>Department of Housing and Urban Development.</a>,
+                <>As an example, we included a program managed by the Department of Health and Human Services called Grants for New and Expanded Services under the Health Center Program, which provides funding for expanded and sustained national investment in health centers, even though people experiencing homelessness were one type of beneficiary listed, along with migrant workers, public housing residents, and others. We did not include programs intended to address poverty, or that provide resources for low-income individuals, if homeless individuals were not specifically mentioned as a type of beneficiary.</>,
+                <>West, Melanie. <a href='https://www.wsj.com/articles/new-york-citys-spending-on-homeless-hits-3-2-billion-this-year-11558562997' rel='noreferrer noopener' target='_blank'>"New York City’s Spending on Homelessness Hits $3.2 Billion this Year."</a> <i>The Wall Street Journal.</i></>,
+                <>Markovich, Matt, <a href='https://komonews.com/news/local/san-francisco-and-seattle-a-tale-of-two-cities-mired-in-a-homeless-crisis' rel='noreferrer noopener' target='_blank'>"San Francisco and Seattle: A tale of two cities mired in a homeless crisis."</a> KOMO News</>,
+                <>Federal, state, and local fiscal years do not always align to the same time frame; the purpose here is to make a broad comparison.</>,
+                <>Walch, Tad. <a href="https://www.deseret.com/2017/4/6/20609792/over-a-decade-lds-church-has-given-42-million-to-homeless-relief-in-salt-lake" rel="noreferrer noopener" target="_blank">Over a decade, LDS Church has given $42 million to homeless relief in Salt Lake.</a> <i>Deseret News</i></>]}
+              />
+            </Grid>
+          </Grid>
         </StoryLayout>
       </div>
     )
