@@ -238,8 +238,7 @@ export default function Mapviz(props) {
       <div className={styles.homelessPanelOneInfo}>
         <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
           Care area.</p>
-        <p>** This map reflects the most up to date HUD map available; however, some Continuum of Care areas have merged
-          together in 2017 since this map was updated.</p>
+        <p>** This map reflects the most up-to-date HUD map available; however, some Continuum of Care areas merged together in 2018 after this map was created.</p>
         <p>See our section on How We Conducted This Analysis for more information.</p>
       </div>
       <Downloads
