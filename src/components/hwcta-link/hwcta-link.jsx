@@ -8,39 +8,35 @@ import { Grid, Hidden } from '@material-ui/core'
 import Sources from '../logos/sources';
 
 const HWCTALink = (props) => {
-  const methodologiesUrl = props.url.replace(/\/\//g,'/');
   return (
-    <div className={hwctaLinkStyles.entry + ' ' + props._mainClass}>
-      <a className={hwctaLinkStyles.link} href={methodologiesUrl}>
-        <Grid container className={`${hwctaLinkStyles.dataSourcesRow} row`}>
-          <Hidden xsDown>
-            <Grid item sm={3} md={2} className={`${hwctaLinkStyles.image} ${props._noOffset ? '' : 'col-xs-offset-1'}`}>
-              <Sources fillColor={props.fillColor} />
-            </Grid>
-          </Hidden>
-          <Grid item className={hwctaLinkStyles.linkText} xs={11} sm={9} md={10}>
-            <div>Data Sources and Methodologies</div>
-            <div className={hwctaLinkStyles.chevron}>
-              <FontAwesomeIcon icon={faChevronRight} color={props.fillColor}/>
-            </div>
+    <div className={hwctaLinkStyles.hwcta + ' ' + props._mainClass}>
+      <a href={props.url.replace(/\/\//g, '/')}>
+        <Grid container alignItems='center'>
+          <Grid item className={hwctaLinkStyles.icon}>
+            <Sources fillColor={props.fillColor} />
           </Grid>
-          <Hidden smUp>
-            <Grid item className={hwctaLinkStyles.chevronGrid} xs={1}>
-              <FontAwesomeIcon icon={faChevronRight} color={props.fillColor}/>
-            </Grid>
-          </Hidden>
+          <Grid item>
+            Data Sources and{' '}
+            <Hidden mdUp>
+              <br />
+            </Hidden>
+            Methodologies
+        </Grid>
+          <Grid item className={hwctaLinkStyles.arrow}>
+            <FontAwesomeIcon icon={faChevronRight} color={props.fillColor} />
+          </Grid>
         </Grid>
       </a>
     </div>
-  )
-}
+  );
+};
 
 HWCTALink.propTypes = {
   fillColor: PropTypes.string
-}
+};
 
 HWCTALink.defaultProps = {
   fillColor: '#881E3D'
-}
+};
 
 export default HWCTALink;

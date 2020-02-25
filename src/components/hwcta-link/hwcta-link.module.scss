@@ -1,83 +1,29 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
-.entry {
+.hwcta {
   margin-top: $margin-75;
   margin-bottom: $margin-75;
-
-  FontAwesomeIcon {
-    line-height: 100px;
-    font-weight: 300;
-  }
-}
-
-.link-text, .chevron, .chevron-grid {
-  justify-content: center;
   font-size: 2rem;
   font-weight: 300;
-  line-height: 90px;
-}
 
-.link-text div {
-  display: inline-block;
-}
+  .icon {
+    line-height: 0;
+    padding-right: 1rem;
+  }
 
-.chevron {
-  padding-left: 1rem;
-}
-
-.chevron-grid {
-  align-self: center;
-}
-
-@media (max-width: $tablet - 1){
-  .link-text {
-    font-size: 1.7rem;
+  .arrow {
+    padding-left: 1rem;
   }
 }
 
 @media (max-width: $tablet - 1) {
-
-  .entry {
+  .hwcta {
     margin-top: $margin-30;
     margin-bottom: $margin-30;
+    font-size: 1.7rem;
   }
-}
 
-@media (min-width: $phone){
-  .link-text{
-    .chevron {
-      display: inline-block;
-    }
-  }
-  .chevron-grid {
+  .icon {
     display: none;
-  }
-}
-
-@media (max-width: $phone - 1 ){
-  .image {
-    display: none;
-  }
-
-  .nbsp {
-    display: none;
-  }
-
-  .data-sources-row {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .link-text, .chevron-grid {
-    line-height: 2.5rem;
-  }
-
-  .link-text {
-    .chevron {
-      display: none;
-    }
-  }
-  .chevron-grid {
-    display: inline-block;
   }
 }

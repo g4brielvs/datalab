@@ -22,6 +22,12 @@ export default function formatNumber(type, number) {
           .replace('G', ' billion')
           .replace('T', ' trillion')
       );
+    case 'dollars suffix':
+      return (
+        '$' + formatDollarsText(Math.round(number))
+          .replace('k', ' T')
+          .replace('G', ' B')
+      );
     default:
       return '';
   }
