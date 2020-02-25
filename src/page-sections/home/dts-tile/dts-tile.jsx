@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import './dts-tile.scss';
 import './landing-dts.scss';
 import * as d3 from 'd3v4';
+import formatNumber from '../../../utils/number-formatter';
 
 function DtsTile(props) {
 
@@ -19,9 +20,7 @@ function DtsTile(props) {
     height;
 
   const dateFormatter = d3.timeFormat('%B %e, %Y');
-  const dollarFormatter = function dollarFormatter(d) {
-    return d3.format('$,.2s')(d).replace(/G/, 'B');
-  };
+  const dollarFormatter = value => formatNumber('dollars suffix', value * 1000000); // multiply by the factor that recent_30.csv is reduced
 
   useEffect(() => {
     d3.csv('/data-lab-data/dts/recent_30.csv', tileData => {

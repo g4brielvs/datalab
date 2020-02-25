@@ -8,7 +8,6 @@ import Radium from 'radium';
 import styleVariables from 'src/styles/variables.scss';
 
 const Downloads = (props) => {
-
   const inlineStyles = {
     legacy: {
       ':hover': {
@@ -48,30 +47,27 @@ const Downloads = (props) => {
     const pathname = window.location.pathname.replace(/\//g, "");
     const index = Object.keys(inlineStyles).indexOf(pathname);
 
-    if(index > -1) {
+    if (index > -1) {
       selectedStyle = inlineStyles[pathname];
     }
   }
 
-
-
   function exportToJsonFile(jsonData) {
-    if(typeof Blob === 'undefined'){
+    if (typeof Blob === 'undefined') {
       return <></>;
     }
 
     const dataStr = JSON.stringify(jsonData);
-    const dataBlob = new Blob([dataStr], {type:"application/json"});
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
     const dataUri = URL.createObjectURL(dataBlob);
     const exportFileDefaultName = 'data.json';
 
     return (
-      <a className={downloadsStyles.data}
-         href={dataUri}
-         download={exportFileDefaultName}>
+      <a className={downloadsStyles.data} href={dataUri} download={exportFileDefaultName}>
         <FontAwesomeIcon icon={faDownload} />
         &nbsp;Download
-      </a>);
+      </a>
+    );
   }
 
   return (
@@ -80,16 +76,15 @@ const Downloads = (props) => {
       alignItems="flex-start"
       justify="flex-end"
       direction="row"
-      className={downloadsStyles.download}>
+      className={downloadsStyles.download}
+    >
       {props.date ? <span className={downloadsStyles.fadedModifier}>Updated as of {props.date} / </span> : ''}
       {props.isJSON ?
-       exportToJsonFile(props.data)
-       :
-       <a className={downloadsStyles.data}
-          style={selectedStyle}
-          href={props.href}>
-         <FontAwesomeIcon icon={faDownload} />
-         &nbsp;Download
+        exportToJsonFile(props.data)
+        :
+        <a className={downloadsStyles.data} style={selectedStyle} href={props.href}>
+          <FontAwesomeIcon icon={faDownload} />
+          &nbsp;Download
        </a>
       }
     </Grid>
