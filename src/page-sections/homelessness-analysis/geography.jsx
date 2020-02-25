@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Hidden } from '@material-ui/core'
 import Mapviz from "../../components/visualizations/homelessness-analysis/mapviz/mapviz"
 import * as _ from "lodash"
 
@@ -140,28 +141,34 @@ export default function Geography(props) {
 
   function reset() {
     switchView('chart');
-    document.getElementById('homeless-region-search').value = '';
+
+    const searchBox = document.getElementById('homeless-region-search');
+    if(searchBox){
+      searchBox.value = '';
+    }
   }
 
   return (<>
     <div className="homelessness-subheading">Homeless Population by Region</div>
     <div className="homelessness-subheading2">HUD Point-in-time Count by Continuum of Care Area</div>
     <div className="viz-actions">
-      <div className="homeless-map-options">
-        <span className="homeless-style">View</span>
-        <img id={styles.homelessActionMap} src={mapImg} onClick={function () { switchView('chart'); }} />
-        <img id={styles.homelessActionTable} src={tableImg} onClick={function () { switchView('table'); }} />
-        <input type='text'
-          id='homeless-region-search'
-          className={`homeless-region-search ${chartView ? 'invisible' : ''}`}
-          onInput={searchData}
-          placeholder='Search by CoC Name'
-        />
-        <SearchIcon
-          className={`homeless-region-search-icon ${chartView ? 'hidden' : ''}`}
-          onClick={searchBoxFocus}
-        />
-      </div>
+      <Hidden xsDown>
+        <div className="homeless-map-options">
+          <span className="homeless-style">View</span>
+          <img id={styles.homelessActionMap} src={mapImg} onClick={function () { switchView('chart'); }} />
+          <img id={styles.homelessActionTable} src={tableImg} onClick={function () { switchView('table'); }} />
+          <input type='text'
+            id='homeless-region-search'
+            className={`homeless-region-search ${chartView ? 'invisible' : ''}`}
+            onInput={searchData}
+            placeholder='Search by CoC Name'
+          />
+          <SearchIcon
+            className={`homeless-region-search-icon ${chartView ? 'hidden' : ''}`}
+            onClick={searchBoxFocus}
+          />
+        </div>
+      </Hidden>
 
       <ControlBar>
         <Reset _resetClick={reset} />
