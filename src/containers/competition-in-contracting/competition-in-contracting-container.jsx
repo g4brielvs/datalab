@@ -6,6 +6,7 @@ import Downloads from 'src/components/section-elements/downloads/downloads';
 import * as d3 from 'd3v3';
 import numberFormatter from 'src/utils/number-formatter';
 import { Grid, Hidden } from '@material-ui/core';
+import { timeout } from 'd3';
 
 export class CompetitionInContractingContainer extends Component {
   constructor(props) {
@@ -26,23 +27,22 @@ export class CompetitionInContractingContainer extends Component {
     this.handleYAxisCheckboxChange = this.handleYAxisCheckboxChange.bind(this);
   }
 
-  // this isn't resizing upon initial render, so abandoning IE-specific fix for now...
-  
-  // // this is only needed because IE11's SVG default size is bizarre, otherwise setting the <svg height='100%'> works fine
-  // resizeChartDiv = () => {
-  //   const factor = document.getElementById('barchartSvg').clientWidth / 1090;
-  //   document.getElementById('barchartSvg').setAttribute('height', 700 * factor);
-  // }
+  // this is only needed because IE11's SVG default size is bizarre, otherwise setting the <svg height='100%'> works fine
+  resizeChartDiv = () => {
+    const factor = document.getElementById('barchartSvg').clientWidth / 1090;
+    document.getElementById('barchartSvg').setAttribute('height', 700 * factor);
+  }
 
-  // componentDidMount() {
-  //   // force vertical resize on initial render
-  //   this.resizeChartDiv();
-  //   window.addEventListener('resize', this.resizeChartDiv);
-  // }
+  componentDidMount() {
+    window.addEventListener('resize', this.resizeChartDiv);
 
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.resizeChartDiv);
-  // }
+    // force vertical resize on initial render
+    setTimeout(this.resizeChartDiv, 500); // doesn't work without the delay, I guess D3 is still drawing?
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeChartDiv);
+  }
 
   setScaleFn(e) {
     this.setState({ scale: e.currentTarget.value });

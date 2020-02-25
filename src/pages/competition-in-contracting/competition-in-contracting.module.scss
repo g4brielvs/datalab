@@ -136,11 +136,11 @@ $summaryBorderColor: #DDD;
   }
 }
 
-// @media(min-width: $desktop) {
-//   .bar-chart-div {
-//     margin-top: -50px; // correct for vertical placement
-//   }
-// }
+@media(min-width: $desktop) {
+  .bar-chart-div {
+    margin-top: -50px; // correct for vertical placement
+  }
+}
   
 @media (min-width: $desktop) {
   .container .summary-item {
@@ -150,9 +150,9 @@ $summaryBorderColor: #DDD;
 }
 
 @media(min-width: $tablet) and (max-width: $desktop - 1){
-  // .bar-chart-div {
-  //   margin-top: -30px; // correct for vertical placement
-  // }
+  .bar-chart-div {
+    margin-top: -30px; // correct for vertical placement
+  }
 
   .summary-item-separator {
     border-right: 1px solid $summaryBorderColor;
@@ -174,8 +174,8 @@ $summaryBorderColor: #DDD;
   }
 }
 
-// @media(min-width: $phone) and (max-width: $tablet - 1){
-//   .bar-chart-div {
-//     margin-top: -20px; // correct for vertical placement
-//   }
-// }
+@media(min-width: $phone) and (max-width: $tablet - 1){
+  .bar-chart-div {
+    margin-top: -20px; // correct for vertical placement
+  }
+}

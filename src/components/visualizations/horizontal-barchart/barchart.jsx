@@ -264,7 +264,7 @@ function Barchart(props) {
   return (
     <>
       <div id={tooltipStyles.tooltip} className={tooltipStyles.tooltipModule}></div>
-      <svg width='1200' height='100%' viewBox='0 0 1200 700' id='barchartSvg' className={props._svgClass}></svg>
+      <svg width='1200' height='700' viewBox='0 0 1200 700' id='barchartSvg' className={props._svgClass}></svg>
     </>
   );
 }
