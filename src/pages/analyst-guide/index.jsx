@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styles from './analyst-guide.module.scss';
 
 /* components */
@@ -25,28 +25,28 @@ class AnalystGuidePage extends Component {
     const title = `What is the Analyst's Guide to Federal Spending Data?`;
     const heroImage = <>
       <Hidden lgDown>
-        <img src={DesktopImage} className={styles.heroImage}/>
+        <img src={DesktopImage} className={styles.heroImage} />
       </Hidden>
       <Hidden xlUp xsDown>
-        <img src={TabletImage} className={styles.heroImage}/>
+        <img src={TabletImage} className={styles.heroImage} />
       </Hidden>
       <Hidden smUp>
-        <img src={MobileImage} className={styles.heroImage}/>
+        <img src={MobileImage} className={styles.heroImage} />
       </Hidden>
     </>;
 
     const introSentence = <>
       <p>
-      The federal government uses contracts to buy the things it needs, from office furniture to airplanes. It also uses contracts to buy services
-       ranging from internet to research and development. Federal Agencies and their sub-agencies are responsible for issuing contracts and
-       categorizing the goods and services they purchase using Product and Service Codes (PSC).
+        The federal government uses contracts to buy the things it needs, from office furniture to airplanes. It also uses contracts to buy services
+         ranging from internet to research and development. Federal Agencies and their sub-agencies are responsible for issuing contracts and
+         categorizing the goods and services they purchase using Product and Service Codes (PSC).
       </p>
       <p>
         Although contracts and grants share some similarities, each serves a different purpose. Generally, contracts allow the government ot purchase
          goods and services directly to the public. For example, the Air Force uses contracts to acquire fighter jets to execute its mission, while the Federal
          Highway Administration uses grants to provide funds to states for public roads.
       </p>
-                          </>;
+    </>;
     const rawContent = [
       generalQuestions,
       classifications,
@@ -59,40 +59,36 @@ class AnalystGuidePage extends Component {
 
     const content = <>
       {
-          rawContent.map((section, key) => {
-            return <section key={key} className={styles.section}>
-              <div className={styles.sectionHeader}>
-                {section.title}
-              </div>
-              {
-                section.data.map((datum, key1) => {
-                  let accordionTitle = <></>;
-                  let accordionContent = <></>;
-                  if(datum.accordionTitles && datum.accordionTitles.length){
-                    accordionTitle = <div className={styles.containerNoFlex}>
-                      {datum.accordionTitles.map((title, key2) => {
-                        return <div key={key2} className={styles.accordionTitleDiv}>
-                          {title}
-                               </div>;
-                      })}
-                                     </div>;
-                  }
-                  if(datum.accordionContent && datum.accordionContent.length){
-                    accordionContent =  datum.accordionContent.map((content, key2) => {
-                      return <>
-                        {content}
-                             </>;
-                    });
-                  }
-                  return <Accordion key={key1} title={accordionTitle} containerClass={styles.accordionContainer}>
-                    {accordionContent}
-                         </Accordion>;
-                })
-              }
-                   </section>;
-          })
-        }
-                    </>;
+        rawContent.map((section, key) => {
+          return <section key={key} className={styles.section}>
+            <div className={styles.sectionHeader}>
+              {section.title}
+            </div>
+            {
+              section.data.map((datum, key1) => {
+                let accordionTitle = <></>;
+                let accordionContent = <></>;
+                if (datum.accordionTitles && datum.accordionTitles.length) {
+                  accordionTitle = <div key={key1} className={styles.containerNoFlex}>
+                    {datum.accordionTitles.map((title, key2) => {
+                      return <div key={key2} className={styles.accordionTitleDiv}>
+                        {title}
+                      </div>;
+                    })}
+                  </div>;
+                }
+                if (datum.accordionContent && datum.accordionContent.length) {
+                  accordionContent = datum.accordionContent.map((content, key2) => <div key={key2}>{content}</div>);
+                }
+                return <Accordion key={key1} title={accordionTitle} containerClass={styles.accordionContainer}>
+                  {accordionContent}
+                </Accordion>;
+              })
+            }
+          </section>;
+        })
+      }
+    </>;
 
     return <>
       <div id={styles.analystGuidePage}>
@@ -104,7 +100,7 @@ class AnalystGuidePage extends Component {
         >
           {content}
           <Hidden lgDown>
-            <Downloads href={'/unstructured-data/resources/analyst-guide.pdf'}/>
+            <Downloads href={'/unstructured-data/resources/analyst-guide.pdf'} />
           </Hidden>
           <Hidden xlUp>
             <Grid container justify='center' className={styles.download}>
@@ -115,7 +111,7 @@ class AnalystGuidePage extends Component {
           </Hidden>
         </FaqLayout>
       </div>
-           </>;
+    </>;
   }
 }
 

@@ -35,53 +35,52 @@ export default {
     },
     {
       accordionTitles: [<>Where is the full list of sub-tier agencies?</>,
-                        <>How are sub-tier agencies managed over time?</>],
-      accordionContent: [<p>NSub-tier agencies are the bureaus or divisions of larger federal agencies. For example the IRS is a sub-tier
-        component of Treasury, as the FBI is for the Department of Justice. In June 2016, OMB posted an
-        authoritative list of sub-tier agencies on MAX.gov; USAspending.gov made a copy of this list, adding
-        historical sub-tier codes and names to ensure backwards compatibility and to allow the data to display
-        properly on USAspending.gov.<br/>
-        Currently, the <a
-          href='https://github.com/fedspendingtransparency/data-act-broker-backend/blob/development/dataactvalidator/config/agency_list.csv' target='_blank'
-          rel='noopener noreferrer'>list</a> of sub-tier agencies is static, and it will remain static until GSA launches a tool called
-        Federal Hierarchy on beta.sam.gov, which is expected in the coming months.</p>,
-        <p>Federal agencies will be responsible for using this tool to manage their agency structure (including SubTier and Office). This tool will provide a comprehensive and up-to-date list of all Sub-Tiers and Offices,
+      <>How are sub-tier agencies managed over time?</>],
+      accordionContent: [<p>Sub-tier agencies are the bureaus or divisions of larger federal agencies. For example, the IRS is a sub-tier
+        component of Treasury, as the FBI is for the Department of Justice. In June 2016, the Office of
+        Management and Budget (OMB) posted an authoritative list of sub-tier agencies on MAX.gov;
+        USAspending.gov made a copy of this list, adding historical sub-tier codes and names to ensure
+        backwards compatibility and to allow the data to display properly on USAspending.gov. Recently, GSA launched a tool called&nbsp;
+         <a href='https://beta.sam.gov/search?keywords=&sort=-modifiedDate&index=fh&is_active=true&page=1' target='_blank'
+          rel='noopener noreferrer'>Federal Hierarchy on beta.sam.gov</a>
+        , which includes a list of sub-tier agencies.</p>,
+      <p>Federal agencies will be responsible for using this tool to manage their agency structure (including SubTier and Office). This tool will provide a comprehensive and up-to-date list of all Sub-Tiers and Offices,
           which USAspending.gov will access via API or daily data download.</p>]
     },
     {
       accordionTitles: [<>Help! Why are there so many agency fields?</>,
-                        <>Which one do I use?</>],
+      <>Which one do I use?</>],
       accordionContent: [<p>Different fields are available for contracts and other types for financial assistance. To find what you’re
           looking for, it’s important to note the distinction between <span className={styles.bold}>funding agencies</span> and <span className={styles.bold}>awarding agencies</span>.
-          Funding agencies are those that actually provide funding for awards, while awarding agencies are those
-          that administer the awards; in most cases, the funding agency and the awarding agency are the same
+    Funding agencies are those that actually provide funding for awards, while awarding agencies are those
+    that administer the awards; in most cases, the funding agency and the awarding agency are the same
           entity.</p>,
-        <p>There are additional layers of hierarchy within funding and awarding agencies, which are represented by
-          different organizational identifiers. These additional identifiers may or may not be completed for a given
+      <p>There are additional layers of hierarchy within funding and awarding agencies, which are represented by
+        different organizational identifiers. These additional identifiers may or may not be completed for a given
           record, depending on the record type. They include the following:</p>,
-        <><ul>
-            <li>Awarding Agency
+      <><ul>
+        <li>Awarding Agency
               <ul>
-                <li>Awarding sub-tier agency
+            <li>Awarding sub-tier agency
                   <ul>
-                    <li>Awarding office</li>
-                  </ul>
-                </li>
+                <li>Awarding office</li>
               </ul>
             </li>
           </ul>
-          <ul>
-            <li>Funding Agency
+        </li>
+      </ul>
+        <ul>
+          <li>Funding Agency
               <ul>
-                <li>Funding sub-tier agency
+              <li>Funding sub-tier agency
                   <ul>
-                    <li>Funding office</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul></>,
-        <p>In summary, if you’re interested in learning who funded various awards, refer to funding agency fields. If
+                  <li>Funding office</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul></>,
+      <p>In summary, if you’re interested in learning who funded various awards, refer to funding agency fields. If
           you want to know who’s managing those awards, refer to awarding agency fields</p>]
     }
   ]
