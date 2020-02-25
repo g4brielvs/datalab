@@ -4,7 +4,6 @@ import * as d3 from "d3v3";
 import './sankey.scss';
 import './sankey-brackets.scss';
 
-
 import SankeyBrackets from "./sankey-brackets";
 
 function Sankey(props) {
@@ -113,7 +112,15 @@ function Sankey(props) {
   useEffect(() => {
     clearAll();
     makeSankey(data, sPanel, sTitle, descriptions);
+    document.getElementById('resetBtn').onclick = () => {
+      resetViz();
+    };
   });
+
+  function resetViz() {
+    clearAll();
+    makeSankey(data,sPanel, sTitle, descriptions);
+  };
 
   const clearAll = () => {
     d3.selectAll('#sankey-viz > svg').remove();
@@ -121,7 +128,7 @@ function Sankey(props) {
     d3.selectAll("#tab_2").remove();
     d3.selectAll("#tab_3").remove();
     d3.selectAll("#description").remove();
-  }
+  };
 
   d3.sankey = () => {
     const sankey = {};
@@ -430,24 +437,22 @@ function Sankey(props) {
       .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
       .attr("class", "sankey-viz-svg")
       .attr('role', 'img')
-      .attr('aria-labelledby', 'titleTest descTest')
       .append("g")
       .attr("transform",
         `translate(${margin.left},${margin.top})`);
 
     // add title
-    d3.select("#sankey-viz svg")
-      .append('title')
-      .attr('id', 'titleTest')
-      .text('The quick brown fox jumped over the lazy dog 1.');
+    // d3.select("#sankey-viz svg")
+    //   .append('title')
+    //   .attr('id', 'titleTest')
+    //   .text('The quick brown fox jumped over the lazy dog 1.');
 
-    d3.select("#sankey-viz svg")
-      .append('desc')
-      .attr('id', 'descTest')
-      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
-        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
-        'The quick brown fox jumped over the lazy dog 5.');
-
+    // d3.select("#sankey-viz svg")
+    //   .append('desc')
+    //   .attr('id', 'descTest')
+    //   .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
+    //     'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
+    //     'The quick brown fox jumped over the lazy dog 5.');
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()
@@ -724,14 +729,12 @@ function Sankey(props) {
       .filter((d) => d.x < width / 2)
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
-
-
   }
 
   const inlineStyle = {
     position: 'absolute',
     margin: '20px 20px 20px 45px',
-  }
+  };
 
   return (
     <>
