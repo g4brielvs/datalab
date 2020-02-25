@@ -1,5 +1,6 @@
+@import "../../styles/variables";
+
 .site-footer {
-  background-color: #262626;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -7,9 +8,25 @@
   letter-spacing: 1px;
   padding: 0.5rem 1rem;
   color: #dbdbdb;
+  background-color: #262626;
 
   a,
   div {
     color: #dbdbdb;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .site-footer {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+@media (max-width: $phone) {
+  .site-footer {
+    display: block;
+    padding: 25px;
+    text-align: center;
   }
 }

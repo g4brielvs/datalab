@@ -1,8 +1,6 @@
-@import '../../../styles/variables';
-@import '../../../styles/index';
+@import "../../../styles/index";
 
 $landing-title-color: #4a4a4a;
-
 
 @mixin landing-subtext {
   font-size: 1.4375rem;
@@ -94,7 +92,7 @@ $landing-title-color: #4a4a4a;
   }
 
   .image {
-    padding: 0 2px 0 0 !important
+    padding: 0 2px 0 0 !important;
   }
 }
 
@@ -113,9 +111,11 @@ $landing-title-color: #4a4a4a;
     margin: 16px;
   }
 
-  img {
-    padding: 0;
-    width: calc(100% - 16px);
+  .image {
+    img {
+      padding: 0;
+      width: calc(100% - 16px);
+    }
   }
 }
 
@@ -140,8 +140,3 @@ $landing-title-color: #4a4a4a;
     flex-direction: column-reverse;
   }
 }
-
-
-
-
-

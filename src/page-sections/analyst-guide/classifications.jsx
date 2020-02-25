@@ -9,7 +9,7 @@ export default {
       accordionTitles: [<>What are Product and Service Codes and where is the taxonomy located?</>],
       accordionContent: [<p>Product and Service Codes (PSC) are a system that describes the type of product or service that’s being
         purchased with a contract. You can find a list of Product Service Codes at <a
-          href='http://www.acquisitions.gov/' target='_blank'
+          href='https://www.acquisition.gov/PSC_Manual' target='_blank'
           rel='noopener noreferrer'>acquisition.gov.</a> PSCs are only applicable to contracts.</p>]
     },
     {
