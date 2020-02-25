@@ -14,6 +14,7 @@ const d3 = { select, selectAll },
 let svg,
     config = {
         data: byYear('2019'),
+        filteredData: null,
         sectionColor: colors.colorSpendingPrimary,
         dataType: 'category',
         accessibilityAttrs : {
@@ -36,11 +37,22 @@ function initSection() {
     initChart();
 }
 
-export function initChart(filteredData) {
+export function initChart(showMoreFlag) {
     const configData = config.dataType ? config.data[config.dataType] : config.data;
     
-    const d = filteredData || configData,
-    chartData = top10 ? d.slice(0,9) : d;
+    const d = config.filteredData || configData;
+
+    if(!showMoreFlag){
+        if(d.length <= 10){
+            top10 = false;
+            displayShowMoreSection(top10);
+        } else {
+            top10 = true;
+            displayShowMoreSection(top10);
+        }
+    }
+
+    const chartData = top10 ? d.slice(0,10) : d;
     
     d3.selectAll('svg.main').remove();
     barChart(chartData, config.dataType, config);
@@ -48,11 +60,12 @@ export function initChart(filteredData) {
 }
 
 function showMore() {
+    const showMoreFlag = true;
     top10 = !top10;
 
     this.innerText = top10 ? 'Show More' : 'Show Less';
 
-    initChart()
+    initChart(showMoreFlag)
 }
 
 function changeDataTypeClickFunction(){
@@ -79,6 +92,9 @@ function toggleDataType() {
 
 function changeDataType(dataType, dataController){
     config.dataType = dataType;
+    config.filteredData = null;
+    d3.select('#filter-by-name').node().value = null;
+    d3.select('#show-more-button').text('Show More');
     dataController.attr('data-active', dataType);
     initChart();
 }
@@ -87,12 +103,12 @@ function spendingIndexClickFunctions() {
     d3.select('#filter-by-name')
         .on('input', function () {
             const v = this.value.toLowerCase(),
-                curData = config.dataType ? config.data[config.dataType] : config.data,
-                filtered = curData.filter(r => {
+                curData = config.dataType ? config.data[config.dataType] : config.data;
+            config.filteredData = curData.filter(r => {
                     return (r.activity.toLowerCase().indexOf(v) !== -1);
                 });
-
-            initChart(filtered)
+            d3.select('#show-more-button').text('Show More');
+            initChart()
         });
 
     d3.select('#show-more-button')
@@ -105,20 +121,6 @@ function displayShowMoreSection(showMoreInd){
 
 export function init(_config){
     config = _config || config;
-
-    /*
-     * The following seems odd in the since that it's an init function; however, revenue currently uses the same
-     * html file and swaps between a bargraph and sankey. It's not out of the question that data could change between
-     * calling this init function, so we have to set the top10 and hide/show the "Show More" button section as a result.
-     */
-
-    if(config.data.length <= 10){
-        top10 = false;
-        displayShowMoreSection(top10);
-    } else {
-        top10 = true;
-        displayShowMoreSection(top10);
-    }
 
     spendingIndexClickFunctions();
 
