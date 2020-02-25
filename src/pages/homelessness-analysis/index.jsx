@@ -51,8 +51,8 @@ export default class HomelessnessPage extends Component {
           section: "Geography",
           number: "01",
           subtext: "Federal Programs",
-          subblurb: "Breakdown of homeless population by region",
-          sectionTeaser: ["How much was invested in homelessness ", <span key='teaser-callout' className='homeless-analysis-header-callout'>by region?</span>],
+          subblurb: "How individuals experiencing homelessness are counted",
+          sectionTeaser: ["How individuals experiencing homelessness ", <span key='teaser-callout' className='homeless-analysis-header-callout'>are counted</span>],
           introBlurb: <div><p>People experiencing homelessness are counted once a year (in late January) by grantees who
             receive funding from the U.S Department of Housing and Urban Development's (HUD) Continuum of Care program. This program is the largest federal
             program related to homelessness.<span className='superscript'>1</span> It requires grantees to collect reliable data on the total
