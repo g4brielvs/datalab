@@ -48,7 +48,7 @@ export default {
         throughout the site. To learn more about contract data, you can reference the  <a
           href='https://www.fpds.gov/downloads/Version_1.5_specs/FPDSNG_DataDictionary_V1.5.pdf' target='_blank'
           rel='noopener noreferrer'>FPDS data dictionary (PDF)</a>, which details the structures of different fields. You can find more information about financial assistance
-        award data in <a href='https://fedspendingtransparency.github.io/data-dictionary/' target='_blank'
+        award data in <a href='https://www.usaspending.gov/#/download_center/data_dictionary' target='_blank'
                          rel='noopener noreferrer'>the Data Dictionary.</a></p>]
     },
     {
@@ -63,7 +63,7 @@ export default {
         download?</>,
         <>How can I get agency data?</>],
       accordionContent: [<p>USAspending offers resources to help you get the most out of using the site. The <a
-        href='http://fedspendingtransparency.github.io/dictionary-v1.1/' target='_blank'
+        href='https://www.usaspending.gov/#/download_center/data_dictionary' target='_blank'
         rel='noopener noreferrer'>Data Dictionary</a> contains definitions of the hundreds of different
         data elements used in the DATA Act schema.</p>,
         <p>The Glossary contains definitions of technical terminology used on <a href='https://beta.usaspending.gov/#/' target='_blank'
@@ -87,21 +87,21 @@ export default {
     },
     {
       accordionTitles: [<>How can I use the bulk download?</>],
-      accordionContent: [<p>To perform bulk downloads, visit the <a href='https://beta.usaspending.gov/#/bulk_download' target='_blank'
+      accordionContent: [<p>To perform bulk downloads, visit the <a href='https://www.usaspending.gov/#/download_center/custom_award_data' target='_blank'
                                                                    rel='noopener noreferrer'>Custom Award Data page</a> (Download Center drop-down in the top
-        nav) or the <a href='https://beta.usaspending.gov/#/bulk_download/award_data_archive' target='_blank'
+        nav) or the <a href='https://www.usaspending.gov/#/download_center/award_data_archive' target='_blank'
                        rel='noopener noreferrer'>Award Data Archive</a>. You may also be interested in downloading the <a
-          href='http://usaspending-submissions.s3-website-us-gov-west-1.amazonaws.com/' target='_blank'
+          href='https://files.usaspending.gov/agency_submissions/' target='_blank'
           rel='noopener noreferrer'>raw agency submission files</a>, which require a greater degree of data manipulation to format into a dataset. </p>]
     },
     {
       accordionTitles: [<>How can I see data connections between File C and File D data?</>],
       accordionContent: [<p>To see linkages between award financial data (File C) and procurement (File D1) and financial assistance
         data (File D2) data, you can use the following Structured Query Langue (SQL) commands <a
-          href='https://github.com/fedspendingtransparency/usaspending-api/tree/ftr/dev-1241-contract-c-to-d-linkage/usaspending_api/etl/management/sql' target='_blank'
+          href='https://github.com/fedspendingtransparency/usaspending-api/tree/dev/usaspending_api/etl/management/sql/c_file_linkage' target='_blank'
           rel='noopener noreferrer'>found here on our Github page</a>. More information about all data files,
         including Files C and D, can be found on the <a
-          href='https://www.fiscal.treasury.gov/fsservices/gov/data-trans/dt-daimsversion1.3.htm' target='_blank'
+          href='https://www.fiscal.treasury.gov/data-transparency/DAIMS-current.html' target='_blank'
           rel='noopener noreferrer'>DATA Act Information Model Schema (DAIMS)</a> portion of the Bureau of the
         Fiscal Service website</p>]
     },

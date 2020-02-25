@@ -14,11 +14,11 @@ export default {
           account is comprised of a “family,” or grouping, of specific account numbers known as Treasury Account
           Symbols (TAS), through which spending actually occurs. The accounts give you an idea of how agencies
           receive and spend congressional funding to carry out their programs, projects, and activities. <a
-            href='https://www.usaspending.gov/#/federal_account/1100' target='_blank'
-            rel='noopener noreferrer'>Interest on the Public Debt</a>, <a href='https://www.usaspending.gov/#/federal_account/1327' target='_blank'
-            rel='noopener noreferrer'>Civil Service Retirement and Disability Fund</a>, and <a href='https://www.usaspending.gov/#/federal_account/2484' target='_blank'
-            rel='noopener noreferrer'>Student Financial Assistance</a> are examples of the more than 2,000 unique federal accounts of the U.S. government. Federal accounts also
-          have associated Federal Account Symbols to identify them. For example, Student Financial Assistance
+            href='https://www.usaspending.gov/#/federal_account/020-0550' target='_blank'
+            rel='noopener noreferrer'>Interest on the Public Debt</a>, <a href='https://www.usaspending.gov/#/federal_account/024-8135' target='_blank'
+              rel='noopener noreferrer'>Civil Service Retirement and Disability Fund</a>, and <a href='https://www.usaspending.gov/#/federal_account/091-0200' target='_blank'
+                rel='noopener noreferrer'>Student Financial Assistance</a> are examples of the more than 2,000 unique federal accounts of the U.S. government. Federal accounts also
+  have associated Federal Account Symbols to identify them. For example, Student Financial Assistance
           has the Federal Account Symbol 091-0200.</p>
       ]
     },
@@ -26,17 +26,17 @@ export default {
       accordionTitles: [<>With the size of the federal government, how are you be able to identify unique accounts?</>],
       accordionContent: [<p>Federal accounts are uniquely identified by the Agency Identifier and the Main Account Code. These
         codes are required for agency financial reporting.</p>,
-        <>
-          <ul><span className={styles.bold}>Agency Identifier (AID)</span>: This is a 3-digit number that identifies the agency responsible for a
-            Treasury account (“091” in the Student Financial Assistance example above).
+      <>
+        <ul><span className={styles.bold}>Agency Identifier (AID)</span>: This is a 3-digit number that identifies the agency responsible for a
+          Treasury account (“091” in the Student Financial Assistance example above).
           </ul>
-          <ul><span className={styles.bold}>Main Account Code (MAC)</span>: This 4-digit number forms the basis of the federal account (“0200”
-            in the Student Financial Assistance example above).
+        <ul><span className={styles.bold}>Main Account Code (MAC)</span>: This 4-digit number forms the basis of the federal account (“0200”
+          in the Student Financial Assistance example above).
           </ul>
-        </>,
-        <p>Each Agency Identifier should have at least one federal account associated with it, so the agency can
-          conduct its function and carry out its mission. Despite the name, there are instances where an Agency
-          Identifier is shared among more than one agency. In these cases, each agency within the shared Agency
+      </>,
+      <p>Each Agency Identifier should have at least one federal account associated with it, so the agency can
+        conduct its function and carry out its mission. Despite the name, there are instances where an Agency
+        Identifier is shared among more than one agency. In these cases, each agency within the shared Agency
           Identifier will still have at least one federal account of its own.</p>]
     },
     {
@@ -82,9 +82,9 @@ export default {
             will have an “X” if there is an unlimited or indefinite period to incur new obligations.
           </li>
         </ul>
-        </>,
-        <p>In some cases, there may be multiple TASs in one federal account. In these instances, you can roll up to
-          the federal account level by combining activity from all TASs that share a Main Account Code and
+      </>,
+      <p>In some cases, there may be multiple TASs in one federal account. In these instances, you can roll up to
+        the federal account level by combining activity from all TASs that share a Main Account Code and
           Agency Identifier.</p>]
     },
     {
@@ -117,10 +117,8 @@ export default {
     },
     {
       accordionTitles: [<>Can I download the federal account data?</>],
-      accordionContent: [<p>The federal account data comes from agency submissions. This information can be downloaded from the
-        <a href='http://usaspending-submissions.s3-website-us-gov-west-1.amazonaws.com/' target='_blank' rel='noopener noreferrer'>S3 Agency Submissions page</a>.
-        In the August 2018, it will also be available via the Custom Account Data
-        page in the Download Center. </p>]
+      accordionContent: [<p>The federal account data comes from agency submissions. This information can be downloaded from
+        the <a href='https://www.usaspending.gov/#/download_center/custom_account_data' target='_blank' rel='noopener noreferrer'>Custom Account Data page</a>.</p>]
     },
     {
       accordionTitles: [<>How can I see the federal accounts for prior years?</>],
