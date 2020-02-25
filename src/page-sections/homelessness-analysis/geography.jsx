@@ -11,6 +11,7 @@ import ControlBar from "../../components/control-bar/control-bar";
 import Reset from "../../components/reset/reset";
 import Share from "../../components/share/share";
 import SearchIcon from '@material-ui/icons/Search';
+import Downloads from "../../components/section-elements/downloads/downloads";
 
 export default function Geography(props) {
 
@@ -178,6 +179,10 @@ export default function Geography(props) {
         tableColumnTitles={tableColumnTitles}
         tableData={filteredTableData}
         tableRef={tableRef}
+      />
+      <Downloads
+        href={'/unstructured-data/homelessness-analysis/coc_pop_value.csv'}
+        date={'March 2019'}
       />
     </div>
   </>)

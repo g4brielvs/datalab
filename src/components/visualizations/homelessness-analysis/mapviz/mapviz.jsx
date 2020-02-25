@@ -3,7 +3,6 @@ import * as d3 from 'd3v3';
 import styles from './mapviz.module.scss';
 
 import tooltipModule from "../../../../components/tooltip/tooltip"
-import Downloads from "../../../section-elements/downloads/downloads"
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -242,10 +241,6 @@ export default function Mapviz(props) {
           together in 2017 since this map was updated.</p>
         <p>See our section on How We Conducted This Analysis for more information.</p>
       </div>
-      <Downloads
-        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
-        date={'March 2019'}
-      />
     </div>
   )
 }
