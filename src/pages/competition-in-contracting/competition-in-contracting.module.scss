@@ -136,10 +136,26 @@ $summaryBorderColor: #DDD;
   }
 }
 
+// @media(min-width: $desktop) {
+//   .bar-chart-div {
+//     margin-top: -50px; // correct for vertical placement
+//   }
+// }
+  
 @media (min-width: $desktop) {
   .container .summary-item {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+@media(min-width: $tablet) and (max-width: $desktop - 1){
+  // .bar-chart-div {
+  //   margin-top: -30px; // correct for vertical placement
+  // }
+
+  .summary-item-separator {
+    border-right: 1px solid $summaryBorderColor;
   }
 }
 
@@ -158,8 +174,8 @@ $summaryBorderColor: #DDD;
   }
 }
 
-@media (min-width: $tablet) and (max-width: $desktop - 1){
-  .summary-item-separator {
-    border-right: 1px solid $summaryBorderColor;
-  }
-}
+// @media(min-width: $phone) and (max-width: $tablet - 1){
+//   .bar-chart-div {
+//     margin-top: -20px; // correct for vertical placement
+//   }
+// }

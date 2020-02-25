@@ -38,7 +38,7 @@ function Barchart(props) {
       left: 350
     };
     width = +svg.attr('width') - margin.left - margin.right;
-    height = +svg.attr('height') - margin.top - margin.bottom;
+    height = 700 - margin.top - margin.bottom;
     g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
   }
 
@@ -264,7 +264,7 @@ function Barchart(props) {
   return (
     <>
       <div id={tooltipStyles.tooltip} className={tooltipStyles.tooltipModule}></div>
-      <svg width='1200' height='700' viewBox='0 0 1200 700' id='barchartSvg' className={props._svgClass}></svg>
+      <svg width='1200' height='100%' viewBox='0 0 1200 700' id='barchartSvg' className={props._svgClass}></svg>
     </>
   );
 }

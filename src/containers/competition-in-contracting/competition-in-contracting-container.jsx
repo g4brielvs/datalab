@@ -1,11 +1,11 @@
-import React, { Component } from "react"
-import { graphql, StaticQuery } from "gatsby";
-import Barchart from "src/components/visualizations/horizontal-barchart/barchart";
-import competitionStyles from "src/pages/competition-in-contracting/competition-in-contracting.module.scss";
-import Downloads from "src/components/section-elements/downloads/downloads";
-import * as d3 from "d3v3";
-import numberFormatter from "src/utils/number-formatter";
-import { Grid, Hidden } from "@material-ui/core";
+import React, { Component } from 'react'
+import { graphql, StaticQuery } from 'gatsby';
+import Barchart from 'src/components/visualizations/horizontal-barchart/barchart';
+import competitionStyles from 'src/pages/competition-in-contracting/competition-in-contracting.module.scss';
+import Downloads from 'src/components/section-elements/downloads/downloads';
+import * as d3 from 'd3v3';
+import numberFormatter from 'src/utils/number-formatter';
+import { Grid, Hidden } from '@material-ui/core';
 
 export class CompetitionInContractingContainer extends Component {
   constructor(props) {
@@ -24,11 +24,25 @@ export class CompetitionInContractingContainer extends Component {
     this.setUnitFn = this.setUnitFn.bind(this);
     this.drawSummaryTableModule = this.drawSummaryTableModule.bind(this);
     this.handleYAxisCheckboxChange = this.handleYAxisCheckboxChange.bind(this);
-
-    window.addEventListener('resize', e => {
-      console.log(e);
-    });
   }
+
+  // this isn't resizing upon initial render, so abandoning IE-specific fix for now...
+  
+  // // this is only needed because IE11's SVG default size is bizarre, otherwise setting the <svg height='100%'> works fine
+  // resizeChartDiv = () => {
+  //   const factor = document.getElementById('barchartSvg').clientWidth / 1090;
+  //   document.getElementById('barchartSvg').setAttribute('height', 700 * factor);
+  // }
+
+  // componentDidMount() {
+  //   // force vertical resize on initial render
+  //   this.resizeChartDiv();
+  //   window.addEventListener('resize', this.resizeChartDiv);
+  // }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', this.resizeChartDiv);
+  // }
 
   setScaleFn(e) {
     this.setState({ scale: e.currentTarget.value });
@@ -42,7 +56,6 @@ export class CompetitionInContractingContainer extends Component {
     this.setState({ scale: 'quantity' });
     this.setState({ unit: 'dollars' });
     this.setState({ data: JSON.parse(JSON.stringify(this.rawData)) });
-
   }
 
   drawSummaryTableModule() {
@@ -64,21 +77,17 @@ export class CompetitionInContractingContainer extends Component {
       }
     );
 
-    d3
-      .select("#" + competitionStyles.competedDollars)
-      .text(numberFormatter("dollars text", summaryData.competedDollars));
+    d3.select('#' + competitionStyles.competedDollars)
+      .text(numberFormatter('dollars text', summaryData.competedDollars));
 
-    d3
-      .select("#" + competitionStyles.competedActions)
-      .text(numberFormatter("actions", summaryData.competedActions));
+    d3.select('#' + competitionStyles.competedActions)
+      .text(numberFormatter('actions', summaryData.competedActions));
 
-    d3
-      .select("#" + competitionStyles.notCompetedDollars)
-      .text(numberFormatter("dollars text", summaryData.notCompetedDollars));
+    d3.select('#' + competitionStyles.notCompetedDollars)
+      .text(numberFormatter('dollars text', summaryData.notCompetedDollars));
 
-    d3
-      .select("#" + competitionStyles.notCompetedActions)
-      .text(numberFormatter("actions", summaryData.notCompetedActions));
+    d3.select('#' + competitionStyles.notCompetedActions)
+      .text(numberFormatter('actions', summaryData.notCompetedActions));
   }
 
   handleYAxisCheckboxChange(id, checked) {
@@ -91,9 +100,7 @@ export class CompetitionInContractingContainer extends Component {
       }
       return c;
     });
-
     this.setState({ data: adjustedData });
-
   }
 
   render() {
@@ -138,61 +145,61 @@ export class CompetitionInContractingContainer extends Component {
 
           <div>
             <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
-              <svg height="15" width="15">
-                <circle cx="7.5" cy="7.5" r="7.5" />
+              <svg height='15' width='15'>
+                <circle cx='7.5' cy='7.5' r='7.5' />
               </svg>
               <label htmlFor={competitionStyles.notCompeted} style={{ fontSize: '0.75rem', verticalAlign: 'bottom', padding: '0px 0.5rem 0 .1rem' }}> Not Competed </label>
             </div>
             <div className={competitionStyles.legend} id={competitionStyles.competed}>
-              <svg height="15" width="15">
-                <circle cx="7.5" cy="7.5" r="7.5" />
+              <svg height='15' width='15'>
+                <circle cx='7.5' cy='7.5' r='7.5' />
               </svg>
               <label htmlFor={competitionStyles.competed}
                 style={{ fontSize: '0.75rem', verticalAlign: 'bottom', padding: '0px 0 0 .1rem' }}>Competed</label>
             </div>
             <div className={competitionStyles.barChartToolbar}>
               <div className={competitionStyles.selectWrapper1}>
-                <input type="radio"
-                  id="contactChoice1"
-                  name="xAxisScale"
-                  value="quantity"
+                <input type='radio'
+                  id='contactChoice1'
+                  name='xAxisScale'
+                  value='quantity'
                   onChange={this.setScaleFn}
                   checked={this.state.scale === 'quantity'}
                 />
-                <label htmlFor="contactChoice1" style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Quantity</label>
+                <label htmlFor='contactChoice1' style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Quantity</label>
 
-                <input type="radio"
-                  id="contactChoice2"
-                  name="xAxisScale"
-                  value="percent"
+                <input type='radio'
+                  id='contactChoice2'
+                  name='xAxisScale'
+                  value='percent'
                   onChange={this.setScaleFn}
                   checked={this.state.scale === 'percent'}
                 />
-                <label htmlFor="contactChoice2" style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Percent</label>
+                <label htmlFor='contactChoice2' style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Percent</label>
               </div>
               <div className={competitionStyles.selectWrapper2}>
-                <input type="radio"
-                  id="contactChoice3"
-                  name="xAxisUnit"
-                  value="dollars"
+                <input type='radio'
+                  id='contactChoice3'
+                  name='xAxisUnit'
+                  value='dollars'
                   onChange={this.setUnitFn}
                   checked={this.state.unit === 'dollars'}
                 />
-                <label htmlFor="contactChoice3" style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Dollars</label>
+                <label htmlFor='contactChoice3' style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Dollars</label>
 
-                <input type="radio"
-                  id="contactChoice4"
-                  name="xAxisUnit"
-                  value="actions"
+                <input type='radio'
+                  id='contactChoice4'
+                  name='xAxisUnit'
+                  value='actions'
                   onChange={this.setUnitFn}
                   checked={this.state.unit === 'actions'}
                 />
-                <label htmlFor="contactChoice4" style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Actions</label>
+                <label htmlFor='contactChoice4' style={{ fontSize: '0.75rem', padding: '0 .5rem 0 .1rem' }}>Actions</label>
               </div>
             </div>
           </div>
 
-          <div className={competitionStyles.barChartDiv}>
+          <div id='bar-chart-div' className={competitionStyles.barChartDiv}>
             <Barchart data={this.state.data}
               unit={this.state.unit}
               scale={this.state.scale}
@@ -206,8 +213,7 @@ export class CompetitionInContractingContainer extends Component {
           </div>
         </Grid>
       </div>
-
-    )
+    );
   }
 }
 
