@@ -50,7 +50,7 @@ export default class HomelessnessPage extends Component {
         {
           section: "Geography",
           number: "01",
-          subtext: "Federal Programs",
+          subtext: "Geography",
           subblurb: "How individuals experiencing homelessness are counted",
           sectionTeaser: ["How individuals experiencing homelessness ", <span key='teaser-callout' className='homeless-analysis-header-callout'>are counted</span>],
           introBlurb: <div><p>People experiencing homelessness are counted once a year (in late January) by grantees who
@@ -67,7 +67,7 @@ export default class HomelessnessPage extends Component {
           section: "Federal Programs",
           number: "02",
           subtext: "Federal Programs",
-          subblurb: "How much did each region spend on homelessness",
+          subblurb: "Federal programs that address homelessness",
           sectionTeaser: ["Federal programs that ", <span key='teaser-callout' className='homeless-analysis-header-callout'>address homelessness</span>],
           introBlurb: <div>
             <p>The Department of Housing and Urban Development plays a lead role in federal efforts to
@@ -106,7 +106,7 @@ export default class HomelessnessPage extends Component {
           section: "Continuum Care",
           number: "03",
           subtext: "Continuum Care",
-          subblurb: "Clustering administrative regions",
+          subblurb: "Which Continuum of Care areas are similar to each other?",
           sectionTeaser: ["Which Continuum of Care areas are similar ", <span key='teaser-callout' className='homeless-analysis-header-callout'>to each other?</span>],
           introBlurb: <div>
             <p>While the previous section allows you to compare Continuum of Care areas that are neighbors geographically, we wanted to explore if Continuum of Care areas were similar along characteristics other than geography.</p>
@@ -117,8 +117,8 @@ export default class HomelessnessPage extends Component {
           section: "Final Thoughts",
           number: "04",
           subtext: "Final Thoughts",
-          subblurb: "Who may find this analysis useful?",
-          sectionTeaser: ["What are the investments ", <span key='teaser-callout' className='homeless-analysis-header-callout'>used for?</span>],
+          subblurb: "Why we conducted this analysis",
+          sectionTeaser: ["Why we ", <span key='teaser-callout' className='homeless-analysis-header-callout'>conducted this analysis</span>],
           introBlurb: <div><p>
               As these visualizations depict, thousands of people are homeless across the United States.
               We hope that this analysis show how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
