@@ -13,9 +13,9 @@ const FaqLayout = (props) => {
 
   if (!props.isCustomHeader) {
     header =
-      <div className={styles.header}>
+      <Grid container className={styles.header}>
         {props.heroImage ?
-         <Grid container justify='center' direction='column'>
+         <Grid container justify='center' direction='row'>
            <Grid item xs={12} className={styles.heroImage}>
              {props.heroImage}
            </Grid>
@@ -28,17 +28,17 @@ const FaqLayout = (props) => {
         </Grid>
         <Grid container justify='center'>
           <Grid item xs={11} md={10} xl={8}>
-            <header className={styles.headerHero} >
+            <div className={styles.headerHero} >
               <h1 className={styles.title}>
                 {props.title}
               </h1>
               <div className={styles.introSentence}>
                 {props.introSentence}
               </div>
-            </header>
+            </div>
           </Grid>
         </Grid>
-      </div>;
+      </Grid>;
   }
 
 
@@ -47,15 +47,17 @@ const FaqLayout = (props) => {
 
      <div className={styles.faqPage}>
        {header}
+
        <Grid container justify='center' className={styles.childrenContainer}>
          <Grid item xs={11} md={10} xl={8}>
            {props.children}
          </Grid>
        </Grid>
+
        <Grid container justify='center'>
          <Grid item xs={11} md={10}>
            <MoreAnalyses />
-         </Grid>
+         </Grid>         
        </Grid>
      </div>
 
