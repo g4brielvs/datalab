@@ -389,6 +389,10 @@
     color: #574eca;
   }
 
+  .dts-hyperlink:hover {
+    text-decoration: underline;
+  };
+
   .dts-tt-amount {
     font-weight: 600;
     line-height: 25px;
