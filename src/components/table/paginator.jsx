@@ -32,10 +32,10 @@ export default class Paginator extends React.Component {
 
   render = () =>
     <Pagination
+      activePage={this.props.currentPage}
       role='navigation'
       aria-label='table page navigator'
       totalPages={this.state.numPages}
-      defaultActivePage={1}
       firstItem={null}
       lastItem={null}
       prevItem={{ content: <ChevronLeft />, icon: true, disabled: this.props.currentPage === 1 }}
