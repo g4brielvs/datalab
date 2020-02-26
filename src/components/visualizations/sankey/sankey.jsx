@@ -119,6 +119,7 @@ function Sankey(props) {
 
   function resetViz() {
     clearAll();
+    document.getElementById('contactChoice1').checked = true; // FY 19
     makeSankey(data,sPanel, sTitle, descriptions);
   };
 
