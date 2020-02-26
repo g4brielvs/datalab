@@ -12,13 +12,13 @@ function DTS(props) {
     const _data = props.data;
 
     const formatMillisecond = d3.timeFormat(".%L"),
-          formatSecond = d3.timeFormat(":%S"),
-          formatMinute = d3.timeFormat("%I:%M"),
-          formatHour = d3.timeFormat("%I %p"),
-          formatDay = d3.timeFormat("%a %d"),
-          formatWeek = d3.timeFormat("%b %d"),
-          formatMonth = d3.timeFormat("%b"),
-          formatYear = d3.timeFormat("%Y");
+      formatSecond = d3.timeFormat(":%S"),
+      formatMinute = d3.timeFormat("%I:%M"),
+      formatHour = d3.timeFormat("%I %p"),
+      formatDay = d3.timeFormat("%a %d"),
+      formatWeek = d3.timeFormat("%b %d"),
+      formatMonth = d3.timeFormat("%b"),
+      formatYear = d3.timeFormat("%Y");
 
     const brushDateFormatter = d3.timeFormat("%x");
     const dollarFormatter = d => d3.format("$,.3s")(d).replace(/G/, "B");
@@ -28,33 +28,33 @@ function DTS(props) {
     const bisectDate = d3.bisector(d => d.date).left;
 
     const svg = d3.select("#svg-wrapper"),
-          margin = { top: 20, right: 20, bottom: 110, left: 60 },
-          margin2 = { top: 330, right: 20, bottom: 30, left: 60 };
+      margin = { top: 20, right: 20, bottom: 110, left: 60 },
+      margin2 = { top: 330, right: 20, bottom: 30, left: 60 };
 
     let allOptions, optionsDict, lastDate, categorySeparatorDate;
     let data, optionsData, dateScaleValues, allToSpending, categoryToSpendingPrevFY, todayAllCategorySpending;
 
     let x = d3.scaleTime(),
-        x2 = d3.scaleTime();
+      x2 = d3.scaleTime();
 
     const y = d3.scaleLinear(),
-          y2 = d3.scaleLinear();
+      y2 = d3.scaleLinear();
 
     let xAxis = d3.axisBottom(x),
-        xAxis2 = d3.axisBottom(x2),
-        yAxis = d3.axisLeft(y).tickFormat(dollarFormatter);
+      xAxis2 = d3.axisBottom(x2),
+      yAxis = d3.axisLeft(y).tickFormat(dollarFormatter);
 
     let categoryToActiveWithinAYear = {};
 
     const line = d3.line()
-          .x(d => x(d.date))
-          .y(d => y(d.value))
-    ;
+      .x(d => x(d.date))
+      .y(d => y(d.value))
+      ;
 
     const line2 = d3.line()
-          .x(d => x2(d.date))
-          .y(d => y2(d.value))
-    ;
+      .x(d => x2(d.date))
+      .y(d => y2(d.value))
+      ;
 
     const brush = d3.brushX().on("brush end", brushed);
 
@@ -315,8 +315,8 @@ function DTS(props) {
       d3.select(".dts-brush-end-date").text(brushDateFormatter(x.domain()[1]));
 
       svg.select(".zoom").call(zoom.transform, d3.zoomIdentity
-                               .scale(width / (s[1] - s[0]))
-                               .translate(-s[0], 0));
+        .scale(width / (s[1] - s[0]))
+        .translate(-s[0], 0));
 
       clearPeriodSelections();
     }
@@ -344,21 +344,21 @@ function DTS(props) {
       let t = context.dataset.range;
 
       switch (t) {
-      case "30d":
-        leftDate.setMonth(leftDate.getMonth() - 1);
-        break;
-      case "90d":
-        leftDate.setMonth(leftDate.getMonth() - 3);
-        break;
-      case "1y":
-        leftDate.setFullYear(leftDate.getFullYear() - 1);
-        break;
-      case "5y":
-        leftDate.setFullYear(leftDate.getFullYear() - 5);
-        break;
-      case "10y":
-        leftDate.setFullYear(leftDate.getFullYear() - 10);
-        break;
+        case "30d":
+          leftDate.setMonth(leftDate.getMonth() - 1);
+          break;
+        case "90d":
+          leftDate.setMonth(leftDate.getMonth() - 3);
+          break;
+        case "1y":
+          leftDate.setFullYear(leftDate.getFullYear() - 1);
+          break;
+        case "5y":
+          leftDate.setFullYear(leftDate.getFullYear() - 5);
+          break;
+        case "10y":
+          leftDate.setFullYear(leftDate.getFullYear() - 10);
+          break;
       }
 
       d3.select(".brush").call(brush.move, null);
@@ -380,19 +380,19 @@ function DTS(props) {
       barData = barData || yearToSpendingArray.slice(-10);
 
       var svg = d3.select(".svg-tsbfy-container").append("svg")
-          .attr("id", "viz-tsbfy-wrapper")
-          .attr("width", "750") // do we need this?
-          .attr("height", "500") // or this?
-          .attr("viewBox", "0 0 750 500"), // or this?
-          margin = { top: 20, right: 20, bottom: 50, left: 150 },
-          width = +svg.attr("width") - margin.left - margin.right,
-          height = +svg.attr("height") - margin.top - margin.bottom;
+        .attr("id", "viz-tsbfy-wrapper")
+        .attr("width", "750") // do we need this?
+        .attr("height", "500") // or this?
+        .attr("viewBox", "0 0 750 500"), // or this?
+        margin = { top: 20, right: 20, bottom: 50, left: 150 },
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom;
 
       var x = d3.scaleBand().range([0, width]).padding(0.1),
-          y = d3.scaleLinear().range([height, 0]);
+        y = d3.scaleLinear().range([height, 0]);
 
       var g = svg.append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       x.domain(barData.map(d => d.year));
       y.domain([0, d3.max(barData, d => d.spending)]);
@@ -437,22 +437,22 @@ function DTS(props) {
       let totalSpending = tableData.map(d => d.spending).reduce((a, b) => a + b, 0);
 
       let rows = tbody.selectAll('tr')
-          .data(tableData)
-          .enter()
-          .append('tr')
-      ;
+        .data(tableData)
+        .enter()
+        .append('tr')
+        ;
 
       let cells = rows.selectAll('td')
-          .data(function (row) {
-            let tdYear = row.year;
-            let tdSpendingPerYear = dollarFormatter(row.spending);
+        .data(function (row) {
+          let tdYear = row.year;
+          let tdSpendingPerYear = dollarFormatter(row.spending);
 
-            return [tdYear, tdSpendingPerYear];
-          })
-          .enter()
-          .append('td')
-          .text(d => d)
-      ;
+          return [tdYear, tdSpendingPerYear];
+        })
+        .enter()
+        .append('td')
+        .text(d => d)
+        ;
     }
 
     function addOptions(sel, condensedOptions, activeOptions, inactiveOptions) {
@@ -470,7 +470,7 @@ function DTS(props) {
         .append('option')
         .text(d => d)
         .property("value", d => d)
-      ;
+        ;
 
       sel.append('option').attr('disabled', 'true').text('──────────────────────────');
 
@@ -481,7 +481,7 @@ function DTS(props) {
         .append('option')
         .text(d => d)
         .property("value", d => d)
-      ;
+        ;
 
       sel.append('option').attr('disabled', 'true').text('──────────────────────────');
 
@@ -492,7 +492,7 @@ function DTS(props) {
         .append('option')
         .text(d => d)
         .property("value", d => d)
-      ;
+        ;
 
       sel.property("value", "All Categories");
     }
@@ -577,7 +577,7 @@ function DTS(props) {
         .enter()
         .insert('path', ":first-child")
         .attr("class", pathClass)
-      ;
+        ;
     }
 
     function updateGraphAndBrushLines(data) {
@@ -634,14 +634,14 @@ function DTS(props) {
       });
 
       var focus = svg.append("g")
-          .attr("class", "focus")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      ;
+        .attr("class", "focus")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        ;
 
       var context = svg.append("g")
-          .attr("class", "context")
-          .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")")
-      ;
+        .attr("class", "context")
+        .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")")
+        ;
 
       setGraphYDomains(data);
       x.domain([new Date(2005, 5, 9), lastDate]);
@@ -651,45 +651,45 @@ function DTS(props) {
         .attr("class", "axis axis--x graph-x-axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
-      ;
+        ;
 
       focus.append("g")
         .attr("class", "axis axis--y graph-y-axis")
         .call(yAxis)
-      ;
+        ;
 
       // add the X gridlines
       svg.append("g")
         .attr("class", "grid x-grid")
         .attr("transform", "translate(" + margin.left + "," + (margin.top + height) + ")")
         .call(makeXGridLines()
-              .tickSize(-height)
-              .tickFormat("")
-             );
+          .tickSize(-height)
+          .tickFormat("")
+        );
 
       // add the Y gridlines
       svg.append("g")
         .attr("class", "grid y-grid")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(makeYGridLines()
-              .tickSize(-width)
-              .tickFormat("")
-             );
+          .tickSize(-width)
+          .tickFormat("")
+        );
 
       var clip = svg.append("defs").append("svg:clipPath")
-          .attr("id", "clip")
-          .append("svg:rect")
-          .attr("width", width)
-          .attr("height", height)
-          .attr("x", 0)
-          .attr("y", 0)
-      ;
+        .attr("id", "clip")
+        .append("svg:rect")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("x", 0)
+        .attr("y", 0)
+        ;
 
       var lineChart = svg.append("g")
-          .attr("class", "focus line-chart")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-          .attr("clip-path", "url(#clip)")
-      ;
+        .attr("class", "focus line-chart")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        .attr("clip-path", "url(#clip)")
+        ;
 
       updateGraphAndBrushLines(data);
 
@@ -699,24 +699,24 @@ function DTS(props) {
         .call(xAxis2);
 
       let gBrush = context.append("g")
-          .attr("class", "brush")
-          .call(brush)
-          .call(brush.move, x.range());
+        .attr("class", "brush")
+        .call(brush)
+        .call(brush.move, x.range());
 
       var handle = gBrush.selectAll(".handle--custom")
-          .data([{ type: "w" }, { type: "e" }])
-          .enter().append("path")
-          .attr("class", "handle--custom")
-          .attr("fill", "#aaa")
-          .attr("fill-opacity", 0.8)
-          .attr("cursor", "ew-resize")
-          .attr("d", d3.arc()
-                .innerRadius(0)
-                .outerRadius(height2 / 2)
-                .startAngle(0)
-                .endAngle(function (d, i) {
-                  return i ? Math.PI : -Math.PI;
-                }));
+        .data([{ type: "w" }, { type: "e" }])
+        .enter().append("path")
+        .attr("class", "handle--custom")
+        .attr("fill", "#aaa")
+        .attr("fill-opacity", 0.8)
+        .attr("cursor", "ew-resize")
+        .attr("d", d3.arc()
+          .innerRadius(0)
+          .outerRadius(height2 / 2)
+          .startAngle(0)
+          .endAngle(function (d, i) {
+            return i ? Math.PI : -Math.PI;
+          }));
 
       d3.select(".brush").call(brush.move, null);
 
@@ -732,8 +732,8 @@ function DTS(props) {
       }
 
       var mouseOverDataPoint = svg.append("g")
-          .attr("class", "mouse-over-data-point")
-          .style("display", "none");
+        .attr("class", "mouse-over-data-point")
+        .style("display", "none");
 
       mouseOverDataPoint.append("circle")
         .attr("r", 7)
@@ -853,7 +853,7 @@ function DTS(props) {
         if (mapping.hasOwnProperty(key)) {
           for (let i = 0; i < mapping[key].categories.length; i++) {
             const cateName = mapping[key].categories[i];
-            if(optionsDict[cateName]){
+            if (optionsDict[cateName]) {
               masterMapping[key]["today"].push({
                 name: cateName,
                 values: optionsDict[cateName]["today"],
@@ -906,9 +906,9 @@ function DTS(props) {
       let combinedMTD = [];
       let combinedFYTD = [];
 
-      for(let i = 0, il = sharedCategories.length; i < il; i++){
-        for(let catName of sharedCategories[i].categories) {
-          if(optionsDict[catName]) {            
+      for (let i = 0, il = sharedCategories.length; i < il; i++) {
+        for (let catName of sharedCategories[i].categories) {
+          if (optionsDict[catName]) {
             combinedToday.push.apply(combinedToday, optionsDict[catName]["today"]);
             combinedMTD.push.apply(combinedMTD, optionsDict[catName]["mtd"]);
             combinedFYTD.push.apply(combinedFYTD, optionsDict[catName]["fytd"]);
@@ -920,10 +920,10 @@ function DTS(props) {
       let combinedMTDValues = getCombinedCategory(combinedMTD);
       let combinedFYTDValues = getCombinedCategory(combinedFYTD);
 
-      for(let i = 0, il = sharedCategories.length; i < il; i++){
+      for (let i = 0, il = sharedCategories.length; i < il; i++) {
         const curCategory = sharedCategories[i];
-        for(let catName of curCategory.categories){
-          if(optionsDict[catName]){
+        for (let catName of curCategory.categories) {
+          if (optionsDict[catName]) {
             masterMapping[catName]["today"].push({
               "name": "Combined",
               values: combinedDailyValues,
@@ -988,12 +988,12 @@ function DTS(props) {
     // Define filter conditions
     function multiFormat(date) {
       return (d3.timeSecond(date) < date ? formatMillisecond
-              : d3.timeMinute(date) < date ? formatSecond
-              : d3.timeHour(date) < date ? formatMinute
-              : d3.timeDay(date) < date ? formatHour
+        : d3.timeMinute(date) < date ? formatSecond
+          : d3.timeHour(date) < date ? formatMinute
+            : d3.timeDay(date) < date ? formatHour
               : d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? formatDay : formatWeek)
-              : d3.timeYear(date) < date ? formatMonth
-              : formatYear)(date);
+                : d3.timeYear(date) < date ? formatMonth
+                  : formatYear)(date);
     }
 
     function drawChart() {
@@ -1097,70 +1097,51 @@ function DTS(props) {
         d.value = +d.value; // is this wrong? should it be fytd, mtd, and today instead? also multiply?
         return d;
       }
-
-      let debounce, previousWidth;
-
-      window.addEventListener('resize', function () {
-        if (debounce) {
-          clearTimeout(debounce);
-        }
-
-        if (previousWidth === window.innerWidth) {
-          return;
-        }
-
-        previousWidth = window.innerWidth;
-
-        debounce = setTimeout(function () {
-          d3.select('#svg-wrapper').selectAll('*').remove();
-          drawChart('redraw');
-        }, 300);
-      });
     }
   });
 
   if (!props.data) {
     return <div className='progress_wrapper'>
-             <CircularProgress className='progress' size={70} color='inherit' />
-           </div>;
+      <CircularProgress className='progress' size={70} color='inherit' />
+    </div>;
   } else {
     return <>
-             <div className="dts-viz-container">
-               <div className="dts-layout-manager">
-                 <div className="dts-brush-date-container">
-                   <div className="dts-brush-date-item">
-                     <div className="dts-brush-start-date-label">From</div>
-                     <div className="dts-brush-start-date">mm/dd/yy</div>
-                   </div>
-                   <div className="dts-brush-date-item">
-                     <div className="dts-brush-end-date-label"> to</div>
-                     <div className="dts-brush-end-date">mm/dd/yy</div>
-                   </div>
-                 </div>
-                 <div className="dts-svg-wrapper">
-                   <svg id="svg-wrapper" height="400"></svg>
-                 </div>
-               </div>
-               <div className="viz-tsbfy-container">
-                 <div className="viz-tsbfy-header">
-                   <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
-                   <div className="viz-tsbfy-header-view-buttons">
-                     <div className="viz-tsbfy-bar-view"><Bars /></div>
-                     <div className="viz-tsbfy-table-view"><List /></div>
-                   </div>
-                 </div>
-                 <div className="svg-tsbfy-container">
-                   <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
-                 </div>
-               </div>
-             </div>
+      <div className="dts-viz-container">
+        <div className="dts-layout-manager">
+          <div className="dts-brush-date-container">
+            <div className="dts-brush-date-item">
+              <div className="dts-brush-start-date-label">From</div>
+              <div className="dts-brush-start-date">mm/dd/yy</div>
+            </div>
+            <div className="dts-brush-date-item">
+              <div className="dts-brush-end-date-label"> to</div>
+              <div className="dts-brush-end-date">mm/dd/yy</div>
+            </div>
+          </div>
+          <div className="dts-svg-wrapper">
+            <svg id="svg-wrapper" height="400"></svg>
+          </div>
+        </div>
+        <div className="viz-tsbfy-container">
+          <div className="viz-tsbfy-header">
+            <div className="viz-tsbfy-header-text">Total Spending By Fiscal Year</div>
+            <div className="viz-tsbfy-header-view-buttons">
+              <div className="viz-tsbfy-bar-view"><Bars /></div>
+              <div className="viz-tsbfy-table-view"><List /></div>
+            </div>
+          </div>
+          <div className="svg-tsbfy-container">
+            <svg id="viz-tsbfy-wrapper" width="750" height="500" viewBox="0 0 750 500"></svg>
+          </div>
+        </div>
+      </div>
 
-             <div className="dts-footnote">
-               <div className="dts-footnote-rect"></div>
-               <div className="dts-footnote-text"></div>
-             </div>
+      <div className="dts-footnote">
+        <div className="dts-footnote-rect"></div>
+        <div className="dts-footnote-text"></div>
+      </div>
 
-           </>;
+    </>;
   }
 }
 
