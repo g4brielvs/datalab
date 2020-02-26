@@ -443,17 +443,15 @@ function Sankey(props) {
         `translate(${margin.left},${margin.top})`);
 
     // add title
-    // d3.select("#sankey-viz svg")
-    //   .append('title')
-    //   .attr('id', 'titleTest')
-    //   .text('The quick brown fox jumped over the lazy dog 1.');
+    d3.select("#sankey-viz svg")
+      .append('title')
+      .attr('id', 'viz-title')
+      .text('Sankey Visualization');
 
-    // d3.select("#sankey-viz svg")
-    //   .append('desc')
-    //   .attr('id', 'descTest')
-    //   .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
-    //     'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
-    //     'The quick brown fox jumped over the lazy dog 5.');
+    d3.select("#sankey-viz svg")
+      .append('desc')
+      .attr('id', 'viz-description')
+      .text('The chart allows users to see spending split into Budget Functions and Object Classes. Examples of Budget Function categories include Social Security, Medicare, Income Security, National Defense, Agriculture, International Affairs, and Natural Resources and Environment. Examples of Object Classes categories include Insurance Claims and Indemnities, Interest and Dividends, Refunds, Printing and Supplies, and Travel and Transportation.');
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()
