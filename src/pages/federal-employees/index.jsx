@@ -70,7 +70,7 @@ export default class FederalEmployeesPage extends Component {
 		return <StoryLayout
 			title={'Federal Employees'}
 			introSentence={'In 2017, the largest 24 federal agencies employed nearly 2 million people.'}
-			contextStatement={["The U.S. Treasury’s Data Lab presents an analysis exploring federal employees using federal financial data and employment data from the Office of Personnel Management (OPM). In 2017, the 24 CFO Act Agencies employed nearly people."]}
+			contextStatement={["The U.S. Treasury’s Data Lab presents an analysis exploring federal employees using federal financial data and employment data from the Office of Personnel Management (OPM). In 2017, the 24 CFO Act Agencies employed nearly 2 million people."]}
 			sectionToc={sections}
 			hwctaLink={this.props.location.pathname + '/methodologies'}
 		>
