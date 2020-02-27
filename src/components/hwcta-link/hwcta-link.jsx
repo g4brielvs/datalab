@@ -4,7 +4,7 @@ import hwctaLinkStyles from './hwcta-link.module.scss';
 
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Grid, Hidden } from '@material-ui/core'
+import { Grid, Hidden } from '@material-ui/core';
 import Sources from '../logos/sources';
 
 const HWCTALink = (props) => {
@@ -21,7 +21,7 @@ const HWCTALink = (props) => {
               <br />
             </Hidden>
             Methodologies
-        </Grid>
+          </Grid>
           <Grid item className={hwctaLinkStyles.arrow}>
             <FontAwesomeIcon icon={faChevronRight} color={props.fillColor} />
           </Grid>

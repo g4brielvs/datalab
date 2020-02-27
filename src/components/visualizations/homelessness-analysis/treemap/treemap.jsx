@@ -345,7 +345,7 @@ export default function Treemap() {
 
   useEffect(() => {
     initTree();
-  });
+  }, []);
 
   return (
     <div id='panel_3b'>

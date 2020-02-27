@@ -212,7 +212,7 @@ export default function Institutions(props) {
     />
 
     <Downloads
-      href={'/data/colleges-and-universities/institutions/tabledata.csv'}
+      href={'/unstructured-data/mapbox/tableData.csv'}
       date={'March 2019'}
     />
   </>);
