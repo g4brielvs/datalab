@@ -241,10 +241,6 @@ export default function Mapviz(props) {
         <p>** This map reflects the most up-to-date HUD map available; however, some Continuum of Care areas merged together in 2018 after this map was created.</p>
         <p>See our section on How We Conducted This Analysis for more information.</p>
       </div>
-      <Downloads
-        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
-        date={'March 2019'}
-      />
     </div>
   )
 }
