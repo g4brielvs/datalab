@@ -19,7 +19,7 @@ function HAHWCTA(props) {
             Point-in-Time (PIT) estimates of people experiencing homelessness from the Department of Housing and Urban
             Development's (HUD's) 2018 <a
             href='https://datalab.usaspending.gov/homelessness-analysis-more.html' target='_blank'
-            rel='noopener noreferrer'>PIT Data</a>
+            rel='noopener noreferrer'>Point-in-Time (PIT) Data</a>
           </li>
         </ul>
       </>
@@ -41,7 +41,7 @@ function HAHWCTA(props) {
           <li>
             PIT estimates of people experiencing homelessness from HUD’s 2018 <a
             href='https://www.hudexchange.info/resource/3031/pit-and-hic-data-since-2007/' target='_blank'
-            rel='noopener noreferrer'>Point-in-Time (PIT) Data</a>
+            rel='noopener noreferrer'>PIT Data</a>
           </li>
         </ul>
       </>
@@ -91,8 +91,8 @@ function HAHWCTA(props) {
             rel='noopener noreferrer'>Github page</a>.
           </p>
           <p>
-            The following example illustrates our process: the Homeless Veterans Reintegration Program provides services
-            to homeless veterans looking for jobs, which we classified as employment-related. We presented these programs
+            For example, the Homeless Veterans Reintegration Program provides services to homeless veterans looking for
+            jobs, which we classified as employment related. We presented these programs
             to the U.S. Interagency Council on Homelessness, who recommended that we remove several programs where the
             majority of funds went to beneficiaries other than individuals experiencing homelessness.
           </p>
@@ -108,14 +108,14 @@ function HAHWCTA(props) {
             awards in USAspending.gov data that are relevant to our work:
           </p>
           <ul>
-            <li>Grant awards for a CoC area (an administrative region recognized by HUD), or were awarded to
+            <li>Grant awards for a CoC area <i>(an administrative region recognized by HUD)</i>, or were awarded to
               organizations within its geographic area;</li>
             <li>Grant awards that didn't have specific location data; and</li>
             <li>Grant awards that supported organizations across a state.</li>
           </ul>
           <p>
-            To create our data visualization, we mapped funding amounts for the programs that fell within a CoC area
-            using mapping files provided by HUD. The data was updated as of January 2018.
+            To create our visualization, we mapped funding amounts for the programs that fell within a Continuum of Care
+            area using mapping files provided by HUD. The data used in this story was updated as of November 2019.
           </p>
         </>
     },
@@ -158,8 +158,8 @@ function HAHWCTA(props) {
             marginal gain for adding more clusters begins to level off. We chose five clusters as our target.
           </p>
           <p>
-            We tested several unsupervised clustering algorithms. The method we employed was Fuzzy C Means, a data
-            clustering technique that allows one piece of data to belong to two or more clusters.
+            We tested several unsupervised clustering algorithms, the method we employed was Fuzzy C Means, a data
+            clustering technique which allows one piece of data to belong to two or more clusters.
           </p>
           <p>
             The clusters were then further segmented by population density, in an attempt to manage the size of the
@@ -196,7 +196,7 @@ function HAHWCTA(props) {
         <p>
           Illicit Drugs include, marijuana/hashish, cocaine (including crack), heroin, hallucinogens, inhalants, or
           prescription-type psychotherapeutics used non-medically, including data from original methamphetamine
-          questions, but not including new methamphetamine items added in 2005 and 2006
+          questions, but not including new methamphetamine items added in 2005 and 2006.
         </p>
         <p>
           <span className={styles.bold}>Alcohol Dependence: </span>
@@ -220,6 +220,15 @@ function HAHWCTA(props) {
           Methodology" at <a
           href='http://www.samhsa.gov/data/' target='_blank'
           rel='noopener noreferrer'>http://www.samhsa.gov/data/</a>.
+        </p>
+
+        <p>
+          <span className={styles.bold}>Notes on the Maps: </span>
+          Since the shape file used in the visualization was created, several Continuum of Care's have merged with the
+          balance of state Continuum of Care. These Continuum of Care's are: WA-507, which is now a part of WA-501, and
+          LA-508, which is now a part of LA-509. We edited the shape file so that the hover over and color for these
+          Continuum of Care's reflect the new information, but the boundaries for the old Continuum of Care are still
+          included in the map.
         </p>
       </>
   }];

@@ -13,6 +13,7 @@ import Reset from "../../components/reset/reset";
 import Share from "../../components/share/share";
 import SearchIcon from '@material-ui/icons/Search';
 import Downloads from "../../components/section-elements/downloads/downloads";
+import Accordion from "../../components/accordion/accordion";
 
 export default function Geography(props) {
 
@@ -152,7 +153,24 @@ export default function Geography(props) {
   return (<>
     <div className="homelessness-subheading">Homeless Population by Region</div>
     <div className="homelessness-subheading2">HUD Point-in-time Count by Continuum of Care Area</div>
+
+    <Accordion
+      title='Instructions'>
+      <ul>
+        <li>Double click on the map to zoom into a region.</li>
+        <li>Hover over the region to see a pop-up box with the total number of homeless for that CoC.</li>
+        <li>Double click that same region to zoom out, or click the Reset button.</li>
+        <li>While zoomed in, double clicking a different region will re-center the map on that region.</li>
+        <li>To view this data in table format, click the table icon in the upper-left hand corner of the visualization.</li>
+        <li>To return to map view, click on the map icon in the upper-left hand corner of the visualization.</li>
+      </ul>
+    </Accordion>
+
     <div className="viz-actions">
+      <ControlBar>
+        <Reset _resetClick={reset} />
+        <Share location={props.location} />
+      </ControlBar>
       <Hidden xsDown>
         <div className="homeless-map-options">
           <span className="homeless-style">View</span>
@@ -170,11 +188,6 @@ export default function Geography(props) {
           />
         </div>
       </Hidden>
-
-      <ControlBar>
-        <Reset _resetClick={reset} />
-        <Share location={props.location} />
-      </ControlBar>
     </div>
     <div id='chart-area'>
       <Mapviz
