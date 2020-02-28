@@ -5,7 +5,6 @@ import { Grid, Hidden } from '@material-ui/core';
 import Downloads from "src/components/section-elements/downloads/downloads"
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
-import pscData from '../../../static/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv';
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -29,8 +28,13 @@ const SunburstVegaContainer = () => {
   const [sunburstDetails, setDetails] = useState({});
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
+  const [pscData, setPscData] = useState([]);
 
-  useEffect(() => {
+   useEffect(() => {
+    d3.csv('/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv', function(data) {
+      setPscData(data);
+    });
+
     const details = getDetails();
     setOriginalData(appendColors(flareData));
     setDetails(details);
