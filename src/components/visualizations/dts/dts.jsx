@@ -78,12 +78,12 @@ function DTS(props) {
         footnote: "The shaded region indicates inactive or retired programs. On March 31, 2010, the Food Stamp Program was renamed Supplemental Nutrition Assistance Program (SNAP) on the Daily Treasury Statement. Withdrawals previously reported under the Food Stamp Program are now reported under SNAP."
       },
       {
-        categories: ['NASA', 'NASA programs'],
+        categories: ['NASA programs', 'NASA'],
         date: new Date('2020-01-13'), // jan 23 2020 data start
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
       },
       {
-        categories: ['Dept of Veterans Affairs ( VA )', 'Veterans Affairs programs'],
+        categories: ['Veterans Affairs programs', 'Dept of Veterans Affairs ( VA )'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       },
@@ -1007,6 +1007,7 @@ function DTS(props) {
     function drawChart() {
       init();
       if (data) {
+        console.log('data:', data);
         lastDate = data[data.length - 1].date;
 
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
