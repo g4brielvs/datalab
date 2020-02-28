@@ -879,52 +879,6 @@ $homelessAnalysisPurple: rgb(96, 70, 126);
 		color: inherit;
 	}
 
-	ul {
-		list-style: none;
-		padding: 0;
-
-		.inner {
-			padding-left: 1em;
-			overflow: hidden;
-			display: none;
-
-			&.show {
-				display: block;
-			}
-		}
-
-		li {
-			margin: 0.5em 0;
-
-			a.toggle {
-				width: 100%;
-				display: block;
-				background: rgba(0, 0, 0, 0.78);
-				color: #fefefe;
-				padding: 0.75em;
-				border-radius: 0.15em;
-				transition: background 0.3s ease;
-
-				&:hover {
-					background: rgba(0, 0, 0, 0.9);
-				}
-			}
-		}
-
-		.chart {
-			display: block;
-			margin: 40px auto auto;
-		}
-
-		& text {
-			font-size: 0.6875rem;
-		}
-
-		& rect {
-			fill: none;
-		}
-	}
-
 	.node rect {
 		cursor: pointer;
 		fill: #fff;
