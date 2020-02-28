@@ -4,7 +4,6 @@ import { Grid, Hidden } from '@material-ui/core';
 
 import Downloads from "src/components/section-elements/downloads/downloads"
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
-import awardsData from '../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv';
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -15,12 +14,24 @@ import findArcById from './utils/find-by-id';
 import findArcByName from './utils/find-by-name';
 import filterSunburst from './utils/filter';
 
+
 const SunburstVegaContainer = () => {
 
   const defaultSelection = {
     name: 'flare',
     depth: 0
   }
+
+  const defaultDetails = {
+    label: null,
+    total: null,
+    top5: [],
+    name: null,
+    allItems: [],
+    contractTotal: null,
+    contractBySubagency: null,
+    type: 'default'
+  };
 
   const [arc, setSelectedArc] = useState(defaultSelection);
   const [previousArc, setPreviousArc] = useState(null);
@@ -36,41 +47,31 @@ const SunburstVegaContainer = () => {
     });
 
     const details = getDetails();
-    setOriginalData(appendColors(flareData));
     setDetails(details);
+    setOriginalData(appendColors(flareData));
 
   }, []);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
-  const agencies = [];
-  const subagencies = [];
-  const recipients = [];
-
-  awardsData.map((e) => {
-
-    if (agencies.findIndex(a => a.display === e.agency) === -1) {
-      agencies.push({
-        id: `a${e.agency}`,
-        display: e.agency
-      });
-    }
-
-    if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
-      subagencies.push({
-        id: `s${e.subagency}`,
-        display: e.subagency
-      });
-    }
-
-    if (recipients.findIndex(r => r.display === e.recipient) === -1) {
-      recipients.push({
-        id: `r${e.recipient}`,
-        display: e.recipient
-      });
-    }
+  let agencies = sunData.tree.filter(node => node.type === 'agency');
+  agencies = agencies.map(function(x) {
+    return {id: `a${x.name}`, display: x.name}
   });
+  agencies = [...new Set([agencies])];
 
-  const searchList = agencies.concat(subagencies).concat(recipients);
+  let subagencies = sunData.tree.filter(node => node.type === 'subagency');
+  subagencies = subagencies.map(function(x) {
+    return {id: `s${x.name}`, display: x.name}
+  });
+  subagencies = [...new Set([subagencies])];
+
+  let recipients = sunData.tree.filter(node => node.type === 'recipient');
+  recipients = recipients.map(function(x) {
+    return {id: `r${x.name}`, display: x.name}
+  });
+  recipients = [...new Set([recipients])];
+
+  const searchList = agencies.concat(subagencies).concat(recipients).flat();
 
   const sunburstRef = React.createRef();
 
@@ -181,16 +182,16 @@ const SunburstVegaContainer = () => {
         details.label = `${pretext} ${selectedArc.name}`;
         const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
         details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(agencyAwardsData, 'agency');
-        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+        // details.top5 = getTop5(agencyAwardsData, 'agency');
+        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
         // find all instances of the agency
         break;
       case 2:
         details.label = `${pretext} ${selectedArc.name}`;
         const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
         details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(subagencyAwardsData, 'agency');
-        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+        // details.top5 = getTop5(subagencyAwardsData, 'agency');
+        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
 
 
         // find all instances of the agency
@@ -201,8 +202,8 @@ const SunburstVegaContainer = () => {
         details.label = `${pretext} ${selectedArc.name}`;
         const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
         details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(recipientAwardsData, 'agency');
-        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+        // details.top5 = getTop5(recipientAwardsData, 'agency');
+        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
 
         break;
     }
@@ -212,6 +213,7 @@ const SunburstVegaContainer = () => {
   }
 
   function getDetails (selectedArc) {
+    // const tempAwardData = data ? data : awardsData;
     const depth = selectedArc && selectedArc.depth ? selectedArc.depth : 0;
 
     const details = {
@@ -227,21 +229,26 @@ const SunburstVegaContainer = () => {
 
     switch (depth) {
       case 0:
+        // Nothing is selected
         details.label = 'Agencies';
-        details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(awardsData, 'agency');
+        details.total = sunData.tree.filter(node => node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        // details.top5 = getTop5(tempAwardData, 'agency');
         details.name = 'Contract Spending In Fiscal Year 2019';
         break;
       case 1:
+        // Agency is selected
         details.label = 'Subagencies';
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency).reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(awardsData.filter(node => node.agency === selectedArc.agency), 'subagency');
+        details.total = sunData.tree.filter(node => node.agency === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        // details.top5 = getTop5(tempAwardData.filter(node => node.agency === selectedArc.agency), 'subagency');
         details.name = selectedArc.name;
         break;
       case 2:
+        // Subagency is selected
         details.label = 'Contractors';
-        details.total = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
-        details.top5 = getTop5(awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === selectedArc.name), 'recipient');
+        const id = sunData.tree.find(node => node.type === 'subagency' && node.name === selectedArc.name).id;
+        details.total = sunData.tree.filter(node => node.parent === id && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        // details.total = sunData.tree.filter(node => node.type === 'recipient' && node.name === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        // details.top5 = getTop5(tempAwardData.filter(node => node.agency === selectedArc.agency && node.subagency === selectedArc.name), 'recipient');
         details.name = selectedArc.name;
         break;
       case 3:
@@ -251,8 +258,8 @@ const SunburstVegaContainer = () => {
         const subagency = sunData.tree.find(node => node.id === selectedArc.parent);
         details.type = 'recipient';
         details.contractBySubagencyHeading = `Contracts for ${subagency.name}`;
-        details.contractTotal = awardsData.filter(node => node.agency === selectedArc.agency && node.subagency === subagency.name && node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
-        details.total = awardsData.filter(node => node.recipient === selectedArc.name).reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = sunData.tree.filter(node => node.type === 'recipient' && node.name === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        details.contractTotal = sunData.tree.filter(node => node.type === 'recipient' && node.name === selectedArc.name && node.parent === selectedArc.parent && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
         details.name = selectedArc.name;
         details.allItems = pscData.filter(node => node.subagency === subagency.name && node.recipient === selectedArc.name);
         break;

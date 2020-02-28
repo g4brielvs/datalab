@@ -9,7 +9,6 @@ import PropTypes from "prop-types"
 /* PLEASE DO NOT DELETE this import
   This code is used to transform the sunburst data in to code that's usable by Vega.  This should be handled on the data analyst
   side but hasn't been rewritten yet due to the analyst backlog being long. */
-// import transformData from './utils/transformData.js';
 
 export default class Sunburst extends React.Component {
   constructor(props) {
