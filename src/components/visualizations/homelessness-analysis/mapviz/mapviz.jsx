@@ -3,6 +3,7 @@ import * as d3 from 'd3v3';
 import styles from './mapviz.module.scss';
 
 import tooltipModule from "../../../../components/tooltip/tooltip";
+import Downloads from "../../../section-elements/downloads/downloads";
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -230,17 +231,16 @@ export default function Mapviz(props) {
 
 
   return (<div className={props.display ? '' : 'hidden'}>
-              <div id="tooltipMapViz" className="tooltip-module" />
-              <div className="viz-container homeless-analysis">
-                <div id="container"/>
-              </div>
-              <div className={styles.homelessPanelOneInfo}>
-                <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
-                  Care area.</p>
-                <p>** This map reflects the most up to date HUD map available; however, some Continuum of Care areas have merged
-                  together in 2017 since this map was updated.</p>
-                <p>See our section on How We Conducted This Analysis for more information.</p>
-              </div>
-            </div>
-         )
+      <div id="tooltipMapViz" className="tooltip-module" />
+      <div className="viz-container homeless-analysis">
+        <div id="container"/>
+      </div>
+      <div className={styles.homelessPanelOneInfo}>
+        <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
+          Care area.</p>
+        <p>** This map reflects the most up-to-date HUD map available; however, some Continuum of Care areas merged together in 2018 after this map was created.</p>
+        <p>See our section on How We Conducted This Analysis for more information.</p>
+      </div>
+    </div>
+  )
 }

@@ -4,6 +4,7 @@ import dataSource from '../utils/data-module';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './treemap.scss';
+import Accordion from "../../../accordion/accordion"
 
 export default function Treemap() {
   const { mem } = dataSource;
@@ -348,6 +349,19 @@ export default function Treemap() {
 
   return (
     <div id='panel_3b'>
+      <Accordion
+        title='Instructions'>
+        <p>There are three parts to explore in this data visualization: the top chart shows all CoC areas and the clusters to which
+          they belong. The gray panel below the chart displays all CoC areas that belong to the selected cluster. The infographic
+          offers a quick snapshot of the cluster's attributes. For example, one CoC area in a cluster may have a median rent of $1,800
+          (the maximum for that cluster) while another CoC area has a median rent of $900 (the minimum for that cluster).</p>
+        <ul>
+          <li>The top chart updates the data points and the infographic below.</li>
+          <li>To view a different CoC area, click a cluster in the top chart.</li>
+          <li>To see more CoC areas within a cluster, click a CoC area in the gray panel.</li>
+        </ul>
+      </Accordion>
+
       <div id='tree' />
       <div id='tab_info'>
         <div className='tab' id='tab' />
