@@ -79,7 +79,7 @@ function DTS(props) {
       },
       {
         categories: ['NASA programs', 'NASA'],
-        date: new Date('2020-01-13'), // jan 23 2020 data start
+        date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
       },
       {
