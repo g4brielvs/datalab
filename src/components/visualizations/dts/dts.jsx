@@ -94,6 +94,17 @@ function DTS(props) {
       }
     ]
 
+    for (let item of sharedCategories) {
+      for (let categoryName of item.categories) {
+        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
+      }
+    }
+    for (let item of renamedCategories) {
+      for (let categoryName of item.categories) {
+        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
+      }
+    }
+
     if (_data) loadData(_data);
 
     function loadData(_data) {
@@ -201,7 +212,7 @@ function DTS(props) {
     function setFancyLines(selector, lineFn) {
       svg.selectAll(selector).each(function (lineSel) {
         let d3LineSel = d3.select(this);
-        let d3LineSelData = d3LineSel.data(); // .data()
+        let d3LineSelData = d3LineSel.data();
 
         if (d3LineSelData[0].values[0].date.getTime() < d3LineSelData[0].date.getTime()) {
           d3LineSel.style("stroke-dasharray", ("5, 3"));
@@ -827,17 +838,6 @@ function DTS(props) {
       }
     }
 
-    for (let item of sharedCategories) {
-      for (let categoryName of item.categories) {
-        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
-      }
-    }
-    for (let item of renamedCategories) {
-      for (let categoryName of item.categories) {
-        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
-      }
-    }
-
     function getCombinedCategory(combinedArray) {
       let result = [];
       let remember = {};
@@ -1005,9 +1005,15 @@ function DTS(props) {
     }
 
     function drawChart() {
+      function toggleButtonBgColor(context) {
+        d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
+        d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
+
+        d3.select(context).style("background-color", "rgb(255, 255, 255)");
+      }
+
       init();
       if (data) {
-        console.log('data:', data);
         lastDate = data[data.length - 1].date;
 
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(lastDate));
@@ -1057,13 +1063,6 @@ function DTS(props) {
         setTooltipActiveTimeframe(theFrequency);
 
         let yearToSpendingArray = getYearToSpendingArray(optionsDict["All Categories"]["fytd"]);
-
-        function toggleButtonBgColor(context) {
-          d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
-          d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
-
-          d3.select(context).style("background-color", "rgb(255, 255, 255)");
-        }
 
         d3.select(".viz-tsbfy-bar-view").on("click", function () {
           toggleButtonBgColor(this);

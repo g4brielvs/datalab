@@ -121,7 +121,7 @@ export default class HomelessnessPage extends Component {
           sectionTeaser: ["Why we ", <span key='teaser-callout' className='homeless-analysis-header-callout'>conducted this analysis</span>],
           introBlurb: <div><p>
               As these visualizations depict, thousands of people are homeless across the United States.
-              We hope that this analysis show how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
+              We hope that this analysis shows how federal funding impacts homelessness and can serve as a useful tool for state and local governments,
               as well as private institutions, who are working to reduce homelessness.
               In addition, we chose to conduct this analysis because it features data from across multiple federal agencies, in one dataset.
           </p><p>
