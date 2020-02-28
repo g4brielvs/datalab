@@ -1,11 +1,10 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 $competedColor: #0071bc;
-$nonCompetedColor: #D334BA;
-$summaryBorderColor: #DDD;
+$nonCompetedColor: #d334ba;
+$summaryBorderColor: #ddd;
 
 .container {
-
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -23,7 +22,7 @@ $summaryBorderColor: #DDD;
 
   .dropdown {
     border: 1px solid black;
-    color:#000;
+    color: #000;
   }
 
   #summary {
@@ -42,32 +41,53 @@ $summaryBorderColor: #DDD;
     }
   }
 
-  .select-wrapper1, .select-wrapper2 {
+  .select-wrapper1,
+  .select-wrapper2 {
     display: inline-block;
     padding-top: 15px;
   }
 
-  .legend{
+  .legend-div {
+    z-index: 1; // place above chart due to weird positioning
+  }
+
+  .legend {
     padding-top: 25px;
     display: inline-block;
   }
 
-  #one > div > div.mask > div.viz-container > div > div:nth-child(2) > form > div.select-wrapper1 > label,
-  #one > div > div.mask > div.viz-container > div > div:nth-child(2) > form > div.select-wrapper2 > label{
+  #one
+    > div
+    > div.mask
+    > div.viz-container
+    > div
+    > div:nth-child(2)
+    > form
+    > div.select-wrapper1
+    > label,
+  #one
+    > div
+    > div.mask
+    > div.viz-container
+    > div
+    > div:nth-child(2)
+    > form
+    > div.select-wrapper2
+    > label {
     font-family: inherit;
     font-size: 0.625rem;
   }
 
-  #xAxisScaleDropdown{
-    color:#000;
+  #xAxisScaleDropdown {
+    color: #000;
   }
   #competed-dollars,
   #not-competed-dollars,
   #competed-actions,
-  #not-competed-actions{
+  #not-competed-actions {
     font-size: 2rem;
     font-weight: lighter;
-    margin:0;
+    margin: 0;
   }
 
   .svg {
@@ -78,7 +98,7 @@ $summaryBorderColor: #DDD;
   /**
     * Classes below are added using the d3 library, so they don't add in the proper css module class naming.
    */
-  :global{
+  :global {
     .domain {
       display: none;
     }
@@ -93,7 +113,6 @@ $summaryBorderColor: #DDD;
       stroke: rgba(0, 0, 0, 0.2);
     }
   }
-
 }
 
 .bar-chart-div {
@@ -113,13 +132,14 @@ $summaryBorderColor: #DDD;
   fill: $nonCompetedColor;
 }
 
-.summary-item-competed, .summary-item-not-competed {
+.summary-item-competed,
+.summary-item-not-competed {
   font-size: 1.6em;
   font-weight: 600;
 }
 
 .summary-item-competed {
-  color: $competedColor
+  color: $competedColor;
 }
 
 .summary-item-not-competed {
@@ -136,12 +156,12 @@ $summaryBorderColor: #DDD;
   }
 }
 
-@media(min-width: $desktop) {
+@media (min-width: $desktop) {
   .bar-chart-div {
     margin-top: -50px; // correct for vertical placement
   }
 }
-  
+
 @media (min-width: $desktop) {
   .container .summary-item {
     padding-left: 0;
@@ -149,7 +169,7 @@ $summaryBorderColor: #DDD;
   }
 }
 
-@media(min-width: $tablet) and (max-width: $desktop - 1){
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
   .bar-chart-div {
     margin-top: -30px; // correct for vertical placement
   }
@@ -159,9 +179,9 @@ $summaryBorderColor: #DDD;
   }
 }
 
-@media (min-width: $tablet){
+@media (min-width: $tablet) {
   #summary {
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid #ddd;
   }
 
   .container {
@@ -174,7 +194,7 @@ $summaryBorderColor: #DDD;
   }
 }
 
-@media(min-width: $phone) and (max-width: $tablet - 1){
+@media (min-width: $phone) and (max-width: $tablet - 1) {
   .bar-chart-div {
     margin-top: -20px; // correct for vertical placement
   }

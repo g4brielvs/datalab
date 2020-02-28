@@ -143,7 +143,7 @@ export class CompetitionInContractingContainer extends Component {
             </Grid>
           </Grid>
 
-          <div>
+          <div className={competitionStyles.legendDiv}>
             <div className={competitionStyles.legend} id={competitionStyles.notCompeted}>
               <svg height='15' width='15'>
                 <circle cx='7.5' cy='7.5' r='7.5' />
@@ -154,8 +154,7 @@ export class CompetitionInContractingContainer extends Component {
               <svg height='15' width='15'>
                 <circle cx='7.5' cy='7.5' r='7.5' />
               </svg>
-              <label htmlFor={competitionStyles.competed}
-                style={{ fontSize: '0.75rem', verticalAlign: 'bottom', padding: '0px 0 0 .1rem' }}>Competed</label>
+              <label htmlFor={competitionStyles.competed} style={{ fontSize: '0.75rem', verticalAlign: 'bottom', padding: '0px 0 0 .1rem' }}>Competed</label>
             </div>
             <div className={competitionStyles.barChartToolbar}>
               <div className={competitionStyles.selectWrapper1}>
