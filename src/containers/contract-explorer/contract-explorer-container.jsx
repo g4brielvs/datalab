@@ -13,13 +13,11 @@ import findArcById from './utils/find-by-id';
 import findArcByName from './utils/find-by-name';
 import filterSunburst from './utils/filter';
 
+/* Import DATA */
 import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import agencyAbbrv from '../../../static/unstructured-data/contract-explorer/Agency_Abbreviations_2020_02_14_v1.csv';
 import subagencyNames from '../../../static/unstructured-data/contract-explorer/subagencies_.json';
 import subagencyAbbrv from '../../../static/unstructured-data/contract-explorer/subagencies_abbrv_.json';
-
-
-
 
 const SunburstVegaContainer = () => {
 
@@ -78,6 +76,7 @@ const SunburstVegaContainer = () => {
 
   function updateSunburst(selectedArc) {
     const newData = selectedArc.id === 1 ? sunData : { "tree": filterSunburst(sunData, selectedArc) };
+    console.log(newData);
     if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateData(newData); }
     return newData;
   }
@@ -129,6 +128,7 @@ const SunburstVegaContainer = () => {
     breadcrumbs.forEach((item) => {
       trail.push({
         name: item.depth < 3 ? findAbbrv(item) : item.name,
+        fullName: item.name,
         depth: item.depth,
         id: item.id,
         arc: selectedArc
