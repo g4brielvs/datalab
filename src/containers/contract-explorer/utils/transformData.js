@@ -4,7 +4,7 @@
 
 import * as _ from 'lodash';
 
-function convertCsvToJson(csvData) {
+function convertCsvToJson() {
   let id = 1, existingItem;
 
   let tree = [{
