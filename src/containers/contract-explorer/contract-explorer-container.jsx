@@ -179,6 +179,7 @@ const SunburstVegaContainer = () => {
         // find all instances of the agency
         break;
       case 2:
+        const id = sunData.tree.find(node => node.type === 'subagency' && node.name === selectedArc.name).id;
         details.label = `${pretext} ${selectedArc.name}`;
         details.total = sunData.tree.filter(node => node.parent === id && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
         details.top5 = getTop5(allRecipients.filter(node => node.parent === id), 'agency');
