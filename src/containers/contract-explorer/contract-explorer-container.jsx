@@ -22,17 +22,6 @@ const SunburstVegaContainer = () => {
     depth: 0
   }
 
-  const defaultDetails = {
-    label: null,
-    total: null,
-    top5: [],
-    name: null,
-    allItems: [],
-    contractTotal: null,
-    contractBySubagency: null,
-    type: 'default'
-  };
-
   const [arc, setSelectedArc] = useState(defaultSelection);
   const [previousArc, setPreviousArc] = useState(null);
   const [breadcrumbs, setBreadcrumbs] = useState(null);
@@ -92,11 +81,12 @@ const SunburstVegaContainer = () => {
     let unique = [...new Set(items.map(item => item[type]))];
     let summedItems = [];
 
+
     for (let i = 0; i < unique.length; i++) {
       summedItems.push({
         name: unique[i],
         type: type,
-        obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.obligation || 0), 0)
+        obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.size || 0), 0)
       });
     }
 
@@ -213,7 +203,6 @@ const SunburstVegaContainer = () => {
   }
 
   function getDetails (selectedArc) {
-    // const tempAwardData = data ? data : awardsData;
     const depth = selectedArc && selectedArc.depth ? selectedArc.depth : 0;
 
     const details = {
@@ -227,12 +216,14 @@ const SunburstVegaContainer = () => {
       type: 'default'
     };
 
+    const allRecipients = sunData.tree.filter(node => node.type === 'recipient');
+
     switch (depth) {
       case 0:
         // Nothing is selected
         details.label = 'Agencies';
         details.total = sunData.tree.filter(node => node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
-        // details.top5 = getTop5(tempAwardData, 'agency');
+        details.top5 = getTop5(allRecipients, 'agency');
         details.name = 'Contract Spending In Fiscal Year 2019';
         break;
       case 1:
@@ -247,7 +238,6 @@ const SunburstVegaContainer = () => {
         details.label = 'Contractors';
         const id = sunData.tree.find(node => node.type === 'subagency' && node.name === selectedArc.name).id;
         details.total = sunData.tree.filter(node => node.parent === id && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
-        // details.total = sunData.tree.filter(node => node.type === 'recipient' && node.name === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
         // details.top5 = getTop5(tempAwardData.filter(node => node.agency === selectedArc.agency && node.subagency === selectedArc.name), 'recipient');
         details.name = selectedArc.name;
         break;
