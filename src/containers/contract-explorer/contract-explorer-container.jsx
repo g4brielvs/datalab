@@ -83,8 +83,9 @@ const SunburstVegaContainer = () => {
 
 
     for (let i = 0; i < unique.length; i++) {
+      const name = type === 'parent' ? sunData.tree.find(node => node.id ===unique[i]).name : unique[i];
       summedItems.push({
-        name: unique[i],
+        name: name,
         type: type,
         obligation: items.filter(node => node[type] === unique[i]).reduce((a, b) => a + (b.size || 0), 0)
       });
@@ -230,7 +231,7 @@ const SunburstVegaContainer = () => {
         // Agency is selected
         details.label = 'Subagencies';
         details.total = sunData.tree.filter(node => node.agency === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
-        // details.top5 = getTop5(tempAwardData.filter(node => node.agency === selectedArc.agency), 'subagency');
+        details.top5 = getTop5(allRecipients.filter(node => node.agency === selectedArc.agency), 'parent');
         details.name = selectedArc.name;
         break;
       case 2:
@@ -238,7 +239,7 @@ const SunburstVegaContainer = () => {
         details.label = 'Contractors';
         const id = sunData.tree.find(node => node.type === 'subagency' && node.name === selectedArc.name).id;
         details.total = sunData.tree.filter(node => node.parent === id && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
-        // details.top5 = getTop5(tempAwardData.filter(node => node.agency === selectedArc.agency && node.subagency === selectedArc.name), 'recipient');
+        details.top5 = getTop5(allRecipients.filter(node => node.parent === id), 'name');
         details.name = selectedArc.name;
         break;
       case 3:
