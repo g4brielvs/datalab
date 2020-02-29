@@ -3,6 +3,7 @@
   side but hasn't been rewritten yet due to the analyst backlog being long. */
 
 import * as _ from 'lodash';
+import csvData from "../../../../../static/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv";
 
 function convertCsvToJson() {
   let id = 1, existingItem;
