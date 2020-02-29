@@ -71,17 +71,17 @@ export default {
   "marks": [
   {
     "type": "arc",
+    "cursor": "pointer",
     "from": {"data": "tree"},
     "encode": {
-      "delay": "500",
-      "ease": "circle",
+      "cursor": "pointer",
       "enter": {
         "x": {"signal": "width / 2"},
         "y": {"signal": "height / 2"},
         "fill": {"signal": "datum.colorHex"},
         "opacity": {"signal": "datum.depth > 1 ? (datum.depth === 2 ? .7 : .4) : 1"},
         "tooltip": {"signal": "datum.depth <=1 ? (datum.depth === 0 ? 'Click to reset' : 'Click to view agency') : (datum.depth == 2 ? 'Click to view subagency' : 'Click to view contractor')" },
-
+        "cursor": "pointer",
       },
       "update": {
         "startAngle": {"scale": "xscale", "signal": "max(0, min(2 * PI, datum.a0))"},
@@ -90,7 +90,7 @@ export default {
         "outerRadius": {"scale": "yscale", "signal": "max(0, datum.r1)"},
         "stroke": {"value": "white"},
         "strokeWidth": {"value": 0.5},
-        "zindex": {"value": 0},
+        "zindex": {"value": 0}
       },
     }
   }

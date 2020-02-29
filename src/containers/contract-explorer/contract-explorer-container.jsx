@@ -164,37 +164,35 @@ const SunburstVegaContainer = () => {
       type: 'search'
     };
 
+    const allRecipients = sunData.tree.filter(node => node.type === 'recipient');
+
     // get the top contribution for the selection
     switch (depth) {
       case 0:
-        details.total = awardsData.reduce((a, b) => a + (b.obligation || 0), 0);
+        details.total = sunData.tree.filter(node => node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
         break;
       case 1:
         details.label = `${pretext} ${selectedArc.name}`;
-        const agencyAwardsData = awardsData.filter(node => node.agency === selectedArc.name);
-        details.total = agencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        // details.top5 = getTop5(agencyAwardsData, 'agency');
-        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+        details.total = sunData.tree.filter(node => node.agency === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        details.top5 = getTop5(allRecipients.filter(node => node.agency === selectedArc.agency), 'parent');
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
         // find all instances of the agency
         break;
       case 2:
         details.label = `${pretext} ${selectedArc.name}`;
-        const subagencyAwardsData = awardsData.filter(node => node.subagency === selectedArc.name);
-        details.total = subagencyAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        // details.top5 = getTop5(subagencyAwardsData, 'agency');
-        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
-
-
+        details.total = sunData.tree.filter(node => node.parent === id && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        details.top5 = getTop5(allRecipients.filter(node => node.parent === id), 'agency');
+        details.name = selectedArc.name;
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
         // find all instances of the agency
 
         break;
 
       case 3:
         details.label = `${pretext} ${selectedArc.name}`;
-        const recipientAwardsData = awardsData.filter(node => node.recipient === selectedArc.name);
-        details.total = recipientAwardsData.reduce((a, b) => a + (b.obligation || 0), 0);
-        // details.top5 = getTop5(recipientAwardsData, 'agency');
-        // details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
+        details.total = sunData.tree.filter(node => node.type === 'recipient' && node.name === selectedArc.name && node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
+        details.top5 = getTop5(allRecipients.filter(node => node.name === selectedArc.name), 'agency');
+        details.subheading = details.top5.length > 1 ? 'Agencies' : 'Agency';
 
         break;
     }
