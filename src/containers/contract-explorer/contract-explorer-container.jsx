@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Grid, Hidden } from '@material-ui/core';
 
 import Downloads from "src/components/section-elements/downloads/downloads"
-import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -14,6 +13,11 @@ import findArcById from './utils/find-by-id';
 import findArcByName from './utils/find-by-name';
 import filterSunburst from './utils/filter';
 
+/* Import DATA */
+import flareData from '../../../static/unstructured-data/contract-explorer/flare.json';
+import agencyAbbrv from '../../../static/unstructured-data/contract-explorer/Agency_Abbreviations_2020_02_14_v1.csv';
+import subagencyNames from '../../../static/unstructured-data/contract-explorer/subagencies_.json';
+import subagencyAbbrv from '../../../static/unstructured-data/contract-explorer/subagencies_abbrv_.json';
 
 const SunburstVegaContainer = () => {
 
@@ -122,7 +126,8 @@ const SunburstVegaContainer = () => {
 
     breadcrumbs.forEach((item) => {
       trail.push({
-        name: item.name,  // abbreviation
+        name: item.depth < 3 ? findAbbrv(item) : item.name,
+        fullName: item.name,
         depth: item.depth,
         id: item.id,
         arc: selectedArc
@@ -130,6 +135,21 @@ const SunburstVegaContainer = () => {
     });
 
     return trail;
+  }
+
+  function findAbbrv(item) {
+    let abbrv = '';
+    if(item.depth === 1) {
+      // find the agency name in the csv
+      const agency = agencyAbbrv.find(node => node.agency === item.name);
+      abbrv = agency.abbrv;
+
+    } else if (item.depth === 2) {
+      const subagencyIndex = Object.keys(subagencyNames).find(key => subagencyNames[key] === item.name);
+      abbrv = subagencyAbbrv[subagencyIndex];
+
+    }
+    return abbrv;
   }
 
   function selectBreadcrumb (d) {
