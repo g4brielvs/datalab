@@ -61,8 +61,8 @@ export default class FederalEmployeesPage extends Component {
 					subtext: 'What',
 					subblurb: 'What do federal employees do?',
 					sectionTeaser: ['What do ', <span key='teaser-callout' className={fedEmpStyles.headingBlue}>federal employees do?</span>],
-					introBlurb: 'Federal employees serve in highly varied occupations. The following interactive visualization lists the main occupational categories, each of which includes several job types that are grouped by function - for example, administrative, medical, legal, or engineering. The occupation data also makes a distinction between blue-collar jobs (for example, warehousing) and white-collar jobs (for example, information technology). Across all CFO Act agencies, the top two occupation categories are Administrative and Clerical and Medical, Hospital, Dental, and Public Health.\n' +
-						'To explore the distribution of workers across occupation categories for each agency, select an agency from the menu.',
+				  introBlurb: ['Federal employees serve in highly varied occupations. The following interactive visualization lists the main occupational categories, each of which includes several job types that are grouped by function - for example, administrative, medical, legal, or engineering. The occupation data also makes a distinction between blue-collar jobs (for example, warehousing) and white-collar jobs (for example, information technology). Across all CFO Act agencies, the top two occupation categories are Administrative and Clerical and Medical, Hospital, Dental, and Public Health.', <br/>, <br/>,
+						'To explore the distribution of workers across occupation categories for each agency, select an agency from the menu.'],
 					tagName: 'what',
 				},
 			];
