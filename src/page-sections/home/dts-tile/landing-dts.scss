@@ -49,10 +49,13 @@
 div.dts-container > div > div > svg > g > path{
   fill:none;
 }
-.line {
-  fill: none;
-  stroke: #00CCCC;
-  stroke-width: 3px;
+
+.dts {
+  .line {
+    fill: none;
+    stroke: #00CCCC;
+    stroke-width: 3px;
+  }
 }
 
 .dtsm-img text {
