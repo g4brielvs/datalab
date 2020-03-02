@@ -177,7 +177,7 @@ function DTS(props) {
     }
 
     function init() {
-      const w = 750;
+      const w = d3.select('.dts-layout-manager').node().getBoundingClientRect().width;
 
       d3.select('#svg-wrapper').attr('width', w);
 
