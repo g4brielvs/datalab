@@ -76,7 +76,6 @@ const SunburstVegaContainer = () => {
 
   function updateSunburst(selectedArc) {
     const newData = selectedArc.id === 1 ? sunData : { "tree": filterSunburst(sunData, selectedArc) };
-    console.log(newData);
     if (sunburstRef && sunburstRef.current) { sunburstRef.current.updateData(newData); }
     return newData;
   }
