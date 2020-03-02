@@ -65,22 +65,25 @@ function DTS(props) {
 
     const sharedCategories = [
       {
+        categories: ["Medicare", "Medicare Advantage Part C D Payments", "Marketplace Payments", "Medicare and Other CMS Payments"],
+        date: new Date("2014-10-01"),
+        footnote: "The shaded region indicates inactive or retired programs. Beginning October 1, 2014, payments previously reported under the Medicare line were expanded to three lines: Medicare and other CMS payments, Medicare Advantage - Part C&D payments, and Marketplace payments."
+      }
+    ];
+
+    const renamedCategories = [
+      {
         categories: ["Food Stamps", "Supple Nutrition Assist Program ( SNAP )"],
         date: new Date("2010-03-31"),
         footnote: "The shaded region indicates inactive or retired programs. On March 31, 2010, the Food Stamp Program was renamed Supplemental Nutrition Assistance Program (SNAP) on the Daily Treasury Statement. Withdrawals previously reported under the Food Stamp Program are now reported under SNAP."
       },
       {
-        categories: ["Medicare", "Medicare Advantage Part C D Payments", "Marketplace Payments", "Medicare and Other CMS Payments"],
-        date: new Date("2014-10-01"),
-        footnote: "The shaded region indicates inactive or retired programs. Beginning October 1, 2014, payments previously reported under the Medicare line were expanded to three lines: Medicare and other CMS payments, Medicare Advantage - Part C&D payments, and Marketplace payments."
-      },
-      {
-        categories: ['NASA', 'NASA programs'],
-        date: new Date('2020-01-13'), // jan 23 2020 data start
+        categories: ['NASA programs', 'NASA'],
+        date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, NASA programs was renamed NASA on the Daily Treasury Statement. Withdrawals previously reported under NASA programs are now reported under NASA.',
       },
       {
-        categories: ['Dept of Veterans Affairs ( VA )', 'Veterans Affairs programs'],
+        categories: ['Veterans Affairs programs', 'Dept of Veterans Affairs ( VA )'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veterans Affairs programs was renamed Dept of Veterans Affairs (VA) on the Daily Treasury Statement. Withdrawals previously reported under Veterans Affairs Programs are now reported under Dept of Veterans Affairs (VA). Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
       },
@@ -88,8 +91,19 @@ function DTS(props) {
         categories: ['Veterans Benefits ( EFT )', 'VA Benefits'],
         date: new Date('2020-01-13'),
         footnote: 'The shaded region indicates inactive or retired programs. On January 13, 2020, Veteran Benefits (EFT) was renamed VA – Benefits on the Daily Treasury Statement. Withdrawals previously reported under Veteran Benefits (EFT) are now reported under VA – Benefits. Additionally, on January 13, 2020, Readjustment Benefits and Insurance Funds which had previously been reported to the Veterans Affairs programs line began being reported on the VA – Benefits line.',
-      },
-    ];
+      }
+    ]
+
+    for (let item of sharedCategories) {
+      for (let categoryName of item.categories) {
+        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
+      }
+    }
+    for (let item of renamedCategories) {
+      for (let categoryName of item.categories) {
+        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
+      }
+    }
 
     if (_data) loadData(_data);
 
@@ -198,9 +212,9 @@ function DTS(props) {
     function setFancyLines(selector, lineFn) {
       svg.selectAll(selector).each(function (lineSel) {
         let d3LineSel = d3.select(this);
-        let d3LineSelData = d3LineSel._groups[0][0].__data__; // .data()
+        let d3LineSelData = d3LineSel.data();
 
-        if (d3LineSelData.values[0].date.getTime() < d3LineSelData.date.getTime()) {
+        if (d3LineSelData[0].values[0].date.getTime() < d3LineSelData[0].date.getTime()) {
           d3LineSel.style("stroke-dasharray", ("5, 3"));
         }
 
@@ -824,12 +838,6 @@ function DTS(props) {
       }
     }
 
-    for (let item of sharedCategories) {
-      for (let categoryName of item.categories) {
-        mapping[categoryName] = { categories: item.categories, date: item.date, footnote: item.footnote };
-      }
-    }
-
     function getCombinedCategory(combinedArray) {
       let result = [];
       let remember = {};
@@ -997,6 +1005,13 @@ function DTS(props) {
     }
 
     function drawChart() {
+      function toggleButtonBgColor(context) {
+        d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
+        d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
+
+        d3.select(context).style("background-color", "rgb(255, 255, 255)");
+      }
+
       init();
       if (data) {
         lastDate = data[data.length - 1].date;
@@ -1048,13 +1063,6 @@ function DTS(props) {
         setTooltipActiveTimeframe(theFrequency);
 
         let yearToSpendingArray = getYearToSpendingArray(optionsDict["All Categories"]["fytd"]);
-
-        function toggleButtonBgColor(context) {
-          d3.select(".viz-tsbfy-bar-view").style("background-color", "rgb(250, 250, 250)");
-          d3.select(".viz-tsbfy-table-view").style("background-color", "rgb(250, 250, 250)");
-
-          d3.select(context).style("background-color", "rgb(255, 255, 255)");
-        }
 
         d3.select(".viz-tsbfy-bar-view").on("click", function () {
           toggleButtonBgColor(this);

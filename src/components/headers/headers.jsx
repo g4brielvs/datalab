@@ -32,3 +32,9 @@ export class FAQHeader extends React.Component {
   }
 }
 
+export class DsmHeader extends React.Component {
+  render() {
+    return <GenericHeader isHome={false} />;
+  }
+}
+
