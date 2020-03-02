@@ -33,7 +33,6 @@ export default class BubbleChart extends Component {
     this.circle;
     this.focused;
     this.view;
-    this.bubbleSvg;
     this.recipient;
     this.root;
     this.nodes;
@@ -233,26 +232,19 @@ export default class BubbleChart extends Component {
       .attr("height", this.width)
       .attr("id", "bubble-chart")
       .attr('role', 'img')
-      .attr('aria-describedby', 'titleTest descTest')
-      .append("g")
+      .attr('aria-describedby', 'bubble_desc')
+      ;
+
+    this.bubbleSvg.append('desc')
+      .attr('id', 'bubble_desc')
+      .html('Bubble chart of grants and contracts data by agency.')
+      ;
+
+    this.bubbleG = this.bubbleSvg.append("g")
       .attr("transform", "translate(" + this.diameter / 2 + "," + this.diameter / 2 + ")")
       ;
 
-    d3.select(this.bubbleChartContainer).select('svg').append('title')
-      .attr('id', 'titleTest')
-      .text('The quick brown fox jumped over the lazy dog 1.')
-      ;
-
-    d3.select(this.bubbleChartContainer).select('svg')
-      .append('desc')
-      .attr('id', 'descTest')
-      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
-        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
-        'The quick brown fox jumped over the lazy dog 5.')
-      ;
-
-
-    this.circle = this.bubbleSvg.selectAll("circle")
+    this.circle = this.bubbleG.selectAll("circle")
       .data(this.nodes)
       .enter().append("circle")
       .attr("class", function (d) {
@@ -282,7 +274,7 @@ export default class BubbleChart extends Component {
       })
       ;
 
-    this.bubbleSvg.selectAll("text")
+    this.bubbleG.selectAll("text")
       .data(this.nodes)
       .enter().append("text")
       .attr("font-family", "Source Sans Pro")
@@ -317,7 +309,7 @@ export default class BubbleChart extends Component {
       .call(this.tip)
       ;
 
-    this.node = this.bubbleSvg.selectAll("circle,text");
+    this.node = this.bubbleG.selectAll("circle,text");
   }
 
   // Zoom into a specific circle
@@ -531,5 +523,3 @@ export default class BubbleChart extends Component {
       </div>)
   }
 }
-
-// export default BubbleChart;
