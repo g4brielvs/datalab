@@ -5,7 +5,7 @@ import ControlBar from '../../components/control-bar/control-bar';
 import Reset from '../../components/reset/reset';
 import Share from '../../components/share/share';
 import BarChart from '../../components/visualizations/federal-employees/bar-chart/bar-chart';
-import Downloads from "../../components/section-elements/downloads/downloads"
+import Downloads from "../../components/section-elements/downloads/downloads";
 
 export default function What(props) {
 
@@ -21,15 +21,15 @@ export default function What(props) {
   });
 
   return <>
-    <h2>Federal Employee Bar Chart</h2>
-    <ControlBar>
-      <Reset />
-      <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
-    </ControlBar>
-    <BarChart sectionId={props.sectionId} dataSource={props.dataSource} />
-    <Downloads
-      data={downloadableData}
-      isJSON={true}
-    />
-  </>;
+           <h2>Federal Employee Bar Chart</h2>
+           <ControlBar isFed={true}>
+             <Reset />
+             <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
+           </ControlBar>
+           <BarChart sectionId={props.sectionId} dataSource={props.dataSource} />
+           <Downloads
+             data={downloadableData}
+             isJSON={true}
+           />
+         </>;
 }

@@ -1,9 +1,9 @@
-import React from "react"
-import "../../styles/index.scss"
+import React from "react";
+import "../../styles/index.scss";
 
 /* components */
 import Mapviz from '../../components/visualizations/federal-employees/mapviz/mapviz';
-import Downloads from "../../components/section-elements/downloads/downloads"
+import Downloads from "../../components/section-elements/downloads/downloads";
 const employeesData = require('../../../static/unstructured-data/federal-employees/employees.json');
 
 function Where(props) {
@@ -17,7 +17,7 @@ function Where(props) {
         isJSON={true}
       />
     </>
-  )
+  );
 }
 
-export default Where
+export default Where;
