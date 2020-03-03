@@ -9,15 +9,43 @@ import Downloads from '../../components/section-elements/downloads/downloads';
 import { Grid } from '@material-ui/core';
 import Search from 'src/components/chartpanels/search';
 import tooltipModule from '../../components/tooltip/tooltip';
+import { graphql, useStaticQuery } from "gatsby";
 
 export default function FederalPrograms(props) {
+  const data = useStaticQuery(graphql`
+    query {
+      allCoCcfdAfunding2019V3Csv {
+        nodes {
+          CFDA_website
+          beneficiary_eligability
+          category
+          cfda_number
+          coc_name
+          coc_number
+          fed_funding
+          id
+          level_of_detail
+          level_of_focus_on_homelessness
+          objectives
+          program_title
+          program_website
+          types_of_assistance
+        }
+      }
+    }
+  `);
+
   const { mem } = dataSource;
   const us = mem.us;
   const acr = mem.acr;
   const state = mem.states;
   const tableData = mem.pop;
   const cfdaState = mem.cfdaState;
-  let barChrt = mem.barChart;
+  let barChrt = [];
+
+  if(data && data.allCoCcfdAfunding2019V3Csv && data.allCoCcfdAfunding2019V3Csv.nodes){
+    barChrt = data.allCoCcfdAfunding2019V3Csv.nodes;
+  };
 
   const absWidth = 1024;
   const absHeight = 575;
@@ -801,8 +829,9 @@ export default function FederalPrograms(props) {
   }
 
   function getProgram(d) {
+    const cfdaNum = Number(d.cfda_number);
     for (let i = 0; i < barChrt.length; i++) {
-      if (acr[i] && d.cfda_number === acr[i].cfda_number) {
+      if (acr[i] && cfdaNum === acr[i].cfda_number) {
         return acr[i].acronym;
       }
     }

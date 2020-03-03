@@ -1,6 +1,5 @@
 const map = require('../../../../../static/unstructured-data/homelessness-analysis/2019_coc_grantee_areas_v2');
 const cfdaStateData = require('../../../../../static/unstructured-data/homelessness-analysis/2019statecfdafunding.csv');
-const barChart = require('../../../../../static/unstructured-data/homelessness-analysis/2019CoCCFDAfunding_v3.csv');
 const stateList = require('../../../../../static/unstructured-data/homelessness-analysis/State_crosswalk.csv');
 const acronyms = require('../../../../../static/unstructured-data/homelessness-analysis/cfda_acronyms.csv');
 const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
@@ -13,7 +12,6 @@ const altText = require('../../../../../static/unstructured-data/homelessness-an
 const DataModule = {
   mem: { us: map,
     cfdaState: cfdaStateData,
-    barChart: barChart,
     states: stateList,
     acr: acronyms,
     pop: cocPopulation,
@@ -29,10 +27,6 @@ const DataModule = {
 
   loadCfdaStates: (cb) => {
     cb(DataModule.mem.cfdaState);
-  },
-
-  loadBarChart: (cb) => {
-    cb(DataModule.mem.barChart);
   },
 
   loadStates: (cb) => {
