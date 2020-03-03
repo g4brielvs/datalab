@@ -85,9 +85,15 @@ function BudgetFunctionContainer() {
     setDataLocFunc(year);
   };
 
+  // reset to default val of fy19.
+  function resetYear() {
+    setFiscalYear('fy19');
+    setDataLocFunc('fy19');
+  };
+
   function setDataLocFunc(year){
     let fiscalStr = '';
-    switch(year){
+    switch(year) {
       case 'fy19':
         fiscalStr = '/data/budget-function/sankey/2019/sankey_v1_FY19.csv'
         break;
@@ -163,7 +169,9 @@ function BudgetFunctionContainer() {
         <Sankey data={fiscalYearData[year].data}
                 sPanel={fiscalYearData[year].sPanel}
                 sTitle={fiscalYearData[year].sTitle}
-                descriptions={fiscalYearData[year].descriptions} />
+                descriptions={fiscalYearData[year].descriptions}
+                resetYear={() => resetYear()}
+                />
       </div>
       <Downloads
         href={dataLoc}

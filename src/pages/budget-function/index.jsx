@@ -1,10 +1,14 @@
-import React from "react"
-import { graphql } from "gatsby"
-import SEO from "src/components/seo"
-import ToolLayout from "src/components/layouts/tool/tool"
-import Accordion from "src/components/accordion/accordion"
-import loadable from "@loadable/component"
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress"
+import React from "react";
+import { graphql } from "gatsby";
+import SEO from "src/components/seo";
+import ToolLayout from "src/components/layouts/tool/tool";
+import Accordion from "src/components/accordion/accordion";
+import loadable from "@loadable/component";
+import ControlBar from '../../components/control-bar/control-bar.jsx';
+import Reset from '../../components/reset/reset';
+import Share from "../../components/share/share";
+
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 const BudgetFunctionContainer = loadable(() => import('src/containers/budget-function/budget-function-container'),
   {
@@ -44,17 +48,17 @@ function BudgetFunctionPage(props) {
           </ul>
         </Accordion>
 
+      <ControlBar>
+        <Reset id='resetBtn'/>
+        <Share location={props.location}/>
+      </ControlBar>
         <BudgetFunctionContainer />
-
       </ToolLayout>
     </>
-
-  )
-
+  );
 }
 
-export default BudgetFunctionPage
-
+export default BudgetFunctionPage;
 
 export const IndexQuery = graphql`
   query {

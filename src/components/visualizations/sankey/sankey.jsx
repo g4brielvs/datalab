@@ -4,7 +4,6 @@ import * as d3 from "d3v3";
 import './sankey.scss';
 import './sankey-brackets.scss';
 
-
 import SankeyBrackets from "./sankey-brackets";
 
 function Sankey(props) {
@@ -113,7 +112,17 @@ function Sankey(props) {
   useEffect(() => {
     clearAll();
     makeSankey(data, sPanel, sTitle, descriptions);
+    document.getElementById('resetBtn').onclick = () => {
+      resetViz();
+    };
   });
+
+  function resetViz() {
+    clearAll();
+    document.getElementById('contactChoice1').checked = true; // fy 19 radio id
+    props.resetYear();
+    makeSankey(data, sPanel, sTitle, descriptions);
+  };
 
   const clearAll = () => {
     d3.selectAll('#sankey-viz > svg').remove();
@@ -121,7 +130,7 @@ function Sankey(props) {
     d3.selectAll("#tab_2").remove();
     d3.selectAll("#tab_3").remove();
     d3.selectAll("#description").remove();
-  }
+  };
 
   d3.sankey = () => {
     const sankey = {};
@@ -430,7 +439,6 @@ function Sankey(props) {
       .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
       .attr("class", "sankey-viz-svg")
       .attr('role', 'img')
-      .attr('aria-labelledby', 'titleTest descTest')
       .append("g")
       .attr("transform",
         `translate(${margin.left},${margin.top})`);
@@ -438,16 +446,13 @@ function Sankey(props) {
     // add title
     d3.select("#sankey-viz svg")
       .append('title')
-      .attr('id', 'titleTest')
-      .text('The quick brown fox jumped over the lazy dog 1.');
+      .attr('id', 'viz-title')
+      .text('Sankey Visualization');
 
     d3.select("#sankey-viz svg")
       .append('desc')
-      .attr('id', 'descTest')
-      .text('The quick brown fox jumped over the lazy dog 1.  The quick brown fox jumped over the lazy dog 2.  ' +
-        'The quick brown fox jumped over the lazy dog 3.  The quick brown fox jumped over the lazy dog 4. ' +
-        'The quick brown fox jumped over the lazy dog 5.');
-
+      .attr('id', 'viz-description')
+      .text('The chart allows users to see spending split into Budget Functions and Object Classes. Examples of Budget Function categories include Social Security, Medicare, Income Security, National Defense, Agriculture, International Affairs, and Natural Resources and Environment. Examples of Object Classes categories include Insurance Claims and Indemnities, Interest and Dividends, Refunds, Printing and Supplies, and Travel and Transportation.');
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()
@@ -724,14 +729,12 @@ function Sankey(props) {
       .filter((d) => d.x < width / 2)
       .attr("x", 6 + sankey.nodeWidth())
       .attr("text-anchor", "start");
-
-
   }
 
   const inlineStyle = {
     position: 'absolute',
     margin: '20px 20px 20px 45px',
-  }
+  };
 
   return (
     <>
