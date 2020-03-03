@@ -1106,6 +1106,25 @@ function DTS(props) {
         return d;
       }
     }
+
+    let debounce, previousWidth;
+
+    window.addEventListener('resize', function () {
+      if (debounce) {
+        clearTimeout(debounce);
+      }
+
+      if (previousWidth === window.innerWidth) {
+        return;
+      }
+
+      previousWidth = window.innerWidth;
+
+      debounce = setTimeout(function () {
+        d3.select('#svg-wrapper').selectAll('*').remove();
+        drawChart('redraw');
+      }, 300);
+    });
   });
 
   if (!props.data) {
