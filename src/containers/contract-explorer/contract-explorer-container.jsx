@@ -60,28 +60,28 @@ const SunburstVegaContainer = () => {
       case 'agency':
         if (agencies.findIndex(a => a.display === e.name) === -1) {
           agencies.push({
-            id: `a${e.agency}`,
-            display: e.agency
+            id: `a${e.name}`,
+            display: e.name
           });
         }
         break;
 
 
       case 'subagency':
-        if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
+        if (subagencies.findIndex(s => s.display === e.name) === -1) {
           subagencies.push({
-            id: `s${e.subagency}`,
-            display: e.subagency
+            id: `s${e.name}`,
+            display: e.name
           });
         }
         break;
 
 
       case 'recipient':
-        if (recipients.findIndex(r => r.display === e.recipient) === -1) {
+        if (recipients.findIndex(r => r.display === e.name) === -1) {
           recipients.push({
-            id: `r${e.recipient}`,
-            display: e.recipient
+            id: `r${e.name}`,
+            display: e.name
           });
         }
         break;
