@@ -39,7 +39,8 @@ export default class FederalEmployeesPage extends Component {
 			[
 				{
 					section: 'Who',
-					number: '01',
+          anchor: 'Who',
+          number: '01',
 					subtext: 'Who',
 					subblurb: 'How much do agencies spend on personnel?',
 					sectionTeaser: ['How much do agencies spend ', <span key='teaser-callout' className={fedEmpStyles.headingBlue}>on personnel?</span>],
@@ -48,7 +49,8 @@ export default class FederalEmployeesPage extends Component {
 				},
 				{
 					section: 'Where',
-					number: '02',
+          anchor: 'Where',
+          number: '02',
 					subtext: 'Where',
 					subblurb: 'Where do federal employees work?',
 					sectionTeaser: ['Where do ', <span key='teaser-callout' className={fedEmpStyles.headingBlue}>federal employees work?</span>],
@@ -57,7 +59,8 @@ export default class FederalEmployeesPage extends Component {
 				},
 				{
 					section: 'What',
-					number: '03',
+          anchor: 'What',
+          number: '03',
 					subtext: 'What',
 					subblurb: 'What do federal employees do?',
 					sectionTeaser: ['What do ', <span key='teaser-callout' className={fedEmpStyles.headingBlue}>federal employees do?</span>],

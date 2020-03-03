@@ -49,6 +49,7 @@ export default class HomelessnessPage extends Component {
       [
         {
           section: "Geography",
+          anchor: "geography",
           number: "01",
           subtext: "Geography",
           subblurb: "How individuals experiencing homelessness are counted",
@@ -65,6 +66,7 @@ export default class HomelessnessPage extends Component {
         },
         {
           section: "Federal Programs",
+          anchor: "federal-programs",
           number: "02",
           subtext: "Federal Programs",
           subblurb: "Federal programs that address homelessness",
@@ -104,6 +106,7 @@ export default class HomelessnessPage extends Component {
         },
         {
           section: "Continuum Care",
+          anchor: "continuum-care",
           number: "03",
           subtext: "Continuum Care",
           subblurb: "Which Continuum of Care areas are similar to each other?",
@@ -115,6 +118,7 @@ export default class HomelessnessPage extends Component {
         },
         {
           section: "Final Thoughts",
+          anchor: "final-thoughts",
           number: "04",
           subtext: "Final Thoughts",
           subblurb: "Why we conducted this analysis",
@@ -151,7 +155,7 @@ export default class HomelessnessPage extends Component {
               const SectionTag = this.sectionComponents[item.tagName];
               return (
                 <StorySection key={key} header={item}>
-                  <SectionTag sectionId={'section-' + item.section} dataSource={DataModule} location={this.props.location} />
+                  <SectionTag sectionId={`section-${item.section}`} dataSource={DataModule} location={this.props.location} />
                 </StorySection>
               )
             })
