@@ -1,6 +1,7 @@
 import React from 'react';
 import customHeaderStyles from './custom-header.module.scss';
 import { Hidden } from '@material-ui/core';
+import Toc from "../../../components/toc/toc"
 
 const CustomHeader = (props) => (
   <>
@@ -26,6 +27,11 @@ const CustomHeader = (props) => (
         </div>
       </section>
     </Hidden>
+
+    <section id={customHeaderStyles.toc}>
+      <Toc sections={props.sectionToc} />
+    </section>
+
   </>
 );
 

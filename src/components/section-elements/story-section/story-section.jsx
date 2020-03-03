@@ -8,7 +8,7 @@ function StorySection(props) {
     <>
       <Grid container justify="center" className={storySectionStyles.storySection}>
         <Grid item xs={12} xl={10}>
-          <section id={`section-${props.header.section}`}>
+          <section id={`section-${props.header.anchor}`}>
             <StorySectionHeading
               number={props.header.number}
               title={props.header.subtext}

@@ -13,7 +13,7 @@ p {
   height: 100%;
   width: 100%;
   left: 0;
-  z-index: 0;
+  z-index: -1;
 }
 
 .header {
@@ -61,22 +61,38 @@ p {
   line-height: 20px;
 }
 
+#toc {
+  margin-top: 23rem;
+  padding-top: 2rem;
+  border-top: $darkGrey 1px solid;
+}
+
+@media screen and (max-width: $desktop - 1) {
+  .header-hero {
+    padding-bottom: $margin-75;
+  }
+
+  #toc {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: $tablet - 1) {
+  #toc {
+    margin-bottom: 25px;
+  }
+
+}
+
 @media (max-width: $phone - 1){
   .subtext {
     padding-top: $margin-30;
   }
-}
 
-@media screen and (min-width: $desktop-xl) {
-  .header-hero {
-    padding-bottom: $margin-75;
-  }
-}
-
-@media (max-width: $phone - 1) {
   .header-hero {
     margin-top: $margin-30;
     padding-bottom: $margin-25;
   }
 }
+
 

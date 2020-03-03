@@ -1,7 +1,6 @@
 import React from 'react';
 
 import CustomHeader from '../../page-sections/colleges-and-universities/custom-header/custom-header';
-import CustomToc from '../../page-sections/colleges-and-universities/custom-toc/custom-toc';
 import Footnotes from '../../components/footnotes/footnotes';
 import Overview from '../../page-sections/colleges-and-universities/overview';
 import SEO from '../../components/seo';
@@ -31,10 +30,43 @@ const Institutions = loadable(() => import('../../page-sections/colleges-and-uni
   </div>
 });
 
+const sections=
+  [{
+    section: 'Investment Overview',
+    number: '01',
+    anchor: 'overview',
+    subblurb: 'WHAT IS A FEDERAL INVESTMENT?',
+    blurb: 'Learn more about the three categories of federal investments: student aid, grants, and contracts.'
+  },
+  {
+    section: 'My Alma Mater',
+    number: '02',
+    anchor: 'institutions',
+    subblurb: 'How much did my school receive?',
+    blurb: 'Search for your school and discover details about federal funding at your alma mater.'
+  },
+  {
+    section: 'Agency Investment',
+    number: '03',
+    anchor: 'agencies',
+    subblurb: 'Which federal agencies are involved?',
+    blurb: 'Find out which federal agencies provide investments and in what amounts.'
+  },
+  {
+    section: 'Investment Categories',
+    number: '04',
+    anchor: 'categories',
+    subblurb: 'What are the investments used for?',
+    blurb: 'Discover more about what is funded by federal investment.'
+  }];
+
 export default class CollegesAndUniversitiesPage extends React.Component {
+
+
+
   render = () =>
     <StoryLayout isCustomHeader={true}
-                 hwctaLink={this.props.location.pathname + '/methodologies'}>
+                 hwctaLink={this.props.location.pathname + '/methodologies'} >
       <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
 
         <CustomHeader
@@ -44,57 +76,27 @@ export default class CollegesAndUniversitiesPage extends React.Component {
         blurb={['Did you know the federal government invested over $149 billion in colleges and universities in fiscal year 2018?',
           <br key='blurb-linebreak' />,
           'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']}
+        sectionToc={sections}
       />
 
-      <CustomToc
-        sections={
-          [{
-            section: 'one',
-            number: '01',
-            subtext: 'Investment Overview',
-            subblurb: 'WHAT IS A FEDERAL INVESTMENT?',
-            blurb: 'Learn more about the three categories of federal investments: student aid, grants, and contracts.'
-          },
-          {
-            section: 'two',
-            number: '02',
-            subtext: 'My Alma Mater',
-            subblurb: 'How much did my school receive?',
-            blurb: 'Search for your school and discover details about federal funding at your alma mater.'
-          },
-          {
-            section: 'three',
-            number: '03',
-            subtext: 'Agency Investment',
-            subblurb: 'Which federal agencies are involved?',
-            blurb: 'Find out which federal agencies provide investments and in what amounts.'
-          },
-          {
-            section: 'four',
-            number: '04',
-            subtext: 'Investment Categories',
-            subblurb: 'What are the investments used for?',
-            blurb: 'Discover more about what is funded by federal investment.'
-          },
-          ]}
-      />
+
 
       <Grid container
             justify="center"
             className={styles.cu}>
-        <Grid item xs={10} className={styles.section}>
+        <Grid item xs={10} className={styles.section} id={"section-overview"}>
           <Overview location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10} className={styles.section}>
+        <Grid item xs={10} className={styles.section} id={"section-institutions"}>
           <Institutions location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10} className={styles.section}>
+        <Grid item xs={10} className={styles.section} id={"section-agencies"}>
           <Agencies location={this.props.location} />
         </Grid>
 
-        <Grid item xs={10} className={styles.section}>
+        <Grid item xs={10} className={styles.section} id={"section-categories"}>
           <Categories location={this.props.location} />
         </Grid>
 
