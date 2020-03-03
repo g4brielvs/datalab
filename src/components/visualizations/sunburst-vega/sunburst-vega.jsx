@@ -25,7 +25,7 @@ export default class Sunburst extends React.Component {
       selectedArc: this.props.default,
       previousArc: this.props.default
     };
-    
+
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
