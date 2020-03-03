@@ -3,7 +3,7 @@
 .debt-intro-wrapper {
 
 
-.viz-wrapper {
+.viz-wrapper-debt {
   position: relative;
 }
 
@@ -20,15 +20,6 @@
   opacity: 0;
 }
 
-.facts {
-  position: absolute;
-  top: 4rem;
-  left: 0;
-  width: 100%;
-  transition: opacity 1s ease;
-  margin-bottom: 2rem;
-}
-
 .facts__section {
   display: none;
   opacity: 0;
@@ -38,13 +29,6 @@
 .facts__triggers {
   display: flex;
   justify-content: space-between;
-}
-
-.facts__prompt {
-  margin-top: 0;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: $text-color-heading;
 }
 
 .facts__trigger {
@@ -63,26 +47,6 @@
 
 .facts.facts--hidden {
   opacity: 0;
-}
-
-.facts__inner {
-  background: rgba(255, 255, 255, 0.95);
-  width: 400px;
-  max-width: 80%;
-  margin: 0 auto;
-  box-shadow: 0 0 30px rgba(0,0,0,0.3);
-
-  section {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  h1 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: left;
-    margin-top: 0;
-  }
 }
 
 aside {
@@ -119,10 +83,6 @@ aside {
     margin-left: calc(66% + 1rem);
     transition: opacity 1s ease;
     transform: translateY(30px);
-  }
-
-  .facts {
-    top: 0;
   }
 
   .facts__inner {

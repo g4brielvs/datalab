@@ -1,11 +1,12 @@
 .facts {
-    position: absolute;
-    top: 2.5rem;
-    left: 0;
-    width: 100%;
-    transition: opacity 1s ease;
-    margin-bottom: 2rem;
-  }
+  position: absolute;
+  top: 2.5rem;
+  left: calc(50% - 200px);
+  max-width: 80%;
+  width: 400px;
+  transition: opacity 1s ease;
+  margin-bottom: 2rem;
+}
 
   .facts__section {
     display: none;
@@ -55,8 +56,6 @@
 
   .facts__inner {
     background: rgba(255, 255, 255, 0.95);
-    width: 400px;
-    max-width: 80%;
     margin: 0 auto;
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
 
@@ -76,6 +75,7 @@
   @media only screen and (min-width: 960px) {
     .facts {
       top: 4rem;
+      left: 0;
     }
 
     .facts__trigger {
@@ -84,5 +84,11 @@
 
     .facts__prompt {
       font-size: 1.6rem;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .facts {
+      left: 10%;
     }
   }
