@@ -19,11 +19,11 @@ export default function Who(props) {
   });
 
   return <>
-    <h2>Spending by Agency</h2>
-    <ControlBar>
-      <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
-    </ControlBar>
-    <Treemap sectionId={props.sectionId} dataSource={props.dataSource} />
-    <Downloads data={downloadableData} isJSON={true} />
-  </>;
+           <h2>Spending by Agency</h2>
+           <ControlBar isFed={true}>
+             <Share location={props.location} facebook='' reddit='' linkedin='' tumblr='' email='' />
+           </ControlBar>
+           <Treemap sectionId={props.sectionId} dataSource={props.dataSource} />
+           <Downloads data={downloadableData} isJSON={true} />
+         </>;
 }
