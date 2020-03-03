@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import * as d3 from "d3v4";
 import Tooltip from "../util/tooltip";
 import mapStyles from './mapviz.module.scss';
-import Multiselector from "../../../multiselector/multiselector"
-import barChartStyles from "../bar-chart/bar-chart.module.scss"
-import ControlBar from "../../../control-bar/control-bar"
-import Reset from "../../../reset/reset"
-import Share from "../../../share/share"
+import Multiselector from "../../../multiselector/multiselector";
+import barChartStyles from "../bar-chart/bar-chart.module.scss";
+import ControlBar from "../../../control-bar/control-bar";
+import Reset from "../../../reset/reset";
+import Share from "../../../share/share";
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -230,7 +230,7 @@ export default function Mapviz(props) {
 
   return (
     <>
-      <ControlBar>
+      <ControlBar isFed={true}>
         <Reset _resetClick={reset} />
         <Share location={props.location} />
       </ControlBar>
