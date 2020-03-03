@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Grid, Hidden } from '@material-ui/core';
 
-import Downloads from "src/components/section-elements/downloads/downloads"
+import Downloads from "src/components/section-elements/downloads/downloads";
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -18,6 +18,8 @@ import flareData from '../../../static/unstructured-data/contract-explorer/flare
 import agencyAbbrv from '../../../static/unstructured-data/contract-explorer/Agency_Abbreviations_2020_02_14_v1.csv';
 import subagencyNames from '../../../static/unstructured-data/contract-explorer/subagencies_.json';
 import subagencyAbbrv from '../../../static/unstructured-data/contract-explorer/subagencies_abbrv_.json';
+
+import * as d3 from "d3v3";
 
 const SunburstVegaContainer = () => {
 
@@ -46,25 +48,67 @@ const SunburstVegaContainer = () => {
   }, []);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
-  let agencies = sunData.tree.filter(node => node.type === 'agency');
-  agencies = agencies.map(function(x) {
-    return {id: `a${x.name}`, display: x.name}
-  });
-  agencies = [...new Set([agencies])];
+  // let agencies = sunData.tree.filter(node => node.type === 'agency');
+  // agencies = agencies.map(function(x) {
+  //   return {id: `a${x.name}`, display: x.name}
+  // });
+  // agencies = [...new Set([agencies])];
+  //
+  // let subagencies = sunData.tree.filter(node => node.type === 'subagency');
+  // subagencies = subagencies.map(function(x) {
+  //   return {id: `s${x.name}`, display: x.name}
+  // });
+  // subagencies = [...new Set([subagencies])];
+  //
+  // let recipients = sunData.tree.filter(node => node.type === 'recipient');
+  // recipients = recipients.map(function(x) {
+  //   return {id: `r${x.name}`, display: x.name}
+  // });
+  // recipients = [...new Set([recipients])];
+  //
+  // const searchList = agencies.concat(subagencies).concat(recipients).flat();
 
-  let subagencies = sunData.tree.filter(node => node.type === 'subagency');
-  subagencies = subagencies.map(function(x) {
-    return {id: `s${x.name}`, display: x.name}
-  });
-  subagencies = [...new Set([subagencies])];
+  // create arrays of unique agencies, subagencies and recipients with ID for search list
+  const agencies = [];
+  const subagencies = [];
+  const recipients = [];
 
-  let recipients = sunData.tree.filter(node => node.type === 'recipient');
-  recipients = recipients.map(function(x) {
-    return {id: `r${x.name}`, display: x.name}
-  });
-  recipients = [...new Set([recipients])];
+  sunData.tree.forEach((e) => {
 
-  const searchList = agencies.concat(subagencies).concat(recipients).flat();
+    switch(e.type) {
+      case 'agency':
+        if (agencies.findIndex(a => a.display === e.name) === -1) {
+          agencies.push({
+            id: `a${e.agency}`,
+            display: e.agency
+          });
+        }
+        break;
+
+
+      case 'subagency':
+        if (subagencies.findIndex(s => s.display === e.subagency) === -1) {
+          subagencies.push({
+            id: `s${e.subagency}`,
+            display: e.subagency
+          });
+        }
+        break;
+
+
+      case 'recipient':
+        if (recipients.findIndex(r => r.display === e.recipient) === -1) {
+          recipients.push({
+            id: `r${e.recipient}`,
+            display: e.recipient
+          });
+        }
+        break;
+    }
+
+  });
+
+  const searchList = agencies.concat(subagencies).concat(recipients);
 
   const sunburstRef = React.createRef();
 
