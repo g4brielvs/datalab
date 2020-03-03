@@ -52,19 +52,13 @@ function BudgetFunctionPage(props) {
         <Reset id='resetBtn'/>
         <Share location={props.location}/>
       </ControlBar>
-
-
         <BudgetFunctionContainer />
-
       </ToolLayout>
     </>
-
-  )
-
+  );
 }
 
 export default BudgetFunctionPage;
-
 
 export const IndexQuery = graphql`
   query {

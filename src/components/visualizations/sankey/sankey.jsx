@@ -119,8 +119,9 @@ function Sankey(props) {
 
   function resetViz() {
     clearAll();
-    document.getElementById('contactChoice1').checked = true; // FY 19
-    makeSankey(data,sPanel, sTitle, descriptions);
+    document.getElementById('contactChoice1').checked = true; // fy 19 radio id
+    props.resetYear();
+    makeSankey(data, sPanel, sTitle, descriptions);
   };
 
   const clearAll = () => {
