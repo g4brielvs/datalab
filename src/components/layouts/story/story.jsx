@@ -17,7 +17,7 @@ const StoryLayout = (props) => {
     header =
       <Grid container>
         <Grid item>
-          <header className={styles.headerHero} >
+          <header className={styles.headerHero}>
             <p className={styles.title}>
               {props.title}
             </p>
@@ -32,7 +32,9 @@ const StoryLayout = (props) => {
       </Grid>;
 
     toc = <Toc sections={props.sectionToc} />;
+
   }
+
 
   return <Default>
     <StorypageHeader/>
