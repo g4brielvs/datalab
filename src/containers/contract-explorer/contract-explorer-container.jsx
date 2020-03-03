@@ -48,30 +48,11 @@ const SunburstVegaContainer = () => {
   }, []);
 
   // create arrays of unique agencies, subagencies and recipients with ID for search list
-  // let agencies = sunData.tree.filter(node => node.type === 'agency');
-  // agencies = agencies.map(function(x) {
-  //   return {id: `a${x.name}`, display: x.name}
-  // });
-  // agencies = [...new Set([agencies])];
-  //
-  // let subagencies = sunData.tree.filter(node => node.type === 'subagency');
-  // subagencies = subagencies.map(function(x) {
-  //   return {id: `s${x.name}`, display: x.name}
-  // });
-  // subagencies = [...new Set([subagencies])];
-  //
-  // let recipients = sunData.tree.filter(node => node.type === 'recipient');
-  // recipients = recipients.map(function(x) {
-  //   return {id: `r${x.name}`, display: x.name}
-  // });
-  // recipients = [...new Set([recipients])];
-  //
-  // const searchList = agencies.concat(subagencies).concat(recipients).flat();
-
-  // create arrays of unique agencies, subagencies and recipients with ID for search list
   const agencies = [];
   const subagencies = [];
   const recipients = [];
+  let searchList = [];
+
 
   sunData.tree.forEach((e) => {
 
@@ -108,7 +89,7 @@ const SunburstVegaContainer = () => {
 
   });
 
-  const searchList = agencies.concat(subagencies).concat(recipients);
+  searchList = agencies.concat(subagencies).concat(recipients);
 
   const sunburstRef = React.createRef();
 
