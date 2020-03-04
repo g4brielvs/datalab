@@ -15,7 +15,6 @@ import StoryHeading from 'src/components/section-elements/story-section-heading/
 import TableContainer from './agencies-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import VizContainer from './bubble-chart-container/bubble-chart-container';
-import StorySection from "../../../components/section-elements/story-section/story-section"
 
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`

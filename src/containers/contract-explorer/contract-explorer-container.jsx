@@ -35,6 +35,7 @@ const SunburstVegaContainer = () => {
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
   const [pscData, setPscData] = useState([]);
+  const [searchList, setSearchList] = useState([]);
 
    useEffect(() => {
     d3.csv('/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv', function(data) {
@@ -45,51 +46,55 @@ const SunburstVegaContainer = () => {
     setDetails(details);
     setOriginalData(appendColors(flareData));
 
+     // create arrays of unique agencies, subagencies and recipients with ID for search list
+     const agencies = [];
+     const subagencies = [];
+     const recipients = [];
+     let searchList = [];
+
+     sunData.tree.forEach((e) => {
+
+       switch(e.type) {
+         case 'agency':
+           if (agencies.findIndex(a => a.display === e.name) === -1) {
+             agencies.push({
+               id: `a${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+
+
+         case 'subagency':
+           if (subagencies.findIndex(s => s.display === e.name) === -1) {
+             subagencies.push({
+               id: `s${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+
+
+         case 'recipient':
+           if (recipients.findIndex(r => r.display === e.name) === -1) {
+             recipients.push({
+               id: `r${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+       }
+
+     });
+
+     setSearchList(agencies.concat(subagencies).concat(recipients));
+
   }, []);
 
-  // create arrays of unique agencies, subagencies and recipients with ID for search list
-  const agencies = [];
-  const subagencies = [];
-  const recipients = [];
-  let searchList = [];
 
 
-  sunData.tree.forEach((e) => {
-
-    switch(e.type) {
-      case 'agency':
-        if (agencies.findIndex(a => a.display === e.name) === -1) {
-          agencies.push({
-            id: `a${e.name}`,
-            display: e.name
-          });
-        }
-        break;
 
 
-      case 'subagency':
-        if (subagencies.findIndex(s => s.display === e.name) === -1) {
-          subagencies.push({
-            id: `s${e.name}`,
-            display: e.name
-          });
-        }
-        break;
-
-
-      case 'recipient':
-        if (recipients.findIndex(r => r.display === e.name) === -1) {
-          recipients.push({
-            id: `r${e.name}`,
-            display: e.name
-          });
-        }
-        break;
-    }
-
-  });
-
-  searchList = agencies.concat(subagencies).concat(recipients);
 
   const sunburstRef = React.createRef();
 
