@@ -6,7 +6,6 @@ import Downloads from 'src/components/section-elements/downloads/downloads';
 import * as d3 from 'd3v3';
 import numberFormatter from 'src/utils/number-formatter';
 import { Grid, Hidden } from '@material-ui/core';
-import { timeout } from 'd3';
 
 export class CompetitionInContractingContainer extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Grid, Hidden } from '@material-ui/core';
 
-import Downloads from "src/components/section-elements/downloads/downloads"
+import Downloads from "src/components/section-elements/downloads/downloads";
 import SunburstDetails from './details/sunburst-details';
 import Sunburst from 'src/components/visualizations/sunburst-vega/sunburst-vega';
 import BreadCrumbs from "src/components/breadcrumbs/breadcrumbs";
@@ -19,6 +19,8 @@ import agencyAbbrv from '../../../static/unstructured-data/contract-explorer/Age
 import subagencyNames from '../../../static/unstructured-data/contract-explorer/subagencies_.json';
 import subagencyAbbrv from '../../../static/unstructured-data/contract-explorer/subagencies_abbrv_.json';
 
+import * as d3 from "d3v3";
+
 const SunburstVegaContainer = () => {
 
   const defaultSelection = {
@@ -33,6 +35,7 @@ const SunburstVegaContainer = () => {
   const [sunData, setOriginalData] = useState(flareData);
   const [updatedSunData, setData] = useState(sunData);
   const [pscData, setPscData] = useState([]);
+  const [searchList, setSearchList] = useState([]);
 
    useEffect(() => {
     d3.csv('/unstructured-data/contract-explorer/PSC_by_Recip_FY18_v2.csv', function(data) {
@@ -43,28 +46,55 @@ const SunburstVegaContainer = () => {
     setDetails(details);
     setOriginalData(appendColors(flareData));
 
+     // create arrays of unique agencies, subagencies and recipients with ID for search list
+     const agencies = [];
+     const subagencies = [];
+     const recipients = [];
+     let searchList = [];
+
+     sunData.tree.forEach((e) => {
+
+       switch(e.type) {
+         case 'agency':
+           if (agencies.findIndex(a => a.display === e.name) === -1) {
+             agencies.push({
+               id: `a${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+
+
+         case 'subagency':
+           if (subagencies.findIndex(s => s.display === e.name) === -1) {
+             subagencies.push({
+               id: `s${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+
+
+         case 'recipient':
+           if (recipients.findIndex(r => r.display === e.name) === -1) {
+             recipients.push({
+               id: `r${e.name}`,
+               display: e.name
+             });
+           }
+           break;
+       }
+
+     });
+
+     setSearchList(agencies.concat(subagencies).concat(recipients));
+
   }, []);
 
-  // create arrays of unique agencies, subagencies and recipients with ID for search list
-  let agencies = sunData.tree.filter(node => node.type === 'agency');
-  agencies = agencies.map(function(x) {
-    return {id: `a${x.name}`, display: x.name}
-  });
-  agencies = [...new Set([agencies])];
 
-  let subagencies = sunData.tree.filter(node => node.type === 'subagency');
-  subagencies = subagencies.map(function(x) {
-    return {id: `s${x.name}`, display: x.name}
-  });
-  subagencies = [...new Set([subagencies])];
 
-  let recipients = sunData.tree.filter(node => node.type === 'recipient');
-  recipients = recipients.map(function(x) {
-    return {id: `r${x.name}`, display: x.name}
-  });
-  recipients = [...new Set([recipients])];
 
-  const searchList = agencies.concat(subagencies).concat(recipients).flat();
+
 
   const sunburstRef = React.createRef();
 
