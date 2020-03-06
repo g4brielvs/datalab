@@ -31,15 +31,20 @@ class FederalAccountExplorerPage extends Component {
                      <ToolLayout title='Federal Account Explorer'
                                  introSentence='Did you know that the government has almost 2,000 federal spending accounts?'
                                  contextStatement="Ever wonder who's getting federal contracts and what agencies are awarding them?
-                                 This tool lets you explore contract-related information for FY 17, including which organizations received federal contracts, 
+                                 This tool lets you explore contract-related information for FY 17, including which organizations received federal contracts,
                                  contract amounts, awarding agencies and sub-agencies, and the types of goods or services contract recipients provided to the federal government."
                                  sectionTitle='How do agencies receive and spend money?'
-                                 sectionText='Every fiscal year, Congress decides how much money to give the federal government through its budgeting 
-                                 and appropriations process. These funds, or appropriations, are then designated for specific purposes 
+                                 sectionText='Every fiscal year, Congress decides how much money to give the federal government through its budgeting
+                                 and appropriations process. These funds, or appropriations, are then designated for specific purposes
                                  and placed in specific federal accounts for each agency to use.'
-                                 hwctaLink={this.props.location.pathname + '/methodologies'}
-                     >
-                       <SEO title="Federal Account Explorer" keywords={[`gatsby`, `application`, `react`]} />
+                                 hwctaLink={this.props.location.pathname + '/methodologies'}>
+                       
+                       <SEO title="U.S. Treasury Data Lab - Federal Account Explorer – U.S. Treasury"
+														    description="The U.S. Treasury’s Data Lab presents a tree-style visualization exploring nearly 2,000 federal
+                                government spending accounts and the amounts spent."
+                                keywords={[`contracts`, `federal contracts`, `contractors`, `federal agencies`, `agencies`, `spending`,
+															  `federal account`, `dendrogram`]} />
+
                        <Accordion
                          title="Instructions">
                          <ul>
@@ -57,7 +62,7 @@ class FederalAccountExplorerPage extends Component {
                        </ControlBar>
 
                        <DendroContainer />
-                       
+
                      </ToolLayout>
                    </>;
   }
