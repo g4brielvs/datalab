@@ -38,7 +38,7 @@ class FederalAccountExplorerPage extends Component {
                                  and appropriations process. These funds, or appropriations, are then designated for specific purposes
                                  and placed in specific federal accounts for each agency to use.'
                                  hwctaLink={this.props.location.pathname + '/methodologies'}>
-                       
+
                        <SEO title="U.S. Treasury Data Lab - Federal Account Explorer – U.S. Treasury"
 														    description="The U.S. Treasury’s Data Lab presents a tree-style visualization exploring nearly 2,000 federal
                                 government spending accounts and the amounts spent."
