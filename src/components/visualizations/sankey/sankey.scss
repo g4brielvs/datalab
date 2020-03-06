@@ -1,33 +1,33 @@
 .budget-sankey {
-  & p.subheading {
+  p.subheading {
     font-size: 1.75rem;
     color: #525252;
-    font-style:italic;
+    font-style: italic;
   }
-  & .row.mt-0{
-    margin-left:0;
-    margin-right:0;
+  .row.mt-0 {
+    margin-left: 0;
+    margin-right: 0;
   }
-  #axis-label{
+  #axis-label {
     margin-right: 30px;
-    & .col-md-6{
-      padding:3px;
-      & h6{
+    .col-md-6 {
+      padding: 3px;
+      h6 {
         margin-bottom: 0px;
-        margin-top:0px;
+        margin-top: 0px;
         padding-right: 10px;
         padding-left: 10px;
       }
     }
   }
-  .treecolumn{
+  .treecolumn {
     column-count: 2;
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 1; /* Firefox */
   }
   .node rect {
     cursor: pointer;
-    fill-opacity: .9;
+    fill-opacity: 0.9;
     shape-rendering: crispEdges;
   }
   .node text {
@@ -37,10 +37,7 @@
   .link {
     fill: none;
     stroke: #000;
-    stroke-opacity: .1;
-  }
-  #sankey-viz {
-
+    stroke-opacity: 0.1;
   }
   #sankey-container {
     padding: 10px;
@@ -48,45 +45,49 @@
     flex-wrap: wrap;
   }
   #sankey-table {
-    text-align:left;
+    text-align: left;
     height: 100%;
     background-color: inherit;
     display: inline-block;
     flex: 1;
   }
-  .panel_desc{
+  .panel_desc {
     margin-top: 10px;
   }
   .panel_total_amount {
-    color: #5B616B;
+    color: #5b616b;
     margin-bottom: -15px;
     font-weight: 300;
     font-size: 0.875rem;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-  #tab{
+  #tab {
     margin-top: 0px;
     margin-bottom: 25px;
   }
 
-  table, th, td {
+  table,
+  th,
+  td {
     border: none;
   }
 
   table tr {
     background-color: #fff !important;
-    page-break-inside: avoid;page-break-before:auto;
+    page-break-inside: avoid;
+    page-break-before: auto;
     margin-bottom: 10px;
   }
-  table td { display: block; }​
-
-  #tab_2 > table > tbody > td {
+  table td {
+    display: block;
+  }
+  ​ #tab_2 > table > tbody > td {
     height: 32px;
   }
-  table > tbody > tr > td.val{
+  table > tbody > tr > td.val {
     width: 116px;
-    overflow:visible;
+    overflow: visible;
     font-weight: bold;
   }
   table > tbody > tr {
@@ -103,7 +104,7 @@
     margin-right: 0;
     margin-bottom: 10px;
     padding: 0;
-    color: #5B616B !important;
+    color: #5b616b !important;
     font-family: "Source Sans Pro";
     font-size: 1rem;
     font-weight: 600;
@@ -137,7 +138,7 @@
   }
   #sankey-table p {
     font-style: inherit;
-    font-size: .8em;
+    font-size: 0.8em;
     line-height: 110%;
     color: #555555;
   }
@@ -172,15 +173,19 @@
     line-height: 28px;
     font-weight: 300;
   }
-  #references{
+  #references {
     .p {
       margin-bottom: 1.5rem;
     }
   }
-  #sankey-viz text {
-    font-size: 0.75rem;
+  #sankey-viz {
+    .sankey-node {
+      cursor: pointer;
+    }
+    text {
+      font-size: 0.75rem;
+    }
   }
-
 
   @media (max-width: 1000px) {
     #sankey-table {
@@ -191,5 +196,4 @@
       height: 100%;
     }
   }
-
 }
