@@ -13,6 +13,7 @@ import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Footnotes from "../../components/footnotes/footnotes"
 import { Grid } from "@material-ui/core"
+import Home from '../../components/layouts/home/home';
 
 const Geography = loadable(() => import('src/page-sections/homelessness-analysis/geography'),
   {
@@ -140,18 +141,20 @@ export default class HomelessnessPage extends Component {
       ];
 
     return (
-      <div id='homelessnessPage'>
+		  <div id='homelessnessPage'>
         <StoryLayout
           title={'Homelessness Analysis'}
           introSentence={'On a single night in 2018, more than 550,000 people experienced homelessness in the United States.'}
           contextStatement={['Multiple federal, state, and local programs offer support to people facing homelessness. Our visualizations display federal financial data to show the breakdown of funding spent to address this problem.']}
           sectionToc={sections}
-          hwctaLink={this.props.location.pathname + '/methodologies'}
+          hwctaLink={this.props.location.pathname + '/methodologies'}>
 
-        >
-          <SEO title='Homelessness Analysis' keywords={[`gatsby`, `application`, `react`]} />
-          {
-            sections.map((item, key) => {
+					<SEO title="U.S. Treasury Data Lab - Homelessness Analysis"
+							 description="The U.S. Treasury’s Data Lab presents an analysis showing where people experience homelessness across America and the federal programs to assist them. On a single night in 2018 more than 550,000 people experienced homelessness in the United States."
+							 keywords={[`homelessness`, `federal spending`, `housing`, `federal programs`, `homeless`, `government programs`,
+								 `homeless housing`, `homeless shelter`, `homeless people`, `choropleth`, `bar chart`, `tree map`]} />
+
+            { sections.map((item, key) => {
               const SectionTag = this.sectionComponents[item.tagName];
               return (
                 <StorySection key={key} header={item}>
