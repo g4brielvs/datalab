@@ -13,7 +13,6 @@ import loadable from '@loadable/component';
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import Footnotes from "../../components/footnotes/footnotes"
 import { Grid } from "@material-ui/core"
-import Home from '../../components/layouts/home/home';
 
 const Geography = loadable(() => import('src/page-sections/homelessness-analysis/geography'),
   {
