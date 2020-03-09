@@ -89,10 +89,6 @@ class PageHeader extends React.Component {
       return this.setState({activeItem: ' '});
     }
     this.setState({ activeItem: e.target.innerText });
-    // shim for datalab express as we do not need it currently
-    if (e.target.innerText.toString().trim() === "DataLab Express") {
-      this.setState({ activeItem: ' ' });
-    }
   };
 
   tagLineCheck = (isSticky) => {
@@ -129,7 +125,7 @@ class PageHeader extends React.Component {
                   <FontAwesomeIcon icon={faBars} />
                 </span>
                 <ul className={styles.ulNav} id={styles.burgerMenu}>
-                  <li className={styles.item} onMouseOver={this.handleItemHover}>
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>                    
                     <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
                   </li>
                   {/* <li className={styles.item} onMouseOver={this.handleItemHover}> */}
