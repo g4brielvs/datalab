@@ -26,6 +26,7 @@
     right: 0;
     width: auto;
     border-top: none;
+    height: 24px;
 
     #burger-menu {
       display: none;
@@ -50,8 +51,8 @@
     .item {
       padding-top: .5rem;
       &:hover {
-	color: #046b99;
-	cursor: pointer;
+    	  color: #046b99;
+	      cursor: pointer;
       }
     }
     
@@ -74,16 +75,16 @@
       
       
       .data-list-li {
-	text-decoration: none;
+      	text-decoration: none;
       }
 
       .data-list-a {
-	text-decoration: none;
-	color: #666;
-	&:hover {
-	  color: #046b99;
-	  cursor: pointer;
-	}
+	      text-decoration: none;
+	      color: #666;
+	      &:hover {
+	        color: #046b99;
+	        cursor: pointer;
+	      }
       }
 
       #mobile-hr {
@@ -99,8 +100,8 @@
   .nav {
     #burger-menu {
       .navListItem {
-	padding-left: 20px;
-	padding-right: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
     }
   }
@@ -118,12 +119,7 @@
   }
 }
 
-// "super mobile" version 
 @media screen and (max-width: $phone) {
-  .main.tight {
-    height: 60px;
-  }
-
   .sub {
     top: 100px;
   }

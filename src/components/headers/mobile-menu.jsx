@@ -27,8 +27,12 @@ class MobileMenu extends React.Component {
   };
 
   handleClick = (e) => {
-    this.setState({clickedItem: e.target.innerText});
+    this.setState({clickedItem: e.target.innerText.toString().trim()});
   };
+
+  handleClickArrow = (dropdown) => {
+    this.setState({clickedItem: dropdown});
+  }
 
   render() {
     const show = this.props.showMenu;
@@ -36,14 +40,14 @@ class MobileMenu extends React.Component {
     return (
       <div>
         <ul className={`${styles.mobile} ${show ? `` : styles.hidden}`}>
-          <li className={styles.item} data-id='0' onClick={this.handleClick}>Analyses<span className={styles.arrow}> <Arrow/></span></li>
-          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Analyses ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
+          <li className={styles.item} data-id='0' onClick={this.handleClick}>Analyses<span className={styles.arrow} onClick={() => this.handleClickArrow('Analyses')}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Analyses' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
           {/* <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li> */}
           {/* <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul> */}
-          <li className={styles.item} data-id='2' onClick={this.handleClick}>America's Finance Guide<span className={styles.arrow}> <Arrow/></span></li>
-          <ul className={`${styles.toggleList} ${this.state.clickedItem == "America's Finance Guide " ? `` : ' ' + styles.hidden}`}>
+          <li className={styles.item} data-id='2' onClick={this.handleClick}>America's Finance Guide<span className={styles.arrow} onClick={() => this.handleClickArrow("America's Finance Guide")}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == "America's Finance Guide" ? `` : ' ' + styles.hidden}`}>
             <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/overview'>Overview</a>
+              <a className={styles.dataListA} href='/americas-finance-guide'>Overview</a>
             </li>
             <hr className={styles.mobileHr}/>
             <li className={styles.dataListLi}>
@@ -63,10 +67,10 @@ class MobileMenu extends React.Component {
             </li>
             <hr className={styles.mobileHr}/>
           </ul>
-          <li className={styles.item} data-id='3' onClick={this.handleClick}>Resources<span className={styles.arrow}> <Arrow/></span></li>
-          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Resources ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
-          <li className={styles.item} data-id='4'onClick={this.handleClick}><span className={styles.arrow}><Book/></span> Glossary</li>
-          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Glossary ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[4].glossary)}</ul>
+          <li className={styles.item} data-id='3' onClick={this.handleClick}>Resources<span className={styles.arrow} onClick={() => this.handleClickArrow('Resources')}> <Arrow/></span></li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Resources' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
+          <li className={styles.item} data-id='4'onClick={this.handleClick}><span className={styles.arrow} onClick={() => this.handleClickArrow('Glossary')}><Book/></span> Glossary</li>
+          <ul className={`${styles.toggleList} ${this.state.clickedItem == 'Glossary' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[4].glossary)}</ul>
         </ul>
         <Dropdown clickedItem={this.state.clickedItem}
                   data={this.state.data} />

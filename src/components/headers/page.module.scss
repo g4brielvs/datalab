@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
   margin-top: .25rem;
-  padding-top: .62rem;
+  padding-top: .7rem;
   border-top: 1px solid #ddd;
   width: 100%;
   height: 30px;
@@ -289,7 +289,12 @@ ul.ul-nav {
 
 }
 
+.svg-inline--fa {
+  height: inherit !important;
+}
+
 .toggle {
+  font-size: 32px;
   display: none;
   &:hover {
     cursor: pointer;
