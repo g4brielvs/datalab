@@ -24,9 +24,14 @@ export default class DTSPage extends React.Component {
   }
 
   render = () => <>
-                   <SEO title='Data Lab - Visualizing The Daily Treasury Statement - U.S. Treasury' keywords={[`application`, `demo`]} />
 
-                   <ToolLayout
+    <SEO title='U.S. Treasury Data Lab - Visualizing the Daily Treasury Statement'
+          description='The U.S. Treasury’s Data Lab presents the Daily Treasury Statement. Learn how much the federal government
+            spends each day through this data visualization.'
+          keywords={[`federal spending`, `federal programs`, `spending trends`, `spending`, `government programs`, `treasury statement`,
+            `US spending`, `government expenditures`, `government spending`, `line graph`]} />
+
+    <ToolLayout
                      title='Visualizing The Daily Treasury Statement'
                      introSentence='How much does the federal government spend each day?'
                      hwctaLink={this.props.location.pathname + '/methodologies'}
@@ -66,7 +71,7 @@ export default class DTSPage extends React.Component {
                            </Grid>
                          </Grid>
 
-                         
+
                          <div className='dts-controls-and-svg'>
                            <div className='dts-header'>
                              <div className='daily-spending-container'>
@@ -98,8 +103,8 @@ export default class DTSPage extends React.Component {
                                <label htmlFor="category-selector" className='category-select-label'>Categories</label>
                                <select className='custom-select custom-select-start' id='category-selector'></select>
                              </div>
-                             
-                           </div> 
+
+                           </div>
                            <DTS data={this.state.dtsData} />
                          </div>
 

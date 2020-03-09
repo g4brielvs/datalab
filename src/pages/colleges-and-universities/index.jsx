@@ -67,9 +67,12 @@ export default class CollegesAndUniversitiesPage extends React.Component {
   render = () =>
     <StoryLayout isCustomHeader={true}
                  hwctaLink={this.props.location.pathname + '/methodologies'} >
-      <SEO title='Colleges and Universities' keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title='U.S. Treasury Data Lab – Federal Funding in Colleges and Universities'
+           description="The U.S. Treasury’s Data Lab presents an analysis on federal funding in colleges and universities. In 2018 the Federal government invested over $149 billion, affecting over 3,000 schools, 15 million undergraduate students and over 2.5 million graduate students."
+           keywords={[`universities`, `colleges`, `higher education`, `funding`, `government spending`, `federal funding`, `government funding`,
+						 `federal grants`, `research grants`, `federal contracts`, `bubble chart`, `sunburst`]} />
 
-        <CustomHeader
+      <CustomHeader
         subtext={'Federal Investment in Higher Education'}
         subblurb={['Explore the Federal Investment in your ', <br key='subblurb-linebreak' />,
           <span key='subblurb-callout' className={'header--red'}>Alma Mater</span>]}
@@ -78,8 +81,6 @@ export default class CollegesAndUniversitiesPage extends React.Component {
           'Those funds made an impact on over 3,000 schools, approximately 15 million undergraduates, and a little over 2.5 million graduate students.']}
         sectionToc={sections}
       />
-
-
 
       <Grid container
             justify="center"

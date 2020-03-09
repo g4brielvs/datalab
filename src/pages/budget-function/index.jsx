@@ -21,7 +21,13 @@ function BudgetFunctionPage(props) {
 
   return (
     <>
-      <SEO title='Data Lab - Budget Function - U.S. Treasury' keywords={[`application`, `demo`]}/>
+      <SEO title='U.S. Treasury Data Lab – Budget Function Analysis'
+           description="The U.S. Treasury’s Data Lab presents an analysis on federal spending related to the
+              government’s main functions. Budget functions are categories that describe
+              the purpose of federal spending. Object Classes are categories that describe what goods and services were purchased.
+              This visualization sheds light on both categories."
+           keywords={[`spending categories`, `budget function`, `object class`, `federal spending`,
+						 `object categories`, `agency accounts`, `sankey`]}/>
 
       <ToolLayout
         title='BUDGET FUNCTION'
