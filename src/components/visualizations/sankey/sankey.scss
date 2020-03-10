@@ -179,10 +179,8 @@
     }
   }
   #sankey-viz {
-    .sankey-node rect {
+    .sankey-node {
       cursor: pointer;
-    }
-    text {
       font-size: 0.75rem;
     }
   }
