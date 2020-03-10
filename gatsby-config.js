@@ -52,15 +52,9 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-19138737-13",
-	siteSpeedSampleRate: 90,
+	      siteSpeedSampleRate: 90,
       },
     },
-		{
-			resolve: 'gatsby-plugin-zopfli',
-			options: {
-				extensions: ['css', 'html', 'js', 'svg', 'jsx', 'scss']
-			}
-		}
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
