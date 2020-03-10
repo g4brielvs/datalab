@@ -219,6 +219,7 @@ export default function Mapviz(props) {
   }
 
   useEffect(() => {
+    
     if(props.display){
       if(!d3.select('#viz_container')[0][0]){
         Tooltip = tooltipModule();
@@ -227,10 +228,14 @@ export default function Mapviz(props) {
         setZoom(null);
       }
     }
+
+    if (props.isClicked) {
+      setZoom(null);
+    }
+
   });
 
-
-  return (<div className={props.display ? '' : 'hidden'}>
+return (<div className={props.display ? '' : 'hidden'}>
       <div id="tooltipMapViz" className="tooltip-module" />
       <div className="viz-container homeless-analysis">
         <div id="container"/>
