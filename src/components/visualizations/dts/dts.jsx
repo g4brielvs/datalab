@@ -116,7 +116,7 @@ function DTS(props) {
 
       data = _data;
       data.forEach(d => {
-        d.date = new Date(d.date); // force GMT with time stamp
+        d.date = new Date(d.date.toString().trim() + 'T00:00:00'); // force GMT with time stamp
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
