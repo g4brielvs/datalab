@@ -51,7 +51,11 @@ class CompetitionInContractingPage extends Component {
         sectionTitle={sectionTitle}
         sectionText={sectionText}
         hwctaLink={this.props.location.pathname + '/methodologies'}>
-        <SEO title="Competition in Contracting" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO title="U.S. Treasury Data Lab – Competition in Contracting"
+             description="The U.S. Treasury’s Data Lab presents an analysis conducted on competition in government contracting. In FY 2017 more than 60% of federal contracts were competitively awarded."
+             keywords={[`federal contracts`, `competition`, `awards`, `federal procurement`, `1984 Competition in Contracting Act`,
+							 `federal agencies`, `government contracts`, `government procurement`, `government agencies`, `bar chart`]} />
+
         <Accordion
           title="Instructions">
           <ul>

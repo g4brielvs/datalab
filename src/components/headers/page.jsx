@@ -24,11 +24,20 @@ class PageHeader extends React.Component {
       skinnySub: 75,
       activeItem: '',
       showMobileMenu: false,
+      windowWidth: undefined,
       menuData: this.props.megamenuItems,
     };
   };
 
+
+  handleResize = () => {
+    this.setState({windowWidw: window.innerWidth});
+  }
   componentDidMount() {
+    
+    this.handleResize();
+
+    window.addEventListener('resize', this.handleResize());
 
     // check for mobile when window is avail...
     const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
@@ -89,10 +98,6 @@ class PageHeader extends React.Component {
       return this.setState({activeItem: ' '});
     }
     this.setState({ activeItem: e.target.innerText });
-    // shim for datalab express as we do not need it currently
-    if (e.target.innerText.toString().trim() === "DataLab Express") {
-      this.setState({ activeItem: ' ' });
-    }
   };
 
   tagLineCheck = (isSticky) => {
@@ -129,7 +134,7 @@ class PageHeader extends React.Component {
                   <FontAwesomeIcon icon={faBars} />
                 </span>
                 <ul className={styles.ulNav} id={styles.burgerMenu}>
-                  <li className={styles.item} onMouseOver={this.handleItemHover}>
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>                    
                     <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
                   </li>
                   {/* <li className={styles.item} onMouseOver={this.handleItemHover}> */}
