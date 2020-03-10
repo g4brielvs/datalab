@@ -41,16 +41,10 @@ function sortByLatestYear(a, b) {
 }
 
 function init() {
-	container = establishContainer(930, null, accessibilityAttrs);
 	if (isMobileDevice()) {
-		container.selectAll('.main').remove();
-		console.log('gone');
-
 		container = d3.select('#viz').append('div').classed('trend-mobile', true);
 		trendMobile(data.sort(sortByLatestYear), container, config);
 	} else {
-		console.log('not mobile');
-		
 		container = establishContainer(930, null, accessibilityAttrs);
 		trendDesktop(data, container, config);
 	}
