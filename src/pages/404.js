@@ -39,12 +39,10 @@ const afgTranslation = old => {
   if (old === 'debt/country-comparison') return start + 'debt-country-comparison';
 }
 
-const browser = typeof window !== 'undefined' && window;
-
 const NotFoundPage = () => {
 
   // check for Jekyll links, redirect if possible
-  if (browser) {
+  if (typeof window !== 'undefined') {
     let urlFrags;
     if (window.location.href.indexOf('.html') > -1) {
       urlFrags = splitUrl(window.location.href);
