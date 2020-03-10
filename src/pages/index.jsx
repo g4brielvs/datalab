@@ -16,7 +16,7 @@ import homelessImg from 'src/images/home/homelessness.png';
 
 import "src/styles/index.scss";
 import homeStyles from "./index.module.scss";
-import cg from "src/images/home/cg-gif.gif";
+import cg from "src/images/home/CG-GIF_sm_2019.gif";
 
 
 function IndexPage() {
