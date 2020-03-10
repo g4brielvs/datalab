@@ -23,7 +23,10 @@ function IndexPage() {
 
   return (
     <Home>
-      <SEO title="Data Lab - U.S. Treasury" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Data Lab - U.S. Treasury"
+           description="The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending."
+           keywords={[`Federal spending`, `data`, `visualizations`, `contracts`, `accounts`, `grants`, `federal programs`,
+						 `federal financial data`, `government spending`, `government programs`, `government contracts`]} />
 
       <Grid
         container
