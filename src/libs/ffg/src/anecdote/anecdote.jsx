@@ -40,12 +40,12 @@ export default function AfgAnecdote() {
 		anecdote.select(`.${config.controlsClass}`)
 			.append('button')
 			.classed(config.closeButtonClass, true)
-			.on('click', toggleVisibility)
+			.on('click', toggleVisibility(event))
 			.html(d3.select('#anecdoteCloseButton').html())
 	}
 
-	function toggleVisibility() {
-		const anecdote = d3.select(this.closest(`.${config.anecdoteClass}`));
+	function toggleVisibility(event) {
+		const anecdote = d3.select(event.target.closest(`.${config.anecdoteClass}`));
 		anecdote.classed(config.anecdoteActiveClass, !anecdote.classed(config.anecdoteActiveClass));
 	}
 
@@ -268,7 +268,7 @@ export default function AfgAnecdote() {
 
 	function anecdoteInit() {
 		d3.selectAll(`.${config.anecdoteClass}`).each(buildAnecdote);
-		d3.selectAll(`button.${config.triggerClass}`).on('click', toggleVisibility);
+		d3.selectAll(`button.${config.triggerClass}`).on('click', toggleVisibility(event));
 		addKeyboardNavigation();
 		shiftLinksIntoFocus();
 	}
