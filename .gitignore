@@ -73,4 +73,4 @@ yarn-error.log
 .idea/workspace.xml
 
 #AFG dev only (messes up IE if checked in)
-.babelrc
+*.babelrc
