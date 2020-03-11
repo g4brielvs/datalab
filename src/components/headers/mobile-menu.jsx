@@ -3,6 +3,7 @@ import Arrow from '../../svgs/arrow.svg';
 import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import styles from './page.module.scss';
+import Glossary from '../glossary/glossary';
 
 class MobileMenu extends React.Component {
   constructor(props) {
@@ -45,49 +46,51 @@ class MobileMenu extends React.Component {
         this.setState({ glossaryCheck: !this.state.glossaryCheck });
         break;
     };
-  }
+  };
 
   render() {
     const show = this.props.showMenu;
-    
+
     return (
-      <div>
-        <ul className={`${styles.mobile} ${show ? `` : styles.hidden}`}>
-          <li className={styles.item} data-id='0' onClick={() => this.handleClick('Analyses')}>Analyses<span className={styles.arrow} onClick={() => this.handleClick('Analyses')}> <Arrow /></span></li>
-          <ul className={`${styles.toggleList} ${this.state.analysesCheck ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
-          {/* <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li> */}
-          {/* <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul> */}
-          <li className={styles.item} data-id='2' onClick={() => this.handleClick("America's Finance Guide")}>America's Finance Guide<span className={styles.arrow} onClick={() => this.handleClick("America's Finance Guide")}> <Arrow /></span></li>
-          <ul className={`${styles.toggleList} ${this.state.afgCheck ? `` : ' ' + styles.hidden}`}>
-            <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/americas-finance-guide'>Overview</a>
-            </li>
-            <hr className={styles.mobileHr} />
-            <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/americas-finance-guide/revenue-and-gdp'>Revenue</a>
-            </li>
-            <hr className={styles.mobileHr} />
-            <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/americas-finance-guide/spending-and-gdp'>Spending</a>
-            </li>
-            <hr className={styles.mobileHr} />
-            <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/americas-finance-guide/explore-deficit'>Deficit</a>
-            </li>
-            <hr className={styles.mobileHr} />
-            <li className={styles.dataListLi}>
-              <a className={styles.dataListA} href='/americas-finance-guide/explore-debt'>Debt</a>
-            </li>
-            <hr className={styles.mobileHr} />
+      <>
+        <div>
+          <ul className={`${styles.mobile} ${show ? `` : styles.hidden}`}>
+            <li className={styles.item} data-id='0' onClick={() => this.handleClick('Analyses')}>Analyses<span className={styles.arrow} onClick={() => this.handleClick('Analyses')}> <Arrow /></span></li>
+            <ul className={`${styles.toggleList} ${this.state.analysesCheck ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[0].analyses)}</ul>
+            {/* <li className={styles.item} data-id='1' onClick={this.handleClick}>DataLab Express<span className={styles.arrow}> <Arrow/></span></li> */}
+            {/* <ul className={`${styles.toggleList} ${this.state.clickedItem == 'DataLab Express ' ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[1].express)}</ul> */}
+            <li className={styles.item} data-id='2' onClick={() => this.handleClick("America's Finance Guide")}>America's Finance Guide<span className={styles.arrow} onClick={() => this.handleClick("America's Finance Guide")}> <Arrow /></span></li>
+            <ul className={`${styles.toggleList} ${this.state.afgCheck ? `` : ' ' + styles.hidden}`}>
+              <li className={styles.dataListLi}>
+                <a className={styles.dataListA} href='/americas-finance-guide'>Overview</a>
+              </li>
+              <hr className={styles.mobileHr} />
+              <li className={styles.dataListLi}>
+                <a className={styles.dataListA} href='/americas-finance-guide/revenue-and-gdp'>Revenue</a>
+              </li>
+              <hr className={styles.mobileHr} />
+              <li className={styles.dataListLi}>
+                <a className={styles.dataListA} href='/americas-finance-guide/spending-and-gdp'>Spending</a>
+              </li>
+              <hr className={styles.mobileHr} />
+              <li className={styles.dataListLi}>
+                <a className={styles.dataListA} href='/americas-finance-guide/explore-deficit'>Deficit</a>
+              </li>
+              <hr className={styles.mobileHr} />
+              <li className={styles.dataListLi}>
+                <a className={styles.dataListA} href='/americas-finance-guide/explore-debt'>Debt</a>
+              </li>
+              <hr className={styles.mobileHr} />
+            </ul>
+            <li className={styles.item} data-id='3' onClick={() => this.handleClick("Resources")}>Resources<span className={styles.arrow} onClick={() => this.handleClick('Resources')}> <Arrow /></span></li>
+            <ul className={`${styles.toggleList} ${this.state.resourcesCheck ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
+            <li className={`${styles.item} ${styles.glossary}`} data-id='4' onClick={() => this.handleClick("Glossary")}><span className={styles.arrow}><Book /></span> Glossary</li>
           </ul>
-          <li className={styles.item} data-id='3' onClick={() => this.handleClick("Resources")}>Resources<span className={styles.arrow} onClick={() => this.handleClick('Resources')}> <Arrow /></span></li>
-          <ul className={`${styles.toggleList} ${this.state.resourcesCheck ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[3].resources)}</ul>
-          <li className={styles.item} data-id='4' onClick={() => this.handleClick('Glossary')}><span className={styles.arrow} onClick={() => this.handleClick('Glossary')}><Book /></span> Glossary</li>
-          <ul className={`${styles.toggleList} ${this.state.glossaryCheck ? `` : ' ' + styles.hidden}`}>{this.returnActiveList(this.state.data[4].glossary)}</ul>
-        </ul>
-        <Dropdown clickedItem={this.state.clickedItem}
-          data={this.state.data} />
-      </div>
+          <Dropdown clickedItem={this.state.clickedItem}
+            data={this.state.data} />
+        </div>
+        <Glossary/>
+      </>
     );
   };
 }
