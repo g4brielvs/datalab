@@ -24,11 +24,20 @@ class PageHeader extends React.Component {
       skinnySub: 75,
       activeItem: '',
       showMobileMenu: false,
+      windowWidth: undefined,
       menuData: this.props.megamenuItems,
     };
   };
 
+
+  handleResize = () => {
+    this.setState({windowWidw: window.innerWidth});
+  }
   componentDidMount() {
+    
+    this.handleResize();
+
+    window.addEventListener('resize', this.handleResize());
 
     // check for mobile when window is avail...
     const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
