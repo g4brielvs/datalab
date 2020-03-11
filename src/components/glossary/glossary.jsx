@@ -317,7 +317,6 @@ export default function Glossary() {
 
             // The following button will exist in the Datalab header
             d3.selectAll('.' + styles.glossary).on('click', function(d,i){
-                console.log('here');
                 showGlossary();
             });
             // The following button exists at the bottom-right of the screen when the user scrolls down the page
