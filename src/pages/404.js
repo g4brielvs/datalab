@@ -13,11 +13,11 @@ const splitUrl = href => {
   if (urlFrags[0].slice(-5) == '.html') {
     urlFrags[0] = urlFrags[0].slice(0, -5);
   }
-  if (urlFrags[0].slice(-5) == 'index') {
-    urlFrags[0] = urlFrags[0].slice(0, -5);
+  if (urlFrags[0].slice(-6) == '/index') {
+    urlFrags[0] = urlFrags[0].slice(0, -6);
   }
   return urlFrags;
-}
+};
 
 const afgTranslation = old => {
   const start = '/americas-finance-guide/';
@@ -37,7 +37,8 @@ const afgTranslation = old => {
   if (old === 'debt/trends') return start + 'debt-trends';
   if (old === 'debt/analysis') return start + 'debt-analysis';
   if (old === 'debt/country-comparison') return start + 'debt-country-comparison';
-}
+  return ''; // AFG path not found; genuine 404
+};
 
 const NotFoundPage = () => {
 
