@@ -46,16 +46,9 @@ export default function AfgAnecdote() {
 
     function toggleVisibility() {
 
-let seen = [];
-			alert(JSON.stringify(this, function(key, val) {
-				if (val != null && typeof val == "object") {
-						 if (seen.indexOf(val) >= 0) {
-								 return;
-						 }
-						 seen.push(val);
-				 }
-				 return val;
-		 }));
+console.log(this);
+
+
 
         const anecdote = d3.select(this.closest(`.${config.anecdoteClass}`));
 
