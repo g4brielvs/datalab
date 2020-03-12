@@ -34,7 +34,7 @@ class PageHeader extends React.Component {
     this.setState({windowWidw: window.innerWidth});
   }
   componentDidMount() {
-    
+
     this.handleResize();
 
     window.addEventListener('resize', this.handleResize());
@@ -52,7 +52,7 @@ class PageHeader extends React.Component {
     // homepage listener...
     if (this.props.isHome === true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.pageYOffset > 135;        
+        let isSticky = window.pageYOffset > 135;
         this.setState({ isSticky: isSticky });
       });
     }
@@ -134,7 +134,7 @@ class PageHeader extends React.Component {
                   <FontAwesomeIcon icon={faBars} />
                 </span>
                 <ul className={styles.ulNav} id={styles.burgerMenu}>
-                  <li className={styles.item} onMouseOver={this.handleItemHover}>                    
+                  <li className={styles.item} onMouseOver={this.handleItemHover}>
                     <button className={styles.anchor}>Analyses <span className={styles.arrow}><Arrow /></span></button>
                   </li>
                   {/* <li className={styles.item} onMouseOver={this.handleItemHover}> */}
@@ -147,7 +147,7 @@ class PageHeader extends React.Component {
                     <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
                   </li>
                   <li className={styles.item}>
-                    <button id={styles.glossary} className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
+                    <button className={`${styles.anchor} ${styles.glossary}`}><span className={styles.arrow}><Book/></span> Glossary </button>
                   </li>
                 </ul>
               </nav>
