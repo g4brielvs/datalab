@@ -30,7 +30,10 @@ class OfficialBanner extends React.Component {
 					<div className={styles.text}>
 						An official website of the U.S. government
 	  </div>
-					<img className={styles.flag} src={flag} alt="U.S. flag" />
+					<img
+						className={`${styles.flag} lazyload`}
+						data-src={flag}
+						alt="U.S. flag" />
 				</div>
 			</header>
 		);

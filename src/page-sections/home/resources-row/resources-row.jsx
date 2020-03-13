@@ -57,7 +57,10 @@ const ResourcesRow = () => {
               className={resourcesRowStyles.tile}
               href={resource.href}
             >
-              <img src={resource.imageSrc} alt={resource.altText} className={resourcesRowStyles.svgImg} />
+              <img
+                data-src={resource.imageSrc}
+                alt={resource.altText}
+                className={`${resourcesRowStyles.svgImg} lazyload`} />
               <h1 className={resourcesRowStyles.title}>
                 {resource.title}
               </h1>

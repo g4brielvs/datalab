@@ -10,6 +10,7 @@ import('flexboxgrid');
 import React from 'react';
 import 'src/styles/variables.scss';
 import 'src/styles/progress.scss';
+import 'lazysizes';
 
 import TopLayout from './plugins/gatsby-plugin-top-layout/TopLayout';
 
