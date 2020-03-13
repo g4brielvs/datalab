@@ -51,28 +51,28 @@ const NotFoundPage = () => {
 
       if (afg > -1) { // AFG pages have moved; can't simply strip ".html"
         window.location = (afgTranslation(urlFrags[0].slice(afg + 24)) + (urlFrags[1] ? '?' + urlFrags[1] : ''));
+        return<></>;
       }
       window.location = urlFrags[0] + (urlFrags[1] ? '?' + urlFrags[1] : '');
       return <></>;
 
   } else {
 		return (
-			browser && (<HeaderOnly _containerClass='four-oh-four' _headerClass='four-oh-four__header'>
-					<SEO title='404: Not found'/>
-					<div id='four-oh-four'>
-						<div className='four-container'>
-							<h1>Oops!</h1>
-							<h4>Looks like you got lost in the data.
-								<div><span>It happens.</span> Find your way back.</div>
-							</h4>
-							<div id='btn-container'>
-								<div id='back-btn'><a href='/'>BACK</a></div>
-								<div id='home-btn'><a href='/'>HOME</a></div>
-							</div>
+		<HeaderOnly _containerClass='four-oh-four' _headerClass='four-oh-four__header'>
+				<SEO title='404: Not found'/>
+				<div id='four-oh-four'>
+					<div className='four-container'>
+						<h1>Oops!</h1>
+						<h4>Looks like you got lost in the data.
+							<div><span>It happens.</span> Find your way back.</div>
+						</h4>
+						<div id='btn-container'>
+							<div id='back-btn'><a href='/'>BACK</a></div>
+							<div id='home-btn'><a href='/'>HOME</a></div>
 						</div>
 					</div>
-				</HeaderOnly>
-			)
+				</div>
+			</HeaderOnly>
 		)
 	}
 };
