@@ -62,23 +62,23 @@ class MobileMenu extends React.Component {
             <li className={styles.item} data-id='2' onClick={() => this.handleClick("America's Finance Guide")}>America's Finance Guide<span className={styles.arrow} onClick={() => this.handleClick("America's Finance Guide")}> <Arrow /></span></li>
             <ul className={`${styles.toggleList} ${this.state.afgCheck ? `` : ' ' + styles.hidden}`}>
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide'>Overview</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/'>Overview</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/revenue-and-gdp'>Revenue</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/revenue-and-gdp/'>Revenue</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/spending-and-gdp'>Spending</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/spending-and-gdp/'>Spending</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/explore-deficit'>Deficit</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/explore-deficit/'>Deficit</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/explore-debt'>Debt</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/explore-debt/'>Debt</a>
               </li>
               <hr className={styles.mobileHr} />
             </ul>
