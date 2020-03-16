@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { select, selectAll, event } from 'd3-selection';
-import { ChevronRight, ChevronLeft, Close } from "@material-ui/icons"
+import { ChevronRight, ChevronLeft, Close } from "@material-ui/icons";
 
 import '../../../../utils/polyfills';
 
@@ -48,7 +48,6 @@ export default function AfgAnecdote() {
 
 	function toggleVisibility() {
 		const anecdote = d3.select(this.closest(`.${config.anecdoteClass}`));
-
 		anecdote.classed(config.anecdoteActiveClass, !anecdote.classed(config.anecdoteActiveClass));
 	}
 
@@ -56,48 +55,59 @@ export default function AfgAnecdote() {
 		const dots = anecdote.selectAll(`.${config.dotClass}`);
 
 		dots.classed(config.dotClassActive, false);
-		dots.filter((d, i) => i === index).classed(config.dotClassActive, true);
+
+		dots.filter((d, i) => i === index)
+			.classed(config.dotClassActive, true);
+
 		updateDotText(anecdote, index);
 	}
 
 	function updateDotText(anecdote, i) {
-		const dotLength = anecdote.selectAll(`.${config.paneClass}`).size();
-		const dotText = anecdote.select(`.${config.dotTextClass}`);
+		const dotLength = anecdote.selectAll(`.${config.paneClass}`).size(),
+			dotText = anecdote.select(`.${config.dotTextClass}`);
 
 		dotText.html(`${i + 1} of ${dotLength}`);
 	}
 
 	function buildDots(anecdote) {
-		const dotLength = anecdote.selectAll(`.${config.paneClass}`).size();
-		const dotContainer = anecdote.select(`.${config.contentsClass}`).insert('div').classed(config.dotsContainerClass, true);
-		const dots = dotContainer.append('div').classed(config.dotsClass, true);
-		const dotArray = new Array(dotLength);
+		const dotLength = anecdote.selectAll(`.${config.paneClass}`).size(),
+			dotContainer = anecdote.select(`.${config.contentsClass}`).insert('div').classed(config.dotsContainerClass, true),
+			dots = dotContainer.append('div').classed(config.dotsClass, true),
+			dotArray = new Array(dotLength);
 
 		dots.selectAll(`.${config.dotClass}`)
 			.data(dotArray)
 			.enter()
 			.append('button')
 			.classed(config.dotClass, true)
-			.on('click', (d, i) => showPane(anecdote, i))
-			;
-		dotContainer.append('div').classed(config.dotTextClass, true);
+			.on('click', function (d, i) {
+				showPane(anecdote, i);
+			});
+
+		dotContainer.append('div')
+			.classed(config.dotTextClass, true);
+
 		setActiveDot(anecdote, 0);
 	}
 
 	function showPane(anecdote, index) {
-		const panes = anecdote.selectAll(`.${config.paneClass}`).classed(config.paneClassActive, false);
-		const activePane = panes.filter((d, i) => { return i === index }).classed(config.paneClassActive, true);
+		const panes = anecdote.selectAll(`.${config.paneClass}`).classed(config.paneClassActive, false),
+			activePane = panes.filter((d, i) => { return i === index })
+				.classed(config.paneClassActive, true);
 
 		anecdote.attr('data-current', index);
+
 		setActiveDot(anecdote, index);
 		enableFocusOnActivePaneLinks(activePane);
 	}
 
 	function addKeyboardNavigation() {
 		// Add keyboard navigation (left/right keys).
-		window.addEventListener("keydown", e => {
+		window.addEventListener("keydown", function (e) {
 			const activeAnecdotes = d3.selectAll(`.${config.anecdoteActiveClass}`);
+
 			let navigateDir, prev;
+
 
 			switch (e.key) {
 				case 'Right':
@@ -109,11 +119,16 @@ export default function AfgAnecdote() {
 					navigateDir = 'previous';
 					break;
 			}
+
 			if (!navigateDir) {
 				return;
 			}
+
 			prev = (navigateDir === 'previous');
-			activeAnecdotes.each(() => advancePane(d3.select(this), prev));
+
+			activeAnecdotes.each(function () {
+				advancePane(d3.select(this), prev);
+			})
 		});
 	}
 
@@ -121,9 +136,10 @@ export default function AfgAnecdote() {
 		// Add mobile navigation (swipe left/right).
 		const anecdoteEl = anecdote.node();
 
-		anecdoteEl.addEventListener('swipe', e => {
-			const activeAnecdotes = d3.selectAll(`.${config.anecdoteActiveClass}`);
-			const swipeDirection = e.detail.directions;
+		anecdoteEl.addEventListener('swipe', function (e) {
+			const activeAnecdotes = d3.selectAll(`.${config.anecdoteActiveClass}`),
+				swipeDirection = e.detail.directions;
+
 			let prev;
 
 			if (swipeDirection.right) {
@@ -131,44 +147,51 @@ export default function AfgAnecdote() {
 			} else if (!swipeDirection.left) {
 				return; // Ignore up or down swipes.
 			}
-			activeAnecdotes.each(() => advancePane(d3.select(this), prev));
+
+			activeAnecdotes.each(function () {
+				advancePane(d3.select(this), prev);
+			})
 		});
 	}
 
 	function setWidthForPanes(anecdote) {
 		const count = anecdote.selectAll(`.${config.paneClass}`).size();
 
-		anecdote.select(`.${config.panesClass}`).style('width', `${100 * count}%`);
+		anecdote.select(`.${config.panesClass}`).style('width', `${100 * count}%`)
 	}
 
 	function initNav(anecdote) {
 		const buttons = anecdote.selectAll(`.${config.navClass}`).append('button').classed(config.navButtonClass, true);
 
-		buttons.each((d, i) => {
+		buttons.each(function (d, i) {
 			const chevronId = (i === 0) ? '#anecdoteLeftChevron' : '#anecdoteRightChevron';
 
 			d3.select(this).html(d3.select(chevronId).html());
 		});
 
-		buttons.each((d, i) => {
-			const button = d3.select(this);
-			const prev = (i === 0) ? true : null;
+		buttons.each(function (d, i) {
+			const button = d3.select(this),
+				prev = (i === 0) ? true : null;
 
-			button.on('click', d => advancePane(anecdote, prev));
+			button.on('click', d => advancePane(anecdote, prev)
+			)
+				;
 		})
 	}
 
 	function initPanes(anecdote) {
 		const panes = anecdote.selectAll(`.${config.paneClass}`);
 
-		panes.on('click', (d, i) => {
-			const paneCount = anecdote.selectAll(`.${config.paneClass}`).size();
-			const src = event.srcElement ? event.srcElement : event.target;
+		panes.on('click', function (d, i) {
+			const paneCount = anecdote.selectAll(`.${config.paneClass}`).size(),
+				src = event.srcElement ? event.srcElement : event.target;
 
 			if (src && src.nodeName === 'A') {
 				return;
 			}
+
 			i += 1;
+
 			if (i === paneCount) {
 				i = 0;
 			}
@@ -182,21 +205,26 @@ export default function AfgAnecdote() {
 	}
 
 	function advancePane(anecdote, prev) {
-		const current = Number(anecdote.attr('data-current'));
-		const size = anecdote.selectAll(`.${config.paneClass}`).size();
+		const current = Number(anecdote.attr('data-current')),
+			size = anecdote.selectAll(`.${config.paneClass}`).size();
+
 		let newPage = prev ? current - 1 : current + 1;
 
 		if (newPage === size) {
 			newPage = 0;
 		}
+
 		if (newPage < 0) {
 			newPage = size - 1;
 		}
+
 		showPane(anecdote, newPage);
 	}
 
 	function indexPanes(anecdote) {
-		anecdote.selectAll(`.${config.paneClass}`).each((d, i) => d3.select(this).attr('data-pane-index', i));
+		anecdote.selectAll(`.${config.paneClass}`).each(function (d, i) {
+			d3.select(this).attr('data-pane-index', i);
+		})
 	}
 
 	function buildAnecdote() {
@@ -213,11 +241,11 @@ export default function AfgAnecdote() {
 	}
 
 	function onLinkFocus(event) {
-		const target = event.target;
-		const parentPane = d3.select(target.closest('.anecdote__pane'));
-		const parentAnecdote = d3.select(target.closest('.anecdote'));
-		const thisPane = Number(parentPane.attr('data-pane-index'));
-		const currentPane = Number(parentAnecdote.attr('data-current'));
+		const target = event.target,
+			parentPane = d3.select(target.closest('.anecdote__pane')),
+			parentAnecdote = d3.select(target.closest('.anecdote')),
+			thisPane = Number(parentPane.attr('data-pane-index')),
+			currentPane = Number(parentAnecdote.attr('data-current'));
 
 		if (thisPane !== currentPane) {
 			showPane(parentAnecdote, thisPane);
@@ -226,6 +254,7 @@ export default function AfgAnecdote() {
 
 	function enableFocusOnActivePaneLinks(pane) {
 		d3.selectAll('.anecdote__pane').selectAll('a').attr('tabindex', -1);
+
 		if (pane) {
 			pane.selectAll('a').attr('tabindex', 0);
 		}
@@ -234,7 +263,9 @@ export default function AfgAnecdote() {
 	function shiftLinksIntoFocus() {
 		const paneLinks = d3.selectAll('.anecdote__pane').selectAll('a').attr('tabindex', -1);
 
-		paneLinks.each(() => this.addEventListener('focus', onLinkFocus));
+		paneLinks.each(function () {
+			this.addEventListener('focus', onLinkFocus);
+		})
 	}
 
 	function anecdoteInit() {
@@ -248,16 +279,17 @@ export default function AfgAnecdote() {
 		anecdoteInit();
 	});
 
-	return <>
-		<div className='hidden' id='anecdoteCloseButton'>
-			<Close />
-		</div>
-		<div className='hidden' id='anecdoteLeftChevron'>
-			<ChevronLeft />
-		</div>
-		<div className='hidden' id='anecdoteRightChevron'>
-			<ChevronRight />
-		</div>
-	</>
-		;
+	return (
+		<>
+			<div className='hidden' id='anecdoteCloseButton'>
+				<Close />
+			</div>
+			<div className='hidden' id='anecdoteLeftChevron'>
+				<ChevronLeft />
+			</div>
+			<div className='hidden' id='anecdoteRightChevron'>
+				<ChevronRight />
+			</div>
+		</>
+	)
 }
