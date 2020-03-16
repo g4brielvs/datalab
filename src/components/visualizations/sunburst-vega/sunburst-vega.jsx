@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import React from 'react';
 import { Vega } from 'react-vega';
+import appendPolyfill from './utils/append-polyfill';
 import sunburstSpec from './utils/sunburst-spec';
-
 import './sunburst-vega.scss';
 import PropTypes from "prop-types"
 
@@ -25,7 +25,7 @@ export default class Sunburst extends React.Component {
       selectedArc: this.props.default,
       previousArc: this.props.default
     };
-
+    
     this.signalListeners = { arcClick: this.handleClick, arcHover: this.handleHover, arcUnhover: this.handleUnhover };
   }
 
@@ -50,11 +50,12 @@ export default class Sunburst extends React.Component {
   render() {
     const { data, spec } = this.state;
     if (typeof window !== 'undefined') {
-      return (
-        <Vega data={data} spec={spec} signalListeners={this.signalListeners} />
-      )
+		appendPolyfill();
+		return (
+			<Vega data={data} spec={spec} signalListeners={this.signalListeners} />
+		)
     } else {
-      return <div></div>
+		return <div></div>
     }
   }
 }
