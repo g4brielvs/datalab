@@ -42,21 +42,23 @@ const afgTranslation = old => {
 
 const NotFoundPage = () => {
 
-  // check for Jekyll links, redirect if possible
-	const browser = typeof window !== "undefined";
-
-  if (browser && window.location.href.indexOf('.html') > -1) {
-      const urlFrags = splitUrl(window.location.href);
-      const afg = urlFrags[0].indexOf('/americas-finance-guide/');
-
-      if (afg > -1) { // AFG pages have moved; can't simply strip ".html"
-        window.location = (afgTranslation(urlFrags[0].slice(afg + 24)) + (urlFrags[1] ? '?' + urlFrags[1] : ''));
-        return<></>;
-      }
-      window.location = urlFrags[0] + (urlFrags[1] ? '?' + urlFrags[1] : '');
-      return <></>;
-
-  } else {
+  // TODO:  Commenting out client side fix to address redirects from legacy links
+	// Exploring another options but keeping around just in case
+	// check for Jekyll links, redirect if possible
+	// const browser = typeof window !== "undefined";
+	//
+  // if (browser && window.location.href.indexOf('.html') > -1) {
+  //     const urlFrags = splitUrl(window.location.href);
+  //     const afg = urlFrags[0].indexOf('/americas-finance-guide/');
+	//
+  //     if (afg > -1) { // AFG pages have moved; can't simply strip ".html"
+  //       window.location = (afgTranslation(urlFrags[0].slice(afg + 24)) + (urlFrags[1] ? '?' + urlFrags[1] : ''));
+  //       return<></>;
+  //     }
+  //     window.location = urlFrags[0] + (urlFrags[1] ? '?' + urlFrags[1] : '');
+  //     return <></>;
+	//
+  // } else {
 		return (
 		<HeaderOnly _containerClass='four-oh-four' _headerClass='four-oh-four__header'>
 				<SEO title='404: Not found'/>
@@ -74,7 +76,7 @@ const NotFoundPage = () => {
 				</div>
 			</HeaderOnly>
 		)
-	}
+	// }
 };
 
 export default NotFoundPage;
