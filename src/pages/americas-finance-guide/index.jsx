@@ -78,7 +78,7 @@ function OverviewPage(props) {
                                     <section className="anecdote">
                                         {/* <!-- controls --> */}
                                         <div className="anecdote__controls">
-                                            <button id='revenue-anecdote' className="anecdote__trigger">
+                                            <button className="anecdote__trigger">
                                             <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/> <span className="anecdote__teaser"> Show me what {AfgData.current_fy_revenue_short.value} is equal to</span>
                                             </button>
                                         </div>
@@ -165,7 +165,7 @@ function OverviewPage(props) {
                                     <section className="anecdote">
                                         {/* <!-- controls --> */}
                                         <div className="anecdote__controls">
-                                            <button id='spend-anecdote' className="anecdote__trigger">
+                                            <button className="anecdote__trigger">
                                                 <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
                                                 <span className="anecdote__teaser"> Show me what {AfgData.current_fy_spending_short.value} is equal to</span></button>
                                         </div>
@@ -258,7 +258,7 @@ function OverviewPage(props) {
                                     <section className="anecdote">
                                         {/* <!-- controls --> */}
                                         <div className="anecdote__controls">
-                                            <button id='deficit-anecdote' className="anecdote__trigger">
+                                            <button className="anecdote__trigger">
                                             <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
                                             <span className="anecdote__teaser"> Show me what {AfgData.current_fy_deficit_short.value} is equal to</span></button>
                                         </div>
@@ -338,7 +338,7 @@ function OverviewPage(props) {
                                     <section className="anecdote">
                                         {/* <!-- controls --> */}
                                         <div className="anecdote__controls">
-                                            <button id='debt-anecdote' className="anecdote__trigger">
+                                            <button className="anecdote__trigger">
                                             <FontAwesomeIcon icon={faStreetView} className="fas fa-street-view"/>
                                             <span className="anecdote__teaser"> Show me what {AfgData.current_fy_debt_short.value} is equal to</span></button>
                                         </div>
