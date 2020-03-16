@@ -41,6 +41,7 @@ function IndexPage() {
           <FeatureTile
             href={'americas-finance-guide'}
             imgSrc={cg}
+            isMain={true}
             imgAlt={'The Department of Treasury building, in Washington, D.C., that includes a bronze statue of Albert Gallatin, the fourth Secretary of the Treasury.'}
             heading={"Your Guide to America's Finances"}
             body={`Your Guide to America's Finances is an overview of federal government finances in 2019, providing
@@ -91,6 +92,7 @@ function IndexPage() {
           <FeatureTile
             href={"colleges-and-universities"}
             imgSrc={main}
+            isMain={false}
             imgAlt={'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.'}
             heading={"Federal Investment in Higher Education"}
             body={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and

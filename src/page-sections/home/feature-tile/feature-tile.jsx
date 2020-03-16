@@ -5,6 +5,18 @@ import featuredAnalysesTitleStyles from './feature-tile.module.scss';
 import PropTypes from "prop-types";
 
 const FeatureTile = (props) => {
+	function DisplayedImg () {
+  	if(props && props.isMain) {
+  		return <img className={featuredAnalysesTitleStyles.image}
+									src={props.imgSrc}
+									alt={props.imgAlt}/>
+  	} else {
+			return <img className={`${featuredAnalysesTitleStyles.image} lazyload`}
+									data-src={props.imgSrc}
+									alt={props.imgAlt}/>
+		}
+	}
+
   return (
     <Link
       to={props.href}
@@ -18,7 +30,7 @@ const FeatureTile = (props) => {
           {props.heading}
         </h1>
 
-        <img className={featuredAnalysesTitleStyles.image} src={props.imgSrc} alt={props.imgAlt} />
+        <DisplayedImg />
 
         <div className={featuredAnalysesTitleStyles.content}>
           <h2 className={featuredAnalysesTitleStyles.heading}>
@@ -46,5 +58,6 @@ FeatureTile.propTypes = {
   body: PropTypes.string.isRequired,
   mobileBody: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
-  imgAlt: PropTypes.string.isRequired
+  imgAlt: PropTypes.string.isRequired,
+  isMain: PropTypes.bool
 }

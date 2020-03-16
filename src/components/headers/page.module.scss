@@ -59,7 +59,7 @@
     }
   }
 
-  #glossary {
+  .glossary {
     position: relative;
   }
 
@@ -80,7 +80,7 @@
       padding-right: 30px;
     }
   }
-  
+
 } // end header-nav
 
 .nav.tight {
@@ -141,9 +141,9 @@ ul.ul-nav {
 
   ul.ul-dropdown > li.secondaryNavli > a {
     text-decoration: none;
-    color: #666;  
+    color: #666;
   }
-  
+
   .secondaryNavli {
     float: left;
     font-size: 0.8125rem;
@@ -169,7 +169,7 @@ ul.ul-nav {
 .spacer-element {
   flex-grow: 1;
 }
- 
+
 
 // generic for dropdown list (megamenu)
 .data-list {
@@ -243,7 +243,7 @@ ul.ul-nav {
   }
 
   .a {
-    color: #555555;  
+    color: #555555;
   }
 
   .a:hover {

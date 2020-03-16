@@ -62,7 +62,10 @@ const MoreAnalysesTiles = () => {
                 </div>
 
                 <div className={moreAnalysesStyles.imageContainer}>
-                  <img src={item.imageSrc} className={moreAnalysesStyles.image} alt={item.alt} />
+                  <img
+                    data-src={item.imageSrc}
+                    className={`${moreAnalysesStyles.image} lazyload`}
+                    alt={item.alt} />
                 </div>
 
               </Link>
