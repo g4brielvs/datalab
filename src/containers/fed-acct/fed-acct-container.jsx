@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql, StaticQuery } from "gatsby";
 
 import Dendro from '../../components/visualizations/dendro/dendro';
 import Downloads from "../../components/section-elements/downloads/downloads";
