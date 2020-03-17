@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { graphql, useStaticQuery } from "gatsby";
 
 import * as d3 from 'd3v3';
 import * as $ from 'jquery';
@@ -10,13 +11,57 @@ import tooltipModule from '../../../components/tooltip/tooltip';
 import tooltipStyles from '../../../components/tooltip/tooltip.module.scss';
 
 
-function Dendro(props) {
+export default function Dendro(props) {
+
+  const dendroData = useStaticQuery(graphql`
+{
+    allAccountObligationsLinkUpdateFy17Csv {
+      nodes {
+        Agency
+        Obligation
+        Subagency
+        Title
+        Unobligated
+        federal_account_code
+        fy
+        q
+        reporting_period_end
+      }
+    }
+    allAccountObligationsLinkUpdateFy18Csv {
+      nodes {
+        Agency
+        Obligation
+        Subagency
+        Title
+        Unobligated
+        federal_account_code
+        fy
+        q
+        reporting_period_end
+      }
+    }
+    allAccountObligationsLinkUpdateFy19Q3Csv {
+      nodes {
+        Agency
+        Obligation
+        Subagency
+        Title
+        Unobligated
+        federal_account_code
+        fy
+        q
+        reporting_period_end
+      }
+    }
+  }
+  `);
 
   useEffect(() => {
 
-    const dendroData17 = props.fy17;
-    const dendroData18 = props.fy18;
-    const dendroData19 = props.fy19;
+    const dendroData17 = dendroData.allAccountObligationsLinkUpdateFy17Csv.nodes;
+    const dendroData18 = dendroData.allAccountObligationsLinkUpdateFy18Csv.nodes;
+    const dendroData19 = dendroData.allAccountObligationsLinkUpdateFy19Q3Csv.nodes;
     const tooltip = tooltipModule();
 
     function CreateDendro(newData) {
@@ -49,12 +94,12 @@ function Dendro(props) {
 
       // define the baseSvg, attaching a class for styling and the zoomListener
       const baseSvg = d3.select('#tree-container').append('svg')
-        .attr('width', svgWidth)
-        .attr('height', svgHeight)
-        .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
-        .attr('id', 'svg-dendrogram')
-        .attr('class', 'overlay')
-        .call(zoomListener);
+            .attr('width', svgWidth)
+            .attr('height', svgHeight)
+            .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+            .attr('id', 'svg-dendrogram')
+            .attr('class', 'overlay')
+            .call(zoomListener);
 
       baseSvg.call(zoomListener).on("wheel.zoom", null); // dont let window scroll interfere with scroll for viz. 
 
@@ -99,11 +144,11 @@ function Dendro(props) {
       }
 
       let tree = d3.layout.tree()
-        .size([svgWidth, svgHeight]);
+          .size([svgWidth, svgHeight]);
 
       // define a d3 diagonal projection for use by the node paths later on.
       const diagonal = d3.svg.diagonal()
-        .projection((d) => [d.y, d.x]);
+            .projection((d) => [d.y, d.x]);
 
       // Toggle children.
       function toggle(d) {
@@ -159,13 +204,13 @@ function Dendro(props) {
 
         // Update the nodes
         const node = svgGroup
-          .selectAll('g.node')
-          .data(nodes, (d) => {
-            if (d.id) return d.id;
-            nodeIterator += 1;
-            d.id = nodeIterator;
-            return d.id;
-          });
+              .selectAll('g.node')
+              .data(nodes, (d) => {
+                if (d.id) return d.id;
+                nodeIterator += 1;
+                d.id = nodeIterator;
+                return d.id;
+              });
 
         const formatNumber = d3.format('$,.0f');
 
@@ -253,12 +298,12 @@ function Dendro(props) {
 
         // Enter any new nodes at the parent's previous position.
         const nodeEnter = node.enter().append('g')
-          .attr('class', 'node')
-          .attr('transform', () => `translate(${source.y0},${source.x0})`) // eslint-disable-next-line no-use-before-define
-          .on('click', click)
-          .on('mouseover', (d) => handleMouseOver(d))
-          .on('mouseout', handleMouseOut)
-          .on('mousemove', handleMouseMove);
+              .attr('class', 'node')
+              .attr('transform', () => `translate(${source.y0},${source.x0})`) // eslint-disable-next-line no-use-before-define
+              .on('click', click)
+              .on('mouseover', (d) => handleMouseOver(d))
+              .on('mouseout', handleMouseOut)
+              .on('mousemove', handleMouseMove);
 
         nodeEnter.append('circle')
           .attr('class', 'nodeCircle')
@@ -280,8 +325,8 @@ function Dendro(props) {
           .attr('alignment-baseline', (d) => (d.children || d._children ? 'baseline' : 'baseline'))
           .style('font-weight', '900')
           .text((d) =>
-            (d.children || d._children ? d.name : d.name)
-          );
+                (d.children || d._children ? d.name : d.name)
+               );
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select('circle.nodeCircle')
@@ -290,8 +335,8 @@ function Dendro(props) {
 
         // Transition nodes to their new position.
         const nodeUpdate = node.transition()
-          .duration(duration)
-          .attr('transform', (d) => `translate(${d.y},${d.x})`);
+              .duration(duration)
+              .attr('transform', (d) => `translate(${d.y},${d.x})`);
 
         // Fade the text in
         nodeUpdate.select('text')
@@ -299,9 +344,9 @@ function Dendro(props) {
 
         // Transition exiting nodes to the parent's new position.
         const nodeExit = node.exit().transition()
-          .duration(duration)
-          .attr('transform', () => `translate(${source.y},${source.x})`)
-          .remove();
+              .duration(duration)
+              .attr('transform', () => `translate(${source.y},${source.x})`)
+              .remove();
 
         nodeExit.select('circle')
           .attr('r', 0);
@@ -311,7 +356,7 @@ function Dendro(props) {
 
         // Update the links¦
         const link = svgGroup.selectAll('path.link')
-          .data(links, (d) => d.target.id);
+              .data(links, (d) => d.target.id);
 
         // Enter any new links at the parent's previous position.
         link.enter().insert('path', 'g')
@@ -641,4 +686,3 @@ function Dendro(props) {
 
 };
 
-export default Dendro;
