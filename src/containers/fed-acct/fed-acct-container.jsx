@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql, StaticQuery } from "gatsby";
 
 import FY17Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
 import FY18Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
