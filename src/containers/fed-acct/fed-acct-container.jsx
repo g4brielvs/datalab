@@ -1,9 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from "gatsby";
 
-import FY17Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY17.csv';
-import FY18Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY18.csv';
-import FY19Data from '../../../static/unstructured-data/federal-account-explorer/account_obligations_link_update_FY19Q3.csv';
 import Dendro from '../../components/visualizations/dendro/dendro';
 import Downloads from "../../components/section-elements/downloads/downloads";
 
@@ -29,7 +26,7 @@ class FedAcctContainer extends React.Component {
   };
   
   render() {
-    return <> <Dendro radioCheck={this.radioCheck} fy17={FY17Data} fy18={FY18Data} fy19={FY19Data}/>
+    return <> <Dendro radioCheck={this.radioCheck}/>
              <Downloads
                href={this.fiscalYearCheck()}
                date={'March 2019'}
