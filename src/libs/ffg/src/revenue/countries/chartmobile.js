@@ -45,6 +45,11 @@ function buildCountryBoxDropShadow(dataLength) {
         return;
     }
 
+
+console.log(JSON.stringify(mobileDimensions));
+
+
+
     svg.insert('rect', ':first-child')
         .attr('class', 'drop-shadow-base')
         .attr('width', mobileDimensions.chartWidth)
