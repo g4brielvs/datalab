@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { select, selectAll, event } from 'd3-selection';
 import { ChevronRight, ChevronLeft, Close } from "@material-ui/icons";
 
-import '../../../../utils/polyfills';
-
 const d3 = { select, selectAll, event },
 	config = {
 		anecdoteClass: 'anecdote',
@@ -47,7 +45,19 @@ export default function AfgAnecdote() {
 	}
 
 	function toggleVisibility() {
-		const anecdote = d3.select(this.closest(`.${config.anecdoteClass}`));
+		let anecdote;
+		if (this.closest) {
+			anecdote = d3.select(this.closest(`.${config.anecdoteClass}`));
+
+		} else { // IE's Element doesn't have .closest(), and project build doesn't have a polyfill
+			let _this = this;
+			do {
+				if (_this.classList.contains(`${config.anecdoteClass}`)) {
+					anecdote = d3.select(_this);
+				}
+				_this = _this.parentElement;
+			} while (anecdote == null);
+		}
 		anecdote.classed(config.anecdoteActiveClass, !anecdote.classed(config.anecdoteActiveClass));
 	}
 
@@ -55,10 +65,7 @@ export default function AfgAnecdote() {
 		const dots = anecdote.selectAll(`.${config.dotClass}`);
 
 		dots.classed(config.dotClassActive, false);
-
-		dots.filter((d, i) => i === index)
-			.classed(config.dotClassActive, true);
-
+		dots.filter((d, i) => i === index).classed(config.dotClassActive, true);
 		updateDotText(anecdote, index);
 	}
 
