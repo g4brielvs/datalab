@@ -59,9 +59,9 @@ export default function Institutions(props) {
   const switchView = view => {
     if (view === 'chart') {
       isChartView(true);
-			updateTableData(tableData);
     } else {
-      isChartView(false);
+			updateTableData(tableData);
+			isChartView(false);
       detailPanelRef.current && detailPanelRef.current.closeDetails(); // hide details if open
     }
   }
