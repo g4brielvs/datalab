@@ -17995,6 +17995,10 @@ function setContainer() {
   d3.select('#viz').selectAll('*').remove();
   var accessibilityAttrs =  false || config.accessibilityAttrs,
       parentWidth = (0, _utils.getElementBox)(d3.select('#viz')).width;
+
+console.log(parentWidth);
+
+
   svg = (0, _utils.establishContainer)(null, parentWidth, accessibilityAttrs).classed('country', true);
 }
 

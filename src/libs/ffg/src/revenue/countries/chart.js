@@ -445,11 +445,20 @@ function setContainer(){
     const accessibilityAttrs = null || config.accessibilityAttrs,
     parentWidth = getElementBox(d3.select('#viz')).width;
 
+
+    console.log('parentWidth: ', parentWidth);
+
+
+
     svg = establishContainer(null, parentWidth, accessibilityAttrs)
             .classed('country', true);
 }
 
 function isMobile(){
+
+console.trace();
+
+
     return parseInt(d3.select('svg.main').attr('width'),10) < 800;
 }
 
