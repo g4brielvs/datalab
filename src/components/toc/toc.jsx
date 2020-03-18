@@ -24,8 +24,6 @@ const Toc = (props) => {
 
   return(
     <>
-
-
       <section id={styles.TOC}>
         <Grid container justify='space-around'>
           {props.sections.map((item, key) =>
@@ -33,25 +31,31 @@ const Toc = (props) => {
             <Grid item key={key} className={`${styles.tile}`} xs={12} md={6} xl>
               <a href={`#section-${item.anchor}`} className='hover-color'>
 								<Style
-									scopeSelector=".hover-color:hover .number, .hover-color:hover .section, .hover-color:hover .subtitle"
+									scopeSelector=".hover-color:hover .number, .hover-color:hover .section, .hover-color:hover .subtitle, .hover-color:hover .blurb"
 									rules={{
-									  color: `${selectedStyle} !important`
+									  color: `${selectedStyle} !important`,
+										textDecoration: 'underline'
 									}}
 								/>
                 <Grid container className={styles.content} justify='center'>
                   <Grid item className={styles.a}>
                       <Grid container>
                         <Grid item className={`${styles.number} number`} xs={2} lg={3}>
-
                           {item.number}
                         </Grid>
                         <Grid item className={`${styles.section} section`}>
+													<Style
+														scopeSelector=".section"
+														rules={{
+															color: `${selectedStyle} !important`,
+														}}
+													/>
                           {item.section}
                         </Grid>
                       </Grid>
                       <Grid item>
                         <div className={`${styles.subtitle} subtitle`}>{item.subblurb}</div>
-                        <div className={styles.blurb}>{item.blurb}</div>
+                        <div className={`${styles.blurb} blurb`}>{item.blurb}</div>
                       </Grid>
 
                   </Grid>
