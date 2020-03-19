@@ -120,7 +120,7 @@ function SpendingCategoriesPage(props) {
                                     <h1>How has federal spending changed over time?</h1>
                                     <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/spending-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                                <a className="tour__link" href="/americas-finance-guide/spending/trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
                             </section>
                         </div>
 

@@ -53,7 +53,7 @@ function RevenueCountryComparisonPage(props) {
                             </p>
                                 <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                             </div>
-                            <a className="chapter-link chapter-link--spending" href="/americas-finance-guide/spending-and-gdp">
+                            <a className="chapter-link chapter-link--spending" href="/americas-finance-guide/spending/">
                                 <div className="chapter-link__text-block">
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Spending

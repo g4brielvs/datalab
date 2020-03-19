@@ -80,7 +80,7 @@ function RevenueAndGdpPage(props) {
                                         <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government spent {AfgData.current_fy_spending.value}.</h1>
                                         <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
                                         <p>
-                                            <a href="./spending-and-gdp">Go Explore Federal Spending</a>
+                                            <a href="./spending/">Go Explore Federal Spending</a>
                                         </p>
                                     </section>
 
@@ -99,7 +99,7 @@ function RevenueAndGdpPage(props) {
 
                             <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the sources of government revenue?</h1>
-                                <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue-categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue/categories">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                             </section>
 
                             <div className="info-box" id="per-individual">
