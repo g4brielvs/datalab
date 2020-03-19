@@ -55,7 +55,9 @@ const Agencies = (props) => {
     return {
       id: n.id,
       display: <><span className={styles.searchListAgency}>{n.agency}</span><p className={styles.searchListSubagency}>{n.subagency}</p></>,
-      filterText: n.agency + n.subagency
+      filterText: n.agency + n.subagency,
+      heading: n.agency,
+      subheading: n.subagency
     }
   });
 
@@ -74,13 +76,9 @@ const Agencies = (props) => {
 
   function filterTableData(id) {
     let data = [];
-    let itemList;
+    const itemList = searchList.find(el => el.id === id);
+    const obj = _.filter(tableData, { 1: itemList.heading, 2: itemList.subheading });
 
-    itemList = searchList.find(function (el) {
-      return el.id === id;
-    });
-
-    let obj = _.filter(tableData, { 1: itemList.heading, 2: itemList.subheading });
     if (obj && obj.length > 0) {
       data.push(obj);
     }

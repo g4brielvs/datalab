@@ -50,7 +50,8 @@ export default function Institutions(props) {
 
   function filterByClicked(clickedId) {
     let filteredList = GeoDataMapbox.features.filter(x => x.id == clickedId);
-    setSchool(filteredList);
+    if(!chartView) { filterTableData(clickedId); }
+		setSchool(filteredList);
     return filteredList;
   };
 
@@ -59,7 +60,8 @@ export default function Institutions(props) {
     if (view === 'chart') {
       isChartView(true);
     } else {
-      isChartView(false);
+			updateTableData(tableData);
+			isChartView(false);
       detailPanelRef.current && detailPanelRef.current.closeDetails(); // hide details if open
     }
   }
@@ -137,6 +139,30 @@ export default function Institutions(props) {
 
   const detailPanelRef = React.createRef();
   const tableColumnTitles = [{ title: 'Institution' }, { title: 'Type' }, { title: 'Contracts' }, { title: 'Grants' }, { title: 'Student Aid' }, { title: 'Total $ Received' }];
+  const tableData = dataTableData.map(x => [x.Recipient, x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2, parseInt(x.contracts), parseInt(x.grants), parseInt(x.student_aid), parseInt(x.Total_Federal_Investment)]);
+
+	const [filteredTableData, setFilteredData] = useState(tableData);
+
+	const tableRef = React.createRef();
+
+	function filterTableData(id) {
+		let data = [];
+		const itemList = searchList.find(x => x.id == id);
+		const obj = _.filter(tableData, { 0: itemList.display });
+
+		if (obj && obj.length > 0) {
+			data.push(obj);
+		}
+
+		data = _.flatten(data);
+
+		updateTableData(data);
+	}
+
+	function updateTableData(data) {
+		if (tableRef && tableRef.current) { tableRef.current.updateTableData(data); }
+		setFilteredData(data);
+	}
 
   return (<>
     <StoryHeading
@@ -197,18 +223,10 @@ export default function Institutions(props) {
 
     <DataTable
       display={!chartView}
-      data={dataTableData.map(x => {
-        return [
-          x.Recipient,
-          x.INST_TYPE_1 + ' / ' + x.INST_TYPE_2,
-          parseInt(x.contracts),
-          parseInt(x.grants),
-          parseInt(x.student_aid),
-          parseInt(x.Total_Federal_Investment),
-        ];
-      })}
+      data={filteredTableData}
       columnTitles={tableColumnTitles}
       idName={'institutionsTable'}
+      ref={tableRef}
     />
 
     <Downloads
