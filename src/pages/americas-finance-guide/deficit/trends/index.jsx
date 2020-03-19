@@ -1,6 +1,6 @@
-import '../../../libs/ffg/src/globalSass/cg.scss';
+import '../../../../libs/ffg/src/globalSass/cg.scss';
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss';
-import '../../../libs/ffg/src/deficit/trends/deficit-trends.scss';
+import '../../../libs/ffg/src/deficit/trends/trends.scss';
 
 import React from 'react'
 import SEO from '../../../components/seo'

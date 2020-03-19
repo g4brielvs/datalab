@@ -1,4 +1,4 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 
 import React from "react"
@@ -38,7 +38,7 @@ function SpendingTrendsPage(props) {
                 <div className="cg-wrapper trends-common-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Federal Spending Trends – U.S. Treasury"
                                 twitter="How has federal spending changed over the past few years? Check out Your Guide to America’s Finances for federal spending trends and to download .CSV files of the data. #YourGuide #DataLab #OpenGov"

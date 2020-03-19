@@ -1,4 +1,4 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/countryCommon.scss'
 import '../../../libs/ffg/src/debt/countries/debt-country-comparison.scss'
 
@@ -39,7 +39,7 @@ function DebtCountryComparisonPage(props) {
                 <div className="cg-wrapper country-common-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title='Data Lab - Debt Country Comparison – U.S. Treasury'
                                 twitter='How does the federal debt of the U.S. compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries.  Check out the site’s data visualizations, then download .CSV files of the data to perform your own analysis. #YourGuide #DataLab #OpenGov"'
@@ -53,7 +53,7 @@ function DebtCountryComparisonPage(props) {
                                 <p>How does the United States compare to countries of similar size and gross domestic product? Explore the chart, which shows the total debt of the United States compared to {AfgData.countries_compared.value} other countries listed in the CIA World Factbook. You can compare total debt (in dollars) and debt as a percent of gross domestic product. Find a country of interest and see for yourself. For instance, while the U.S. federal debt was greater than that of China and Japan combined, it ranked {AfgData.compare_us_debt_gdp_rank.value} in debt to gross domestic product. Because the U.S. government has more money coming in and going out than any other country, it helps to compare the debt of the U.S. government to other countries based on the size of their economies. To ensure an accurate comparison, {AfgData.country_compare_year.value} debt data is used in this section, not current fiscal year data.</p>
                                 <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                             </div>
-                            <a className="chapter-link chapter-link--revenue" href="/americas-finance-guide/revenue-and-gdp">
+                            <a className="chapter-link chapter-link--revenue" href="/americas-finance-guide/revenue">
                                 <div className="chapter-link__text-block">
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Revenue

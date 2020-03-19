@@ -1,16 +1,16 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/spending/categories/spending-categories.scss'
+import 'src/libs/ffg/src/globalSass/cg.scss'
+import 'src/libs/ffg/src/spending/categories/spending-categories.scss'
 
 import React from "react"
-import SEO from "../../../components/seo"
-import AfgData from "../../../libs/_data/object_mapping.yml"
-import Default from "../../../components/layouts/default/default"
-import { HeadOnly } from "../../../components/headers/headers"
-import Accordion from '../../../components/accordion/accordion'
-import ControlBar from '../../../components/control-bar/control-bar'
-import Share from '../../../components/share/share'
+import SEO from "src/components/seo"
+import AfgData from "src/libs/_data/object_mapping.yml"
+import Default from "src/components/layouts/default/default"
+import { HeadOnly } from "src/components/headers/headers"
+import Accordion from 'src/components/accordion/accordion'
+import ControlBar from 'src/components/control-bar/control-bar'
+import Share from 'src/components/share/share'
 import { Helmet } from 'react-helmet';
-import AfgNav from '../../.../../../components/afg-nav/afg-nav';
+import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faSearch, faSortAlphaDown, faSortAlphaUp, faSortAmountDown, faSortAmountUp } from '@fortawesome/free-solid-svg-icons';
@@ -38,7 +38,7 @@ function SpendingCategoriesPage(props) {
                 <div className="cg-wrapper spending-categories-wrapper">
                     <div className="ffg-wrapper spending-categories">
                         <ControlBar>
-                            <Share  
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Federal Spending Categories – U.S. Treasury"
                                 twitter="Check out Your Guide to America’s Finances to search federal spending by category or by agency, then download .CSV files with the data to perform your own analysis! #YourGuide #DataLab #OpenGov"

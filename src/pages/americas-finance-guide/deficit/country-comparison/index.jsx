@@ -1,6 +1,6 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/countryCommon.scss'
-import '../../../libs/ffg/src/deficit/countries/deficit-country-comparison.scss'
+import '../../../libs/ffg/src/deficit/countries/country-comparison.scss'
 
 import React from "react"
 import SEO from "../../../components/seo"
@@ -39,7 +39,7 @@ function DeficitCountryComparisonPage(props) {
                 <div className="cg-wrapper country-common-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title='Data Lab - Deficit Country Comparison – U.S. Treasury'
                                 twitter='How does the U.S. deficit compare with other countries? Check out Your Guide America’s Finances for data from 169 countries, then download .CSV data files to perform your own analysis. #YourGuide #DataLab #OpenGov'
@@ -53,7 +53,7 @@ function DeficitCountryComparisonPage(props) {
                                 <p>How does the United States compare to countries of similar size and gross domestic product? Explore the chart, which shows the total revenue of the United States compared to {AfgData.countries_compared.value} other countries listed in the CIA World Factbook.  You can compare deficits (in dollars) and deficit as a percent of gross domestic product. Find a country of interest and see for yourself.  To ensure an accurate comparison, {AfgData.country_compare_year.value} revenue data is used in this section, not current fiscal year data. </p>
                                 <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                             </div>
-                            <a className="chapter-link chapter-link--debt" href="/americas-finance-guide/explore-debt">
+                            <a className="chapter-link chapter-link--debt" href="/americas-finance-guide/debt/">
                                 <div className="chapter-link__text-block">
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Debt

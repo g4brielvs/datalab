@@ -1,4 +1,4 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/countryCommon.scss'
 
 import React from "react"
@@ -38,7 +38,7 @@ function SpendingCountryComparisonPage(props) {
                 <div className="cg-wrapper country-common-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title='Data Lab - Spending Country Comparison – U.S. Treasury'
                                 twitter='How does U.S. federal spending compare to other countries? Check out Your Guide to America’s Finances for data from 169 countries. #YourGuide #DataLab #OpenGov'
@@ -89,7 +89,7 @@ function SpendingCountryComparisonPage(props) {
                                 </div>
                             </Accordion>
                         </section>
-                    </div> 
+                    </div>
                 </div>
             </Default>
         </>

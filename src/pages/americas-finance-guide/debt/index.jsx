@@ -35,19 +35,19 @@ function ExploreDebtPage(props) {
 
             <Default>
                 <HeadOnly></HeadOnly>
-                
+
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper chapter-intro-common-wrapper debt-intro-wrapper">
                     <div className="ffg-wrapper debt-intro">
                         <ControlBar>
-                            <Share  
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Explore Federal Debt – U.S. Treasury"
                                 twitter="How much is the federal debt? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"
                                 />
                         </ControlBar>
-                
+
 
                         <h1>By the end of {AfgData.current_fy.value}, the federal government had {AfgData.current_fy_debt.value} in federal debt.
                             <button className="info-box-trigger" data-box-id="per-individual">

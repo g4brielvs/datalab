@@ -41,7 +41,7 @@ function RevenueAndGdpPage(props) {
                 <div className="cg-wrapper chapter-intro-common-wrapper revenue-intro-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title='Data Lab - Federal Revenue and GDP – U.S. Treasury'
                                 twitter='How does federal revenue compare to spending and the size of the economy? Download the .CSV data files from Your Guide to America’s Finances and perform your own analysis! #YourGuide #DataLab #OpenGov'
@@ -63,7 +63,7 @@ function RevenueAndGdpPage(props) {
 
                             <div id="copy" className="intro-hidden">
                                 <p>Where does the money come from? If you lived or worked in the United States in {AfgData.current_fy.value}, most likely your contributions are part of the {AfgData.current_fy_revenue.value}. Federal revenue consists mostly of individual, corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.<button className="info-box-trigger" data-box-id="fiscal-year"><img src={AnecdoteRevenueSVG} alt="anecdote icon"></img></button></p>
-                                
+
                             </div>
 
                             <div className="facts sidebar intro-hidden">
@@ -137,5 +137,5 @@ function RevenueAndGdpPage(props) {
         </>
     )
 }
-        
+
 export default RevenueAndGdpPage

@@ -1,16 +1,16 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
+import 'src/libs/ffg/src/globalSass/cg.scss'
+import 'src/libs/ffg/src/globalSass/trends/trendsCommon.scss'
 
 import React from "react"
-import SEO from "../../../components/seo"
-import AfgData from "../../../libs/_data/object_mapping.yml"
-import Default from "../../../components/layouts/default/default"
-import HeaderOnly from "../../../components/layouts/header-only/header-only"
-import Accordion from '../../../components/accordion/accordion'
-import ControlBar from '../../../components/control-bar/control-bar'
-import Share from '../../../components/share/share'
+import SEO from "src/components/seo"
+import AfgData from "src/libs/_data/object_mapping.yml"
+import Default from "src/components/layouts/default/default"
+import HeaderOnly from "src/components/layouts/header-only/header-only"
+import Accordion from 'src/components/accordion/accordion'
+import ControlBar from 'src/components/control-bar/control-bar'
+import Share from 'src/components/share/share'
 import { Helmet } from 'react-helmet';
-import AfgNav from '../../.../../../components/afg-nav/afg-nav';
+import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -38,7 +38,7 @@ function RevenueTrendsPage(props) {
                 <div className="cg-wrapper trends-common-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Federal Revenue Trends – U.S. Treasury"
                                 twitter="Wondering how federal revenue has changed over the years? Your Guide to America’s Finances has the .CSV data file. Download and perform your own analysis. #YourGuide #DataLab #OpenGov"

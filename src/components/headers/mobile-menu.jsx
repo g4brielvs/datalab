@@ -66,19 +66,19 @@ class MobileMenu extends React.Component {
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/revenue-and-gdp/'>Revenue</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/revenue/'>Revenue</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/spending-and-gdp/'>Spending</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/spending/'>Spending</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/explore-deficit/'>Deficit</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/deficit/'>Deficit</a>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/explore-debt/'>Debt</a>
+                <a className={styles.dataListA} href='/americas-finance-guide/explore/debt/'>Debt</a>
               </li>
               <hr className={styles.mobileHr} />
             </ul>

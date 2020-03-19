@@ -1,4 +1,4 @@
-import '../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
+import '../../../../libs/ffg/src/globalSass/chapterIntroCommon.scss'
 import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/deficit/intro/deficit-intro.scss'
 
@@ -40,7 +40,7 @@ function ExploreDeficitPage(props) {
                 <div className="cg-wrapper chapter-intro-common-wrapper deficit-intro-wrapper">
                     <div className="ffg-wrapper deficit-intro">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Explore Federal Deficit – U.S. Treasury"
                                 twitter="How much is the federal deficit? Check out #YourGuide for visualizations and .CSV data to do your own analysis. #DataLab #OpenGov"

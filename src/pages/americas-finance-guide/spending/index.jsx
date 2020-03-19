@@ -42,7 +42,7 @@ function SpendingAndGdpPage(props) {
                 <div className="cg-wrapper chapter-intro-common-wrapper spending-intro-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Federal Spending and GDP – U.S. Treasury"
                                 twitter="How much money did the government spend last year? How does it compare with federal revenue and the size of the economy? Download the federal spending and GDP .CSV file from Your Guide to America’s Finances. #YourGuide #DataLab #OpenGov"
@@ -80,7 +80,7 @@ function SpendingAndGdpPage(props) {
                                         <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government collected {AfgData.current_fy_revenue.value} in federal revenue.</h1>
                                         <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
                                         <p>
-                                            <a href="./revenue-and-gdp">Go Explore Federal Revenue.</a>
+                                            <a href="./revenue/">Go Explore Federal Revenue.</a>
                                         </p>
                                     </section>
 

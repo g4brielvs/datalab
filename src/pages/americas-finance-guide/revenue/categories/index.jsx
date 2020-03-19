@@ -1,23 +1,20 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/revenue/categories/revenue-categories.scss'
+import 'src/libs/ffg/src/globalSass/cg.scss'
+import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
 
 import React from "react"
-import SEO from "../../../components/seo"
-import AfgData from "../../../libs/_data/object_mapping.yml"
-import Default from "../../../components/layouts/default/default"
-import { HeadOnly } from "../../../components/headers/headers"
-import Accordion from '../../../components/accordion/accordion'
-import ControlBar from '../../../components/control-bar/control-bar'
-import Share from '../../../components/share/share'
+import SEO from "src/components/seo"
+import AfgData from "src/libs/_data/object_mapping.yml"
+import Default from "src/components/layouts/default/default"
+import { HeadOnly } from "src/components/headers/headers"
+import Accordion from 'src/components/accordion/accordion'
+import ControlBar from 'src/components/control-bar/control-bar'
+import Share from 'src/components/share/share'
 import { Helmet } from 'react-helmet';
-import AfgNav from '../../.../../../components/afg-nav/afg-nav';
+import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faAngleLeft,
     faAngleRight,
-    faAngleDown,
-    faAngleUp,
     faSearch,
     faSortAlphaDown,
     faSortAmountDown,
@@ -47,7 +44,7 @@ function RevenueCategoriesPage(props) {
                 <div className="cg-wrapper revenue-categories-wrapper">
                     <div className="ffg-wrapper revenue-categories">
                         <ControlBar>
-                            <Share  
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Revenue Categories – U.S. Treasury"
                                 twitter="What are the federal government’s sources of revenue? Search by category with Your Guide to America’s Finances and download .CSV data files for your own analysis! #YourGuide #DataLab #OpenGov"
@@ -75,7 +72,7 @@ function RevenueCategoriesPage(props) {
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <hr></hr>
                                 <div id="viz"></div>
                                 <hr className='categories__show-more'></hr>
@@ -121,7 +118,7 @@ function RevenueCategoriesPage(props) {
                                         <h1>How has government revenue changed over time?</h1>
                                         <p>When you're done here, explore the trends in federal revenue over the past {AfgData.number_trend_years.value} years.</p>
                                     </div>
-                                    <a className="tour__link" href="/americas-finance-guide/revenue-trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                                    <a className="tour__link" href="/americas-finance-guide/revenue/trends">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
                                 </section>
                             </div>
                         </div>

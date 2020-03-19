@@ -1,4 +1,4 @@
-import '../../../libs/ffg/src/globalSass/cg.scss'
+import '../../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/globalSass/trendsCommon.scss'
 import '../../../libs/ffg/src/debt/trends/debt-trends.scss'
 
@@ -40,7 +40,7 @@ function DebtTrendsPage(props) {
                 <div className="cg-wrapper trends-common-wrapper debt-trends-wrapper">
                     <div className="ffg-wrapper">
                         <ControlBar>
-                            <Share 
+                            <Share
                                 location={props.location}
                                 title="Data Lab - Federal Debt Trends – U.S. Treasury"
                                 twitter="What is the ratio of debt to GDP? How has the debt changed over time? Your Guide to America’s Finances has data from 2000-2019 and .CSV data files available for download. #YourGuide #DataLab #OpenGov"
@@ -72,7 +72,7 @@ function DebtTrendsPage(props) {
                                     <h1>What else is important to know about the federal debt?</h1>
                                     <p>When you are done here, continue on for a breakdown of the federal debt.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/debt-analysis">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <a className="tour__link" href="/americas-finance-guide/debt/analysis">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
                             </section>
                         </aside>
 
