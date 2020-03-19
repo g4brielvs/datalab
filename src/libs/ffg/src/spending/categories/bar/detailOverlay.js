@@ -181,7 +181,8 @@ export function initOverlay(title, config, callback) {
         })
     }
 
-    detailLayer.transition()
+    detailLayer
+        .transition()
         .duration(750)
         .attr('transform', translator(5, setOverlayY(startCoords[1], finalRectHeight)) + ' scale(1)')
         .on('end', function () {
