@@ -1,5 +1,5 @@
 import 'src/libs/ffg/src/globalSass/cg.scss'
-import 'src/libs/ffg/src/globalSass/trends/trendsCommon.scss'
+import 'src/libs/ffg/src/globalSass/trendsCommon.scss'
 
 import React from "react"
 import SEO from "src/components/seo"

@@ -1,20 +1,20 @@
-import '../../../../libs/ffg/src/globalSass/cg.scss'
-import '../../../libs/ffg/src/debt/analysis/debt-analysis.scss'
+import 'src/libs/ffg/src/globalSass/cg.scss'
+import 'src/libs/ffg/src/debt/analysis/debt-analysis.scss'
 
 import React from "react"
-import SEO from "../../../components/seo"
-import AfgData from "../../../libs/_data/object_mapping.yml"
-import Default from "../../../components/layouts/default/default"
-import { HeadOnly } from "../../../components/headers/headers"
-import Accordion from '../../../components/accordion/accordion'
-import ControlBar from '../../../components/control-bar/control-bar'
-import Share from '../../../components/share/share'
+import SEO from "src/components/seo"
+import AfgData from "src/libs/_data/object_mapping.yml"
+import Default from "src/components/layouts/default/default"
+import { HeadOnly } from "src/components/headers/headers"
+import Accordion from 'src/components/accordion/accordion'
+import ControlBar from 'src/components/control-bar/control-bar'
+import Share from 'src/components/share/share'
 import { Helmet } from 'react-helmet';
-import AfgNav from '../../../components/afg-nav/afg-nav';
-import DebtCards from "../../../libs/ffg/src/debt/analysis/cards";
+import AfgNav from 'src/components/afg-nav/afg-nav';
+import DebtCards from "src/libs/ffg/src/debt/analysis/cards";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight, faAngleDown, faAngleUp, faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 function DebtAnalysisPage(props) {
     return (
