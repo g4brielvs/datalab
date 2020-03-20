@@ -61,8 +61,10 @@
     font-size: 0.9rem;
     cursor: pointer;
 
-    i {
-        margin-left: 0.5rem;
+    img {
+        color: #fff;
+        vertical-align: middle;
+        padding-left: 0.5em;
     }
 }
 
@@ -95,6 +97,10 @@ body p.chart-row__data-line {
 .chart-row__chart {
     box-sizing: border-box;
     width: 65%;
+}
+
+.trend-row__chart-toggle.trend-row-button img {
+    height: 1rem;
 }
 
 .trend-row__detail {
@@ -145,7 +151,6 @@ body p.chart-row__data-line {
         color: $revenue-primary;
         background: white;
     }
-
 }
 
 .spending {
