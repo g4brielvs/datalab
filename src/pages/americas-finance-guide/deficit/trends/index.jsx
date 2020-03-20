@@ -41,7 +41,6 @@ function DeficitTrendsPage(props) {
 						<Share
 							location={props.location}
 							title='Data Lab - Federal Deficit Trends – U.S. Treasury'
-							text='How has the deficit changed over the past few years? Check out #YourGuide for visualizations. #DataLab #OpenGov'
 						/>
 					</ControlBar>
 
