@@ -16,8 +16,10 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 class PageHeader extends React.Component {
   constructor(props) {
     super(props);
+		// if we're NOT on the homepage...
+		// always set isSticky to true!
     this.state = {
-      isSticky: false,
+      isSticky: props.isHome === false ? true : false,
       isMobileTag: false,
       top: 0,
       skinnyTop: 26,
@@ -42,12 +44,6 @@ class PageHeader extends React.Component {
     // check for mobile when window is avail...
     const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
     this.setState({isMobileTag: isMobile});
-
-    // if we're NOT on the homepage...
-    // always set to true!
-    if (this.props.isHome === false) {
-      this.setState({ isSticky: true });
-    }
 
     // homepage listener...
     if (this.props.isHome === true) {
