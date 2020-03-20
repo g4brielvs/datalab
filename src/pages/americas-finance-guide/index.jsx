@@ -290,7 +290,7 @@ function OverviewPage(props) {
                                                 </div>
                                                 <div className="anecdote__nav-control"></div>
                                             </div>
-                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/deficit">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/deficit/">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
                                         </div>
                                     </section>
 
@@ -304,7 +304,7 @@ function OverviewPage(props) {
                                         </Accordion>
                                     </section>
 
-                                    <a className="link-button chapter__cta" href="/americas-finance-guide/deficit">
+                                    <a className="link-button chapter__cta" href="/americas-finance-guide/deficit/">
                                         <div className="link-button__text--block">
                                             <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
                                             <div className="link-button__text--bottom cg-learn-more-button-text">Federal Deficit</div>
