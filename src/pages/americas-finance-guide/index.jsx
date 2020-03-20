@@ -1,16 +1,16 @@
-import '../../libs/ffg/src/globalSass/cg.scss'
-import '../../libs/ffg/src/bigPicture/scss/bp.scss'
+import '../../libs/ffg/src/globalSass/cg.scss';
+import '../../libs/ffg/src/bigPicture/scss/bp.scss';
 
-import React from "react"
-import SEO from "../../components/seo"
-import AfgData from "../../libs/_data/object_mapping.yml"
-import Default from "../../components/layouts/default/default"
-import HeaderOnly from "../../components/layouts/header-only/header-only"
-import Accordion from '../../components/accordion/accordion'
-import ControlBar from '../../components/control-bar/control-bar'
-import Share from '../../components/share/share'
+import React from "react";
+import SEO from "../../components/seo";
+import AfgData from "../../libs/_data/object_mapping.yml";
+import Default from "../../components/layouts/default/default";
+import { HeadOnly } from '../../components/headers/headers.jsx';
+import Accordion from '../../components/accordion/accordion';
+import ControlBar from '../../components/control-bar/control-bar';
+import Share from '../../components/share/share';
 import { Helmet } from 'react-helmet';
-import BpToc from '../../components/bpToc/bpToc'
+import BpToc from '../../components/bpToc/bpToc';
 import AfgAnecdote from '../../libs/ffg/src/anecdote/anecdote';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,7 +32,7 @@ function OverviewPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
+              <HeadOnly/>
 
                 <div className="cg-wrapper bp-wrapper">
                     <header>

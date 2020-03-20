@@ -24,20 +24,11 @@ class PageHeader extends React.Component {
       skinnySub: 75,
       activeItem: '',
       showMobileMenu: false,
-      windowWidth: undefined,
+      isHome: this.props.isHome,
       menuData: this.props.megamenuItems,
     };
   };
-
-
-  handleResize = () => {
-    this.setState({windowWidw: window.innerWidth});
-  }
   componentDidMount() {
-
-    this.handleResize();
-
-    window.addEventListener('resize', this.handleResize());
 
     // check for mobile when window is avail...
     const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
@@ -45,12 +36,12 @@ class PageHeader extends React.Component {
 
     // if we're NOT on the homepage...
     // always set to true!
-    if (this.props.isHome === false) {
+    if (this.state.isHome === false) {
       this.setState({ isSticky: true });
     }
 
     // homepage listener...
-    if (this.props.isHome === true) {
+    if (this.state.isHome === true) {
       document.addEventListener('scroll', () => {
         let isSticky = window.pageYOffset > 135;
         this.setState({ isSticky: isSticky });
@@ -58,7 +49,7 @@ class PageHeader extends React.Component {
     }
 
     // not on homepage..
-    if (this.props.isHome === false) {
+    if (this.state.isHome === false) {
       document.addEventListener('scroll', () => {
         const max = 26;
         let skinnyTop = max - window.pageYOffset;
@@ -71,7 +62,7 @@ class PageHeader extends React.Component {
 
 
     // not on homepage...
-    if (this.props.isHome === false) {
+    if (this.state.isHome === false) {
       document.addEventListener('scroll', () => {
         const max = 75;
         let skinnySub = max - window.pageYOffset;
@@ -81,7 +72,6 @@ class PageHeader extends React.Component {
         this.setState({ skinnySub });
       });
     }
-
   };
 
   handleMouseLeave = e => {
@@ -97,7 +87,7 @@ class PageHeader extends React.Component {
     if (!e.target.innerText) {
       return this.setState({activeItem: ' '});
     }
-    this.setState({ activeItem: e.target.innerText });
+    return this.setState({ activeItem: e.target.innerText });
   };
 
   tagLineCheck = (isSticky) => {
@@ -121,7 +111,7 @@ class PageHeader extends React.Component {
     return (
       <>
         <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
-          <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
+          <div style={{top: this.state.isHome === true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.state.isHome ? `` : ``}`}>
             <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
               <a href="/">
                 <div>
@@ -129,7 +119,7 @@ class PageHeader extends React.Component {
                 </div>
               </a>
 
-              <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
+              <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.state.isHome ? `` : ' ' + styles.tight}`}>
                 <span className={styles.toggle} onClick={this.burgerClick}>
                   <FontAwesomeIcon icon={faBars} />
                 </span>
@@ -155,7 +145,7 @@ class PageHeader extends React.Component {
             </div>
           </div>
 
-          <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.props.isHome === true ? `` : `${this.state.skinnySub}px`}}>
+          <div className={`${styles.sub} ${isSticky ? ' ' + styles.tight : ``}`} style={{top: this.state.isHome === true ? `` : `${this.state.skinnySub}px`}}>
             <Dropdown activeItem={this.state.activeItem}
                       mouseHandle={this.handleMouseLeave}
                       data={this.props.megamenuItems} />
