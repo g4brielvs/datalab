@@ -5,6 +5,8 @@ import storyHeadingStyles from '../../components/section-elements/story-section-
 import styles from './cu.module.scss';
 import refreshLogo from '../../images/colleges-and-universities/refresh.svg';
 import Accordion from '../../components/accordion/accordion';
+import { Hidden } from '@material-ui/core';
+import SearchPanel from 'src/components/chartpanels/search';
 import ControlBar from '../../components/control-bar/control-bar';
 import DataTable from '../../components/table/data-table';
 import Downloads from '../../components/section-elements/downloads/downloads';
@@ -172,6 +174,16 @@ export default function Institutions(props) {
       blurb={`The federal government may have invested in your college or university, whether it is public, private, four year, or two year. Use the map below to uncover the amount and type of investment for individual schools. Click on a regional cluster to expand the area and see the schools in that area. `}
     />
 
+    <Hidden lgUp>
+      <SearchPanel
+        searchList={searchList}
+        listDescription='Search Agencies'
+        showIcon
+        showCollapse
+        onSelect={filterByClicked}
+      />
+    </Hidden>
+
     <Accordion title='Instructions'>
       <p>Click the map to get started</p>
       <p>The number displayed on each cluster is the number of institutions in that area</p>
@@ -195,6 +207,7 @@ export default function Institutions(props) {
 
     <Grid container>
       <Grid item xs={1}>
+        <Hidden mdDown>
         <VizControlPanel
           searchList={searchList}
           listDescription='Search Institutions'
@@ -202,7 +215,8 @@ export default function Institutions(props) {
           switchView={switchView}
         >
           <GeolocationIcon />
-        </VizControlPanel>
+          </VizControlPanel>
+        </Hidden>
       </Grid>
       <Grid item xs={10}>
         <Mapbox
@@ -219,8 +233,6 @@ export default function Institutions(props) {
           ref={detailPanelRef}
         />
       </Grid>
-    </Grid>
-
     <DataTable
       display={!chartView}
       data={filteredTableData}
@@ -228,6 +240,8 @@ export default function Institutions(props) {
       idName={'institutionsTable'}
       ref={tableRef}
     />
+    </Grid>
+
 
     <Downloads
       href={'/unstructured-data/mapbox/tableData.csv'}
