@@ -9,7 +9,8 @@ module.exports = {
     'gatsby-plugin-root-import',
     'gatsby-plugin-material-ui',
     `gatsby-plugin-react-helmet`,
-    {
+		`gatsby-plugin-force-trailing-slashes`,
+		{
       resolve: "gatsby-plugin-sass",
       options: {
         useResolveUrlLoader: true
