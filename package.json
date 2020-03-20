@@ -2,7 +2,7 @@
   "name": "datalab-gatsby",
   "private": true,
   "version": "1.0.0",
-  "author": "Andrea Blackwell <blackwell_andrea@bah.com>, Brett Varney <brett.varney@kc.frb.org>, Jack Killilea <killilea_jack@bah.com>, Matthew Brown <matthew.brown@kc.frb.org>",
+  "author": "Andrea Blackwell <blackwell_andrea@bah.com>, Brett Varney <brett.varney@kc.frb.org>, Jack Killilea <killilea_jack@bah.com>, Matthew Brown <matthew.brown@kc.frb.org> small change",
   "dependencies": {
     "@date-io/core": "^1.3.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.18",
