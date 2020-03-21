@@ -4,26 +4,24 @@ import './404.scss';
 import HeaderOnly from '../components/layouts/header-only/header-only';
 import SEO from '../components/seo';
 
-// separate url from querystring (if any) and strip "[index].html" to redirect
-const splitUrl = href => {
-  const urlFrags = href.split('?');
-  if (urlFrags[0].slice(-1) == '/') {
-    urlFrags[0] = urlFrags[0].slice(0, -1);
-  }
-  if (urlFrags[0].slice(-5) == '.html') {
-    urlFrags[0] = urlFrags[0].slice(0, -5);
-  }
-  return urlFrags;
-};
-
 const NotFoundPage = () => {
+	const browser = typeof window !== `undefined`;
 
-	// check for Jekyll links, redirect if possible
-	const browser = typeof window !== "undefined";
+	if (browser && window.location.href.indexOf('.html') > -1) {
+		const href = window.location.href;
+		const urlFrags = href.split('?');
 
-	if(browser && window.location.href.indexOf('.html') > -1) {
-		const urlFrags = splitUrl(window.location.href);
-		window.location = urlFrags[0] + '/' + (urlFrags[1] ? '?' + urlFrags[1] : '');
+		if(urlFrags.length > 1 && urlFrags[0].slice(-1) == '/') {
+			urlFrags[0] = urlFrags[0].slice(0, -1);
+		}
+
+		if (urlFrags[0].slice(-5) == '.html') {
+			urlFrags[0] = urlFrags[0].slice(0, -5);
+		}
+
+		window.location = urlFrags[0] + '/' + (urlFrags.length > 1 ? '?' + urlFrags[1] : '');
+
+		return <></>;
 
 	} else {
 		return (
