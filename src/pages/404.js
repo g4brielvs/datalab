@@ -13,28 +13,17 @@ const splitUrl = href => {
   if (urlFrags[0].slice(-5) == '.html') {
     urlFrags[0] = urlFrags[0].slice(0, -5);
   }
-  if (urlFrags[0].slice(-6) == '/index') {
-    urlFrags[0] = urlFrags[0].slice(0, -6);
-  }
   return urlFrags;
 };
 
 const NotFoundPage = () => {
 
-  // TODO:  Commenting out client side fix to address redirects from legacy links
-	// Exploring another options but keeping around just in case
 	// check for Jekyll links, redirect if possible
 	const browser = typeof window !== "undefined";
 
 	if(browser && window.location.href.indexOf('.html') > -1) {
 		const urlFrags = splitUrl(window.location.href);
 		window.location = urlFrags[0] + '/' + (urlFrags[1] ? '?' + urlFrags[1] : '');
-		return <></>;
-
-	} else if (browser && window.location.href.slice(-1) !== '/') {
-		console.log('here');
-		window.location = window.location.href + '/';
-		return <></>;
 
 	} else {
 		return (
