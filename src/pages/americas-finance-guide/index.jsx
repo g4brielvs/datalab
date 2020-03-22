@@ -2,6 +2,7 @@ import '../../libs/ffg/src/globalSass/cg.scss'
 import '../../libs/ffg/src/bigPicture/scss/bp.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "../../components/seo"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
@@ -117,7 +118,7 @@ function OverviewPage(props) {
                                                 </div>
                                                 <div className="anecdote__nav-control"></div>
                                             </div>
-                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/revenue/">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                            <Link to={"/americas-finance-guide/revenue/"} className="anecdote__cta link-button">Go Explore Revenue <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></Link>
                                         </div>
                                     </section>
 
@@ -131,7 +132,7 @@ function OverviewPage(props) {
                                         </Accordion>
                                     </section>
 
-                                    <a className="link-button chapter__cta" href="/americas-finance-guide/revenue/">
+                                    <Link to={"/americas-finance-guide/revenue/"} className="link-button chapter__cta" >
                                         <div className="link-button__text--block">
                                             <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
                                             <div className="link-button__text--bottom cg-learn-more-button-text">Federal Revenue</div>
@@ -139,7 +140,7 @@ function OverviewPage(props) {
                                         <div className="link-button__icon--block">
                                             <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div className="chapter__chart">
@@ -203,7 +204,7 @@ function OverviewPage(props) {
                                                 </div>
                                                 <div className="anecdote__nav-control"></div>
                                             </div>
-                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/spending/">Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                            <Link to={"/americas-finance-guide/spending/"} className="anecdote__cta link-button" >Go Explore Spending <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></Link>
                                         </div>
                                     </section>
 
@@ -217,7 +218,7 @@ function OverviewPage(props) {
                                         </Accordion>
                                     </section>
 
-                                    <a className="link-button chapter__cta" href="/americas-finance-guide/spending/">
+                                    <Link to={"/americas-finance-guide/spending/"} className="link-button chapter__cta">
                                         <div className="link-button__text--block">
                                             <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
                                             <div className="link-button__text--bottom cg-learn-more-button-text">Federal Spending</div>
@@ -225,7 +226,7 @@ function OverviewPage(props) {
                                         <div className="link-button__icon--block">
                                             <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="chapter__chart">
                                     <img src="/americas-finance-guide/images/spending-graph-outline.svg" alt="Federal spending has increased steadily over the past five years. Annual spending was $3.69 trillion, $3.85 trillion, $3.98 trillion $4.11 trillion, and $4.4 trillion for the years 2015 to 2019 respectively."></img>
@@ -290,7 +291,7 @@ function OverviewPage(props) {
                                                 </div>
                                                 <div className="anecdote__nav-control"></div>
                                             </div>
-                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/deficit/">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                            <Link to={"/americas-finance-guide/deficit/"} className="anecdote__cta link-button">Go Explore Deficit <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></Link>
                                         </div>
                                     </section>
 
@@ -304,7 +305,7 @@ function OverviewPage(props) {
                                         </Accordion>
                                     </section>
 
-                                    <a className="link-button chapter__cta" href="/americas-finance-guide/deficit/">
+                                    <Link to={"/americas-finance-guide/deficit/"} className="link-button chapter__cta">
                                         <div className="link-button__text--block">
                                             <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
                                             <div className="link-button__text--bottom cg-learn-more-button-text">Federal Deficit</div>
@@ -312,7 +313,7 @@ function OverviewPage(props) {
                                         <div className="link-button__icon--block">
                                         <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="chapter__chart">
                                     <img src="/americas-finance-guide/images/deficit-graph-outline.svg" alt="Since the government spent $4.4 trillion in 2019 and collected $3.5 trillion, the deficit for the year was $984 billion."></img>
@@ -367,7 +368,7 @@ function OverviewPage(props) {
                                                 </div>
                                                 <div className="anecdote__nav-control"></div>
                                             </div>
-                                            <a className="anecdote__cta link-button" href="/americas-finance-guide/debt/">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></a>
+                                            <Link to={"/americas-finance-guide/debt/"} className="anecdote__cta link-button">Go Explore Debt <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right"/></Link>
                                         </div>
                                     </section>
 
@@ -382,7 +383,7 @@ function OverviewPage(props) {
                                         </Accordion>
                                     </section>
 
-                                    <a className="link-button chapter__cta" href="/americas-finance-guide/debt/">
+                                    <Link to={"/americas-finance-guide/debt/"} className="link-button chapter__cta">
                                         <div className="link-button__text--block">
                                             <div className="link-button__text--top cg-learn-more-button-text">Learn more about</div>
                                             <div className="link-button__text--bottom cg-learn-more-button-text">Federal Debt</div>
@@ -390,7 +391,7 @@ function OverviewPage(props) {
                                         <div className="link-button__icon--block">
                                         <FontAwesomeIcon icon={faAngleRight} className="fa fa-chevron-right cg-learn-more-button-text"/>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="chapter__chart">
                                     <img src="/americas-finance-guide/images/debt-graph-outline.svg" alt="Federal debt has increased over the past five years. Federal debt was $18.2 trillion, $19.6 trillion, $20.2 trillion, $21.5 trillion and $22.7 trillion at the end of the years 2015 to 2019 respectively."></img>

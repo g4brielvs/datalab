@@ -2,6 +2,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -61,8 +62,8 @@ function RevenueCategoriesPage(props) {
                                     <div className='bar-controls__left'>
                                         Sort by:
                                         <div className='bar-controls__left--button-div'>
-                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} class='svg-inline--fa fa-w-16 hidden'/></button>
-                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} class='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} className='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} className='svg-inline--fa fa-w-16 hidden'/></button>
                                         </div>
                                     </div>
                                     <div className='bar-controls__right'>
@@ -118,7 +119,7 @@ function RevenueCategoriesPage(props) {
                                         <h1>How has government revenue changed over time?</h1>
                                         <p>When you're done here, explore the trends in federal revenue over the past {AfgData.number_trend_years.value} years.</p>
                                     </div>
-                                    <a className="tour__link" href="/americas-finance-guide/revenue/trends/">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                                    <Link to={"/americas-finance-guide/revenue/trends/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
                                 </section>
                             </div>
                         </div>

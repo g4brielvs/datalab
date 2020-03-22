@@ -2,6 +2,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/globalSass/trendsCommon.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -57,7 +58,7 @@ function RevenueTrendsPage(props) {
                                         <h1>How does the revenue of the United States compare to other countries?</h1>
                                         <p>When you're done here, see how revenue collected by the U.S. government compares to other countries.</p>
                                     </div>
-                                    <a className="tour__link" href="/americas-finance-guide/revenue/country-comparison/">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></a>
+                                    <Link to={"/americas-finance-guide/revenue/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></Link>
                                 </section>
                             </div>
 

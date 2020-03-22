@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { Link } from 'gatsby';
 
 import style from './afg-nav.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from "react";
 
 
 const AfgNav = (props) => {
@@ -108,36 +108,36 @@ const AfgNav = (props) => {
         case 'revenue':
         navClasses = `${style.chapterNav} ${style.chapterNavRevenue}`;
         navHtml = <>
-            <li><a href="/americas-finance-guide/revenue/">Revenue and GDP</a></li>
-            <li><a href="/americas-finance-guide/revenue/categories/">Revenue Categories</a></li>
-            <li><a href="/americas-finance-guide/revenue/trends/">Federal Revenue Trends</a></li>
-            <li><a href="/americas-finance-guide/revenue/country-comparison/">Country Comparison</a></li>
+            <li><Link to={"/americas-finance-guide/revenue/"}>Revenue and GDP</Link></li>
+            <li><Link to={"/americas-finance-guide/revenue/categories/"}>Revenue Categories</Link></li>
+            <li><Link to={"/americas-finance-guide/revenue/trends/"}>Federal Revenue Trends</Link></li>
+            <li><Link to={"/americas-finance-guide/revenue/country-comparison/"}>Country Comparison</Link></li>
         </>
             break;
         case 'spending':
         navClasses = `${style.chapterNav} ${style.chapterNavSpending}`;
         navHtml = <>
-            <li><a href="/americas-finance-guide/spending/">Spending and GDP</a></li>
-            <li><a href="/americas-finance-guide/spending/categories/">Spending Categories</a></li>
-            <li><a href="/americas-finance-guide/spending/trends/">Federal Spending Trends</a></li>
-            <li><a href="/americas-finance-guide/spending/country-comparison/">Country Comparison</a></li>
+            <li><Link to={"/americas-finance-guide/spending/"}>Spending and GDP</Link></li>
+            <li><Link to={"/americas-finance-guide/spending/categories/"}>Spending Categories</Link></li>
+            <li><Link to={"/americas-finance-guide/spending/trends/"}>Federal Spending Trends</Link></li>
+            <li><Link to={"/americas-finance-guide/spending/country-comparison/"}>Country Comparison</Link></li>
         </>
             break;
         case 'deficit':
         navClasses = `${style.chapterNav} ${style.chapterNavDeficit}`;
         navHtml = <>
-            <li><a href="/americas-finance-guide/deficit/">Explore Deficit</a></li>
-            <li><a href="/americas-finance-guide/deficit/trends/">Federal Deficit Trends</a></li>
-            <li><a href="/americas-finance-guide/deficit/country-comparison/">Country Comparison</a></li>
+            <li><Link to={"/americas-finance-guide/deficit/"}>Explore Deficit</Link></li>
+            <li><Link to={"/americas-finance-guide/deficit/trends/"}>Federal Deficit Trends</Link></li>
+            <li><Link to={"/americas-finance-guide/deficit/country-comparison/"}>Country Comparison</Link></li>
         </>
             break;
         case 'debt':
         navClasses = `${style.chapterNav} ${style.chapterNavDebt}`;
         navHtml = <>
-            <li><a href="/americas-finance-guide/debt/">Explore Debt</a></li>
-            <li><a href="/americas-finance-guide/debt/trends/">Federal Debt Trends</a></li>
-            <li><a href="/americas-finance-guide/debt/analysis/">Federal Debt Analysis</a></li>
-            <li><a href="/americas-finance-guide/debt/country-comparison/">Country Comparison</a></li>
+            <li><Link to={"/americas-finance-guide/debt/"}>Explore Debt</Link></li>
+            <li><Link to={"/americas-finance-guide/debt/trends/"}>Federal Debt Trends</Link></li>
+            <li><Link to={"/americas-finance-guide/debt/analysis/"}>Federal Debt Analysis</Link></li>
+            <li><Link to={"/americas-finance-guide/debt/country-comparison/"}>Country Comparison</Link></li>
         </>
             break;
         default:
@@ -147,7 +147,7 @@ const AfgNav = (props) => {
     return (
     <nav className={navClasses}>
         <ul className={style.chapterNavPrimaryList}>
-            <li className={style.chapterNavOverview}><a href="/americas-finance-guide/"><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</a></li>
+            <li className={style.chapterNavOverview}><Link to={"/americas-finance-guide/"}><FontAwesomeIcon icon={faAngleLeft} className="fas fa-chevron-left"/> Overview</Link></li>
             {navHtml}
         </ul>
         <button className={style.chapterNavTrigger}>

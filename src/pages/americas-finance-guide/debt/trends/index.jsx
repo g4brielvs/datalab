@@ -3,6 +3,7 @@ import 'src/libs/ffg/src/globalSass/trendsCommon.scss'
 import 'src/libs/ffg/src/debt/trends/debt-trends.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -72,7 +73,7 @@ function DebtTrendsPage(props) {
                                     <h1>What else is important to know about the federal debt?</h1>
                                     <p>When you are done here, continue on for a breakdown of the federal debt.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/debt/analysis/">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <Link to={"/americas-finance-guide/debt/analysis/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
                             </section>
                         </aside>
 

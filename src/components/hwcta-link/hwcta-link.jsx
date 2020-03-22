@@ -6,11 +6,12 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Grid, Hidden } from '@material-ui/core';
 import Sources from '../logos/sources';
+import { Link } from 'gatsby';
 
 const HWCTALink = (props) => {
   return (
     <div className={hwctaLinkStyles.hwcta + ' ' + props._mainClass}>
-      <a href={props.url.replace(/\/\//g, '/')}>
+      <Link to={props.url.replace(/\/\//g, '/')}>
         <Grid container alignItems='center'>
           <Grid item className={hwctaLinkStyles.icon}>
             <Sources fillColor={props.fillColor} />
@@ -26,7 +27,7 @@ const HWCTALink = (props) => {
             <FontAwesomeIcon icon={faChevronRight} color={props.fillColor} />
           </Grid>
         </Grid>
-      </a>
+      </Link>
     </div>
   );
 };

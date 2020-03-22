@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './page.module.scss';
+import { Link } from 'gatsby';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Dropdown extends React.Component {
     return data.map((item, i) => {
       return (
         <li className={styles.li} key={i}>
-          <a className={styles.a} href={item.link}>{item.name}</a>
+          <Link to={item.link} className={styles.a}>{item.name}</Link>
         </li>
       );
     });
@@ -24,7 +25,7 @@ class Dropdown extends React.Component {
       return null;
     }
     let activeItem = this.props.activeItem.toString().trim(); // IE11 and Edge handle this differently )^: )^:
-  
+
     return (
       <div>
         {activeItem === "Analyses" &&
@@ -44,7 +45,7 @@ class Dropdown extends React.Component {
           </div>
         }
         {
-          activeItem === "DataLab Express" && 
+          activeItem === "DataLab Express" &&
           <div className={styles.dataList} onMouseLeave={this.props.mouseHandle}>
             <section className={`${styles.section} ${styles.express}`}>
               <ul className={`${styles.ul} ${styles.ulExpress}`}>{this.returnActiveList(this.state.data[1].express)}</ul>

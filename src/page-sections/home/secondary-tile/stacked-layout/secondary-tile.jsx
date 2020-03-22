@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Hidden } from "@material-ui/core";
+import { Link } from 'gatsby';
 
 import secondaryAnalysesTileStyles from './secondary-tile.module.scss';
 import PropTypes from "prop-types";
@@ -7,8 +8,7 @@ import PropTypes from "prop-types";
 const SecondaryTile = (props) => {
   return (
     <section className={secondaryAnalysesTileStyles.highlight}>
-      <a
-        href={props.href}
+      <Link to={props.href}
         className={secondaryAnalysesTileStyles.highlightLink}
         ga-on='click' ga-event-category='Data Lab Home Page'
         ga-event-action={'Clicked ' + props.heading}>
@@ -59,7 +59,7 @@ const SecondaryTile = (props) => {
             </Grid>
           </Grid>
         </Hidden>
-      </a>
+      </Link>
     </section>
   );
 }
