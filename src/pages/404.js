@@ -3,6 +3,8 @@ import './404.scss';
 
 import HeaderOnly from '../components/layouts/header-only/header-only';
 import SEO from '../components/seo';
+import { Link } from "gatsby";
+
 
 const NotFoundPage = () => {
 	return (
