@@ -14,7 +14,7 @@ const d3 = { select, selectAll },
 function addCloseIcon() {
     const box = d3.select(this);
     const closeButton = box.append('button');
-    const closeIcon = <FontAwesomeIcon icon={faTimes} />;
+    const closeIcon = `<FontAwesomeIcon icon={faTimes} />`;
     ReactDOM.render(closeIcon, closeButton.node());
     closeButton.lower();
     closeButton.attr('class', closeButtonClass);
@@ -51,9 +51,9 @@ export function triggerInfoBox() {
 }
 
 (function init() {
-    d3.selectAll(infoBoxClass).each(addCloseIcon);    
+    d3.selectAll(infoBoxClass).each(addCloseIcon);
 
     d3.selectAll(triggerClass)
         .on('click', triggerInfoBox)
-        
+
 })();

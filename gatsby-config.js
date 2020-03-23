@@ -9,7 +9,7 @@ module.exports = {
     'gatsby-plugin-root-import',
     'gatsby-plugin-material-ui',
     `gatsby-plugin-react-helmet`,
-    {
+		{
       resolve: "gatsby-plugin-sass",
       options: {
         useResolveUrlLoader: true

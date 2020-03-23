@@ -19,19 +19,17 @@
 }
 
 .dtsm-dollars {
-  font-size: 1rem;
+  font-size: 1.375rem; // 22 px
   font-weight: 600;
-  margin-left: 15px;
-  margin-right: 15px;
-  /* opacity: .75; */
+  text-align: center;
   fill: #4A4A4A;
 }
 
 .dtsm-tas-header {
+  text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 150%;
-  /* opacity: .8; */
   fill: #4A4A4A;
 }
 
