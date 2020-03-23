@@ -156,51 +156,55 @@ function Barchart(props) {
 
     let maxWidth = 0;
 
-    // y axis checkboxes
-    g.append('g')
-      .attr('class', 'axis axis--y')
-      .attr('y', 6)
-      .attr('dy', '0.71em')
-      .append('foreignObject')
-      .attr('id', 'yAxisForeignObject')
-      .attr('width', 500)
-      .attr('transform', 'translate(-500,0)')
-      .attr('height', 1000)
-      .append('xhtml:body')
-      .selectAll('.yAxisCheckbox')
+
+    // y axis - text
+    g
+      .append("g")
+      .attr("transform", `translate(-12,0)`)
+      .attr("class", "axis axis--y")
+      .call(
+        d3.svg
+          .axis()
+          .orient("left")
+          .scale(y)
+      )
+      .selectAll(".tick")
+      .attr("class", "yTick")
+      .selectAll("text")
+      .style("font-size", "12px");
+
+
+    // y checkboxes
+    g
+      .append("g")
+      .attr("class", "axis axis--y")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .append("foreignObject")
+      .attr("transform", "translate(-20,0)")
+      .attr("width", 22)
+      .attr("height", 1000)
+      .append("xhtml:body")
+      .append("form")
+      .attr("id", "yAxisCheckboxes")
+      .selectAll(".yAxisCheckbox")
       .data(sortedData)
       .enter()
-      .append('div')
-      .style('height', '21px')
+      .append("div")
+      .style("height", "21px")
+      .style("background", "white")
       .style('padding-top', '9px')
-      .style('background', 'white')
       .style('text-align', 'right')
-      .append('label')
-      .text((d) => d.name)
-      .attr('height', '21px')
-      .attr('width', function () {
-        const curWidth = this.getBoundingClientRect().width + 30;
-        if (curWidth > maxWidth) {
-          maxWidth = curWidth;
-        }
-        return curWidth + 'px';
-      })
-      .append('input')
-      .attr('type', 'checkbox')
-      .style('margin-left', '10px')
-      .attr('checked', (d) => (d.displayed ? true : null))
-      .attr('class', '.yAxisCheckbox')
-      .attr('id', (d) => `checkbox${d.id}`)
-      .on('click', (d) => {
+      .append("input")
+      .attr("type", "checkbox")
+      .attr("checked", (d) => (d.displayed ? true : null))
+      .attr("class", ".yAxisCheckbox")
+      .attr("id", (d) => `checkbox${d.id}`)
+      .on("click", (d) => {
         const { id } = d;
         const checked = svg.select(`#checkbox${id}`).node().checked;
         clickEvent(id, checked);
-      })
-      ;
-
-    g.select('#yAxisForeignObject')
-      .attr('width', (maxWidth + 25) + 'px')
-      .attr('transform', `translate(-${maxWidth + 25},0)`)
+      });
 
     const stackedDataset = d3.layout.stack()(
       keys.map((key) =>
