@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss'; 
 
-@media screen and (max-width: 958px) {
+@media screen and (max-width: $tablet) {
   .toggle {
     display: flex;
     cursor: pointer;
@@ -94,7 +94,7 @@
     }
 
   }
-} // end of 958 px media
+} // end of $tablet media
 
 @media screen and (max-width: 1120px) {
   .nav {

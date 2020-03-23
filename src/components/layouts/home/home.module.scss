@@ -1,6 +1,5 @@
 @import '../../../styles/variables';
 
-
 .default {
   margin: 190px auto 0;
 }
@@ -23,9 +22,14 @@
   }
 }
 
-@media (max-width: $tablet) {
+@media (min-width: $phone) and (max-width: $tablet) {
   .default {
-    margin: 190px 16px;
+    margin: 140px 16px;
   }
 }
 
+@media (max-width: $phone) {
+  .default {
+    margin: 110px 16px;
+  }
+}
