@@ -7,7 +7,23 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 // to account for this, we will check and use null loaders.
 exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
   actions.setWebpackConfig({
-    devtool: "eval-source-map"
+    devtool: "eval-source-map",
+		plugins: [
+			new LoadablePlugin()
+		],
+		module: {
+			rules: [
+				{
+					test: /\.csv$/,
+					loader: 'csv-loader',
+					options: {
+						dynamicTyping: true,
+						header: true,
+						skipEmptyLines: true
+					}
+				}
+			]
+		}
   });
 
   if (stage === "build-html") {
@@ -18,39 +34,16 @@ exports.onCreateWebpackConfig = ({ stage, actions, loaders }) => {
             test: /mapbox-gl/,
             use: loaders.null(),
           },
-        ],
-      },
-    });
-
-    actions.setWebpackConfig({
-      module: {
-        rules: [
+					{
+						test: /vega-embed/,
+						use: loaders.null(),
+					},
           {
-            test: /vega-embed/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    });
-
-  };
-  
-  actions.setWebpackConfig({
-    plugins: [
-      new LoadablePlugin()
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.csv$/,
-          loader: 'csv-loader',
-          options: {
-            dynamicTyping: true,
-            header: true,
-            skipEmptyLines: true
+						test: /lazysizes/,
+						loader: 'null-loader'
           }
-        }
-      ]
-    }
-  });
-}
+        ]
+      }
+    });
+  };
+};

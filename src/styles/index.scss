@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600&display=swap');
 @import 'variables';
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-display: swap;
+}
 
 body {
   margin: 0;
@@ -15,7 +20,6 @@ body, h1, h2, h3, h4, h5, input, select, textarea, div {
  }
 
 p, ul, li, span {
-  color: $font-body-copy;
   font-size: 1rem;
 }
 

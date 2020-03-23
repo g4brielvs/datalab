@@ -24,7 +24,11 @@ const FeatureRow = (props) => {
           </p>
         </Grid>
         <Grid item xs={12} sm={6} className={featuredAnalysesStyles.image}>
-          <img src={props.imgSrc} alt={props.imgAlt} />
+          <img
+						data-src={props.imgSrc}
+            alt={props.imgAlt}
+					  className="lazyload"
+						/>
         </Grid>
       </Grid>
     </Link>

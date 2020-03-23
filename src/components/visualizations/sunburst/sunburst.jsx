@@ -376,7 +376,6 @@ export default class Sunburst extends React.Component {
             <div id='investment-sunburst-viz'>
               <div id='sunburst'>
               </div>
-              <p className='cu-header__blurb'>To return to a higher level click the center node</p>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ module.exports = {
     'gatsby-plugin-root-import',
     'gatsby-plugin-material-ui',
     `gatsby-plugin-react-helmet`,
-    {
+		{
       resolve: "gatsby-plugin-sass",
       options: {
         useResolveUrlLoader: true
@@ -52,7 +52,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-19138737-13",
-	siteSpeedSampleRate: 90,
+	      siteSpeedSampleRate: 90,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

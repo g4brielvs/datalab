@@ -16,34 +16,39 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 class PageHeader extends React.Component {
   constructor(props) {
     super(props);
+		// if we're NOT on the homepage...
+		// always set isSticky to true!
     this.state = {
-      isSticky: false,
+      isSticky: props.isHome === false ? true : false,
       isMobileTag: false,
       top: 0,
       skinnyTop: 26,
       skinnySub: 75,
       activeItem: '',
       showMobileMenu: false,
+      windowWidth: undefined,
       menuData: this.props.megamenuItems,
     };
   };
 
+
+  handleResize = () => {
+    this.setState({windowWidw: window.innerWidth});
+  }
   componentDidMount() {
+
+    this.handleResize();
+
+    window.addEventListener('resize', this.handleResize());
 
     // check for mobile when window is avail...
     const isMobile = window.innerWidth < 475; // 475 arbitrary value when burger hits wall (position absolute!)
     this.setState({isMobileTag: isMobile});
 
-    // if we're NOT on the homepage...
-    // always set to true!
-    if (this.props.isHome === false) {
-      this.setState({ isSticky: true });
-    }
-
     // homepage listener...
     if (this.props.isHome === true) {
       document.addEventListener('scroll', () => {
-        let isSticky = window.pageYOffset > 135;        
+        let isSticky = window.pageYOffset > 135;
         this.setState({ isSticky: isSticky });
       });
     }
@@ -89,10 +94,6 @@ class PageHeader extends React.Component {
       return this.setState({activeItem: ' '});
     }
     this.setState({ activeItem: e.target.innerText });
-    // shim for datalab express as we do not need it currently
-    if (e.target.innerText.toString().trim() === "DataLab Express") {
-      this.setState({ activeItem: ' ' });
-    }
   };
 
   tagLineCheck = (isSticky) => {
@@ -142,7 +143,7 @@ class PageHeader extends React.Component {
                     <button className={styles.anchor}>Resources <span className={styles.arrow}><Arrow /></span></button>
                   </li>
                   <li className={styles.item}>
-                    <button id={styles.glossary} className={styles.anchor}><span className={styles.arrow}><Book/></span> Glossary </button>
+                    <button className={`${styles.anchor} ${styles.glossary}`}><span className={styles.arrow}><Book/></span> Glossary </button>
                   </li>
                 </ul>
               </nav>

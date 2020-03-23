@@ -440,25 +440,21 @@ function Sankey(props) {
       .attr("class", "sankey-viz-svg")
       .attr('role', 'img')
       .append("g")
-      .attr("transform",
-        `translate(${margin.left},${margin.top})`);
-
-    // add title
-    d3.select("#sankey-viz svg")
-      .append('title')
-      .attr('id', 'viz-title')
-      .text('Sankey Visualization');
+      .attr("transform", `translate(${margin.left},${margin.top})`)
+      ;
 
     d3.select("#sankey-viz svg")
       .append('desc')
       .attr('id', 'viz-description')
-      .text('The chart allows users to see spending split into Budget Functions and Object Classes. Examples of Budget Function categories include Social Security, Medicare, Income Security, National Defense, Agriculture, International Affairs, and Natural Resources and Environment. Examples of Object Classes categories include Insurance Claims and Indemnities, Interest and Dividends, Refunds, Printing and Supplies, and Travel and Transportation.');
+      .text('The chart allows users to see spending split into Budget Functions and Object Classes. Examples of Budget Function categories include Social Security, Medicare, Income Security, National Defense, Agriculture, International Affairs, and Natural Resources and Environment. Examples of Object Classes categories include Insurance Claims and Indemnities, Interest and Dividends, Refunds, Printing and Supplies, and Travel and Transportation.')
+      ;
 
     // Set the sankey diagram properties
     const sankey = d3.sankey()
       .nodeWidth(25)
       .nodePadding(8)
-      .size([width, height]);
+      .size([width, height])
+      ;
 
     const path = sankey.link();
 
@@ -487,7 +483,8 @@ function Sankey(props) {
     // return only the distinct / unique nodes
     graph.nodes = d3.keys(d3.nest()
       .key((d) => d.name)
-      .map(graph.nodes));
+      .map(graph.nodes))
+      ;
     graph.nodes.sort((x, y) => d3.ascending(x.value, y.value));
 
     // loop through each link replacing the text with its index from node
@@ -506,7 +503,8 @@ function Sankey(props) {
     sankey
       .nodes(graph.nodes)
       .links(graph.links)
-      .layout(200);
+      .layout(200)
+      ;
 
     // add in the links
     const link = svg.append("g").selectAll(".link")
@@ -520,10 +518,10 @@ function Sankey(props) {
         return `link-${i}`;
       })
       .style("stroke-width", (d) => Math.max(1, d.dy))
-      .sort((a, b) => b.dy - a.dy);
+      .sort((a, b) => b.dy - a.dy)
+      ;
 
-    link.append("title")
-      .text((d) => `${d.source.name} → ${d.target.name}\n${format(d.value)}`);
+    link.append("title").text((d) => `${d.source.name} → ${d.target.name}\n${format(d.value)}`);
 
     function highlightLink(id, opacity) {
       d3.select(`#link-${id}`).style("stroke-opacity", opacity);

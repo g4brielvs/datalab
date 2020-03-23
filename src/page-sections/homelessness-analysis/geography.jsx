@@ -18,6 +18,7 @@ import Accordion from "../../components/accordion/accordion";
 export default function Geography(props) {
 
   const [chartView, isChartView] = useState(true);
+  const [clicked, setClicked] = useState(false);
   const { mem } = dataSource;
   const populationData = mem.pop;
 
@@ -148,6 +149,8 @@ export default function Geography(props) {
     if(searchBox){
       searchBox.value = '';
     }
+
+    setClicked(true);
   }
 
   return (<>
@@ -168,7 +171,7 @@ export default function Geography(props) {
 
     <div className="viz-actions">
       <ControlBar>
-        <Reset _resetClick={reset} />
+        <Reset _resetClick={reset} onClick={reset} />
         <Share location={props.location} />
       </ControlBar>
       <Hidden xsDown>
@@ -193,6 +196,7 @@ export default function Geography(props) {
       <Mapviz
         display={chartView}
         data={dataSource}
+        isClicked={clicked}
       />
       <TableContainer
         display={!chartView}

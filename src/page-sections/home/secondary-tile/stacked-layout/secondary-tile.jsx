@@ -24,7 +24,11 @@ const SecondaryTile = (props) => {
               </Grid>
 
               <Grid item>
-                <img style={{width: '100%'}} src={props.imgSrc} role='presentation' />
+                <img
+                  style={{width: '100%'}}
+                  data-src={props.imgSrc}
+                  className='lazyload'
+                  role='presentation' />
               </Grid>
 
               <Grid item>
@@ -39,7 +43,11 @@ const SecondaryTile = (props) => {
             container
             spacing={3}>
             <Grid item sm={6}>
-              <img style={{width: '100%'}} src={props.imgSrc} alt={props.imgAlt} />
+              <img
+                style={{width: '100%'}}
+                data-src={props.imgSrc}
+								className='lazyload'
+								alt={props.imgAlt} />
             </Grid>
             <Grid item sm={6}
                   className={secondaryAnalysesTileStyles.headings}>

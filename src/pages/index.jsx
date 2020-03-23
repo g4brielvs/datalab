@@ -16,14 +16,17 @@ import homelessImg from 'src/images/home/homelessness.png';
 
 import "src/styles/index.scss";
 import homeStyles from "./index.module.scss";
-import cg from "src/images/home/cg-gif.gif";
+import cg from "src/images/home/CG-GIF_sm_2019.gif";
 
 
 function IndexPage() {
 
   return (
     <Home>
-      <SEO title="Data Lab - U.S. Treasury" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Data Lab - U.S. Treasury"
+           description="The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending."
+           keywords={[`Federal spending`, `data`, `visualizations`, `contracts`, `accounts`, `grants`, `federal programs`,
+						 `federal financial data`, `government spending`, `government programs`, `government contracts`]} />
 
       <Grid
         container
@@ -38,6 +41,7 @@ function IndexPage() {
           <FeatureTile
             href={'americas-finance-guide'}
             imgSrc={cg}
+            isMain={true}
             imgAlt={'The Department of Treasury building, in Washington, D.C., that includes a bronze statue of Albert Gallatin, the fourth Secretary of the Treasury.'}
             heading={"Your Guide to America's Finances"}
             body={`Your Guide to America's Finances is an overview of federal government finances in 2019, providing
@@ -88,6 +92,7 @@ function IndexPage() {
           <FeatureTile
             href={"colleges-and-universities"}
             imgSrc={main}
+            isMain={false}
             imgAlt={'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.'}
             heading={"Federal Investment in Higher Education"}
             body={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and
