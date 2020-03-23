@@ -19,7 +19,7 @@ import VizContainer from './bubble-chart-container/bubble-chart-container';
 const Agencies = (props) => {
   const _data = useStaticQuery(graphql`
     query {
-      allUnivBubbleChartCsv {
+      allCuBubbleChartV2Csv {
         nodes {
           id
           agency
@@ -51,7 +51,7 @@ const Agencies = (props) => {
     }
   };
 
-  const searchList = _data.allUnivBubbleChartCsv.nodes.map(n => {
+  const searchList = _data.allCuBubbleChartV2Csv.nodes.map(n => {
     return {
       id: n.id,
       display: <><span className={styles.searchListAgency}>{n.agency}</span><p className={styles.searchListSubagency}>{n.subagency}</p></>,
@@ -143,7 +143,7 @@ const Agencies = (props) => {
       </Grid>
       <VizContainer
         display={chartView}
-        data={_data.allUnivBubbleChartCsv.nodes}
+        data={_data.allCuBubbleChartV2Csv.nodes}
         chartRef={chartRef}
       />
       <TableContainer

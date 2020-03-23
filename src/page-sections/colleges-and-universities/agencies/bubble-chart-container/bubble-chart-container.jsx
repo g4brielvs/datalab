@@ -12,7 +12,7 @@ const AgenciesBubbleContainer = (props) => {
 
   const _data = useStaticQuery(graphql`
     query {
-      allAgenciesRhpSummaryCsv {
+      allAgenciesRhpSummaryV2Csv {
         nodes {
           subagency
           type
@@ -48,7 +48,7 @@ const AgenciesBubbleContainer = (props) => {
     if (!d) {
       detailPanelRef.current && detailPanelRef.current.closeDetails();
     } else {
-      const summary = _data.allAgenciesRhpSummaryCsv.nodes.filter(i => i.subagency === d.name);
+      const summary = _data.allAgenciesRhpSummaryV2Csv.nodes.filter(i => i.subagency === d.name);
       const summaryObligations = {};
       if (summary[0].type === 'grant') {
         parseInt(summaryObligations.grant = summary[0].obligation);
