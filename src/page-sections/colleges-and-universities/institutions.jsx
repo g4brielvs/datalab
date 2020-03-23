@@ -177,7 +177,7 @@ export default function Institutions(props) {
     <Hidden lgUp>
       <SearchPanel
         searchList={searchList}
-        listDescription='Search Agencies'
+        listDescription='Search Institutions'
         showIcon
         showCollapse
         onSelect={filterByClicked}
