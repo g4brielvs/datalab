@@ -156,7 +156,7 @@ const Agencies = (props) => {
 
     <Downloads
       href={'/data/colleges-and-universities/agencies/CU_bubble_chart_table_v2.csv'}
-      date={'October 2018'}
+      date={'March 2019'}
     />
     </>);
 }

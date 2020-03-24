@@ -245,7 +245,7 @@ export default function Institutions(props) {
 
     <Downloads
       href={'/unstructured-data/mapbox/tableData.csv'}
-      date={'October 2018'}
+      date={'March 2019'}
     />
   </>);
 };
