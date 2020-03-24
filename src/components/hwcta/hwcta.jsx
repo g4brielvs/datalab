@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid } from '@material-ui/core';
 import Default from '../../components/layouts/default/default';
 import Button from '@material-ui/core/Button';
 import hwctaStyles from './hwcta.module.scss';
 import styles from '../layouts/tool/tool.module.scss';
 import { DsmHeader } from '../headers/headers';
-
+import { Link } from 'gatsby';
 
 function HWCTA(props) {
   const dataSources = props.dataSources || [];
@@ -27,7 +27,7 @@ function HWCTA(props) {
       <div className={hwctaStyles.container}>
         <header className={styles.header}>
           <Grid container justify='space-between' spacing={4}>
-            {dataPage ? <Grid item xs={12}><a href={dataPage} className={hwctaStyles.backButtonHeader}>Back</a></Grid> : ''}
+            {dataPage ? <Grid item xs={12}><Link to={dataPage} className={hwctaStyles.backButtonHeader}>Back</Link></Grid> : ''}
             <Grid item xs={12} className={hwctaStyles.title}>
               {props.title}
             </Grid>
@@ -108,9 +108,9 @@ function HWCTA(props) {
           {dataPage && !props.noFooterBackButton ?
             <Grid item xs={12}>
               <Button variant='contained' size='medium' className={hwctaStyles.backButtonFooter}>
-                <a href={dataPage}>
+                <Link to={dataPage}>
                   Back
-                </a>
+                </Link>
               </Button>
             </Grid>
             : ''}

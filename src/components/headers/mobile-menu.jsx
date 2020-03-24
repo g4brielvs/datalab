@@ -4,6 +4,7 @@ import Book from '../../svgs/book.svg';
 import Dropdown from '../../components/headers/dropdown.jsx';
 import styles from './page.module.scss';
 import Glossary from '../glossary/glossary';
+import { Link } from 'gatsby';
 
 class MobileMenu extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class MobileMenu extends React.Component {
       return (
         <>
           <li className={styles.dataListLi} key={i}>
-            <a className={styles.dataListA} href={item.link}>{item.name}</a>
+            <Link to={item.link} className={styles.dataListA}>{item.name}</Link>
           </li>
           <hr className={styles.mobileHr} />
         </>
@@ -62,23 +63,23 @@ class MobileMenu extends React.Component {
             <li className={styles.item} data-id='2' onClick={() => this.handleClick("America's Finance Guide")}>America's Finance Guide<span className={styles.arrow} onClick={() => this.handleClick("America's Finance Guide")}> <Arrow /></span></li>
             <ul className={`${styles.toggleList} ${this.state.afgCheck ? `` : ' ' + styles.hidden}`}>
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/'>Overview</a>
+                <Link to={'/americas-finance-guide/'} className={styles.dataListA} >Overview</Link>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/revenue/'>Revenue</a>
+								<Link to={'/americas-finance-guide/revenue/'} className={styles.dataListA}>Revenue</Link>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/spending/'>Spending</a>
+								<Link to={'/americas-finance-guide/spending/'} className={styles.dataListA}>Spending</Link>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/deficit/'>Deficit</a>
+								<Link to={'/americas-finance-guide/deficit/'} className={styles.dataListA}>Deficit</Link>
               </li>
               <hr className={styles.mobileHr} />
               <li className={styles.dataListLi}>
-                <a className={styles.dataListA} href='/americas-finance-guide/debt/'>Debt</a>
+								<Link to={'/americas-finance-guide/debt/'} className={styles.dataListA}>Debt</Link>
               </li>
               <hr className={styles.mobileHr} />
             </ul>

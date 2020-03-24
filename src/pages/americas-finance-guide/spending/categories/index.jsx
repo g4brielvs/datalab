@@ -2,6 +2,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/spending/categories/spending-categories.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -64,8 +65,8 @@ function SpendingCategoriesPage(props) {
                                     <div className='bar-controls__left'>
                                         Sort by:
                                         <div className='bar-controls__left--button-div'>
-                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} class='svg-inline--fa fa-w-16 hidden'/></button>
-                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} class='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} class='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} className='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} className='svg-inline--fa fa-w-16 hidden'/></button>
                                         </div>
                                     </div>
                                     <div className='bar-controls__right'>
@@ -120,7 +121,7 @@ function SpendingCategoriesPage(props) {
                                     <h1>How has federal spending changed over time?</h1>
                                     <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/spending/trends/">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                                <Link to={"/americas-finance-guide/spending/trends/"} className="tour__link" >Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
                             </section>
                         </div>
 

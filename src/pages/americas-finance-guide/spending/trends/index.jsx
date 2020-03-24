@@ -1,5 +1,6 @@
 import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/globalSass/trendsCommon.scss'
+import { Link } from 'gatsby';
 
 import React from "react"
 import SEO from "src/components/seo"
@@ -58,7 +59,7 @@ function SpendingTrendsPage(props) {
                                         <h1>How does federal spending in the United States compare to other countries?</h1>
                                         <p>When you're done here, see how federal spending by the U.S. compares to other countries.</p>
                                     </div>
-                                    <a className="tour__link" href="/americas-finance-guide/spending/country-comparison/">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></a>
+                                    <Link className="tour__link" Link to={"/americas-finance-guide/spending/country-comparison/"}>Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></Link>
                                 </section>
                             </div>
 
