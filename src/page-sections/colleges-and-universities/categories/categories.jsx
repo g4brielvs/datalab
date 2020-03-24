@@ -293,7 +293,7 @@ const Categories = () => {
             :
             '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
         }
-        date={'March 2019'}
+        date={'October 2019'}
       />
     </>
   )
