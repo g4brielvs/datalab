@@ -99,7 +99,7 @@ function ExploreDeficitPage(props) {
                                     <h1>How has the federal deficit changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal deficit since {AfgData.deficit_trend_start.value}.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/deficit/trends/"} className="tour__link" >Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
+                                <Link to={"/americas-finance-guide/deficit/trends/"} className="tour__link" >Explore<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></Link>
                             </section>
                         </div> {/* end viz-wrapper */}
 
