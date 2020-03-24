@@ -25,7 +25,7 @@ function StorySection(props) {
         </section>
       </Grid>
     </Grid>
-  )
+  );
 }
 
-export default StorySection
+export default StorySection;

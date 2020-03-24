@@ -2,16 +2,6 @@
 
 $mdGrey: #555555;
 
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-li {
-  font-family: "Source Sans Pro";
-}
-
 #TOC {
   .number {
     color: $font-body-copy;
@@ -100,7 +90,7 @@ li {
 
 @media (max-width: $tablet - 1) {
   #TOC {
-		.a {
+    .a {
       width: 100%;
     }
 
@@ -121,13 +111,20 @@ li {
     margin-bottom: $margin-25;
     margin-top: $margin-25;
 
+    .tile {
+      padding: 0;
+      border: none;
+    }
     .subtitle {
       display: none;
     }
-
     .number {
       font-size: 1.5rem;
       line-height: 3.125rem;
+      margin: 0;
+    }
+    .section {
+      margin: auto 0;
     }
   }
 }
