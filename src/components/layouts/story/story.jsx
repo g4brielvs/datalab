@@ -35,7 +35,7 @@ const StoryLayout = (props) => {
 
   return <Default>
     <StorypageHeader/>
-      <div id='story-page' className={styles.storyPage}>
+      <div className={styles.storyPage}>
         {header}
         {toc}
         {props.children}
