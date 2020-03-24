@@ -376,7 +376,9 @@ const SunburstVegaContainer = () => {
             ref={sunburstRef} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
           <Downloads className={styles.downloadContainer}
-            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
+            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} 
+            date={'October 2019'}
+            />
         </Grid>
       </Grid>
     </Hidden>
@@ -395,7 +397,9 @@ const SunburstVegaContainer = () => {
         ref={sunburstRef} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
-                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
+                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} 
+                 date={'October 2019'}
+                 />
       <SunburstDetails details={sunburstDetails} />
     </Hidden>
   </>;

@@ -14,7 +14,6 @@ import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
 import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
 
-const downloadDate = 'March 2019';
 
 const Categories = () => {
 
@@ -294,7 +293,7 @@ const Categories = () => {
             :
             '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
         }
-        date={downloadDate}
+        date={'October 2018'}
       />
     </>
   )
