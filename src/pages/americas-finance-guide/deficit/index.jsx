@@ -3,6 +3,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/deficit/intro/deficit-intro.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -98,7 +99,7 @@ function ExploreDeficitPage(props) {
                                     <h1>How has the federal deficit changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal deficit since {AfgData.deficit_trend_start.value}.</p>
                                 </div>
-                                <a className="tour__link" href="/americas-finance-guide/deficit/trends/">Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <Link to={"/americas-finance-guide/deficit/trends/"} className="tour__link" >Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
                             </section>
                         </div> {/* end viz-wrapper */}
 

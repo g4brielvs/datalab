@@ -14,7 +14,6 @@ import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
 import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
 
-const downloadDate = 'March 2019';
 
 const Categories = () => {
 
@@ -128,8 +127,8 @@ const Categories = () => {
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title,
-				heading: n.nodes[0].family,
-				subheading: n.nodes[0].Program_Title
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     grants: _data.grantsSearch.group
@@ -137,8 +136,8 @@ const Categories = () => {
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title,
-				heading: n.nodes[0].family,
-				subheading: n.nodes[0].Program_Title
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
       }))
       .sort(searchSort),
     research: _data.researchSearch.group
@@ -146,8 +145,8 @@ const Categories = () => {
         id: n.nodes[0].id,
         display: <><span className={styles.searchListFamily}>{n.nodes[0].family}</span><p className={styles.searchListProgram}>{n.nodes[0].Program_Title}</p></>,
         filterText: n.nodes[0].family + n.nodes[0].Program_Title,
-				heading: n.nodes[0].family,
-				subheading: n.nodes[0].Program_Title
+        heading: n.nodes[0].family,
+        subheading: n.nodes[0].Program_Title
       }))
       .sort(searchSort)
   };
@@ -199,7 +198,7 @@ const Categories = () => {
       <StoryHeading
         number={'04'}
         title={'Investment Categories'}
-        teaser={['How was the ',<span key='04-teaser-callout' className={storyHeadingStyles.headingRed}>money</span>, ' used?']}
+        teaser={['How was the ', <span key='04-teaser-callout' className={storyHeadingStyles.headingRed}>money</span>, ' used?']}
         blurb={`Now that we know how much money was invested in higher education, are you curious to know how the money was used? This visualization allows you to discover the various categories the government uses to classify funding. Note: Product and Service Codes (PSCs) are used to categorize contract purchases of products and services and Federal Assistance Listings are used to categorize grant funding.`}
       />
 
@@ -283,6 +282,7 @@ const Categories = () => {
             data={filteredTableData}
             tableRef={tableRef}
           />
+          <p className='cu-header__blurb'>To return to a higher level click the center node</p>
         </Grid>
       </Grid>
 
@@ -293,7 +293,7 @@ const Categories = () => {
             :
             '/data/colleges-and-universities/categories/investmentSectionGrants_v2.csv'
         }
-        date={downloadDate}
+        date={'October 2019'}
       />
     </>
   )

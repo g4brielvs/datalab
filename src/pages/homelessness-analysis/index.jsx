@@ -112,7 +112,9 @@ export default class HomelessnessPage extends Component {
           subblurb: "Which Continuum of Care areas are similar to each other?",
           sectionTeaser: ["Which Continuum of Care areas are similar ", <span key='teaser-callout' className='homeless-analysis-header-callout'>to each other?</span>],
           introBlurb: <div>
-            <p>While the previous section allows you to compare Continuum of Care areas that are neighbors geographically, we wanted to explore if Continuum of Care areas were similar along characteristics other than geography.</p>
+            <p>While the previous section allows you to compare Continuum of Care areas that are neighbors geographically, we wanted to explore if Continuum of Care areas were similar along characteristics other than geography.
+              It may be helpful for those working in the field to know what types of funding their neighbors receive and to know what regions are similar to their own, regardless of location. Using an unsupervised machine-learning
+              algorithm, we clustered Continuum of Care areas based on a variety of attributes, such as population, income, and the prevalence of mental illness.</p>
           </div>,
           tagName: "continuumCare",
         },

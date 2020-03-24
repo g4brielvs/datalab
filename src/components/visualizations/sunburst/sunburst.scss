@@ -58,8 +58,14 @@
   }
 }
 
-@media (max-width: $tablet - 1) {
+ @media (max-width: $tablet - 1) {
   #sunburst {
     height: 375px;
+  }
+}
+
+@media (max-width: $phone) {
+  #sunburst {
+    height: 300px;
   }
 }

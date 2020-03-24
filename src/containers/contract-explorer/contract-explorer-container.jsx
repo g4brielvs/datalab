@@ -274,7 +274,7 @@ const SunburstVegaContainer = () => {
         details.label = 'Agencies';
         details.total = sunData.tree.filter(node => node.hasOwnProperty('size')).reduce((a, b) => a + (b.size || 0), 0);
         details.top5 = getTop5(allRecipients, 'agency');
-        details.name = 'Contract Spending In Fiscal Year 2019';
+        details.name = 'Contract Spending In Fiscal Year 2018';
         break;
       case 1:
         // Agency is selected
@@ -376,7 +376,9 @@ const SunburstVegaContainer = () => {
             ref={sunburstRef} />
           <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
           <Downloads className={styles.downloadContainer}
-            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
+            href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} 
+            date={'October 2019'}
+            />
         </Grid>
       </Grid>
     </Hidden>
@@ -395,7 +397,9 @@ const SunburstVegaContainer = () => {
         ref={sunburstRef} />
       <div className={styles.sunburstMessage}>The visualization contains data on primary awards to recipients. Sub-awards are not included.</div>
       <Downloads className={styles.downloadContainer}
-                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} />
+                 href={'/unstructured-data/contract-explorer/awards_contracts_FY18_v2.csv'} 
+                 date={'October 2019'}
+                 />
       <SunburstDetails details={sunburstDetails} />
     </Hidden>
   </>;

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./page.module.scss";
+import { Link } from 'gatsby';
 
 import TagLine from '../../svgs/Logo-with-tagline.svg';
 import NoTagLine from '../../svgs/Logo-without-tagline.svg';
@@ -119,11 +120,11 @@ class PageHeader extends React.Component {
         <header id={styles.header} className={`${isSticky ? ' ' + styles.headerContainer : ``}`}>
           <div style={{top: this.props.isHome == true ? `` : `${this.state.skinnyTop}px`}} className={`${styles.main} ${isSticky ? styles.tight : ``} ${this.props.isHome ? `` : ``}`}>
             <div className={`${styles.logoWrapper} ${!isSticky ? ' ' + styles.col : ``}`}>
-              <a href="/">
+              <Link to={"/"}>
                 <div>
                   {this.tagLineCheck(isSticky, this.state.isMobileTag)}
                 </div>
-              </a>
+              </Link>
 
               <nav className={`${styles.nav} ${isSticky ? ' ' + styles.tight : ``} ${this.props.isHome ? `` : ' ' + styles.tight}`}>
                 <span className={styles.toggle} onClick={this.burgerClick}>

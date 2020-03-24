@@ -1,7 +1,8 @@
 import React from "react"
-import styles from "./official-banner.module.scss"
+import styles from "./official-banner.module.scss";
+import { Link } from 'gatsby';
 
-import flag from "../../../src/images/us_flag_small.png"
+import flag from "../../../src/images/us_flag_small.png";
 
 class OfficialBanner extends React.Component {
 	constructor(props) {
@@ -15,24 +16,24 @@ class OfficialBanner extends React.Component {
 					<li className={styles.siteItem}>
 						<a className={styles.siteLink} href="https://www.usaspending.gov">
 							USAspending.gov
-	    </a>
+	    			</a>
 					</li>
 					<li className={`${styles.siteItem} ${styles.itemSpacer}`} aria-hidden="true">
 						|
-	  </li>
+	  			</li>
 					<li className={styles.siteItem}>
-						<a className={styles.siteLink} href="https://datalab.usaspending.gov">
+						<Link to={'/'} className={styles.siteLink}>
 							Data Lab
-	    </a>
+	    			</Link>
 					</li>
 				</ul>
 				<div className={styles.wrapper}>
 					<div className={styles.text}>
 						An official website of the U.S. government
-	  </div>
+					</div>
 					<img
 						className={`${styles.flag} lazyload`}
-						data-src={flag}
+						src={flag}
 						alt="U.S. flag" />
 				</div>
 			</header>

@@ -2,6 +2,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/debt/analysis/debt-analysis.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -87,7 +88,7 @@ function DebtAnalysisPage(props) {
                                 <h1>How does the federal debt of the United States compare to other countries?</h1>
                                 <p>When you are done here, see how the U.S. federal debt compares to other countries.</p>
                             </div>
-                            <a className="tour__link" href="/americas-finance-guide/debt/country-comparison/">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></a>
+                            <Link to={"/americas-finance-guide/debt/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
                         </section>
 
                         <div className="clearfix"></div>

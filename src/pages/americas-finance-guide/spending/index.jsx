@@ -3,6 +3,7 @@ import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
@@ -100,7 +101,7 @@ function SpendingAndGdpPage(props) {
 
                             <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the categories of federal spending?</h1>
-                                <a className="tour__link" href="/americas-finance-guide/spending/categories/">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <Link to={"/americas-finance-guide/spending/categories/"} className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
                             </section>
                         </div> {/* end viz-wrapper */}
 

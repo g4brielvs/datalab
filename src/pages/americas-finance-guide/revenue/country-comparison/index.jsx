@@ -2,6 +2,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/globalSass/countryCommon.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -53,13 +54,13 @@ function RevenueCountryComparisonPage(props) {
                             </p>
                                 <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                             </div>
-                            <a className="chapter-link chapter-link--spending" href="/americas-finance-guide/spending/">
+                            <Link to={"/americas-finance-guide/spending/"} className="chapter-link chapter-link--spending">
                                 <div className="chapter-link__text-block">
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Spending
                                 </div>
                                 <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right tour__angle-right" />
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="country-chart">

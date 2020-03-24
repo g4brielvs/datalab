@@ -36,7 +36,7 @@ function buildSummary(row, d, config) {
         percentChange = Number.parseFloat((Math.abs(difference / begin) * 100)).toFixed(1);
 
     let changeSign;
-    
+
     if (difference > 0) {
         changeSign = '-';
     } else if (difference < 0) {
@@ -88,6 +88,7 @@ function toggleVisibility() {
     button.select('span').text(function () {
         return (isActive) ? 'view chart' : 'hide chart';
     });
+    button.select('img').attr('src', () => '/images/chart-' + (isActive ? 'white.svg' : 'green.svg'));
 }
 
 function toggleDetail(d) {
@@ -116,30 +117,17 @@ function toggleDetail(d) {
 }
 
 function buildChartButton(buttonRow) {
-    const chartButton = buttonRow.append('button')
-        .classed('trend-row__chart-toggle trend-row-button', true);
-
-    chartButton.append('span')
-        .classed('trend-row-button__toggle-text', true)
-        .text('view chart');
-
-    chartButton.append('i').classed('fas fa-chart-line', true);
-
+    const chartButton = buttonRow.append('button').classed('trend-row__chart-toggle trend-row-button', true);
+    chartButton.append('span').classed('trend-row-button__toggle-text', true).text('view chart');
+    chartButton.append('img').attr('src', '/images/chart-white.svg');
     chartButton.on('click', toggleVisibility);
 }
 
 function buildDetailButton(buttonRow, d, config) {
-    const detailButton = buttonRow.append('button')
-        .classed('trend-row__detail-toggle trend-row-button', true);
-
-    detailButton.append('span')
-        .classed('trend-row-button__toggle-text', true)
-        .text('show subcategories');
-
-    detailButton.append('i').classed('fas fa-caret-down', true);
-
+    const detailButton = buttonRow.append('button').classed('trend-row__detail-toggle trend-row-button', true);
+    detailButton.append('span').classed('trend-row-button__toggle-text', true).text('show subcategories');
+    detailButton.append('img').attr('src', '/images/arrow.svg');
     d.config = config;
-
     detailButton.on('click', toggleDetail);
 }
 
