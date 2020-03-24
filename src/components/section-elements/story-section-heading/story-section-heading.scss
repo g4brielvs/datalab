@@ -1,0 +1,13 @@
+@import "../../../styles/variables";
+
+@media (max-width: $phone - 1) {
+  #story-page {
+    .MuiGrid-item {
+      margin-bottom: 30px;
+    }
+    .MuiGrid-spacing-xs-10 > .MuiGrid-item {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

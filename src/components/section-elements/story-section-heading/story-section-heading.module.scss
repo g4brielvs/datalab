@@ -1,9 +1,9 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 $darkGrey: #666666;
 $mdGrey: #555555;
 $greyBlack: #979797;
-$fedEmpBlue: #2272CE;
+$fedEmpBlue: #2272ce;
 
 .header {
   text-align: left;
@@ -11,7 +11,6 @@ $fedEmpBlue: #2272CE;
 }
 
 .headerNumber {
-  margin-bottom: $margin-50;
   border-bottom: 1px solid $darkGrey;
 
   h2 {
@@ -33,6 +32,10 @@ $fedEmpBlue: #2272CE;
 
 .introContainer {
   margin: 0 0 $margin-50 0;
+
+  .intro {
+    padding: 0;
+  }
 
   .blurbText {
     color: #555555;
@@ -113,15 +116,19 @@ $fedEmpBlue: #2272CE;
   }
 }
 
-@media (min-width: $desktop-xl){
+@media (min-width: $desktop-xl) {
   .header {
     .headerTitle {
       line-height: 60px;
     }
   }
+
+  .intro {
+    margin-bottom: 0;
+  }
 }
 
-@media (min-width: $phone) and (max-width: $desktop-xl){
+@media (min-width: $phone) and (max-width: $desktop-xl) {
   .header {
     text-align: center;
   }
@@ -135,9 +142,16 @@ $fedEmpBlue: #2272CE;
   }
 }
 
-@media (max-width: $phone - 1){
+@media (max-width: $phone - 1) {
   .introContainer {
     margin-bottom: $margin-25;
+
+    .intro {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: $darkGrey;
+      margin: $margin-25 0;
+    }
   }
   .header {
     .headerTitle {
