@@ -10,17 +10,14 @@ $fedEmpBlue: #2272ce;
   margin-bottom: 1.5rem;
 }
 
-.headerNumber {
-
-  h2 {
-    color: $darkGrey;
-    font-size: 3rem;
-    font-weight: 600;
-    line-height: 3.125rem;
-    margin: 0.1em 0 0.3em;
-    text-align: center;
-    border-bottom: 1px solid $darkGrey;
-  }
+.headerNumber h2 {
+  color: $darkGrey;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 3.125rem;
+  margin: 0.1em 0 0.3em;
+  text-align: center;
+  border-bottom: 1px solid $darkGrey;
 }
 
 .headerTitle {
@@ -94,6 +91,11 @@ $fedEmpBlue: #2272ce;
 }
 
 @media (max-width: $desktop-xl - 1) {
+  // .introContainer {
+  //   div {
+  //     padding: 0 !important;
+  //   }
+  // }
   .number {
     margin-bottom: 25px;
   }
@@ -132,24 +134,28 @@ $fedEmpBlue: #2272ce;
   .header {
     text-align: center;
   }
-  .introContainer {
-    margin-bottom: $margin-30;
+  .headerNumber h2 {
+    border: none;
+    text-decoration: underline;
   }
-  .header {
-    .headerTitle {
-      margin-top: $margin-25;
+  .introContainer {
+    // div {
+    //   margin: 0 40px 30px 40px !important;
+    // }
+    .intro {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin: 1rem 0;
     }
+  }
+  .headerTitle {
+    margin-top: $margin-25;
   }
 }
 
 @media (max-width: $phone - 1) {
   .introContainer {
     margin: 0 0 25px 0 !important;
-
-    div {
-      padding: 0 !important;
-    }
-
     .intro {
       font-size: 1.125rem;
       font-weight: 600;

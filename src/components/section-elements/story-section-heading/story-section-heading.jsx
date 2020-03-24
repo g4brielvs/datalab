@@ -15,7 +15,7 @@ const StorySectionHeading = (props) => {
             {props.title}
           </Grid>
         </Grid>
-        <Grid container spacing={10} className={storySectionHeadingStyles.introContainer}>
+        <Grid container className={storySectionHeadingStyles.introContainer}>
           <Grid item xs={12} xl={5} className={storySectionHeadingStyles.intro}>{props.teaser}</Grid>
           <Grid item xs={12} xl={7} className={storySectionHeadingStyles.blurb}>{props.blurb}</Grid>
         </Grid>

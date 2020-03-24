@@ -8,7 +8,7 @@ $mdGrey: #555555;
     font-size: 2rem;
     font-weight: 600;
     line-height: 50px;
-    margin: 0.1em 0 0.3em;
+    margin: 0.1rem 0 0.3rem;
     text-align: left;
   }
 
@@ -57,6 +57,9 @@ $mdGrey: #555555;
 
 @media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
   #TOC {
+    .number {
+      margin-right: 1rem;
+    }
     .tile:nth-child(odd) {
       border-right: 1px solid $font-lightGrey;
     }
