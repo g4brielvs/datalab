@@ -59,7 +59,7 @@ function SpendingTrendsPage(props) {
                                         <h1>How does federal spending in the United States compare to other countries?</h1>
                                         <p>When you're done here, see how federal spending by the U.S. compares to other countries.</p>
                                     </div>
-                                    <Link className="tour__link" Link to={"/americas-finance-guide/spending/country-comparison/"}>Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></Link>
+                                    <Link className="tour__link" Link to={"/americas-finance-guide/spending/country-comparison/"}>Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fas fa-chevron-right"/></Link>
                                 </section>
                             </div>
 
@@ -75,7 +75,7 @@ function SpendingTrendsPage(props) {
                                 </div>
 
                                 <div id="show-hide">
-                                    <button id="activate-show-hide">Filter <FontAwesomeIcon icon={faSlidersH} className="fa fa-sliders-h"/></button>
+                                    <button id="activate-show-hide">Filter <FontAwesomeIcon icon={faSlidersH} width={11} className="fa fa-sliders-h"/></button>
                                     <div id="show-hide-tray">
                                         <div className='show-hide__buttons'>
                                             <div className='show-hide__buttons--left'>

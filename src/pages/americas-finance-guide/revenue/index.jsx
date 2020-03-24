@@ -100,7 +100,7 @@ function RevenueAndGdpPage(props) {
 
                             <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the sources of government revenue?</h1>
-                                <Link to={"/americas-finance-guide/revenue/categories/"} id="tour-continue" className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
+                                <Link to={"/americas-finance-guide/revenue/categories/"} id="tour-continue" className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></Link>
                             </section>
 
                             <div className="info-box" id="per-individual">

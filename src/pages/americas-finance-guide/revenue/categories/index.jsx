@@ -119,7 +119,7 @@ function RevenueCategoriesPage(props) {
                                         <h1>How has government revenue changed over time?</h1>
                                         <p>When you're done here, explore the trends in federal revenue over the past {AfgData.number_trend_years.value} years.</p>
                                     </div>
-                                    <Link to={"/americas-finance-guide/revenue/trends/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
+                                    <Link to={"/americas-finance-guide/revenue/trends/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></Link>
                                 </section>
                             </div>
                         </div>
