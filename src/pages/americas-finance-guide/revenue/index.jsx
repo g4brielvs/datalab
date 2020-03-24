@@ -3,6 +3,7 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/intro/revenue-intro.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -99,7 +100,7 @@ function RevenueAndGdpPage(props) {
 
                             <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the sources of government revenue?</h1>
-                                <a id="tour-continue" className="tour__link" href="/americas-finance-guide/revenue/categories/">Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></a>
+                                <Link to={"/americas-finance-guide/revenue/categories/"} id="tour-continue" className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
                             </section>
 
                             <div className="info-box" id="per-individual">

@@ -3,6 +3,7 @@ import 'src/libs/ffg/src/globalSass/countryCommon.scss'
 import 'src/libs/ffg/src/debt/countries/debt-country-comparison.scss'
 
 import React from "react"
+import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -53,13 +54,13 @@ function DebtCountryComparisonPage(props) {
                                 <p>How does the United States compare to countries of similar size and gross domestic product? Explore the chart, which shows the total debt of the United States compared to {AfgData.countries_compared.value} other countries listed in the CIA World Factbook. You can compare total debt (in dollars) and debt as a percent of gross domestic product. Find a country of interest and see for yourself. For instance, while the U.S. federal debt was greater than that of China and Japan combined, it ranked {AfgData.compare_us_debt_gdp_rank.value} in debt to gross domestic product. Because the U.S. government has more money coming in and going out than any other country, it helps to compare the debt of the U.S. government to other countries based on the size of their economies. To ensure an accurate comparison, {AfgData.country_compare_year.value} debt data is used in this section, not current fiscal year data.</p>
                                 <p><em>Please note that the countries depicted in this chart have different forms of government, and these differences may impact the scope of finances reported by each country.</em></p>
                             </div>
-                            <a className="chapter-link chapter-link--revenue" href="/americas-finance-guide/revenue/">
+                            <Link to={"/americas-finance-guide/revenue/"} className="chapter-link chapter-link--revenue">
                                 <div className="chapter-link__text-block">
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Revenue
                                 </div>
                                 <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right tour__angle-right"/>
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="country-chart">
