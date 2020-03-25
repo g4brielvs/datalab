@@ -12,11 +12,11 @@ const AfgNav = (props) => {
     let navClasses;
 
     function getFilename(a) {
-			if(a.slice(-1) === '/') {
-				a = a.slice(0, -1);
-			}
+		if(a.slice(-1) === '/') {
+			a = a.slice(0, -1);
+		}
 
-			return a.match(/.*americas-finance-guide\/(.*)*$/i).pop();
+		return a.match(/.*americas-finance-guide\/(.*)*$/i).pop();
     }
 
     function setCurrentPageActive() {
