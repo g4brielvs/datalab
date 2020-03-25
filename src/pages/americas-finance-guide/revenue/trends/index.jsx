@@ -58,7 +58,7 @@ function RevenueTrendsPage(props) {
                                         <h1>How does the revenue of the United States compare to other countries?</h1>
                                         <p>When you're done here, see how revenue collected by the U.S. government compares to other countries.</p>
                                     </div>
-                                    <Link to={"/americas-finance-guide/revenue/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fas fa-chevron-right"/></Link>
+                                    <Link to={"/americas-finance-guide/revenue/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon width={7} icon={faAngleRight} className="fas fa-chevron-right"/></Link>
                                 </section>
                             </div>
 
