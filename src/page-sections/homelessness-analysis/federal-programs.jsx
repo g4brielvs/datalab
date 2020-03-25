@@ -900,22 +900,22 @@ export default function FederalPrograms(props) {
         />
       </div>
 
-      <div id="tooltipSection2" className="tooltip-module" />
+      <div id="tooltipSection2" className={styles.tooltipModule} />
       <h1 id='container2_title' />
       <Grid container>
         <Grid item xs={12} md={6}>
-          <div id='container2_1' className='homelessness-container2 homelessness-container2--left' />
+          <div id='container2_1' className={`${styles.homelessnessContainer2} ${styles.homelessnessContainer2Left}`} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <div id='container2_2' className='homelessness-container2 homelessness-container2--right' />
+          <div id='container2_2' className={`${styles.homelessnessContainer2 } ${styles.homelessnessContainer2Right}`} />
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={12} md={6}>
-          <div id='container2_3' className='homelessness-container2 homelessness-container2--left' />
+          <div id='container2_3' className={`${styles.homelessnessContainer2} ${styles.homelessnessContainer2Left}`} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <div id='container2_4' className='homelessness-container2 homelessness-container2--right' />
+          <div id='container2_4' className={`${styles.homelessnessContainer2 } ${styles.homelessnessContainer2Right}`} />
         </Grid>
       </Grid>
       <Downloads

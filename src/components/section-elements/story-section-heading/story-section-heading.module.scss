@@ -15,7 +15,7 @@ $fedEmpBlue: #2272ce;
   font-size: 3rem;
   font-weight: 600;
   line-height: 3.125rem;
-  margin: 0.1em 0 0.3em;
+  margin: 0.1rem 0 0.3rem;
   text-align: center;
   border-bottom: 1px solid $darkGrey;
 }
@@ -31,7 +31,7 @@ $fedEmpBlue: #2272ce;
   margin: 0 0 $margin-50 0;
 
   .intro {
-    padding: 0;
+    padding: 0 40px 0 0; 
   }
 
   .blurbText {
@@ -90,12 +90,17 @@ $fedEmpBlue: #2272ce;
   font-size: inherit;
 }
 
+@media (min-width: $phone) {
+  .introContainer {
+    .intro {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin: 0;
+    }
+  }
+}
+
 @media (max-width: $desktop-xl - 1) {
-  // .introContainer {
-  //   div {
-  //     padding: 0 !important;
-  //   }
-  // }
   .number {
     margin-bottom: 25px;
   }
@@ -137,16 +142,6 @@ $fedEmpBlue: #2272ce;
   .headerNumber h2 {
     border: none;
     text-decoration: underline;
-  }
-  .introContainer {
-    // div {
-    //   margin: 0 40px 30px 40px !important;
-    // }
-    .intro {
-      font-size: 2.5rem;
-      font-weight: 300;
-      margin: 1rem 0;
-    }
   }
   .headerTitle {
     margin-top: $margin-25;
