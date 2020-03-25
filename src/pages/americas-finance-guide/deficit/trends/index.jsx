@@ -78,7 +78,7 @@ function DeficitTrendsPage(props) {
 								<h1>How does the deficit in the United States compare to other countries?</h1>
 								<p>When you are done here, see how the U.S. deficit compares to other countries.</p>
 							</div>
-							<Link to={'/americas-finance-guide/deficit/country-comparison/'} className='tour__link'>Continue<FontAwesomeIcon icon={faAngleRight} className='fa fa-angle-right' /></Link>
+							<Link to={'/americas-finance-guide/deficit/country-comparison/'} className='tour__link'>Continue<FontAwesomeIcon icon={faAngleRight} width={7} className='fa fa-angle-right' /></Link>
 						</section>
 					</aside>
 
