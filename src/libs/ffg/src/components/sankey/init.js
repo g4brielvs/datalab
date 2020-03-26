@@ -236,12 +236,22 @@ function setInitialValues(){
 }
 
 export function destroySankey(){
+
+console.log('destroySankey');
+
+
+
     zoomComponent = null;
     resetZoom();
     destroyDetails();
 }
 
 export function initSankey(_config) {
+
+    console.log('initSankey');
+
+
+
     config = _config || config;
     setInitialValues();
     stackData(categoryData);

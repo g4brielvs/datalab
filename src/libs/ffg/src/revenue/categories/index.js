@@ -16,15 +16,13 @@ const config = {
     }
 },
     data = getDataByYear('2019'),
-    d3 = { select, selectAll },
-    viz = d3.select('#viz');
+    d3 = { select, selectAll };
 
 let isDesktopInd = false,
     debounce,
-    resizeBarGraphDebounce,
-    mainSvg;
+    resizeBarGraphDebounce;
 
-function init() {
+function initPage() {
     config.data = JSON.parse(JSON.stringify(data));
     if (window.innerWidth >= 1200) {
         isDesktopInd = true;
@@ -35,6 +33,11 @@ function init() {
 }
 
 window.addEventListener('resize', function () {
+
+console.log('resize');
+
+
+
     const defaultTimeout = 100;
     if (debounce) {
         clearTimeout(debounce);
@@ -74,5 +77,10 @@ window.addEventListener('resize', function () {
 });
 
 if (typeof window !== `undefined`) {
-    init();
+
+console.log('1');
+
+
+
+    initPage();
 }
