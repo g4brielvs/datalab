@@ -739,14 +739,14 @@ function Sankey(props) {
     <>
       <Grid container
             className="budget-sankey">
-        <Grid item lg={8}
+        <Grid item xl={8}
 							id="sankey-container">
           <div id="sankey-brackets">
             <SankeyBrackets />
           </div>
           <div id="sankey-viz"></div>
         </Grid>
-        <Grid item lg={4}>
+        <Grid item xl={4}>
           <div id="sankey-table"></div>
         </Grid>
       </Grid>
