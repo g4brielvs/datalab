@@ -1,4 +1,19 @@
+#sankey-container {
+  min-height: 760px;
+}
+
+#sankey-viz {
+  position: absolute;
+  margin: 20px 20px 20px 45px;
+}
+
+#sankey-brackets {
+  position: absolute;
+}
+
 .budget-sankey {
+  min-height: 760px;
+
   p.subheading {
     font-size: 1.75rem;
     color: #525252;
@@ -20,6 +35,7 @@
       }
     }
   }
+
   .treecolumn {
     column-count: 2;
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
@@ -39,18 +55,7 @@
     stroke: #000;
     stroke-opacity: 0.1;
   }
-  #sankey-container {
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #sankey-table {
-    text-align: left;
-    height: 100%;
-    background-color: inherit;
-    display: inline-block;
-    flex: 1;
-  }
+
   .panel_desc {
     margin-top: 10px;
   }
@@ -182,16 +187,6 @@
     .sankey-node {
       cursor: pointer;
       font-size: 0.75rem;
-    }
-  }
-
-  @media (max-width: 1000px) {
-    #sankey-table {
-      width: 100%;
-      margin-top: 35px;
-    }
-    #viz-container {
-      height: 100%;
     }
   }
 }
