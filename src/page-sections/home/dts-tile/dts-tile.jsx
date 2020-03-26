@@ -23,8 +23,8 @@ function DtsTile(props) {
   const dollarFormatter = value => formatNumber('dollars suffix', value * 1000000); // multiply by the factor that recent_30.csv is reduced
 
   useEffect(() => {
-    d3.csv('/data-lab-data/dts/recent_30.csv', tileData => {
-      data = tileData;
+    d3.csv('/data-lab-data/dts/recent_30.csv', _data => {
+      data = _data;
       redraw();
     });
 
