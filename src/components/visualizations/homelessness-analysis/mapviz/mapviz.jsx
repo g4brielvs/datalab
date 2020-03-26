@@ -52,7 +52,7 @@ export default function Mapviz(props) {
           .append('svg')
           .attr('id', 'svg')
           .attr('width', '100%')
-          .attr('height', '575px')
+          .attr('height', '100%')
           .attr('viewBox', '0 0 950 575')
           .attr('preserveAspectRatio', 'xMidYMid meet');
 
