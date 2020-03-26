@@ -88,7 +88,7 @@ function DtsTile(props) {
     y.domain([0, d3.max(data, function (d) { return d.Totals * 1.5; })]); // multiply by 1.5 to lower domain for new data range
 
     let lastEntry = data[data.length - 1];
-    let lastDate = new Date(lastEntry.date + 'T00:00:00');
+    let lastDate = new Date(lastEntry.date);
     let lastValue = lastEntry.Totals;
 
     svg.append('g')
