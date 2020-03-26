@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Sankey from "src/components/visualizations/sankey/sankey";
 import { graphql, useStaticQuery } from "gatsby";
-import Downloads from "../../components/section-elements/downloads/downloads"
+import { Grid } from '@material-ui/core';
+import Downloads from "../../components/section-elements/downloads/downloads";
 
 function BudgetFunctionContainer() {
 
@@ -133,9 +134,8 @@ function BudgetFunctionContainer() {
 
   return (
     <>
-      <div className="viz-actions container-fluid">
-        <div className="row">
-          <div className="col-xs-2 col-md-1">
+      <Grid container className="viz-actions">
+        <Grid item xs={2} md={1}>
             <input type="radio"
                    id="contactChoice3"
                    name="FiscalYear"
@@ -143,8 +143,8 @@ function BudgetFunctionContainer() {
                    onChange={onFiscalYearChange}
                    checked={year==='fy17'} />
             <label htmlFor="contactChoice3">&nbsp;FY 17</label>
-          </div>
-          <div className="col-xs-2 col-md-1">
+        </Grid>
+				<Grid item xs={2} md={1}>
             <input type="radio"
                    id="contactChoice2"
                    name="FiscalYear"
@@ -152,8 +152,8 @@ function BudgetFunctionContainer() {
                    onChange={onFiscalYearChange}
                    checked={year==='fy18'} />
             <label htmlFor="contactChoice2">&nbsp;FY 18</label>
-          </div>
-          <div className="col-xs-2 col-md-1">
+				</Grid>
+				<Grid item xs={2} md={1}>
             <input type="radio"
                    id="contactChoice1"
                    name="FiscalYear"
@@ -161,18 +161,15 @@ function BudgetFunctionContainer() {
                    onChange={onFiscalYearChange}
                    checked={year==='fy19'} />
             <label htmlFor="contactChoice1">&nbsp;FY 19</label>
-          </div>
-        </div>
-      </div>
+				</Grid>
+      </Grid>
       <br/>
-      <div className="viz-container">
-        <Sankey data={fiscalYearData[year].data}
-                sPanel={fiscalYearData[year].sPanel}
-                sTitle={fiscalYearData[year].sTitle}
-                descriptions={fiscalYearData[year].descriptions}
-                resetYear={() => resetYear()}
-                />
-      </div>
+      <Sankey data={fiscalYearData[year].data}
+              sPanel={fiscalYearData[year].sPanel}
+              sTitle={fiscalYearData[year].sTitle}
+              descriptions={fiscalYearData[year].descriptions}
+              resetYear={() => resetYear()}
+              />
       <Downloads
         href={dataLoc}
         date={'January 2019'}
