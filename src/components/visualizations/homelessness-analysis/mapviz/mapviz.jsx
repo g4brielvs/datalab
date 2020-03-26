@@ -237,7 +237,7 @@ export default function Mapviz(props) {
 
 return (<div className={props.display ? '' : 'hidden'}>
       <div id="tooltipMapViz" className={tipStyles.tooltipModule} />
-      <div className={`${styles.vizContainer} ${styles.homelessAnalysis}`}>
+      <div className='viz-container homeless-analysis'>
         <div id="container"/>
       </div>
       <div className={styles.homelessPanelOneInfo}>
