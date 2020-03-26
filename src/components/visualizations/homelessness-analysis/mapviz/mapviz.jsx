@@ -3,7 +3,7 @@ import * as d3 from 'd3v3';
 import styles from './mapviz.module.scss';
 
 import tooltipModule from "../../../../components/tooltip/tooltip";
-import Downloads from "../../../section-elements/downloads/downloads";
+import tipStyles from '../../../../components/tooltip/tooltip.module.scss';
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
@@ -236,8 +236,8 @@ export default function Mapviz(props) {
   });
 
 return (<div className={props.display ? '' : 'hidden'}>
-      <div id="tooltipMapViz" className="tooltip-module" />
-      <div className="viz-container homeless-analysis">
+      <div id="tooltipMapViz" className={tipStyles.tooltipModule} />
+      <div className={`${styles.vizContainer} ${styles.homelessAnalysis}`}>
         <div id="container"/>
       </div>
       <div className={styles.homelessPanelOneInfo}>
