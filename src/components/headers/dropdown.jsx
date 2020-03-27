@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './page.module.scss';
-import { Link } from 'gatsby';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class Dropdown extends React.Component {
     return data.map((item, i) => {
       return (
         <li className={styles.li} key={i}>
-          <Link to={item.link} className={styles.a}>{item.name}</Link>
+          <a href={item.link} className={styles.a}>{item.name}</a>
         </li>
       );
     });

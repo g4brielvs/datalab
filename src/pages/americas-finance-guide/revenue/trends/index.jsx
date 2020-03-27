@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import HeaderOnly from "src/components/layouts/header-only/header-only"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -15,6 +14,7 @@ import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from '../../../../components/headers/headers';
 
 function RevenueTrendsPage(props) {
     return (
@@ -32,8 +32,7 @@ function RevenueTrendsPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
                 <div className="cg-wrapper trends-common-wrapper">
@@ -58,7 +57,7 @@ function RevenueTrendsPage(props) {
                                         <h1>How does the revenue of the United States compare to other countries?</h1>
                                         <p>When you're done here, see how revenue collected by the U.S. government compares to other countries.</p>
                                     </div>
-                                    <Link to={"/americas-finance-guide/revenue/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon width={7} icon={faAngleRight} className="fas fa-chevron-right"/></Link>
+                                    <a href="/americas-finance-guide/revenue/country-comparison/" className="tour__link">Continue<FontAwesomeIcon width={7} icon={faAngleRight} className="fas fa-chevron-right"/></a>
                                 </section>
                             </div>
 
