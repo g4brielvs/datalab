@@ -1,9 +1,9 @@
-import { init, initChart } from './init';
+import { initBarGraph, initChart } from './init';
 
 
 let debounce;
 
-init();
+initBarGraph();
 
 window.addEventListener('resize', function () {
     if (debounce) {

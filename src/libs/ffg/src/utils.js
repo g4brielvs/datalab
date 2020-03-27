@@ -44,18 +44,10 @@ export function getTransform(d3Selection) {
 
 export function establishContainer(height, width, accessibilityAttrs) {
     const viz = d3.select('#viz');
-
     let svg = viz.select('svg.main');
-
-    // console.log('svg.size: ', svg.size());
-    // console.log('width: ', width);
-    
     if (svg.size() === 0) {
         height = height || 400;
         width = width || 1200;
-        
-        // console.log('width: ', width);
-
         svg = viz.append('svg')
             .classed('main', true)
             .attr('shape-rendering', 'geometricPrecision')
@@ -69,15 +61,11 @@ export function establishContainer(height, width, accessibilityAttrs) {
         svg.append('desc').attr('id', 'svgMainDesc').text(accessibilityAttrs.desc);
         svg.attr('aria-describedby', 'svgMainDesc');
     }
-    
-    // console.log('svg', svg);
-    
     return svg;
 }
 
 export function simplifyBillions(n) {
     const billion = 1000000000;
-
     return `$${Math.round(n / billion * 10) / 10} B`;
 }
 

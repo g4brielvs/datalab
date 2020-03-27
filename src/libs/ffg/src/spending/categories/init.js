@@ -119,7 +119,7 @@ function displayShowMoreSection(showMoreInd){
     d3.selectAll('.categories__show-more').classed('hidden', !showMoreInd);
 }
 
-export function init(_config){
+export function initBarGraph(_config){
     config = _config || config;
 
     spendingIndexClickFunctions();

@@ -10,8 +10,10 @@ import { HeadOnly } from "src/components/headers/headers"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 import AfgNav from 'src/components/afg-nav/afg-nav';
+
+import 'src/libs/ffg/src/revenue/categories/index.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -26,9 +28,9 @@ function RevenueCategoriesPage(props) {
     return (
         <>
 
-            <Helmet>
+            {/* <Helmet>
                 <script defer src="/americas-finance-guide/revenue/categories.js"></script>
-            </Helmet>
+            </Helmet> */}
 
             <SEO
                 title='Data Lab - Revenue Categories – U.S. Treasury'

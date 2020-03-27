@@ -2,7 +2,7 @@ import { select, selectAll } from 'd3-selection';
 import { receiptsConstants } from '../receipts-utils';
 import { getDataByYear } from './data';
 import { initSankey, destroySankey } from "../../components/sankey/init";
-import { init as initBarGraph, initChart } from "../../spending/categories/init";
+import { initBarGraph, initChart } from "../../spending/categories/init";
 import colors from '../../globalSass/colors.scss';
 import '../../infoBox';
 
@@ -33,11 +33,6 @@ function initPage() {
 }
 
 window.addEventListener('resize', function () {
-
-console.log('resize');
-
-
-
     const defaultTimeout = 100;
     if (debounce) {
         clearTimeout(debounce);
@@ -77,10 +72,5 @@ console.log('resize');
 });
 
 if (typeof window !== `undefined`) {
-
-console.log('1');
-
-
-
     initPage();
 }
