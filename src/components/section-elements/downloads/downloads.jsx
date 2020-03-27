@@ -64,7 +64,7 @@ const Downloads = (props) => {
 
     return (
       <a className={downloadsStyles.data} href={dataUri} download={exportFileDefaultName}>
-        <FontAwesomeIcon icon={faDownload} />
+        <FontAwesomeIcon icon={faDownload} width={16} />
         &nbsp;Download
       </a>
     );
@@ -83,7 +83,7 @@ const Downloads = (props) => {
         exportToJsonFile(props.data)
         :
         <a className={downloadsStyles.data} style={selectedStyle} href={props.href}>
-          <FontAwesomeIcon icon={faDownload} />
+          <FontAwesomeIcon icon={faDownload} width={16} />
           &nbsp;Download
        </a>
       }

@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
+import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -32,8 +32,7 @@ function SpendingCategoriesPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="cg-wrapper spending-categories-wrapper">
@@ -65,14 +64,14 @@ function SpendingCategoriesPage(props) {
                                     <div className='bar-controls__left'>
                                         Sort by:
                                         <div className='bar-controls__left--button-div'>
-                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' icon={faSortAmountDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} className='svg-inline--fa fa-w-16 hidden'/></button>
-                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' icon={faSortAlphaDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} className='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-amount" className="active">Amount <FontAwesomeIcon id='sortAmountDown' width={11} icon={faSortAmountDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAmountUp' icon={faSortAmountUp} width={11} className='svg-inline--fa fa-w-16 hidden'/></button>
+                                            <button id="sort-name">Name <FontAwesomeIcon id='sortAlphaDown' width={11} icon={faSortAlphaDown} className='svg-inline--fa fa-w-16'/><FontAwesomeIcon id='sortAlphaUp' icon={faSortAlphaUp} width={11} className='svg-inline--fa fa-w-16 hidden'/></button>
                                         </div>
                                     </div>
                                     <div className='bar-controls__right'>
                                         <div className='bar-controls__right--div'>
                                             <input type="text" placeholder='Search by a term...' id="filter-by-name"></input>
-                                            <FontAwesomeIcon icon={faSearch} id='filter-by-name-icon' className="fa fa-search spending__search--icon"/>
+                                            <FontAwesomeIcon icon={faSearch} id='filter-by-name-icon' width={16} className="fa fa-search spending__search--icon"/>
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +120,7 @@ function SpendingCategoriesPage(props) {
                                     <h1>How has federal spending changed over time?</h1>
                                     <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/spending/trends/"} className="tour__link" >Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
+                                <a href="/americas-finance-guide/spending/trends/" className="tour__link" >Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></a>
                             </section>
                         </div>
 
