@@ -34,44 +34,44 @@ function init() {
     }
 }
 
-window.addEventListener('resize', function () {
-    const defaultTimeout = 100;
-    if (debounce) {
-        clearTimeout(debounce);
-    }
-
-    let actualTimeout = defaultTimeout;
-
-    if (window.innerWidth < 1200 && isDesktopInd) {
-        actualTimeout = 0;
-    } else if (window.innerWidth >= 1200 && !isDesktopInd) {
-        actualTimeout = 0;
-    }
-
-    debounce = setTimeout(function () {
-        config.data = JSON.parse(JSON.stringify(data));
-        if (window.innerWidth < 1200) {
-            if (isDesktopInd) {
-                isDesktopInd = false;
-                d3.select('#viz svg').html(null);
-                destroySankey();
-                initBarGraph(config);
-            } else {
-                if (resizeBarGraphDebounce) {
-                    clearTimeout(resizeBarGraphDebounce);
-                }
-                resizeBarGraphDebounce = setTimeout(initChart, 100);
-            }
-        } else {
-            if (!isDesktopInd) {
-                d3.select('#viz svg').html(null);
-                destroySankey();
-                initSankey(config);
-                isDesktopInd = true;
-            }
-        }
-    }, actualTimeout);
-});
+// window.addEventListener('resize', function () {
+//     const defaultTimeout = 100;
+//     if (debounce) {
+//         clearTimeout(debounce);
+//     }
+//
+//     let actualTimeout = defaultTimeout;
+//
+//     if (window.innerWidth < 1200 && isDesktopInd) {
+//         actualTimeout = 0;
+//     } else if (window.innerWidth >= 1200 && !isDesktopInd) {
+//         actualTimeout = 0;
+//     }
+//
+//     debounce = setTimeout(function () {
+//         config.data = JSON.parse(JSON.stringify(data));
+//         if (window.innerWidth < 1200) {
+//             if (isDesktopInd) {
+//                 isDesktopInd = false;
+//                 d3.select('#viz svg').html(null);
+//                 destroySankey();
+//                 initBarGraph(config);
+//             } else {
+//                 if (resizeBarGraphDebounce) {
+//                     clearTimeout(resizeBarGraphDebounce);
+//                 }
+//                 resizeBarGraphDebounce = setTimeout(initChart, 100);
+//             }
+//         } else {
+//             if (!isDesktopInd) {
+//                 d3.select('#viz svg').html(null);
+//                 destroySankey();
+//                 initSankey(config);
+//                 isDesktopInd = true;
+//             }
+//         }
+//     }, actualTimeout);
+// });
 
 if (typeof window !== `undefined`) {
     init();

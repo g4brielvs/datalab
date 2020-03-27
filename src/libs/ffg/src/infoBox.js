@@ -1,8 +1,7 @@
 import { select, selectAll } from 'd3-selection';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CloseIcon from '@material-ui/icons/Close';
 
 const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
@@ -14,8 +13,7 @@ const d3 = { select, selectAll },
 function addCloseIcon() {
     const box = d3.select(this);
     const closeButton = box.append('button');
-    const closeIcon = `<FontAwesomeIcon icon={faTimes} />`;
-    ReactDOM.render(closeIcon, closeButton.node());
+    ReactDOM.render(<CloseIcon />, closeButton.node());
     closeButton.lower();
     closeButton.attr('class', closeButtonClass);
 }
