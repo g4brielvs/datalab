@@ -19,7 +19,6 @@ import { AFGHeader } from '../../components/headers/headers';
 function OverviewPage(props) {
     return (
         <>
-
             <Helmet>
                 <script defer src="/americas-finance-guide/index.js"></script>
             </Helmet>
