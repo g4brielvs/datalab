@@ -1,5 +1,8 @@
 import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
+import 'src/libs/ffg/src/revenue/categories/data.js'
+
+// import '../../../../../static/americas-finance-guide/revenue/categories.js'
 
 import React from "react"
 import SEO from "src/components/seo"

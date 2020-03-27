@@ -53,6 +53,12 @@ function RevenueAndGdpPage(props) {
                             </button>
                         </h1>
 
+                        <div className="info-box" id="fiscal-year">
+                            <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
+                            <p>Fiscal Year refers to the period of time used by the government for accounting and budget purposes.
+                             For the federal government, the fiscal year runs from October 1 through September 30.</p>
+                        </div>
+
                         <div className="info-box" id="per-individual">
                             <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
                             <p>How much is {AfgData.current_fy_revenue.value}? If you take {AfgData.current_fy_revenue.value}
@@ -64,6 +70,11 @@ function RevenueAndGdpPage(props) {
                         <div className="info-box" id="billion-dollars">
                             <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
                             <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal revenue.</p>
+                        </div>
+
+                        <div className="info-box" id="gdp-info">
+                            <img src={DefinitionSVG} alt="definition icon"></img>
+                            <p><strong>Gross domestic product (GDP)</strong> measures the size of the nation's economy by the total value of final goods and services that are produced in a year. Gross domestic product is used to compare the economies of different countries, measure growth in the economy, and determine the right monetary policies to address inflation and unemployment.</p>
                         </div>
 
                         <div className="viz-wrapper">
@@ -80,12 +91,6 @@ function RevenueAndGdpPage(props) {
                                   most likely your contributions are part of the {AfgData.current_fy_revenue.value}. Federal revenue consists mostly of individual,
                                   corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.
                                   <button className="info-box-trigger" data-box-id="fiscal-year"><img src={AnecdoteRevenueSVG} alt="anecdote icon"></img></button></p>
-                            </div>
-
-                            <div className="info-box" id="fiscal-year">
-                                <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
-                                <p>Fiscal Year refers to the period of time used by the government for accounting and budget purposes.
-                                    For the federal government, the fiscal year runs from October 1 through September 30.</p>
                             </div>
 
                             <div className="facts sidebar intro-hidden">
@@ -117,11 +122,6 @@ function RevenueAndGdpPage(props) {
                                         </strong>
                                     </section>
                                 </div>
-
-                              <div className="info-box" id="gdp-info">
-                                <img src={DefinitionSVG} alt="definition icon"></img>
-                                <p><strong>Gross domestic product (GDP)</strong> measures the size of the nation's economy by the total value of final goods and services that are produced in a year. Gross domestic product is used to compare the economies of different countries, measure growth in the economy, and determine the right monetary policies to address inflation and unemployment.</p>
-                              </div>
 
                             </div> {/* end facts sidebar intro-hidden */}
 
