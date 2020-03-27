@@ -21,11 +21,14 @@ function DtsTile(props) {
 
   const dateFormatter = d3.timeFormat('%B %e, %Y');
   const dollarFormatter = value => formatNumber('dollars suffix', value * 1000000); // multiply by the factor that recent_30.csv is reduced
-  const parseTime = d3.timeParse("%m/%d/%y");
+  const parseDateYMD = d3.timeParse("%Y-%m-%d");
 
   useEffect(() => {
     d3.csv('/data-lab-data/dts/recent_30.csv', _data => {
       data = _data;
+      data.forEach(d => {
+        d.date = parseDateYMD(d.date);
+      });
       redraw();
     });
 
@@ -89,7 +92,7 @@ function DtsTile(props) {
     y.domain([0, d3.max(data, function (d) { return d.Totals * 1.5; })]); // multiply by 1.5 to lower domain for new data range
 
     let lastEntry = data[data.length - 1];
-    let lastDate = parseTime(lastEntry.date);
+    let lastDate = lastEntry.date;
     let lastValue = lastEntry.Totals;
 
     svg.append('g')
