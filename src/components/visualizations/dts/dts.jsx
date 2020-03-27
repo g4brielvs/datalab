@@ -115,8 +115,9 @@ function DTS(props) {
       optionsDict = {};
 
       data = _data;
+
       data.forEach(d => {
-        d.date = new Date(d.date.toString().trim() + 'T00:00:00'); // force GMT with time stamp
+        d.date = parseDateYMD(d.date);
         d.today = +d.today * 1000000;
         d.mtd = +d.mtd * 1000000;
         d.fytd = +d.fytd * 1000000;
@@ -557,7 +558,7 @@ function DTS(props) {
         setTooltipActiveTimeframe(frequencyValue);
 
         let amountSpentToday = optionsDict[categoryValue]['today'].slice(-1).pop(); // used to be .last() but... not a real function??? (get last value in array.)
-
+        
         d3.select(".daily-spending-subtext").text("Amount Spent On " + dateFormatter(amountSpentToday.date));
         d3.select(".daily-spending-amount").text(dollarFormatter(amountSpentToday.value));
       }
