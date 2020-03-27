@@ -7,7 +7,6 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import HeaderOnly from "src/components/layouts/header-only/header-only"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -17,6 +16,7 @@ import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from 'src/components/headers/headers';
 
 function DebtTrendsPage(props) {
     return (
@@ -34,8 +34,7 @@ function DebtTrendsPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper trends-common-wrapper debt-trends-wrapper">
@@ -73,7 +72,7 @@ function DebtTrendsPage(props) {
                                     <h1>What else is important to know about the federal debt?</h1>
                                     <p>When you are done here, continue on for a breakdown of the federal debt.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/debt/analysis/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></Link>
+                                <a href="/americas-finance-guide/debt/analysis/" className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></a>
                             </section>
                         </aside>
 

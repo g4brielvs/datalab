@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
+import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -32,8 +32,7 @@ function SpendingCategoriesPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="cg-wrapper spending-categories-wrapper">
@@ -121,7 +120,7 @@ function SpendingCategoriesPage(props) {
                                     <h1>How has federal spending changed over time?</h1>
                                     <p>When you are done here we encourage you to explore trends in government spending over the past {AfgData.number_trend_years.value} years.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/spending/trends/"} className="tour__link" >Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></Link>
+                                <a href="/americas-finance-guide/spending/trends/" className="tour__link" >Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></a>
                             </section>
                         </div>
 

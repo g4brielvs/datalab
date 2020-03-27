@@ -6,7 +6,6 @@ import { Link } from 'gatsby'
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import HeaderOnly from "src/components/layouts/header-only/header-only"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -15,6 +14,7 @@ import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from '../../../../components/headers/headers';
 
 function SpendingTrendsPage(props) {
     return (
@@ -32,8 +32,7 @@ function SpendingTrendsPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="cg-wrapper trends-common-wrapper">
@@ -59,7 +58,7 @@ function SpendingTrendsPage(props) {
                                         <h1>How does federal spending in the United States compare to other countries?</h1>
                                         <p>When you're done here, see how federal spending by the U.S. compares to other countries.</p>
                                     </div>
-                                    <Link className="tour__link" Link to={"/americas-finance-guide/spending/country-comparison/"}>Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fas fa-chevron-right"/></Link>
+                                    <a className="tour__link" href="/americas-finance-guide/spending/country-comparison/">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fas fa-chevron-right"/></a>
                                 </section>
                             </div>
 

@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
-import { HeadOnly } from "../../../components/headers/headers"
+import { AFGHeader } from '../../../components/headers/headers';
 import GdpTemplate from '../../../components/gdp-template/gdp-template'
 import Accordion from '../../../components/accordion/accordion'
 import ControlBar from '../../../components/control-bar/control-bar'
@@ -36,8 +36,7 @@ function SpendingAndGdpPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'spending'}></AfgNav>
 
                 <div className="cg-wrapper chapter-intro-common-wrapper spending-intro-wrapper">
@@ -101,7 +100,7 @@ function SpendingAndGdpPage(props) {
 
                             <section className="tour sidebar intro-hidden">
                                 <h1 className="tour__heading">What are the categories of federal spending?</h1>
-                                <Link to={"/americas-finance-guide/spending/categories/"} className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></Link>
+                                <a href="/americas-finance-guide/spending/categories/" className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></a>
                             </section>
                         </div> {/* end viz-wrapper */}
 

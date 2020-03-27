@@ -15,6 +15,7 @@ import DebtCards from "src/libs/ffg/src/debt/analysis/cards";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from 'src/components/headers/headers';
 
 function DebtAnalysisPage(props) {
     return (
@@ -32,7 +33,7 @@ function DebtAnalysisPage(props) {
             />
 
             <Default>
-
+							  <AFGHeader />
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper debt-analysis-wrapper">
@@ -86,7 +87,7 @@ function DebtAnalysisPage(props) {
                                 <h1>How does the federal debt of the United States compare to other countries?</h1>
                                 <p>When you are done here, see how the U.S. federal debt compares to other countries.</p>
                             </div>
-                            <Link to={"/americas-finance-guide/debt/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></Link>
+                            <a href="/americas-finance-guide/debt/country-comparison/" className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></a>
                         </section>
 
                         <div className="clearfix"></div>

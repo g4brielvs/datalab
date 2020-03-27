@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
+import { AFGHeader } from 'src/components/headers/headers';
 import GdpTemplate from 'src/components/gdp-template/gdp-template'
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
@@ -35,8 +35,7 @@ function ExploreDebtPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper chapter-intro-common-wrapper debt-intro-wrapper">
@@ -102,7 +101,7 @@ function ExploreDebtPage(props) {
                                     <h1>How has the federal debt changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal debt since {AfgData.debt_trend_start.value}.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/debt/trends/"} className="tour__link">Explore<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></Link>
+                                <a href="/americas-finance-guide/debt/trends/" className="tour__link">Explore<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></a>
                             </section>
                         </div> {/* end viz-wrapper */}
 
