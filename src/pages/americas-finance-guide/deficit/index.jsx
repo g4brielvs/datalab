@@ -7,7 +7,7 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
+import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -34,8 +34,7 @@ function ExploreDeficitPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
                 <div className="cg-wrapper chapter-intro-common-wrapper deficit-intro-wrapper">
@@ -99,7 +98,7 @@ function ExploreDeficitPage(props) {
                                     <h1>How has the federal deficit changed over time?</h1>
                                     <p>When you are done here, we encourage you to explore trends in the federal deficit since {AfgData.deficit_trend_start.value}.</p>
                                 </div>
-                                <Link to={"/americas-finance-guide/deficit/trends/"} className="tour__link" >Explore<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right" /></Link>
+                                <a href="/americas-finance-guide/deficit/trends/" className="tour__link" >Explore<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></a>
                             </section>
                         </div> {/* end viz-wrapper */}
 

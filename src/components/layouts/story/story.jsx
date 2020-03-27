@@ -7,7 +7,6 @@ import { Grid } from '@material-ui/core';
 import HwctaLink from '../../hwcta-link/hwcta-link';
 import MoreAnalyses from '../../more-analyses/more-analyses';
 import { StorypageHeader } from '../../headers/headers';
-
 import Toc from '../../toc/toc';
 
 const StoryLayout = (props) => {
@@ -32,26 +31,20 @@ const StoryLayout = (props) => {
       </Grid>;
 
     toc = <Toc sections={props.sectionToc} />;
-
   }
-
 
   return <Default>
     <StorypageHeader/>
-
       <div className={styles.storyPage}>
         {header}
         {toc}
         {props.children}
 
         <div className={styles.hwcta}>
-          <HwctaLink
-            url={props.hwctaLink || '#'} />
+          <HwctaLink url={props.hwctaLink || '#'} />
         </div>
-
         <MoreAnalyses />
       </div>
-
   </Default>
 };
 

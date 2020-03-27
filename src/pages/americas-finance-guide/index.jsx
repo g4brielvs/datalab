@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 import SEO from "../../components/seo"
 import AfgData from "../../libs/_data/object_mapping.yml"
 import Default from "../../components/layouts/default/default"
-import HeaderOnly from "../../components/layouts/header-only/header-only"
 import Accordion from '../../components/accordion/accordion'
 import ControlBar from '../../components/control-bar/control-bar'
 import Share from '../../components/share/share'
@@ -16,6 +15,7 @@ import AfgAnecdote from '../../libs/ffg/src/anecdote/anecdote';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleDown, faStreetView } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from '../../components/headers/headers';
 
 function OverviewPage(props) {
     return (
@@ -33,8 +33,7 @@ function OverviewPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+							<AFGHeader />
                 <div className="cg-wrapper bp-wrapper">
                     <header>
                         <div className="bp-header">

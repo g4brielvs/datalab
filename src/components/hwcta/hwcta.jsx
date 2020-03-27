@@ -14,7 +14,7 @@ function HWCTA(props) {
   let dataPage = '';
 
   if (props.location) {
-    dataPage = props.location.href;
+    dataPage = props.location.pathname;
     if (dataPage) {
       dataPage = dataPage.substring(0, dataPage.lastIndexOf('methodologies'));
     }

@@ -2,6 +2,9 @@ import React from 'react';
 import PageHeader from './page';
 
 export default class GenericHeader extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
   render() {
     return (<PageHeader headerItems={['Analyses', "America's Finance Guide", 'Resources', 'Glossary']}
