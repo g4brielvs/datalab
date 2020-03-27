@@ -8,19 +8,20 @@ import formatNumber from '../../../utils/number-formatter';
 function DtsTile(props) {
 
   let svg,
-    data,
-    debounce,
-    containerWidth,
-    margin,
-    width,
-    aspect,
-    x,
-    y,
-    valueline,
-    height;
+      data,
+      debounce,
+      containerWidth,
+      margin,
+      width,
+      aspect,
+      x,
+      y,
+      valueline,
+      height;
 
   const dateFormatter = d3.timeFormat('%B %e, %Y');
   const dollarFormatter = value => formatNumber('dollars suffix', value * 1000000); // multiply by the factor that recent_30.csv is reduced
+  const parseTime = d3.timeParse("%m/%d/%y");
 
   useEffect(() => {
     d3.csv('/data-lab-data/dts/recent_30.csv', _data => {
@@ -54,7 +55,7 @@ function DtsTile(props) {
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-      ;
+    ;
 
     x = d3.scaleTime().range([0, width]);
     y = d3.scaleLinear().range([height, 0]);
@@ -77,7 +78,7 @@ function DtsTile(props) {
           .tickSize(-width)
           .tickFormat('')
       )
-      ;
+    ;
   }
 
   function redraw() {
@@ -88,7 +89,7 @@ function DtsTile(props) {
     y.domain([0, d3.max(data, function (d) { return d.Totals * 1.5; })]); // multiply by 1.5 to lower domain for new data range
 
     let lastEntry = data[data.length - 1];
-    let lastDate = new Date(lastEntry.date);
+    let lastDate = parseTime(lastEntry.date);
     let lastValue = lastEntry.Totals;
 
     svg.append('g')
@@ -104,7 +105,7 @@ function DtsTile(props) {
           .tickFormat(dollarFormatter)
           .tickSize(0)
       )
-      ;
+    ;
 
     svg.append('g')
       .attr('class', 'dts_Xaxis')
@@ -119,13 +120,13 @@ function DtsTile(props) {
           .tickFormat(d3.timeFormat('%d %b'))
           .tickSize(0)
       )
-      ;
+    ;
 
     svg.append('path')
       .data([data])
       .attr('class', 'line')
       .attr('d', valueline)
-      ;
+    ;
 
     drawYAxisGridlines(svg, y, width, 10);
 
@@ -133,7 +134,7 @@ function DtsTile(props) {
       .attr('r', 7)
       .attr('stroke-width', 1)
       .attr('transform', 'translate(' + (x(lastDate)) + ',' + (y(lastValue)) + ')')
-      ;
+    ;
 
     d3.select('.dtsm-dollars').text(dollarFormatter(lastValue));
     d3.select('.side-dts__date').text('Updated ' + dateFormatter(lastDate));
@@ -141,9 +142,9 @@ function DtsTile(props) {
 
   return (
     <Link to='dts'
-      className='landing-chart__link'
-      ga-on='click' ga-event-category='Data Lab Home Page'
-      ga-event-action={'Clicked ' + props.heading}
+          className='landing-chart__link'
+          ga-on='click' ga-event-category='Data Lab Home Page'
+          ga-event-action={'Clicked ' + props.heading}
     >
       <section className='dts'>
         <h1>
