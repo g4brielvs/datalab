@@ -102,7 +102,7 @@ function RevenueAndGdpPage(props) {
                                         <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government spent {AfgData.current_fy_spending.value}.</h1>
                                         <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
                                         <p>
-                                            <a href="./spending/">Go Explore Federal Spending</a>
+                                            <a href="/americas-finance-guide/spending/trends/">Go Explore Federal Spending</a>
                                         </p>
                                     </section>
 
