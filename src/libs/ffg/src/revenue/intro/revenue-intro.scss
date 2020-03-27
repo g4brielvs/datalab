@@ -41,6 +41,10 @@
   opacity: 0;
 }
 
+  .info-box--active {
+    z-index: 999;
+  }
+
 aside {
   section {
     h1 {
