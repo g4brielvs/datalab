@@ -138,18 +138,12 @@ function moveBarGroup(init) {
         barDuration = 800;
     }
 
-debugger;
-
     baseContainer.transition()
         .duration(barDuration)
         .delay(delay)
         .attr('transform', translator(baseTranslate.x, yTrans))
         .on('end', addDetails)
         .ease()
-
-        debugger;
-        
-        
 }
 
 function buildStack(data) {
@@ -168,9 +162,7 @@ function buildStack(data) {
         .keys(keys)([reduced]);
 }
 
-function addSegments(more) {
-    const duration = 1000;
-
+function addSegments() {
     shaders = shaderContainer.selectAll('rect')
         .data(categoryData)
         .enter()

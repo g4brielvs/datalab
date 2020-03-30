@@ -53,10 +53,8 @@ export function initChart(showMoreFlag) {
     }
 
     const chartData = top10 ? d.slice(0,10) : d;
-    
-    d3.selectAll('svg.main').remove();
+        d3.selectAll('svg.main').remove();
     barChart(chartData, config.dataType, config);
-
 }
 
 function showMore() {
