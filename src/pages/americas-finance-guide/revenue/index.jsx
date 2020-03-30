@@ -3,7 +3,6 @@ import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/intro/revenue-intro.scss'
 
 import React from "react"
-import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -54,16 +53,44 @@ function RevenueAndGdpPage(props) {
                             </button>
                         </h1>
 
+                        <div className="info-box" id="fiscal-year">
+                            <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
+                            <p>Fiscal Year refers to the period of time used by the government for accounting and budget purposes.
+                             For the federal government, the fiscal year runs from October 1 through September 30.</p>
+                        </div>
+
+                        <div className="info-box" id="per-individual">
+                            <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
+                            <p>How much is {AfgData.current_fy_revenue.value}? If you take {AfgData.current_fy_revenue.value}
+                            divided by the U.S. population estimate in {AfgData.current_fy.value}, of {AfgData.us_population.value}
+                            (<a href={AfgData.census_population.value} target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a>)
+                              that would equate to a little more than {AfgData.revenue_per_individual.value} in revenue for every individual in the U.S.</p>
+                        </div>
+
+                        <div className="info-box" id="billion-dollars">
+                            <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
+                            <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal revenue.</p>
+                        </div>
+
+                        <div className="info-box" id="gdp-info">
+                            <img src={DefinitionSVG} alt="definition icon"></img>
+                            <p><strong>Gross domestic product (GDP)</strong> measures the size of the nation's economy by the total value of final goods and services that are produced in a year. Gross domestic product is used to compare the economies of different countries, measure growth in the economy, and determine the right monetary policies to address inflation and unemployment.</p>
+                        </div>
+
                         <div className="viz-wrapper">
+
                             <div id="viz"></div>
 
                             <div className="intro-math intro-hidden">
-                            <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_revenue.value} dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_revenue.value}</strong>
+                                <FontAwesomeIcon icon={faReply} className="fas fa-reply intro-math__icon"/>{AfgData.dot_number_revenue.value}
+                                dots x {AfgData.dot_represents.value} = <strong>{AfgData.current_fy_revenue.value}</strong>
                             </div>
 
                             <div id="copy" className="intro-hidden">
-                                <p>Where does the money come from? If you lived or worked in the United States in {AfgData.current_fy.value}, most likely your contributions are part of the {AfgData.current_fy_revenue.value}. Federal revenue consists mostly of individual, corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.<button className="info-box-trigger" data-box-id="fiscal-year"><img src={AnecdoteRevenueSVG} alt="anecdote icon"></img></button></p>
-
+                                <p>Where does the money come from? If you lived or worked in the United States in {AfgData.current_fy.value},
+                                  most likely your contributions are part of the {AfgData.current_fy_revenue.value}. Federal revenue consists mostly of individual,
+                                  corporate, and social insurance taxes collected from the people who live, work, or do business in the United States each Fiscal Year.
+                                  <button className="info-box-trigger" data-box-id="fiscal-year"><img src={AnecdoteRevenueSVG} alt="anecdote icon"></img></button></p>
                             </div>
 
                             <div className="facts sidebar intro-hidden">
@@ -80,7 +107,7 @@ function RevenueAndGdpPage(props) {
                                         <h1>In Fiscal Year {AfgData.current_fy.value}, the federal government spent {AfgData.current_fy_spending.value}.</h1>
                                         <p>Since the government spent more than it collected, the deficit for {AfgData.current_fy.value} was {AfgData.current_fy_deficit.value}.</p>
                                         <p>
-                                            <a href="./spending/">Go Explore Federal Spending</a>
+                                            <a href="/americas-finance-guide/spending/trends/">Go Explore Federal Spending</a>
                                         </p>
                                     </section>
 
@@ -95,6 +122,7 @@ function RevenueAndGdpPage(props) {
                                         </strong>
                                     </section>
                                 </div>
+
                             </div> {/* end facts sidebar intro-hidden */}
 
                             <section className="tour sidebar intro-hidden">
@@ -102,22 +130,6 @@ function RevenueAndGdpPage(props) {
                                 <a href="/americas-finance-guide/revenue/categories/" id="tour-continue" className="tour__link" >Discover<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right" /></a>
                             </section>
 
-                            <div className="info-box" id="per-individual">
-                                <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
-                                <p>How much is {AfgData.current_fy_revenue.value}? If you take {AfgData.current_fy_revenue.value} divided by the U.S. population estimate in {AfgData.current_fy.value}, of {AfgData.us_population.value} (<a href={AfgData.census_population.value} target="_blank" rel="noopener noreferrer">U.S. Census Bureau</a>) that would equate to a little more than {AfgData.revenue_per_individual.value} in revenue for every individual in the U.S.</p>
-                            </div>
-                            <div className="info-box" id="fiscal-year">
-                                <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
-                                <p>Fiscal Year refers to the period of time used by the government for accounting and budget purposes. For the federal government, the fiscal year runs from October 1 through September 30.</p>
-                            </div>
-                            <div className="info-box" id="gdp-info">
-                                <img src={DefinitionSVG} alt="definition icon"></img>
-                                <p><strong>Gross domestic product (GDP)</strong> measures the size of the nation's economy by the total value of final goods and services that are produced in a year. Gross domestic product is used to compare the economies of different countries, measure growth in the economy, and determine the right monetary policies to address inflation and unemployment.</p>
-                            </div>
-                            <div className="info-box" id="billion-dollars">
-                                <img src={AnecdoteRevenueSVG} alt="anecdote icon"></img>
-                                <p>In this visualization, one dot represents {AfgData.dot_represents.value} of federal revenue.</p>
-                            </div>
                         </div> {/* end viz-wrapper  */}
                     </div> {/* end ffg-wrapper revenue-intro*/}
 
