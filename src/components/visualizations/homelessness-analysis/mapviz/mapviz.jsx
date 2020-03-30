@@ -222,10 +222,8 @@ export default function Mapviz(props) {
   useEffect(() => {
 
     if (window.innerWidth > 575) {
-      console.log('greater than 575');
       mapHeight = '100%';
     } else {
-      console.log('we are smaller');
       mapHeight = '275px';
     }
 
