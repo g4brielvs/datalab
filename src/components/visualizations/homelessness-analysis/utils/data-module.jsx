@@ -2,7 +2,7 @@ const map = require('../../../../../static/unstructured-data/homelessness-analys
 const cfdaStateData = require('../../../../../static/unstructured-data/homelessness-analysis/2019statecfdafunding.csv');
 const stateList = require('../../../../../static/unstructured-data/homelessness-analysis/State_crosswalk.csv');
 const acronyms = require('../../../../../static/unstructured-data/homelessness-analysis/cfda_acronyms.csv');
-const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v6.csv');
+const cocPopulation = require('../../../../../static/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v7_2020_03_27.csv');
 
 const treeData = require('../../../../../static/unstructured-data/homelessness-analysis/homeless_cluster_v3');
 const cluster = require('../../../../../static/unstructured-data/homelessness-analysis/cluster_data_panel_3_v2.csv');
