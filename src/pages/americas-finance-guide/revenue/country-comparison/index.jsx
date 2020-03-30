@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
+import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -31,8 +31,7 @@ function RevenueCountryComparisonPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'revenue'}></AfgNav>
 
                 <div className="cg-wrapper country-common-wrapper">
@@ -59,7 +58,7 @@ function RevenueCountryComparisonPage(props) {
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Spending
                                 </div>
-                                <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right tour__angle-right" />
+                                <FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right tour__angle-right" />
                             </Link>
                         </div>
 
