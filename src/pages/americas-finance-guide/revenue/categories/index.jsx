@@ -3,12 +3,13 @@ import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss';
 import 'src/libs/ffg/src/revenue/categories/data.js';
 
 import React from 'react';
-import { Link } from 'gatsby';
 import SEO from 'src/components/seo';
 import AfgData from 'src/libs/_data/object_mapping.yml';
 import Default from 'src/components/layouts/default/default';
 import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion';
+import ControlBar from 'src/components/control-bar/control-bar';
+import Share from 'src/components/share/share';
 import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
