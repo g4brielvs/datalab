@@ -60,11 +60,11 @@ export default class PageFooter extends React.Component {
         <Grid item xs={12} lg={3} className={pageFooterStyles.social}>
           <div className={pageFooterStyles.contents}>
             <div className={pageFooterStyles.title}>Connect With Us</div>
-            <a><Github /></a>
-            <a><Dataworld /></a>
-            <a><Twitter /></a>
-            <a><Facebook /></a>
-            <a><LinkedIn /></a>
+            <a target="_blank" rel="noopener noreferrer" href='https://github.com/fedspendingtransparency/datalab'><Github /></a>
+            <a target="_blank" rel="noopener noreferrer" href='https://data.world/usaspending'><Dataworld /></a>
+            <a target="_blank" rel="noopener noreferrer" href='https://twitter.com/usaspending'><Twitter /></a>
+            <a target="_blank" rel="noopener noreferrer" href='https://www.facebook.com/fiscalservice/'><Facebook /></a>
+            <a target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/company/united-states-department-of-the-treasury-bureau-of-public-debt/'><LinkedIn /></a>
           </div>
         </Grid>
       </Grid>

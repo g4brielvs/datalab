@@ -6,7 +6,7 @@ const SiteFooter = props => (
   <footer className={siteFooterStyles.siteFooter}>
     <Hidden xsDown>
       <div>
-        &copy;&nbsp;2018&nbsp;USAspending.gov |&nbsp;
+        &copy;&nbsp;2020&nbsp;USAspending.gov |&nbsp;
         <a href='https://www.usaspending.gov/#/about/accessibility'>Accessibility</a> |&nbsp;
         <a href='https://www.usaspending.gov/#/about/privacy'>Privacy&nbsp;Policy</a> |&nbsp;
         <a href='https://www.usaspending.gov/#/about/foia'>Freedom&nbsp;of&nbsp;Information&nbsp;Act</a>
