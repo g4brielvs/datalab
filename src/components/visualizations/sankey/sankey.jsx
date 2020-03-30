@@ -5,6 +5,7 @@ import './sankey.scss';
 import './sankey-brackets.scss';
 
 import SankeyBrackets from "./sankey-brackets";
+import { Grid } from '@material-ui/core';
 
 function Sankey(props) {
 
@@ -736,15 +737,19 @@ function Sankey(props) {
 
   return (
     <>
-      <div className="budget-sankey">
-          <div id="sankey-container">
-            <div className="sankey-brackets">
-              <SankeyBrackets />
-            </div>
-            <div id="sankey-viz" style={inlineStyle}></div>
-            <div id="sankey-table"></div>
-        </div>
-      </div>
+      <Grid container
+            className="budget-sankey">
+        <Grid item xl={8}
+							id="sankey-container">
+          <div id="sankey-brackets">
+            <SankeyBrackets />
+          </div>
+          <div id="sankey-viz"></div>
+        </Grid>
+        <Grid item xl={4}>
+          <div id="sankey-table"></div>
+        </Grid>
+      </Grid>
     </>
   )
 }

@@ -5,29 +5,27 @@ import { Grid } from '@material-ui/core';
 
 function StorySection(props) {
   return (
-    <>
-      <Grid container justify="center" className={storySectionStyles.storySection}>
-        <Grid item xs={12} xl={10}>
-          <section id={`section-${props.header.anchor}`}>
-            <StorySectionHeading
-              number={props.header.number}
-              title={props.header.subtext}
-              teaser={props.header.sectionTeaser}
-              blurb={props.header.introBlurb}
-            />
+    <Grid container justify="center" className={storySectionStyles.storySection}>
+      <Grid item xs={12} xl={10}>
+        <section id={`section-${props.header.anchor}`}>
+          <StorySectionHeading
+            number={props.header.number}
+            title={props.header.subtext}
+            teaser={props.header.sectionTeaser}
+            blurb={props.header.introBlurb}
+          />
 
-            <Grid container justify="center">
-              <Grid item xs={12}>
-                <div className={storySectionStyles.alignLeft}>
-                  {props.children}
-                </div>
-              </Grid>
+          <Grid container justify="center">
+            <Grid item xs={12}>
+              <div className={storySectionStyles.alignLeft}>
+                {props.children}
+              </div>
             </Grid>
-          </section>
-        </Grid>
+          </Grid>
+        </section>
       </Grid>
-    </>
-  )
+    </Grid>
+  );
 }
 
-export default StorySection
+export default StorySection;

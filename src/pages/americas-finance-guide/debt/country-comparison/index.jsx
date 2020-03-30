@@ -7,7 +7,6 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import HeaderOnly from "src/components/layouts/header-only/header-only"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -16,6 +15,7 @@ import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from '../../../../components/headers/headers';
 
 function DebtCountryComparisonPage(props) {
     return (
@@ -33,8 +33,7 @@ function DebtCountryComparisonPage(props) {
             />
 
             <Default>
-                <HeaderOnly></HeaderOnly>
-
+							<AFGHeader />
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper country-common-wrapper">
@@ -59,7 +58,7 @@ function DebtCountryComparisonPage(props) {
                                     <div className="chapter-link__learn-more">Learn more about</div>
                                     Federal Revenue
                                 </div>
-                                <FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right tour__angle-right"/>
+                                <FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right tour__angle-right"/>
                             </Link>
                         </div>
 
