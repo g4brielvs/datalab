@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styles from './categories.module.scss';
+import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
 import * as _ from 'lodash';
 
 import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import SearchPanel from 'src/components/chartpanels/search';
 import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
-import VizControlPanel from 'src/components/chartpanels/viz-control';
 import TableContainer from "./categories-table-container";
-import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
-
-
-import { InputAdornment, IconButton } from '@material-ui/core';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-
+import VizControlPanel from 'src/components/chartpanels/viz-control';
 
 const Categories = () => {
 	const [chartView, isChartView] = useState(true);
@@ -195,6 +194,10 @@ const Categories = () => {
 		}
 	}
 
+	const clickIcon = () => {
+
+	}
+
 	return (<>
 		<StoryHeading
 			number={'04'}
@@ -235,6 +238,7 @@ const Categories = () => {
 				</Hidden>
 			</Grid>
 			<Grid item className={styles.catContainer}>
+
 				<div id='sunburstRadio'>
 					<Grid container>
 						<Grid item lg={2} xs={4}>
@@ -266,15 +270,21 @@ const Categories = () => {
 								checked={fundingType === 'research'}
 							/>
 							<label htmlFor='cuResearch'>&nbsp;Research Grants</label>
-								<IconButton  style={{ position: 'absolute' }}
-									// aria-label={this.state.icon}
-									// onClick={this.clickIcon}
-								>
-									<InfoOutlinedIcon style={{ fontSize: '1rem' }} />
-								</IconButton>
+							<IconButton className={styles.infoButton}
+								aria-label='details about research grants'
+								onClick={clickIcon}
+							>
+								<InfoOutlinedIcon className={styles.icon} />
+							</IconButton>
+							<Card className={styles.researchInfo}>
+								<CardContent>
+									In this visualization, we identified and set apart grants used for research projects. This subset of grants were awarded to individuals, groups, or institutions.
+								</CardContent>
+							</Card>
 						</Grid>
 					</Grid>
 				</div>
+
 				<CategoriesVizContainer
 					display={chartView}
 					items={_data[fundingType].nodes}
