@@ -11,11 +11,11 @@ const d3 = { select, selectAll },
     activeClass = 'info-box--active';
 
 function addCloseIcon() {
-    const box = d3.select(this);
-    const closeButton = box.append('button');
-    ReactDOM.render(<CloseIcon />, closeButton.node());
-    closeButton.lower();
-    closeButton.attr('class', closeButtonClass);
+    // const box = d3.select(this);
+    // const closeButton = box.append('button');
+    // ReactDOM.render(<CloseIcon />, closeButton.node());
+    // closeButton.lower();
+    // closeButton.attr('class', closeButtonClass);
 }
 
 function closeBox(trigger, box) {
@@ -49,9 +49,9 @@ export function triggerInfoBox() {
 }
 
 (function init() {
-    d3.selectAll(infoBoxClass).each(addCloseIcon);
-
-    d3.selectAll(triggerClass)
-        .on('click', triggerInfoBox)
+    // d3.selectAll(infoBoxClass).each(addCloseIcon);
+    //
+    // d3.selectAll(triggerClass)
+    //     .on('click', triggerInfoBox)
 
 })();

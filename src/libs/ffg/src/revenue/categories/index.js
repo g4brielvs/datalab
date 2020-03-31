@@ -73,6 +73,9 @@ window.addEventListener('resize', function () {
     }, actualTimeout);
 });
 
-if (typeof window !== `undefined`) {
+export function revenueCategories() {
+  if (typeof window !== `undefined`) {
     init();
+  }
 }
+

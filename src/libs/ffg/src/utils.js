@@ -17,16 +17,22 @@ export function findAmountInCsv(str, data) {
     return amount;
 }
 
-// export function getElementBox(d3Selection) {
-//     const rect = d3Selection.node().getBoundingClientRect();
-//
-//     return {
-//         width: Math.ceil(rect.width),
-//         height: Math.ceil(rect.height),
-//         right: Math.ceil(rect.right),
-//         bottom: Math.ceil(rect.bottom)
-//     }
-// }
+export function getElementBox(d3Selection) {
+    // const rect = d3Selection.node().getBoundingClientRect();
+    //
+  // return {
+  //     width: Math.ceil(rect.width),
+  //     height: Math.ceil(rect.height),
+  //     right: Math.ceil(rect.right),
+  //     bottom: Math.ceil(rect.bottom)
+  // }
+    return {
+        width: 1000,
+        height: 500,
+        right: 1000,
+        bottom: 800
+    }
+}
 
 export function translator(x, y) {
     return `translate(${x}, ${y})`
