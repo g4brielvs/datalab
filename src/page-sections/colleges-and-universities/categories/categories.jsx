@@ -10,7 +10,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import IconButton from '@material-ui/core/IconButton';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import SearchPanel from 'src/components/chartpanels/search';
 import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
@@ -194,9 +195,24 @@ const Categories = () => {
 		}
 	}
 
-	const clickIcon = () => {
+	const [grantsInfoShowing, showGrantsInfo] = useState(false);
 
-	}
+	const grantsInfo = () => <>
+		<IconButton className={styles.infoButton}
+			aria-label='details about research grants'
+			onClick={() => showGrantsInfo(true)}
+		>
+			<InfoOutlinedIcon className={styles.icon} />
+		</IconButton>
+		<Card className={styles.researchInfo} style={{ display: grantsInfoShowing ? 'block' : 'none' }}>
+			<IconButton className={styles.closeButton} onClick={() => showGrantsInfo(false)}>
+				<HighlightOffIcon />
+			</IconButton>
+			<CardContent className={styles.text}>
+				In this visualization, we identified and set apart grants used for research projects. This subset of grants were awarded to individuals, groups, or institutions.
+		</CardContent>
+		</Card>
+	</>;
 
 	return (<>
 		<StoryHeading
@@ -270,17 +286,9 @@ const Categories = () => {
 								checked={fundingType === 'research'}
 							/>
 							<label htmlFor='cuResearch'>&nbsp;Research Grants</label>
-							<IconButton className={styles.infoButton}
-								aria-label='details about research grants'
-								onClick={clickIcon}
-							>
-								<InfoOutlinedIcon className={styles.icon} />
-							</IconButton>
-							<Card className={styles.researchInfo}>
-								<CardContent>
-									In this visualization, we identified and set apart grants used for research projects. This subset of grants were awarded to individuals, groups, or institutions.
-								</CardContent>
-							</Card>
+
+							{grantsInfo()}
+
 						</Grid>
 					</Grid>
 				</div>
