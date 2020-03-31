@@ -1,13 +1,13 @@
 import { select, selectAll } from 'd3-selection';
 import { max } from 'd3-array';
-import { getElementBox } from '../../../utils';
+// import { getElementBox } from '../../../utils';
 
 const d3 = { select, selectAll, max },
-    parent = d3.select('#viz'),
-    parentWidth = getElementBox(parent).width;
+    parent = d3.select('#viz');
+    // parentWidth = getElementBox(parent).width;
 
 export function optimizeWidth() {
-    return getElementBox(parent).width;
+    return null;
 }
 
 // export function scaleToFit(svg) {

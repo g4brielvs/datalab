@@ -30,7 +30,7 @@ function init() {
         isDesktopInd = true;
         initSankey(config);
     } else {
-        initBarGraph(config);
+        // initBarGraph(config);
     }
 }
 
