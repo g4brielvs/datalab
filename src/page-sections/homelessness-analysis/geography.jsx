@@ -204,12 +204,9 @@ export default function Geography(props) {
         tableData={filteredTableData}
         tableRef={tableRef}
       />
-      {/*<Downloads*/}
-        {/*href={'/unstructured-data/homelessness-analysis/coc_pop_value.csv'}*/}
-        {/*date={'November 2019'}*/}
-      {/*/>*/}
+
       <Downloads
-        href={'/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v7_2020_03_37.csv'}
+        href={'/unstructured-data/homelessness-analysis/panel_2_table_and_counts_v7_2020_03_27.csv'}
         date={'November 2019'}
       />
     </div>
