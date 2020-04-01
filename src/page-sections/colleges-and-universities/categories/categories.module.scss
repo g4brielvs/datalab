@@ -15,6 +15,32 @@
   width: 100%;
 }
 
+.info-button {
+  position: absolute;
+  padding: 0 12px;
+
+  .icon {
+    font-size: 1rem;
+  }
+}
+
+.research-info {
+  width: 282px;
+  position: absolute;
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .text {
+    letter-spacing: 0.003em;
+    line-height: 1;
+    padding: 16px 32px 16px 16px;
+  }
+}
+
 @media (min-width: $desktop-xl) {
   .cat-container {
     height: 800px;
