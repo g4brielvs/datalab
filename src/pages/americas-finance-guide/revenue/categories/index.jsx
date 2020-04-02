@@ -3,6 +3,7 @@ import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
 import RevenueCategories from "src/libs/ffg/src/revenue/categories/index.js";
 import 'src/libs/ffg/src/revenue/categories/data.js'
 
+import React from "react"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
