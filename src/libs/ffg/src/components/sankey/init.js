@@ -9,7 +9,6 @@ import { zoomInit, getZoomState, resetZoom } from './zoom';
 import { addTextElements } from './textElements';
 import { showDetail, section2_2_init, clearDetails, destroyDetails } from './showDetails';
 import colors from '../../globalSass/colors.scss';
-import '../../infoBox';
 
 const d3 = { select, selectAll, scaleLinear, min, stack, transition },
     baseTranslate = { x: 91, y: 50 },

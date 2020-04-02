@@ -4,7 +4,6 @@ import { getDataByYear } from './data';
 import { initSankey, destroySankey } from "../../components/sankey/init";
 // import { init as initBarGraph, initChart } from "../../spending/categories/init";
 import colors from '../../globalSass/colors.scss';
-import '../../infoBox';
 import React, { useEffect } from 'react';
 
 const config = {

@@ -3,27 +3,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CloseIcon from '@material-ui/icons/Close';
 
-const d3 = { select, selectAll },
+
+
+export function triggerInfoBox() {
+  const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
     triggerClass = '.info-box-trigger',
     triggerClassActive = 'info-box-trigger--active',
     closeButtonClass = 'info-box__close',
     activeClass = 'info-box--active';
 
-function addCloseIcon() {
-    // const box = d3.select(this);
-    // const closeButton = box.append('button');
-    // ReactDOM.render(<CloseIcon />, closeButton.node());
-    // closeButton.lower();
-    // closeButton.attr('class', closeButtonClass);
-}
+  function addCloseIcon() {
+    const box = d3.select(this);
+    const closeButton = box.append('button');
+    ReactDOM.render(<CloseIcon />, closeButton.node());
+    closeButton.lower();
+    closeButton.attr('class', closeButtonClass);
+  }
 
-function closeBox(trigger, box) {
+  function closeBox(trigger, box) {
     box.classed(activeClass, null);
     trigger.classed(triggerClassActive, null);
-}
+  }
 
-export function triggerInfoBox() {
     const trigger = d3.select(this),
         id = trigger.attr('data-box-id'),
         box = d3.select('#' + id),
@@ -49,9 +51,9 @@ export function triggerInfoBox() {
 }
 
 (function init() {
-    // d3.selectAll(infoBoxClass).each(addCloseIcon);
-    //
-    // d3.selectAll(triggerClass)
-    //     .on('click', triggerInfoBox)
+    d3.selectAll(infoBoxClass).each(addCloseIcon);
+
+    d3.selectAll(triggerClass)
+        .on('click', triggerInfoBox)
 
 })();
