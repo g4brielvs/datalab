@@ -12,7 +12,6 @@ import colors from '../../globalSass/colors.scss';
 import '../../infoBox';
 
 const d3 = { select, selectAll, scaleLinear, min, stack, transition },
-    factBox = d3.selectAll('.fact-box'),
     baseTranslate = { x: 91, y: 50 },
     baseDimensions = { width: 1014, height: 100 },
     xScale = d3.scaleLinear();

@@ -1,9 +1,8 @@
 import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
-import { revenueCategories } from "src/libs/ffg/src/revenue/categories";
+import RevenueCategories from "src/libs/ffg/src/revenue/categories/index.js";
 import 'src/libs/ffg/src/revenue/categories/data.js'
 
-import React, { useEffect } from "react"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
@@ -23,9 +22,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 function RevenueCategoriesPage(props) {
-  useEffect(() => {
-      revenueCategories();
-  });
 
     return (
         <>
@@ -74,7 +70,9 @@ function RevenueCategoriesPage(props) {
                                 </div>
 
                                 <hr></hr>
-                                <div id="viz"></div>
+
+                                <RevenueCategories />
+
                                 <hr className='categories__show-more'></hr>
                                 <div id="show-more-container" className='categories__show-more'>
                                     <button id="show-more-button" className="chart__show-more">Show More</button>
