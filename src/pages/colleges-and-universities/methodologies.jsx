@@ -213,8 +213,8 @@ export default function CUHWCTA(props) {
       <>
         <p>
           For more information on Federal Student Aid, visit: <a
-            href='https://studentaid.ed.gov/sa/about/data-center/student/portfolio.' target='_blank'
-            rel='noopener noreferrer'>https://studentaid.ed.gov/sa/about/data-center/student/portfolio.</a>
+            href='https://studentaid.gov/data-center/student/portfolio' target='_blank'
+            rel='noopener noreferrer'>https://studentaid.gov/data-center/student/portfolio</a>.
         </p>
         <p>To join the conversation or share your ideas visit the <a
           href='https://usaspending-help.zendesk.com/hc/en-us/community/topics' target='_blank'
