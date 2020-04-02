@@ -14,6 +14,10 @@
   div {
     color: #dbdbdb;
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 @media (min-width: $phone) and (max-width: $tablet - 1) {
