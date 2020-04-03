@@ -11,6 +11,20 @@ import SEO from '../../components/seo';
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      windowWidth: window.innerWidth
+    }
+  }
+
+  deviceSize = () => {
+    if (this.state.windowWidth < 576) {
+      return 'mobile';
+    }
+    if (this.state.windowWidth < 768) {
+      return 'tablet';
+    }
+    return 'desktop';
   }
 
   render = () =>
@@ -74,7 +88,7 @@ export default class RdInContractingPage extends React.Component {
           <Reset id='resetBtn' />
         </ControlBar>
 
-        chart
+        <img src={`/images/viz/rd/viz3-${this.deviceSize()}.svg`} className={styles.chart} />
 
       </ExpressSection>
     </ExpressLayout>
