@@ -46,14 +46,16 @@ function sort(by, config, dir) {
         }
     }
 
-    config.svg.selectAll('g.row')
+    if(typeof document !== 'undefined') {
+      config.svg.selectAll('g.row')
         .transition()
         .duration(1000)
-        .attr('transform', function(d){
-            const position = config.data.indexOf(d);
-            return translator(0, position * config.rowHeight);
+        .attr('transform', function(d) {
+          const position = config.data.indexOf(d);
+          return translator(0, position * config.rowHeight);
         })
         .ease()
+    }
 }
 
 function doSort(name, direction) {
@@ -65,75 +67,101 @@ function doSort(name, direction) {
 }
 
 function updateSortIcon(containerId, sortId){
-    const isThisAlreadySortedInd = d3.select(`#${sortId}`).classed('active');
+  if(typeof document !== 'undefined') {
+
+    const isThisAlreadySortedInd = d3.select(`#${sortId}`)
+      .classed('active');
 
     let sortDir = 'default';
 
-    if(!isThisAlreadySortedInd){
-        resetSortingButtons();
-        d3.select(`#${containerId}`).select('button.active').classed('active', false);
-        d3.select(`#${sortId}`).classed('active', true);
+    if (!isThisAlreadySortedInd) {
+      resetSortingButtons();
+      d3.select(`#${containerId}`)
+        .select('button.active')
+        .classed('active', false);
+      d3.select(`#${sortId}`)
+        .classed('active', true);
     } else {
-        const sortIcon = d3.selectAll(`#${sortId} svg`);
-        sortIcon.each(function(d,i) {
-            const isHidden = d3.select(this).classed('hidden');
-            if(i === 0 && isHidden !== true){
-                sortDir = 'reverse';
-            }
-            d3.select(this).classed('hidden', !isHidden);
-        });
+      const sortIcon = d3.selectAll(`#${sortId} svg`);
+      sortIcon.each(function(d, i) {
+        const isHidden = d3.select(this)
+          .classed('hidden');
+        if (i === 0 && isHidden !== true) {
+          sortDir = 'reverse';
+        }
+        d3.select(this)
+          .classed('hidden', !isHidden);
+      });
     }
 
     return sortDir;
+  }
 }
 
 function resetSortingButtons(){
-    const sortNameBtn = d3.selectAll('#sort-name svg'),
-        sortAmountBtn = d3.selectAll('#sort-amount svg');
+  if(typeof document !== 'undefined') {
 
-    sortNameBtn.each(function(d,i) {
-        if(i === 0){
-            d3.select(this).classed('hidden', null);
-        } else {
-            d3.select(this).classed('hidden', true);
-        }
+    const sortNameBtn = d3.selectAll('#sort-name svg'),
+      sortAmountBtn = d3.selectAll('#sort-amount svg');
+
+    sortNameBtn.each(function(d, i) {
+      if (i === 0) {
+        d3.select(this)
+          .classed('hidden', null);
+      } else {
+        d3.select(this)
+          .classed('hidden', true);
+      }
     });
 
-    sortAmountBtn.each(function(d,i) {
-        if(i === 0){
-            d3.select(this).classed('hidden', null);
-        } else {
-            d3.select(this).classed('hidden', true);
-        }
+    sortAmountBtn.each(function(d, i) {
+      if (i === 0) {
+        d3.select(this)
+          .classed('hidden', null);
+      } else {
+        d3.select(this)
+          .classed('hidden', true);
+      }
+    });
+  }
+}
+
+if(typeof document !== 'undefined') {
+
+  d3.select('#filter-by-name-icon')
+    .on('click', function() {
+      d3.select('#filter-by-name')
+        .node()
+        .focus();
+    });
+
+  d3.select('#sort-amount')
+    .on('click', function() {
+      const containerId = 'bar-controls',
+        sortId = 'sort-amount',
+        sortDir = updateSortIcon(containerId, sortId);
+
+      doSort('amount', sortDir);
+    });
+
+  d3.select('#sort-name')
+    .on('click', function() {
+      const containerId = 'bar-controls',
+        sortId = 'sort-name',
+        sortDir = updateSortIcon(containerId, sortId);
+
+      doSort('name', sortDir);
     });
 }
 
-d3.select('#filter-by-name-icon')
-    .on('click', function(){
-       d3.select('#filter-by-name').node().focus();
-    });
-
-d3.select('#sort-amount')
-    .on('click', function () {
-        const containerId = 'bar-controls',
-            sortId = 'sort-amount',
-            sortDir = updateSortIcon(containerId, sortId);
-
-        doSort('amount', sortDir);
-    });
-
-d3.select('#sort-name')
-    .on('click', function () {
-        const containerId = 'bar-controls',
-            sortId = 'sort-name',
-            sortDir = updateSortIcon(containerId, sortId);
-
-        doSort('name', sortDir);
-    });
-
 function initHighlightedButton(){
-    d3.select('#bar-controls').select('button.active').classed('active', false);
-    d3.select('#sort-amount').classed('active', true);
+  if(typeof document !== 'undefined') {
+    d3.select('#bar-controls')
+      .select('button.active')
+      .classed('active', false);
+    d3.select('#sort-amount')
+      .classed('active', true);
+  }
 }
 
 export function initSort(config) {

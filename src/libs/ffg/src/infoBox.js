@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-
-export function triggerInfoBox() {
   const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
     triggerClass = '.info-box-trigger',
@@ -26,29 +24,30 @@ export function triggerInfoBox() {
     trigger.classed(triggerClassActive, null);
   }
 
+  export function triggerInfoBox() {
     const trigger = d3.select(this),
-        id = trigger.attr('data-box-id'),
-        box = d3.select('#' + id),
-        innerWidth = window.innerWidth,
-        coords = trigger.node().getBoundingClientRect();
+          id = trigger.attr('data-box-id'),
+          box = d3.select('#' + id),
+          innerWidth = window.innerWidth,
+          coords = trigger.node().getBoundingClientRect();
 
-    let x = coords.left-10;
+      let x = coords.left-10;
 
-    if (x > innerWidth - 300) {
-        x = innerWidth - 300
-    }
+      if (x > innerWidth - 300) {
+          x = innerWidth - 300
+      }
 
-    box.classed(activeClass, true);
-    trigger.classed(triggerClassActive, true);
+      box.classed(activeClass, true);
+      trigger.classed(triggerClassActive, true);
 
-    box.attr('style', `top:${coords.top-15+window.pageYOffset}px;left:${x}px`);
+      box.attr('style', `top:${coords.top-15+window.pageYOffset}px;left:${x}px`);
 
-    box.select('.' + closeButtonClass)
-        .on('click', null)
-        .on('click', function(){
-            closeBox(trigger, box)
-        });
-}
+      box.select('.' + closeButtonClass)
+          .on('click', null)
+          .on('click', function(){
+              closeBox(trigger, box)
+          });
+  }
 
 (function init() {
     d3.selectAll(infoBoxClass).each(addCloseIcon);

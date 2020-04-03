@@ -2,7 +2,7 @@ import * as d3 from "d3v3";
 import { receiptsConstants } from '../receipts-utils';
 import { getDataByYear } from './data';
 import { initSankey, destroySankey } from "../../components/sankey/init";
-// import { init as initBarGraph, initChart } from "../../spending/categories/init";
+import { init as initBarGraph, initChart } from "../../spending/categories/init";
 import colors from '../../globalSass/colors.scss';
 import React, { useEffect } from 'react';
 
@@ -33,7 +33,7 @@ export default function RevenueCategories() {
           isDesktopInd = true;
           initSankey(config);
         } else {
-          // initBarGraph(config);
+          initBarGraph(config);
         }
       }
 
@@ -58,7 +58,7 @@ export default function RevenueCategories() {
               isDesktopInd = false;
               d3.select('#viz svg').html(null);
               destroySankey();
-              // initBarGraph(config);
+              initBarGraph(config);
             } else {
               if (resizeBarGraphDebounce) {
                 clearTimeout(resizeBarGraphDebounce);
