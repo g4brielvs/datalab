@@ -5,6 +5,8 @@ import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 
@@ -17,14 +19,16 @@ export default class RdInContractingPage extends React.Component {
     }
   }
 
-  deviceSize = () => {
-    if (this.state.windowWidth < 576) {
-      return 'mobile';
-    }
-    if (this.state.windowWidth < 768) {
-      return 'tablet';
-    }
-    return 'desktop';
+   componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+ handleResize = () => {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   render = () =>
@@ -88,7 +92,29 @@ export default class RdInContractingPage extends React.Component {
           <Reset id='resetBtn' />
         </ControlBar>
 
-        <img src={`/images/viz/rd/viz3-${this.deviceSize()}.svg`} className={styles.chart} />
+        <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
+        <GridList cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
+          <GridListTile className={styles.legendTile}>
+              <div className={`${styles.legendBar} ${styles.one}`}></div>
+              <div className={styles.legendText}>Total R&D</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.two}`}></div>
+            <div className={styles.legendText}>Development</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.three}`}></div>
+            <div className={styles.legendText}>Basic Research</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.four}`}></div>
+            <div className={styles.legendText}>Applied Research</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.five}`}></div>
+            <div className={styles.legendText}>R&D Plant</div>
+          </GridListTile>
+        </GridList>
 
       </ExpressSection>
     </ExpressLayout>
