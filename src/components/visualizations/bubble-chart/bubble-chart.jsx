@@ -87,7 +87,7 @@ export default class BubbleChart extends Component {
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
     if (!this.isDesktop()) {
-      tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
+      tooltipHtml += '<img src="/images/close.svg">';
     }
 
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
@@ -103,7 +103,7 @@ export default class BubbleChart extends Component {
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
     if (!this.isDesktop()) {
-      tooltipHtml += "<span class='bubble-detail__close'><i class='fas fa-times'></i></span>";
+      tooltipHtml += '<img src="/images/close.svg">';
     }
 
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
