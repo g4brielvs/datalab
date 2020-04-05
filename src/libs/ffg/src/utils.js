@@ -29,10 +29,10 @@ export function getElementBox(d3Selection) {
       }
     } else {
       return {
-        width: 1200,
-        height: 270,
-        right: 1200,
-        bottom: 800
+        width: null,
+        height: null,
+        right: null,
+        bottom: null
       }
     }
 }
