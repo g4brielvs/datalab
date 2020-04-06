@@ -4,7 +4,7 @@ const d3 = { select, selectAll };
 
 export function findAmountInCsv(str, data) {
     let amount;
-    
+   
     data.every((row) => {
         if (row.category != str) {
             return true
@@ -15,16 +15,16 @@ export function findAmountInCsv(str, data) {
     })
  
     return amount;
-} 
+}
 
 export function getElementBox(d3Selection) {
     const rect = d3Selection.node().getBoundingClientRect();
 
     return {
-        width: Math.ceil(rect.width),
-        height: Math.ceil(rect.height),
-        right: Math.ceil(rect.right),
-        bottom: Math.ceil(rect.bottom)
+      width: Math.ceil(rect.width),
+      height: Math.ceil(rect.height),
+      right: Math.ceil(rect.right),
+      bottom: Math.ceil(rect.bottom)
     }
 }
 
@@ -49,11 +49,11 @@ export function establishContainer(height, width, accessibilityAttrs) {
 
     // console.log('svg.size: ', svg.size());
     // console.log('width: ', width);
-    
+
     if (svg.size() === 0) {
         height = height || 400;
         width = width || 1200;
-        
+
         // console.log('width: ', width);
 
         svg = viz.append('svg')
@@ -69,9 +69,9 @@ export function establishContainer(height, width, accessibilityAttrs) {
         svg.append('desc').attr('id', 'svgMainDesc').text(accessibilityAttrs.desc);
         svg.attr('aria-describedby', 'svgMainDesc');
     }
-    
+
     // console.log('svg', svg);
-    
+
     return svg;
 }
 
@@ -172,7 +172,7 @@ export function stripBr() {
 
 export function fadeAndRemove(selection, duration) {
     duration = duration || 1000;
-    
+
     selection.transition()
         .duration(duration)
         .attr('opacity', 0)
