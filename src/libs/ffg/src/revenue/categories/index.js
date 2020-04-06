@@ -80,7 +80,7 @@ export default function RevenueCategories() {
         init();
       }
 
-    });
+    }, []);
 
     return (<div id="viz"></div>);
 
