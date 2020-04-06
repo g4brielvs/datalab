@@ -21,10 +21,7 @@ import { AFGHeader } from '../../../../components/headers/headers';
 function DeficitTrendsPage(props) {
   return <>
 
-	   {/* <Helmet> */}
-	   {/*   <script defer src='/americas-finance-guide/deficit/trends.js'></script> */}
-	   {/* </Helmet> */}
-           <Tabs/>
+           <Tabs/> 
 
 	   <SEO
 	     title='Data Lab - Federal Deficit Trends – U.S. Treasury'
