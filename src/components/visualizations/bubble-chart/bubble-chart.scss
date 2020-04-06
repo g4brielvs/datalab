@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import "../../../styles/variables.scss";
 
 #bubble-chart-container {
   display: flex;
@@ -83,6 +83,12 @@ circle.node--leaf.active {
   z-index: 10;
   text-align: left;
 
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    float: right;
+  }
+
   .information {
     font-weight: normal;
     margin: 0;
@@ -138,38 +144,6 @@ circle.node--leaf.active {
 
 .bubble-detail__agency-name:last-of-type {
   margin-bottom: 1.75rem;
-}
-
-.bubble-detail__close {
-  position: relative;
-  float: right;
-  font-size: 1rem;
-  font-weight: 700;
-  background: white;
-  color: #666666;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  padding: 0;
-  border: 2px solid #bbb;
-  border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  .bubble-detail__close:hover {
-    color: #ddd;
-    border-color: #ddd;
-  }
-
-  span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
 }
 
 .bubble-detail__table {
