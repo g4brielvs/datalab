@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 $grey: #888;
 $darkGrey: #666666;
@@ -6,19 +6,15 @@ $darkGrey: #666666;
 .analyses {
   text-align: left;
   margin-bottom: 1rem;
-
 }
 
 .heading {
   border-bottom: 1px solid $darkGrey;
-
-  h2 {
-    color: $grey;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: left;
-  }
+  color: $grey;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: left;
 }
 
 .tiles {
@@ -26,59 +22,61 @@ $darkGrey: #666666;
 }
 
 .text {
-  font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   letter-spacing: normal;
 
   .title {
-    color: #2272CE;
+    font-size: 1rem;
+    color: #2272ce;
     height: 2rem;
     margin-bottom: 1rem;
-    font-size: 1rem;
   }
 
   .subtitle {
-     font-size: 1.25rem;
-     height: 6rem;
-     color: $font-body-copy;
-     margin-bottom: 0;
-     margin-top: 0;
-   }
+    font-size: 1.25rem;
+    height: 6rem;
+    color: $font-body-copy;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 
   &:hover {
-    .title, .subtitle {
+    .title,
+    .subtitle {
       text-decoration: underline;
     }
   }
-
 }
 
 .image {
   width: 100%;
 }
 
-@media screen and (max-width: $tablet) {
+@media (max-width: $tablet) {
   .tile:global(.MuiGrid-item) {
     margin-top: 1rem;
   }
 }
 
-@media screen and (max-width: $phone - 1) {
+@media (max-width: $phone - 1) {
   .tile {
     border-bottom: 1px solid #ddd;
 
-    &.MuiGrid-item {
-      margin-top: 1rem !important;
+    &:last-child {
+      border-bottom: 0;
     }
 
     .text {
       width: 50%;
       float: right;
+      padding-left: 0.5rem;
+      text-align: right;
 
-      .title, .subtitle {
-        text-align: right;
+      .title,
+      .subtitle {
+        font-size: 1rem;
       }
     }
 
@@ -88,9 +86,4 @@ $darkGrey: #666666;
       margin-bottom: 1rem;
     }
   }
-
-  .tile:last-child {
-    border-bottom: 0;
-  }
-
 }

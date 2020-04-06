@@ -89,16 +89,10 @@ export default class MoreAnalyses extends React.Component {
 
   render = () =>
     <section className={moreAnalysesStyles.analyses}>
-      <Grid item xs={12} className={moreAnalysesStyles.heading}>
-        <h2>
-          More Analyses
-        </h2>
-      </Grid>
-      <Grid
-        container
-        className={moreAnalysesStyles.tiles}
-        spacing={3}
-      >
+      <div className={moreAnalysesStyles.heading}>
+        More Analyses
+      </div>
+      <Grid container spacing={3} className={moreAnalysesStyles.tiles}>
         {this.showAnything() &&
           this.showAnalyses.map((analysesIndex, i) =>
             <Grid item xs={12} sm={6} xl={3}
@@ -107,9 +101,9 @@ export default class MoreAnalyses extends React.Component {
             >
               <Link to={this.analyses[analysesIndex].href}>
                 <div className={moreAnalysesStyles.text}>
-                  <h3 className={moreAnalysesStyles.title}>
+                  <div className={moreAnalysesStyles.title}>
                     {this.analyses[analysesIndex].title}
-                  </h3>
+                  </div>
                   <p className={moreAnalysesStyles.subtitle}>
                     {this.analyses[analysesIndex].subtitle}
                   </p>

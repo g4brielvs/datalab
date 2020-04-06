@@ -49,7 +49,11 @@ function renderHeader(d, innerWidth) {
         .attr('x', overlayPadding)
         .attr('y', 20)
         .attr('font-size', function () {
-            const svgWidth = document.getElementById('viz').getBoundingClientRect().width;
+            let svgWidth;
+            if(typeof document !== undefined) {
+                svgWidth = document.getElementById('viz')
+              .getBoundingClientRect().width;
+            }
 
             return svgWidth < 500 ? 16 : 20;
         });
