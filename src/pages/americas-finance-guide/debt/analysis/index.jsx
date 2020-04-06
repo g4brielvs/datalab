@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 import SEO from "src/components/seo"
 import AfgData from "src/libs/_data/object_mapping.yml"
 import Default from "src/components/layouts/default/default"
-import { HeadOnly } from "src/components/headers/headers"
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
@@ -16,14 +15,11 @@ import DebtCards from "src/libs/ffg/src/debt/analysis/cards";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from 'src/components/headers/headers';
 
 function DebtAnalysisPage(props) {
     return (
         <>
-
-            <Helmet>
-                <script defer src="/americas-finance-guide/debt-analysis/index.js"></script>
-            </Helmet>
 
             <SEO
                 title='Data Lab - Federal Debt Analysis – U.S. Treasury'
@@ -33,8 +29,7 @@ function DebtAnalysisPage(props) {
             />
 
             <Default>
-                <HeadOnly></HeadOnly>
-
+							  <AFGHeader />
                 <AfgNav location={props.location} chapter={'debt'}></AfgNav>
 
                 <div className="cg-wrapper debt-analysis-wrapper">
@@ -88,14 +83,26 @@ function DebtAnalysisPage(props) {
                                 <h1>How does the federal debt of the United States compare to other countries?</h1>
                                 <p>When you are done here, see how the U.S. federal debt compares to other countries.</p>
                             </div>
-                            <Link to={"/americas-finance-guide/debt/country-comparison/"} className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} className="fa fa-angle-right"/></Link>
+                            <a href="/americas-finance-guide/debt/country-comparison/" className="tour__link">Continue<FontAwesomeIcon icon={faAngleRight} width={7} className="fa fa-angle-right"/></a>
                         </section>
 
                         <div className="clearfix"></div>
 
                         <section className="hwcta">
                             <Accordion title="Data Sources and Methodology">
-                                <p>This analysis was created using the <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a> as the data source for federal debt of the United States and the <a href={AfgData.current_mts.value}rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a> as the data source for federal government revenue and spending. Average interest rates on federal debt come from <a href={AfgData.treasury_direct_int_rates.value} rel="noopener noreferrer" target="_blank">TreasuryDirect.gov</a>. Holders of United States Treasury securities were identified using three sources: MSPD which contains detailed information on trust funds that own Treasury securities, the <a href={AfgData.tic_foreign_holders.value} rel="noopener noreferrer" target="_blank">Treasury International Capital (TIC)</a> System which identifies foreign holders of U.S. federal debt, and the <a href={AfgData.soma_domestic_securities.value} rel="noopener noreferrer" target="_blank">System Open Market Account (SOMA)</a> Holdings of Domestic Securities which reports Federal Reserve holdings of Treasury securities.</p>
+                                <p>
+                                  <span>This analysis was created using the </span>
+                                  <a href={AfgData.current_mspd.value} rel="noopener noreferrer" target="_blank">Monthly Statement of the Public Debt (MSPD)</a>
+                                  <span>as the data source for federal debt of the United States and the </span>
+                                  <a href={AfgData.current_mts.value}rel="noopener noreferrer" target="_blank">Monthly Treasury Statement (MTS)</a>
+                                  <span>as the data source for federal government revenue and spending. Average interest rates on federal debt come from </span>
+                                  <a href={AfgData.treasury_direct_int_rates.value} rel="noopener noreferrer" target="_blank">TreasuryDirect.gov</a>.
+                                  <span>Holders of United States Treasury securities were identified using three sources: MSPD which contains detailed information on trust funds that own Treasury securities, the </span>
+                                  <a href={AfgData.tic_foreign_holders.value} rel="noopener noreferrer" target="_blank">Treasury International Capital (TIC)</a>
+                                  <span>System which identifies foreign holders of U.S. federal debt, and the </span>
+                                  <a href={AfgData.soma_domestic_securities.value} rel="noopener noreferrer" target="_blank">System Open Market Account (SOMA)</a>
+                                  <span>Holdings of Domestic Securities which reports Federal Reserve holdings of Treasury securities.</span>
+                                </p>
                                 <div className="afg__download--div">
                                     <div className="afg__download--heading">Download Source Data</div>
                                     <ul>

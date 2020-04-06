@@ -6,7 +6,6 @@
   line-height: normal;
   box-shadow: 0 2px 20px 0 rgba(0,0,0,0.2);
   width: 100%;
-  transition: all .3s ease-in;
   z-index: 100;
 }
 
@@ -84,7 +83,7 @@
 } // end header-nav
 
 .nav.tight {
-  padding-top: 0;
+  padding-top: 2px;
   margin: 0;
   border-top: none;
   width: auto;

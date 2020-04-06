@@ -38,3 +38,9 @@ export class DsmHeader extends React.Component {
   }
 }
 
+export class AFGHeader extends React.Component {
+	render() {
+		return <GenericHeader isHome={false} />;
+	}
+}
+

@@ -3,13 +3,13 @@ import * as d3 from 'd3v3';
 import styles from './mapviz.module.scss';
 
 import tooltipModule from "../../../../components/tooltip/tooltip";
-import Downloads from "../../../section-elements/downloads/downloads";
+import tipStyles from '../../../../components/tooltip/tooltip.module.scss';
 
 /* Extracted and adapted from fedscope.js an trreemap-module.js */
 
 export default function Mapviz(props) {
 
-  const {mem} = props.data;
+  const { mem } = props.data;
   const us = mem.us;
   const tableData = mem.pop;
   let Tooltip;
@@ -25,18 +25,19 @@ export default function Mapviz(props) {
   const OtherformatNumber = d3.format(',.0f');
   const width = 1000;
   const height = 600;
+  let mapHeight = null; 
   let map1Centered = null;
   let path, g;
 
 
-  function GenMap(){
+  function GenMap() {
     d3.select('#container').append('div').attr('id', 'viz_container');
     // let centered = null;
 
     // D3 Projection
     const projection = d3.geo.albersUsa()
-          .translate([width / 2, height / 2]) // translate to center of screen
-          .scale([1200]); // scale things down so see entire US ---1455
+      .translate([width / 2, height / 2]) // translate to center of screen
+      .scale([1200]); // scale things down so see entire US ---1455
 
     // Define path generator
     path = d3.geo.path() // path generator that will convert GeoJSON to SVG paths
@@ -49,12 +50,12 @@ export default function Mapviz(props) {
       .attr('height', height);
 
     const mapSvg = d3.select('#map_container')
-          .append('svg')
-          .attr('id', 'svg')
-          .attr('width', '100%')
-          .attr('height', '575px')
-          .attr('viewBox', '0 0 950 575')
-          .attr('preserveAspectRatio', 'xMidYMid meet');
+      .append('svg')
+      .attr('id', 'svg')
+      .attr('width', '100%')
+      .attr('height', mapHeight)
+      .attr('viewBox', '0 0 950 575')
+      .attr('preserveAspectRatio', 'xMidYMid meet');
 
     mapSvg.append('circle').attr('id', 'tipfollowscursor_1');
 
@@ -135,17 +136,17 @@ export default function Mapviz(props) {
 
   function handleMouseOver(d) {
     const html = `<p style="border-bottom:1px solid #898C90; font-size: 18px; margin:0;`
-          + ` padding-bottom:15px; font-weight: bold; color:#555555">`
-          + `${d.properties.coc_number}: ${d.properties.COCNAME}</p><br>` +
-          `<p style="color: #0071BC; margin: 0; padding-bottom:0; font-size: 20px; line-height: 22px">`
-          + `Total Homeless: ${getValue(d)}</p><br>` +
-          `<ul style="list-style-type: circle; margin:0; padding:0 0 0 15px">` +
-          `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
-          + `Sheltered Homeless: ${getSheltered(d)}</li>` +
-          `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
-          + `Unsheltered Homeless: ${getUnsheltered(d)}</li></ul><br>` +
-          `<p style="font-size: 16px; margin-top:0; padding-top:0; margin-bottom:0; font-style: italic">`
-          + ` Double click to zoom in/zoom out</p>`;
+      + ` padding-bottom:15px; font-weight: bold; color:#555555">`
+      + `${d.properties.coc_number}: ${d.properties.COCNAME}</p><br>` +
+      `<p style="color: #0071BC; margin: 0; padding-bottom:0; font-size: 20px; line-height: 22px">`
+      + `Total Homeless: ${getValue(d)}</p><br>` +
+      `<ul style="list-style-type: circle; margin:0; padding:0 0 0 15px">` +
+      `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
+      + `Sheltered Homeless: ${getSheltered(d)}</li>` +
+      `<li style="font-size: 14px; font-weight: normal; margin:0; line-height: 16px; padding:0">`
+      + `Unsheltered Homeless: ${getUnsheltered(d)}</li></ul><br>` +
+      `<p style="font-size: 16px; margin-top:0; padding-top:0; margin-bottom:0; font-style: italic">`
+      + ` Double click to zoom in/zoom out</p>`;
     Tooltip.draw("tooltipMapViz", null, null, null, html);
     d3.select(this).style("fill", "#D334BA");
   }
@@ -219,9 +220,15 @@ export default function Mapviz(props) {
   }
 
   useEffect(() => {
-    
-    if(props.display){
-      if(!d3.select('#viz_container')[0][0]){
+
+    if (window.innerWidth > 575) {
+      mapHeight = '575px';
+    } else {
+      mapHeight = '275px';
+    }
+
+    if (props.display) {
+      if (!d3.select('#viz_container')[0][0]) {
         Tooltip = tooltipModule();
         GenMap();
       } else {
@@ -233,19 +240,20 @@ export default function Mapviz(props) {
       setZoom(null);
     }
 
+
   });
 
-return (<div className={props.display ? '' : 'hidden'}>
-      <div id="tooltipMapViz" className="tooltip-module" />
-      <div className="viz-container homeless-analysis">
-        <div id="container"/>
-      </div>
-      <div className={styles.homelessPanelOneInfo}>
-        <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
-          Care area.</p>
-        <p>** This map reflects the most up-to-date HUD map available; however, some Continuum of Care areas merged together in 2018 after this map was created.</p>
-        <p>See our section on How We Conducted This Analysis for more information.</p>
-      </div>
+  return (<div className={props.display ? '' : 'hidden'}>
+    <div id="tooltipMapViz" className={tipStyles.tooltipModule} />
+    <div className={`${styles.vizContainer} ${styles.homelessAnalysis}`}>
+      <div id="container" />
     </div>
+    <div className={styles.homelessPanelOneInfo}>
+      <p>* White areas with no hover-over represent areas of the country that are not represented by a Continuum of
+          Care area.</p>
+      <p>** This map reflects the most up-to-date HUD map available; however, some Continuum of Care areas merged together in 2018 after this map was created.</p>
+      <p>See our section on How We Conducted This Analysis for more information.</p>
+    </div>
+  </div>
   )
 }

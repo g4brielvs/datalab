@@ -7,7 +7,6 @@ import { Link } from 'gatsby'
 import SEO from 'src/components/seo'
 import AfgData from 'src/libs/_data/object_mapping.yml';
 import Default from 'src/components/layouts/default/default';
-import HeaderOnly from 'src/components/layouts/header-only/header-only';
 import Accordion from 'src/components/accordion/accordion';
 import ControlBar from 'src/components/control-bar/control-bar';
 import Share from 'src/components/share/share';
@@ -16,6 +15,7 @@ import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { AFGHeader } from '../../../../components/headers/headers';
 
 function DeficitTrendsPage(props) {
 	return <>
@@ -32,8 +32,7 @@ function DeficitTrendsPage(props) {
 		/>
 
 		<Default>
-			<HeaderOnly></HeaderOnly>
-
+			<AFGHeader />
 			<AfgNav location={props.location} chapter={'deficit'}></AfgNav>
 
 			<div className='cg-wrapper trends-common-wrapper deficit-trends-wrapper'>
@@ -78,7 +77,7 @@ function DeficitTrendsPage(props) {
 								<h1>How does the deficit in the United States compare to other countries?</h1>
 								<p>When you are done here, see how the U.S. deficit compares to other countries.</p>
 							</div>
-							<Link to={'/americas-finance-guide/deficit/country-comparison/'} className='tour__link'>Continue<FontAwesomeIcon icon={faAngleRight} className='fa fa-angle-right' /></Link>
+							<a href='/americas-finance-guide/deficit/country-comparison/' className='tour__link'>Continue<FontAwesomeIcon icon={faAngleRight} width={7} className='fa fa-angle-right' /></a>
 						</section>
 					</aside>
 

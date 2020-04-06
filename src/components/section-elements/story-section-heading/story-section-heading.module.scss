@@ -1,27 +1,23 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 $darkGrey: #666666;
 $mdGrey: #555555;
 $greyBlack: #979797;
-$fedEmpBlue: #2272CE;
+$fedEmpBlue: #2272ce;
 
 .header {
   text-align: left;
   margin-bottom: 1.5rem;
 }
 
-.headerNumber {
-  margin-bottom: $margin-50;
+.headerNumber h2 {
+  color: $darkGrey;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 3.125rem;
+  margin: 0.1rem 0 0.3rem;
+  text-align: center;
   border-bottom: 1px solid $darkGrey;
-
-  h2 {
-    color: $darkGrey;
-    font-size: 3rem;
-    font-weight: 600;
-    line-height: 3.125rem;
-    margin: 0.1em 0 0.3em;
-    text-align: center;
-  }
 }
 
 .headerTitle {
@@ -33,6 +29,10 @@ $fedEmpBlue: #2272CE;
 
 .introContainer {
   margin: 0 0 $margin-50 0;
+
+  .intro {
+    padding: 0 40px 0 0; 
+  }
 
   .blurbText {
     color: #555555;
@@ -90,6 +90,16 @@ $fedEmpBlue: #2272CE;
   font-size: inherit;
 }
 
+@media (min-width: $phone) {
+  .introContainer {
+    .intro {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin: 0;
+    }
+  }
+}
+
 @media (max-width: $desktop-xl - 1) {
   .number {
     margin-bottom: 25px;
@@ -113,31 +123,40 @@ $fedEmpBlue: #2272CE;
   }
 }
 
-@media (min-width: $desktop-xl){
+@media (min-width: $desktop-xl) {
   .header {
     .headerTitle {
       line-height: 60px;
     }
   }
+
+  .intro {
+    margin-bottom: 0;
+  }
 }
 
-@media (min-width: $phone) and (max-width: $desktop-xl){
+@media (min-width: $phone) and (max-width: $desktop-xl) {
   .header {
     text-align: center;
   }
-  .introContainer {
-    margin-bottom: $margin-30;
+  .headerNumber h2 {
+    border: none;
+    text-decoration: underline;
   }
-  .header {
-    .headerTitle {
-      margin-top: $margin-25;
-    }
+  .headerTitle {
+    margin-top: $margin-25;
   }
 }
 
-@media (max-width: $phone - 1){
+@media (max-width: $phone - 1) {
   .introContainer {
-    margin-bottom: $margin-25;
+    margin: 0 0 25px 0 !important;
+    .intro {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: $darkGrey;
+      margin: 1rem 0;
+    }
   }
   .header {
     .headerTitle {

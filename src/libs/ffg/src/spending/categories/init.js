@@ -1,15 +1,9 @@
-import { select, selectAll } from 'd3-selection';
+import * as d3 from 'd3v3';
 import { byYear } from '../data-spending';
 import { drawChart as barChart } from './bar/chart';
 import colors from '../../globalSass/colors.scss';
-import { establishContainer } from '../../utils';
 
-const d3 = { select, selectAll },
-    chartTitle = d3.select('h2.chart-title .title-text'),
-    selectBudgetFunction = d3.select('#select-budget-function'),
-    selectAgency = d3.select('#select-agency'),
-    barControls = d3.select('#bar-controls'),
-    chartSectionTextStr = 'Click to see subcategories';
+const chartSectionTextStr = 'Click to see subcategories';
 
 let svg,
     config = {
@@ -39,7 +33,7 @@ function initSection() {
 
 export function initChart(showMoreFlag) {
     const configData = config.dataType ? config.data[config.dataType] : config.data;
-    
+
     const d = config.filteredData || configData;
 
     if(!showMoreFlag){
@@ -53,9 +47,16 @@ export function initChart(showMoreFlag) {
     }
 
     const chartData = top10 ? d.slice(0,10) : d;
-    
-    d3.selectAll('svg.main').remove();
-    barChart(chartData, config.dataType, config);
+
+    if (typeof document !== 'undefined') {
+      const els = document.querySelectorAll("svg.main");
+
+      els.forEach(node => node.remove());
+
+      /* Checking the parent width to set the width of the bar chart */
+      const parentWidth = document.getElementById('viz').clientWidth;
+      barChart(chartData, config.dataType, config, null, parentWidth);
+    }
 
 }
 
@@ -128,7 +129,10 @@ export function init(_config){
         changeDataTypeClickFunction();
     }
 
-    d3.select("#spending-chart-toggle").attr('data-active', 'category');
+    if (typeof document !== "undefined") {
+      const el = document.getElementById('spending-chart-toggle');
+      if (el) { el.setAttribute('data-active', 'category'); }
+    }
 
     initSection();
 }

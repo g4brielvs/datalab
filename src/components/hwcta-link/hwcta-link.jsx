@@ -24,7 +24,7 @@ const HWCTALink = (props) => {
             Methodologies
           </Grid>
           <Grid item className={hwctaLinkStyles.arrow}>
-            <FontAwesomeIcon icon={faChevronRight} color={props.fillColor} />
+            <FontAwesomeIcon icon={faChevronRight} width={20} color={props.fillColor} />
           </Grid>
         </Grid>
       </Link>

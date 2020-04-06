@@ -9,6 +9,7 @@ import Downloads from '../../components/section-elements/downloads/downloads';
 import { Grid } from '@material-ui/core';
 import Search from 'src/components/chartpanels/search';
 import tooltipModule from '../../components/tooltip/tooltip';
+import tipStyles from '../../components/tooltip/tooltip.module.scss';
 import { graphql, useStaticQuery } from "gatsby";
 
 export default function FederalPrograms(props) {
@@ -900,7 +901,7 @@ export default function FederalPrograms(props) {
         />
       </div>
 
-      <div id="tooltipSection2" className="tooltip-module" />
+      <div id="tooltipSection2" className={tipStyles.tooltipModule} />
       <h1 id='container2_title' />
       <Grid container>
         <Grid item xs={12} md={6}>
@@ -919,7 +920,7 @@ export default function FederalPrograms(props) {
         </Grid>
       </Grid>
       <Downloads
-        href={'../../../../unstructured-data/homelessness-analysis/coc_pop_value.csv'}
+        href={'../../../../unstructured-data/homelessness-analysis/panel_2_table_and_counts_v7_2020_03_27.csv'}
         date={'November 2019'}
       />
     </div >

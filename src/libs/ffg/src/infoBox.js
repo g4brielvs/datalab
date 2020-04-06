@@ -1,54 +1,53 @@
 import { select, selectAll } from 'd3-selection';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CloseIcon from '@material-ui/icons/Close';
 
-const d3 = { select, selectAll },
+
+  const d3 = { select, selectAll },
     infoBoxClass = '.info-box',
     triggerClass = '.info-box-trigger',
     triggerClassActive = 'info-box-trigger--active',
     closeButtonClass = 'info-box__close',
     activeClass = 'info-box--active';
 
-function addCloseIcon() {
+  function addCloseIcon() {
     const box = d3.select(this);
     const closeButton = box.append('button');
-    const closeIcon = `<FontAwesomeIcon icon={faTimes} />`;
-    ReactDOM.render(closeIcon, closeButton.node());
+    ReactDOM.render(<CloseIcon />, closeButton.node());
     closeButton.lower();
     closeButton.attr('class', closeButtonClass);
-}
+  }
 
-function closeBox(trigger, box) {
+  function closeBox(trigger, box) {
     box.classed(activeClass, null);
     trigger.classed(triggerClassActive, null);
-}
+  }
 
-export function triggerInfoBox() {
+  export function triggerInfoBox() {
     const trigger = d3.select(this),
-        id = trigger.attr('data-box-id'),
-        box = d3.select('#' + id),
-        innerWidth = window.innerWidth,
-        coords = trigger.node().getBoundingClientRect();
+          id = trigger.attr('data-box-id'),
+          box = d3.select('#' + id),
+          innerWidth = window.innerWidth,
+          coords = trigger.node().getBoundingClientRect();
 
-    let x = coords.left-10;
+      let x = coords.left-10;
 
-    if (x > innerWidth - 300) {
-        x = innerWidth - 300
-    }
+      if (x > innerWidth - 300) {
+          x = innerWidth - 300
+      }
 
-    box.classed(activeClass, true);
-    trigger.classed(triggerClassActive, true);
+      box.classed(activeClass, true);
+      trigger.classed(triggerClassActive, true);
 
-    box.attr('style', `top:${coords.top-15+window.pageYOffset}px;left:${x}px`);
+      box.attr('style', `top:${coords.top-15+window.pageYOffset}px;left:${x}px`);
 
-    box.select('.' + closeButtonClass)
-        .on('click', null)
-        .on('click', function(){
-            closeBox(trigger, box)
-        });
-}
+      box.select('.' + closeButtonClass)
+          .on('click', null)
+          .on('click', function(){
+              closeBox(trigger, box)
+          });
+  }
 
 (function init() {
     d3.selectAll(infoBoxClass).each(addCloseIcon);
