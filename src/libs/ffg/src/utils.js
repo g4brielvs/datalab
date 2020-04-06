@@ -18,22 +18,13 @@ export function findAmountInCsv(str, data) {
 }
 
 export function getElementBox(d3Selection) {
-    if(d3Selection && d3Selection.node === 'function') {
-      const rect = d3Selection.node().getBoundingClientRect();
+    const rect = d3Selection.node().getBoundingClientRect();
 
-      return {
-          width: Math.ceil(rect.width),
-          height: Math.ceil(rect.height),
-          right: Math.ceil(rect.right),
-          bottom: Math.ceil(rect.bottom)
-      }
-    } else {
-      return {
-        width: null,
-        height: null,
-        right: null,
-        bottom: null
-      }
+    return {
+      width: Math.ceil(rect.width),
+      height: Math.ceil(rect.height),
+      right: Math.ceil(rect.right),
+      bottom: Math.ceil(rect.bottom)
     }
 }
 

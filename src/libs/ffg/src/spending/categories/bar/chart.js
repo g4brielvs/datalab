@@ -7,7 +7,7 @@ import { establishContainer, translator } from "../../../utils";
 import { placeLabels } from './text';
 import { initSort } from './sort';
 import { initOverlay } from './detailOverlay';
-import { optimizeWidth, scaleToFit } from './optimize-width';
+// import { optimizeWidth, scaleToFit } from './optimize-width';
 
 const d3 = { select, selectAll, scaleLinear, extent, min, max, transition, zoom },
     barAnimationTime = 1000,

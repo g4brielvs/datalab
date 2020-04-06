@@ -52,9 +52,11 @@ export function initChart(showMoreFlag) {
       const els = document.querySelectorAll("svg.main");
 
       els.forEach(node => node.remove());
-    }
 
-    barChart(chartData, config.dataType, config);
+      /* Checking the parent width to set the width of the bar chart */
+      const parentWidth = document.getElementById('viz').clientWidth;
+      barChart(chartData, config.dataType, config, null, parentWidth);
+    }
 
 }
 
