@@ -93,7 +93,7 @@ export default class RdInContractingPage extends React.Component {
         </ControlBar>
 
         <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
-        <GridList cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
+        <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
           <GridListTile className={styles.legendTile}>
               <div className={`${styles.legendBar} ${styles.one}`}></div>
               <div className={styles.legendText}>Total R&D</div>

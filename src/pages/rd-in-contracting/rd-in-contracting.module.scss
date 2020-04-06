@@ -48,3 +48,9 @@
     display: table;
   }
 }
+
+@media (max-width: $tablet - 1) {
+  .legend {
+    padding-left: 10% !important;
+  }
+}
