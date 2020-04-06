@@ -49,9 +49,7 @@ export function initChart(showMoreFlag) {
     const chartData = top10 ? d.slice(0,10) : d;
 
     if (typeof document !== 'undefined') {
-      const els = document.querySelectorAll("svg.main");
-
-      els.forEach(node => node.remove());
+      d3.selectAll('svg.main').remove();
 
       /* Checking the parent width to set the width of the bar chart */
       const parentWidth = document.getElementById('viz').clientWidth;

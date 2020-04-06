@@ -97,10 +97,6 @@ function onMouseout() {
 }
 
 function placeContainers(config, detail) {
-
-console.log(config);
-
-
     const containers = config.svg.selectAll('g.row')
         .data(config.data)
         .enter()
@@ -130,10 +126,6 @@ console.log(config);
             containers.on('mouseover', onMouseover)
             containers.on('mouseout', onMouseout)
         }, barAnimationTime)
-
-debugger;
-
-
     }
 }
 
