@@ -87,7 +87,7 @@ export default class BubbleChart extends Component {
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
     if (!this.isDesktop()) {
-      tooltipHtml += '<img src="/images/close.svg">';
+      tooltipHtml += '<img id="tip-close" src="/images/close.svg" onclick="event.target.parentElement.parentElement.style.opacity=0">';
     }
 
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
@@ -103,7 +103,7 @@ export default class BubbleChart extends Component {
     let tooltipHtml = "<div class='bubble-chart-tooltip' id='" + elName + "'>";
 
     if (!this.isDesktop()) {
-      tooltipHtml += '<img src="/images/close.svg">';
+      tooltipHtml += '<img id="tip-close" src="/images/close.svg" onclick="event.target.parentElement.parentElement.style.opacity=0">';
     }
 
     tooltipHtml += "<span class='bubble-detail__agency-label'>Agency</span>" +
@@ -224,7 +224,7 @@ export default class BubbleChart extends Component {
       }
       return tooltipHtml;
     });
-
+    
     this.bubbleSvg = d3.select(this.bubbleChartContainer).append("svg")
       .attr("viewBox", `0 0 ${this.width} ${this.width}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
