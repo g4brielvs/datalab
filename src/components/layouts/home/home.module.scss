@@ -28,8 +28,8 @@
   }
 }
 
-@media (max-width: $phone) {
+@media (max-width: $tablet - 1) {
   .default {
-    margin: 110px 16px;
+    margin: 110px 16px 24px;
   }
 }

@@ -1,5 +1,4 @@
-@import '../../../styles/variables';
-
+@import "../../../styles/variables";
 
 .heading {
   font-size: 1.17rem;
@@ -10,7 +9,6 @@
 }
 
 .tile {
-
   .svgImg {
     height: 62px;
     margin: 0 auto 1rem auto;
@@ -50,11 +48,9 @@
     margin-bottom: 2rem;
     text-align: center;
   }
-
 }
 
-
-@media screen and (max-width: $desktop) {
+@media (max-width: $desktop - 1) {
   .title {
     text-align: center;
   }
@@ -62,12 +58,16 @@
   .tile-row {
     padding-top: $margin-20;
   }
-
 }
 
-@media screen and (max-width: $tablet) {
+@media (max-width: $tablet - 1) {
+  .heading {
+    margin-top: 0 !important;
+  }
+
   .title {
-    text-align: center;
+		text-align: center;
+		margin-top: 0;
   }
 
   .tile-row {
@@ -79,7 +79,8 @@
 
     .tile {
       .svgImg {
-        float: left;
+				float: left;
+				margin-bottom: 0;
       }
 
       .title {
@@ -87,7 +88,5 @@
         padding-top: 20px;
       }
     }
-
   }
-
 }
