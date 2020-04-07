@@ -1,5 +1,4 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/index';
+@import "../../../styles/index";
 
 .highlight {
   border-top: 1px solid #ddd;
@@ -35,19 +34,23 @@
       margin-top: $margin-15;
       width: 100%;
       border: 1px solid #ddd;
-
     }
   }
-
 }
 
-@media screen and (max-width: $phone - 1) {
-  .text {
-    display: none;
+@media (max-width: $tablet - 1) {
+  .highlight {
+    .subheading {
+      font-size: 1.25em;
+    }
+
+    .text {
+      display: none;
+    }
   }
 }
 
-@media (min-width: $phone) and (max-width: $desktop - 1) {
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
   .image {
     margin-right: $margin-20;
   }
@@ -57,12 +60,8 @@
   }
 }
 
-@media screen and (max-width: $desktop - 1) {
+@media (max-width: $desktop - 1) {
   .highlight {
     border: none;
   }
 }
-
-
-
-
