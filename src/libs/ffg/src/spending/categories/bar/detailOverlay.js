@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-import ReactDOM from "react-dom"
 import { select, selectAll, mouse } from 'd3-selection';
 import { translator, fadeAndRemove, getElementBox, establishContainer, wordWrap } from '../../../utils';
 import { closeDetail } from './sort';
@@ -132,7 +130,6 @@ function resizeSvg(finalRectHeight) {
 }
 
 export function initOverlay(title, config, callback) {
-  // ReactDOM.render(<CloseIcon />, closeButton.node());
 
   const startCoords = d3.mouse(d3.select('svg.main').node());
 
@@ -187,7 +184,7 @@ export function initOverlay(title, config, callback) {
 
     // append to the detailLayer here
     detailLayer.transition()
-        // .duration(750)
+        .duration(750)
         .attr('transform', translator(5, setOverlayY(startCoords[1], finalRectHeight)) + ' scale(1)')
         .on('end', function () {
             setTimeout(function () {
@@ -196,5 +193,5 @@ export function initOverlay(title, config, callback) {
 
             callback(config, true)
         })
-        // .ease();
+        .ease();
 }
