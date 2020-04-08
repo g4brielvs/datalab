@@ -51,8 +51,7 @@ export function initChart(showMoreFlag) {
       d3.selectAll('svg.main').remove();
 
       /* Checking the parent width to set the width of the bar chart */
-      const parentWidth = document.getElementById('viz').clientWidth;
-      barChart(chartData, config.dataType, config, null, parentWidth);
+      barChart(chartData, config.dataType, config);
     }
 
 }
