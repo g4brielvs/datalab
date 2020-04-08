@@ -9,13 +9,9 @@ import defaultImage from '../../../images/default-image.jpg';
 import Accordion from '../../../components/accordion/accordion';
 import Grid from '@material-ui/core/Grid';
 
-const accordionStyle = {border: '1px solid #FC5A20',
-                        color: '#FC5A20', // font color
+const accordionStyle = {color: '#FC5A20',
                         backgroundColor: '#FFF4F1'
                        };
-
-const iconStyle = {color: '#FC5A20'};
-
 
 export default class SectionOne extends React.Component {
   constructor(props) {
@@ -62,7 +58,7 @@ export default class SectionOne extends React.Component {
         />
 
         <div className={sectionOneStyles.accordionContainer}>
-          <Accordion altStyleAccordion={accordionStyle} altStyleIcon={iconStyle} title='What is an Opioid?' />
+          <Accordion title='What is an Opioid?' color={accordionStyle.color} backgroundColor={accordionStyle.backgroundColor} />
         </div>
 
         <Grid container justify='center'>
