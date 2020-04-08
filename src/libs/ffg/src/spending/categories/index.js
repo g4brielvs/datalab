@@ -1,14 +1,22 @@
+import React, { useEffect } from 'react';
 import { init, initChart } from './init';
 
+export default function SpendingCategories() {
 
-let debounce;
+  useEffect(() => {
+    let debounce;
 
-init();
+    init();
 
-window.addEventListener('resize', function () {
-    if (debounce) {
+    window.addEventListener('resize', function () {
+      if (debounce) {
         clearTimeout(debounce);
-    }
+      }
 
-    debounce = setTimeout(initChart, 100);
-});
+      debounce = setTimeout(initChart, 100);
+    });
+  })
+
+  return <div id="viz"></div>;
+}
+

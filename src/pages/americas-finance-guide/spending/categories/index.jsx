@@ -9,8 +9,8 @@ import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
-import { Helmet } from 'react-helmet';
 import AfgNav from 'src/components/afg-nav/afg-nav';
+import SpendingCategories from 'src/libs/ffg/src/spending/categories/index.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faSearch, faSortAlphaDown, faSortAlphaUp, faSortAmountDown, faSortAmountUp } from '@fortawesome/free-solid-svg-icons';
@@ -18,11 +18,6 @@ import { faAngleRight, faSearch, faSortAlphaDown, faSortAlphaUp, faSortAmountDow
 function SpendingCategoriesPage(props) {
     return (
         <>
-
-            <Helmet>
-                <script defer src="/americas-finance-guide/spending/categories.js"></script>
-            </Helmet>
-
             <SEO
                 title='Data Lab - Federal Spending Categories – U.S. Treasury'
                 description='In 2019, the U.S. government spent $4.4 trillion. Explore the breakdown of federal spending by category or agency.'
@@ -76,7 +71,7 @@ function SpendingCategoriesPage(props) {
                                 </div>
 
                                 <hr></hr>
-                                <div id="viz"></div>
+                                <SpendingCategories />
                                 <hr className='categories__show-more'></hr>
                                 <div id="show-more-container" className='categories__show-more'>
                                     <button id="show-more-button" className="chart__show-more">Show More</button>

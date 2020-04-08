@@ -126,8 +126,7 @@ export function init(_config){
     }
 
     if (typeof document !== "undefined") {
-      const el = document.getElementById('spending-chart-toggle');
-      if (el) { el.setAttribute('data-active', 'category'); }
+      d3.select("#spending-chart-toggle").attr('data-active', 'category');
     }
 
     initSection();
