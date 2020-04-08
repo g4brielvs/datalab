@@ -9,7 +9,7 @@ export default class Accordion extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			open: false
+			closed: true
 		};
 
 		this.toggle = this.toggle.bind(this);
@@ -32,18 +32,15 @@ export default class Accordion extends React.Component {
 
 	toggle(e) {
 		e.stopPropagation();
-		this.setState(state => ({
-			open: !state.open
-		}));
+		this.setState(state => ({ closed: !state.closed }));
 	}
 
 	styleOverrides() {
 		const styles = {};
 		if (this.props.color) {
 			styles.color = this.props.color;
-			// styles.borderColor = this.props.color;
 		}
-		if (!this.state.open && this.props.backgroundColor) {
+		if (this.state.closed && this.props.backgroundColor) {
 			styles.backgroundColor = this.props.backgroundColor;
 		}
 		return styles;
@@ -55,11 +52,12 @@ export default class Accordion extends React.Component {
 				<div className='row'>
 					<div className='col-xs-12'>
 						<section
-							className={this.state.open ? `${accordionStyles.accordion} ${accordionStyles.open} accordion--open` : `${accordionStyles.accordion}`}
+							className={!this.state.closed ? `${accordionStyles.accordion} ${accordionStyles.open} accordion--open` : `${accordionStyles.accordion}`}
 							style={this.props.color ? { 'borderColor': this.props.color } : {}}
 						>
 							<h1
-								onClick={this.toggle} className={accordionStyles.heading}
+								onClick={this.toggle}
+								className={accordionStyles.heading}
 								style={this.styleOverrides()}
 							>
 								{this.props.title}
@@ -71,7 +69,7 @@ export default class Accordion extends React.Component {
 							</h1>
 							<div
 								className={accordionStyles.content}
-								hidden={!this.state.open}
+								// hidden={this.state.closed}
 							>
 								{this.props.children}
 							</div>

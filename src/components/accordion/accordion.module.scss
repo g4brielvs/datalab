@@ -44,6 +44,10 @@
   ul {
     margin-top: 0;
     margin-bottom: 0;
+
+    li {
+      font-size: 0;
+    }
   }
 }
 
@@ -67,8 +71,8 @@
 .open {
   // .heading {
   //   border-bottom: none;
-	// }
-	
+  // }
+
   .content {
     line-height: 1.2;
     padding-top: $margin-30;
@@ -93,6 +97,10 @@
       padding-left: $margin-30;
       margin-top: $margin-15;
       margin-bottom: $margin-15;
+
+      li {
+        font-size: 1rem;
+      }
     }
 
     :first-child {
