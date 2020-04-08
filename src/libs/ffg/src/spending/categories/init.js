@@ -2,7 +2,6 @@ import * as d3 from 'd3v3';
 import { byYear } from '../data-spending';
 import { drawChart as barChart } from './bar/chart';
 import colors from '../../globalSass/colors.scss';
-import 'src/libs/ffg/src/spending/categories/spending-categories.scss';
 
 const chartSectionTextStr = 'Click to see subcategories';
 
