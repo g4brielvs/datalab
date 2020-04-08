@@ -2,6 +2,7 @@ import * as d3 from 'd3v3';
 import { byYear } from '../data-spending';
 import { drawChart as barChart } from './bar/chart';
 import colors from '../../globalSass/colors.scss';
+import 'src/libs/ffg/src/spending/categories/spending-categories.scss';
 
 const chartSectionTextStr = 'Click to see subcategories';
 
@@ -22,11 +23,10 @@ let svg,
     chartType = 'bar';
 
 function initSection() {
-    const vizSection = d3.select('#viz');
-    vizSection.select('#vizChartSectionText').remove();
-    vizSection.append('div')
-        .attr('id', 'vizChartSectionText')
-        .text(chartSectionTextStr);
+    const chartContainer = d3.select('#viz-chart-container');
+    chartContainer.select('#vizChartSectionText').remove();
+    const chartSectionText = chartContainer.insert("div","#viz").attr('id', 'vizChartSectionText');
+    chartSectionText.text(chartSectionTextStr);
 
     initChart();
 }
