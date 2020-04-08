@@ -1,7 +1,7 @@
 import { select, selectAll } from 'd3-selection';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import CloseIcon from '@material-ui/icons/Close';
+import ReactDOM from "react-dom"
 
 
   const d3 = { select, selectAll },

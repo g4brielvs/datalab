@@ -1,0 +1,1 @@
+# index.js content moved to src/pages/americas-finance-guide/deficit/trends
