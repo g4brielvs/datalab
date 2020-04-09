@@ -145,9 +145,9 @@ export function drawChart(data, type, _config, detail, parentWidth) {
     if(typeof document !== 'undefined') {
         const bodyWidth = document.body.offsetWidth;
         if (bodyWidth < 776) {
-            calculatedWidth = bodyWidth * .9;
+            calculatedWidth = bodyWidth * .8;
         } else {
-            calculatedWidth = bodyWidth * .55;
+            calculatedWidth = bodyWidth * .45;
         }
     }
 
