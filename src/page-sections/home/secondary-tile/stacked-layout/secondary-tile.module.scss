@@ -65,3 +65,9 @@
     border: none;
   }
 }
+
+@media (max-width: $tablet - 1) {
+  .highlight .heading {
+    margin-top: 0;
+  }
+}

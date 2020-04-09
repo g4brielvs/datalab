@@ -38,20 +38,20 @@ const SecondaryTile = (props) => {
 				</Hidden>
 				<Hidden lgUp>
 					<Grid container spacing={3}>
-						<Grid item xs={6} className={secondaryAnalysesTileStyles.headings}>
-							<p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
-							<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
-							<p className={secondaryAnalysesTileStyles.text}>
-								{props.body}
-							</p>
-						</Grid>
-						<Grid item xs={6}>
+						<Grid item xs={12} md={6}>
 							<img
 								style={{ width: '100%' }}
 								data-src={props.imgSrc}
 								className='lazyload'
 								alt={props.imgAlt}
 							/>
+						</Grid>
+						<Grid item md={6} className={secondaryAnalysesTileStyles.headings}>
+							<p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
+							<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
+							<p className={secondaryAnalysesTileStyles.text}>
+								{props.body}
+							</p>
 						</Grid>
 					</Grid>
 				</Hidden>
