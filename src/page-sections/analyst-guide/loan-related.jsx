@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../pages/analyst-guide/analyst-guide.module.scss';
 
 export default {
-  title: 'LOAD-RELATED QUESTIONS',
+  title: 'LOAN-RELATED QUESTIONS',
   introSentence: <></>,
   data: [
     {
