@@ -3,7 +3,6 @@ import '../../../libs/ffg/src/globalSass/cg.scss'
 import '../../../libs/ffg/src/spending/intro/spending-intro.scss'
 
 import React from "react"
-import { Link } from "gatsby"
 import SEO from "../../../components/seo"
 import AfgData from "../../../libs/_data/object_mapping.yml"
 import Default from "../../../components/layouts/default/default"
