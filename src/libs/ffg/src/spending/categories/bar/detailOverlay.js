@@ -130,7 +130,8 @@ function resizeSvg(finalRectHeight) {
 }
 
 export function initOverlay(title, config, callback) {
-    const startCoords = d3.mouse(d3.select('svg.main').node());
+
+  const startCoords = d3.mouse(d3.select('svg.main').node());
 
     let headerHeight, detailLayerYOffset, rect, detailLayer, finalRectHeight;
 
@@ -181,6 +182,7 @@ export function initOverlay(title, config, callback) {
         })
     }
 
+    // append to the detailLayer here
     detailLayer.transition()
         .duration(750)
         .attr('transform', translator(5, setOverlayY(startCoords[1], finalRectHeight)) + ' scale(1)')

@@ -22,11 +22,10 @@ let svg,
     chartType = 'bar';
 
 function initSection() {
-    const vizSection = d3.select('#viz');
-    vizSection.select('#vizChartSectionText').remove();
-    vizSection.append('div')
-        .attr('id', 'vizChartSectionText')
-        .text(chartSectionTextStr);
+    const chartContainer = d3.select('#viz-chart-container');
+    chartContainer.select('#vizChartSectionText').remove();
+    const chartSectionText = chartContainer.insert("div","#viz").attr('id', 'vizChartSectionText');
+    chartSectionText.text(chartSectionTextStr);
 
     initChart();
 }
@@ -49,13 +48,10 @@ export function initChart(showMoreFlag) {
     const chartData = top10 ? d.slice(0,10) : d;
 
     if (typeof document !== 'undefined') {
-      const els = document.querySelectorAll("svg.main");
-
-      els.forEach(node => node.remove());
+      d3.selectAll('svg.main').remove();
 
       /* Checking the parent width to set the width of the bar chart */
-      const parentWidth = document.getElementById('viz').clientWidth;
-      barChart(chartData, config.dataType, config, null, parentWidth);
+      barChart(chartData, config.dataType, config);
     }
 
 }
@@ -130,8 +126,7 @@ export function init(_config){
     }
 
     if (typeof document !== "undefined") {
-      const el = document.getElementById('spending-chart-toggle');
-      if (el) { el.setAttribute('data-active', 'category'); }
+      d3.select("#spending-chart-toggle").attr('data-active', 'category');
     }
 
     initSection();
