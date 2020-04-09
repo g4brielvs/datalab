@@ -1,0 +1,40 @@
+.homeless-panel-one-info {
+  padding:0 5% 25px 5%;
+}
+
+.homeless-panel-one-info p {
+  font-size: 0.875rem;
+  text-align: left;
+  font-weight: 300;
+  color: #5B616B;
+  margin: 0;
+}
+
+#homeless-action-map {
+  display: inline-block;
+  width: 56px;
+  height: 31px;
+  background-size: 56px 31px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+#homeless-action-map:hover {
+  filter: saturate(2);
+}
+
+#homeless-action-table {
+  display: inline-block;
+  width: 25px;
+  height: 29px;
+  background-size: 25px 29px;
+  vertical-align: middle;
+  opacity: 0.4;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#homeless-action-table:hover {
+  opacity: 1;
+  fill: #4497C9;
+}

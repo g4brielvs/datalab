@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.header {
+  height: 2.5rem
+}
+
+.sunburst-details {
+}
+
+.breadcrumbs-container {
+  padding-left: 2.125rem
+}
+
+.sunburst-message {
+  margin-top: 40px;
+  height: 40px;
+  font-size: 1rem;
+  text-align: center;
+  color: #666666;
+}
+
+.download-container {
+  padding-top: 2rem;
+}
+
+@media (max-width: $tablet) {
+  .sunburst-vega-container {
+    flex-direction: column-reverse;
+  }
+}

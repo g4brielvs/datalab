@@ -1,0 +1,98 @@
+@import '../../../../styles/variables.scss';
+
+.barContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2vw;
+  flex-direction: column;
+
+  .visBarChart {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.barContainer > svg > g > rect:hover {
+  fill: #d334ba;
+}
+
+.formItem {
+  vertical-align: top;
+  align-self: flex-start;
+  margin: 0 26px 0 0;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  padding-left: 6%;
+}
+
+.selectTitle {
+  text-align: center;
+}
+
+.legend {
+  font-size: 1rem;
+
+  .block {
+    float: left;
+    width: 18px;
+    height: 18px;
+    margin: 3px 10px;
+    border: none;
+  }
+
+  .whiteCollar {
+    background: #2fbab7;
+  }
+  .blueCollar {
+    background: #2272ce;
+  }
+  .other {
+    background: #5d6474;
+  }
+}
+
+:global {
+  .fed-emp-bar-chart {
+    path.domain {
+      opacity: 0;
+    }
+
+    .tick line {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    #barChartToolbar {
+      flex-direction: column !important;
+      padding-left: 0;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .barContainer {
+    height: 550px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .barContainer {
+    height: 420px;
+  }
+}
+
+@media (min-width: $phone) and (max-width: $tablet - 1) {
+  .barContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: $phone) {
+  .barContainer {
+    height: 375px;
+  }
+}

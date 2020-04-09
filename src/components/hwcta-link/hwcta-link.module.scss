@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+
+.hwcta {
+  margin-top: $margin-75;
+  margin-bottom: $margin-75;
+  font-size: 2rem;
+  font-weight: 300;
+
+  .icon {
+    line-height: 0;
+    padding-right: 1rem;
+  }
+
+  .arrow {
+    padding-left: 1rem;
+  }
+}
+
+.hwcta:hover {
+  text-decoration: underline;
+};
+
+@media (max-width: $tablet - 1) {
+  .hwcta {
+    margin-top: $margin-30;
+    margin-bottom: $margin-30;
+    font-size: 1.7rem;
+  }
+
+  .icon {
+    display: none;
+  }
+}

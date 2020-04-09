@@ -1,0 +1,86 @@
+@import "../../styles/variables";
+
+$col-padding: 15px;
+
+.page-footer {
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+
+  .content {
+    padding: 3rem 0 4rem;
+
+    .title {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.24;
+      letter-spacing: normal;
+      margin-bottom: 0.5rem;
+    }
+
+    .title,
+    a {
+      color: $legacyBlue;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 0.9375rem;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 1.33;
+      letter-spacing: 0.2px;
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+
+    .social .contents a {
+      padding-right: 8px;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .page-footer .content {
+    div + div {
+      padding: 0 $col-padding;
+      border-left: 1px solid #ccc;
+    }
+
+    .logo {
+      text-align: center;
+
+      svg {
+        width: 200px;
+      }
+    }
+
+    .social {
+      position: relative;
+      text-align: right;
+
+      .contents {
+        position: absolute;
+        bottom: 0;
+        right: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: $desktop - 1) {
+  .page-footer .content {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+
+    .logo {
+      padding-bottom: 2rem;
+    }
+
+    .social .title {
+      display: none;
+    }
+  }
+}

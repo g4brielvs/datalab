@@ -1,0 +1,93 @@
+@import '../../../styles/variables';
+
+
+.heading {
+  font-size: 1.17rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #aaa;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tile {
+
+  .svgImg {
+    height: 62px;
+    margin: 0 auto 1rem auto;
+    display: block;
+    width: 50%;
+  }
+
+  .text {
+    text-align: center;
+    width: auto;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    height: 52px;
+    text-align: center;
+  }
+
+  p.title {
+    font-size: 2em;
+    height: auto;
+    margin-top: 0;
+  }
+
+  &:hover h1.title {
+    text-decoration: underline;
+  }
+
+  .description {
+    font-size: 1.125rem;
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+}
+
+
+@media screen and (max-width: $desktop) {
+  .title {
+    text-align: center;
+  }
+
+  .tile-row {
+    padding-top: $margin-20;
+  }
+
+}
+
+@media screen and (max-width: $tablet) {
+  .title {
+    text-align: center;
+  }
+
+  .tile-row {
+    border-top: 1px solid #dddddd;
+
+    .description {
+      display: none;
+    }
+
+    .tile {
+      .svgImg {
+        float: left;
+      }
+
+      .title {
+        font-size: 1rem;
+        padding-top: 20px;
+      }
+    }
+
+  }
+
+}

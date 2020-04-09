@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "noemit": true,
+    "allowJS": true,
+    "checkJS": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

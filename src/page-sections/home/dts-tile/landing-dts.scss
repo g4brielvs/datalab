@@ -1,10 +1,9 @@
-// landing-dts-tile-analyses.cscc
-// handle our little module on the home
+@import '../../../styles/variables';
 
 .dts-module {
   box-sizing: border-box;
   background-color: inherit;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,24 +19,22 @@
 }
 
 .dtsm-dollars {
-  font-size: 16px;
+  font-size: 1.375rem; // 22 px
   font-weight: 600;
-  margin-left: 15px;
-  margin-right: 15px;
-  /* opacity: .75; */
+  text-align: center;
   fill: #4A4A4A;
 }
 
 .dtsm-tas-header {
-  font-size: 12px;
+  text-align: center;
+  font-size: 0.75rem;
   font-weight: 600;
   line-height: 150%;
-  /* opacity: .8; */
   fill: #4A4A4A;
 }
 
 .side-dts__date {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 20px;
   fill: #757575;
@@ -50,10 +47,13 @@
 div.dts-container > div > div > svg > g > path{
   fill:none;
 }
-.line {
-  fill: none;
-  stroke: #00CCCC;
-  stroke-width: 3px;
+
+.dts {
+  .line {
+    fill: none;
+    stroke: #00CCCC;
+    stroke-width: 3px;
+  }
 }
 
 .dtsm-img text {
@@ -85,26 +85,31 @@ hr.horizontal_dts{
   margin-top: -5px;
 }
 
-@media only screen and (max-width: 1200px) {
-  .dts-container {
-    display: flex;
-    justify-content: center;
-  }
+@media only screen and (max-width: $desktop - 1) {
 
   .dts-module {
-    width: 80%;
+    width: 100%;
+    text-align: center;
   }
-  
+
+  .dtsm-right-column {
+    text-align: left;
+  }
+
   .dtsm-dollars {
     font-size: 1.8em;
   }
 
   .dtsm-tas-header {
-    font-size: 1.188em;
+    font-size: 1.188rem;
   }
 
   .dtsm-img svg {
     width: 80%;
+  }
+
+  .side-dts__date {
+    text-align: center;
   }
 
 }

@@ -1,0 +1,9 @@
+@import '../../styles/index.scss';
+
+$fedEmpBlue: #2272CE;
+
+.headingBlue {
+  color: $fedEmpBlue;
+  font-weight: 900;
+  font-size: inherit;
+}

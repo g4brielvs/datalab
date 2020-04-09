@@ -1,0 +1,26 @@
+@import '../../styles/index.scss';
+
+.controlBar {
+  margin: 25px 0;
+  text-align: right;
+}
+
+.fedControlBar {
+  margin: 25px 0;
+  text-align: right;
+};
+
+.child {
+  min-width: 5rem;
+  span {
+    color: #999;
+    font-family: 'Source Sans Pro';
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: $desktop-xl){
+  .controlBar {
+    margin: 45px 0;
+  }
+}

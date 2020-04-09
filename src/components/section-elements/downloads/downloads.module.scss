@@ -1,0 +1,29 @@
+@import '../../../styles/variables.scss';
+$grey: #555555;
+
+.download {
+	color: $grey;
+	font-size: 1rem;
+	margin-top: $margin-15;
+}
+
+.faded-modifier {
+	opacity: 0.5;
+	line-height: 18pt;
+}
+
+a.data {
+	color: $grey;
+	margin-left: 12px;
+	fill: $grey;
+	cursor: pointer;
+
+	&:hover {
+		color: $legacyBlue;
+		text-decoration: underline;
+
+		img {
+			filter: brightness(0.5) sepia(1);
+		}
+	}
+}

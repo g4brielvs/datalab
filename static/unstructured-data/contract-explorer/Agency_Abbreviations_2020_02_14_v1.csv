@@ -1,0 +1,88 @@
+﻿id,agency,abbrv
+0,Access Board,ATBCB
+1,Administrative Conference of the U.S.,ACUS
+2,Advisory Council on Historic Preservation,ACHP
+3,Agency for International Development,USAID
+4,American Battle Monuments Commission,ABMC
+5,Armed Forces Retirement Home,AFRH
+6,Broadcasting Board of Governors,BBG
+7,Commission of Fine Arts,CFA
+8,Committee for Purchase from People Who Are Blind or Severely Disabled,CPPBSD
+9,Commodity Futures Trading Commission,CFTC
+10,Consumer Financial Protection Bureau,CFPB
+11,Consumer Product Safety Commission,CPSC
+12,Corporation for National and Community Service,CORP/CNCS
+13,Court Services and Offender Supervision Agency,CSOSA
+14,Defense Nuclear Facilities Safety Board,DNFSB
+15,Denali Commission,DC
+16,Department of Agriculture,USDA
+17,Department of Commerce,DOC
+18,Department of Defense,DOD
+19,Department of Education,ED
+20,Department of Energy,DOE
+21,Department of Health and Human Services,HHS
+22,Department of Homeland Security,DHS
+23,Department of Housing and Urban Development,HUD
+24,Department of Justice,DOJ
+25,Department of Labor,DOL
+26,Department of State,DOS
+27,Department of Transportation,DOT
+28,Department of Veterans Affairs,VA
+29,Department of the Interior,DOI
+30,Department of the Treasury,TREAS
+31,Election Assistance Commission,EAC
+32,Environmental Protection Agency,EPA
+33,Equal Employment Opportunity Commission,EEOC
+34,Executive Office of the President,EOP
+35,Export-Import Bank of the United States,EIB/USEIB
+36,Federal Communications Commission,FCC
+37,Federal Election Commission,FEC
+38,Federal Housing Finance Agency,FHFA
+39,Federal Labor Relations Authority,FLRA
+40,Federal Maritime Commission,FMC
+41,Federal Mediation and Conciliation Service,FMCS
+42,Federal Mine Safety and Health Review Commission,MSHFRC
+43,Federal Trade Commission,FTC
+44,General Services Administration,GSA
+45,Government Accountability Office,GAO
+46,Gulf Coast Ecosystem Restoration Council,GCERC
+47,Inter-American Foundation,IAF
+48,International Trade Commission,ITC
+49,Library of Congress,LOC
+50,Merit Systems Protection Board,MSPB
+51,Millennium Challenge Corporation,MCC
+52,Morris K. Udall and Stewart L. Udall Foundation,UDALL
+53,NA,NA
+54,National Aeronautics and Space Administration,NASA
+55,National Archives and Records Administration,NARA
+56,National Capital Planning Commission,NCPC
+57,National Endowment for the Arts,NEA
+58,National Endowment for the Humanities,NEH
+59,National Gallery of Art,NGA
+60,National Labor Relations Board,NLRB
+61,National Mediation Board,NMB
+62,National Science Foundation,NSF
+63,National Transportation Safety Board,NTSB
+64,Northern Border Regional Commission,NBRC
+65,Nuclear Regulatory Commission,NRC
+66,Occupational Safety and Health Review Commission,OSHRC
+67,Office of Government Ethics,OGE
+68,Office of Personnel Management,OPM
+69,Office of Special Counsel,OSC
+70,Overseas Private Investment Corporation,USTR
+71,Peace Corps,PCorps
+72,Pension Benefit Guaranty Corporation,PBGC
+73,Privacy and Civil Liberties Oversight Board,PCLOB
+74,Railroad Retirement Board,RRB
+75,Securities and Exchange Commission,SEC
+76,Selective Service System,SSS
+77,Small Business Administration,SBA
+78,Smithsonian Institution,SI
+79,Social Security Administration,SSA
+80,Surface Transportation Board,STB
+81,The Council of the Inspectors General on Integrity and Efficiency,CIGIE
+82,The Judicial Branch,JUDB
+83,The Legislative Branch,LEGB
+84,U.S. Postal Service,USPS
+85,United States Chemical Safety Board,CSB
+86,United States Trade and Development Agency,USTDA"""
