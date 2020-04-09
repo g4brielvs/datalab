@@ -33,6 +33,10 @@ a:any-link {
   text-decoration: none;
 }
 
+a:active {
+  color: $specialState-active;
+}
+
 ul {
   max-height: none;
   overflow-y: inherit;

@@ -27,8 +27,8 @@ export default {
         <p>Larger entities with multiple locations or departments may have multiple DUNS numbers, which makes it
           complicated to use this identifier alone to view all the contracts associated with a particular recipient (and
           within a particular timeframe). Viewing by Global Parent DUNS Number can be a good alternative for
-          these recipients. You can also filter or subset contract data by: <span className={styles.bold}>AwardeeOrRecipientLegalEntityName</span>, or
-          <span className={styles.bold}>Vendor Doing As Business Name and grant data by: UltimateParentLegalEntityName.</span></p>,
+          these recipients. You can also filter or subset contract data by: <span className={styles.bold}>AwardeeOrRecipientLegalEntityName</span>
+          , or <span className={styles.bold}>Vendor Doing As Business Name and grant data by: UltimateParentLegalEntityName.</span></p>,
         <p>Recipient Profiles, which are coming soon to USAspending.gov, will compile all the contracts for a given
           recipient, making the data easier to navigate and use.</p>]
     },
