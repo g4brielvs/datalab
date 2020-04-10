@@ -1,5 +1,5 @@
 /*
-	Text and UL-only accordion variant
+	Text and UL-only accordion variant; in the future this should just use <Accordion>
 */
 
 import React from 'react';
@@ -29,10 +29,6 @@ export default class AccordionList extends React.Component {
 		'color': PropTypes.string,
 		'backgroundColor': PropTypes.string
 	};
-	// static defaultProps = {
-	//   'color': '#eee',
-	//   'backgroundColor': '#fff'
-	// };
 
 	toggle(e) {
 		e.stopPropagation();
@@ -71,10 +67,7 @@ export default class AccordionList extends React.Component {
 									<span className='sr-only'>toggle contents</span>
 								</button>
 							</h1>
-							<div
-								className={accordionStyles.content}
-							// hidden={this.state.closed}
-							>
+							<div className={accordionStyles.content}>
 								{this.props.children}
 							</div>
 						</section>

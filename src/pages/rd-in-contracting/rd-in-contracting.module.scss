@@ -1,7 +1,32 @@
-@import '../../styles/index.scss';
+@import "../../styles/index.scss";
 
 .subtitle-highlight {
-  color: #1302D9;
+  color: #1302d9;
   font-size: 2.625rem;
   font-weight: $bold;
+}
+
+.centered {
+  margin: 0 50%;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    &::before {
+      content: "\203a";
+      font-size: 1.5rem;
+      font-weight: $bold;
+    }
+
+    & * {
+      padding-left: 58px;
+    }
+  }
 }

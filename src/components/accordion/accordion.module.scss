@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+$side-indent: 32px;
+
+.container {
+  margin-bottom: 25px;
+}
+
+.accordion {
+  border: 1px solid #eee;
+}
+
+.heading {
+  padding: 14px $side-indent;
+  font-size: 1.125rem;
+  text-align: left;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  flex-wrap: nowrap;
+}
+
+.toggle {
+  background: transparent;
+  border: none;
+  margin-right: -18px;
+  cursor: pointer;
+}
+
+.expand-icon {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.content {
+  padding-left: $side-indent;
+  padding-right: $side-indent;
+}
+
+.closed {
+  .content {
+    // height: 0;
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: $desktop) {
+  .container {
+    margin-bottom: $margin-45;
+  }
+}
