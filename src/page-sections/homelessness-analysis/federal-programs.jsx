@@ -468,7 +468,7 @@ export default function FederalPrograms(props) {
       `<tr><td className="infoAmount">${OtherformatNumber(d.land_area)}</td></tr>` +
       `<tr><th className="fundingTitle">PROPERTY CRIME RATE: PER 100K</th></tr>` +
       `<tr><td className="infoAmount">${OtherformatNumber(d.Property_crime_rate)}</td></tr></table>`;
-  } 2
+  }
 
   function makeFundingTable(d) {
     d3.select(".cocTable")
@@ -580,7 +580,7 @@ export default function FederalPrograms(props) {
       map2Centered = d;
     }
     else {
-      x = mapWidth / 1.35;
+      x = (mapWidth / 1.35) + 75; // offset map 75px to left to fit!
       y = mapHeight / 1.1;
       k = 1;
       map2Centered = null;
@@ -591,7 +591,7 @@ export default function FederalPrograms(props) {
 
     m.transition()
       .duration(750)
-      .attr('transform', `translate(${mapWidth / 1.35},${mapHeight / 1.1})scale(${k})translate(${-x},${-y})`)
+      .attr('transform', `translate(${(mapWidth / 1.35)},${mapHeight / 1.1})scale(${k})translate(${-x},${-y})`)
       .style('stroke-width', `${0.15 / k}px`);
   }
 
