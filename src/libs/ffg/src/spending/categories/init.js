@@ -13,7 +13,7 @@ let svg,
         dataType: 'category',
         accessibilityAttrs : {
             title: '2019 Federal Spending by Category and Agency',
-            desc: 'The federal government reports spending by category and by agency. The top five spending categories for 2019 were Socbarcial Security with $1 trillion (24% of total spending), National Defense with $688 billion (15%), Medicare with $651 billion (15%), Health with $585 billion (13%) and Income Security with $515 billion (12%). The top five agencies by federal spending for 2019 were Department of Health and Human Services with $1.2 trillion (27% of total spending), Social Security Administration with $1.1 trillion (25%), Department of the Treasury with $689 billion (16%), Department of Defense – Military Programs with $654 billion (15%) and Department of Veterans Affairs with $200 billion (4%).'
+            desc: 'The federal government reports spending by category and by agency. The top five spending categories for 2019 were Social Security with $1 trillion (24% of total spending), National Defense with $688 billion (15%), Medicare with $651 billion (15%), Health with $585 billion (13%) and Income Security with $515 billion (12%). The top five agencies by federal spending for 2019 were Department of Health and Human Services with $1.2 trillion (27% of total spending), Social Security Administration with $1.1 trillion (25%), Department of the Treasury with $689 billion (16%), Department of Defense – Military Programs with $654 billion (15%) and Department of Veterans Affairs with $200 billion (4%).'
         }
     },
     currentlyActive,
