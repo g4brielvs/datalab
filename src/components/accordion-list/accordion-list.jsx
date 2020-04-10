@@ -1,11 +1,15 @@
+/*
+	Text and UL-only accordion variant
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import accordionStyles from './accordion.module.scss';
+import accordionStyles from './accordion-list.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-export default class Accordion extends React.Component {
+export default class AccordionList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -69,7 +73,7 @@ export default class Accordion extends React.Component {
 							</h1>
 							<div
 								className={accordionStyles.content}
-								// hidden={this.state.closed}
+							// hidden={this.state.closed}
 							>
 								{this.props.children}
 							</div>
