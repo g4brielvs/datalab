@@ -1,10 +1,8 @@
 export default {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 500,
-  "height": 500,
-  "padding": 5,
-  "autosize": "fit",
-
+  "width": {"signal": "containerSize()[0] * 8"},
+  "height": {"signal": "containerSize()[0] * 8"},
+  "padding": 10,
   "data": [
   {
     "name": "tree",
