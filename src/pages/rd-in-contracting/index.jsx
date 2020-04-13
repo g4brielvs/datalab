@@ -10,6 +10,8 @@ import SEO from '../../components/seo';
 
 import microscope from 'src/images/rd-in-contracting/microscope.svg';
 import science from 'src/images/rd-in-contracting/science.svg';
+import bottle from 'src/images/rd-in-contracting/bottle.svg';
+import bulb from 'src/images/rd-in-contracting/bulb.svg';
 
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
@@ -17,18 +19,57 @@ export default class RdInContractingPage extends React.Component {
   }
 
   whatIsContents = () =>
-    <div className={styles.contents}>
+    <div className={styles.accordionContents}>
       <img src={microscope} role='presentation' className={styles.centerImg} />
       <p><span className={styles.bold}>What is R&D?</span> Research and development are part of a process to help us find solutions to problems using science, engineering, and technology.  Let’s take a closer look at the role each play.</p>
-      <ul className={styles.list}>
-        <li>
-          <span className={`${styles.bold} ${styles.highlight}`}>Basic Research</span>
+      <div className={styles.flexContainer}>
+        <div className={styles.bullet}></div>
+        <div>
+          <span className={`${styles.bold} ${styles.highlight}`}>Basic<span className={styles.bulletSpacer}> </span>Research</span>
           <p>The intent of basic research is to study more about a subject, to expand upon what we already know about it. This type of research usually doesn’t result in solving a specific problem.</p>
-          <p><span className={styles.bold}>Real world example of Basic Research</span></p>
-          <img src={science} role='presentation' className={styles.left} />
-          <p>NASA working with Techshot, Inc. on a research platform that will be used on the International Space Station to gather data on temperature, light cycle, humidity control and more.</p>
-      </li>
-      </ul>
+          <p className={styles.bold}>Real world example of Basic Research</p>
+          <div className={styles.flexContainer}>
+            <img src={science} role='presentation' className={styles.leftImg} />
+            <div>
+              <p>NASA working with Techshot, Inc. on a research platform that will be used on the International Space Station to gather data on temperature, light cycle, humidity control and more.</p>
+              <a>Contract Summary </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.flexContainer}>
+        <div className={styles.bullet}></div>
+        <div>
+          <span className={`${styles.bold} ${styles.highlight}`}>Applied<span className={styles.bulletSpacer}> </span>Research</span>
+          <p>Applied research has a more specific goal of finding solutions to current problems using the accumulated knowledge from basic research.</p>
+          <p className={styles.bold}>Real world example of Applied Research</p>
+          <div className={styles.flexContainer}>
+            <img src={bottle} role='presentation' className={styles.leftImg} />
+            <div>
+              <p>The Department of Health and Human Services is working with the pharmaceutical company Novartis to research a drug that could counteract damage caused by radiation exposure.</p>
+              <a>Contract Summary </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.flexContainer}>
+        <div className={styles.bullet}></div>
+        <div>
+          <span className={`${styles.bold} ${styles.highlight}`}>Development<span className={styles.bulletSpacer}> </span></span>
+          <p>Development refers to the innovative process of using applied research to create prototypes of potential solutions to real-world problems.</p>
+          <p className={styles.bold}>Real world example of Development</p>
+          <div className={styles.flexContainer}>
+            <img src={bulb} role='presentation' className={styles.leftImg} />
+            <div>
+              <p>The Department of Energy is working with the Electric Power Research Institute to develop and implement a long-term solution for storing spent nuclear fuel as this requirement will have an impact on licensing and operations of nuclear plants. </p>
+              <a>Contract Summary </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   render = () =>
@@ -44,7 +85,7 @@ export default class RdInContractingPage extends React.Component {
         viztitle='R&D as a Part of Total Contract Spending by Agency'
       >
         <aside>
-          <Accordion title='Instructions' color='#1302D9' backgroundColor='rgba(19, 2, 217, 0.1)'>
+          <Accordion title='What is R&D?' color='#1302D9' backgroundColor='rgba(19, 2, 217, 0.1)'>
             {this.whatIsContents()}
           </Accordion>
         </aside>
