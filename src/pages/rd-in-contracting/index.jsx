@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './rd-in-contracting.module.scss';
 
+import SpendingChart from '../../page-sections/rd-and-contracting/spending/spendingChart.jsx';
+
 import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import ExpressLayout from '../../components/layouts/express/express';
@@ -35,7 +37,7 @@ export default class RdInContractingPage extends React.Component {
           <Reset id='resetBtn' />
         </ControlBar>
 
-        chart
+        <SpendingChart/>
 
       </ExpressSection>
 
