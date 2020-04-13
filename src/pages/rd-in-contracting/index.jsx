@@ -9,6 +9,7 @@ import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 
 import microscope from 'src/images/rd-in-contracting/microscope.svg';
+import science from 'src/images/rd-in-contracting/science.svg';
 
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
@@ -17,12 +18,15 @@ export default class RdInContractingPage extends React.Component {
 
   whatIsContents = () =>
     <div className={styles.contents}>
-      <img src={microscope} role='presentation' className={styles.centered} />
+      <img src={microscope} role='presentation' className={styles.centerImg} />
       <p><span className={styles.bold}>What is R&D?</span> Research and development are part of a process to help us find solutions to problems using science, engineering, and technology.  Let’s take a closer look at the role each play.</p>
       <ul className={styles.list}>
         <li>
-          <span className={styles.bold}>Basic Research</span>
+          <span className={`${styles.bold} ${styles.highlight}`}>Basic Research</span>
           <p>The intent of basic research is to study more about a subject, to expand upon what we already know about it. This type of research usually doesn’t result in solving a specific problem.</p>
+          <p><span className={styles.bold}>Real world example of Basic Research</span></p>
+          <img src={science} role='presentation' className={styles.left} />
+          <p>NASA working with Techshot, Inc. on a research platform that will be used on the International Space Station to gather data on temperature, light cycle, humidity control and more.</p>
       </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-$side-indent: 32px;
+$left-indent: 32px;
 
 .container {
   margin-bottom: 25px;
@@ -11,7 +11,7 @@ $side-indent: 32px;
 }
 
 .heading {
-  padding: 14px $side-indent;
+  padding: 14px $left-indent;
   font-size: 1.125rem;
   text-align: left;
   margin: 0;
@@ -35,8 +35,8 @@ $side-indent: 32px;
 }
 
 .content {
-  padding-left: $side-indent;
-  padding-right: $side-indent;
+  padding-left: $left-indent;
+  padding-right: 27px;
 }
 
 .closed {
