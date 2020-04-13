@@ -19,7 +19,7 @@ export default class RdInContractingPage extends React.Component {
     }
   }
 
-   componentDidMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.handleResize);
   }
 
@@ -27,7 +27,7 @@ export default class RdInContractingPage extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
- handleResize = () => {
+  handleResize = () => {
     this.setState({ windowWidth: window.innerWidth });
   }
 
@@ -95,8 +95,8 @@ export default class RdInContractingPage extends React.Component {
         <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
         <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
           <GridListTile className={styles.legendTile}>
-              <div className={`${styles.legendBar} ${styles.one}`}></div>
-              <div className={styles.legendText}>Total R&D</div>
+            <div className={`${styles.legendBar} ${styles.one}`}></div>
+            <div className={styles.legendText}>Total R&D</div>
           </GridListTile>
           <GridListTile className={styles.legendTile}>
             <div className={`${styles.legendBar} ${styles.two}`}></div>
