@@ -14,6 +14,8 @@ export default class AccordionList extends React.Component {
 		};
 
 		this.toggle = this.toggle.bind(this);
+
+		this.id = Math.random().toString(36).substring(7); //unique ID to select content
 	}
 
   /* props notes
@@ -30,6 +32,10 @@ export default class AccordionList extends React.Component {
 	toggle = e => {
 		e.stopPropagation();
 		this.setState(state => ({ closed: !state.closed }));
+		setTimeout(
+			() => document.getElementById(this.id).style.display = this.state.closed ? 'none' : 'block'
+			, 500
+		);
 	}
 
 	styleOverrides = () => {
@@ -44,31 +50,27 @@ export default class AccordionList extends React.Component {
 	}
 
 	render = () => (
-		<div className={this.props.containerClass ? this.props.containerClass : styles.container}>
-			<div className='row'>
-				<div className='col-xs-12'>
-					<section
-						className={`${styles.accordion} ${this.state.closed ? styles.closed : styles.accordion}`}
-						style={this.props.color ? { 'borderColor': this.props.color } : {}}
-					>
-						<h1
-							onClick={this.toggle}
-							className={styles.heading}
-							style={this.styleOverrides()}
-						>
-							{this.props.title}
-							<button onClick={this.toggle} className={styles.toggle} aria-label='show or hide details'>
-								<span className={styles.expandIcon} style={this.props.color ? { 'color': this.props.color } : {}} >
-									{this.state.closed ? '+' : '\u2013'}
-								</span>
-							</button>
-						</h1>
-						<div className={styles.content}>
-							{this.props.children}
-						</div>
-					</section>
+		<div className={styles.container}>
+			<section
+				className={`${styles.accordion} ${this.state.closed ? '' : styles.open}`}
+				style={this.props.color ? { 'borderColor': this.props.color } : {}}
+			>
+				<h1
+					onClick={this.toggle}
+					className={styles.heading}
+					style={this.styleOverrides()}
+				>
+					{this.props.title}
+					<button onClick={this.toggle} className={styles.toggle} aria-label='show or hide details'>
+						<span className={styles.expandIcon} style={this.props.color ? { 'color': this.props.color } : {}} >
+							{this.state.closed ? '+' : '\u2013'}
+						</span>
+					</button>
+				</h1>
+				<div id={this.id} className={styles.content}>
+					{this.props.children}
 				</div>
-			</div>
+			</section>
 		</div>
 	);
 }

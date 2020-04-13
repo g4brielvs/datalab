@@ -12,7 +12,7 @@ $vert-padding: 14px;
 }
 
 .heading {
-  padding: $vert-padding $left-indent 0;
+  padding: $vert-padding $left-indent;
   font-size: 1.125rem;
   text-align: left;
   margin: 0;
@@ -36,16 +36,22 @@ $vert-padding: 14px;
 }
 
 .content {
+  display: none;
   padding: 0 27px 40px $left-indent;
+
+  transition: font-size ease 500ms;
+  line-height: 0;
+  font-size: 0;
 }
 
-.closed {
+.open {
   .heading {
-    padding-bottom: $vert-padding;
+    padding-bottom: 0;
   }
 
-  .content {
-    display: none;
+  .content > * {
+    line-height: 1.43rem;
+    font-size: 1rem;
   }
 }
 
