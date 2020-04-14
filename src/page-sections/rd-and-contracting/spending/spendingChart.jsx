@@ -28,9 +28,9 @@ export default class SpendingChart extends React.Component {
   render() {
     let bWidth = this.state.bWidth;
     console.log(bWidth);
-    let isTablet = bWidth <= 800;
-    let isMobile = bWidth <= 500;
-    let isDesktop = bWidth >= 800;
+    let isTablet = bWidth <= 768 && bWidth >= 576;
+    let isMobile = bWidth <= 576;
+    let isDesktop = bWidth >= 769;
 
     if (isTablet) {
       return(
