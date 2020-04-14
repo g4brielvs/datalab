@@ -6,6 +6,7 @@ import Downloads from '../../components/section-elements/downloads/downloads';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import SEO from '../../components/seo';
+import Categories from 'src/page-sections/rd-in-contracting/categories/categories.jsx';
 
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ export default class RdInContractingPage extends React.Component {
           </ul>
         </Accordion>
 
-        chart
+        <Categories />
 
         <Downloads
           href={'/unstructured-data/rd-in-contracting/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
