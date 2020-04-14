@@ -1,0 +1,47 @@
+.cfda {
+  position: relative;
+  display: inline;
+};
+
+.cfdaTrigger {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: opacity .2s ease;
+};
+
+.cfdaTrigger:hover {
+  opacity: .6;
+};
+
+.cfdaContents {
+  position: absolute;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 280px;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  z-index: 100;
+  background: white;
+  
+  span {
+    font-size: 0.875rem; // 14px
+    font-weight: 400;
+    color: #555;
+  };
+};
+
+.cfdaClose {
+  float: right;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: opacity .2s ease;
+};
+
+.cfdaClose:hover {
+  opacity: .6;
+};

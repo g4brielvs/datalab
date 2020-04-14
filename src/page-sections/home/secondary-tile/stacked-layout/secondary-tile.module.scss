@@ -1,0 +1,73 @@
+@import "../../../../styles/index";
+
+.highlight {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+
+  .headings {
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+  }
+
+  .heading {
+    @include homepageTitle();
+  }
+
+  .subheading {
+    @include homepageSubtitle();
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .text {
+    @include homepageBodyCopy();
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .image {
+    margin-bottom: 0;
+    padding-bottom: 0 !important;
+
+    img {
+      margin-top: $margin-15;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  .highlight {
+    .subheading {
+      font-size: 1.25em;
+    }
+
+    .text {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  .image {
+    margin-right: $margin-20;
+  }
+
+  .heading {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: $desktop - 1) {
+  .highlight {
+    border: none;
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  .highlight .heading {
+    margin-top: 0;
+  }
+}

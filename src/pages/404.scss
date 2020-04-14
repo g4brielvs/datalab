@@ -1,0 +1,120 @@
+// jrk <Killilea_Jack@bah.com>
+// 404 page, fun
+
+// body class
+$cuRed: #881E3D;
+
+.four-oh-four {
+  background-image: url('../images/home/404background.svg');
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  left:0;
+  top: 0;
+  background-repeat: repeat-y;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+  * THe following class is a placeholder setup until the header is finished. Otherwise, the 404 graphic shows within the header.
+ */
+.four-oh-four__header {
+  background-color: #FFF;
+}
+
+#four-oh-four {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.4;
+  flex: 1;
+
+  .four-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1140px;
+    flex: 1 0 100%;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 4.375rem;
+      padding: 0;
+      margin: 0;
+      color: #666666;
+    }
+
+    h4 {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      font-weight: 500;
+      margin-top: 55px;
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    #btn-container {
+      display: flex;
+      padding-top: 1rem;
+      padding-bottom: 8rem;
+
+      div {
+        font-weight: bold;
+        display: flex;
+        height: 2.5rem;
+        width: 9rem;
+        border-radius: 5%;
+        cursor: pointer;
+      }
+
+      #back-btn {
+        border: 1.5px solid #AFAFAF;
+        margin-right: 20px;
+
+        &:hover {
+          background-color: #DDD;
+        }
+
+        a {
+          display: block;
+          margin: auto;
+          text-align: center;
+          color: #666;
+
+          i {
+            padding-right: .3rem;
+          }
+        }
+      }
+
+      #home-btn {
+        background-color: #666666;
+
+        a {
+          display: block;
+          margin: auto;
+          text-align: center;
+          color: #FFF;
+
+          i {
+            padding-right: .3rem;
+          }
+        }
+
+        &:hover {
+          background-color: #222;
+        }
+        border: 1.5px solid #666;
+      }
+    }
+
+  }
+}
+
+

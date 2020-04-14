@@ -1,0 +1,133 @@
+@import "../../styles/variables.scss";
+
+$mdGrey: #555555;
+
+#TOC {
+  .number {
+    color: $font-body-copy;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 50px;
+    margin: 0.1rem 0 0.3rem;
+    text-align: left;
+  }
+
+  .subtitle {
+    color: $font-title;
+    font-weight: bold;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    max-width: 200px;
+    line-height: 17px;
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  .section {
+    color: $font-title;
+    font-size: 1.125rem;
+    font-weight: 300;
+    text-align: left;
+    margin-top: 14px;
+  }
+
+  .blurb {
+    color: $mdGrey;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 16px;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: $desktop-xl) {
+  #TOC {
+    margin-top: $margin-75;
+    margin-bottom: $margin-100;
+
+    .tile:not(:last-child) {
+      border-right: 1px solid $font-lightGrey;
+    }
+
+    .tile {
+      padding: 1rem 1.5rem;
+    }
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop-xl - 1) {
+  #TOC {
+    .number {
+      margin-right: 1rem;
+    }
+    .tile:nth-child(odd) {
+      border-right: 1px solid $font-lightGrey;
+    }
+
+    .a {
+      max-width: 250px;
+    }
+
+    .tile:nth-child(1),
+    .tile:nth-child(2) {
+      border-bottom: $font-lightGrey solid 1px;
+      padding-bottom: 32px;
+    }
+
+    .tile {
+      padding-top: 1rem;
+    }
+  }
+}
+
+@media (min-width: $phone) and (max-width: $desktop-xl - 1) {
+  #TOC {
+    margin-top: $margin-30;
+    margin-bottom: $margin-100;
+
+    .tile:last-child {
+      border-right: none;
+    }
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  #TOC {
+    .a {
+      width: 100%;
+    }
+
+    .tile {
+      border-right: unset;
+      border-bottom: $font-lightGrey solid 1px;
+      padding-bottom: 32px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $phone - 1) {
+  #TOC {
+    margin-bottom: $margin-25;
+    margin-top: $margin-25;
+
+    .tile {
+      padding: 0;
+      border: none;
+    }
+    .subtitle {
+      display: none;
+    }
+    .number {
+      font-size: 1.5rem;
+      line-height: 3.125rem;
+      margin: 0;
+    }
+    .section {
+      margin: auto 0;
+    }
+  }
+}

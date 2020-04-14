@@ -1,0 +1,169 @@
+
+// scale text down as screen shrinks
+// scale text down as screen shrinks
+@media (max-width: 1300px) {
+    #investment-overview #investment-overview__viz #bar-text--contracts {
+      font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 970px) {
+    #investment-overview #investment-overview__viz #bar-text--contracts {
+	font-size: 1rem;
+    }
+}
+
+/* tablet and mobile view */
+@media (max-width: 1200px) {
+    #investment-overview {
+        #investment-overview__viz {
+          margin: 0;
+          padding-left: 3.5rem; // align with the left!
+          padding-right: 3.5rem;
+    
+          #investment-subtext #aid-description {
+            width: auto;
+          }
+    
+    
+          #title-section {
+            display: flex;
+          }
+          
+          #investment-subtext {
+            padding-left: 0;
+            padding-right: 0;
+            justify-content: space-evenly;
+    
+            
+            .aid-subsection {
+              padding-left: 1rem;
+              padding-right: 1rem;
+            }
+          }
+        }
+    } 
+}
+
+/* mobile view */
+@media (max-width: 949px) {
+      #investment-overview #investment-overview__viz {
+        margin: 0;
+        padding-left: 1rem;
+        padding-right: 3.5rem;
+  
+        #investment-chart {
+      #studentAid-bar {
+        width: 100% !important;
+        margin-right: 0 !important;
+        padding: 0;
+        margin: 0;
+      }
+  
+      #grants-bar {
+        width: 60% !important;
+        margin-right: 0 !important;
+        padding: 0;
+        margin: 0;
+      }
+  
+      #bar-text--grants {
+        color: white;
+        margin: 0;
+        font-size: 1.75rem;
+        line-height: 50px;
+        margin-left: .25rem;
+        padding-top: .25rem;
+      }
+  
+    }
+}
+
+  #investment-overview #investment-overview__viz {
+    margin: 0;
+    padding-left: 1rem;
+    padding-right: 3.5rem;
+
+    #investment-chart {
+        #studentAid-bar {
+            width: 100% !important;
+            margin-right: 0 !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        #grants-bar {
+            width: 60% !important;
+            margin-right: 0 !important;
+            padding: 0;
+            margin: 0;
+        }
+
+        #bar-text--grants {
+            color: white;
+            margin: 0;
+            font-size: 1.75rem;
+            line-height: 50px;
+            margin-left: .25rem;
+            padding-top: .25rem;
+        }
+
+    }
+}
+
+  #investment-overview #investment-overview__viz #bar-text--contracts {
+    color: #925003;
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 50px;
+    margin-left: 2.3rem;
+    padding-top: .25rem;
+  }
+
+  #investment-overview #investment-overview__viz #bar-text--grants {
+    color: #004C40;
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 50px;
+    margin-left: 6rem;
+    padding-top: 0;
+  }
+
+   #investment-overview #investment-overview__viz #bar-text--aid {
+    margin-left: .25rem;
+  }
+  
+    #investment-overview #investment-overview__viz #mobile-blurb {
+    display: block;
+  }
+  
+    #investment-overview #investment-overview__viz #investment-chart {
+    display: block;
+  }
+
+    #investment-overview #investment-overview__viz #title-section {
+    display: none;
+  }
+
+    #investment-overview #investment-overview__viz #investment-subtext {
+    display: none;
+  }
+
+    #investment-overview #investment-overview__viz #investment-chart #studentAid--mobile-title {
+    display: block;
+  }
+
+    #investment-overview #investment-overview__viz #investment-chart #grants--mobile-title {
+    display: block;
+  }
+
+    #investment-overview #investment-overview__viz #investment-chart #contracts--mobile-title {
+    display: block;
+  }
+  
+    #investment-overview #investment-overview__viz #mobile-blurb p.mobile-funding-blurb {
+        max-width: 250px;
+    }
+    
+}
+

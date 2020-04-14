@@ -1,0 +1,45 @@
+a.link-button,
+button.link-button,
+div.link-button {
+	background: none;
+	text-decoration: none;
+    display: inline-block;
+	color: white;
+    
+
+	.link-button__text--block {
+		display: inline-block;
+		flex: 4;
+
+		.link-button__text--top {
+			font-size: 0.875rem;
+			font-weight: 500;
+		}
+	}
+	.link-button__icon--block {
+		flex: 1;
+		text-align: right;
+	}
+}
+
+button.link-button,
+div.link-button {
+	font-size: 1.125rem;
+	font-weight: 600;
+}
+
+a.chapter__cta {
+    // this color is being overruled by index.scss from datalab
+	color: white;
+	font-weight: 600;
+	padding: 1rem 1.3rem;
+	font-size: 1.3125rem;
+	width: 12.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+a.chapter__cta i.fa-angle-right .fa-chevron-right {
+	margin-left: 1rem;
+}

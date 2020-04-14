@@ -1,0 +1,131 @@
+@import '../../styles/variables.scss'; 
+
+@media screen and (max-width: $tablet) {
+  .toggle {
+    display: flex;
+    cursor: pointer;
+    color: #4a4a4a;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    align-content: flex-end;
+  }
+
+  .header__sub {
+    top: 140px;
+  }
+
+  // mobile sub-header
+  .sub {
+    top: 135px;
+  }
+
+  .nav {
+    position: absolute;
+    padding: 0;
+    padding-right: 2rem;
+    width: auto;
+    right: 0;
+    border-top: none;
+
+    #burger-menu {
+      display: none;
+    }
+
+    .burger-menu-skinny {
+      font-size: 1.25rem;
+      padding-bottom: 5px;
+    }
+  }
+
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    list-style-type: none;
+    padding-right: 2rem;
+    transition: all 700ms ease-in;
+    margin: 0;
+    margin-bottom: 15px;
+
+    .item {
+      padding-top: .5rem;
+      &:hover {
+    	  color: #046b99;
+	      cursor: pointer;
+      }
+    }
+    
+    .toggle-list {
+      font-size: 0.8125rem;
+      overflow: auto;
+      height: 100%;
+      align-items: flex-end;
+      font-size: 0.8125rem;
+      font-weight: 200;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.056em;
+      color: #757575;
+      text-decoration: none;
+      list-style-type: none;
+      padding-top: 20px;
+      padding-right: 10px;
+      
+      
+      .data-list-li {
+      	text-decoration: none;
+      }
+
+      .data-list-a {
+	      text-decoration: none;
+	      color: #666;
+	      &:hover {
+	        color: #046b99;
+	        cursor: pointer;
+	      }
+      }
+
+      #mobile-hr {
+	color: #757575;
+	font-weight: 200;
+      }
+    }
+
+  }
+} // end of $tablet media
+
+@media screen and (max-width: 1120px) {
+  .nav {
+    #burger-menu {
+      .navListItem {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 949px) {
+  .sub {
+    top: 130px;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .sub {
+    top: 90px;
+  }
+}
+
+@media screen and (max-width: $phone) {
+  .sub {
+    top: 100px;
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .header-logo__container {
+    padding: 0;
+  }
+}  

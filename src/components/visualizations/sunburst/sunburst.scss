@@ -1,0 +1,71 @@
+@import '../../../styles/variables.scss';
+
+#sunburst svg {
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#sunburst path {
+  cursor: pointer;
+  stroke: #fff;
+  stroke-width: 0.4;
+}
+
+#sunburst path.depth1 {
+  opacity: 1;
+}
+
+#sunburst path.depth2 {
+  opacity: 0.5;
+}
+
+.center-title {
+  text-transform: capitalize;
+}
+
+.center-heading {
+  stroke: grey;
+}
+
+.center-amount {
+  font-size: 2em;
+  font-style: inherit;
+  font-weight: lighter;
+  stroke: $cuRed; /*match 1st wedgeColor*/
+}
+
+.cu-header__blurb {
+  text-align: center;
+}
+
+@media (min-width: $desktop-xl) {
+  #sunburst {
+    height: 750px;
+  }
+}
+
+@media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
+  #sunburst {
+    height: 667px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  #sunburst {
+    height: 500px;
+  }
+}
+
+ @media (max-width: $tablet - 1) {
+  #sunburst {
+    height: 375px;
+  }
+}
+
+@media (max-width: $phone) {
+  #sunburst {
+    height: 300px;
+  }
+}

@@ -1,0 +1,115 @@
+@import '../../../styles/variables';
+
+.dts-module {
+  box-sizing: border-box;
+  background-color: inherit;
+  padding: 1rem 1rem 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dtsm-right-column {
+  width: 20%;
+  text-align:center;
+}
+
+.dtsm-img {
+  width: 80%;
+}
+
+.dtsm-dollars {
+  font-size: 1.375rem; // 22 px
+  font-weight: 600;
+  text-align: center;
+  fill: #4A4A4A;
+}
+
+.dtsm-tas-header {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 150%;
+  fill: #4A4A4A;
+}
+
+.side-dts__date {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 20px;
+  fill: #757575;
+  margin: 2px 0px 10px 0px;
+  border-top: 1px solid #ddd;
+  padding-top: .5rem;
+  padding-left: 1rem;
+}
+
+div.dts-container > div > div > svg > g > path{
+  fill:none;
+}
+
+.dts {
+  .line {
+    fill: none;
+    stroke: #00CCCC;
+    stroke-width: 3px;
+  }
+}
+
+.dtsm-img text {
+  fill: black;
+}
+
+.dtsm-img .domain {
+  display: none;
+}
+
+.dtsm-img .tick line {
+  stroke: black;
+}
+
+.dtsm-img circle {
+  fill: #FFB232;
+  stroke: #FFF;
+  stroke-width: 1px;
+}
+
+.grid line {
+  stroke: rgb(159, 162, 168);
+  stroke-opacity: 0.15;
+}
+hr.horizontal_dts{
+  border-top: 1px solid #757575;
+  width: 100%;
+  opacity: .1;
+  margin-top: -5px;
+}
+
+@media only screen and (max-width: $desktop - 1) {
+
+  .dts-module {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dtsm-right-column {
+    text-align: left;
+  }
+
+  .dtsm-dollars {
+    font-size: 1.8em;
+  }
+
+  .dtsm-tas-header {
+    font-size: 1.188rem;
+  }
+
+  .dtsm-img svg {
+    width: 80%;
+  }
+
+  .side-dts__date {
+    text-align: center;
+  }
+
+}

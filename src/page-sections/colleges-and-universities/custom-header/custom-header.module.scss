@@ -1,0 +1,95 @@
+@import '../../../styles/variables.scss';
+
+$darkGrey: #666666;
+$mdGrey: #555555;
+
+p {
+  margin-bottom: 1em;
+}
+
+.banner-image {
+  background: url(../../../images/colleges-and-universities/cubanner.svg) center top no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  z-index: -1;
+}
+
+.header p {
+    margin: 0;
+  }
+
+.header-hero {
+  margin-top: $margin-50;
+  padding-bottom: $margin-30;
+  > * {
+    text-align: center;
+  }
+}
+
+#banner {
+  p {
+    margin-bottom: 25px;
+  }
+}
+
+.blurb {
+  color: $mdGrey;
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.subblurb {
+  color: $darkGrey;
+  font-size: 2.625rem;
+  font-weight: 300;
+  line-height: 50px;
+}
+
+.subtext {
+  padding-top: $margin-50;
+  color: $darkGrey;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2.8px;
+  line-height: 20px;
+}
+
+#toc {
+  margin-top: 23rem;
+  padding-top: 2rem;
+  border-top: $darkGrey 1px solid;
+}
+
+@media screen and (max-width: $desktop - 1) {
+  .header-hero {
+    padding-bottom: 0;
+  }
+
+  #toc {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: $tablet - 1) {
+  #toc {
+    margin-bottom: 25px;
+  }
+
+}
+
+@media (max-width: $phone - 1){
+  .subtext {
+    padding-top: $margin-30;
+  }
+
+  .header-hero {
+    margin-top: $margin-30;
+    padding-bottom: $margin-25;
+  }
+}
+
+

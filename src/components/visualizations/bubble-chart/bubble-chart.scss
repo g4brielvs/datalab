@@ -1,0 +1,190 @@
+@import "../../../styles/variables.scss";
+
+#bubble-chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bubble-chart {
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+@media (min-width: $desktop-xl) {
+  #bubble-chart-container,
+  #bubble-chart {
+    height: 750px;
+    width: 750px;
+  }
+}
+
+@media (min-width: $desktop) and (max-width: $desktop-xl - 1) {
+  #bubble-chart-container,
+  #bubble-chart {
+    height: 667px;
+    width: 667px;
+  }
+}
+
+@media (min-width: $tablet) and (max-width: $desktop - 1) {
+  #bubble-chart-container,
+  #bubble-chart {
+    height: 500px;
+    width: 500px;
+  }
+}
+
+@media (max-width: $tablet - 1) {
+  #bubble-chart-container,
+  #bubble-chart {
+    height: 375px;
+    width: 375px;
+  }
+}
+
+circle.node,
+circle.node--root,
+text.label {
+  cursor: zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: pointer;
+}
+
+circle.node--leaf {
+  cursor: pointer;
+}
+
+circle.node--leaf.active {
+  fill-opacity: 0.8;
+  stroke: #faebd0;
+  stroke-width: 9;
+}
+
+.node--root {
+  fill: #f8f8f8;
+}
+
+.node {
+  stroke: #e6e1e1;
+  fill: #ebebeb;
+}
+
+.bubble-chart-tooltip {
+  background: #fff;
+  color: #333;
+  border: 1px solid #bfbcbc;
+  padding: 25px;
+  left: 0;
+  min-width: 325px;
+  max-width: 500px;
+  z-index: 10;
+  text-align: left;
+
+  img {
+    height: 1.5rem;
+    width: 1.5rem;
+    float: right;
+  }
+
+  .information {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+
+    .key {
+      font-size: 0.875rem;
+      font-weight: normal;
+      color: #881e3d;
+      line-height: 1;
+      margin: 0;
+    }
+  }
+}
+
+#bubble-detail {
+  position: relative;
+}
+
+.bubble-detail {
+  position: absolute;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  transition: right 0.5s ease-in-out;
+  z-index: 102;
+}
+
+.bubble-detail.bubble-detail--active {
+  right: 0;
+}
+
+.bubble-detail__agency-label {
+  display: block;
+  color: #666666;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.bubble-detail__agency-name {
+  display: block;
+  color: #666;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.bubble-detail__agency-name:last-of-type {
+  margin-bottom: 1.75rem;
+}
+
+.bubble-detail__table {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-collapse: collapse;
+}
+
+.bubble-detail__table:last-of-type {
+  margin-bottom: 0;
+}
+
+.bubble-detail__table td,
+.bubble-detail__table th {
+  padding: 4px 0 !important;
+}
+
+.bubble-detail__table tr td:last-child,
+.bubble-detail__table tr th:last-child {
+  text-align: end;
+}
+
+.bubble-detail__table tr td:last-child {
+  color: #555;
+  font-weight: 500;
+}
+
+.bubble-detail__table tr th:first-child {
+  text-align: start;
+}
+
+.bubble-detail__table tr th {
+  font-size: 0.8rem;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+.bubble-detail__table tr td {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f3f3f3 !important;
+  color: #555;
+  padding: 0.35rem 0 !important;
+  font-weight: 300;
+}

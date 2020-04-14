@@ -1,0 +1,21 @@
+@import '../../../styles/variables.scss';
+
+.storySection:not(:last-of-type) {
+  margin-bottom: 100px;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+@media (min-width: $desktop-xl){
+  .storySection:not(:last-of-type) {
+    margin-bottom: 150px;
+  }
+}
+
+@media (max-width: $phone - 1){
+  .storySection:not(:last-of-type) {
+    margin-bottom: 35px;
+  }
+}

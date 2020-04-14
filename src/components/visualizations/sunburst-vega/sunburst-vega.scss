@@ -1,0 +1,13 @@
+.vega-embed {
+  details {
+    display: none;
+  }
+}
+
+.vega-embed.has-actions {
+  padding-right: unset !important;
+}
+
+canvas.marks {
+  cursor: pointer;
+}
