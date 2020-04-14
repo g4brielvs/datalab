@@ -32,11 +32,10 @@ export default class AccordionList extends React.Component {
 	toggle = e => {
 		e.stopPropagation();
 		this.setState(state => ({ closed: !state.closed }));
-		// setTimeout(
-		// 	() => document.getElementById(this.id).style.display = this.state.closed ? 'none' : 'block'
-		// 	, 500
-		// );
-		document.getElementById(this.id).style.height = this.state.closed ? 0 : 'auto'
+		setTimeout(
+			() => document.getElementById(this.id).style.display = this.state.closed ? 'none' : 'block'
+			, 500 // should be same as CSS transition
+		);
 	}
 
 	styleOverrides = () => {
