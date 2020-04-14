@@ -31,11 +31,19 @@ export default class AccordionList extends React.Component {
 
 	toggle = e => {
 		e.stopPropagation();
-		this.setState(state => ({ closed: !state.closed }));
-		setTimeout(
-			() => document.getElementById(this.id).style.display = this.state.closed ? 'none' : 'block'
-			, 500 // should be same as CSS transition
-		);
+		this.setState(state => {
+
+			if (state.closed) {
+				document.getElementById(this.id).style.visibility = 'visible';
+			} else {
+				setTimeout(
+					() => document.getElementById(this.id).style.visibility = 'hidden'
+					, 500 // should be same as CSS transition
+				);
+			}
+
+			return { closed: !state.closed };
+		});
 	}
 
 	styleOverrides = () => {
@@ -67,7 +75,7 @@ export default class AccordionList extends React.Component {
 						</span>
 					</button>
 				</h1>
-				<div id={this.id} className={styles.content}>
+				<div id={this.id} className={styles.content} style={{'visibility': 'hidden'}}>
 					{this.props.children}
 				</div>
 			</section>

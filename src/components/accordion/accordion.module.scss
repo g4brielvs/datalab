@@ -37,11 +37,10 @@ $vert-padding: 14px;
 
 .content {
   overflow: hidden;
-  padding: 0 27px 0 $left-indent;
   line-height: 1.43rem;
 
   max-height: 0;
-  transition: ease max-height 500ms;
+  transition: ease-in-out max-height 500ms;
 }
 
 .open {
@@ -50,7 +49,6 @@ $vert-padding: 14px;
   }
 
   .content {
-    padding-bottom: 40px;
     max-height: 1000px; // hack; larger than any content height
   }
 }

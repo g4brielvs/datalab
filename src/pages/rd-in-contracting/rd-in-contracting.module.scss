@@ -1,7 +1,8 @@
-@import "../../styles/index.scss";
+@import "../../styles/variables.scss";
 
-$highlightColor: #1302d9;
+$left-indent: 32px;
 $bullet-size: 1.5rem;
+$highlightColor: #1302d9;
 
 .subtitle-highlight {
   color: $highlightColor;
@@ -12,6 +13,7 @@ $bullet-size: 1.5rem;
 .accordion-contents {
   text-align: justify;
   font-size: 1rem;
+  padding: 0 27px 22px $left-indent;
 
   p {
     margin: 0 0 0.5rem 0;
@@ -19,6 +21,7 @@ $bullet-size: 1.5rem;
 
   .flex-container {
     display: flex;
+    padding-bottom: 9px;
 
     .bullet {
       font-size: $bullet-size;
@@ -31,13 +34,17 @@ $bullet-size: 1.5rem;
       }
     }
 
-    .bullet-spacer {
-      font-size: $bullet-size;
+    .bullet-size {
+      line-height: $bullet-size;
     }
   }
 
   .highlight {
     color: $highlightColor;
+  }
+
+  .bold {
+    font-weight: $bold;
   }
 
   .center-img {
@@ -49,7 +56,7 @@ $bullet-size: 1.5rem;
     margin-right: 12px;
   }
 
-  .bold {
-    font-weight: $bold;
+  a {
+    color: $legacyBlue;
   }
 }

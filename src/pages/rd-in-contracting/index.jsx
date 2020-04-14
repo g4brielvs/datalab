@@ -5,6 +5,7 @@ import Accordion from '../../components/accordion/accordion';
 import ControlBar from '../../components/control-bar/control-bar';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
+import LaunchOutlinedIcon from '@material-ui/icons/LaunchOutlined';
 import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 
@@ -25,14 +26,16 @@ export default class RdInContractingPage extends React.Component {
       <div className={styles.flexContainer}>
         <div className={styles.bullet}></div>
         <div>
-          <span className={`${styles.bold} ${styles.highlight}`}>Basic<span className={styles.bulletSpacer}> </span>Research</span>
+          <span className={`${styles.bold} ${styles.highlight} ${styles.bulletSize}`}>Basic Research</span>
           <p>The intent of basic research is to study more about a subject, to expand upon what we already know about it. This type of research usually doesn’t result in solving a specific problem.</p>
           <p className={styles.bold}>Real world example of Basic Research</p>
           <div className={styles.flexContainer}>
             <img src={science} role='presentation' className={styles.leftImg} />
             <div>
               <p>NASA working with Techshot, Inc. on a research platform that will be used on the International Space Station to gather data on temperature, light cycle, humidity control and more.</p>
-              <a>Contract Summary </a>
+              <a href='https://www.usaspending.gov/#/award/CONT_AWD_NNJ15GU47T_8000_NNJ15GU31B_8000' target='_blank' rel='noopener noreferrer'>
+                Contract Summary <LaunchOutlinedIcon fontSize='inherit' />
+              </a>
             </div>
           </div>
         </div>
@@ -41,14 +44,16 @@ export default class RdInContractingPage extends React.Component {
       <div className={styles.flexContainer}>
         <div className={styles.bullet}></div>
         <div>
-          <span className={`${styles.bold} ${styles.highlight}`}>Applied<span className={styles.bulletSpacer}> </span>Research</span>
+          <span className={`${styles.bold} ${styles.highlight} ${styles.bulletSize}`}>Applied Research</span>
           <p>Applied research has a more specific goal of finding solutions to current problems using the accumulated knowledge from basic research.</p>
           <p className={styles.bold}>Real world example of Applied Research</p>
           <div className={styles.flexContainer}>
             <img src={bottle} role='presentation' className={styles.leftImg} />
             <div>
               <p>The Department of Health and Human Services is working with the pharmaceutical company Novartis to research a drug that could counteract damage caused by radiation exposure.</p>
-              <a>Contract Summary </a>
+              <a href='https://www.usaspending.gov/#/award/CONT_AWD_HHSO100201700026C_7505_-NONE-_-NONE-' target='_blank' rel='noopener noreferrer'>
+                Contract Summary <LaunchOutlinedIcon fontSize='inherit' />
+              </a>
             </div>
           </div>
         </div>
@@ -57,14 +62,16 @@ export default class RdInContractingPage extends React.Component {
       <div className={styles.flexContainer}>
         <div className={styles.bullet}></div>
         <div>
-          <span className={`${styles.bold} ${styles.highlight}`}>Development<span className={styles.bulletSpacer}> </span></span>
+          <span className={`${styles.bold} ${styles.highlight} ${styles.bulletSize}`}>Development</span>
           <p>Development refers to the innovative process of using applied research to create prototypes of potential solutions to real-world problems.</p>
           <p className={styles.bold}>Real world example of Development</p>
           <div className={styles.flexContainer}>
             <img src={bulb} role='presentation' className={styles.leftImg} />
             <div>
               <p>The Department of Energy is working with the Electric Power Research Institute to develop and implement a long-term solution for storing spent nuclear fuel as this requirement will have an impact on licensing and operations of nuclear plants. </p>
-              <a>Contract Summary </a>
+              <a href='https://www.usaspending.gov/#/award/CONT_AWD_DENE0000593_8900_-NONE-_-NONE-' target='_blank' rel='noopener noreferrer'>
+                Contract Summary <LaunchOutlinedIcon fontSize='inherit' />
+              </a>
             </div>
           </div>
         </div>
