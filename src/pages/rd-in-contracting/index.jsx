@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './rd-in-contracting.module.scss';
 
 import Accordion from '../../components/accordion/accordion';
-import ControlBar from '../../components/control-bar/control-bar';
 import Downloads from '../../components/section-elements/downloads/downloads';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
-import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 
 export default class RdInContractingPage extends React.Component {
@@ -32,10 +30,6 @@ export default class RdInContractingPage extends React.Component {
           </ul>
         </Accordion>
 
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
-
         chart
 
         <Downloads
@@ -57,10 +51,6 @@ export default class RdInContractingPage extends React.Component {
           </ul>
         </Accordion>
 
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
-
         chart
 
         <Downloads
@@ -80,10 +70,6 @@ export default class RdInContractingPage extends React.Component {
             <li>instructions here</li>
           </ul>
         </Accordion>
-
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
 
         chart
 
