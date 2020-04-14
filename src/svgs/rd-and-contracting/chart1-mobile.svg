@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="389px" height="207px" viewBox="0 0 389 207" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>Viz 1 Outline_Mobile</title>
-    <desc>Created with Sketch.</desc>
+<svg width="100%" height="207px" viewBox="0 0 389 207" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Chart1 Mobile-Version</title>
     <defs>
+    <style>
+      use#toggle-region:hover {
+        pointer-events: all;
+        fill: #1302D9;
+	opacity: 12%;
+	cursor: pointer;
+      }
+      g#Show-Details:hover {
+        pointer-events: all;
+	fill: none;
+	cursor: pointer;
+      }
+    </style>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
             <stop stop-color="#3455DB" offset="0%"></stop>
             <stop stop-color="#021FD9" offset="49.1026182%"></stop>

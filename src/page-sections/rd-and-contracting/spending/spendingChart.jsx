@@ -4,6 +4,7 @@ import SectionOneChartDesktop from '../../../svgs/rd-and-contracting/chart1.svg'
 import SectionOneChartTablet from '../../../svgs/rd-and-contracting/chart1-tablet.svg';
 import SectionOneChartMobile from '../../../svgs/rd-and-contracting/chart1-mobile.svg';
 
+import Legend from './legend.jsx';
 
 export default class SpendingChart extends React.Component {
   constructor(props) {
@@ -27,22 +28,30 @@ export default class SpendingChart extends React.Component {
   
   render() {
     let bWidth = this.state.bWidth;
-    console.log(bWidth);
     let isTablet = bWidth <= 768 && bWidth >= 576;
     let isMobile = bWidth <= 576;
     let isDesktop = bWidth >= 769;
 
     if (isTablet) {
       return(
-        <SectionOneChartTablet/>
+        <div className={styles.svgContainerTablet}>
+          <SectionOneChartTablet/>
+          <Legend/>
+        </div>
       );
     } else if (isMobile) {
       return(
-        <SectionOneChartMobile/>
+        <div className={styles.svgContainerMobile}>
+          <SectionOneChartMobile/>
+          <Legend/>
+        </div>
       );
     } else if (isDesktop) {
       return(
-        <SectionOneChartDesktop/>
+        <div className={styles.svgContainerDesktop}>
+          <SectionOneChartDesktop/>
+          <Legend/>
+        </div>
       );
     } else {
       return null;
