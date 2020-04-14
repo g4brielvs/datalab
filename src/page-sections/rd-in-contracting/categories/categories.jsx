@@ -19,12 +19,8 @@ export default function Categories() {
       .on('blur', onBlur);
 
     svg.attr('role', 'img')
-      .attr('desc', altText)
-      .attr('aria-labelledBy', 'chart_desc');
-
-    categoryViz.append('div')
-      .attr('id', 'chart_desc')
-      .html(altText);
+      .attr('aria-labelledby', 'desc')
+      .attr('desc', altText);
 
     function onFocus() {
       d3.select(this)
