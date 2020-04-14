@@ -39,7 +39,7 @@ export default class RdInContractingPage extends React.Component {
         chart
 
         <Downloads
-          href={'/unstructured-data/R&D_Funding_cfo_agency_FY2019_Viz1_2020.03.16.csv'}
+          href={'/unstructured-data/rd-in-contracting/R&D_Funding_cfo_agency_FY2019_Viz1_2020.03.16.csv'}
           date={'December 2019'}
         />
 
@@ -64,7 +64,7 @@ export default class RdInContractingPage extends React.Component {
         chart
 
         <Downloads
-          href={'/unstructured-data/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
+          href={'/unstructured-data/rd-in-contracting/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
           date={'December 2019'}
         />
 
@@ -88,7 +88,7 @@ export default class RdInContractingPage extends React.Component {
         chart
 
         <Downloads
-          href={'/unstructured-data/Viz3_mock_ffs18-dt-tab001.csv'}
+          href={'/unstructured-data/rd-in-contracting/Viz3_mock_ffs18-dt-tab001.csv'}
           date={'December 2019'}
         />
 
