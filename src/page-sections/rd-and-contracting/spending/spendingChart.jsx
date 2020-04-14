@@ -10,11 +10,11 @@ export default class SpendingChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bWidth: window.innerWidth,
+      bWidth: 1400, // start desktop size
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
@@ -28,25 +28,25 @@ export default class SpendingChart extends React.Component {
   
   render() {
     let bWidth = this.state.bWidth;
-    let isTablet = bWidth <= 768 && bWidth >= 576;
-    let isMobile = bWidth <= 576;
-    let isDesktop = bWidth >= 769;
+    let isTabletSvg = bWidth <= 768 && bWidth >= 576;
+    let isMobileSvg = bWidth <= 576;
+    let largestSvg = bWidth >= 769;
 
-    if (isTablet) {
+    if (isTabletSvg) {
       return(
         <div className={styles.svgContainerTablet}>
           <SectionOneChartTablet/>
           <Legend/>
         </div>
       );
-    } else if (isMobile) {
+    } else if (isMobileSvg) {
       return(
         <div className={styles.svgContainerMobile}>
           <SectionOneChartMobile/>
           <Legend/>
         </div>
       );
-    } else if (isDesktop) {
+    } else if (largestSvg) {
       return(
         <div className={styles.svgContainerDesktop}>
           <SectionOneChartDesktop/>

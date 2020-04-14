@@ -8,11 +8,11 @@ export default class Legend extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      legendWidth: window.innerWidth,
+      legendWidth: 1400, // start desktop size
     };
   };
 
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
@@ -27,20 +27,21 @@ export default class Legend extends React.Component {
 
   render() {
     let w = this.state.legendWidth;
+    let legendTextwrap = w <= 713;
     let isMobile = w <= 576;
 
     if (isMobile) {
       return(
         <div className={styles.chartLegend}>
-          <p className={styles.legendItem}>R&D Devotion <Devotion/></p>
-          <p className={styles.legendItem}>R&D to Total Contract Spending % <Percentage/></p>
+          <p className={`${legendTextwrap ? styles.legendItemSmall : styles.legendItem}`}><Devotion/> R&D Devotion</p>
+          <p className={`${legendTextwrap ? styles.legendItemSmall : styles.legendItem}`}><Percentage/> R&D to Total Contract Spending %</p>
         </div>
       );
     } else {
       return(
         <div className={styles.chartLegend}>
-          <p className={styles.legendItem}>R&D Devotion <Devotion/></p>
-          <p className={styles.legendItem}>Percentage of R&D to Total Contract Spending <Percentage/></p>
+          <p className={`${legendTextwrap ? styles.legendItemSmall : styles.legendItem}`}><Devotion/> R&D Devotion</p>
+          <p className={`${legendTextwrap ? styles.legendItemSmall : styles.legendItem}`}><Percentage/> Percentage of R&D to Total Contract Spending</p>
         </div>
       );
     };
