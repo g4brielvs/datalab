@@ -5,16 +5,26 @@ import * as d3 from 'd3';
 export default function Categories() {
 
   useEffect(() => {
-    d3.select('#category-viz').html(chart);
-    let i = 2;
-    d3.select('#category-viz')
-      .selectAll('.category-icon')
+    const categoryViz = d3.select('#category-viz');
+    categoryViz.html(chart);
+
+    const svg = categoryViz.select('svg');
+
+    svg.selectAll('.category-icon')
       .attr('tabindex', 0)
       .style('cursor', 'pointer')
       .on('mouseover', onFocus)
       .on('mouseout', onBlur)
       .on('focus', onFocus)
       .on('blur', onBlur);
+
+    svg.attr('role', 'img')
+      .attr('desc', altText)
+      .attr('aria-labelledBy', 'chart_desc');
+
+    categoryViz.append('div')
+      .attr('id', 'chart_desc')
+      .html(altText);
 
     function onFocus() {
       d3.select(this)
@@ -37,6 +47,7 @@ export default function Categories() {
 
 }
 
+const altText = `Horizontal scatter plot diagram displaying icons of various spending categories across the x-axis, ranging from approximately a net negative $200,000 for International Affairs to over 13 billion dollars for defense systems.`;
 
 const chart = `<svg tabindex=0 width="1000px" height="652px" viewBox="0 0 1000 652" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Viz 2 Outline_Desktop</title>
