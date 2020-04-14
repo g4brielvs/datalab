@@ -11,7 +11,7 @@ export default class AccordionList extends React.Component {
 
 		this.toggle = this.toggle.bind(this);
 
-		this.id = Math.random().toString(36).substring(7); //unique ID to select content
+		this.contentId = Math.random().toString(36).substring(7); //unique ID to select content
 	}
 
   /* props notes
@@ -28,7 +28,6 @@ export default class AccordionList extends React.Component {
 	toggle = e => {
 		e.stopPropagation();
 		this.setState(state => {
-
 			if (state.closed) {
 				document.getElementById(this.id).style.visibility = 'visible';
 			} else {
@@ -71,7 +70,7 @@ export default class AccordionList extends React.Component {
 						</span>
 					</button>
 				</h1>
-				<div id={this.id} className={styles.content} style={{'visibility': 'hidden'}}>
+				<div id={this.contentId} className={styles.content} style={{'visibility': 'hidden'}}>
 					{this.props.children}
 				</div>
 			</section>
