@@ -7,7 +7,10 @@ import Downloads from '../../components/section-elements/downloads/downloads';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import LaunchOutlinedIcon from '@material-ui/icons/LaunchOutlined';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import SEO from '../../components/seo';
+import Categories from 'src/page-sections/rd-in-contracting/categories/categories.jsx';
 
 import microscope from 'src/images/rd-in-contracting/microscope.svg';
 import science from 'src/images/rd-in-contracting/science.svg';
@@ -17,6 +20,22 @@ import bulb from 'src/images/rd-in-contracting/bulb.svg';
 export default class RdInContractingPage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      windowWidth: window.innerWidth
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   whatIsContents = () =>
@@ -117,7 +136,7 @@ export default class RdInContractingPage extends React.Component {
           whatever
         </AccordionList>
 
-        chart
+        <Categories />
 
         <Downloads
           href={'/unstructured-data/rd-in-contracting/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
@@ -135,7 +154,29 @@ export default class RdInContractingPage extends React.Component {
           whatever
         </AccordionList>
 
-        chart
+        <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
+        <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.one}`}></div>
+            <div className={styles.legendText}>Total R&D</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.two}`}></div>
+            <div className={styles.legendText}>Development</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.three}`}></div>
+            <div className={styles.legendText}>Basic Research</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.four}`}></div>
+            <div className={styles.legendText}>Applied Research</div>
+          </GridListTile>
+          <GridListTile className={styles.legendTile}>
+            <div className={`${styles.legendBar} ${styles.five}`}></div>
+            <div className={styles.legendText}>R&D Plant</div>
+          </GridListTile>
+        </GridList>
 
         <Downloads
           href={'/unstructured-data/rd-in-contracting/Viz3_mock_ffs18-dt-tab001.csv'}
