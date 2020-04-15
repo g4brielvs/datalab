@@ -6,7 +6,7 @@
       use#toggle-region:hover {
         pointer-events: all;
         fill: #1302D9;
-	opacity: 12%;
+	fill-opacity: 12%;
 	cursor: pointer;
       }
       g#Show-Details:hover {
@@ -209,9 +209,9 @@
         <circle id="Oval-Copy-52" stroke="#FF9300" stroke-width="2.6752" fill="#FFFFFF" cx="4.5" cy="294.5" r="4.5"></circle>
         <circle id="Oval-Copy-51" stroke="#666666" stroke-width="0.882816" fill-rule="nonzero" cx="793.5" cy="350.5" r="4.5"></circle>
       </g>
-      <g id="Show-Details" transform="translate(666.000000, 323.000000)">
+      <g tabIndex="0" id="Show-Details" transform="translate(666.000000, 323.000000)">
         <text id="SHOW-DETAILS-Copy" font-family="SourceSansPro-Light, Source Sans Pro" font-size="16" font-weight="300" fill="#666666">
-          <tspan x="37.5" y="23">SHOW DETAILS</tspan>
+          <tspan id="Show-Details-Text" x="37.5" y="23">SHOW DETAILS</tspan>
         </text>
         <g id="Solid/street-view">
           <mask id="mask-9" fill="white">
@@ -219,7 +219,7 @@
           </mask>
           <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-8"></use>
           <g id="Color" stroke-width="1" fill-rule="evenodd" mask="url(#mask-9)" fill="#031FCB">
-            <rect id="Purple" x="0" y="0" width="31.6875" height="31.6875"></rect>
+            <rect id="Detail-Icon" x="0" y="0" width="31.6875" height="31.6875"></rect>
           </g>
         </g>
       </g>
