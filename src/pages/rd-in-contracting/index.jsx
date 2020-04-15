@@ -2,18 +2,11 @@ import React from 'react';
 import styles from './rd-in-contracting.module.scss';
 
 import Accordion from '../../components/accordion/accordion';
-<<<<<<< HEAD
 import AccordionList from '../../components/accordion-list/accordion-list';
-import ControlBar from '../../components/control-bar/control-bar';
-import ExpressLayout from '../../components/layouts/express/express';
-import ExpressSection from '../../page-sections/express/express-section';
-import LaunchOutlinedIcon from '@material-ui/icons/LaunchOutlined';
-import Reset from '../../components/reset/reset';
-=======
 import Downloads from '../../components/section-elements/downloads/downloads';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
->>>>>>> dev
+import LaunchOutlinedIcon from '@material-ui/icons/LaunchOutlined';
 import SEO from '../../components/seo';
 
 import microscope from 'src/images/rd-in-contracting/microscope.svg';
