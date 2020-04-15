@@ -6,12 +6,11 @@ export default class AccordionList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			closed: true
+			closed: true,
 		};
 
 		this.toggle = this.toggle.bind(this);
-
-		this.contentId = Math.random().toString(36).substring(7); //unique ID to select content
+		this.children = React.createRef();
 	}
 
   /* props notes
@@ -29,10 +28,10 @@ export default class AccordionList extends React.Component {
 		e.stopPropagation();
 		this.setState(state => {
 			if (state.closed) {
-				document.getElementById(this.id).style.visibility = 'visible';
+				this.children.current.style.visibility = 'visible';
 			} else {
 				setTimeout(
-					() => document.getElementById(this.id).style.visibility = 'hidden'
+					() => this.children.current.style.visibility = 'hidden'
 					, 500 // should be same as CSS transition
 				);
 			}
@@ -70,7 +69,7 @@ export default class AccordionList extends React.Component {
 						</span>
 					</button>
 				</h1>
-				<div id={this.contentId} className={styles.content} style={{'visibility': 'hidden'}}>
+				<div ref={this.children} className={styles.content} style={{ 'visibility': 'hidden' }}>
 					{this.props.children}
 				</div>
 			</section>
