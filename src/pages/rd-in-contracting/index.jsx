@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './rd-in-contracting.module.scss';
 
 import Accordion from '../../components/accordion/accordion';
-import ControlBar from '../../components/control-bar/control-bar';
+import Downloads from '../../components/section-elements/downloads/downloads';
 import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import GridList from '@material-ui/core/GridList';
@@ -49,11 +49,12 @@ export default class RdInContractingPage extends React.Component {
           </ul>
         </Accordion>
 
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
-
         chart
+
+        <Downloads
+          href={'/unstructured-data/rd-in-contracting/R&D_Funding_cfo_agency_FY2019_Viz1_2020.03.16.csv'}
+          date={'December 2019'}
+        />
 
       </ExpressSection>
 
@@ -69,11 +70,12 @@ export default class RdInContractingPage extends React.Component {
           </ul>
         </Accordion>
 
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
-
         chart
+
+        <Downloads
+          href={'/unstructured-data/rd-in-contracting/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
+          date={'December 2019'}
+        />
 
       </ExpressSection>
       <ExpressSection
@@ -115,6 +117,11 @@ export default class RdInContractingPage extends React.Component {
             <div className={styles.legendText}>R&D Plant</div>
           </GridListTile>
         </GridList>
+
+        <Downloads
+          href={'/unstructured-data/rd-in-contracting/Viz3_mock_ffs18-dt-tab001.csv'}
+          date={'December 2019'}
+        />
 
       </ExpressSection>
     </ExpressLayout>

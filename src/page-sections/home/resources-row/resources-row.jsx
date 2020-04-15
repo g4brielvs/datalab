@@ -32,13 +32,11 @@ const ResourcesRow = () => {
 
   return (
     <section className={resourcesRowStyles.resources}>
-      <Grid container spacing={3}>
+      <Grid container spacing={6}>
         <Grid item xs={12}>
           <h1 className={resourcesRowStyles.heading}>Resources</h1>
         </Grid>
-        <Grid item sm={12} md={12} lg={3}
-          className={resourcesRowStyles.tile}
-        >
+        <Grid item sm={12} md={12} lg={3} className={resourcesRowStyles.tile}>
           <p className={resourcesRowStyles.title}>
             Do you want <strong> to conduct your own analysis?</strong>
           </p>

@@ -2,17 +2,15 @@ import { select, selectAll } from 'd3-selection';
 import { scaleLinear } from 'd3-scale';
 import { min } from 'd3-array';
 import { transition } from 'd3-transition';
-import { getElementBox, translator, simplifyNumber, stripBr } from '../../utils';
+import {  translator } from '../../utils';
 import { stack } from 'd3-shape';
 import { establishContainer } from '../../utils';
 import { zoomInit, getZoomState, resetZoom } from './zoom';
 import { addTextElements } from './textElements';
 import { showDetail, section2_2_init, clearDetails, destroyDetails } from './showDetails';
 import colors from '../../globalSass/colors.scss';
-import '../../infoBox';
 
 const d3 = { select, selectAll, scaleLinear, min, stack, transition },
-    factBox = d3.selectAll('.fact-box'),
     baseTranslate = { x: 91, y: 50 },
     baseDimensions = { width: 1014, height: 100 },
     xScale = d3.scaleLinear();

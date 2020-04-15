@@ -1,8 +1,7 @@
 import 'src/libs/ffg/src/globalSass/cg.scss'
 import 'src/libs/ffg/src/revenue/categories/revenue-categories.scss'
+import RevenueCategories from "src/libs/ffg/src/revenue/categories/index.js";
 import 'src/libs/ffg/src/revenue/categories/data.js'
-
-// import '../../../../../static/americas-finance-guide/revenue/categories.js'
 
 import React from "react"
 import SEO from "src/components/seo"
@@ -12,7 +11,6 @@ import { AFGHeader } from 'src/components/headers/headers';
 import Accordion from 'src/components/accordion/accordion'
 import ControlBar from 'src/components/control-bar/control-bar'
 import Share from 'src/components/share/share'
-import { Helmet } from 'react-helmet';
 import AfgNav from 'src/components/afg-nav/afg-nav';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,12 +23,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 function RevenueCategoriesPage(props) {
+
     return (
         <>
-
-            <Helmet>
-                <script defer src="/americas-finance-guide/revenue/categories.js"></script>
-            </Helmet>
 
             <SEO
                 title='Data Lab - Revenue Categories – U.S. Treasury'
@@ -76,7 +71,9 @@ function RevenueCategoriesPage(props) {
                                 </div>
 
                                 <hr></hr>
-                                <div id="viz"></div>
+
+                                <RevenueCategories />
+
                                 <hr className='categories__show-more'></hr>
                                 <div id="show-more-container" className='categories__show-more'>
                                     <button id="show-more-button" className="chart__show-more">Show More</button>

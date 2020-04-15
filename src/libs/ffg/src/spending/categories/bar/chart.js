@@ -5,10 +5,8 @@ import { transition } from 'd3-transition';
 import { zoom } from 'd3-zoom';
 import { establishContainer, translator } from "../../../utils";
 import { placeLabels } from './text';
-import colors from '../../../globalSass/colors.scss';
 import { initSort } from './sort';
 import { initOverlay } from './detailOverlay';
-import { optimizeWidth, scaleToFit } from './optimize-width';
 
 const d3 = { select, selectAll, scaleLinear, extent, min, max, transition, zoom },
     barAnimationTime = 1000,
@@ -141,7 +139,19 @@ export function drawChart(data, type, _config, detail, parentWidth) {
     }
 
     config.height = data.length * rowHeight;
-    config.width = parentWidth || optimizeWidth();
+
+    let calculatedWidth = 450;
+
+    if(typeof document !== 'undefined') {
+        const bodyWidth = document.body.offsetWidth;
+        if (bodyWidth < 776) {
+            calculatedWidth = bodyWidth * .9;
+        } else {
+            calculatedWidth = bodyWidth * .55;
+        }
+    }
+
+    config.width = parentWidth || calculatedWidth;
     config.barWidth = detail ? config.width * 0.35 : config.width / 2;
     config.data = data;
     config.rowHeight = rowHeight;

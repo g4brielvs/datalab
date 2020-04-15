@@ -120,10 +120,12 @@ function showTooltip(containerOffset, globals) {
 
     tooltip.transition().duration(200).attr('opacity', 1);
 
-    document.addEventListener('click', destroyTooltip, {
-        once: true,
-        capture: true
-    })
+    if(typeof document !== undefined) {
+        document.addEventListener('click', destroyTooltip, {
+            once: true,
+            capture: true
+        })
+    }
 };
 
 function dataReducer(accumulator, d) {

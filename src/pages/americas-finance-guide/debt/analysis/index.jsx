@@ -21,10 +21,6 @@ function DebtAnalysisPage(props) {
     return (
         <>
 
-            <Helmet>
-                <script defer src="/americas-finance-guide/debt/analysis.js"></script>
-            </Helmet>
-
             <SEO
                 title='Data Lab - Federal Debt Analysis – U.S. Treasury'
                 description='Who owns the U.S. government’s debt and how much does it cost to maintain?'
