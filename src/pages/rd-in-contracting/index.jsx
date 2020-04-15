@@ -16,7 +16,7 @@ export default class RdInContractingPage extends React.Component {
     super(props);
 
     this.state = {
-      windowWidth: window.innerWidth
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : ''
     }
   }
 
@@ -29,7 +29,7 @@ export default class RdInContractingPage extends React.Component {
   }
 
   handleResize = () => {
-    this.setState({ windowWidth: window.innerWidth });
+    this.setState({ windowWidth: typeof window !== 'undefined' ? window.innerWidth : '' });
   }
 
   render = () =>
@@ -90,10 +90,6 @@ export default class RdInContractingPage extends React.Component {
             <li>instructions here</li>
           </ul>
         </Accordion>
-
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
 
         <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
         <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
