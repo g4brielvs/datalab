@@ -22,7 +22,7 @@ export default class RdInContractingPage extends React.Component {
     super(props);
 
     this.state = {
-      windowWidth: window.innerWidth
+      windowWidth: typeof window !== 'undefined' ? window.innerWidth : ''
     }
   }
 
@@ -35,7 +35,7 @@ export default class RdInContractingPage extends React.Component {
   }
 
   handleResize = () => {
-    this.setState({ windowWidth: window.innerWidth });
+    this.setState({ windowWidth: typeof window !== 'undefined' ? window.innerWidth : '' });
   }
 
   whatIsContents = () =>
@@ -151,7 +151,9 @@ export default class RdInContractingPage extends React.Component {
         viztitle='Non-R&D Studies and Analyses Spending'
       >
         <AccordionList title='Instructions'>
-          whatever
+          <ul>
+            <li>instructions here</li>
+          </ul>
         </AccordionList>
 
         <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
