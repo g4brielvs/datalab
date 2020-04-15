@@ -22,7 +22,9 @@ export default class RdInContractingPage extends React.Component {
   whatIsContents = () =>
     <div className={styles.accordionContents}>
       <img src={microscope} role='presentation' className={styles.centerImg} />
-      <p><span className={styles.bold}>What is R&D?</span> Research and development are part of a process to help us find solutions to problems using science, engineering, and technology.  Let’s take a closer look at the role each play.</p>
+      <p className={styles.extraSpace}>
+        <span className={styles.bold}>What is R&D?</span> Research and development are part of a process to help us find solutions to problems using science, engineering, and technology.  Let’s take a closer look at the role each play.
+        </p>
       <div className={styles.flexContainer}>
         <div className={styles.bullet}></div>
         <div>
