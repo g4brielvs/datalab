@@ -1,59 +1,28 @@
-import React, { useEffect } from 'react';
-import './studies.scss';
-import * as d3 from 'd3';
-import Accordion from "../../../components/accordion/accordion"
-import styles from "../../../pages/rd-in-contracting/rd-in-contracting.module.scss"
-import GridList from "@material-ui/core/GridList/GridList"
-import GridListTile from "@material-ui/core/GridListTile/GridListTile"
-import Downloads from "../../../components/section-elements/downloads/downloads"
-import ExpressSection from "../../express/express-section"
+import React, { useEffect, useState } from "react";
+import styles from './studies.module.scss';
+import Accordion from "../../../components/accordion/accordion";
+import GridList from "@material-ui/core/GridList/GridList";
+import GridListTile from "@material-ui/core/GridListTile/GridListTile";
+import Downloads from "../../../components/section-elements/downloads/downloads";
 
 export default function Studies() {
-    this.state = {
-      windowWidth: typeof window !== 'undefined' ? window.innerWidth : ''
-    }
-  }
-useEffect(() => {
-  window.addEventListener('resize', this.handleResize);
-  this.handleResize();
-}, []);
+  const [windowWidth, setWindowWidth] = useState(null);
 
+  function handleResize () {
+    setWindowWidth(typeof window !== 'undefined' ? window.innerWidth : '');
+  }
 
   useEffect(() => {
-    const categoryViz = d3.select('#category-viz');
-    categoryViz.html(chart);
+    handleResize();
 
-    const svg = categoryViz.select('svg');
+    window.addEventListener('resize', handleResize);
 
-    svg.selectAll('.category-icon')
-      .attr('tabindex', 0)
-      .style('cursor', 'pointer')
-      .on('mouseover', onFocus)
-      .on('mouseout', onBlur)
-      .on('focus', onFocus)
-      .on('blur', onBlur);
-
-    svg.attr('role', 'img')
-      .attr('aria-labelledby', 'desc')
-      .attr('desc', altText);
-
-    function onFocus() {
-      d3.select(this)
-        .select('circle')
-        .attr('fill', '#1302D9')
-        .attr('fill-opacity','.12')
-        .attr('stroke', '#1302D9');
-    }
-
-    function onBlur() {
-      d3.select(this)
-        .select('circle')
-        .attr('fill', 'unset')
-        .attr('stroke', '#555555');
-    }
+    return _ => {
+      window.removeEventListener('resize', handleResize);
+    };
 
   });
-
+  
   return (<>
       <Accordion title='Instructions'>
         <ul>
@@ -62,7 +31,7 @@ useEffect(() => {
       </Accordion>
 
       <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
-      <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
+      <GridList className={styles.legend} cols={windowWidth < 768 ? 2 : 5} cellHeight='auto'>
         <GridListTile className={styles.legendTile}>
           <div className={`${styles.legendBar} ${styles.one}`}></div>
           <div className={styles.legendText}>Total R&D</div>
