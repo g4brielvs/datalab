@@ -56,7 +56,6 @@ export default class SpendingChart extends React.Component {
     on the DOM yet. 
   */
   detailsListener = (e) => {
-    console.log(e.target);
     let element = e.target;
 
     if (element.id === 'Show-Details-Text') {
@@ -75,21 +74,48 @@ export default class SpendingChart extends React.Component {
     
     /* The 'x' on "popup-x.svg" to close! */
     if (element.id === 'x-icon') {
-      console.log('x icon');
       this.setState({showDetails: false});
     }
   };
 
+
+  /* We have to layer the popup over the svg 
+     with position absolute. This can get a bit messy.
+     We want to offset the chart where it doesn't overlay the axis
+     so we'll use these checkers to shift it over on certain sizes.
+  */
+
+  /* Tablet Checker */
+  tabletChecker = () => {
+    if (this.state.bWidth <= 900) {
+      return '35%';
+    } else if (this.state.bWidth <= 675) {
+      return '28%';
+    };
+  }
+
+  /* Desktop Inline Style Checker */
+  desktopChecker = () => {
+    if (this.state.bWidth <= 970) {
+      return '36%';
+    };
+  }
+  
   render() {
-    console.log(this.state);
     let bWidth = this.state.bWidth;
     let isTabletSvg = bWidth <= 768 && bWidth >= 576;
     let isMobileSvg = bWidth <= 576;
     let largestSvg = bWidth >= 769;
 
-    const tabletPopupStyle = {
-      top: "1275px",
-      left: "35%",
+    let tabletVal = this.tabletChecker();
+    let desktopVal = this.desktopChecker();
+
+    let tabletPopupStyle = {
+      left: tabletVal
+    };
+
+    let desktopPopupStyle = {
+      left: desktopVal
     };
 
     if (isTabletSvg) {
@@ -115,7 +141,7 @@ export default class SpendingChart extends React.Component {
     } else if (largestSvg) {
       return(
         <div className={styles.svgContainerDesktop}>
-          <div className={`${this.state.showDetails ? styles.svgPopoutShow : styles.svgPopout}`}>
+          <div className={`${this.state.showDetails ? styles.svgPopoutShow : styles.svgPopout}`} style={desktopPopupStyle}>
             <SectionOneChartPopupDesktop/>
           </div>
           <SectionOneChartDesktop/>
