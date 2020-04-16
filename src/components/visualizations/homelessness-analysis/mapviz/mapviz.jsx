@@ -31,8 +31,11 @@ export default function Mapviz(props) {
   let path, g;
 
   function OtherformatNumber (number) {
-    const formattedValue = getformattedNumber(number);
-    return formattedValue == "NaN" ? "NA" : formattedValue;
+    if(isNaN(number)) {
+      return 'NA';
+    } else {
+      return getformattedNumber(number);
+    }
   }
 
   function GenMap() {

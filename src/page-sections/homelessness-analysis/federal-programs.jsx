@@ -78,13 +78,19 @@ export default function FederalPrograms(props) {
   }));
 
   function OtherformatNumber (number) {
-    const formattedValue = getFormattedNumber(number);
-    return formattedValue == "NaN" ? "NA" : formattedValue;
+    if(isNaN(number)) {
+      return 'NA';
+    } else {
+      return getFormattedNumber(number);
+    }
   }
 
   function formatNumber (number) {
-    const formattedValue = dollarFormattedNumber(number);
-    return formattedValue == "NaN" ? "NA" : formattedValue;
+    if(isNaN(number)) {
+      return 'NA';
+    } else {
+      return dollarFormattedNumber(number);
+    }
   }
 
   function init() {
