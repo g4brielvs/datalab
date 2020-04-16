@@ -16,12 +16,13 @@ export default class RdInContractingPage extends React.Component {
     super(props);
 
     this.state = {
-      windowWidth: typeof window !== 'undefined' ? window.innerWidth : ''
+      windowWidth: null // can't get window size before rendering
     }
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
+    this.handleResize(); // determine correct initial legend layout
   }
 
   componentWillUnmount() {
