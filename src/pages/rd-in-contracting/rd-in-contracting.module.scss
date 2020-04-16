@@ -1,1 +1,27 @@
 @import "../../styles/variables.scss";
+
+.subtitle-highlight {
+  color: #1302d9;
+  font-size: inherit;
+  font-weight: $bold;
+
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .175rem;
+  line-height: 1.25rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  display: inline;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: $phone) and (max-width: $desktop-xl - 1) {
+  .title {
+    margin: 6rem auto 3rem;
+  }
+}
