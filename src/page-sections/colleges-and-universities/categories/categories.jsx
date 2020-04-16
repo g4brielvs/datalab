@@ -210,7 +210,7 @@ const Categories = () => {
 			</IconButton>
 			<CardContent className={styles.text}>
 				In this visualization, we identified and set apart grants used for research projects. This subset of grants were awarded to individuals, groups, or institutions.
-		</CardContent>
+			</CardContent>
 		</Card>
 	</>;
 
