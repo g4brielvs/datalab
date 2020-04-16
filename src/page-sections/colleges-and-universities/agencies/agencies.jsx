@@ -6,13 +6,13 @@ import styles from './agencies.module.scss';
 
 import Accordion from 'src/components/accordion/accordion';
 import BubbleChartOutlinedIcon from '@material-ui/icons/BubbleChartOutlined';
+import DataTable from 'src/components/table/data-table';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 import SearchPanel from 'src/components/chartpanels/search';
 import Share from 'src/components/share/share';
 import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
-import TableContainer from './agencies-table-container';
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 import VizContainer from './bubble-chart-container/bubble-chart-container';
 
@@ -146,11 +146,12 @@ const Agencies = (props) => {
         data={_data.allCuBubbleChartV2Csv.nodes}
         chartRef={chartRef}
       />
-      <TableContainer
+      <DataTable
         display={!chartView}
-        tableColumnTitles={tableColumnTitles}
-        tableData={filteredTableData}
-        tableRef={tableRef}
+        idName={'agenciesTable'}
+        columnTitles={tableColumnTitles}
+        data={filteredTableData}
+        ref={tableRef}
       />
     </Grid>
 
@@ -158,7 +159,7 @@ const Agencies = (props) => {
       href={'/data/colleges-and-universities/agencies/CU_bubble_chart_table_v2.csv'}
       date={'October 2019'}
     />
-    </>);
+  </>);
 }
 
 export default Agencies;

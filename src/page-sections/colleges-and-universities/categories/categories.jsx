@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styles from './categories.module.scss';
-import storyHeadingStyles from "src/components/section-elements/story-section-heading/story-section-heading.module.scss";
+import storyHeadingStyles from 'src/components/section-elements/story-section-heading/story-section-heading.module.scss';
 import * as _ from 'lodash';
 
 import Accordion from 'src/components/accordion/accordion';
 import CategoriesVizContainer from './sunburst-container/sunburst-container';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import DataTable from 'src/components/table/data-table';
 import Downloads from 'src/components/section-elements/downloads/downloads';
 import { Grid, Hidden } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
@@ -16,7 +17,6 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import SearchPanel from 'src/components/chartpanels/search';
 import StoryHeading from 'src/components/section-elements/story-section-heading/story-section-heading';
 import SunburstIcon from 'src/images/sunburst_icon.svg';
-import TableContainer from "./categories-table-container";
 import VizControlPanel from 'src/components/chartpanels/viz-control';
 
 const Categories = () => {
@@ -299,7 +299,7 @@ const Categories = () => {
 					title={titlesByType[fundingType]}
 					chartRef={chartRef}
 				/>
-				<TableContainer
+				<DataTable
 					fundingType={fundingType}
 					display={!chartView}
 					title={titlesByType[fundingType].categoryLabel + 's'}
