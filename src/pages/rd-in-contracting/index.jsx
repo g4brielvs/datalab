@@ -31,11 +31,6 @@ export default class RdInContractingPage extends React.Component {
 
   handleResize = () => {
     this.setState({ windowWidth: typeof window !== 'undefined' ? window.innerWidth : '' });
-
-console.log(window.innerWidth);
-
-
-
   }
 
   render = () =>
