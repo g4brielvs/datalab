@@ -22,7 +22,7 @@ export default class RdInContractingPage extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
-    this.handleResize();
+    this.handleResize(); // determine correct initial legend layout
   }
 
   componentWillUnmount() {
