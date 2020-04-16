@@ -9,7 +9,6 @@ import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Categories from 'src/page-sections/rd-in-contracting/categories/categories.jsx';
 
@@ -51,10 +50,6 @@ export default class RdInContractingPage extends React.Component {
             <li>instructions here</li>
           </ul>
         </Accordion>
-
-        <ControlBar>
-          <Reset id='resetBtn' />
-        </ControlBar>
 
         <SpendingChart/>
 
