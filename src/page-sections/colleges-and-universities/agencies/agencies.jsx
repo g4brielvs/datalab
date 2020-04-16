@@ -148,9 +148,9 @@ const Agencies = (props) => {
       />
       <DataTable
         display={!chartView}
-        idName={'agenciesTable'}
-        columnTitles={tableColumnTitles}
         data={filteredTableData}
+        columnTitles={tableColumnTitles}
+        idName={'agenciesTable'}
         ref={tableRef}
       />
     </Grid>
