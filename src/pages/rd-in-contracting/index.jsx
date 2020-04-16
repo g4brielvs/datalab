@@ -7,30 +7,11 @@ import ExpressLayout from '../../components/layouts/express/express';
 import ExpressSection from '../../page-sections/express/express-section';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import Reset from '../../components/reset/reset';
 import SEO from '../../components/seo';
 import Categories from 'src/page-sections/rd-in-contracting/categories/categories.jsx';
 
 export default class RdInContractingPage extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      windowWidth: typeof window !== 'undefined' ? window.innerWidth : ''
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = () => {
-    this.setState({ windowWidth: typeof window !== 'undefined' ? window.innerWidth : '' });
-  }
 
   render = () =>
     <ExpressLayout
@@ -85,40 +66,7 @@ export default class RdInContractingPage extends React.Component {
         description={<><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam. Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien, sed malesuada diam lacus eget erat. Cras mollis scelerisque nunc. Nullam arcu. Aliquam consequat. Curabitur augue lorem, dapibus quis, laoreet et, pretium ac, nisi. Aenean magna nisl, mollis quis, molestie eu, feugiat in, orci. In hac habitasse platea dictumst.</p></>}
         viztitle='Non-R&D Studies and Analyses Spending'
       >
-        <Accordion title='Instructions'>
-          <ul>
-            <li>instructions here</li>
-          </ul>
-        </Accordion>
 
-        <img src='/images/viz/rd/chart3.svg' className={styles.chart} />
-        <GridList className={styles.legend} cols={this.state.windowWidth < 768 ? 2 : 5} cellHeight='auto'>
-          <GridListTile className={styles.legendTile}>
-            <div className={`${styles.legendBar} ${styles.one}`}></div>
-            <div className={styles.legendText}>Total R&D</div>
-          </GridListTile>
-          <GridListTile className={styles.legendTile}>
-            <div className={`${styles.legendBar} ${styles.two}`}></div>
-            <div className={styles.legendText}>Development</div>
-          </GridListTile>
-          <GridListTile className={styles.legendTile}>
-            <div className={`${styles.legendBar} ${styles.three}`}></div>
-            <div className={styles.legendText}>Basic Research</div>
-          </GridListTile>
-          <GridListTile className={styles.legendTile}>
-            <div className={`${styles.legendBar} ${styles.four}`}></div>
-            <div className={styles.legendText}>Applied Research</div>
-          </GridListTile>
-          <GridListTile className={styles.legendTile}>
-            <div className={`${styles.legendBar} ${styles.five}`}></div>
-            <div className={styles.legendText}>R&D Plant</div>
-          </GridListTile>
-        </GridList>
-
-        <Downloads
-          href={'/unstructured-data/rd-in-contracting/Viz3_mock_ffs18-dt-tab001.csv'}
-          date={'December 2019'}
-        />
 
       </ExpressSection>
     </ExpressLayout>
