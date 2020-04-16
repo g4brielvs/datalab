@@ -200,8 +200,8 @@ export default function Geography(props) {
       />
       <DataTable
         display={!chartView}
-        tableColumnTitles={tableColumnTitles}
-        tableData={filteredTableData}
+        columnTitles={tableColumnTitles}
+        data={filteredTableData}
         tableRef={tableRef}
       />
       <Downloads
