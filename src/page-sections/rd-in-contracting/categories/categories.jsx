@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import './categories.scss';
 import * as d3 from 'd3';
+import Accordion from "../../../components/accordion/accordion"
+import ExpressSection from "../../express/express-section"
+import Downloads from "../../../components/section-elements/downloads/downloads"
 
 export default function Categories() {
 
@@ -42,7 +45,22 @@ export default function Categories() {
 
   });
 
-  return (<div id="category-viz"></div>);
+  return (
+    <>
+      <Accordion title='Instructions'>
+        <ul>
+          <li>instructions here</li>
+        </ul>
+      </Accordion>
+
+      <div id="category-viz"></div>
+
+      <Downloads
+        href={'/unstructured-data/rd-in-contracting/R&D_cfo_agency_20_categories_FY2019_viz2.v2.2020.03.18.csv'}
+        date={'December 2019'}
+      />
+    </>
+    );
 
 }
 
