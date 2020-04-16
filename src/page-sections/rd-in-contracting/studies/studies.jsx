@@ -22,7 +22,7 @@ export default function Studies() {
     };
 
   });
-  
+
   return (<>
       <Accordion title='Instructions'>
         <ul>
