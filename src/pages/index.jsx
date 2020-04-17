@@ -1,62 +1,56 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
+import homeStyles from './index.module.scss';
 
-import Home from 'src/components/layouts/home/home';
-import SEO from 'src/components/seo';
-import FeatureTile from 'src/page-sections/home/feature-tile/feature-tile';
-import SecondaryTile from 'src/page-sections/home/secondary-tile/stacked-layout/secondary-tile';
 import DtsTile from 'src/page-sections/home/dts-tile/dts-tile';
-import MoreAnalysesTiles from 'src/page-sections/home/more-analyses-tiles/more-analyses-tiles';
 import FeatureRow from 'src/page-sections/home/feature-row/feature-row';
+import FeatureTile from 'src/page-sections/home/feature-tile/feature-tile';
+import Home from 'src/components/layouts/home/home';
+import MoreAnalysesTiles from 'src/page-sections/home/more-analyses-tiles/more-analyses-tiles';
 import ResourcesRow from 'src/page-sections/home/resources-row/resources-row';
+import SecondaryTile from 'src/page-sections/home/secondary-tile/stacked-layout/secondary-tile';
+import SEO from 'src/components/seo';
 
+import cg from 'src/images/home/CG-GIF_sm_2019.gif';
 import cu from 'src/images/home/collegehomepage.svg';
 import homelessImg from 'src/images/home/homelessness.png';
-
-import 'src/styles/index.scss';
-import homeStyles from './index.module.scss';
-import cg from 'src/images/home/CG-GIF_sm_2019.gif';
+import rd from 'src/images/home/rd-homepage-v4.gif';
 
 function IndexPage() {
   return (
     <Home>
       <SEO
-        title="Data Lab - U.S. Treasury"
-        description="The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending."
-        keywords={[`Federal spending`, `data`, `visualizations`, `contracts`, `accounts`, `grants`, `federal programs`,
-          `federal financial data`, `government spending`, `government programs`, `government contracts`]}
+        title='Data Lab - U.S. Treasury'
+        description='The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending.'
+        keywords={[`Federal spending`,`data`,`visualizations`,`contracts`,`accounts`,`grants`,`federal programs`,`federal financial data`,`government spending`,`government programs`,`government contracts`]}
       />
       <Grid
         container
         spacing={3}
-        justify="center"
+        justify='center'
         className={homeStyles.featuredTileRow}
       >
         <Grid item md={12} lg={8} className={homeStyles.featuredTile}>
           <FeatureTile
-            href={'americas-finance-guide'}
-            imgSrc={cg}
+            href={'rd-in-contracting'}
+            imgSrc={rd}
             isMain={true}
-            imgAlt={'The Department of Treasury building, in Washington, D.C., that includes a bronze statue of Albert Gallatin, the fourth Secretary of the Treasury.'}
-            heading={"Your Guide to America's Finances"}
-            body={`Your Guide to America's Finances is an overview of federal government finances in 2019, providing
-              information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data Lab,
-              presents a series of interactive visualizations to allow you to explore these categories and how they have
-              changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of
-              dollars collected and spent by the federal government each year.`}
-            mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
-              well as the deficit and debt in 2019.`} />
+            imgAlt={''}
+            heading={'Research & Development in Contracting'}
+            body={'body'}
+            mobileBody={'mobile body'}
+          />
         </Grid>
         <Grid item md={12} lg={4}>
           <DtsTile
-            href={"dts"}
-            heading={"Visualizing the Daily Treasury Statement"}
-            title={"How much does the federal government spend each day?"}
+            href={'dts'}
+            heading={'Visualizing the Daily Treasury Statement'}
+            title={'How much does the federal government spend each day?'}
           />
           <Grid item>
             <SecondaryTile
-              heading={'FISCAL YEAR 2019'}
-              subheading={`Your Guide to America's Finances`}
+              heading={'Fiscal Year 2019'}
+              subheading={`America's Finance Guide`}
               href={'americas-finance-guide'}
               imgSrc={cg}
               imgAlt={'The Department of Treasury building, in Washington, D.C., that includes a bronze statue of Albert Gallatin, the fourth Secretary of the Treasury.'}

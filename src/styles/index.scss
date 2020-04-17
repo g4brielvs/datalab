@@ -80,12 +80,12 @@ ul {
 @mixin homepageSubtitle {
   text-align: left;
   font-size: 130%;
-  font-weight: 600;
+  font-weight: $semibold;
   font-style: normal;
   font-stretch: normal;
   line-height: 1.24;
   letter-spacing: normal;
-  color: #4A4A4A;
+  color: $primary-grey;
 
   &:hover {
     text-decoration: underline;
