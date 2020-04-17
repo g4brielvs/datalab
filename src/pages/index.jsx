@@ -89,20 +89,12 @@ function IndexPage() {
 
         <Grid item md={12} lg={6} className={homeStyles.featuredTile}>
           <FeatureTile
-            href={"colleges-and-universities"}
-            imgSrc={cu}
-            isMain={false}
-            imgAlt={'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.'}
-            heading={"Federal Investment in Higher Education"}
-            body={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and
-                  universities through grants, contracts, and student aid. This interactive analysis gives you an
-                  opportunity to search schools and discover how much the government has invested in that institution. In
-                  the visualizations you can also break down the investment by federal agency and view data by investment
-                  category. This analysis gives the public an interactive lens into the government’s investment in higher
-                  education.`}
-            mobileBody={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges
-                  and universities. Dive in and search by individual schools, federal agencies, or investment
-                  categories!`}
+            href={'homelessness-analysis'}
+            imgSrc={homelessImg}
+            imgAlt={'A homeless person leaning against a street pole and additional homeless people stand against a building in the far background.'}
+            heading={'Explore federal programs that address homelessness'}
+            body={'On a single night in 2018, more than 550,000 people experienced homelessness in the United States. With our visualization you can explore federal spending on programs that address homelessness and where individuals experiencing homeless are located.'}
+            mobileBody={'On a single night in 2018, more than 550,000 people experienced homelessness in the United States. With our visualization you can explore federal spending on programs that address homelessness and where individuals experiencing homeless are located.'}
           />
         </Grid>
       </Grid>
