@@ -10,7 +10,7 @@ import MoreAnalysesTiles from "src/page-sections/home/more-analyses-tiles/more-a
 import FeatureRow from "src/page-sections/home/feature-row/feature-row";
 import ResourcesRow from "src/page-sections/home/resources-row/resources-row";
 
-import main from "src/images/home/collegehomepage.svg";
+import cu from "src/images/home/collegehomepage.svg";
 import contractExplorer from "src/images/home/contractexplorersunburst.png";
 import homelessImg from 'src/images/home/homelessness.png';
 
@@ -20,7 +20,6 @@ import cg from "src/images/home/CG-GIF_sm_2019.gif";
 
 
 function IndexPage() {
-
   return (
     <Home>
       <SEO title="Data Lab - U.S. Treasury"
@@ -91,7 +90,7 @@ function IndexPage() {
         <Grid item md={12} lg={6} className={homeStyles.featuredTile}>
           <FeatureTile
             href={"colleges-and-universities"}
-            imgSrc={main}
+            imgSrc={cu}
             isMain={false}
             imgAlt={'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.'}
             heading={"Federal Investment in Higher Education"}
@@ -110,15 +109,12 @@ function IndexPage() {
 
       <div className={homeStyles.featuredRow}>
         <FeatureRow
-          href={"contract-explorer"}
-          heading={"Contract Explorer"}
-          title={"Who receives federal contracts?"}
-          blurb={`Ever wonder who's getting federal contracts and what agencies are awarding them? This tool lets you
-          explore contract-related information for FY18, including which organizations received federal contracts,
-          contract amounts, awarding agencies and sub-agencies, and the types of goods or services contract recipients
-          provided to the federal government.`}
-          imgSrc={contractExplorer}
-          imgAlt={'A picture of a microscope with a sunburst image overlaid.'}
+          href={'colleges-and-universities'}
+          heading={'Colleges & Universities'}
+          title={'Federal Investment in Higher Education'}
+          blurb={`The Federal Investment in Higher Education analysis gives an overview of federal funding in colleges and universities through grants, contracts, and student aid. This interactive analysis gives you an opportunity to search schools and discover how much the government has invested in that institution. In the visualizations you can also break down the investment by federal agency and view data by investment category.`}
+          imgSrc={cu}
+          imgAlt={'A university building with three streets leading up to it, each has an icon representing financial aid, grants, and contracts respectively.'}
         />
       </div>
 
