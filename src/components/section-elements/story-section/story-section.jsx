@@ -14,7 +14,6 @@ function StorySection(props) {
             title={props.header.subtext}
             teaser={props.header.sectionTeaser}
             blurb={props.header.introBlurb}
-            viztitle={props.header.viztitle}
           />
 
           <Grid container justify="center">

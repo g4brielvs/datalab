@@ -62,7 +62,7 @@ export default function RdInContractingPage(props) {
           const SectionTag = sectionComponents[item.tagName];
           return (
             <StorySection key={key} header={item}>
-              <SectionTag sectionId={`section-${item.section}`} />
+              <SectionTag sectionId={`section-${item.section}`} section={item} />
             </StorySection>
           )
         })}

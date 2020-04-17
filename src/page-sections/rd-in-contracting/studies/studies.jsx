@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from './studies.module.scss';
-import Accordion from "../../../components/accordion/accordion";
+import Accordion from "src/components/accordion/accordion";
 import GridList from "@material-ui/core/GridList/GridList";
 import GridListTile from "@material-ui/core/GridListTile/GridListTile";
-import Downloads from "../../../components/section-elements/downloads/downloads";
+import Downloads from "src/components/section-elements/downloads/downloads";
+import 'src/styles/index.scss';
 
-export default function Studies() {
+export default function Studies(props) {
   const [windowWidth, setWindowWidth] = useState(null);
 
   function handleResize () {
@@ -24,6 +25,7 @@ export default function Studies() {
   });
 
   return (<>
+      <h2 className ='rd-viztitle'>{props.section.viztitle}</h2>
       <Accordion title='Instructions'>
         <ul>
           <li>instructions here</li>

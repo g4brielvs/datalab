@@ -31,11 +31,6 @@ const StorySectionHeading = (props) => {
           <Grid item xs={12} xl={5} className={storySectionHeadingStyles.intro}>{props.teaser}</Grid>
           <Grid item xs={12} xl={7} className={storySectionHeadingStyles.blurb}>{props.blurb}</Grid>
         </Grid>
-        <Grid container className={storySectionHeadingStyles.introContainer}>
-          <Grid item className={storySectionHeadingStyles.intro}>
-            {props.viztitle}
-          </Grid>
-        </Grid>
       </section>
     </header>
   );
