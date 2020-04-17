@@ -9,6 +9,7 @@
 
 .heading, .heading-mobile {
   @include homepageSubtitle();
+  text-align: left;
   margin-top: $margin-25;
   text-align: center;
 }

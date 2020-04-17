@@ -18,6 +18,7 @@ $landing-title-color: #4a4a4a;
 
 .heading {
   @include homepageTitle();
+  text-align: left;
   width: calc(100% - 32px);
   padding-top: 0;
   margin-top: 0;
@@ -25,6 +26,7 @@ $landing-title-color: #4a4a4a;
 
 .title {
   @include homepageSubtitle();
+  text-align: left;
   width: calc(100% - 32px);
 }
 

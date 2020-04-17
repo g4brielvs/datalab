@@ -13,29 +13,43 @@ const SecondaryTile = (props) => (
 			ga-on='click' ga-event-category='Data Lab Home Page'
 			ga-event-action={'Clicked ' + props.heading}
 		>
-			<Hidden mdDown>
-				<Grid container spacing={3}>
-					<Grid item className={secondaryAnalysesTileStyles.headings}>
+			<Hidden only='md'>
+				{/* <Grid container spacing={3}> */}
+					{/* <Grid item className={secondaryAnalysesTileStyles.headings}> */}
+					<div className={secondaryAnalysesTileStyles.headings}>
 						<p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
-					</Grid>
-					<Grid item>
+						<Hidden mdUp>
+							<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
+						</Hidden>
+					</div>
+					{/* <Grid item> */}
 						<img
 							style={{ width: '100%' }}
 							data-src={props.imgSrc}
 							className='lazyload'
 							role='presentation'
 						/>
+						<Hidden mdDown>
+							<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
+						</Hidden>
+					{/* </Grid> */}
+					{/* <Grid item> */}
+						<p className={secondaryAnalysesTileStyles.text}>
+							{props.body}
+						</p>
+					{/* </Grid>
+				</Grid> */}
+			</Hidden>
+
+			<Hidden only={['xs', 'sm', 'lg', 'xl']}>
+				<Grid container spacing={3}>
+					<Grid item md={6} className={secondaryAnalysesTileStyles.headings}>
+						<p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
 						<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
-					</Grid>
-					<Grid item>
 						<p className={secondaryAnalysesTileStyles.text}>
 							{props.body}
 						</p>
 					</Grid>
-				</Grid>
-			</Hidden>
-			<Hidden lgUp>
-				<Grid container spacing={3}>
 					<Grid item xs={12} md={6}>
 						<img
 							style={{ width: '100%' }}
@@ -43,13 +57,6 @@ const SecondaryTile = (props) => (
 							className='lazyload'
 							alt={props.imgAlt}
 						/>
-					</Grid>
-					<Grid item md={6} className={secondaryAnalysesTileStyles.headings}>
-						<p className={secondaryAnalysesTileStyles.heading}>{props.heading}</p>
-						<p className={secondaryAnalysesTileStyles.subheading}>{props.subheading}</p>
-						<p className={secondaryAnalysesTileStyles.text}>
-							{props.body}
-						</p>
 					</Grid>
 				</Grid>
 			</Hidden>

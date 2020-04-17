@@ -97,7 +97,6 @@ function IndexPage() {
       <div className={homeStyles.resourceRow}>
         <ResourcesRow />
       </div>
-
     </Home>
   );
 }
