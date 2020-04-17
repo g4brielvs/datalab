@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import './categories.scss';
+import 'src/styles/index.scss';
 import * as d3 from 'd3';
 import Accordion from "../../../components/accordion/accordion"
 import Downloads from "../../../components/section-elements/downloads/downloads"
 import ControlBar from "../../../components/control-bar/control-bar"
 import Share from "../../../components/share/share"
 
-export default function Categories() {
+export default function Categories(props) {
 
   useEffect(() => {
     const categoryViz = d3.select('#category-viz');
@@ -45,11 +46,12 @@ export default function Categories() {
 
   return (
     <>
-      <Accordion title='Instructions'>
-        <ul>
-          <li>instructions here</li>
-        </ul>
-      </Accordion>
+        <h2 className ='rd-viztitle'>{props.section.viztitle}</h2>
+          <Accordion title='Instructions'>
+          <ul>
+            <li>instructions here</li>
+          </ul>
+        </Accordion>
 
       <ControlBar>
         <Share />
