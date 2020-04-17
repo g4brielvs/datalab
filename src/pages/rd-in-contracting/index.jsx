@@ -8,7 +8,7 @@ import styles from './rd-in-contracting.module.scss';
 import StorySection from "../../components/section-elements/story-section/story-section"
 
 
-export default function RdInContractingPage() {
+export default function RdInContractingPage(props) {
 
   const sectionComponents = {
     spending: Spending,
@@ -54,7 +54,7 @@ export default function RdInContractingPage() {
       <StoryLayout
         title={'Research & Development in Contracting'}
         introSentence={'How much did the federal government invest in Research & Development with FY18 Contract Spending?'}
-        hwctaLink={''} >
+        hwctaLink={props.location.pathname + '/methodologies'}>
 
         <SEO title='Federal R&D in Contracting' keywords={['gatsby', 'application', 'react']} />
 
