@@ -10,6 +10,9 @@ export default function Categories() {
 
     const svg = categoryViz.select('svg');
 
+    svg
+      .attr('id', 'vizSvg');
+
     svg.selectAll('.category-icon')
       .attr('tabindex', 0)
       .style('cursor', 'pointer')
