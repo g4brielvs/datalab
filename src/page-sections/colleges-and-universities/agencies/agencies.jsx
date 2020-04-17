@@ -43,10 +43,10 @@ const Agencies = (props) => {
 
   const [chartView, isChartView] = useState(true);
   const switchView = view => {
-    updateTableData(tableData);
     if (view === 'chart') {
       isChartView(true);
     } else {
+      updateTableData(tableData);
       isChartView(false);
     }
   };
