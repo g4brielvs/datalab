@@ -5,7 +5,7 @@ import Spending from 'src/page-sections/rd-in-contracting/spending/spending';
 import Studies from "src/page-sections/rd-in-contracting/studies/studies";
 import StoryLayout from "src/components/layouts/story/story";
 import styles from './rd-in-contracting.module.scss';
-import StorySection from "../../components/section-elements/story-section/story-section"
+import StorySection from "src/components/section-elements/story-section/story-section"
 
 
 export default function RdInContractingPage(props) {
