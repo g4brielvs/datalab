@@ -1,42 +1,38 @@
-import React from "react";
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import { Grid } from '@material-ui/core';
 
-import Home from "src/components/layouts/home/home";
-import SEO from "src/components/seo";
-import FeatureTile from "src/page-sections/home/feature-tile/feature-tile";
-import SecondaryTile from "src/page-sections/home/secondary-tile/stacked-layout/secondary-tile";
-import DtsTile from "src/page-sections/home/dts-tile/dts-tile";
-import MoreAnalysesTiles from "src/page-sections/home/more-analyses-tiles/more-analyses-tiles";
-import FeatureRow from "src/page-sections/home/feature-row/feature-row";
-import ResourcesRow from "src/page-sections/home/resources-row/resources-row";
+import Home from 'src/components/layouts/home/home';
+import SEO from 'src/components/seo';
+import FeatureTile from 'src/page-sections/home/feature-tile/feature-tile';
+import SecondaryTile from 'src/page-sections/home/secondary-tile/stacked-layout/secondary-tile';
+import DtsTile from 'src/page-sections/home/dts-tile/dts-tile';
+import MoreAnalysesTiles from 'src/page-sections/home/more-analyses-tiles/more-analyses-tiles';
+import FeatureRow from 'src/page-sections/home/feature-row/feature-row';
+import ResourcesRow from 'src/page-sections/home/resources-row/resources-row';
 
-import cu from "src/images/home/collegehomepage.svg";
-import contractExplorer from "src/images/home/contractexplorersunburst.png";
+import cu from 'src/images/home/collegehomepage.svg';
 import homelessImg from 'src/images/home/homelessness.png';
 
-import "src/styles/index.scss";
-import homeStyles from "./index.module.scss";
-import cg from "src/images/home/CG-GIF_sm_2019.gif";
-
+import 'src/styles/index.scss';
+import homeStyles from './index.module.scss';
+import cg from 'src/images/home/CG-GIF_sm_2019.gif';
 
 function IndexPage() {
   return (
     <Home>
-      <SEO title="Data Lab - U.S. Treasury"
-           description="The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending."
-           keywords={[`Federal spending`, `data`, `visualizations`, `contracts`, `accounts`, `grants`, `federal programs`,
-						 `federal financial data`, `government spending`, `government programs`, `government contracts`]} />
-
+      <SEO
+        title="Data Lab - U.S. Treasury"
+        description="The Data Lab is a U.S. Treasury Department website of topic-based analyses and visualizations to help the public understand government spending."
+        keywords={[`Federal spending`, `data`, `visualizations`, `contracts`, `accounts`, `grants`, `federal programs`,
+          `federal financial data`, `government spending`, `government programs`, `government contracts`]}
+      />
       <Grid
         container
         spacing={3}
         justify="center"
-        className={homeStyles.featuredTileRow} >
-
-        <Grid
-          item md={12} lg={8}
-          className={homeStyles.featuredTile} >
-
+        className={homeStyles.featuredTileRow}
+      >
+        <Grid item md={12} lg={8} className={homeStyles.featuredTile}>
           <FeatureTile
             href={'americas-finance-guide'}
             imgSrc={cg}
@@ -51,22 +47,21 @@ function IndexPage() {
             mobileBody={`The Guide presents straightforward information about the federal government's spending and revenue, as
               well as the deficit and debt in 2019.`} />
         </Grid>
-
         <Grid item md={12} lg={4}>
           <DtsTile
             href={"dts"}
             heading={"Visualizing the Daily Treasury Statement"}
-            title={"How much does the federal government spend each day?"} />
-
+            title={"How much does the federal government spend each day?"}
+          />
           <Grid item>
             <SecondaryTile
-              heading={"Homelessness Analysis"}
-              subheading={"Explore federal programs that address homelessness"}
-              href={"homelessness-analysis"}
-              imgSrc={homelessImg}
-              imgAlt={'A homeless person leaning against a street pole and additional homeless people stand against a building in the far background.'}
-              body={`On a single night in 2018, more than 550,000 people experienced homelessness in the United States. With our visualization you can explore federal spending on programs that address homelessness and where individuals experiencing homeless are located.`} />
-
+              heading={'FISCAL YEAR 2019'}
+              subheading={`Your Guide to America's Finances`}
+              href={'americas-finance-guide'}
+              imgSrc={cg}
+              imgAlt={'The Department of Treasury building, in Washington, D.C., that includes a bronze statue of Albert Gallatin, the fourth Secretary of the Treasury.'}
+              body={`Your Guide to America's Finances is an overview of federal government finances in 2019, providing information on spending, revenue, the deficit, and debt. The Guide, which is created by Treasury's Data Lab, presents a series of interactive visualizations to allow you to explore these categories and how they have changed over time. Ultimately, the Guide seeks to provide a comprehensive overview of the trillions of dollars collected and spent by the federal government each year.`}
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -78,15 +73,10 @@ function IndexPage() {
         </p>
       </Grid>
 
-      <Grid
-        container
-        spacing={3}
-        className={homeStyles.moreAnalysesRow} >
-
+      <Grid container spacing={3} className={homeStyles.moreAnalysesRow}>
         <Grid item md={12} lg={6}>
           <MoreAnalysesTiles />
         </Grid>
-
         <Grid item md={12} lg={6} className={homeStyles.featuredTile}>
           <FeatureTile
             href={'homelessness-analysis'}
