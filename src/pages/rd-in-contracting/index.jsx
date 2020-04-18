@@ -16,8 +16,6 @@ export default function RdInContractingPage(props) {
     studies: Studies
   }
 
-
-
   const sections =
     [
       {
@@ -52,6 +50,7 @@ export default function RdInContractingPage(props) {
   return(
     <>
       <ExpressLayout
+        key={'express'}
         title={'Research & Development in Contracting'}
         introSentence={'How much did the federal government invest in Research & Development with FY18 Contract Spending?'}
         hwctaLink={props.location.pathname + '/methodologies'}>
@@ -61,8 +60,8 @@ export default function RdInContractingPage(props) {
         {sections.map((item, key) => {
           const SectionTag = sectionComponents[item.tagName];
           return (
-            <StorySection key={key} header={item}>
-              <SectionTag sectionId={`section-${item.section}`} section={item} key={key} />
+            <StorySection key={'testing' + key} header={item}>
+              <SectionTag sectionId={`section-${item.section}`} section={item} />
             </StorySection>
           )
         })}
