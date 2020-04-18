@@ -11,7 +11,7 @@ const StorySectionHeading = (props) => {
         </Grid>
       )
     }
-    return null;
+    return <></>;
   }
 
   return (
