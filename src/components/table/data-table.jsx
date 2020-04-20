@@ -22,19 +22,32 @@ export default class DataTable extends React.Component {
       page: 1,
       perPage: 10,
       scrollToIndex: undefined,
-      sortBy: 'index'
+      sortBy: 'index',
+      width: null
     };
 
-    this.defaultWidth = 1000;
     this.handleRowsScroll = this.handleRowsScroll.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.sort = this.sort.bind(this);
     this.updateSort = this.updateSort.bind(this);
     this.updateTableData = this.updateTableData.bind(this);
 
-    if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
-      this.defaultWidth = 1.25 * (document.getElementById('chart-area').clientWidth);
-    }
+    // if (typeof document !== 'undefined' && typeof window !== 'undefined' && document.getElementById('chart-area')) {
+    //   this.defaultWidth = 1.25 * (document.getElementById('chart-area').clientWidth);
+    // }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize() {
+    this.setState({ width: window.innerWidth });
   }
 
   handleRowsScroll({ stopIndex }) {
@@ -116,48 +129,53 @@ export default class DataTable extends React.Component {
       const height = rowHeight * (numberOfRowsVisible + 1);
       const rowCount = currentList.length;
 
-      return (
-        <Grid container justify='center'>
-          <Grid item>
-            <Table
-              width={this.defaultWidth}
-              height={height}
-              headerHeight={rowHeight}
-              rowHeight={rowHeight}
-              rowCount={rowCount}
-              rowGetter={({ index }) => currentList[index]}
-              scrollToIndex={scrollToIndex}
-              scrollToAlignment='start'
-              sort={this.updateSort}
-              sortBy={sortBy}
-              sortDirection={sortDirection}
-            >
-              {this.props.columnTitles.map((item, key) => {
-                const columnWidth = item.width || this.defaultWidth / this.props.columnTitles.length;
-                let dataType = item.type || 'dollars';
-                dataType = dataType.toString().toLowerCase();
-                return (
-                  <Column
-                    key={key}
-                    label={item.title}
-                    dataKey={key.toString()}
-                    width={columnWidth}
-                    cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter(dataType, cellData) : cellData}
-                  />
-                )
-              })}
-            </Table>
-          </Grid>
-          <Grid item xs={12}>
-            <Paginator
-              rowCount={this.state.list.length}
-              rowsPerPage={perPage}
-              currentPage={page}
-              onPageChange={this.handlePageChange}
-            />
-          </Grid>
-        </Grid>
-      );
+      return <>
+        {/* // <Grid container justify='center'>
+        //   <Grid item> */}
+        <Table
+          width={this.state.width}
+          height={height}
+          headerHeight={rowHeight}
+          rowHeight={rowHeight}
+          rowCount={rowCount}
+          rowGetter={({ index }) => currentList[index]}
+          scrollToIndex={scrollToIndex}
+          scrollToAlignment='start'
+          sort={this.updateSort}
+          sortBy={sortBy}
+          sortDirection={sortDirection}
+        >
+          {this.props.columnTitles.map((item, key) => {
+            const columnWidth = item.width || this.state.width / this.props.columnTitles.length;
+            let dataType;
+            if (item.type) {
+              dataType = item.type.toString().toLowerCase();
+            } else {
+              dataType = 'dollars';
+            }
+
+            return (
+              <Column
+                key={key}
+                label={item.title}
+                dataKey={key.toString()}
+                width={columnWidth}
+                cellRenderer={({ cellData }) => typeof cellData === 'number' ? numberFormatter(dataType, cellData) : cellData}
+              />
+            )
+          })}
+        </Table>
+        {/* // </Grid>
+          // <Grid item xs={12}> */}
+        <Paginator
+          rowCount={this.state.list.length}
+          rowsPerPage={perPage}
+          currentPage={page}
+          onPageChange={this.handlePageChange}
+        />
+        {/* //   </Grid>
+        // </Grid> */}
+      </>;
     }
   }
 }
