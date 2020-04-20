@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './express.module.scss';
-import Default from '../default/default';
 import StoryLayout from "../story/story";
 
 export default function ExpressLayout(props) {
