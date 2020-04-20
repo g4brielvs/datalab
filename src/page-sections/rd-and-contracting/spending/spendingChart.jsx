@@ -24,6 +24,7 @@ export default class SpendingChart extends React.Component {
     window.addEventListener('resize', this.handleWindowSizeChange);
     document.addEventListener('click', this.detailsListener);
     this.detailsClose();
+    this.detailsKeyup();
     this.closeDetailResize(); // resize event listener as well
   }
 
@@ -48,7 +49,31 @@ export default class SpendingChart extends React.Component {
     document.getElementById('clear-24px').addEventListener('click', function() {
       that.setState({ showDetails: false });
     });
+
+    /* add keyboard enter click support */
+    document.getElementById('clear-24px').addEventListener('keyup', function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        that.setState({ showDetails: false });
+      };
+    });
   };
+
+  detailsKeyup = () => {
+    let that = this;
+    document.getElementById('Show-Details').addEventListener('keyup', function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        that.setState({showDetails: !that.state.showDetails});
+      };
+    });
+    document.getElementById('Show-Details-Text').addEventListener('keyup', function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        that.setState({showDetails: !that.state.showDetails});
+      };
+    });
+  }
 
   /* 
     - Dynamic Event Listener - 
